@@ -282,6 +282,9 @@ def main() -> None:
     p_live = sub.add_parser("live", help="Cours temps réel BRVM (brvm.org) + état de la séance")
     p_live.set_defaults(func=cmd_live)
 
+    p_integrity = sub.add_parser("integrity", help="Contrôle d'intégrité des données (cache, cassures, profils)")
+    p_integrity.set_defaults(func=cmd_integrity)
+
     p_bond = sub.add_parser("bond", help="Obligations BRVM : carnet, YTM, positions, coupons")
     p_bond.add_argument("action", choices=["list", "ytm", "buy", "show"], nargs="?", default="list")
     p_bond.add_argument("code", nargs="?")
@@ -927,6 +930,22 @@ def cmd_live(args: argparse.Namespace) -> None:
         print(f"{code:7s} {name[:21]:22s} {quotes[code]:>10,.0f} {prev_s:>8s} {var:>7s}")
 
 
+def cmd_integrity(args: argparse.Namespace) -> None:
+    """Contrôle d'intégrité des données : cache, cassures, profils dérivés."""
+    from .backtest import load_all_history
+    from .cache_integrity import check_all_integrity
+
+    api = BSApi()
+    hist = load_all_history(api)
+    problems = check_all_integrity(hist, api.market_snapshot())
+    if not problems:
+        print("Intégrité des données : OK (cache cohérent, profils à jour).")
+        return
+    print(f"{len(problems)} problème(s) d'intégrité détecté(s) :")
+    for p in problems[:12]:
+        print(f"  ⚠ {p}")
+
+
 def cmd_daily(args: argparse.Namespace) -> None:
     """Check quotidien complet : annonces + déclencheurs de sortie + stops + heartbeat."""
     from datetime import datetime
@@ -944,6 +963,7 @@ def cmd_daily(args: argparse.Namespace) -> None:
         ("Déclencheurs de sortie", cmd_portf, {"action": "check", "code": None, "amount": 100000, "dps": None, "per": None}, "Aucune alerte actionnable"),
         ("Candidats spéculation", cmd_spec, {"action": "alert", "code": None, "amount": 100000, "min": 3}, "Aucun nouveau candidat"),
         ("Stops (spéculation)", cmd_spec, {"action": "check", "code": None, "amount": 100000, "min": 3}, "Aucun événement"),
+        ("Intégrité des données", cmd_integrity, {}, "cache cohérent"),
     ]
     summaries: list[tuple[str, bool]] = []
     for label, func, kwargs, quiet_marker in steps:

@@ -2,7 +2,8 @@
   "_meta": {
     "seuil_pct": 13,
     "fenetre": "20 séances",
-    "min_episodes": 8
+    "min_episodes": 8,
+    "cache_signature": "956fd1c938874909"
   },
   "SIVC": {
     "episodes": 52,

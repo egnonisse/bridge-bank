@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.backtest import load_all_history
 from src.bsapi import BSApi
+from src.cache_integrity import cache_signature
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "reversal_profiles.json"
@@ -60,7 +61,8 @@ def main() -> None:
             "trough_depth_worst": round(min(creux) * 100, 1),
         }
     OUT.write_text(
-        json.dumps({"_meta": {"seuil_pct": 13, "fenetre": "20 séances", "min_episodes": MIN_EPISODES},
+        json.dumps({"_meta": {"seuil_pct": 13, "fenetre": "20 séances", "min_episodes": MIN_EPISODES,
+                              "cache_signature": cache_signature(hist_all)},
                     **profiles}, indent=2, ensure_ascii=False),
         encoding="utf-8",
     )

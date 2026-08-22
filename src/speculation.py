@@ -301,8 +301,9 @@ def check_all(api: BSApi) -> list[str]:
             pos.review_alerted = True
             events.append(
                 f"🔍 REVUE {pos.name} ({pos.code}) — {zm[0]} séances sans +20 % ni stop −15 %.\n"
-                f"   L'histoire : 38 % percent +20 % et 28 % stoppent dans les 3 mois suivants "
-                f"(médiane +5,8 %) → conserver est positif, mais vérifie que le setup reste valide.\n"
+                f"   Historique out-of-sample 2023-2026 : 62 % des inertes montent ensuite "
+                f"(médiane nette +4,4 % sur les 60 séances suivantes, après frais) → conserver "
+                f"reste défendable, mais vérifie que le setup est toujours valide.\n"
                 f"   Sinon clôture manuelle : spec close {pos.code}"
             )
     save_positions(positions)

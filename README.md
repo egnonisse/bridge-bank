@@ -85,10 +85,21 @@ backtest : BICB détecté à 5 720 F (10/06) contre ~8 000 F via golden cross.
 
 **Zone morte (ni +20 % ni −15 % atteints)** — validée par backtest 9 ans
 (1 519 entrées simulées) : **pas de clôture automatique** — les inertes à J+60
-percent +20 % dans 30 % des cas (vs 22 % de stop, retour médian +3,1 %).
+montent ensuite dans 62 % des cas en régime récent 2023-2026 (médiane nette
++4,4 % après frais, vs −1,4 % sur 2017-2022 : la conservation est neutre à
+positive, la revue régulière reste justifiée).
 Mention d'info dans `spec status` dès 60 séances ; alerte « 🔍 REVUE » unique à
 ~120 séances (~6 mois) pour vérifier que le setup reste valide (clôture
 manuelle possible : `spec close CODE`).
+
+**Frais et rendements NETS (validation out-of-sample, 21/08)** : la simulation
+complète de la règle (frais 1,4 % par ordre) donne, sur 702 entrées 2023-2026,
+un rendement net médian de **+1,4 %** (moyen +3,6 %, 52 % gagnants) — contre
+−2,8 % médian sur 2017-2022. La stratégie spéculation a une espérance nette
+légèrement positive en régime récent, jamais un jackpot : son rôle est le
+contrôle du risque (stop −15 %), d'où le plafond de poche à 10 %.
+Les paliers affichés (+20/+35/+50 %, stop −15 %) sont des DÉCLENCHEURS BRUTS ;
+nets de frais ils valent ≈ +18,6/+33,6/+48,4 % et −16,4 %.
 
 Les positions sont persistées dans `data/spec_positions.json`.
 
