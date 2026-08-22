@@ -1,0 +1,293 @@
+{
+  "method": "magic_formula_brvm",
+  "scored": [
+    {
+      "code": "STBC",
+      "cours": 24800.0,
+      "per": 12.42,
+      "yield": 7.26,
+      "dps": 1707.2,
+      "score": 9
+    },
+    {
+      "code": "SNTS",
+      "cours": 32000.0,
+      "per": 7.74,
+      "yield": 5.44,
+      "dps": 1740.0,
+      "score": 10
+    },
+    {
+      "code": "BOAS",
+      "cours": 7700.0,
+      "per": 12.63,
+      "yield": 5.85,
+      "dps": 450.0,
+      "score": 15
+    },
+    {
+      "code": "PALC",
+      "cours": 8980.0,
+      "per": 9.07,
+      "yield": 4.85,
+      "dps": 441.04,
+      "score": 18
+    },
+    {
+      "code": "SOGC",
+      "cours": 7915.0,
+      "per": 13.59,
+      "yield": 6.38,
+      "dps": 501.6,
+      "score": 19
+    },
+    {
+      "code": "SLBC",
+      "cours": 37400.0,
+      "per": 13.38,
+      "yield": 5.03,
+      "dps": 1871.76,
+      "score": 22
+    },
+    {
+      "code": "SPHC",
+      "cours": 7900.0,
+      "per": 8.06,
+      "yield": 4.11,
+      "dps": 323.84,
+      "score": 23
+    },
+    {
+      "code": "ONTBF",
+      "cours": 2905.0,
+      "per": 13.59,
+      "yield": 5.01,
+      "dps": 145.32,
+      "score": 24
+    },
+    {
+      "code": "SGBC",
+      "cours": 39000.0,
+      "per": 11.81,
+      "yield": 4.28,
+      "dps": 1645.78,
+      "score": 24
+    },
+    {
+      "code": "BOAB",
+      "cours": 8655.0,
+      "per": 17.46,
+      "yield": 6.76,
+      "dps": 585.0,
+      "score": 28
+    },
+    {
+      "code": "ECOC",
+      "cours": 16000.0,
+      "per": 13.87,
+      "yield": 4.88,
+      "dps": 781.44,
+      "score": 28
+    },
+    {
+      "code": "BOABF",
+      "cours": 7350.0,
+      "per": 16.23,
+      "yield": 5.59,
+      "dps": 397.0,
+      "score": 30
+    },
+    {
+      "code": "BOAM",
+      "cours": 5850.0,
+      "per": 14.99,
+      "yield": 5.04,
+      "dps": 305.04,
+      "score": 30
+    },
+    {
+      "code": "SMBC",
+      "cours": 16600.0,
+      "per": 9.84,
+      "yield": 3.73,
+      "dps": 616.0,
+      "score": 31
+    },
+    {
+      "code": "BOAC",
+      "cours": 11905.0,
+      "per": 14.05,
+      "yield": 4.79,
+      "dps": 597.53,
+      "score": 32
+    },
+    {
+      "code": "TTLC",
+      "cours": 2950.0,
+      "per": 20.75,
+      "yield": 6.53,
+      "dps": 195.67,
+      "score": 33
+    },
+    {
+      "code": "BICC",
+      "cours": 29200.0,
+      "per": 13.24,
+      "yield": 3.99,
+      "dps": 1157.2,
+      "score": 34
+    },
+    {
+      "code": "ETIT",
+      "cours": 69.0,
+      "per": 3.4,
+      "yield": 1.42,
+      "dps": 0.92,
+      "score": 35
+    },
+    {
+      "code": "CABC",
+      "cours": 3500.0,
+      "per": 14.39,
+      "yield": 4.34,
+      "dps": 152.02,
+      "score": 36
+    },
+    {
+      "code": "TTLS",
+      "cours": 3600.0,
+      "per": 17.3,
+      "yield": 4.91,
+      "dps": 176.65,
+      "score": 37
+    },
+    {
+      "code": "ABJC",
+      "cours": 3140.0,
+      "per": 26.07,
+      "yield": 6.48,
+      "dps": 206.2,
+      "score": 38
+    },
+    {
+      "code": "BICB",
+      "cours": 7950.0,
+      "per": 12.9,
+      "yield": 3.15,
+      "dps": 254.6,
+      "score": 39
+    },
+    {
+      "code": "ORGT",
+      "cours": 3110.0,
+      "per": 9.97,
+      "yield": 1.91,
+      "dps": 59.52,
+      "score": 39
+    },
+    {
+      "code": "ORAC",
+      "cours": 17050.0,
+      "per": 15.49,
+      "yield": 4.08,
+      "dps": 704.0,
+      "score": 44
+    },
+    {
+      "code": "NEIC",
+      "cours": 2260.0,
+      "per": 14.17,
+      "yield": 3.62,
+      "dps": 81.78,
+      "score": 45
+    },
+    {
+      "code": "SIBC",
+      "cours": 9500.0,
+      "per": 16.41,
+      "yield": 4.1,
+      "dps": 374.0,
+      "score": 45
+    },
+    {
+      "code": "CBIBF",
+      "cours": 29000.0,
+      "per": 14.02,
+      "yield": 3.14,
+      "dps": 900.0,
+      "score": 46
+    },
+    {
+      "code": "PRSC",
+      "cours": 4400.0,
+      "per": 19.03,
+      "yield": 4.14,
+      "dps": 182.16,
+      "score": 48
+    },
+    {
+      "code": "NTLC",
+      "cours": 16900.0,
+      "per": 20.9,
+      "yield": 4.14,
+      "dps": 721.6,
+      "score": 49
+    },
+    {
+      "code": "NSBC",
+      "cours": 23650.0,
+      "per": 14.33,
+      "yield": 2.87,
+      "dps": 675.98,
+      "score": 51
+    },
+    {
+      "code": "LNBB",
+      "cours": 4245.0,
+      "per": 18.37,
+      "yield": 3.87,
+      "dps": 164.17,
+      "score": 52
+    },
+    {
+      "code": "CIEC",
+      "cours": 5310.0,
+      "per": 23.25,
+      "yield": 3.78,
+      "dps": 205.92,
+      "score": 57
+    },
+    {
+      "code": "SDCC",
+      "cours": 11650.0,
+      "per": 17.76,
+      "yield": 3.03,
+      "dps": 352.0,
+      "score": 58
+    },
+    {
+      "code": "SHEC",
+      "cours": 2285.0,
+      "per": 23.51,
+      "yield": 3.35,
+      "dps": 75.29,
+      "score": 61
+    },
+    {
+      "code": "CFAC",
+      "cours": 1695.0,
+      "per": 36.53,
+      "yield": 0.42,
+      "dps": 7.04,
+      "score": 71
+    },
+    {
+      "code": "SEMC",
+      "cours": 1495.0,
+      "per": 37.33,
+      "yield": 0.93,
+      "dps": 14.0,
+      "score": 71
+    }
+  ]
+}

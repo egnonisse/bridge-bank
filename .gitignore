@@ -1,0 +1,29 @@
+# Secrets (jamais versionnés)
+.env
+
+# Environnements virtuels / cache Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Temporaires Hermes
+.hermes-tmp*/
+
+# Logs (diagnostic local uniquement)
+logs/
+
+# États éphémères (cooldowns, marqueurs de déjà-vu — régénérables)
+data/alerts_state.json
+data/spec_candidates_state.json
+data/news_state.json
+data/boc_state.json
+data/value_state.json
+data/portf_alert_state.json
+
+# Volumineux / régénérable via scripts/refresh_history.py
+data/history_cache.pkl
+
+# Données personnelles sans lien avec le système
+data/avis/releves*

@@ -1,0 +1,50 @@
+[
+  {
+    "code": "SGBC",
+    "name": "SGBCI",
+    "entry_price": 39546.0,
+    "quantity": 3,
+    "dps": 2606.0,
+    "per_open": 12.0,
+    "opened_at": "2026-08-17T11:41:18.651425",
+    "exit_price": 81902.86,
+    "entry_price_ref": 47776.67,
+    "closed": false,
+    "close_reason": "",
+    "close_price": 0.0,
+    "dividends_earned": 0.0,
+    "cash_residual": 0.0
+  },
+  {
+    "code": "SLBC",
+    "name": "SOLIBRA CI",
+    "entry_price": 38025.0,
+    "quantity": 4,
+    "dps": 2127.0,
+    "per_open": 14.0,
+    "opened_at": "2026-08-18T11:05:47.805188",
+    "exit_price": 66848.57,
+    "entry_price_ref": 38995.0,
+    "closed": false,
+    "close_reason": "",
+    "close_price": 0.0,
+    "dividends_earned": 0.0,
+    "cash_residual": 0.0
+  },
+  {
+    "code": "SNTS",
+    "name": "SONATEL SN",
+    "entry_price": 32435.556,
+    "quantity": 9,
+    "dps": 1977.0,
+    "per_open": 8.0,
+    "opened_at": "2026-08-18T11:05:47.805188",
+    "exit_price": 62134.29,
+    "entry_price_ref": 36245.0,
+    "closed": false,
+    "close_reason": "",
+    "close_price": 0.0,
+    "dividends_earned": 0.0,
+    "cash_residual": 0.0
+  }
+]

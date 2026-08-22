@@ -1,0 +1,274 @@
+"""Rapport mensuel de santé du portefeuille Bridge Bank.
+
+Génère un bilan complet (valeur, performance, noyau dividende, allocation vs
+cible IPS, spéculation, dividendes perçus) à partir des positions persistées,
+des cours en direct et d'un état de trésorerie (cash + obligations) alimenté
+par l'utilisateur (`report cash --amount X`).
+
+Le rapport compare la valeur totale au snapshot précédent (historique dans
+`data/portfolio_state.json`) pour tracer l'évolution mois par mois.
+"""
+from __future__ import annotations
+
+import json
+from datetime import datetime
+from pathlib import Path
+
+from .bsapi import BSApi
+from .bonds import NOMINAL, load_bond_positions, market_line, ytm
+from .dividends import total_encaissé
+from .orders import build_limit_orders
+from .portfolio import load_portfolio
+from .speculation import load_positions
+
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+STATE_FILE = DATA_DIR / "portfolio_state.json"
+
+# Allocation cible (IPS §2) en %
+TARGET_STOCKS = 60.0
+TARGET_BONDS = 15.0
+TARGET_CASH = 15.0
+TARGET_SPEC = 10.0
+
+# Seuil de concentration : un titre > 30 % du portefeuille = risque concentré
+CONCENTRATION_WARN = 30.0
+
+
+# ------------------------------------------------------------------- état
+def load_state() -> dict:
+    if not STATE_FILE.exists():
+        return {"cash": 0.0, "obligations": [], "history": []}
+    try:
+        return json.loads(STATE_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"cash": 0.0, "obligations": [], "history": []}
+
+
+def save_state(state: dict) -> None:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def set_cash(amount: float) -> None:
+    """Met à jour le solde de liquidités (input utilisateur)."""
+    state = load_state()
+    state["cash"] = round(float(amount), 2)
+    save_state(state)
+
+
+def _record_snapshot(state: dict, total: float, stocks: float, spec: float,
+                     bonds: float, cash: float) -> None:
+    """Enregistre un point de valeur (dédoublonné par jour)."""
+    snap = {
+        "date": datetime.now().strftime("%Y-%m-%d"),
+        "total": round(total, 2),
+        "stocks": round(stocks, 2),
+        "spec": round(spec, 2),
+        "bonds": round(bonds, 2),
+        "cash": round(cash, 2),
+    }
+    history = state.get("history", [])
+    if history and history[-1]["date"] == snap["date"]:
+        history[-1] = snap  # remplace le snapshot du jour
+    else:
+        history.append(snap)
+    state["history"] = history
+
+
+# ---------------------------------------------------------------- calcul
+def _compute(api: BSApi) -> dict:
+    """Agrège toutes les données du portefeuille (positions + cours + état)."""
+    state = load_state()
+    positions = [p for p in load_portfolio() if not p.closed]
+    specs = [s for s in load_positions() if not s.closed]
+    snap = api.market_snapshot()
+
+    # Données marché du noyau (cours, payout, soutenabilité)
+    orders: dict[str, dict] = {}
+    codes = [p.code for p in positions]
+    if codes:
+        for o in build_limit_orders(api, codes):
+            if "error" not in o:
+                orders[o["code"]] = o
+
+    # Noyau dividende
+    stocks_value = 0.0
+    pnl_total = 0.0
+    div_earned = 0.0
+    pos_rows: list[dict] = []
+    for p in positions:
+        o = orders.get(p.code, {})
+        last = o.get("last", p.entry_price)
+        val = last * p.quantity
+        pnl = (last - p.entry_price) * p.quantity
+        stocks_value += val
+        pnl_total += pnl
+        div_earned += p.dividends_earned
+        pos_rows.append({
+            "code": p.code,
+            "name": p.name,
+            "qty": p.quantity,
+            "entry": p.entry_price,
+            "last": last,
+            "pnl": pnl,
+            "ret_pct": (last / p.entry_price - 1) * 100,
+            "net_cost": p.net_yield_pct(p.entry_price),
+            "net_now": o.get("net_yield", p.net_yield_pct(last)),
+            "payout": o.get("payout"),
+            "sustain": o.get("sustainability", "n/a"),
+            "value": val,
+        })
+
+    # Spéculation
+    spec_value = 0.0
+    spec_rows: list[dict] = []
+    for s in specs:
+        q = snap.by_code(s.code)
+        price = q.last if q and q.last > 0 else s.entry_price
+        val = price * s.remaining
+        spec_value += val
+        spec_rows.append({
+            "code": s.code, "name": s.name, "qty": s.remaining,
+            "entry": s.entry_price, "last": price,
+            "ret_pct": s.current_return(price), "stop": s.stop_loss,
+        })
+
+    # Trésorerie + obligations
+    cash = float(state.get("cash", 0.0))
+    legacy = state.get("obligations", [])
+    legacy_value = sum(float(b.get("amount", 0.0)) for b in legacy)
+    bond_positions = load_bond_positions()
+    bond_rows: list[dict] = []
+    for p in bond_positions:
+        line = market_line(p["code"])
+        price = line["prev_close"] if line and line.get("prev_close") else p["price"]
+        val = p["qty"] * NOMINAL * price / 100.0
+        bond_rows.append({
+            "code": p["code"], "label": p["label"], "qty": p["qty"],
+            "price": p["price"], "value": val,
+            "coupons": p["qty"] * NOMINAL * p["coupon"] / 100.0,
+            "ytm": ytm(p["price"], p["coupon"], p["maturity"]),
+        })
+    # Les positions détaillées remplacent le montant forfaitaire hérité
+    bonds_value = sum(r["value"] for r in bond_rows) if bond_positions else legacy_value
+
+    total = stocks_value + spec_value + bonds_value + cash
+
+    # Concentration (plus grosse ligne du noyau)
+    max_name, max_pct = "", 0.0
+    for r in pos_rows:
+        pc = (r["value"] / total * 100) if total > 0 else 0.0
+        if pc > max_pct:
+            max_pct, max_name = pc, r["name"]
+
+    return {
+        "state": state,
+        "total": total,
+        "stocks": stocks_value,
+        "spec": spec_value,
+        "bonds": bonds_value,
+        "cash": cash,
+        "pnl": pnl_total,
+        "div_earned": div_earned,
+        "div_real": total_encaissé(),
+        "pos_rows": pos_rows,
+        "spec_rows": spec_rows,
+        "bond_rows": bond_rows,
+        "bond_coupons": sum(r["coupons"] for r in bond_rows),
+        "max_name": max_name,
+        "max_pct": max_pct,
+    }
+
+
+# --------------------------------------------------------------- formatage
+def _pct(value: float, total: float) -> float:
+    return (value / total * 100) if total > 0 else 0.0
+
+
+def _allocation_flag(actual: float, target: float) -> str:
+    delta = actual - target
+    if delta > 15:
+        return "🔴"
+    if delta > 5 or delta < -5:
+        return "🟠"
+    return "✅"
+
+
+def _format(data: dict) -> str:
+    d = data
+    total = d["total"]
+    history = d["state"].get("history", [])
+    prev = history[-1] if history else None
+    if prev and prev.get("total", 0) > 0:
+        evol = f"{(total / prev['total'] - 1) * 100:+.1f}% vs {prev['date']}"
+    else:
+        evol = "— (1er rapport)"
+
+    L: list[str] = [
+        "📊 RAPPORT MENSUEL — PORTEFEUILLE BRIDGE BANK",
+        f"📅 {datetime.now().strftime('%d/%m/%Y')}",
+        "",
+        f"💰 VALEUR TOTALE : {total:,.0f} F  ({evol})",
+        (f"   Noyau {d['stocks']:,.0f} F ({_pct(d['stocks'], total):.0f}%) · "
+         f"Spéc. {d['spec']:,.0f} F ({_pct(d['spec'], total):.0f}%) · "
+         f"Oblig. {d['bonds']:,.0f} F ({_pct(d['bonds'], total):.0f}%) · "
+         f"Cash {d['cash']:,.0f} F ({_pct(d['cash'], total):.0f}%)"),
+        "",
+        "📈 NOYAU DIVIDENDE",
+    ]
+    if d["pos_rows"]:
+        for r in d["pos_rows"]:
+            L.append(f"   {r['code']} ({r['name']}) {r['qty']} act.")
+            L.append(f"      {r['entry']:,.0f} → {r['last']:,.0f} F · {r['pnl']:+,.0f} F ({r['ret_pct']:+.1f}%)")
+            payout = f"{r['payout']:.0f}%" if r["payout"] is not None else "n/a"
+            L.append(f"      rend. net coût {r['net_cost']:.2f}% · actuel {r['net_now']:.2f}% · payout {payout} {r['sustain']}")
+        L.append(f"   → plus/moins-value latente : {d['pnl']:+,.0f} F")
+    else:
+        L.append("   Aucune position.")
+
+    L.extend(["", "🎯 ALLOCATION vs CIBLE (IPS)"])
+    rows = [
+        ("Noyau actions", d["stocks"], TARGET_STOCKS),
+        ("Obligations", d["bonds"], TARGET_BONDS),
+        ("Liquidités", d["cash"], TARGET_CASH),
+        ("Spéculation", d["spec"], TARGET_SPEC),
+    ]
+    for label, value, target in rows:
+        actual = _pct(value, total)
+        flag = _allocation_flag(actual, target)
+        L.append(f"   {label} : {actual:.0f}% (cible {target:.0f}%) {flag}")
+
+    if d["max_pct"] > CONCENTRATION_WARN:
+        L.append(f"   ⚠️ Concentration : {d['max_name']} = {d['max_pct']:.1f}% du portefeuille")
+
+    L.extend(["", "🏛️ OBLIGATIONS"])
+    if d.get("bond_rows"):
+        for b in d["bond_rows"]:
+            ytm_s = f"{b['ytm']:.2f}%" if b["ytm"] is not None else "n/a"
+            L.append(f"   {b['code']} ({b['label']}) {b['qty']} titres @ {b['price']:.0f}%")
+            L.append(f"      valeur {b['value']:,.0f} F · coupons {b['coupons']:,.0f} F/an bruts · YTM achat {ytm_s}")
+    else:
+        L.append("   Aucune position obligataire.")
+
+    L.extend(["", "🎲 SPÉCULATION"])
+    if d["spec_rows"]:
+        for s in d["spec_rows"]:
+            L.append(f"   {s['code']} ({s['name']}) {s['qty']} act. · {s['ret_pct']:+.1f}% · stop {s['stop']:,.0f} F")
+    else:
+        L.append("   Aucune position ouverte.")
+
+    L.extend(["", f"💵 DIVIDENDES PERÇUS : {d.get('div_real', 0):,.0f} F encaissés (réels) · {d.get('div_earned', 0):,.0f} F théoriques"])
+    return "\n".join(L)
+
+
+# -------------------------------------------------------------- haut niveau
+def build_report(api: BSApi, record: bool = False) -> str:
+    """Génère le rapport mensuel et, si demandé, enregistre un snapshot."""
+    data = _compute(api)
+    message = _format(data)
+    if record:
+        state = data["state"]
+        _record_snapshot(state, data["total"], data["stocks"], data["spec"],
+                         data["bonds"], data["cash"])
+        save_state(state)
+    return message

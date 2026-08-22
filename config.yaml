@@ -1,0 +1,22 @@
+watchlist:
+  SIVC:
+    max: 2600.0
+    min: 2200.0
+    change_pct: 5.0
+  UNLC:
+    max: 60000.0
+noyau:
+  codes:
+    - SNTS
+    - BOAS
+    - SGBC
+    - PALC
+    - SOGC
+    - SLBC
+telegram:
+  bot_token: ''
+  chat_id: ''
+alerts:
+  interval_seconds: 300
+  cooldown_minutes: 30
+  session_only: true
