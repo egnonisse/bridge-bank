@@ -101,6 +101,18 @@ contrôle du risque (stop −15 %), d'où le plafond de poche à 10 %.
 Les paliers affichés (+20/+35/+50 %, stop −15 %) sont des DÉCLENCHEURS BRUTS ;
 nets de frais ils valent ≈ +18,6/+33,6/+48,4 % et −16,4 %.
 
+**⚠️ Frais réels des petits ordres (épreuve 21/08)** : Bridge facture un MINIMUM
+de 1 000 F/ordre. Sur une poche de 70 000 F, l'entrée paie 2,1 % et chaque vente
+⅓ (23 333 F) paie **5,5 %** → l'espérance nette de la spéculation tombe à ≈ 0
+(médiane −0,3 % sur 2023-2026, −4,3 % sur 2017-2022). Pour que la structure
+« 3 ventes de ⅓ » reste rentable, les positions doivent faire ≥ 100-150 000 F.
+Sous 70 000 F, la spéculation est un apprentissage, pas un moteur de rendement.
+
+**Check de clôture 16h** (ajouté 21/08) : `scripts/close_check.py` + cron Hermes
+`5 16 * * 1-5` — détecte les candidats validés à la clôture du jour et alerte
+« à jouer demain à l'ouverture » (un setup spéculatif vit ~24h ; le check de 09h
+voit la veille et peut rater les signaux du jour).
+
 Les positions sont persistées dans `data/spec_positions.json`.
 
 ## Noyau dividende (60 % du capital)
