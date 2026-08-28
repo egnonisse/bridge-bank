@@ -961,8 +961,10 @@ def cmd_daily(args: argparse.Namespace) -> None:
         ("Soutenabilité", cmd_sustain, {}, "tous les dividendes sont couverts"),
         ("Opportunités value", cmd_fund, {"mode": "value", "alert": True, "force": False}, "Aucun nouveau titre value"),
         ("Déclencheurs de sortie", cmd_portf, {"action": "check", "code": None, "amount": 100000, "dps": None, "per": None}, "Aucune alerte actionnable"),
-        ("Candidats spéculation", cmd_spec, {"action": "alert", "code": None, "amount": 100000, "min": 3}, "Aucun nouveau candidat"),
-        ("Stops (spéculation)", cmd_spec, {"action": "check", "code": None, "amount": 100000, "min": 3}, "Aucun événement"),
+        # Spéculation SUSPENDUE (décision LEO 26/08/2026, épreuve H2/H4) :
+        # volume ≥2× = placebo prédictif (p=0,44) et frais réels min 1 000 F
+        # annulent l'espérance sous 150 000 F/position. Modules conservés,
+        # disponibles en CLI manuelle (`spec screen` / `spec check`).
         ("Intégrité des données", cmd_integrity, {}, "cache cohérent"),
     ]
     summaries: list[tuple[str, bool]] = []

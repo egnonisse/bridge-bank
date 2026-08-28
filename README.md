@@ -54,9 +54,9 @@ Détecte les signaux d'entrée techniques et gère les positions avec sortie mé
 
 | Commande | Description |
 |---|---|
-| `python -m src.main spec screen --min 3` | Candidats spéculatifs (breakout 20j + volume requis) |
-| `python -m src.main spec alert --min 3` | Nouveaux candidats (entrée) + alerte Telegram |
-| `python -m src.main spec open NSBC --amount 100000` | Ouvrir une position (stop défini auto) |
+| `python -m src.main spec screen --min 3` | Candidats spéculatifs (breakout 20j + volume requis) — MANUEL, poche suspendue |
+| `python -m src.main spec alert --min 3` | Nouveaux candidats (entrée) + alerte Telegram — MANUEL |
+| `python -m src.main spec open NSBC --amount 100000` | Ouvrir une position (stop défini auto) — MANUEL |
 | `python -m src.main spec status` | Positions ouvertes, stop, performance |
 | `python -m src.main spec check` | Vérifier stops/paliers + notif Telegram |
 | `python -m src.main spec close NSBC` | Clôture manuelle |
@@ -64,6 +64,15 @@ Détecte les signaux d'entrée techniques et gère les positions avec sortie mé
 **Règle IPS appliquée** : les poches sont étanches. `spec open` refuse un titre
 déjà détenu dans le noyau dividende, et `portf open` refuse un titre détenu en
 spéculation (sauf si la position de l'autre poche est déjà clôturée).
+
+**⛔ Spéculation SUSPENDUE le 26/08/2026 (décision LEO).** L'épreuve des points morts
+a démontré : (H2) le volume ≥ 2× est un placebo prédictif (p = 0,44 sur 6 612
+breakouts) ; (H4) les frais réels (min 1 000 F/ordre) rendent le net médian NÉGATIF
+sous 150 000 F/position (balayage : 70 000 F → −0,7 % ; 150 000 F → +1,1 % ;
+`scripts/spec_size_sweep.py`). La poche 10 % (~70 000 F) étant structurellement sous
+le seuil, les alertes spéculation sont retirées du check quotidien et le cron 16h
+supprimé. **Réactivation** : position ≥ 150 000 F ET déclencheur réellement
+prédictif. Les modules restent disponibles en CLI manuelle.
 
 **Détection d'entrée** — déclencheur obligatoire + confirmations :
 
@@ -266,7 +275,8 @@ publique en direct est brvm.org (page cours-actions), scrapée par `src/live.py`
 
 Un cron Hermes (`BridgeBank check quotidien`) exécute chaque jour à 09:00 le
 check complet : annonces + soutenabilité + **nouvelles opportunités
-value+dividende** + sorties noyau + candidats d'entrée + stops spéculation :
+value+dividende** + sorties noyau + intégrité des données (spéculation suspendue
+le 26/08/2026, ses étapes sont retirées) :
 `scripts/bridgebank_daily.py` → `scripts/daily_check.py`, qui journalise dans
 `logs/daily.log` et envoie les alertes Telegram en cas d'événement.
 

@@ -28,10 +28,20 @@ Le « rendement » affiché par les sources brutes ne suffit pas.
 
 | Poche | Part | Montant (1 M FCFA) | Rôle |
 |---|---|---|---|
-| **Noyau dividende** | 60 % | 600 000 (6 × 100 000) | revenu récurrent réinvesti |
+| **Noyau dividende** | 70 % | 700 000 (7 × 100 000) | revenu récurrent réinvesti |
 | **Obligations UEMOA** | 15 % | 150 000 | stabilité, rendement fixe |
 | **Liquidités** | 15 % | 150 000 | échelonnage des achats + opportunités |
-| **Spéculative** | 10 % | 100 000 | risque fort / gain fort, isolée |
+| ~~Spéculative~~ | **0 %** | — | **SUSPENDUE (26/08/2026)** |
+
+> **Décision du 26/08/2026 — spéculation suspendue.** L'épreuve des points morts
+> (`scripts/test_spec_hypotheses.py` + `scripts/spec_size_sweep.py`) a démontré :
+> **H2** le déclencheur volume ≥ 2× est un placebo prédictif (31,8 % vs 31,7 % de
+> succès, p = 0,44 sur 6 612 breakouts) ; **H4** avec les frais réels Bridge
+> (min 1 000 F/ordre), le net médian est **négatif sous 150 000 F/position**
+> (70 000 F → −0,7 % ; 150 000 F → +1,1 %) — or la poche 10 % (≈ 70 000 F) est
+> structurellement en dessous du seuil. **Condition de réactivation** : poche ≥
+> 150 000 F par position ET conviction sur un déclencheur réellement prédictif.
+> Modules conservés (`spec screen` / `spec check` manuels), alertes désactivées.
 
 **Règle :** les poches sont étanches. Un spéculatif perdant ne devient **jamais**
 un investissement long terme (et inversement). Appliquée par l'outil :
