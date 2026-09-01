@@ -273,6 +273,7 @@ def main() -> None:
     p_limits.set_defaults(func=cmd_limits)
 
     p_radar = sub.add_parser("radar", help="Radar de veille : titres en sortie de fond (zéro trading)")
+    p_radar.add_argument("--alert", action="store_true", help="Alerte Telegram des NOUVEAUX titres de niveau 1 (anti-spam : chaque titre une seule fois)")
     p_radar.set_defaults(func=cmd_radar)
 
     p_sustain = sub.add_parser("sustain", help="Soutenabilité des dividendes du noyau (payout, anti value-trap)")
@@ -872,10 +873,14 @@ def _news_action(a: dict) -> str:
 
 
 def cmd_radar(args: argparse.Namespace) -> None:
-    """Radar de veille « sortie de fond » — détection précoce, ZÉRO trading."""
+    """Radar de veille « sortie de fond » — détection précoce, ZÉRO trading.
+
+    --alert : n'affiche que les niveau 1 et alerte Telegram sur les NOUVEAUX
+    (un titre alerté une fois n'est plus jamais re-alerté — anti-spam).
+    """
     from .backtest import load_all_history
     from .bsapi import BSApi
-    from .radar import format_radar, scan
+    from .radar import filter_new_level1, format_radar, scan
 
     api = BSApi()
     hist = load_all_history(api, force=False)
@@ -887,6 +892,32 @@ def cmd_radar(args: argparse.Namespace) -> None:
             h["name"] = names.get(h["code"], "")
     except Exception:
         pass  # le radar reste utile sans les noms
+
+    if getattr(args, "alert", False):
+        level1 = [h for h in hits if h["level"] == 1]
+        if not level1:
+            return  # silencieux : aucun événement
+        new = filter_new_level1(level1)
+        if new:
+            notifier = get_notifier(load_config())
+            for h in new:
+                msg = (
+                    f"📡 RADAR — NOUVELLE SORTIE DE FOND (veille, PAS un ordre)\n\n"
+                    f"{h['name'] or h['code']} ({h['code']}) — {h['last']:,.0f} F\n"
+                    f"   {h['r60']:+.0f} % sur 60 séances · {h['r120']:+.0f} % sur 120\n"
+                    f"   {h['pct_ath']:+.0f} % vs plus haut historique\n\n"
+                    f"   ❓ La question : qu'est-ce qui a changé dans les fondamentaux ?\n"
+                    f"   (résultats, contrat, restructuration) — jamais un signal d'achat."
+                )
+                print(msg)
+                if notifier.enabled:
+                    notifier.send(msg)
+        new_codes = {h["code"] for h in new}
+        for h in level1:  # contexte dans le log quotidien, sans re-spam
+            print(f"   [radar] {h['code']} niveau 1 — déjà alerté" if h["code"] not in new_codes
+                  else f"   [radar] {h['code']} niveau 1 — NOUVEAU")
+        return
+
     format_radar(hits)
 
 
@@ -988,6 +1019,7 @@ def cmd_daily(args: argparse.Namespace) -> None:
         # annulent l'espérance sous 150 000 F/position. Modules conservés,
         # disponibles en CLI manuelle (`spec screen` / `spec check`).
         ("Intégrité des données", cmd_integrity, {}, "cache cohérent"),
+        ("Radar sorties de fond", cmd_radar, {"alert": True}, "SORTIE DE FOND"),
     ]
     summaries: list[tuple[str, bool]] = []
     for label, func, kwargs, quiet_marker in steps:

@@ -56,3 +56,18 @@ def test_scan_level2_accumulation():
 def test_scan_ignores_short_series():
     hist = {"SHORT": _bars([10.0] * 100)}
     assert scan(hist) == []
+
+
+def test_filter_new_level1_anti_spam(tmp_path, monkeypatch):
+    from src import radar as radar_mod
+
+    monkeypatch.setattr(radar_mod, "ALERT_STATE_FILE", tmp_path / "state.json")
+    hits = [
+        {"code": "AAA", "level": 1, "date": "2026-09-01"},
+        {"code": "BBB", "level": 2, "date": "2026-09-01"},
+    ]
+    new = radar_mod.filter_new_level1(hits)
+    assert [h["code"] for h in new] == ["AAA"]
+
+    # second passage : plus rien de nouveau (anti-spam permanent)
+    assert radar_mod.filter_new_level1(hits) == []

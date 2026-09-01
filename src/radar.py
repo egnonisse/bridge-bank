@@ -16,7 +16,36 @@ mouvements net de frais ne bat pas le hasard.
 """
 from __future__ import annotations
 
+import json
 import statistics
+from pathlib import Path
+
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+ALERT_STATE_FILE = DATA_DIR / "radar_alert_state.json"
+
+
+def load_alerted() -> dict:
+    """Codes déjà alertés en niveau 1 (anti-spam permanent : on n'alerte que les nouveautés)."""
+    if ALERT_STATE_FILE.exists():
+        try:
+            return json.loads(ALERT_STATE_FILE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            pass
+    return {}
+
+
+def save_alerted(state: dict) -> None:
+    ALERT_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def filter_new_level1(hits: list[dict]) -> list[dict]:
+    """Hits de niveau 1 JAMAIS alertés ; les marque comme alertés."""
+    state = load_alerted()
+    new = [h for h in hits if h["level"] == 1 and h["code"] not in state]
+    for h in new:
+        state[h["code"]] = h["date"]
+    save_alerted(state)
+    return new
 
 
 def _safe_ret(closes: list[float], offset: int) -> float | None:
