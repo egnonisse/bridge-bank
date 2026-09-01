@@ -27,6 +27,7 @@ Python 3.11+ requis.
 | `python -m src.main watch list` / `watch remove CODE` | Gérer la watchlist |
 | `python -m src.main alert --once` | Vérifier les alertes une fois |
 | `python -m src.main alert --loop --interval 300` | Boucle continue (toutes les 5 min) |
+| `python -m src.main radar` | Radar de veille « sortie de fond » — détection précoce, ZÉRO trading |
 
 Exemples de codes : `SIVC` (Air Liquide), `UNLC` (Unilever), `BOAC` (Bank of Africa CI),
 `NTLC` (Nestlé), `SGBC` (Société Générale), `SNTS` (Sonatel), `PALC` (Palmafrique)…
@@ -120,7 +121,16 @@ Sous 70 000 F, la spéculation est un apprentissage, pas un moteur de rendement.
 **Check de clôture 16h** (ajouté 21/08) : `scripts/close_check.py` + cron Hermes
 `5 16 * * 1-5` — détecte les candidats validés à la clôture du jour et alerte
 « à jouer demain à l'ouverture » (un setup spéculatif vit ~24h ; le check de 09h
-voit la veille et peut rater les signaux du jour).
+voit la veille et peut rater les signaux du jour). **Suspendu le 26/08 avec la
+poche spéculation** (cron supprimé).
+
+**Radar de veille « sortie de fond »** (ajouté 01/09, `src/radar.py`) : les 65
+triplements BRVM de 9 ans partent d'un fond (distance ATH médiane −94 %) et le
+signal +30 %/120j les précède de ~76 séances. Le radar détecte deux niveaux
+(SORTIE DE FOND : r60 ≥ +15 % ET r120 ≥ +30 % ET ATH ≤ −80 % ; ACCUMULATION :
+r60 ≥ +10 % ET r120 ≥ +20 % ET ATH ≤ −50 %). **Veille fondamentale uniquement,
+jamais un ordre** — l'épreuve du momentum extrême a démontré que suivre ces
+mouvements net de frais ne bat pas le hasard.
 
 Les positions sont persistées dans `data/spec_positions.json`.
 

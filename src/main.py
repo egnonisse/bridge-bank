@@ -272,6 +272,9 @@ def main() -> None:
     p_limits.add_argument("--target", type=float, default=4.0, help="Rendement net cible en %% (défaut 4)")
     p_limits.set_defaults(func=cmd_limits)
 
+    p_radar = sub.add_parser("radar", help="Radar de veille : titres en sortie de fond (zéro trading)")
+    p_radar.set_defaults(func=cmd_radar)
+
     p_sustain = sub.add_parser("sustain", help="Soutenabilité des dividendes du noyau (payout, anti value-trap)")
     p_sustain.set_defaults(func=cmd_sustain)
 
@@ -866,6 +869,25 @@ def _news_action(a: dict) -> str:
     if a["type"] == "notations":
         return f"📢 À SURVEILLER {code} — notation financière publiée."
     return f"📢 INFO {code} — communiqué publié ({a['date']})."
+
+
+def cmd_radar(args: argparse.Namespace) -> None:
+    """Radar de veille « sortie de fond » — détection précoce, ZÉRO trading."""
+    from .backtest import load_all_history
+    from .bsapi import BSApi
+    from .radar import format_radar, scan
+
+    api = BSApi()
+    hist = load_all_history(api, force=False)
+    hits = scan(hist)
+    try:
+        snap = api.market_snapshot()
+        names = {q.code.strip().upper(): q.name for q in snap.stocks}
+        for h in hits:
+            h["name"] = names.get(h["code"], "")
+    except Exception:
+        pass  # le radar reste utile sans les noms
+    format_radar(hits)
 
 
 def cmd_news(args: argparse.Namespace) -> None:
