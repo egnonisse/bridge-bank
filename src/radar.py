@@ -114,9 +114,31 @@ def _safe_ret(closes: list[float], offset: int) -> float | None:
     return now / past - 1.0
 
 
+def _last_split_index(closes: list[float]) -> int:
+    """Index de la dernière division/regroupement de nominal (changement permanent).
+
+    Réutilise l'heuristique éprouvée du contrôle d'intégrité (médianes avant/après
+    >= 2,5×) : les niveaux pré-division ne sont pas comparables aux cours actuels.
+    """
+    from .cache_integrity import _is_probable_split
+
+    last = 0
+    for i in range(10, len(closes) - 10):
+        if _is_probable_split(closes, i):
+            last = i
+    return last
+
+
 def ath_status(closes: list[float]) -> tuple[float, float]:
-    """(ATH, cours actuel en % de l'ATH)."""
-    valid = [c for c in closes if c > 0]
+    """(ATH, cours actuel en % de l'ATH) — ATH calculé APRÈS la dernière division.
+
+    Ex. CIEC : 75 000 F début 2017 puis division x0,05 le 18/10/2017 (57 995 →
+    3 115 F) → le vrai sommet comparable est 7 190 F (20/08/2026), pas 75 000.
+    Sans ce filtre, un titre à -3 % de son sommet réel serait affiché « -91 % »
+    (fausse sortie de fond → fausse alerte radar).
+    """
+    cut = _last_split_index(closes)
+    valid = [c for c in closes[cut:] if c > 0]
     ath = max(valid) if valid else 0.0
     now = valid[-1] if valid else 0.0
     pct = (now / ath - 1.0) * 100 if ath > 0 else 0.0

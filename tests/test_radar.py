@@ -14,17 +14,34 @@ def _bars(closes: list[float], start: str = "2020-01-01") -> list[HistoryBar]:
     ]
 
 
+def _decline(frm: float, to: float, n: int) -> list[float]:
+    """Descente GRADUELLE (pas de cassure > 2,5× d'une séance à l'autre)."""
+    return [frm * (to / frm) ** (i / max(1, n - 1)) for i in range(n)]
+
+
 def test_ath_status():
-    closes = [200.0] * 50 + [10.0] * 200 + [25.0] * 100
+    # ATH 200, descente GRADUELLE au fond 10, remontée graduelle à 25
+    # (aucune cassure : l'ATH comparable reste 200)
+    closes = [200.0] * 50 + _decline(200, 10, 60) + [10.0] * 60 + \
+        [10 + 15 * i / 39 for i in range(40)]
     ath, pct = ath_status(closes)
     assert ath == 200.0
     assert abs(pct - (-87.5)) < 0.01  # 25/200 - 1
 
 
+def test_ath_status_ignore_niveaux_pre_division():
+    # CIEC-like : 75 000 début 2017 → division x0.05 (niveau permanent ~3 115)
+    # → le vrai sommet comparable est 7 000, pas 75 000
+    series = [75000.0] * 12 + [58000.0] * 10 + [3115.0] * 200 + [7000.0] * 50
+    ath, pct = ath_status(series)
+    assert ath == 7000.0
+    assert abs(pct - 0.0) < 0.01
+
+
 def test_scan_detects_sortie_de_fond():
-    # ATH 200 -> fond 10 -> rebond jusqu'à 25 sur les 120 dernières barres
-    rise = [10 + 15 * i / 119 for i in range(120)]
-    series = [200.0] * 40 + [10.0] * 160 + rise
+    # ATH 200 (sans division) → descente graduelle au fond 10 → rebond à 25
+    series = [200.0] * 40 + _decline(200, 10, 60) + [10.0] * 40 + \
+        [10 + 15 * i / 119 for i in range(120)]
     bars = _bars(series)
     hist = {"TEST1": bars}
 
@@ -44,9 +61,9 @@ def test_scan_detects_sortie_de_fond():
 
 
 def test_scan_level2_accumulation():
-    # ATH 200 -> fond 55 -> rebond à 80 (soit -60 % de l'ATH, entre -50 et -80)
-    rise = [55 + 25 * i / 119 for i in range(120)]
-    series = [200.0] * 40 + [55.0] * 160 + rise
+    # ATH 200 → descente graduelle à 55 → rebond à 80 (soit -60 % de l'ATH)
+    series = [200.0] * 40 + _decline(200, 55, 60) + [55.0] * 40 + \
+        [55 + 25 * i / 119 for i in range(120)]
     hist = {"TEST2": _bars(series)}
     hits = scan(hist)
     hit = next(h for h in hits if h["code"] == "TEST2")
