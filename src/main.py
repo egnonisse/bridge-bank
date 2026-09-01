@@ -274,6 +274,7 @@ def main() -> None:
 
     p_radar = sub.add_parser("radar", help="Radar de veille : titres en sortie de fond (zéro trading)")
     p_radar.add_argument("--alert", action="store_true", help="Alerte Telegram des NOUVEAUX titres de niveau 1 (anti-spam : chaque titre une seule fois)")
+    p_radar.add_argument("--mark", nargs="+", help="Marquer des codes comme veille FAITE (anti-spam du cron de veille)")
     p_radar.set_defaults(func=cmd_radar)
 
     p_sustain = sub.add_parser("sustain", help="Soutenabilité des dividendes du noyau (payout, anti value-trap)")
@@ -893,6 +894,20 @@ def cmd_radar(args: argparse.Namespace) -> None:
     except Exception:
         pass  # le radar reste utile sans les noms
 
+    if getattr(args, "mark", None):
+        from datetime import datetime
+
+        from .radar import load_alerted, save_alerted
+
+        state = load_alerted()
+        today = datetime.now().strftime("%Y-%m-%d")
+        for c in args.mark:
+            state.setdefault(c.upper(), today)
+        save_alerted(state)
+        print(f"✓ {len(args.mark)} code(s) marqué(s) comme veille faite : "
+              f"{', '.join(c.upper() for c in args.mark)}")
+        return
+
     if getattr(args, "alert", False):
         level1 = [h for h in hits if h["level"] == 1]
         if not level1:
@@ -1019,7 +1034,8 @@ def cmd_daily(args: argparse.Namespace) -> None:
         # annulent l'espérance sous 150 000 F/position. Modules conservés,
         # disponibles en CLI manuelle (`spec screen` / `spec check`).
         ("Intégrité des données", cmd_integrity, {}, "cache cohérent"),
-        ("Radar sorties de fond", cmd_radar, {"alert": True}, "SORTIE DE FOND"),
+        # Le radar est géré par le cron dédié « BridgeBank veille radar »
+        # (monitor + agent) — un seul flux, pas de double alerte ici.
     ]
     summaries: list[tuple[str, bool]] = []
     for label, func, kwargs, quiet_marker in steps:
