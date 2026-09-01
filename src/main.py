@@ -277,6 +277,10 @@ def main() -> None:
     p_radar.add_argument("--mark", nargs="+", help="Marquer des codes comme veille FAITE (anti-spam du cron de veille)")
     p_radar.set_defaults(func=cmd_radar)
 
+    p_noyau = sub.add_parser("noyau-check", help="Filtres noyau sur un candidat (alerte d'achat QUALIFIÉE — jamais sans les 4 filtres)")
+    p_noyau.add_argument("code", nargs="+", help="Code(s) BRVM à évaluer")
+    p_noyau.set_defaults(func=cmd_noyau_check)
+
     p_sustain = sub.add_parser("sustain", help="Soutenabilité des dividendes du noyau (payout, anti value-trap)")
     p_sustain.set_defaults(func=cmd_sustain)
 
@@ -934,6 +938,42 @@ def cmd_radar(args: argparse.Namespace) -> None:
         return
 
     format_radar(hits)
+
+
+def cmd_noyau_check(args: argparse.Namespace) -> None:
+    """Évalue des candidats contre les filtres noyau → alerte d'achat qualifiée.
+
+    Cours : live brvm.org en priorité, sinon snapshot BSTrade (clôture veille).
+    """
+    from .bsapi import BSApi
+    from .live import live_quotes
+    from .noyau_check import evaluate_noyau_candidate
+
+    api = BSApi()
+    snap = api.market_snapshot()
+    found = False
+    for raw in args.code:
+        code = raw.strip().upper()
+        price = None
+        try:
+            lq = live_quotes([code])
+            price = lq.get(code)
+        except Exception:
+            price = None
+        quote = snap.by_code(code)
+        if price is None and quote is not None:
+            price = quote.last
+        if not price or price <= 0:
+            print(f"{code} : cours indisponible — ignoré.")
+            continue
+        name = quote.name if quote else code
+        res = evaluate_noyau_candidate(code, price, name)
+        if res:
+            print(res["message"])
+            print()
+            found = True
+    if not found:
+        print("Aucun candidat ne passe les filtres noyau — silence (le radar reste de la veille).")
 
 
 def cmd_news(args: argparse.Namespace) -> None:

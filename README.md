@@ -28,6 +28,7 @@ Python 3.11+ requis.
 | `python -m src.main alert --once` | Vérifier les alertes une fois |
 | `python -m src.main alert --loop --interval 300` | Boucle continue (toutes les 5 min) |
 | `python -m src.main radar` | Radar de veille « sortie de fond » — détection précoce, ZÉRO trading |
+| `python -m src.main noyau-check CODE...` | Filtres noyau sur des candidats → alerte d'achat QUALIFIÉE (jamais sans les 4 filtres) |
 
 Exemples de codes : `SIVC` (Air Liquide), `UNLC` (Unilever), `BOAC` (Bank of Africa CI),
 `NTLC` (Nestlé), `SGBC` (Société Générale), `SNTS` (Sonatel), `PALC` (Palmafrique)…
