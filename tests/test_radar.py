@@ -71,3 +71,37 @@ def test_filter_new_level1_anti_spam(tmp_path, monkeypatch):
 
     # second passage : plus rien de nouveau (anti-spam permanent)
     assert radar_mod.filter_new_level1(hits) == []
+
+
+def test_monitor_output_permanent_par_cycle():
+    from src.radar import monitor_output
+
+    alerted = {"AAA": "2026-01-10", "BBB": "2026-01-10", "CCC": "2026-01-10"}
+
+    # 1. premier tick (aucun historique de présence) : les marqués présents ne ressortent pas
+    out, seen = monitor_output(["AAA", "BBB"], alerted, {}, "2026-09-01")
+    assert out == []
+    assert seen == {"AAA": "2026-09-01", "BBB": "2026-09-01"}
+
+    # 2. tick suivant, mêmes titres présents : silence
+    out, seen = monitor_output(["AAA", "BBB"], alerted, seen, "2026-09-02")
+    assert out == []
+
+    # 3. titre jamais traité qui apparaît : signalé
+    out, seen = monitor_output(["AAA", "DDD"], alerted, seen, "2026-09-03")
+    assert out == ["DDD"]
+
+    # 4. vacillement court (absence 4 jours) : PAS re-signalé
+    out, seen = monitor_output(["AAA"], alerted, seen, "2026-09-04")
+    assert out == []
+    out, seen = monitor_output(["AAA", "BBB"], alerted, seen, "2026-09-06")
+    assert out == []  # BBB absent du 09-03 au 09-05 : gap 4 j < 5
+
+    # 5. vrai retour après >= 5 jours d'absence : RÉ-SIGNALÉ (veille permanente)
+    out, seen = monitor_output(["AAA"], alerted, seen, "2026-09-09")  # BBB ressort
+    assert out == []
+    for j in range(10, 16):  # ticks quotidiens réels : AAA présent chaque jour
+        out, seen = monitor_output(["AAA"], alerted, seen, f"2026-09-{j:02d}")
+        assert out == []
+    out, seen = monitor_output(["AAA", "BBB"], alerted, seen, "2026-09-16")
+    assert out == ["BBB"]  # BBB absent du 09-09 au 09-15 : gap >= 5 ; AAA continu -> silence

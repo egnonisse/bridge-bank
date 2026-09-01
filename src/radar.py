@@ -38,6 +38,62 @@ def save_alerted(state: dict) -> None:
     ALERT_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
 
 
+SEEN_STATE_FILE = DATA_DIR / "radar_seen_state.json"  # exclu par .gitignore (*_state.json)
+REENTER_GAP_DAYS = 5  # absence minimale hors du radar avant re-signal (absorbe les vacillements)
+
+
+def load_seen_state() -> dict:
+    """Dernière date de présence en niveau 1, par code."""
+    if SEEN_STATE_FILE.exists():
+        try:
+            return json.loads(SEEN_STATE_FILE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            pass
+    return {}
+
+
+def save_seen_state(state: dict) -> None:
+    SEEN_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def monitor_output(level1: list[str], alerted: dict, seen: dict,
+                   today: str) -> tuple[list[str], dict]:
+    """Codes à veiller + état de présence mis à jour.
+
+    Veille PERMANENTE par cycle : un titre est signalé quand il est NOUVEAU
+    (jamais traité) OU quand il RÉ-ENTRE en niveau 1 après >= 5 jours d'absence
+    (les vacillements niveau 1<->2 de quelques jours n'alertent pas). Un titre
+    présent en continu n'est jamais re-spammé.
+    """
+    from datetime import date
+
+    s1 = set(level1)
+    first_tick = not seen
+    old = dict(seen)
+    day = date.fromisoformat(today)
+
+    reentrants = set()
+    for c in s1:
+        if c not in alerted:
+            continue
+        if c in old:
+            gap = (day - date.fromisoformat(old[c])).days
+            if gap >= REENTER_GAP_DAYS:
+                reentrants.add(c)
+        elif not first_tick:
+            # marqué mais jamais enregistré par ce monitor : vrai retour
+            reentrants.add(c)
+
+    for c in s1:
+        seen[c] = today
+    # purge des codes disparus depuis > 180 jours (dette de données bénigne)
+    for c in list(seen):
+        if c not in s1 and (day - date.fromisoformat(seen[c])).days > 180:
+            del seen[c]
+
+    return sorted(set(s1) - set(alerted) | reentrants), seen
+
+
 def filter_new_level1(hits: list[dict]) -> list[dict]:
     """Hits de niveau 1 JAMAIS alertés ; les marque comme alertés."""
     state = load_alerted()
