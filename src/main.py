@@ -294,7 +294,7 @@ def main() -> None:
     p_integrity = sub.add_parser("integrity", help="Contrôle d'intégrité des données (cache, cassures, profils)")
     p_integrity.set_defaults(func=cmd_integrity)
 
-    p_bond = sub.add_parser("bond", help="Obligations BRVM : carnet, YTM, positions, coupons")
+    p_bond = sub.add_parser("bond", help="Obligations BRVM (hors stratégie depuis 03/09/2026 — manuel uniquement)")
     p_bond.add_argument("action", choices=["list", "ytm", "buy", "show"], nargs="?", default="list")
     p_bond.add_argument("code", nargs="?")
     p_bond.add_argument("--qty", type=int, help="Nombre de titres (buy)")

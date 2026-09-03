@@ -173,13 +173,12 @@ si ≥ 8 épisodes fiables dans `data/reversal_profiles.json`) → PROCHAINE
 VÉRIFICATION. Telegram reçoit les niveaux 2-3 + sorties ; le niveau 1 reste en
 console. Anti-spam : 7 jours/position (sorties toujours envoyées).
 
-## Obligations (15 % du capital)
+## Obligations — RETIRÉES de la stratégie (03/09/2026)
 
-Les obligations d'État UEMOA cotent à la BRVM avec un **nominal de 10 000 FCFA/titre**
-et des cours en **% du nominal** (100 = au pair) — accessible au particulier,
-contrairement à certaines émissions structurées (ex. BEFI-ALIOS, nominal ~20,8 M F).
-(Établi le 20/08 à partir du carnet d'ordres BSTrade ; nominal à faire confirmer
-par Bridge Securities avant le premier ordre.)
+**Décision LEO : stratégie actions uniquement.** Le module reste dans le repo et
+utilisable en manuel (`python -m src.main bond ...`), mais il n'est plus dans
+l'IPS (allocation cible : noyau actions 70 % / liquidités 30 %), ni recommandé
+dans les alertes. Référence documentaire :
 
 | Commande | Description |
 |---|---|

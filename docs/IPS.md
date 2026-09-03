@@ -28,10 +28,16 @@ Le « rendement » affiché par les sources brutes ne suffit pas.
 
 | Poche | Part | Montant (1 M FCFA) | Rôle |
 |---|---|---|---|
-| **Noyau dividende** | 70 % | 700 000 (7 × 100 000) | revenu récurrent réinvesti |
-| **Obligations UEMOA** | 15 % | 150 000 | stabilité, rendement fixe |
-| **Liquidités** | 15 % | 150 000 | échelonnage des achats + opportunités |
+| **Noyau dividende (actions)** | 70 % | 700 000 (7 × 100 000) | revenu récurrent réinvesti |
+| **Liquidités** | 30 % | 300 000 | échelonnage des achats + soldes de marché |
+| ~~Obligations~~ | **0 %** | — | **RETIRÉES (03/09/2026)** — stratégie actions uniquement |
 | ~~Spéculative~~ | **0 %** | — | **SUSPENDUE (26/08/2026)** |
+
+> **Décision du 03/09/2026 — obligations retirées.** LEO se concentre uniquement
+> sur les actions : l'objectif de rendement (viser plus haut que le YTM ~6,6 %)
+> passe par la sélection d'actions value+dividende et l'attente des soldes, pas
+> par la poche obligataire. Le module `bond` reste disponible en manuel
+> (`python -m src.main bond ...`), hors stratégie.
 
 > **Décision du 26/08/2026 — spéculation suspendue.** L'épreuve des points morts
 > (`scripts/test_spec_hypotheses.py` + `scripts/spec_size_sweep.py`) a démontré :

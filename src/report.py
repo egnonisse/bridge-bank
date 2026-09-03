@@ -24,11 +24,11 @@ from .speculation import load_positions
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 STATE_FILE = DATA_DIR / "portfolio_state.json"
 
-# Allocation cible (IPS §2) en %
-TARGET_STOCKS = 60.0
-TARGET_BONDS = 15.0
-TARGET_CASH = 15.0
-TARGET_SPEC = 10.0
+# Allocation cible (IPS §2) en % — actions uniquement (obligations retirées 03/09/2026)
+TARGET_STOCKS = 70.0
+TARGET_BONDS = 0.0
+TARGET_CASH = 30.0
+TARGET_SPEC = 0.0  # poche spéculation suspendue (26/08/2026)
 
 # Seuil de concentration : un titre > 30 % du portefeuille = risque concentré
 CONCENTRATION_WARN = 30.0
@@ -210,8 +210,6 @@ def _format(data: dict) -> str:
         "",
         f"💰 VALEUR TOTALE : {total:,.0f} F  ({evol})",
         (f"   Noyau {d['stocks']:,.0f} F ({_pct(d['stocks'], total):.0f}%) · "
-         f"Spéc. {d['spec']:,.0f} F ({_pct(d['spec'], total):.0f}%) · "
-         f"Oblig. {d['bonds']:,.0f} F ({_pct(d['bonds'], total):.0f}%) · "
          f"Cash {d['cash']:,.0f} F ({_pct(d['cash'], total):.0f}%)"),
         "",
         "📈 NOYAU DIVIDENDE",
@@ -229,9 +227,8 @@ def _format(data: dict) -> str:
     L.extend(["", "🎯 ALLOCATION vs CIBLE (IPS)"])
     rows = [
         ("Noyau actions", d["stocks"], TARGET_STOCKS),
-        ("Obligations", d["bonds"], TARGET_BONDS),
         ("Liquidités", d["cash"], TARGET_CASH),
-        ("Spéculation", d["spec"], TARGET_SPEC),
+        ("Spéculation (suspendue)", d["spec"], TARGET_SPEC),
     ]
     for label, value, target in rows:
         actual = _pct(value, total)
@@ -241,14 +238,14 @@ def _format(data: dict) -> str:
     if d["max_pct"] > CONCENTRATION_WARN:
         L.append(f"   ⚠️ Concentration : {d['max_name']} = {d['max_pct']:.1f}% du portefeuille")
 
-    L.extend(["", "🏛️ OBLIGATIONS"])
+    L.extend(["", "🏛️ OBLIGATIONS — RETIRÉES DE LA STRATÉGIE (03/09/2026, décision LEO : actions uniquement)"])
     if d.get("bond_rows"):
         for b in d["bond_rows"]:
             ytm_s = f"{b['ytm']:.2f}%" if b["ytm"] is not None else "n/a"
             L.append(f"   {b['code']} ({b['label']}) {b['qty']} titres @ {b['price']:.0f}%")
             L.append(f"      valeur {b['value']:,.0f} F · coupons {b['coupons']:,.0f} F/an bruts · YTM achat {ytm_s}")
     else:
-        L.append("   Aucune position obligataire.")
+        L.append("   Aucune position (module `bond` conservé en manuel).")
 
     L.extend(["", "🎲 SPÉCULATION"])
     if d["spec_rows"]:
