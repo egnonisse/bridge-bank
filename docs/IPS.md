@@ -31,7 +31,7 @@ Le « rendement » affiché par les sources brutes ne suffit pas.
 | **Noyau dividende (actions)** | 70 % | 700 000 (7 × 100 000) | revenu récurrent réinvesti |
 | **Liquidités** | 30 % | 300 000 | échelonnage des achats + soldes de marché |
 | ~~Obligations~~ | **0 %** | — | **RETIRÉES (03/09/2026)** — stratégie actions uniquement |
-| ~~Spéculative~~ | **0 %** | — | **SUSPENDUE (26/08/2026)** |
+| ~~Spéculative~~ | **≤ 10 %** | — | **AUTORISÉE EN CONSCIENCE (03/09/2026)** — alertes néophytes avec analyse toujours en tête + proposition de plafond |
 
 > **Décision du 03/09/2026 — obligations retirées.** LEO se concentre uniquement
 > sur les actions : l'objectif de rendement (viser plus haut que le YTM ~6,6 %)
@@ -39,15 +39,16 @@ Le « rendement » affiché par les sources brutes ne suffit pas.
 > par la poche obligataire. Le module `bond` reste disponible en manuel
 > (`python -m src.main bond ...`), hors stratégie.
 
-> **Décision du 26/08/2026 — spéculation suspendue.** L'épreuve des points morts
-> (`scripts/test_spec_hypotheses.py` + `scripts/spec_size_sweep.py`) a démontré :
-> **H2** le déclencheur volume ≥ 2× est un placebo prédictif (31,8 % vs 31,7 % de
-> succès, p = 0,44 sur 6 612 breakouts) ; **H4** avec les frais réels Bridge
-> (min 1 000 F/ordre), le net médian est **négatif sous 150 000 F/position**
-> (70 000 F → −0,7 % ; 150 000 F → +1,1 %) — or la poche 10 % (≈ 70 000 F) est
-> structurellement en dessous du seuil. **Condition de réactivation** : poche ≥
-> 150 000 F par position ET conviction sur un déclencheur réellement prédictif.
-> Modules conservés (`spec screen` / `spec check` manuels), alertes désactivées.
+> **Décision du 03/09/2026 — spéculation « en conscience ».** Après la suspension du
+> 26/08 (H2 volume placebo, H4 frais), LEO a choisi de RÉACTIVER les alertes
+> spéculatives AVEC garde-fous : chaque alerte est néophyte-compréhensible,
+> l'analyse des 9 ans de données figure TOUJOURS en tête (le signal ne prédit
+> rien, le pari est perdant en moyenne à 70 000 F, gagnant à ≥ 150 000 F), et le
+> système PROPOSE un plafond de poche (~10 % du portefeuille) — la décision de
+> jouer et le montant restent à LEO. Règle d'or exécutoire : un pari perdant ne
+> devient jamais un investissement. Conditions de réactivation données le 26/08
+> (position ≥ 150 000 F + déclencheur prédictif) documentées mais non bloquantes :
+> LEO joue en connaissance de cause.
 
 **Règle :** les poches sont étanches. Un spéculatif perdant ne devient **jamais**
 un investissement long terme (et inversement). Appliquée par l'outil :
