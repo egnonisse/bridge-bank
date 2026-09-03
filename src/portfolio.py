@@ -31,6 +31,8 @@ from .taxation import (
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 PORTFOLIO_FILE = DATA_DIR / "portfolio.json"
 REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
+REINF_STATE_FILE = DATA_DIR / "reinf_alert_state.json"  # exclu par .gitignore (*_state.json)
+REINF_COOLDOWN_DAYS = 7
 
 # Rendement BRUT requis pour atteindre le rendement NET cible (IRVM + frais déduits)
 DIV_YIELD_ENTRY = gross_yield_for_net(TARGET_NET_YIELD_ENTRY)  # 4 % net -> ≈ 5,65 % brut
@@ -391,6 +393,94 @@ def save_portfolio(positions: list[DividendPosition]) -> None:
         json.dumps([asdict(p) for p in positions], indent=2, ensure_ascii=False),
         encoding="utf-8",
     )
+
+
+# ------------------------------------------------- renforcements (noyau dynamique)
+PER_MAX_NOYAU = 14.0  # même limite que les filtres d'achat qualifié (noyau_check)
+
+
+def reinforcement_messages(positions, price_of, per_of) -> list[tuple[str, str]]:
+    """Positions dont le cours est REDESCENDU sous le prix qui garantit 4 % net,
+    avec les 4 filtres toujours OK (PER ≤ 14, payout ≤ 80 %). Style néophyte.
+
+    price_of(code) -> float (0 si indisponible) ; per_of(code) -> float|None.
+    Retourne [(code, message néophyte)] — à soumettre à l'anti-spam par l'appelant.
+    """
+    from .taxation import entry_price_for_net, net_yield
+
+    out: list[tuple[str, str]] = []
+    for p in positions:
+        if p.closed:
+            continue
+        price = price_of(p.code)
+        if not price or price <= 0:
+            continue
+        entry_ref = entry_price_for_net(p.dps)
+        if price > entry_ref:
+            continue
+        per = per_of(p.code)
+        if per is None or per <= 0 or per > PER_MAX_NOYAU:
+            continue
+        payout = payout_ratio(p.dps, price, per)
+        if payout is None or payout > PAYOUT_TIGHT:
+            continue
+        net = net_yield(p.dps / price) * 100
+        msg = (
+            f"💪 RENFORCE {p.code} ({p.name}) — le prix est redescendu à {price:,.0f} F,\n"
+            f"   sous ton seuil de {entry_ref:,.0f} F.\n"
+            f"   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n"
+            f"     an (aujourd'hui : {net:.1f} % net), avec un patron qui partage\n"
+            f"     {payout*100:.0f} % de ses gains — dans ta zone.\n"
+            f"   → Montant : toi seul décides (jamais au-delà de ton plan)."
+        )
+        out.append((p.code, msg))
+    return out
+
+
+def load_reinf_state() -> dict:
+    try:
+        return json.loads(REINF_STATE_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def save_reinf_state(state: dict) -> None:
+    REINF_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+
+
+def check_reinforcements(api) -> list[tuple[str, str]]:
+    """Renforcements du noyau, avec anti-spam 7 jours par titre."""
+    from .fundamentals import get_per_brvm
+
+    positions = load_portfolio()
+    snap = api.market_snapshot()
+
+    def price_of(code):
+        q = snap.by_code(code)
+        return q.last if q and q.last > 0 else 0.0
+
+    def per_of(code):
+        return get_per_brvm(code)
+
+    hits = reinforcement_messages(positions, price_of, per_of)
+    state = load_reinf_state()
+    fresh: list[tuple[str, str]] = []
+    now = datetime.now().isoformat()
+    for code, msg in hits:
+        last = state.get(code)
+        if last is None:
+            fresh.append((code, msg))
+            state[code] = now
+        else:
+            try:
+                age = datetime.now() - datetime.fromisoformat(last)
+            except ValueError:
+                age = datetime.now() - datetime.now()
+            if age.days >= REINF_COOLDOWN_DAYS:
+                fresh.append((code, msg))
+                state[code] = now
+    save_reinf_state(state)
+    return fresh
 
 
 # ------------------------------------------------- anti-spam des alertes

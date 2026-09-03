@@ -503,7 +503,7 @@ def cmd_portf(args: argparse.Namespace) -> None:
         positions = load_portfolio()
         snap = api.market_snapshot()
         alert_state = load_alert_state()
-        events = []
+        events: list[tuple[str, object]] = []
         for p in positions:
             if p.closed:
                 continue
@@ -516,9 +516,9 @@ def cmd_portf(args: argparse.Namespace) -> None:
             # Niveaux 2-3 (décision/fondamental) soumis au cooldown 7 jours.
             actionable = [a for a in alerts if a.level > 1]
             if p.closed:
-                events.extend(actionable)
+                events.extend((p.code, a) for a in actionable)
             elif actionable and not is_cooldown_active(alert_state, p.code):
-                events.extend(actionable)
+                events.extend((p.code, a) for a in actionable)
                 alert_state[p.code] = datetime.now().isoformat()
         save_portfolio(positions)
         save_alert_state(alert_state)
@@ -526,9 +526,17 @@ def cmd_portf(args: argparse.Namespace) -> None:
             print("Aucune alerte actionnable (niveaux 2-3) ni sortie fondamentale.")
             return
         notifier = get_notifier(load_config())
-        for a in events:
+        actions = getattr(args, "_actions", None)
+        for code, a in events:
             print(a.message)
             notifier.send(f"🏦 Noyau :\n{a.message}")
+            if actions is not None:
+                if "VENDS TOUT" in a.message:
+                    actions.append("VENDS TOUT " + code)
+                elif "VENDS" in a.message:
+                    actions.append("Vends 1 sur 3 de " + code)
+                else:
+                    actions.append("Décision sur " + code)
     elif args.action == "dividend":
         from .portfolio import record_dividend
 
@@ -619,6 +627,25 @@ def cmd_boc(args: argparse.Namespace) -> None:
             notifier.send(msg)
 
 
+def cmd_reinforcements(args: argparse.Namespace) -> None:
+    """Étape quotidienne : titres du noyau redescendus sous leur seuil d'achat."""
+    from .portfolio import check_reinforcements
+
+    actions = getattr(args, "_actions", None)
+    api = BSApi()
+    hits = check_reinforcements(api)
+    if not hits:
+        print("Aucun titre à renforcer aujourd'hui.")  # texte silencieux (marker du heartbeat)
+        return
+    notifier = get_notifier(load_config())
+    for code, msg in hits:
+        print(msg)
+        if notifier.enabled:
+            notifier.send(f"🏦 Noyau :\n{msg}")
+        if actions is not None:
+            actions.append(f"RENFORCE {code} (prix sous ton seuil)")
+
+
 def cmd_fund(args: argparse.Namespace) -> None:
     from .screener import screen_magic_formula, screen_value_dividend
 
@@ -632,6 +659,7 @@ def cmd_fund(args: argparse.Namespace) -> None:
                 print("Aucun nouveau titre value+dividende (rien n'a changé).")
                 return
             notifier = get_notifier(load_config())
+            actions = getattr(args, "_actions", None)
             for r in new:
                 msg = (
                     f"🔎 NOUVELLE opportunité value : {r['code']} ({r['name']})\n"
@@ -642,6 +670,8 @@ def cmd_fund(args: argparse.Namespace) -> None:
                 print(msg)
                 if notifier.enabled:
                     notifier.send(f"🏦 Nouvelle opportunité value :\n{msg}")
+                if actions is not None:
+                    actions.append(f"NOUVEAU CANDIDAT {r['code']} (à analyser : payout + fondamentaux)")
             return
         print("Screener value+dividende (PER ≤ 14, rendement NET ≥ 4 %)…\n")
         results = screen_value_dividend(api, force=args.force)
@@ -1063,16 +1093,19 @@ def cmd_daily(args: argparse.Namespace) -> None:
     print(f"Check quotidien Bridge Bank — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 62)
 
+    actions: list[str] = []  # plan d'action du jour (résumé « AUJOURD'HUI »)
     steps = [
         ("BOC", cmd_boc, {}, "aucun événement dividende"),
         ("Annonces BRVM", cmd_news, {"check": True}, "Aucune nouvelle annonce"),
         ("Soutenabilité", cmd_sustain, {}, "tous les dividendes sont couverts"),
-        ("Opportunités value", cmd_fund, {"mode": "value", "alert": True, "force": False}, "Aucun nouveau titre value"),
-        ("Déclencheurs de sortie", cmd_portf, {"action": "check", "code": None, "amount": 100000, "dps": None, "per": None}, "Aucune alerte actionnable"),
+        ("Opportunités value", cmd_fund, {"mode": "value", "alert": True, "force": False, "_actions": actions}, "Aucun nouveau titre value"),
+        ("Renforcements noyau", cmd_reinforcements, {"_actions": actions}, "Aucun titre à renforcer"),
+        ("Déclencheurs de sortie", cmd_portf, {"action": "check", "code": None, "amount": 100000, "dps": None, "per": None, "_actions": actions}, "Aucune alerte actionnable"),
         # Spéculation SUSPENDUE (décision LEO 26/08/2026, épreuve H2/H4) :
         # volume ≥2× = placebo prédictif (p=0,44) et frais réels min 1 000 F
         # annulent l'espérance sous 150 000 F/position. Modules conservés,
         # disponibles en CLI manuelle (`spec screen` / `spec check`).
+        # Réactivée « en conscience » le 03/09 : alertes via le cron 16h dédié.
         ("Intégrité des données", cmd_integrity, {}, "cache cohérent"),
         # Le radar est géré par le cron dédié « BridgeBank veille radar »
         # (monitor + agent) — un seul flux, pas de double alerte ici.
@@ -1094,25 +1127,33 @@ def cmd_daily(args: argparse.Namespace) -> None:
         summaries.append((label, quiet_marker in text))
 
     print("\n✓ Check quotidien terminé.")
-    heartbeat = _build_heartbeat(summaries)
+    heartbeat = _build_heartbeat(summaries, actions)
     print(heartbeat)
     notifier = get_notifier(load_config())
     if notifier.enabled:
         notifier.send(heartbeat)
 
 
-def _build_heartbeat(summaries: list[tuple[str, bool]]) -> str:
-    """Message quotidien de clôture : résumé une ligne par étape (silence ≠ bug)."""
+def _build_heartbeat(summaries: list[tuple[str, bool]],
+                     actions: list[str] | None = None) -> str:
+    """Message quotidien de clôture : résumé par étape + plan d'action « AUJOURD'HUI »."""
     from datetime import datetime
 
     parts = []
     for label, quiet in summaries:
         parts.append(f"{label} : {'✅ rien à signaler' if quiet else '🔔 événement (alerte ci-dessus)'}")
-    return (
+    msg = (
         f"✅ Check quotidien Bridge Bank — {datetime.now().strftime('%d/%m %H:%M')}\n"
         + "\n".join(f"   {p}" for p in parts)
-        + "\n\n   Les alertes détaillées, s'il y en a, sont au-dessus."
     )
+    if actions:
+        plan = "\n".join(f"   • {a}" for a in actions)
+        msg += f"\n\n🎯 AUJOURD'HUI POUR TON NOYAU :\n{plan}"
+        msg += "\n\n   Détails et montants : dans les alertes ci-dessus."
+    else:
+        msg += "\n\n🎯 AUJOURD'HUI POUR TON NOYAU : ne touche à rien —"
+        msg += "\n   le système n'a rien vu qui vaille un ordre."
+    return msg
 
 
 if __name__ == "__main__":
