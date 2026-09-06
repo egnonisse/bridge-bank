@@ -397,18 +397,22 @@ def save_portfolio(positions: list[DividendPosition]) -> None:
 
 # ------------------------------------------------- renforcements (noyau dynamique)
 PER_MAX_NOYAU = 14.0  # même limite que les filtres d'achat qualifié (noyau_check)
+MAX_POSITION_WEIGHT = 0.35  # verrou de concentration : jamais > 35 % de la poche actions
 
 
-def reinforcement_messages(positions, price_of, per_of) -> list[tuple[str, str]]:
+def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.0):
     """Positions dont le cours est REDESCENDU sous le prix qui garantit 4 % net,
-    avec les 4 filtres toujours OK (PER ≤ 14, payout ≤ 80 %). Style néophyte.
+    avec les 4 filtres toujours OK (PER ≤ 14, payout ≤ 80 %) + verrou de
+    concentration (≤ 35 % de la poche actions, base identique à l'écran BSTrade).
 
     price_of(code) -> float (0 si indisponible) ; per_of(code) -> float|None.
-    Retourne [(code, message néophyte)] — à soumettre à l'anti-spam par l'appelant.
+    Retourne (hits, blocked) : [(code, message)] — anti-spam à la charge de l'appelant.
+    blocked = sous le seuil MAIS plafond de concentration atteint → on n'achète pas.
     """
     from .taxation import entry_price_for_net, net_yield
 
-    out: list[tuple[str, str]] = []
+    hits: list[tuple[str, str]] = []
+    blocked: list[tuple[str, str]] = []
     for p in positions:
         if p.closed:
             continue
@@ -424,6 +428,19 @@ def reinforcement_messages(positions, price_of, per_of) -> list[tuple[str, str]]
         payout = payout_ratio(p.dps, price, per)
         if payout is None or payout > PAYOUT_TIGHT:
             continue
+        # Verrou de concentration : même panier jamais > 35 % des actions.
+        weight = (p.quantity * price / total_stocks) if total_stocks > 0 else 0.0
+        if weight > MAX_POSITION_WEIGHT:
+            blocked.append((p.code, (
+                f"🚦 CONCENTRATION — {p.code} ({p.name}) est sous ton seuil "
+                f"({price:,.0f} < {entry_ref:,.0f} F) et paie un bon loyer,\n"
+                f"   mais il représente déjà {weight*100:.0f} % de tes actions.\n"
+                f"   → Le système BLOQUE le renforcement : ne mets jamais plus "
+                f"d'un tiers dans le même panier (plafond : 35 % de tes actions).\n"
+                f"   → Priorité : apporter du neuf (autre titre ou dilution), "
+                f"pas d'acheter encore ici."
+            )))
+            continue
         net = net_yield(p.dps / price) * 100
         msg = (
             f"💪 RENFORCE {p.code} ({p.name}) — le prix est redescendu à {price:,.0f} F,\n"
@@ -433,8 +450,8 @@ def reinforcement_messages(positions, price_of, per_of) -> list[tuple[str, str]]
             f"     {payout*100:.0f} % de ses gains — dans ta zone.\n"
             f"   → Montant : toi seul décides (jamais au-delà de ton plan)."
         )
-        out.append((p.code, msg))
-    return out
+        hits.append((p.code, msg))
+    return hits, blocked
 
 
 def load_reinf_state() -> dict:
@@ -462,23 +479,31 @@ def check_reinforcements(api) -> list[tuple[str, str]]:
     def per_of(code):
         return get_per_brvm(code)
 
-    hits = reinforcement_messages(positions, price_of, per_of)
+    total_stocks = sum(
+        (p.quantity * price_of(p.code)) for p in positions if not p.closed
+    )
+    hits, blocked = reinforcement_messages(positions, price_of, per_of, total_stocks)
     state = load_reinf_state()
     fresh: list[tuple[str, str]] = []
     now = datetime.now().isoformat()
-    for code, msg in hits:
-        last = state.get(code)
-        if last is None:
-            fresh.append((code, msg))
-            state[code] = now
-        else:
-            try:
-                age = datetime.now() - datetime.fromisoformat(last)
-            except ValueError:
-                age = datetime.now() - datetime.now()
-            if age.days >= REINF_COOLDOWN_DAYS:
+
+    def _emit(pairs: list[tuple[str, str]]) -> None:
+        for code, msg in pairs:
+            last = state.get(code)
+            if last is None:
                 fresh.append((code, msg))
                 state[code] = now
+            else:
+                try:
+                    age = datetime.now() - datetime.fromisoformat(last)
+                except ValueError:
+                    age = datetime.now() - datetime.now()
+                if age.days >= REINF_COOLDOWN_DAYS:
+                    fresh.append((code, msg))
+                    state[code] = now
+
+    _emit(hits)     # 💪 RENFORCE (recommandation d'achat)
+    _emit(blocked)  # 🚦 CONCENTRATION (blocage — information, jamais un ordre)
     save_reinf_state(state)
     return fresh
 

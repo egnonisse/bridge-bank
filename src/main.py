@@ -643,7 +643,10 @@ def cmd_reinforcements(args: argparse.Namespace) -> None:
         if notifier.enabled:
             notifier.send(f"🏦 Noyau :\n{msg}")
         if actions is not None:
-            actions.append(f"RENFORCE {code} (prix sous ton seuil)")
+            if "CONCENTRATION" in msg:
+                actions.append(f"🚫 {code} : renforcement BLOQUÉ (plafond 35 % — diluer en priorité)")
+            else:
+                actions.append(f"RENFORCE {code} (prix sous ton seuil)")
 
 
 def cmd_fund(args: argparse.Namespace) -> None:
