@@ -46,5 +46,21 @@
     "close_price": 0.0,
     "dividends_earned": 0.0,
     "cash_residual": 0.0
+  },
+  {
+    "code": "PALC",
+    "name": "PALM CI",
+    "entry_price": 8907.99,
+    "quantity": 13,
+    "dps": 501.596,
+    "per_open": 8.8,
+    "opened_at": "2026-09-08T11:00:00",
+    "exit_price": 0.0,
+    "entry_price_ref": 0.0,
+    "closed": false,
+    "close_reason": "",
+    "close_price": 0.0,
+    "dividends_earned": 0.0,
+    "cash_residual": 0.0
   }
 ]
