@@ -397,22 +397,72 @@ def save_portfolio(positions: list[DividendPosition]) -> None:
 
 # ------------------------------------------------- renforcements (noyau dynamique)
 PER_MAX_NOYAU = 14.0  # même limite que les filtres d'achat qualifié (noyau_check)
-MAX_POSITION_WEIGHT = 0.35  # verrou de concentration : jamais > 35 % de la poche actions
+MAX_POSITION_WEIGHT = 0.35  # poids MARCHÉ par défaut : libre sous 35 %
+MAX_BUY_WEIGHT = 0.40       # poids d'ACHAT max après un renforcement « limité »
+MAX_MARKET_WEIGHT = 0.50    # ligne Buffett : jamais plus de la moitié du portefeuille
+
+
+def _msg_renfort_libre(p, price, entry_ref, net, payout) -> str:
+    return (
+        f"💪 RENFORCE {p.code} ({p.name}) — le prix est redescendu à {price:,.0f} F,\n"
+        f"   sous ton seuil de {entry_ref:,.0f} F.\n"
+        f"   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n"
+        f"     an (aujourd'hui : {net:.1f} % net), avec un patron qui partage\n"
+        f"     {payout*100:.0f} % de ses gains — dans ta zone.\n"
+        f"   → Montant : toi seul décides (jamais au-delà de ton plan)."
+    )
+
+
+def _msg_renfort_limite(p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty) -> str:
+    return (
+        f"💪 RENFORCE LIMITÉ {p.code} ({p.name}) — le prix est redescendu à "
+        f"{price:,.0f} F, sous ton seuil de {entry_ref:,.0f} F ({net:.1f} % net,\n"
+        f"   patron à {payout*100:.0f} % — tout est vert).\n"
+        f"   MAIS il pèse déjà {w_mkt*100:.0f} % de tes actions — par sa HAUSSE,\n"
+        f"   pas par tes achats (tu n'as acheté que {w_cost*100:.0f} % de ta poche\n"
+        f"   sur lui). Tu peux en profiter : au plus {max_qty} action(s)\n"
+        f"   (~{max_qty*price:,.0f} F), pour ne pas faire de ce titre plus de\n"
+        f"   {MAX_BUY_WEIGHT*100:.0f} % de TES achats.\n"
+        f"   → La limite, c'est toi qui la signes."
+    )
+
+
+def _msg_concentration_achats(p, price, entry_ref, w_cost) -> str:
+    return (
+        f"🚦 CONCENTRATION CHOISIE — {p.code} ({p.name}) est sous ton seuil\n"
+        f"   ({price:,.0f} < {entry_ref:,.0f} F) et paie un bon loyer, mais tu as\n"
+        f"   ACHETÉ {w_cost*100:.0f} % de ta poche sur ce titre (plafond : 35 %).\n"
+        f"   → Le système BLOQUE le renforcement : c'est ta concentration choisie.\n"
+        f"   → Priorité : dilution ou apport de neuf, pas d'acheter encore ici."
+    )
+
+
+def _msg_ligne_buffett(p, price, entry_ref, w_mkt) -> str:
+    return (
+        f"🚦 LIGNE BUFFETT — {p.code} ({p.name}) est sous ton seuil\n"
+        f"   ({price:,.0f} < {entry_ref:,.0f} F), mais il représente déjà\n"
+        f"   {w_mkt*100:.0f} % du portefeuille : plus de la moitié dans un seul\n"
+        f"   panier, c'est un pari, pas un loyer.\n"
+        f"   → BLOQUÉ dans tous les cas — dilution d'abord."
+    )
 
 
 def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.0):
     """Positions dont le cours est REDESCENDU sous le prix qui garantit 4 % net,
     avec les 4 filtres toujours OK (PER ≤ 14, payout ≤ 80 %) + verrou de
-    concentration (≤ 35 % de la poche actions, base identique à l'écran BSTrade).
+    concentration INTELLIGENT qui lit l'ORIGINE du poids (hausse ≠ achats) :
+      - poids marché ≤ 35 %               → renforcement libre
+      - 35-50 % par HAUSSE (achats ≤ 35 %)→ renforcement LIMITÉ (plafond calculé)
+      - 35-50 % par ACHATS (achats > 35 %)→ bloqué (concentration choisie)
+      - poids marché > 50 %               → bloqué (ligne Buffett)
 
-    price_of(code) -> float (0 si indisponible) ; per_of(code) -> float|None.
     Retourne (hits, blocked) : [(code, message)] — anti-spam à la charge de l'appelant.
-    blocked = sous le seuil MAIS plafond de concentration atteint → on n'achète pas.
     """
     from .taxation import entry_price_for_net, net_yield
 
     hits: list[tuple[str, str]] = []
     blocked: list[tuple[str, str]] = []
+    total_cost = sum(p.quantity * p.entry_price for p in positions if not p.closed)
     for p in positions:
         if p.closed:
             continue
@@ -428,29 +478,24 @@ def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.
         payout = payout_ratio(p.dps, price, per)
         if payout is None or payout > PAYOUT_TIGHT:
             continue
-        # Verrou de concentration : même panier jamais > 35 % des actions.
-        weight = (p.quantity * price / total_stocks) if total_stocks > 0 else 0.0
-        if weight > MAX_POSITION_WEIGHT:
-            blocked.append((p.code, (
-                f"🚦 CONCENTRATION — {p.code} ({p.name}) est sous ton seuil "
-                f"({price:,.0f} < {entry_ref:,.0f} F) et paie un bon loyer,\n"
-                f"   mais il représente déjà {weight*100:.0f} % de tes actions.\n"
-                f"   → Le système BLOQUE le renforcement : ne mets jamais plus "
-                f"d'un tiers dans le même panier (plafond : 35 % de tes actions).\n"
-                f"   → Priorité : apporter du neuf (autre titre ou dilution), "
-                f"pas d'acheter encore ici."
-            )))
-            continue
+        w_mkt = (p.quantity * price / total_stocks) if total_stocks > 0 else 0.0
+        w_cost = (p.quantity * p.entry_price / total_cost) if total_cost > 0 else 0.0
         net = net_yield(p.dps / price) * 100
-        msg = (
-            f"💪 RENFORCE {p.code} ({p.name}) — le prix est redescendu à {price:,.0f} F,\n"
-            f"   sous ton seuil de {entry_ref:,.0f} F.\n"
-            f"   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n"
-            f"     an (aujourd'hui : {net:.1f} % net), avec un patron qui partage\n"
-            f"     {payout*100:.0f} % de ses gains — dans ta zone.\n"
-            f"   → Montant : toi seul décides (jamais au-delà de ton plan)."
-        )
-        hits.append((p.code, msg))
+        if w_mkt > MAX_MARKET_WEIGHT:
+            blocked.append((p.code, _msg_ligne_buffett(p, price, entry_ref, w_mkt)))
+            continue
+        if w_cost > MAX_POSITION_WEIGHT:
+            blocked.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
+            continue
+        if w_mkt > MAX_POSITION_WEIGHT:
+            max_qty = int((MAX_BUY_WEIGHT * total_cost - p.quantity * p.entry_price) // price)
+            if max_qty < 1:
+                blocked.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
+                continue
+            hits.append((p.code, _msg_renfort_limite(
+                p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty)))
+            continue
+        hits.append((p.code, _msg_renfort_libre(p, price, entry_ref, net, payout)))
     return hits, blocked
 
 
