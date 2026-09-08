@@ -986,6 +986,9 @@ def cmd_noyau_check(args: argparse.Namespace) -> None:
 
     api = BSApi()
     snap = api.market_snapshot()
+    from .noyau_check import load_prep_watchlist, save_prep_watchlist
+
+    watch = load_prep_watchlist()
     found = False
     for raw in args.code:
         code = raw.strip().upper()
@@ -1007,8 +1010,58 @@ def cmd_noyau_check(args: argparse.Namespace) -> None:
             print(res["message"])
             print()
             found = True
+            if res["verdict"] == "limit":
+                # le candidat rejoint la surveillance des ordres limites
+                watch[code] = {"limit": res["limit_price"], "name": name}
+            else:
+                watch.pop(code, None)  # fondamentaux re-évalués → plus de veille
+        else:
+            watch.pop(code, None)  # filtres ratés → retiré de la watchlist
+    save_prep_watchlist(watch)
     if not found:
         print("Aucun candidat ne passe les filtres noyau — silence (le radar reste de la veille).")
+
+
+def cmd_watchlist(args: argparse.Namespace) -> None:
+    """Étape quotidienne : surveille les ordres limites « À PRÉPARER »."""
+    from .bsapi import BSApi
+    from .live import live_quotes
+    from .noyau_check import load_prep_watchlist, prep_watch_alerts, save_prep_watchlist
+
+    watch = load_prep_watchlist()
+    if not watch:
+        print("Aucun ordre limite en attente (aucun titre au-dessus de sa limite).")
+        return
+    api = BSApi()
+    snap = api.market_snapshot()
+
+    def price_of(code: str) -> float:
+        try:
+            p = live_quotes([code]).get(code)
+            if p:
+                return float(p)
+        except Exception:
+            pass
+        q = snap.by_code(code)
+        return float(q.last) if q and q.last > 0 else 0.0
+
+    alerts, watch = prep_watch_alerts(watch, price_of)
+    if not alerts:
+        for code, info in watch.items():  # affichage silencieux (marker « au-dessus »)
+            p = price_of(code)
+            if p > 0:
+                print(f"   [ordre limite] {code} : {p:,.0f} F — au-dessus de {info['limit']:,.0f} F")
+        save_prep_watchlist(watch)
+        return
+    save_prep_watchlist(watch)
+    actions = getattr(args, "_actions", None)
+    notifier = get_notifier(load_config())
+    for msg in alerts:
+        print(msg)
+        if notifier.enabled:
+            notifier.send(f"🏦 Noyau :\n{msg}")
+        if actions is not None:
+            actions.append(f"ORDRE LIMITE PRÊT {msg.split(' — ')[0].replace('🎯 TON ORDRE LIMITE EST PRÊT', '').strip()}")
 
 
 def cmd_news(args: argparse.Namespace) -> None:
@@ -1104,6 +1157,7 @@ def cmd_daily(args: argparse.Namespace) -> None:
         ("Annonces BRVM", cmd_news, {"check": True}, "Aucune nouvelle annonce"),
         ("Soutenabilité", cmd_sustain, {}, "tous les dividendes sont couverts"),
         ("Opportunités value", cmd_fund, {"mode": "value", "alert": True, "force": False, "_actions": actions}, "Aucun nouveau titre value"),
+        ("Ordres limites", cmd_watchlist, {"_actions": actions}, "au-dessus"),
         ("Renforcements noyau", cmd_reinforcements, {"_actions": actions}, "Aucun titre à renforcer"),
         ("Déclencheurs de sortie", cmd_portf, {"action": "check", "code": None, "amount": 100000, "dps": None, "per": None, "_actions": actions}, "Aucune alerte actionnable"),
         # Spéculation SUSPENDUE (décision LEO 26/08/2026, épreuve H2/H4) :

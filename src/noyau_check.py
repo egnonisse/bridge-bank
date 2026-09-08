@@ -11,12 +11,31 @@ Verdicts :
 """
 from __future__ import annotations
 
+import json
+from pathlib import Path
+
 from .fundamentals import get_fundamentals
 from .taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
 
 PER_MAX = 14.0          # IPS : PER ≤ 14
 PAYOUT_TIGHT = 0.80     # payout > 80 % : tendu → pas d'alerte d'achat
 REFERENCE_AMOUNT = 100_000.0  # taille standard de ligne noyau (pour le calcul d'exemple)
+
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
+PREP_WATCH_FILE = DATA_DIR / "prep_watch_state.json"  # *_state.json exclu par .gitignore
+PREP_REALERT_DOWN_PCT = 0.03  # re-alerte si le prix s'améliore de ≥ 3 % sous la limite
+
+
+def load_prep_watchlist() -> dict:
+    """{code: {"limit": prix_limite, "name": libellé, "alerted_at": date|None}}."""
+    try:
+        return json.loads(PREP_WATCH_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def save_prep_watchlist(watch: dict) -> None:
+    PREP_WATCH_FILE.write_text(json.dumps(watch, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def evaluate_noyau_candidate(code: str, price: float, name: str = "") -> dict | None:
@@ -68,4 +87,35 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "") -> dict | 
         f"   → sinon : tu l'as regardé passer, sans perdre un franc.\n\n"
         f"🚫 Rappel : veille + décision LEO — l'outil ne passe jamais d'ordre."
     )
-    return {"verdict": "limit", "message": msg}
+    return {"verdict": "limit", "message": msg, "limit_price": entry}
+
+
+def prep_watch_alerts(watch: dict, price_of) -> tuple[list[str], dict]:
+    """Surveille les ordres limites « À PRÉPARER ». Retourne (alertes, watch mise à jour).
+
+    Alerte UNE fois quand le prix passe sous la limite (« 🎯 TON ORDRE LIMITE EST PRÊT »),
+    puis re-alerte si le prix s'améliore encore de ≥ 3 % sous le prix déjà signalé.
+    Les candidats au-dessus de leur limite restent silencieux.
+    """
+    from datetime import datetime
+
+    alerts: list[str] = []
+    today = datetime.now().isoformat()
+    for code, info in list(watch.items()):
+        limit = info.get("limit", 0.0)
+        price = price_of(code)
+        if not price or price <= 0 or price > limit:
+            continue
+        last = info.get("alerted_price")
+        if last is None or price <= last * (1 - PREP_REALERT_DOWN_PCT):
+            info["alerted_at"] = today
+            info["alerted_price"] = price
+            alerts.append(
+                f"🎯 TON ORDRE LIMITE EST PRÊT — {code} ({info.get('name', '')})\n\n"
+                f"💰 Cours : {price:,.0f} F — sous ta limite de {limit:,.0f} F.\n"
+                f"→ À ce prix, ton loyer garanti est ≥ 4 % net par an.\n"
+                f"→ Si tu veux profiter : passe l'ordre ACHAT {code} ≤ {limit:,.0f} F.\n"
+                f"→ Sinon : tu laisses courir, l'ordre limite reste en veille.\n\n"
+                f"🚫 Rappel : décision LEO — l'outil ne passe jamais d'ordre."
+            )
+    return alerts, watch

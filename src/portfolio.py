@@ -33,6 +33,7 @@ PORTFOLIO_FILE = DATA_DIR / "portfolio.json"
 REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
 REINF_STATE_FILE = DATA_DIR / "reinf_alert_state.json"  # exclu par .gitignore (*_state.json)
 REINF_COOLDOWN_DAYS = 7
+REINF_IMPROVE_DOWN_PCT = 0.03  # re-alerte pendant le cooldown si le prix baisse de ≥ 3 %
 
 # Rendement BRUT requis pour atteindre le rendement NET cible (IRVM + frais déduits)
 DIV_YIELD_ENTRY = gross_yield_for_net(TARGET_NET_YIELD_ENTRY)  # 4 % net -> ≈ 5,65 % brut
@@ -535,17 +536,28 @@ def check_reinforcements(api) -> list[tuple[str, str]]:
     def _emit(pairs: list[tuple[str, str]]) -> None:
         for code, msg in pairs:
             last = state.get(code)
-            if last is None:
+            age_days = -1
+            last_price = None
+            if last is not None:
+                if isinstance(last, dict):  # nouveau format {date, price}
+                    try:
+                        age_days = (datetime.now() - datetime.fromisoformat(last["date"])).days
+                    except (ValueError, KeyError):
+                        age_days = -1
+                    last_price = last.get("price")
+                else:  # ancien format (date seule)
+                    try:
+                        age_days = (datetime.now() - datetime.fromisoformat(last)).days
+                    except ValueError:
+                        age_days = -1
+            price = price_of(code)
+            if last is None or age_days >= REINF_COOLDOWN_DAYS:
                 fresh.append((code, msg))
-                state[code] = now
-            else:
-                try:
-                    age = datetime.now() - datetime.fromisoformat(last)
-                except ValueError:
-                    age = datetime.now() - datetime.now()
-                if age.days >= REINF_COOLDOWN_DAYS:
-                    fresh.append((code, msg))
-                    state[code] = now
+                state[code] = {"date": now, "price": price}
+            elif last_price and price <= last_price * (1 - REINF_IMPROVE_DOWN_PCT):
+                # cooldown actif mais le prix s'est nettement amélioré → re-signal
+                fresh.append((code, "📉 LE PRIX S'EST ENCORE AMÉLIORÉ —\n" + msg))
+                state[code] = {"date": now, "price": price}
 
     _emit(hits)     # 💪 RENFORCE (recommandation d'achat)
     _emit(blocked)  # 🚦 CONCENTRATION (blocage — information, jamais un ordre)
