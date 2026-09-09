@@ -54,13 +54,94 @@ PROFIT_THRESHOLDS = {
     "PALC": 0.05,  # 45 % ↓, médiane +1,1 % — AUCUN pouvoir (l'alerte l'avoue)
 }
 PROFIT_DOWN_PROB = {"SNTS": 86, "SGBC": 63, "SLBC": 54, "PALC": 45}
-PROFIT_ALERT_THRESHOLD = 0.13  # défaut (titres hors portefeuille)
+PROFIT_ALERT_THRESHOLD = 0.13  # défaut (titres hors portefeuille / historique insuffisant)
+PROFIT_THRESHOLDS_FILE = DATA_DIR / "profit_thresholds.json"  # auto-calibré, versionné
+PROFIT_MIN_EPISODES = 6  # minimum d'épisodes pour accepter un calibrage
+PROFIT_SEUILS_CANDIDATS = (0.05, 0.08, 0.10, 0.13, 0.15)
 LOSS_ALERT_THRESHOLD = 0.10    # moins-value ≥ -10 % -> alerte de couverture par les dividendes
 SELL_FRACTION = 1 / 3          # fraction proposée à la vente (1/3 = 33 %)
 
 
 def profit_threshold_for(code: str) -> float:
+    """Seuil de vente ⅓ pour un code : calibrage auto (fichier) → seed → défaut 13 %."""
+    calibrated = load_profit_thresholds()
+    info = calibrated.get(code.upper())
+    if info:
+        return float(info.get("threshold", PROFIT_ALERT_THRESHOLD))
     return PROFIT_THRESHOLDS.get(code.upper(), PROFIT_ALERT_THRESHOLD)
+
+
+def _profit_episodes(closes: list[float], seuil: float) -> list[float]:
+    """Épisodes : +seuil % en 20 séances → rendement des 20 séances suivantes."""
+    out, i = [], 20
+    while i < len(closes) - 20:
+        ref = closes[i - 20]
+        if ref > 0 and closes[i] >= ref * (1 + seuil):
+            out.append(closes[i + 20] / closes[i] - 1)
+            i += 20  # dédoublonnage par vague (indépendance)
+        else:
+            i += 1
+    return out
+
+
+def calibrate_profit_threshold(code: str, closes: list[float]) -> dict | None:
+    """Calibre le seuil de vente ⅓ d'un titre sur SON historique (9 ans si dispo).
+
+    Règle : parmi les seuils candidats, celui qui maximise la probabilité de
+    baisse à J+20 (avec ≥ 6 épisodes). None = historique insuffisant → défaut.
+    """
+    import statistics
+
+    best: dict | None = None
+    for seuil in PROFIT_SEUILS_CANDIDATS:
+        ep = _profit_episodes(closes, seuil)
+        if len(ep) < PROFIT_MIN_EPISODES:
+            continue
+        down = sum(1 for r in ep if r < 0) / len(ep) * 100
+        med = statistics.median(ep) * 100
+        if best is None or down > best["down_prob"]:
+            best = {"code": code.upper(), "threshold": seuil, "down_prob": round(down),
+                    "median_pct": round(med, 1), "episodes": len(ep)}
+    return best
+
+
+def load_profit_thresholds() -> dict:
+    try:
+        return json.loads(PROFIT_THRESHOLDS_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def save_profit_thresholds(data: dict) -> None:
+    PROFIT_THRESHOLDS_FILE.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def calibrate_missing_thresholds(api) -> int:
+    """Calibre le seuil de vente de chaque titre détenu qui n'en a pas encore.
+
+    Appelé au début du check quotidien et après chaque ouverture de position :
+    tout titre acheté reçoit son seuil automatiquement. Retourne le nombre calibré.
+    """
+    from .backtest import load_all_history
+
+    calibrated = load_profit_thresholds()
+    codes = {p.code for p in load_portfolio() if not p.closed}
+    missing = [c for c in codes if c not in calibrated]
+    if not missing:
+        return 0
+    hist = load_all_history(api, force=False)
+    done = 0
+    for code in missing:
+        bars = hist.get(code)
+        if not bars:
+            continue
+        info = calibrate_profit_threshold(code, [b.close for b in bars])
+        if info:
+            calibrated[code] = info
+            done += 1
+    save_profit_thresholds(calibrated)
+    return done
 
 # Soutenabilité du dividende (garde-fou anti value-trap) : payout = dividende / BPA.
 # La baisse du cours précède souvent la coupe du dividende ; le payout élevé la détecte avant.
@@ -174,8 +255,10 @@ def _double_option_alert(pos: DividendPosition, price: float) -> PositionAlert:
     profit_net, _ = _sell_profit_net(pos, price, SELL_FRACTION)
     div_net = _dividend_annual_net(pos)
     net_yld = pos.net_yield_pct(price)
-    # Transparence : chaque titre a sa fiabilité historique (calibrage 08/09)
-    prob = PROFIT_DOWN_PROB.get(pos.code)
+    # Transparence : chaque titre a sa fiabilité historique (calibrage auto 08/09)
+    prob = load_profit_thresholds().get(pos.code, {}).get("down_prob")
+    if prob is None:
+        prob = PROFIT_DOWN_PROB.get(pos.code)
     trust = ""
     if prob is not None and prob < 65:
         trust = (

@@ -1152,6 +1152,10 @@ def cmd_daily(args: argparse.Namespace) -> None:
     print("=" * 62)
 
     actions: list[str] = []  # plan d'action du jour (résumé « AUJOURD'HUI »)
+    # Seuils de vente auto-calibrés : tout titre détenu sans seuil le reçoit ici.
+    from .portfolio import calibrate_missing_thresholds
+
+    calibrate_missing_thresholds(BSApi())
     steps = [
         ("BOC", cmd_boc, {}, "aucun événement dividende"),
         ("Annonces BRVM", cmd_news, {"check": True}, "Aucune nouvelle annonce"),

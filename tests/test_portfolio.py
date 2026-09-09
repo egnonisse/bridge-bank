@@ -176,6 +176,45 @@ def test_snts_reste_a_13_pct_malgre_le_default():
     assert all(a.level != LEVEL_DECISION for a in alerts)  # 12 % < 13 % : rien
 
 
+# --- Calibrage AUTOMATIQUE du seuil par titre (décision LEO 08/09) ---
+from src.portfolio import calibrate_profit_threshold  # noqa: E402
+
+
+def _serie_retournement_10pct():
+    """Série synthétique : après +10 %, baisse 8 fois sur 10 ; après +5 %, 50/50."""
+    closes, price = [], 100.0
+    import random
+    rng = random.Random(42)
+    for _ in range(40):  # 40 vagues
+        for _ in range(20):
+            closes.append(price)
+        target = 1.10 * price if len(closes) % 2 == 0 else 1.06 * price
+        step = (target - price) / 10
+        for _ in range(10):
+            price += step
+            closes.append(price)
+        # après un pic +10 % : baisse 8/10 ; après +6 % : 50/50
+        if target >= price * 0.999 and target / closes[-20] >= 1.09:
+            if rng.random() < 0.8:
+                for _ in range(20):
+                    price *= 0.995
+                    closes.append(price)
+        price = max(price, 80.0)
+    return closes
+
+
+def test_calibrage_choisit_le_seuil_le_plus_fiable():
+    closes = _serie_retournement_10pct()
+    info = calibrate_profit_threshold("TEST", closes)
+    assert info is not None
+    assert info["threshold"] >= 0.10  # doit choisir 10 %+ (le retournement net), pas 5 %
+
+
+def test_calibrage_insuffisant_renvoie_none():
+    closes = [100.0 + i * 0.1 for i in range(60)]  # 60 séances calmes : aucun épisode
+    assert calibrate_profit_threshold("TEST", closes) is None
+
+
 # --------------------------------------------------------- ligne 📜 HISTOIRE
 def test_history_line_with_profile(monkeypatch, tmp_path):
     import json

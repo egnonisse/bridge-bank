@@ -1,0 +1,30 @@
+{
+  "SGBC": {
+    "code": "SGBC",
+    "threshold": 0.1,
+    "down_prob": 63,
+    "median_pct": -1.8,
+    "episodes": 30
+  },
+  "SLBC": {
+    "code": "SLBC",
+    "threshold": 0.05,
+    "down_prob": 54,
+    "median_pct": -0.8,
+    "episodes": 41
+  },
+  "SNTS": {
+    "code": "SNTS",
+    "threshold": 0.13,
+    "down_prob": 86,
+    "median_pct": -3.1,
+    "episodes": 7
+  },
+  "PALC": {
+    "code": "PALC",
+    "threshold": 0.05,
+    "down_prob": 45,
+    "median_pct": 1.1,
+    "episodes": 55
+  }
+}
