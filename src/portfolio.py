@@ -43,12 +43,24 @@ DIV_CUT_RATIO = 0.5
 HOLDING_YEARS = 3
 
 # Seuils de gestion de position (alerte sans clôture automatique)
-# +13 % validé le 21/08/2026 par l'historique 9 ans : sur 54 épisodes SNTS à +13 % en
-# 20 séances, le titre est plus bas 20 séances après dans 89 % des cas (médiane −3,3 %).
-# À +15 %, la surchauffe est pire mais le seuil se déclenche 33 % moins souvent (36 cas).
-PROFIT_ALERT_THRESHOLD = 0.13  # plus-value ≥ +13 % -> alerte décisionnelle (vendre / conserver)
+# Seuils de vente ⅓ CALIBRÉS PAR TITRE (décision LEO 08/09/2026 : un VENDS ⅓ pour
+# chaque titre du portefeuille, au seuil le plus fidèle à SON histoire — scripts/
+# seuils_par_titre.py, épreuve re-run le 08/09). Règle de choix : le seuil qui
+# maximise la probabilité de baisse à J+20. Fiabilité (% de baisse historique) :
+PROFIT_THRESHOLDS = {
+    "SNTS": 0.13,  # 86 % ↓ à J+20, médiane −3,1 % — retournement PROUVÉ
+    "SGBC": 0.10,  # 63 % ↓, médiane −1,8 % — signal moyen
+    "SLBC": 0.05,  # 54 % ↓, médiane −0,8 % — signal faible (momentum)
+    "PALC": 0.05,  # 45 % ↓, médiane +1,1 % — AUCUN pouvoir (l'alerte l'avoue)
+}
+PROFIT_DOWN_PROB = {"SNTS": 86, "SGBC": 63, "SLBC": 54, "PALC": 45}
+PROFIT_ALERT_THRESHOLD = 0.13  # défaut (titres hors portefeuille)
 LOSS_ALERT_THRESHOLD = 0.10    # moins-value ≥ -10 % -> alerte de couverture par les dividendes
 SELL_FRACTION = 1 / 3          # fraction proposée à la vente (1/3 = 33 %)
+
+
+def profit_threshold_for(code: str) -> float:
+    return PROFIT_THRESHOLDS.get(code.upper(), PROFIT_ALERT_THRESHOLD)
 
 # Soutenabilité du dividende (garde-fou anti value-trap) : payout = dividende / BPA.
 # La baisse du cours précède souvent la coupe du dividende ; le payout élevé la détecte avant.
@@ -162,6 +174,15 @@ def _double_option_alert(pos: DividendPosition, price: float) -> PositionAlert:
     profit_net, _ = _sell_profit_net(pos, price, SELL_FRACTION)
     div_net = _dividend_annual_net(pos)
     net_yld = pos.net_yield_pct(price)
+    # Transparence : chaque titre a sa fiabilité historique (calibrage 08/09)
+    prob = PROFIT_DOWN_PROB.get(pos.code)
+    trust = ""
+    if prob is not None and prob < 65:
+        trust = (
+            f"\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n"
+            f"      l'historique ne montre une baisse que dans {prob} % des cas.\n"
+            f"      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse."
+        )
     return PositionAlert(
         LEVEL_DECISION,
         f"⚡ DÉCISION — {pos.name} ({pos.code}) {gain_pct:+.1f} % ({gain_fcfa:+,.0f} F)\n"
@@ -169,6 +190,7 @@ def _double_option_alert(pos: DividendPosition, price: float) -> PositionAlert:
         f"            bénéfice net ≈ {profit_net:,.0f} F (après frais ~1,4 %)\n"
         f"   Alternative : CONSERVE pour ≈ {div_net:,.0f} F/an de dividendes nets\n"
         f"   Rendement net actuel : {net_yld:.1f} %"
+        f"{trust}"
         f"{_history_line(pos)}\n"
         f"   Prochaine vérification : {_next_check_date()}",
     )
@@ -282,7 +304,7 @@ def status_level(pos: DividendPosition, price: float) -> tuple[int, str]:
     """
     if pos.closed:
         return LEVEL_EXIT, "VENDU"
-    if price >= pos.entry_price * (1 + PROFIT_ALERT_THRESHOLD):
+    if price >= pos.entry_price * (1 + profit_threshold_for(pos.code)):
         return LEVEL_DECISION, "VENDS 1/3"
     if price <= pos.entry_price * (1 - LOSS_ALERT_THRESHOLD):
         return LEVEL_DECISION, "CONSERVE"
@@ -341,8 +363,8 @@ def check_dividend_position(
         if sa:
             alerts.append(sa)
 
-    # 5. plus-value → décision (niveau 2)
-    if not pos.closed and current_price >= pos.entry_price * (1 + PROFIT_ALERT_THRESHOLD):
+    # 5. plus-value → décision (niveau 2) — seuil CALIBRÉ PAR TITRE
+    if not pos.closed and current_price >= pos.entry_price * (1 + profit_threshold_for(pos.code)):
         alerts.append(_double_option_alert(pos, current_price))
 
     # 6. moins-value → décision (niveau 2)

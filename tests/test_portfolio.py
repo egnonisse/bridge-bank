@@ -136,6 +136,46 @@ def test_small_profit_info_only():
     assert "rien à faire" in alerts[0].message
 
 
+# --- Seuils de vente ⅓ CALIBRÉS PAR TITRE (décision LEO 08/09) ---
+
+def _pos(code, entry=30000.0):
+    # dps 2000 : rendement net ~4,5 % → reste au-dessus du seuil de sortie 2 %
+    return DividendPosition(code=code, name=code, entry_price=entry, quantity=3,
+                            dps=2000.0, per_open=10.0)
+
+
+def test_sgbc_seuil_10_pct_declenche_a_11():
+    alerts = check_dividend_position(_pos("SGBC"), 30000 * 1.11,
+                                     current_dps=1000, current_per=10)
+    assert any(a.level == LEVEL_DECISION and "VENDS 1/3" in a.message for a in alerts)
+
+
+def test_sgbc_pas_de_declenchement_a_9_pct():
+    alerts = check_dividend_position(_pos("SGBC"), 30000 * 1.09,
+                                     current_dps=1000, current_per=10)
+    assert all(a.level != LEVEL_DECISION for a in alerts)
+
+
+def test_slbc_seuil_5_pct_declenche_a_6():
+    alerts = check_dividend_position(_pos("SLBC"), 30000 * 1.06,
+                                     current_dps=1000, current_per=10)
+    assert any(a.level == LEVEL_DECISION and "VENDS 1/3" in a.message for a in alerts)
+
+
+def test_palc_seuil_5_pct_avec_avertissement_fiabilite():
+    alerts = check_dividend_position(_pos("PALC"), 30000 * 1.06,
+                                     current_dps=1000, current_per=10)
+    decision = [a for a in alerts if a.level == LEVEL_DECISION]
+    assert decision and "VENDS 1/3" in decision[0].message
+    assert "45 %" in decision[0].message  # l'alerte avoue sa faiblesse (transparence)
+
+
+def test_snts_reste_a_13_pct_malgre_le_default():
+    alerts = check_dividend_position(_pos("SNTS"), 30000 * 1.12,
+                                     current_dps=1000, current_per=10)
+    assert all(a.level != LEVEL_DECISION for a in alerts)  # 12 % < 13 % : rien
+
+
 # --------------------------------------------------------- ligne 📜 HISTOIRE
 def test_history_line_with_profile(monkeypatch, tmp_path):
     import json
