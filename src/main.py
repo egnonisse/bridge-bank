@@ -663,6 +663,21 @@ def cmd_fund(args: argparse.Namespace) -> None:
             if not new:
                 print("Aucun nouveau titre value+dividende (rien n'a changé).")
                 return
+            # Trace pour l'agent analyseur du cron 09h30 (enrichissement des alertes)
+            import json as _json
+            from datetime import datetime as _dt
+            from pathlib import Path as _P
+
+            _trace = {
+                "date": _dt.now().strftime("%Y-%m-%d"),
+                "opportunities": [
+                    {"code": r["code"], "name": r["name"], "cours": r.get("price", 0.0)}
+                    for r in new
+                ],
+            }
+            _P(__file__).resolve().parent.parent.joinpath(
+                "data", "value_new_state.json"
+            ).write_text(_json.dumps(_trace, ensure_ascii=False, indent=2), encoding="utf-8")
             notifier = get_notifier(load_config())
             actions = getattr(args, "_actions", None)
             for r in new:
