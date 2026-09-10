@@ -1064,6 +1064,19 @@ def cmd_watchlist(args: argparse.Namespace) -> None:
             actions.append(f"ORDRE LIMITE PRÊT {msg.split(' — ')[0].replace('🎯 TON ORDRE LIMITE EST PRÊT', '').strip()}")
 
 
+def cmd_filet(args: argparse.Namespace) -> None:
+    """Étape quotidienne : filet des paris spéculatifs ouverts (stop −15 %, paliers)."""
+    from .bsapi import BSApi
+    from .speculation import check_open_spec_positions, load_positions
+
+    if not load_positions():
+        print("Aucun pari ouvert — rien à surveiller.")  # texte silencieux (marker)
+        return
+    sent = check_open_spec_positions(BSApi(), get_notifier(load_config()))
+    if sent == 0:
+        print("Paris ouverts, mais rien à surveiller aujourd'hui.")  # silencieux (marker)
+
+
 def cmd_news(args: argparse.Namespace) -> None:
     from .news import detect_new, fetch_announcements, filter_codes
 
@@ -1164,6 +1177,10 @@ def cmd_daily(args: argparse.Namespace) -> None:
         ("Ordres limites", cmd_watchlist, {"_actions": actions}, "au-dessus"),
         ("Renforcements noyau", cmd_reinforcements, {"_actions": actions}, "Aucun titre à renforcer"),
         ("Déclencheurs de sortie", cmd_portf, {"action": "check", "code": None, "amount": 100000, "dps": None, "per": None, "_actions": actions}, "Aucune alerte actionnable"),
+        # Filet des paris ouverts (stop −15 % / paliers) — les PARIS RAPIDES du soir
+        # sont SUPPRIMÉS (décision LEO 10/09 : la BRVM exécute trop lentement,
+        # l'ordre du lendemain manque l'occasion). Le filet survit, chaque matin.
+        ("Filet spéculation", cmd_filet, {}, "rien à surveiller"),
         # Spéculation SUSPENDUE (décision LEO 26/08/2026, épreuve H2/H4) :
         # volume ≥2× = placebo prédictif (p=0,44) et frais réels min 1 000 F
         # annulent l'espérance sous 150 000 F/position. Modules conservés,

@@ -325,6 +325,58 @@ def save_candidates_state(state: dict) -> None:
     CANDIDATES_STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+def check_open_spec_positions(api, notifier) -> None:
+    """Filet des paris ouverts : stop −15 % et paliers +20/+35/+50.
+
+    Vérifié chaque matin par le check quotidien (les paris rapides du soir ont été
+    SUPPRIMÉS le 10/09 — décision LEO : la BRVM exécute trop lentement, l'ordre du
+    lendemain manque l'occasion). Le filet, lui, survit : il protège les positions
+    spéculatives QUE LEO a pu ouvrir « en conscience », sans jamais passer d'ordre.
+    """
+    snap = api.market_snapshot()
+    sent = 0
+    for p in load_positions():
+        if p.closed:
+            continue
+        q = snap.by_code(p.code)
+        if q is None or q.last <= 0:
+            continue
+        last = q.last
+        if last <= p.stop_loss:
+            msg = (
+                f"🔴 STOP — {p.name} ({p.code})\n\n"
+                f"Ton pari est tombé à {last:,.0f} F : sous ton filet de\n"
+                f"{p.stop_loss:,.0f} F (−15 %).\n\n"
+                f"📋 Action : VENDS TOUT, sans discuter.\n"
+                f"🚫 Rappel : un pari perdant ne devient JAMAIS un investissement."
+            )
+        elif last >= p.entry_price * 1.50 and not (p.sold_1 and p.sold_2):
+            msg = (
+                f"🎉 DERNIER PALIER — {p.name} ({p.code}) à {last:,.0f} F (+50 %)\n\n"
+                f"📋 Action : VENDS LE RESTE de la position.\n"
+                f"🚫 Rappel : un pari gagné reste un pari — encaisse."
+            )
+        elif last >= p.entry_price * 1.35 and p.sold_1 and not p.sold_2:
+            msg = (
+                f"📈 PALIER +35 % — {p.name} ({p.code}) à {last:,.0f} F\n\n"
+                f"📋 Action : vends encore 1 sur 3 (il t'en reste 1/3 après).\n"
+                f"🚫 Règle : +20 % vendre 1/3 · +35 % encore 1/3 · +50 % tout."
+            )
+        elif last >= p.entry_price * 1.20 and not p.sold_1:
+            msg = (
+                f"📈 PALIER +20 % — {p.name} ({p.code}) à {last:,.0f} F\n\n"
+                f"📋 Action : vends 1 sur 3 — tu sécurises et le reste devient gratuit.\n"
+                f"🚫 Règle : +20 % vendre 1/3 · +35 % encore 1/3 · +50 % tout."
+            )
+        else:
+            continue
+        print(msg)
+        if notifier.enabled:
+            notifier.send(msg)
+        sent += 1
+    return sent
+
+
 def detect_new_candidates(api: BSApi, min_signals: int = MIN_SIGNALS) -> list[dict]:
     """Nouveaux candidats spéculatifs (≥ min_signals) jamais vus → alerte d'entrée.
 

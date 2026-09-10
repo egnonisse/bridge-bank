@@ -158,10 +158,25 @@ def scan(hist_all: dict, min_bars: int = 260) -> list[dict]:
         if r60 is None or r120 is None or ath <= 0:
             continue
         level = None
+        eveil = False
+        rebond = 0.0
         if r60 >= 0.15 and r120 >= 0.30 and pct_ath <= -80:
             level = 1
         elif r60 >= 0.10 and r120 >= 0.20 and pct_ath <= -50:
             level = 2
+        else:
+            # NIVEAU « ÉVEIL » (08/09, idée LEO « saisir la hausse à son début ») :
+            # rebond >= +10 % depuis un creux récent (<= 20 séances) + titre encore
+            # sous 50 % de son ATH. Épreuve 9 ans : poursuite à 1 an +6,8 % net, 56 %
+            # gagnants — le signal le plus PRÉCOCE du système (veille douce, jamais
+            # un ordre). Bat le breakout 20j (+4,1 %) à tous les horizons.
+            window = closes[-60:]
+            creux = min(window)
+            creux_age = len(window) - 1 - window.index(creux)
+            rebond = closes[-1] / creux - 1 if creux > 0 else 0.0
+            if rebond >= 0.10 and creux_age <= 20 and pct_ath <= -50:
+                level = 2  # même canal de veille douce que l'accumulation
+                eveil = True
         if level is None:
             continue
         vols = [float(b.volume) for b in bars[-20:]]
@@ -179,6 +194,8 @@ def scan(hist_all: dict, min_bars: int = 260) -> list[dict]:
             "pct_ath": pct_ath,
             "vol20": vol20,
             "level": level,
+            "eveil": eveil,
+            "rebond": round(rebond * 100, 1),
             "score": score,
         })
     hits.sort(key=lambda h: h["score"], reverse=True)

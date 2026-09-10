@@ -60,6 +60,25 @@ def test_scan_detects_sortie_de_fond():
     assert hit["pct_ath"] <= -80
 
 
+def test_scan_detecte_eveil_rebond_depuis_le_creux():
+    """Niveau ÉVEIL (idée LEO « début de hausse ») : rebond +10 % depuis un creux
+    récent, titre encore sous 50 % de son ATH — sans atteindre l'accumulation."""
+    # ATH 100, descente à ~40 (pct_ath ≈ −60 %), creux 35 récent (~5 séances),
+    # rebond à 38,5 (+10 %) — r60/r120 restent négatifs → éveil, pas accumulation
+    # (min_bars=260 : la série doit atteindre 260 barres)
+    series = ([100.0] * 110 + _decline(100, 40, 80) + [40.0] * 50
+              + _decline(40, 35, 5) + [35.0] * 5
+              + [35 * (1 + 0.10 * i / 9) for i in range(10)])
+    bars = _bars(series)
+    hits = scan({"EVEIL1": bars})
+    hit = next((h for h in hits if h["code"] == "EVEIL1"), None)
+    assert hit is not None, "l'éveil doit être détecté"
+    assert hit["level"] == 2
+    assert hit["eveil"] is True
+    assert hit["rebond"] >= 10.0
+    assert hit["pct_ath"] <= -50
+
+
 def test_scan_level2_accumulation():
     # ATH 200 → descente graduelle à 55 → rebond à 80 (soit -60 % de l'ATH)
     series = [200.0] * 40 + _decline(200, 55, 60) + [55.0] * 40 + \
