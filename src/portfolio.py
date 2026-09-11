@@ -535,39 +535,42 @@ def _msg_renfort_limite(p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty
 
 def _msg_concentration_achats(p, price, entry_ref, w_cost) -> str:
     return (
-        f"🚦 CONCENTRATION CHOISIE — {p.code} ({p.name}) est sous ton seuil\n"
+        f"🟠 RENFORCE EN CONSCIENCE — {p.code} ({p.name}) est sous ton seuil\n"
         f"   ({price:,.0f} < {entry_ref:,.0f} F) et paie un bon loyer, mais tu as\n"
-        f"   ACHETÉ {w_cost*100:.0f} % de ta poche sur ce titre (plafond : 35 %).\n"
-        f"   → Le système BLOQUE le renforcement : c'est ta concentration choisie.\n"
-        f"   → Priorité : dilution ou apport de neuf, pas d'acheter encore ici."
+        f"   ACHETÉ {w_cost*100:.0f} % de ta poche sur ce titre (repère : 35 %).\n"
+        f"   → Le système ne bloque PAS (ta règle) : il te dit le risque.\n"
+        f"   → Si tu renforces quand même : en connaissance de cause."
     )
 
 
 def _msg_ligne_buffett(p, price, entry_ref, w_mkt) -> str:
     return (
-        f"🚦 LIGNE BUFFETT — {p.code} ({p.name}) est sous ton seuil\n"
+        f"🔴 ATTENTION MAXIMALE — {p.code} ({p.name}) est sous ton seuil\n"
         f"   ({price:,.0f} < {entry_ref:,.0f} F), mais il représente déjà\n"
         f"   {w_mkt*100:.0f} % du portefeuille : plus de la moitié dans un seul\n"
         f"   panier, c'est un pari, pas un loyer.\n"
-        f"   → BLOQUÉ dans tous les cas — dilution d'abord."
+        f"   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n"
+        f"     grave qu'il sache émettre. Décision tienne, en pleine lucidité."
     )
 
 
 def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.0):
     """Positions dont le cours est REDESCENDU sous le prix qui garantit 4 % net,
     avec les 4 filtres toujours OK (PER ≤ 14, payout ≤ 80 %) + verrou de
-    concentration INTELLIGENT qui lit l'ORIGINE du poids (hausse ≠ achats) :
-      - poids marché ≤ 35 %               → renforcement libre
-      - 35-50 % par HAUSSE (achats ≤ 35 %)→ renforcement LIMITÉ (plafond calculé)
-      - 35-50 % par ACHATS (achats > 35 %)→ bloqué (concentration choisie)
-      - poids marché > 50 %               → bloqué (ligne Buffett)
+    concentration INFORMATIF (règle LEO 11/09 « ne bloque pas » : l'alerte part
+    TOUJOURS, avec le niveau de risque — libre / limité / en conscience / max) :
+      - poids marché ≤ 35 %               → 💪 RENFORCE (libre)
+      - 35-50 % par HAUSSE (achats ≤ 35 %)→ 💪 RENFORCE LIMITÉ (plafond calculé)
+      - 35-50 % par ACHATS (achats > 35 %)→ 🟠 RENFORCE EN CONSCIENCE (averti)
+      - poids marché > 50 %               → 🔴 ATTENTION MAXIMALE (averti)
+    Rien n'est jamais supprimé : l'information part, LEO décide.
 
-    Retourne (hits, blocked) : [(code, message)] — anti-spam à la charge de l'appelant.
+    Retourne (hits, []) : [(code, message)] — blocked conservé vide pour
+    compatibilité, anti-spam à la charge de l'appelant.
     """
     from .taxation import entry_price_for_net, net_yield
 
     hits: list[tuple[str, str]] = []
-    blocked: list[tuple[str, str]] = []
     total_cost = sum(p.quantity * p.entry_price for p in positions if not p.closed)
     for p in positions:
         if p.closed:
@@ -588,21 +591,21 @@ def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.
         w_cost = (p.quantity * p.entry_price / total_cost) if total_cost > 0 else 0.0
         net = net_yield(p.dps / price) * 100
         if w_mkt > MAX_MARKET_WEIGHT:
-            blocked.append((p.code, _msg_ligne_buffett(p, price, entry_ref, w_mkt)))
+            hits.append((p.code, _msg_ligne_buffett(p, price, entry_ref, w_mkt)))
             continue
         if w_cost > MAX_POSITION_WEIGHT:
-            blocked.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
+            hits.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
             continue
         if w_mkt > MAX_POSITION_WEIGHT:
             max_qty = int((MAX_BUY_WEIGHT * total_cost - p.quantity * p.entry_price) // price)
             if max_qty < 1:
-                blocked.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
+                hits.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
                 continue
             hits.append((p.code, _msg_renfort_limite(
                 p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty)))
             continue
         hits.append((p.code, _msg_renfort_libre(p, price, entry_ref, net, payout)))
-    return hits, blocked
+    return hits, []
 
 
 def load_reinf_state() -> dict:

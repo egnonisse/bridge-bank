@@ -643,8 +643,10 @@ def cmd_reinforcements(args: argparse.Namespace) -> None:
         if notifier.enabled:
             notifier.send(f"🏦 Noyau :\n{msg}")
         if actions is not None:
-            if "CONCENTRATION" in msg or "LIGNE BUFFETT" in msg:
-                actions.append(f"🚫 {code} : renforcement BLOQUÉ (voir alerte — dilution en priorité)")
+            if "ATTENTION MAXIMALE" in msg:
+                actions.append(f"🔴 {code} : renforcement à risque maximal (voir alerte)")
+            elif "EN CONSCIENCE" in msg:
+                actions.append(f"🟠 {code} : renforcement en conscience (poids > 35 % — voir alerte)")
             elif "LIMITÉ" in msg:
                 actions.append(f"RENFORCE LIMITÉ {code} (plafond indiqué dans l'alerte)")
             else:

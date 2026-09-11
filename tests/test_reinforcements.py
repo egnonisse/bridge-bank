@@ -50,29 +50,30 @@ def test_renforcement_limite_quand_poids_market_vient_de_la_hausse():
     assert "par sa HAUSSE" in snts_hit[0]
 
 
-def test_bloque_quand_concentration_choisie_par_les_achats():
-    # SLBC achetée chère (50 000) : 62,8 % des ACHATS mais 49 % du marché → bloqué
+def test_avertit_quand_concentration_choisie_par_les_achats():
+    # SLBC achetée chère (50 000) : 62,8 % des ACHATS mais 49 % du marché → averti, PAS bloqué
     pos = _slbc(entry=50000.0, qty=4)
     sgbc = _sgbc(qty=3)
     hits, blocked = reinforcement_messages([pos, sgbc],
                                            price_of={"SLBC": 28000.0, "SGBC": 38500.0}.get,
                                            per_of=lambda c: {"SLBC": 10.0}.get(c),
                                            total_stocks=227500.0)
-    assert hits == []
-    assert [c for c, _ in blocked] == ["SLBC"]
-    assert "CONCENTRATION CHOISIE" in blocked[0][1]
+    assert blocked == []
+    assert [c for c, _ in hits] == ["SLBC"]
+    assert "EN CONSCIENCE" in hits[0][1]
+    assert "ne bloque PAS" in hits[0][1]  # règle LEO 11/09
 
 
-def test_bloque_ligne_buffett_au_dela_de_la_moitie():
-    # SLBC seule : 50,7 % du marché → ligne Buffett, quelle que soit l'origine
+def test_avertit_ligne_buffett_au_dela_de_la_moitie():
+    # SLBC seule : 50,7 % du marché → attention maximale, PAS un blocage silencieux
     hits, blocked = reinforcement_messages([_slbc(qty=4)],
                                            price_of=lambda c: 38000.0,
                                            per_of=lambda c: 13.7,
                                            total_stocks=300000.0)
-    assert hits == []
-    assert [c for c, _ in blocked] == ["SLBC"]
-    assert "LIGNE BUFFETT" in blocked[0][1]
-    assert "moitié" in blocked[0][1]
+    assert blocked == []
+    assert [c for c, _ in hits] == ["SLBC"]
+    assert "ATTENTION MAXIMALE" in hits[0][1]
+    assert "ne bloque PAS" in hits[0][1]
 
 
 def test_pas_de_reinforcement_quand_trop_cher():
