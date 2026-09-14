@@ -2,8 +2,8 @@
   {
     "code": "SGBC",
     "name": "SGBCI",
-    "entry_price": 38966.57,
-    "quantity": 7,
+    "entry_price": 39140.4,
+    "quantity": 5,
     "dps": 2606.0,
     "per_open": 12.0,
     "opened_at": "2026-08-17T11:41:18.651425",
@@ -50,8 +50,8 @@
   {
     "code": "PALC",
     "name": "PALM CI",
-    "entry_price": 8671.86,
-    "quantity": 25,
+    "entry_price": 8748.2,
+    "quantity": 22,
     "dps": 501.596,
     "per_open": 8.8,
     "opened_at": "2026-09-08T11:00:00",
