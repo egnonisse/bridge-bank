@@ -304,6 +304,11 @@ def main() -> None:
     p_daily = sub.add_parser("daily", help="Check quotidien complet (annonces + noyau + spéculation)")
     p_daily.set_defaults(func=cmd_daily)
 
+    p_sv = sub.add_parser("specveille", help="Veille spé : fiches complètes (cassure/éveil/panique) avec probabilités calibrées")
+    p_sv.add_argument("--all", action="store_true", help="Sans filtre anti-spam (réaffiche tout)")
+    p_sv.add_argument("--print-only", action="store_true", help="N'imprime que les fiches OUI/PRUDENCE, sans envoyer Telegram (mode cron no_agent)")
+    p_sv.set_defaults(func=cmd_specveille)
+
     args = parser.parse_args()
     args.func(args)
 
@@ -1092,6 +1097,48 @@ def cmd_filet(args: argparse.Namespace) -> None:
     sent = check_open_spec_positions(BSApi(), get_notifier(load_config()))
     if sent == 0:
         print("Paris ouverts, mais rien à surveiller aujourd'hui.")  # silencieux (marker)
+
+
+def cmd_specveille(args: argparse.Namespace) -> None:
+    """Veille spé quotidienne : fiches complètes (schéma + probabilités + filet).
+
+    Telegram : uniquement les fiches OUI / PRUDENCE (les « décidables »).
+    Les fiches qui disent NON restent dans le log local (zéro bruit).
+    Anti-spam : un titre + schéma déjà signalé reste muet 7 jours.
+    --print-only (cron no_agent) : stdout = uniquement les fiches OUI/PRUDENCE,
+    sans envoi Telegram — le cron livre le stdout tel quel.
+    """
+    from .spec_veille import scan
+
+    res = scan(all_=getattr(args, "all", False))
+    # Plafond anti-flood : max 3 fiches par jour, priorité au schéma rare
+    PRIO = {"CASSURE": 0, "PRUDENCE": 2, "OUI": 1}
+    keep = sorted([f for f, _ in res if f.verdict in ("OUI", "PRUDENCE")],
+                  key=lambda f: (PRIO.get(f.verdict, 3),
+                                 PRIO.get(f.blocks["main"], 3)))
+    keep = keep[:3]
+    msg_map = {f.code: msg for f, msg in res}
+    if getattr(args, "print_only", False):
+        if not keep:
+            return  # stdout vide → le cron n'envoie rien
+        for f in keep:
+            print(f"🎲 VEILLE SPÉ :\n{msg_map[f.code]}")
+        return
+    if not res:
+        print("Aucun nouveau signal de veille spé aujourd'hui.")
+        return
+    cfg = load_config()
+    notifier = get_notifier(cfg)
+    n_sent = 0
+    for f, msg in res:
+        print(f"───── {f.code} ({f.verdict}) ─────")
+        print(msg)
+        print()
+    for f in keep:
+        if notifier.enabled:
+            notifier.send(f"🎲 VEILLE SPÉ :\n{msg_map[f.code]}")
+        n_sent += 1
+    print(f"[specveille] {len(res)} fiche(s) générée(s) · {n_sent} envoyée(s) sur Telegram (plafond 3/j).")
 
 
 def cmd_news(args: argparse.Namespace) -> None:
