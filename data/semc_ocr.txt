@@ -1,0 +1,197 @@
+EVIOSYSPACKAGINGSIEM
+ETATSFINANCIERSDESYNTHESEAU31/12/2023
+BILAN AU 31/12/2022
+ACTIF
+EXERCICE2023
+EXERCICE 2022
+PASSIF
+EXERCICE 2023
+EXERCICE 2022
+Capital
+1889220000
+1889220000
+Immobilisations incorporelles
+Primes etreserves
+10 147 844 890
+6290058610
+Immobilisations corporelles
+2986211921
+2835369667
+Resultatnet del'exercice
+1012055129
+3857786280
+Immobilisations financieres
+1158355914
+1643001348
+Provisions pourrisques et charges
+954 535 852
+832023535
+Stocks etencours
+11599296695
+12 983 227 240
+Emprunts&Dettes Financieres
+Creances etemplois assimiles
+11649078890
+11909 375517
+Passif circulant
+16741603893
+19772522423
+Tresorerie actif
+3352316 342
+3270637 076
+Tresorerie passif
+Ecart de conversion-Actif
+Ecart de conversion-passif
+TOTAL ACTIF
+30 745 259 762
+32641610848
+TOTAL PASSIF
+30 745 259 764
+32641610848
+COMPTEDERESULTATAU31/12/2023
+TABLEAUDESFLUXDETRESORERIEAU31/12/2023
+LIBELLES
+EXERCICE2023
+EXERCICE2022
+LIBELLES
+EXERCICE2023
+EXERCICE2022
+Ventes demarchandises
+8156368 425
+9199 961097
+Tresorerienette au1erjanvier
+3 270637 076
+1357 815729
+Achats demarchandises
+-6 039 776 419
+-6 698 492589
+Capacite d'Autofinancement Globale(CAFG)
+1870 439 854
+4335429889
+MARGE COMMERCIALE
+2116592006
+2501468508
+VariationduBFlieauxactivitesoperationnelles
+-1386691358
+-276566000
+Ventes deproduits fabriques
+19380946910
+20 151 932 367
+Flux de tresorerieprovenant des activitesoperationnelles
+483 748 496
+4058863889
+Travaux,services vendus
+0
+0
+Fluxde tresorerieprovenant des activites d'investissement
+-267734881
+424037368
+Produits accessoires
+337562802
+250867585
+Dividendes versés
+0
+CHIFFRE D'AFFAIRES
+27 874 878137
+29 602761 049
+Flux de tresorerie provenant descapitaux propres
+Production stockee(ou destockage)
+20 986615
+605 400 454
+Tresorerieprovenantdufinancementparlescapitaux
+etranaers
+Productionimmobilisee
+Nouveaux emprunts
+Subventions d'exploitation
+Remboursements des emprunts et autres dettes financieres
+Autres produits
+887389435
+92218661
+Fluxdetresorerieprovenantdescapitauxetrangers
+Transferts de charges d'exploitation
+Fluxdetresorerieprovenantdesactivitesdefinancement
+Achats dematieres premieres etautres
+-14269208600
+-14 277 602 456
+VARIATION DE LA TRESORERIE NETTE
+216013615
+3634 826 521
+achats
+Transports
+-345 269 433
+-368268 222
+Tresorerienetteau31Decembre
+3486650691
+4 992 642 250
+Services exterieurs
+-2116679819
+-2 191247 937
+Impots ettaxes
+-235 943 800
+-178 105 548
+PROJETD'AFFECTATIONDERESULTATAU31/12/2023
+Autres charges
+-803 148 341
+-324961099
+Resultat deI'exercice
+1012055129
+VALEURAJOUTEE
+4 973 227 776
+6261702313
+Report a nouveau anterieur
+7340809541
+Charges depersonnel
+-2 654 414 219
+-2523116513
+Resultat distribuable
+8352864 670
+EXCEDENTBRUTD'EXPLOITATION
+2318813557
+3738585800
+Total dividendebrutadistribuer
+Reprises d'amortissements,provisions et
+52 511048
+74395 640
+depreciations
+Report a nouveau
+8352 864 670
+Dotations aux amortissements,aux
+-910895773
+provisions et depreciations
+-552 039 249
+RESULTATD'EXPLOITATION
+1460 428832
+3260 942191
+Produits financiers
+1599818775
+Charges financieres
+-9 391 427
+-5969668
+EVIOSYS
+RESULTAT FINANCIER
+-9 391 427
+1593849107
+EwosysPackagingSIEM
+SA.auCap.1.889220.000F.CFA
+2
+RCAbidjan28746
+RESULTATDESACTIVITESORDINAIRES
+1451 037 405
+4854791298
+01B.P1242ABIDJAN01
+Valeurs comptables des cessions
+0
+dimmobilisations
+0
+RESULTAT HORSACTIVITES ORDINAIRES
+0
+0
+Participation des travailleurs
+Impots surle resultat
+-438982 276
+-997 005 018
+RESULTAT NET
+1012055129
+3857786280
+Etatsfinanciers verifiesetcertifies parles Commissaires aux Comptes.
+Cesétatsserontsoumisal'approbationdel'AssembleeGeneraleOrdinairedu30decembre2024.
