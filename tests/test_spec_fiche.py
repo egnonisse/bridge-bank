@@ -104,11 +104,5 @@ class _Bar:
 
 
 def _fake_hist():
-    from src.backtest import History  # type: ignore
-
-    class H:
-        def __init__(self, closes):
-            self.closes = closes
-
     # série : 500 barres plates à 70 → aucune cassure possible à 70
     return {"TEST": [_Bar(70.0)] * 500}
