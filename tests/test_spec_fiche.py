@@ -73,3 +73,42 @@ def test_antispam_state(monkeypatch, tmp_path):
     st["X:CASSURE"] = "2026-09-01"
     sv.save_state(st)
     assert sv.load_state()["X:CASSURE"] == "2026-09-01"
+
+
+def test_live_aberrant_ignore(monkeypatch):
+    """Règle 19/09 : un live > ±50 % vs clôture est ignoré (parse faux/split)."""
+    from src import spec_veille as sv
+
+    hist_fake = {"TEST": None}
+    monkeypatch.setattr(sv, "load_all_history",
+                        lambda *a, **k: _fake_hist())
+    monkeypatch.setattr(sv, "load_state", lambda: {})
+    monkeypatch.setattr(sv, "save_state", lambda s: None)
+    # scan() importe live_quotes en local (`from .live import ...`) →
+    # patcher src.live, pas le module spec_veille
+    from src import live as live_mod
+
+    monkeypatch.setattr(live_mod, "live_quotes", lambda codes: {"TEST": 363.0})
+    res = sv.scan(all_=True)
+    # série plate à 70 F + live aberrant 363 F (+419 %) → le live doit être
+    # ignoré → aucun schéma détecté (sans le garde-fou, 363 créerait une
+    # fausse cassure et une fiche avec price 363)
+    assert res == []
+
+
+class _Bar:
+    def __init__(self, close):
+        self.close = close
+        self.date = None
+        self.volume = 0
+
+
+def _fake_hist():
+    from src.backtest import History  # type: ignore
+
+    class H:
+        def __init__(self, closes):
+            self.closes = closes
+
+    # série : 500 barres plates à 70 → aucune cassure possible à 70
+    return {"TEST": [_Bar(70.0)] * 500}

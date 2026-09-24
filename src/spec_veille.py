@@ -38,18 +38,39 @@ def save_state(state: dict) -> None:
 
 
 def scan(all_: bool = False) -> list:
-    """Retourne [(fiche, message)] pour les titres à signaler aujourd'hui."""
+    """Retourne [(fiche, message)] pour les titres à signaler aujourd'hui.
+
+    Règle LEO 19/09 : chaque fiche est régénérée au COURS DU MOMENT
+    (live brvm.org) avant l'envoi — jamais envoyée sur des données
+    périmées du cache. Fallback : dernière clôture connue, mentionnée
+    dans la fiche (« cours de référence »).
+    """
     state = load_state()
     today = date.today().isoformat()
     out = []
     hist = load_all_history(BSApi(), force=False)
-    for code, bars in hist.items():
+    codes = [c for c, bars in hist.items() if len(bars) >= 500]
+    try:
+        from .live import live_quotes
+
+        live = live_quotes(codes)
+    except Exception:
+        live = {}
+    for code in codes:
+        bars = hist[code]
         closes = [b.close for b in bars]
-        if len(closes) < 500:
-            continue
+        px = live.get(code)
+        # Garde-fou : un live aberrant (> ±50 % vs clôture = erreur de
+        # parsing du site ou split non traité) est IGNORÉ → clôture.
+        if px and px > 0 and 0.5 < px / closes[-1] < 1.5:
+            closes = closes + [px]
+            source = "live"
+        else:
+            source = "cloture"
         f = build_fiche(code, code, closes)
         if f is None:
             continue
+        f.blocks["cours_source"] = source
         key = f"{code}:{f.blocks['main']}"
         seen = state.get(key, "")
         if not all_ and seen:

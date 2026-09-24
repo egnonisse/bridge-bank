@@ -123,7 +123,9 @@ def build_message(f: FicheSpec) -> str:
     mot = SCHEMA_WORDS.get(main, main.lower())
 
     head = (f"{SCHEMA_LABELS[main]} — {f.code} ({f.name})\n\n"
-            f"Ce qui se passe : le cours ({f.price:,.0f} F) a déclenché le schéma "
+            f"Cours de référence : {f.price:,.0f} F "
+            f"({'LIVE du moment' if b.get('cours_source') == 'live' else 'dernière clôture connue'})\n"
+            f"Ce qui se passe : ce cours a déclenché le schéma "
             f"« {mot} » — un signal rare, jamais automatique.\n\n"
             f"📊 CE QUE DISENT NOS 10 ANS DE DONNÉES :\n"
             f"   • {b['win_12m']*100:.0f} % des {b['n']} cas finissent plus hauts 12 mois après "
