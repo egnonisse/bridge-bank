@@ -18,6 +18,7 @@ from .bsapi import BSApi
 from .spec_fiche import build_fiche
 
 SPAM_DAYS = 7
+STOPOUT_COOLDOWN_DAYS = 30  # un titre stoppé ne re-entre pas en fiche avant 30 j
 DATA = Path(__file__).resolve().parents[1] / "data"
 STATE_FILE = DATA / "spec_seen_state.json"
 
@@ -57,18 +58,39 @@ def scan(all_: bool = False) -> list:
     except Exception:
         live = {}
     fiches = []
+    # cooldown après stop-out : un titre stoppé ne re-entre pas en fiche
+    # avant STOPOUT_COOLDOWN_DAYS jours (faux breakout → rachat = perte
+    # répétée — règle du challenge croisé 25/09)
+    try:
+        from .speculation import load_positions
+
+        spec_pos = load_positions()
+        stopout = {}
+        for p in spec_pos:
+            if p.closed and "stop" in (p.close_reason or "").lower():
+                try:
+                    d = date.fromisoformat((p.close_reason or "").split(" ")[-1][:10])
+                except Exception:
+                    d = date.fromisoformat(p.opened_at[:10])
+                stopout[p.code.upper()] = d
+    except Exception:
+        stopout = {}
     for code in codes:
         bars = hist[code]
         closes = [b.close for b in bars]
+        volumes = [b.volume for b in bars]
         px = live.get(code)
         # Garde-fou : un live aberrant (> ±50 % vs clôture = erreur de
         # parsing du site ou split non traité) est IGNORÉ → clôture.
         if px and px > 0 and 0.5 < px / closes[-1] < 1.5:
             closes = closes + [px]
+            volumes = volumes + [volumes[-1] if volumes else 0]
             source = "live"
         else:
             source = "cloture"
-        f = build_fiche(code, code, closes)
+        if code in stopout and (date.today() - stopout[code]).days < STOPOUT_COOLDOWN_DAYS:
+            continue  # récent stop-out : pas de nouvelle fiche pour ce titre
+        f = build_fiche(code, code, closes, volumes)
         if f is None:
             continue
         f.blocks["cours_source"] = source

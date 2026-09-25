@@ -9,6 +9,7 @@ Les statistiques globales (n, taux de réussite, médiane, paliers touchés)
 sont CALIBRÉES par scripts/calibrate_spec_profiles.py → data/spec_profiles.json.
 """
 import json
+import statistics
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parents[1] / "data"
@@ -53,18 +54,26 @@ def rsi(vals, n=14):
     return out
 
 
-def detect_schemas(closes):
+def detect_schemas(closes, volumes=None):
     """Détecte les schémas ACTIFS sur la dernière séance d'une série.
 
     Retourne une liste de codes : "CASSURE", "EVEIL", "PANIQUE".
+    volumes : liste alignée sur closes ; si fournie, la CASSURE exige un
+    volume >= médiane des 60 dernières séances (une cassure sans volume
+    n'est pas une vraie demande — règle du challenge croisé 25/09).
     """
     if len(closes) < 260 or closes[-1] <= 0:
         return []
     i = len(closes) - 1
     found = []
-    # cassure du plus haut des 250 séances
+    # cassure du plus haut des 250 séances, confirmée par le volume
     if closes[i] > max(closes[i - 250 : i]):
-        found.append("CASSURE")
+        vol_ok = True
+        if volumes and len(volumes) == len(closes):
+            med = statistics.median(volumes[-61:-1])
+            vol_ok = med <= 0 or volumes[i] >= med
+        if vol_ok:
+            found.append("CASSURE")
     # éveil : rebond >= +10 % depuis le creux des 60 séances
     creux60 = min(closes[i - 60 : i])
     if closes[i] / creux60 - 1 >= 0.10:

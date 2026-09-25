@@ -51,12 +51,14 @@ class FicheSpec:
         return build_message(self)
 
 
-def build_fiche(code: str, name: str, closes: list) -> FicheSpec | None:
+def build_fiche(code: str, name: str, closes: list,
+                volumes: list | None = None) -> FicheSpec | None:
     """Construit la fiche pour la dernière séance d'une série.
 
     Retourne None si aucun schéma actif ou série trop courte.
+    volumes : aligné sur closes — la cassure exige un volume confirmé.
     """
-    schemas = detect_schemas(closes)
+    schemas = detect_schemas(closes, volumes)
     if not schemas:
         return None
     # priorité au schéma le plus informatif (cassure > éveil > panique)
@@ -151,16 +153,16 @@ def build_message(f: FicheSpec) -> str:
             f"({'LIVE du moment' if b.get('cours_source') == 'live' else 'dernière clôture connue'})\n"
             f"Ce qui se passe : ce cours a déclenché le schéma "
             f"« {mot} » — {rare}, jamais automatique.\n\n"
-            f"📊 CE QUE DISENT NOS 10 ANS DE DONNÉES :\n"
-            f"   • La probabilité qui DÉCIDE est celle du schéma : "
-            f"{b['win_12m']*100:.0f} % des {b['n']} cas finissent plus hauts "
+            f"📊 FRÉQUENCES HISTORIQUES (10 ans, hors frais déjà déduits) :\n"
+            f"   • La fréquence qui DÉCIDE est celle du schéma : "
+            f"{b['win_12m']*100:.0f} % de {b['n']} cas OBSERVÉS finissent plus hauts "
             f"12 mois après (+{b['median_net']*100:.0f} % net médian)\n")
     if touched:
-        head += (f"   • Ton palier +20 % : touché dans {touched.get('0.20', 0)*100:.0f} % des cas\n"
-                 f"   • Ton palier +50 % : touché dans {touched.get('0.50', 0)*100:.0f} % des cas\n")
+        head += (f"   • Ton palier +20 % : touché dans {touched.get('0.20', 0)*100:.0f} % des cas observés\n"
+                 f"   • Ton palier +50 % : touché dans {touched.get('0.50', 0)*100:.0f} % des cas observés\n")
     head += (f"   • {zlabel} : {ztxt}{zwin} — la zone MODULE le schéma\n"
-             f"   ⚠️ {b['n']} cas seulement : probabilité honnête, pas une certitude — "
-             f"les perdants existent.\n")
+             f"   ⚠️ {b['n']} cas observés, titres radiés ABSENTS (biais de survie) : "
+             f"fréquence historique, PAS une probabilité — les perdants existent.\n")
 
     # fondamental connu — signalé, jamais jugé (la poche spé joue le prix)
     if b.get("dps"):
@@ -177,7 +179,9 @@ def build_message(f: FicheSpec) -> str:
 
     if f.verdict == "NON":
         return head + ("\n📋 VERDICT : ❌ LA FICHE DIT NON.\n"
-                       "   Le schéma est allumé mais la zone de prix le contredit.\n"
+                       "   La zone de prix contredit le schéma — interdite PAR DÉFAUT\n"
+                       "   (échantillon mince : la zone n'est pas une loi absolue ;\n"
+                       "   une cassure confirmée par le volume pourrait la rouvrir).\n"
                        "   On laisse tomber, sans regret : la veille sait dire non.\n"
                        "\n🚫 Règle d'or : un pari perdant ne devient JAMAIS un loyer.")
 

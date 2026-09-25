@@ -19,7 +19,7 @@ def test_cassure_verdict_oui_et_niveaux():
     assert abs(f.blocks["stop"] - 85.0) < 1e-6
     msg = f.message()
     assert "CASSURE" in msg
-    assert "70 % des 10 cas" in msg           # stats calibrées
+    assert "70 % de 10 cas OBSERVÉS" in msg    # stats calibrées (fréquence, pas proba)
     assert "34,300" not in msg                # pas de chiffre en dur d'un autre titre
 
 
