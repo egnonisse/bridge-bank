@@ -19,6 +19,7 @@ from .taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
 
 PER_MAX = 14.0          # IPS : PER ≤ 14
 PAYOUT_TIGHT = 0.80     # payout > 80 % : tendu → pas d'alerte d'achat
+NET_MAX = 0.10          # borne haute anti-mirage (décision 25/09) : net ≤ 10 %
 REFERENCE_AMOUNT = 100_000.0  # taille standard de ligne noyau (pour le calcul d'exemple)
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -38,8 +39,16 @@ def save_prep_watchlist(watch: dict) -> None:
     PREP_WATCH_FILE.write_text(json.dumps(watch, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def evaluate_noyau_candidate(code: str, price: float, name: str = "") -> dict | None:
-    """Évalue un candidat contre les filtres noyau. None = rien à faire."""
+def evaluate_noyau_candidate(code: str, price: float, name: str = "",
+                             hist: dict | None = None) -> dict | None:
+    """Évalue un candidat contre les filtres noyau. None = rien à faire.
+
+    Filtres (décision 25/09, challenge croisé 3 IA) :
+      1. dividende > 0 · 2. net ≥ 4 % · 3. PER ≤ 14 · 4. payout ≤ 80 %
+      5. net ≤ 10 % (borne haute anti-mirage)
+      6. régularité ≥ 4/5 ans · 7. croissance ≥ −10 %/an · 8. liquidité ≥ 5 M F/j
+    hist : cache {code: bars} pour la liquidité (None = non vérifiée).
+    """
     code = code.upper()
     if price <= 0:
         return None
@@ -53,8 +62,21 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "") -> dict | 
         return None  # dividende tendu : jamais d'alerte d'achat
     gross = dps / price
     net = net_yield(gross)
+    if net > NET_MAX:
+        return None  # rendement mirage (FTSC 93 %) : jamais d'alerte d'achat
     entry = entry_price_for_net(dps)
     label = name or code
+
+    # nouveaux filtres (régularité, croissance, liquidité) — décision LEO 25/09
+    from .dividend_history import dividend_filters
+
+    extra = dividend_filters(code, hist)
+    extra_lines = "\n".join(f"      • {n}" for n in extra["notes"]) if extra["notes"] else ""
+    if not extra["ok"]:
+        # filtres ratés : log local (le radar reste de la veille), jamais d'alerte
+        print(f"[noyau-check] {code} rejeté par les filtres de fiabilité : "
+              f"{'; '.join(extra['reasons'])}")
+        return None
 
     if net >= TARGET_NET_YIELD_ENTRY:
         margin = (entry / price - 1) * 100 if price > 0 else 0.0
@@ -70,7 +92,8 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "") -> dict | 
             f"   • Rendement net : {net*100:.1f} % (exigé ≥ 4 %)\n"
             f"   • PER : {per:.1f} (limite 14)\n"
             f"   • Payout : {payout*100:.0f} %{payout_note}\n"
-            f"   • Dividende : {dps:,.0f} F brut/action\n\n"
+            f"   • Dividende : {dps:,.0f} F brut/action\n"
+            f"   • Fiabilité :\n{extra_lines}\n\n"
             f"📋 Ordre : ACHAT {code} ≤ {entry:,.0f} F\n"
             f"   → {qty} action(s) ≈ {qty*price:,.0f} F · dividende net ≈ {net_annual:,.0f} F/an\n\n"
             f"🚫 Rappel : veille + décision LEO — l'outil ne passe jamais d'ordre."
@@ -78,12 +101,13 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "") -> dict | 
         return {"verdict": "opportunity", "message": msg}
 
     payout_note = f" (payout {payout*100:.0f} %)" if payout > 0.75 else ""
+    extra_txt = f"\n   • Fiabilité :\n{extra_lines}" if extra_lines else ""
     msg = (
         f"📉 À PRÉPARER — {code} ({label})\n\n"
         f"💰 Cours : {price:,.0f} F — rendement net actuel {net*100:.1f} % (< 4 %)\n\n"
-        f"✅ Fondamentaux : PER {per:.1f} (≤ 14), dividende {dps:,.0f} F brut{payout_note}\n\n"
+        f"✅ Fondamentaux : PER {per:.1f} (≤ 14), dividende {dps:,.0f} F brut{payout_note}{extra_txt}\n\n"
         f"📋 Ordre limite à poser : ≤ {entry:,.0f} F (dps×0,88 ÷ 0,048)\n"
-        f"   → si le titre revient dans ta zone : ≥ 4 % net garanti\n"
+        f"   → si le titre revient dans ta zone : ≥ 4 % net COUVERT\n"
         f"   → sinon : tu l'as regardé passer, sans perdre un franc.\n\n"
         f"🚫 Rappel : veille + décision LEO — l'outil ne passe jamais d'ordre."
     )

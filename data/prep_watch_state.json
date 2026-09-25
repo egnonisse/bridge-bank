@@ -2,5 +2,9 @@
   "SMBC": {
     "limit": 11137.40959894806,
     "name": "SMB CI"
+  },
+  "SNTS": {
+    "limit": 35744.57593688363,
+    "name": "SONATEL SN"
   }
 }

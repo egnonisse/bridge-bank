@@ -1012,6 +1012,12 @@ def cmd_noyau_check(args: argparse.Namespace) -> None:
 
     watch = load_prep_watchlist()
     found = False
+    try:
+        from .backtest import load_all_history
+
+        hist = load_all_history(api, force=False)
+    except Exception:
+        hist = None
     for raw in args.code:
         code = raw.strip().upper()
         price = None
@@ -1027,7 +1033,7 @@ def cmd_noyau_check(args: argparse.Namespace) -> None:
             print(f"{code} : cours indisponible — ignoré.")
             continue
         name = quote.name if quote else code
-        res = evaluate_noyau_candidate(code, price, name)
+        res = evaluate_noyau_candidate(code, price, name, hist)
         if res:
             print(res["message"])
             print()
