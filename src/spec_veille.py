@@ -56,6 +56,7 @@ def scan(all_: bool = False) -> list:
         live = live_quotes(codes)
     except Exception:
         live = {}
+    fiches = []
     for code in codes:
         bars = hist[code]
         closes = [b.close for b in bars]
@@ -71,7 +72,15 @@ def scan(all_: bool = False) -> list:
         if f is None:
             continue
         f.blocks["cours_source"] = source
-        key = f"{code}:{f.blocks['main']}"
+        fiches.append(f)
+
+    # contexte de marée : combien de titres cochent le même schéma aujourd'hui
+    from collections import Counter
+
+    maree = Counter(f.blocks["main"] for f in fiches)
+    for f in fiches:
+        f.blocks["nb_meme_schema"] = maree[f.blocks["main"]]
+        key = f"{f.code}:{f.blocks['main']}"
         seen = state.get(key, "")
         if not all_ and seen:
             try:

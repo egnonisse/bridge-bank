@@ -82,6 +82,18 @@ def build_fiche(code: str, name: str, closes: list) -> FicheSpec | None:
     else:
         verdict = "OUI"
 
+    # fondamental connu (la fiche ne juge PAS le loyer, mais SIGNALE les
+    # risques connus : payout > 100 %, PER extrême — règle LEO 25/09)
+    try:
+        from .fundamentals import get_fundamentals
+
+        fund = get_fundamentals(code)
+        dps = fund.get("dps") or 0
+        per = fund.get("per") or 0
+        payout = dps * per / price * 100 if dps and per else None
+    except Exception:
+        dps, per, payout = 0, 0, None
+
     # prix d'entrée et filet
     if main == "CASSURE":
         plafond = max(closes[-251:-1])
@@ -109,6 +121,9 @@ def build_fiche(code: str, name: str, closes: list) -> FicheSpec | None:
         "palier20": entry_lo * 1.20,
         "palier35": entry_lo * 1.35,
         "palier50": entry_lo * 1.50,
+        "dps": dps,
+        "per": per,
+        "payout": payout,
     }
     return FicheSpec(code=code, name=name, price=price, schemas=schemas,
                      zone=zone, verdict=verdict, blocks=blocks)
@@ -121,21 +136,44 @@ def build_message(f: FicheSpec) -> str:
     zwin = f" ({b['zone_win']*100:.0f} % de réussite)" if b.get("zone_win") is not None else ""
     touched = b["touched"]
     mot = SCHEMA_WORDS.get(main, main.lower())
+    # « rare » n'est vrai que pour la cassure — l'éveil est une marée
+    if main == "CASSURE":
+        rare = "un signal RARE (moins de 10 fois en 10 ans)"
+    else:
+        n_maree = b.get("nb_meme_schema")
+        rare = (f"un signal de veille — attention : {n_maree} titre(s) cochent ce "
+                f"même signal aujourd'hui (la marée du marché), ce n'est pas un "
+                f"événement propre à ce titre") if n_maree else \
+            "un signal de veille (courant en marché haussier : la marée du marché)"
 
     head = (f"{SCHEMA_LABELS[main]} — {f.code} ({f.name})\n\n"
             f"Cours de référence : {f.price:,.0f} F "
             f"({'LIVE du moment' if b.get('cours_source') == 'live' else 'dernière clôture connue'})\n"
             f"Ce qui se passe : ce cours a déclenché le schéma "
-            f"« {mot} » — un signal rare, jamais automatique.\n\n"
+            f"« {mot} » — {rare}, jamais automatique.\n\n"
             f"📊 CE QUE DISENT NOS 10 ANS DE DONNÉES :\n"
-            f"   • {b['win_12m']*100:.0f} % des {b['n']} cas finissent plus hauts 12 mois après "
-            f"(+{b['median_net']*100:.0f} % net médian)\n")
+            f"   • La probabilité qui DÉCIDE est celle du schéma : "
+            f"{b['win_12m']*100:.0f} % des {b['n']} cas finissent plus hauts "
+            f"12 mois après (+{b['median_net']*100:.0f} % net médian)\n")
     if touched:
         head += (f"   • Ton palier +20 % : touché dans {touched.get('0.20', 0)*100:.0f} % des cas\n"
                  f"   • Ton palier +50 % : touché dans {touched.get('0.50', 0)*100:.0f} % des cas\n")
-    head += (f"   • {zlabel} : {ztxt}{zwin}\n"
+    head += (f"   • {zlabel} : {ztxt}{zwin} — la zone MODULE le schéma\n"
              f"   ⚠️ {b['n']} cas seulement : probabilité honnête, pas une certitude — "
              f"les perdants existent.\n")
+
+    # fondamental connu — signalé, jamais jugé (la poche spé joue le prix)
+    if b.get("dps"):
+        net = b["dps"] * 0.88 / f.price * 100 - 0.8 if f.price else 0
+        fund = (f"   • 🏦 Fondamental connu : dividende {b['dps']:,.0f} F/an "
+                f"(≈ {net:.1f} % net), PER {b['per']:.1f}")
+        if b.get("payout") and b["payout"] > 100:
+            fund += (f", ⚠️ PAYOUT {b['payout']:.0f} % : elle paie PLUS qu'elle ne "
+                     f"gagne — risque de coupe du dividende (un pari sur ce titre "
+                     f"porte ce risque en plus)")
+        elif b.get("per") and b["per"] > 25:
+            fund += f", ⚠️ PER {b['per']:.0f} : le prix est loin de ses bénéfices"
+        head += fund + "\n"
 
     if f.verdict == "NON":
         return head + ("\n📋 VERDICT : ❌ LA FICHE DIT NON.\n"

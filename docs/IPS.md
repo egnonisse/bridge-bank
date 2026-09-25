@@ -1,6 +1,6 @@
 # IPS — Politique d'Investissement (Bridge Bank)
 
-**Investisseur :** LEO (Ouattara Anzoumana) · **Marché :** BRVM (UEMOA) · **Devise :** FCFA
+**Investisseur :** LEO (Egnonisse Léonard) · **Marché :** BRVM (UEMOA) · **Devise :** FCFA
 **Version :** 1.2 · **Date :** 2026-08-18 · **Horizon :** ≥ 3 ans
 
 > Ce document est la référence. Toute décision d'achat/vente doit pouvoir être
