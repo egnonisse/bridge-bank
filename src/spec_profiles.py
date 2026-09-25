@@ -74,10 +74,17 @@ def detect_schemas(closes, volumes=None):
             vol_ok = med <= 0 or volumes[i] >= med
         if vol_ok:
             found.append("CASSURE")
-    # éveil : rebond >= +10 % depuis le creux des 60 séances
+    # éveil : rebond >= +10 % depuis le creux des 60 séances, confirmé
+    # par un volume >= médiane des 60 séances (épreuve 25/09 : sans le
+    # volume, un seul print illiquide peut créer un faux rebond)
     creux60 = min(closes[i - 60 : i])
     if closes[i] / creux60 - 1 >= 0.10:
-        found.append("EVEIL")
+        vol_ok = True
+        if volumes and len(volumes) == len(closes):
+            med = statistics.median(volumes[-61:-1])
+            vol_ok = med <= 0 or volumes[i] >= med
+        if vol_ok:
+            found.append("EVEIL")
     # panique : RSI 14 < 30
     r = rsi(closes)
     if r[i] is not None and r[i] < 30:

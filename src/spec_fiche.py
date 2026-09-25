@@ -14,12 +14,12 @@ from .spec_profiles import load_profiles, zone_of, zone_label, detect_schemas
 # Emojis / libellés par schéma
 SCHEMA_LABELS = {
     "CASSURE": "🔓 CASSURE DE 1 AN",
-    "EVEIL": "🌅 DÉBUT DE HAUSSE",
+    "EVEIL": "🌅 REBOND CONFIRMÉ",
     "PANIQUE": "🩹 RACHAT DE PANIQUE",
 }
 SCHEMA_WORDS = {
     "CASSURE": "cassure de 1 an",
-    "EVEIL": "début de hausse",
+    "EVEIL": "rebond confirmé de +10 % depuis le creux des 60 séances",
     "PANIQUE": "rachat de panique",
 }
 SCHEMA_ORDER = ["CASSURE", "EVEIL", "PANIQUE"]
@@ -154,7 +154,8 @@ def build_message(f: FicheSpec) -> str:
             f"Ce qui se passe : ce cours a déclenché le schéma "
             f"« {mot} » — {rare}, jamais automatique.\n\n"
             f"📊 FRÉQUENCES HISTORIQUES (10 ans, hors frais déjà déduits) :\n"
-            f"   • La fréquence qui DÉCIDE est celle du schéma : "
+            f"   • La fréquence qui DÉCIDE est celle du schéma BRUT (avant\n"
+            f"     les filtres zone + volume ci-dessous) : "
             f"{b['win_12m']*100:.0f} % de {b['n']} cas OBSERVÉS finissent plus hauts "
             f"12 mois après (+{b['median_net']*100:.0f} % net médian)\n")
     if touched:

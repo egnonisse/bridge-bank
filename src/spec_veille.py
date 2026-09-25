@@ -19,6 +19,8 @@ from .spec_fiche import build_fiche
 
 SPAM_DAYS = 7
 STOPOUT_COOLDOWN_DAYS = 30  # un titre stoppé ne re-entre pas en fiche avant 30 j
+STOPOUT_SUSPEND_DAYS = 60   # 2 stop-outs consécutifs = suspension 60 j
+STOPOUT_SUSPEND_COUNT = 2
 DATA = Path(__file__).resolve().parents[1] / "data"
 STATE_FILE = DATA / "spec_seen_state.json"
 
@@ -65,16 +67,25 @@ def scan(all_: bool = False) -> list:
         from .speculation import load_positions
 
         spec_pos = load_positions()
-        stopout = {}
+        stopout_last: dict[str, date] = {}
+        stopout_days: dict[str, int] = {}
+        stop_counts: dict[str, int] = {}
         for p in spec_pos:
             if p.closed and "stop" in (p.close_reason or "").lower():
+                code = p.code.upper()
+                stop_counts[code] = stop_counts.get(code, 0) + 1
                 try:
                     d = date.fromisoformat((p.close_reason or "").split(" ")[-1][:10])
                 except Exception:
                     d = date.fromisoformat(p.opened_at[:10])
-                stopout[p.code.upper()] = d
+                if code not in stopout_last or d > stopout_last[code]:
+                    stopout_last[code] = d
+        for code, n_stops in stop_counts.items():
+            # 2 stop-outs consécutifs = suspension longue, sinon cooldown simple
+            stopout_days[code] = (STOPOUT_SUSPEND_DAYS if n_stops >= STOPOUT_SUSPEND_COUNT
+                                  else STOPOUT_COOLDOWN_DAYS)
     except Exception:
-        stopout = {}
+        stopout_last, stopout_days = {}, {}
     for code in codes:
         bars = hist[code]
         closes = [b.close for b in bars]
@@ -88,8 +99,8 @@ def scan(all_: bool = False) -> list:
             source = "live"
         else:
             source = "cloture"
-        if code in stopout and (date.today() - stopout[code]).days < STOPOUT_COOLDOWN_DAYS:
-            continue  # récent stop-out : pas de nouvelle fiche pour ce titre
+        if code in stopout_last and (date.today() - stopout_last[code]).days < stopout_days.get(code, STOPOUT_COOLDOWN_DAYS):
+            continue  # stop-out récent (ou suspension) : pas de nouvelle fiche
         f = build_fiche(code, code, closes, volumes)
         if f is None:
             continue
