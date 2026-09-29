@@ -13,5 +13,20 @@
     "closed": false,
     "close_reason": "",
     "close_price": 0.0
+  },
+  {
+    "code": "SMBC",
+    "name": "SMB CI",
+    "entry_price": 17000.0,
+    "quantity": 2,
+    "opened_at": "2026-09-29T09:00:00",
+    "stop_loss": 14450.0,
+    "highest": 17000.0,
+    "sold_1": false,
+    "sold_2": false,
+    "review_alerted": false,
+    "closed": false,
+    "close_reason": "",
+    "close_price": 0.0
   }
 ]
