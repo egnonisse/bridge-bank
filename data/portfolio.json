@@ -50,8 +50,8 @@
   {
     "code": "PALC",
     "name": "PALM CI",
-    "entry_price": 8671.84,
-    "quantity": 25,
+    "entry_price": 8641.0,
+    "quantity": 26,
     "dps": 501.596,
     "per_open": 8.8,
     "opened_at": "2026-09-08T11:00:00",
