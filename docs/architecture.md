@@ -1,8 +1,10 @@
 # Architecture — organisation cible et plan de migration
 
-**État :** lot 0 **terminé** le 09/10/2026. **Aucun fichier n'a été déplacé** : le lot 1 commence.
-**Prérequis en place :** `src/paths.py` (source unique des chemins) + `scripts/verifier_chemins.py`
-(contrôle automatique). Carte complète : **41 modules sur 41** (§4).
+**État :** lot 0 **terminé** le 09/10/2026. **Aucun fichier n'a encore été déplacé** : le lot 1
+commence.
+**Décisions du 09/10 :** modules du **métier en français**, plomberie en anglais ; domaine de
+collecte nommé **`src/collecte/`**, `data/` réservé aux données (§3). Carte complète :
+**41 modules sur 41** (§4).
 
 ---
 
@@ -32,7 +34,7 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 ```
 
 Ce calcul dépend de la **profondeur** du fichier. Déplacer `src/portfolio.py` vers
-`src/portfolio/positions.py` fait passer `parent.parent` de la **racine** à `src/` — et
+`src/portefeuille/positions.py` fait passer `parent.parent` de la **racine** à `src/` — et
 **tous les chargements de données échouent en silence** : un `load()` qui ne trouve pas son
 fichier renvoie une valeur par défaut, le programme continue avec des données vides.
 
@@ -83,42 +85,41 @@ liste `EXCLUS` a disparu : un contrôle qui s'exempte lui-même ne prouve rien.
   **retéléchargeables**, les positions sont **irremplaçables**. Les confondre dans un même
   dossier invite à écraser les secondes en rafraîchissant les premières.
 
-### Ce qui doit être tranché avant de commencer
+### Ce qui est tranché (09/10/2026)
 
-**a) Français ou anglais pour les noms de modules ?**
+**a) Français ou anglais pour les noms de modules ? → le métier en français, la plomberie en
+anglais.**
 
-Le projet est aujourd'hui mixte : `regles.py`, `nettoyage_aberrantes.py`,
-`divisions_officielles.py` sont en français ; `portfolio.py`, `report.py`, `backtest.py` en
-anglais ; `format_fr.py`, `seuils_vente.py`, `regime_marche.py` mélangent.
+Le projet était mixte : `regles.py`, `nettoyage_aberrantes.py`, `divisions_officielles.py` en
+français ; `portfolio.py`, `report.py`, `backtest.py` en anglais ; `format_fr.py`,
+`seuils_vente.py`, `regime_marche.py` mélangeaient. La structure proposée au départ était anglaise
+(`rules.py`, `models.py`, `enums.py`) et aurait **renommé `regles.py`** — le catalogue qu'on vient
+de créer, tester et documenter.
 
-La structure proposée est **anglaise** (`rules.py`, `models.py`, `enums.py`), ce qui
-**renommerait `regles.py`** — le catalogue qu'on vient de créer, tester et documenter.
+Décision : **`regles.py`, `seuils.py`, `marche.py`, `positions.py` côté métier ; `paths.py`,
+`cache.py`, `http.py`, `cli.py` côté plomberie.** Conséquence importante : **aucun module existant
+n'est renommé** — les lots 1 à 5 sont des déplacements et des découpages, pas des renommages.
+Les noms de dossier suivent la même règle : `domaine/`, `collecte/`, `analyse/`, `strategie/`,
+`portefeuille/`, `alertes/` (métier) ; `cli/`, `infrastructure/` (plomberie) ; `calibration/` et
+`backtest/` sont des termes techniques employés tels quels.
 
-**Ma recommandation : le métier en français, l'infrastructure en anglais.**
-`regles.py`, `seuils.py`, `marche.py`, `positions.py` (le domaine) ; `paths.py`, `cache.py`,
-`http.py`, `cli.py` (la plomberie). C'est déjà la tendance du projet, ça évite un renommage
-gratuit, et ça garde les noms lisibles pour toi. **Mais c'est ton choix** — la seule chose à
-éviter est un troisième mélange.
+**b) `src/data/` (code) contre `data/` (données) ? → `src/collecte/`.**
 
-**b) `src/data/` (code) contre `data/` (données).**
+`from src.data import ...` aurait été confondu avec `DATA_DIR` par tout le monde, y compris dans
+six mois. Le domaine de code s'appelle **`collecte/`** ; **`data/` reste aux données seules**.
 
-Avoir `src/data/` pour le code de collecte **et** `data/` pour les données est une source
-d'erreur durable : `from src.data import ...` sera confondu avec `DATA_DIR` par tout le
-monde, y compris dans six mois. **Recommandation : nommer le domaine de code `src/collecte/`**
-(ou `src/bourse/`), et laisser `data/` aux données seules.
-
-## 4. Carte de migration — 41 modules vers 9 domaines
+## 4. Carte de migration — 41 modules vers 10 domaines (9 métier + la plomberie)
 
 | Domaine cible | Modules actuels | Nb |
 |---|---|---|
-| **`domain/`** — règles et modèles | `regles.py` · `taxation.py` · `models.py` (cotation, barre OHLCV, analyse — et **modèle de position** à extraire de `portfolio.py`) | 3 |
-| **`data/`** (collecte) | `bsapi.py` · `live.py` · `dividend_history.py` · `backtest.py` (chargement) · `cache_integrity.py` · `fundamentals.py` · `dividends.py` · `divisions_officielles.py` · `nettoyage_aberrantes.py` | 9 |
-| **`analysis/`** | `fondamentaux_historiques.py` · `screener.py` · `screening.py` · `bonds.py` · `boc.py` · `news.py` · `radar.py` | 7 |
-| **`strategy/`** | `strategie_leo.py` · `noyau_check.py` · `orders.py` · `speculation.py` · `spec_profiles.py` · `paliers_sortie.py` · `spec_fiche.py` · `spec_veille.py` | 8 |
+| **`domaine/`** — règles et modèles | `regles.py` · `taxation.py` · `models.py` (cotation, barre OHLCV, analyse — et **modèle de position** à extraire de `portfolio.py`) | 3 |
+| **`collecte/`** | `bsapi.py` · `live.py` · `dividend_history.py` · `backtest.py` (chargement) · `cache_integrity.py` · `fundamentals.py` · `dividends.py` · `divisions_officielles.py` · `nettoyage_aberrantes.py` | 9 |
+| **`analyse/`** | `fondamentaux_historiques.py` · `screener.py` · `screening.py` · `bonds.py` · `boc.py` · `news.py` · `radar.py` | 7 |
+| **`strategie/`** | `strategie_leo.py` · `noyau_check.py` · `orders.py` · `speculation.py` · `spec_profiles.py` · `paliers_sortie.py` · `spec_fiche.py` · `spec_veille.py` | 8 |
 | **`calibration/`** | `seuils_vente.py` · `regime_marche.py` | 2 |
-| **`portfolio/`** | `portfolio.py` (positions, cash) · `alerts.py` · `report.py` · `format_fr.py` | 4 |
-| **`alerts/`** | `notify.py` (transport Telegram, utilisé par `alerts` et `report`) + extrait de `portfolio.py` : `_profit_info_alert`, `_msg_regime`, `reinforcement_messages` | 1 + extrait |
-| **`backtesting/`** | `backtest_noyau.py` · `challenge_validateur.py` · `challenge_schema.py` · `challenge_indicateurs.py` | 4 |
+| **`portefeuille/`** | `portfolio.py` (positions, cash) · `alerts.py` · `report.py` · `format_fr.py` | 4 |
+| **`alertes/`** | `notify.py` (transport Telegram, utilisé par `alerts` et `report`) + extrait de `portfolio.py` : `_profit_info_alert`, `_msg_regime`, `reinforcement_messages` | 1 + extrait |
+| **`backtest/`** | `backtest_noyau.py` · `challenge_validateur.py` · `challenge_schema.py` · `challenge_indicateurs.py` | 4 |
 | **`cli/`** | `main.py` (**1 310 lignes, 25 commandes**) · `ajustement.py` | 2 |
 | **`infrastructure/`** | `paths.py` (puis la plomberie : `cache.py`, `http.py`) | 1 |
 
@@ -127,15 +128,15 @@ monde, y compris dans six mois. **Recommandation : nommer le domaine de code `sr
 
 Corrections apportées à la première version de cette carte :
 
-- **8 modules n'avaient aucun domaine** : `live.py` et `dividend_history.py` (→ `data/`),
-  `screening.py` et `radar.py` (→ `analysis/`), `orders.py`, `spec_fiche.py`, `spec_veille.py`
-  (→ `strategy/`), `notify.py` (→ `alerts/`).
+- **8 modules n'avaient aucun domaine** : `live.py` et `dividend_history.py` (→ `collecte/`),
+  `screening.py` et `radar.py` (→ `analyse/`), `orders.py`, `spec_fiche.py`, `spec_veille.py`
+  (→ `strategie/`), `notify.py` (→ `alertes/`).
 - **2 modules cités n'existent pas** dans `src/` : `richbourse.py` et `sika.py`. Les collecteurs
   correspondants vivent dans `scripts/` (ex. `sika_download_cotations.py`) et écrivent dans `data/`.
 - **`models.py` existe déjà** (cotation, barre OHLCV, analyse) : c'est lui qui accueille le
   modèle de position extrait de `portfolio.py` — il n'y a rien à créer.
-- La carte compte **9 domaines**, pas 8 : `alerts/` est distinct de `portfolio/`, et
-  `infrastructure/` porte la plomberie.
+- Le compte était faux : **9 domaines métier** (et non 8) **+ `infrastructure/`** pour la
+  plomberie — `alertes/` est distinct de `portefeuille/`.
 - **`screener.py` et `screening.py` se recouvrent** (indicateurs techniques, RSI/EMA/momentum) :
   à fusionner au lot 3, sinon la duplication de règles revient par la porte de derrière.
 
@@ -149,13 +150,16 @@ Corrections apportées à la première version de cette carte :
 | Lot | Action | Vérification | État |
 |---|---|---|---|
 | **0** | Migrer les 19 chemins vers `src/paths.py` | `verifier_chemins.py --strict` → 0 | ✅ **fait le 09/10** |
-| **1** | Créer les dossiers vides + `__init__.py` | `pytest` inchangé | à faire |
+| **1** | Créer les dossiers décidés (§4) + `__init__.py` | `pytest` inchangé | à faire |
 | **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | à faire |
-| **3** | Déplacer `calibration/`, `analysis/`, `backtesting/` | idem | à faire |
-| **4** | Déplacer `data/`, `strategy/` | idem | à faire |
-| **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alerts/`, modèle → `domain/`) puis `main.py` | idem + relecture | à faire |
+| **3** | Déplacer `calibration/`, `analyse/`, `backtest/` | idem | à faire |
+| **4** | Déplacer `collecte/`, `strategie/` | idem | à faire |
+| **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire |
 
 **Le lot 0 était obligatoire avant tout déplacement** — c'est lui qui rend les autres sûrs.
+
+**Le lot 1 fige les noms de dossiers** : c'est pour ça que les deux questions de §3 devaient être
+tranchées avant lui. Elles le sont (09/10) — il n'y a plus d'attente.
 
 **Le lot 5 est un découpage, pas un déplacement** : c'est le plus risqué, et il vient en
 dernier, quand l'arborescence est stable.
@@ -189,22 +193,19 @@ décision ; un écart sur les deux autres est une régression.
 | CI | à créer — doit lancer les **trois** filets : `pytest`, `verifier_chemins.py --strict`, `auditer_constantes.py --comparer` |
 | `LICENSE` | à créer si publication |
 
-## 9. État git — à savoir avant de commencer
+## 9. Versionnage — état après le tri du 09/10
 
-Le dépôt est **très en retard sur le disque**. Au 09/10, `git ls-files` compte 165 fichiers
-suivis, alors que le disque en contient bien plus : plus de 100 fichiers **non suivis**, dont
-des **modules de `src/`** (`regles.py`, `seuils_vente.py`, `strategie_leo.py`,
-`paliers_sortie.py`, `format_fr.py`, `paths.py`…), la moitié des `scripts/` d'analyse, 9 tests
-et 7 documents de `docs/`. Le dernier commit datait du 01/10.
+Le dépôt était **très en retard sur le disque** : 165 fichiers suivis contre plus de 100
+**non suivis**, dont des **modules entiers de `src/`** (`regles.py`, `seuils_vente.py`,
+`strategie_leo.py`, `paliers_sortie.py`, `format_fr.py`, `paths.py`…), la moitié des `scripts/`
+d'analyse, 9 tests et 6 documents de `docs/`. Le prérequis du lot 0 (`paths.py`) n'était même pas
+committé : un `git clean` l'aurait effacé.
 
-Conséquence directe pour le lot 1 : **ne jamais commiter en bloc**. Un `git add -A` mélangerait
-le lot 0, le chantier d'unification du 09/10 et des semaines de travail non suivi — et
-`git bisect` deviendrait inutilisable au moment précis où il servirait.
+Tri effectué le 09/10 : commits séparés par famille (unification du retournement, lot 0 chemins,
+puis modules `src/`, tests, scripts, documents, données), et `.gitignore` complété pour les
+artefacts — `data/*.pkl` (~7 Mo chacun), les pages HTML brutes des collecteurs, les sauvegardes
+locales `data/*.bak-avant-*`.
 
-Deux commits séparés ont été faits le 09/10 (unification du retournement, puis lot 0 chemins).
-Le reliquat demande un tri explicite : scripts d'analyse, documents de décision, tests — et
-surtout les **filets de sécurité**, qui ne survivraient pas à un `git clean`.
-
-À laisser hors versionnage : les sauvegardes locales `data/*.bak-avant-*` et les pages HTML
-brutes de collecte (`data/bfin_*.html`, `data/afx_*.html`, `data/sa.html`) — artefacts de
-diagnostic, pas des données du système.
+**Règle pour la suite :** `scripts/git_backup.py` fait **`git add -A`** chaque dimanche 09h. Un
+arbre non trié le jour du cron part donc dans un **commit fourre-tout** — trier les familles
+avant le dimanche, et garder le réflexe « un lot = un commit ».
