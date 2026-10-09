@@ -210,30 +210,29 @@ locales `data/*.bak-avant-*`.
 arbre non trié le jour du cron part donc dans un **commit fourre-tout** — trier les familles
 avant le dimanche, et garder le réflexe « un lot = un commit ».
 
-### ⚠ Sauvegarde distante : cause identifiée (09/10/2026)
+### ✅ Sauvegarde distante rétablie (09/10/2026) — sauf pour le cron
 
-**Le dépôt n'était pas supprimé.** LEO l'a passé en public le 09/10, ce qui a levé le masquage et
-révélé la vraie erreur :
+**Cause réelle, en deux temps :**
 
-```
-$ git push --dry-run
-remote: Permission to egnonisse/bridge-bank.git denied to aiwatch-ci.
-fatal: ... The requested URL returned error: 403
-```
+1. **Mauvais compte** : le credential git par défaut de ce poste appartient à `aiwatch-ci`, qui n'a
+   aucun droit sur ce dépôt. Tant que le dépôt était **privé**, GitHub masquait tout derrière
+   « Repository not found » — indiscernable d'une suppression, d'où un premier diagnostic erroné.
+2. **« Your repository is disabled »** au premier essai, juste après la bascule de visibilité :
+   **transitoire**. L'API montrait déjà `disabled = false`, `private = true`,
+   `permissions.push = true`, et le second essai a poussé sans erreur. Aucun des 13 dépôts du
+   compte n'est désactivé.
 
-**Cause unique : le credential git stocké sur cette machine appartient au compte `aiwatch-ci`**,
-qui n'a aucun droit sur `egnonisse/bridge-bank`. Tant que le dépôt était **privé**, GitHub
-répondait « Repository not found » — masquage volontaire : un dépôt privé invisible au compte est
-**indiscernable** d'un dépôt supprimé. D'où un premier diagnostic erroné (corrigé, documenté ici
-pour ne pas le refaire).
+**Fait le 09/10 :**
 
-**Conséquence :** le cron `BridgeBank backup git hebdo` échoue depuis le 05/10 et échouera chaque
-dimanche tant que l'accès en écriture n'est pas réglé. Les **12 commits locaux** (30/09 → 09/10)
-ne sont sauvegardés nulle part à distance.
+- dépôt repassé **en privé** — le passage en public exposait les avis courtier et rendait
+  indexables les positions, le cash et les snapshots ;
+- `git push` avec le jeton **egnonisse** du `.env` Hermes (fine-grained, expiration 07/01/2027) :
+  `4d1f21d..5349d09 main -> main` — vérifié, `origin/main` = `HEAD` ;
+- les **13 commits locaux** (30/09 → 09/10) sont enfin sauvegardés à distance.
 
 **Règle de diagnostic, à réutiliser :** GitHub répond la *même* chose pour un dépôt privé
-inaccessible et pour un dépôt supprimé. Ne jamais conclure « dépôt supprimé » ni « identifiants
-valides » sans savoir **quel compte** s'authentifie :
+inaccessible et pour un dépôt supprimé. Ne jamais conclure « dépôt supprimé » — ni « identifiants
+valides » — sans savoir **quel compte** s'authentifie :
 
 ```bash
 printf 'protocol=https\nhost=github.com\n\n' | git credential fill | grep '^username='
@@ -243,10 +242,17 @@ Un témoin « ça marche ailleurs » n'est valable que s'il est **privé** et te
 (`git -c credential.helper= ls-remote <url>`) : un dépôt public répond sans authentification et ne
 prouve rien.
 
-⚠️ **Confidentialité :** ce dépôt contient des données de portefeuille (positions, cash, snapshots)
-et des documents courtier (`data/avis/*.pdf`, manuels BSTrade) — en public, ils sont indexables.
-Tant que la question de l'accès n'est pas tranchée, **aucun push n'a été effectué** : les 12
-commits restent locaux, et le filet reste le bundle ci-dessous.
+**Reste à régler — le cron :** `git_backup.py` pousse avec le credential **par défaut** du poste,
+toujours celui d'`aiwatch-ci` → `BridgeBank backup git hebdo` **échouera encore dimanche 09h**.
+Trois voies :
 
-Filet : `D:/PROJETS/bridge-bank-2026-10-09.bundle` — histoire complète vérifiée (`git bundle
-verify` : *complete history*), ~27 Mo, clonable pour restaurer.
+- ajouter `aiwatch-ci` en collaborateur *write* sur le dépôt — le credential déjà stocké suffit ;
+- enregistrer le jeton `egnonisse` dans le gestionnaire de credentials Windows (⚠️ il remplace
+  alors celui d'`aiwatch-ci` pour tout `github.com` sur ce poste) ;
+- faire lire le jeton du `.env` par `git_backup.py` (auto-contenu, mais couple le projet à un
+  fichier Hermes).
+
+**À trancher avant dimanche** — c'est la cause du prochain échec.
+
+Filet conservé par prudence : `D:/PROJETS/bridge-bank-2026-10-09.bundle` (histoire complète
+vérifiée, ~27 Mo) — désormais redondant avec le distant.
