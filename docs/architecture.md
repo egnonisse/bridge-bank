@@ -210,30 +210,43 @@ locales `data/*.bak-avant-*`.
 arbre non trié le jour du cron part donc dans un **commit fourre-tout** — trier les familles
 avant le dimanche, et garder le réflexe « un lot = un commit ».
 
-### ⚠ Sauvegarde distante en échec depuis le 05/10 — cause à trancher
+### ⚠ Sauvegarde distante : cause identifiée (09/10/2026)
 
-`origin` = `https://github.com/egnonisse/bridge-bank` → **« Repository not found »**, sans
-redirection de renommage. **Ce qui est établi :**
+**Le dépôt n'était pas supprimé.** LEO l'a passé en public le 09/10, ce qui a levé le masquage et
+révélé la vraie erreur :
 
-- le run du cron du 05/10 a échoué : `⚠️ Backup Bridge Bank ÉCHOUÉ : remote: Repository not found.` ;
-- dernier commit présent sur `origin/main` : `4d1f21d` (29/09) → les **12 commits suivants ne sont
-  sauvegardés qu'en local** ;
-- le credential git stocké sur cette machine appartient au compte **`aiwatch-ci`**, pas à
-  `egnonisse` (`git credential fill` → `username=aiwatch-ci`).
+```
+$ git push --dry-run
+remote: Permission to egnonisse/bridge-bank.git denied to aiwatch-ci.
+fatal: ... The requested URL returned error: 403
+```
 
-**Deux causes restent possibles, et rien ici ne les sépare :** GitHub répond *exactement* la même
-chose pour un dépôt privé auquel le compte n'a pas accès que pour un dépôt supprimé.
+**Cause unique : le credential git stocké sur cette machine appartient au compte `aiwatch-ci`**,
+qui n'a aucun droit sur `egnonisse/bridge-bank`. Tant que le dépôt était **privé**, GitHub
+répondait « Repository not found » — masquage volontaire : un dépôt privé invisible au compte est
+**indiscernable** d'un dépôt supprimé. D'où un premier diagnostic erroné (corrigé, documenté ici
+pour ne pas le refaire).
 
-⚠️ **Fausse piste écartée** (erreur de raisonnement commise puis corrigée le 09/10) :
-`egnonisse/PharmaScan` répond sans aucun credential — ce dépôt est **public**, il ne prouve donc
-rien sur l'authentification. En tirer « les identifiants ne sont pas en cause » était abusif :
-le seul credential disponible est celui d'un **autre compte** que le propriétaire du dépôt.
+**Conséquence :** le cron `BridgeBank backup git hebdo` échoue depuis le 05/10 et échouera chaque
+dimanche tant que l'accès en écriture n'est pas réglé. Les **12 commits locaux** (30/09 → 09/10)
+ne sont sauvegardés nulle part à distance.
 
-**À trancher par LEO** : le dépôt existe-t-il toujours sous `egnonisse/bridge-bank` ?
+**Règle de diagnostic, à réutiliser :** GitHub répond la *même* chose pour un dépôt privé
+inaccessible et pour un dépôt supprimé. Ne jamais conclure « dépôt supprimé » ni « identifiants
+valides » sans savoir **quel compte** s'authentifie :
 
-- **oui** → ajouter `aiwatch-ci` comme collaborateur (*write*) : le credential déjà présent suffit,
-  ou s'authentifier en tant qu'`egnonisse` ;
-- **non** → le recréer (privé) et pousser.
+```bash
+printf 'protocol=https\nhost=github.com\n\n' | git credential fill | grep '^username='
+```
 
-Filet en attendant : `D:/PROJETS/bridge-bank-2026-10-09.bundle` — histoire complète vérifiée
-(`git bundle verify` : *complete history*), ~27 Mo, clonable pour restaurer.
+Un témoin « ça marche ailleurs » n'est valable que s'il est **privé** et testé **sans** credential
+(`git -c credential.helper= ls-remote <url>`) : un dépôt public répond sans authentification et ne
+prouve rien.
+
+⚠️ **Confidentialité :** ce dépôt contient des données de portefeuille (positions, cash, snapshots)
+et des documents courtier (`data/avis/*.pdf`, manuels BSTrade) — en public, ils sont indexables.
+Tant que la question de l'accès n'est pas tranchée, **aucun push n'a été effectué** : les 12
+commits restent locaux, et le filet reste le bundle ci-dessous.
+
+Filet : `D:/PROJETS/bridge-bank-2026-10-09.bundle` — histoire complète vérifiée (`git bundle
+verify` : *complete history*), ~27 Mo, clonable pour restaurer.
