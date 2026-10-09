@@ -1,0 +1,525 @@
+[
+ {
+  "date": "2026-09-30",
+  "journee": "30/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 37,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-29",
+  "journee": "29/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 46,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-28",
+  "journee": "28/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 17,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-25",
+  "journee": "25/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 24,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-24",
+  "journee": "24/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 28,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 188.4356,
+  "nb_divergences": 1,
+  "details": [
+   {
+    "code": "BBGC",
+    "officiel": 20926.0,
+    "cache": 7255.0,
+    "ecart_pct": 188.4356
+   }
+  ]
+ },
+ {
+  "date": "2026-09-23",
+  "journee": "23/09/2026",
+  "titres_officiel": 45,
+  "comparaisons": 45,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-22",
+  "journee": "22/09/2026",
+  "titres_officiel": 45,
+  "comparaisons": 45,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-21",
+  "journee": "21/09/2026",
+  "titres_officiel": 44,
+  "comparaisons": 24,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-18",
+  "journee": "18/09/2026",
+  "titres_officiel": 44,
+  "comparaisons": 35,
+  "ecart_median_pct": 0.0,
+  "ecart_max_pct": 0.0,
+  "nb_divergences": 0,
+  "details": []
+ },
+ {
+  "date": "2026-09-17",
+  "journee": "17/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 44,
+  "ecart_median_pct": 5.8051,
+  "ecart_max_pct": 24.1611,
+  "nb_divergences": 44,
+  "details": [
+   {
+    "code": "ABJC",
+    "officiel": 3260.0,
+    "cache": 4050.0,
+    "ecart_pct": -19.5062
+   },
+   {
+    "code": "BICB",
+    "officiel": 8600.0,
+    "cache": 10435.0,
+    "ecart_pct": -17.5851
+   },
+   {
+    "code": "BICC",
+    "officiel": 31600.0,
+    "cache": 31250.0,
+    "ecart_pct": 1.12
+   },
+   {
+    "code": "BNBC",
+    "officiel": 1900.0,
+    "cache": 2060.0,
+    "ecart_pct": -7.767
+   },
+   {
+    "code": "BOAB",
+    "officiel": 9340.0,
+    "cache": 10100.0,
+    "ecart_pct": -7.5248
+   },
+   {
+    "code": "BOABF",
+    "officiel": 7900.0,
+    "cache": 8000.0,
+    "ecart_pct": -1.25
+   },
+   {
+    "code": "BOAC",
+    "officiel": 11285.0,
+    "cache": 12000.0,
+    "ecart_pct": -5.9583
+   },
+   {
+    "code": "BOAM",
+    "officiel": 6095.0,
+    "cache": 6900.0,
+    "ecart_pct": -11.6667
+   },
+   {
+    "code": "BOAN",
+    "officiel": 4900.0,
+    "cache": 5350.0,
+    "ecart_pct": -8.4112
+   },
+   {
+    "code": "BOAS",
+    "officiel": 8145.0,
+    "cache": 8190.0,
+    "ecart_pct": -0.5495
+   }
+  ]
+ },
+ {
+  "date": "2026-09-16",
+  "journee": "16/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 44,
+  "ecart_median_pct": 6.6835,
+  "ecart_max_pct": 22.8669,
+  "nb_divergences": 44,
+  "details": [
+   {
+    "code": "ABJC",
+    "officiel": 3260.0,
+    "cache": 4040.0,
+    "ecart_pct": -19.3069
+   },
+   {
+    "code": "BICB",
+    "officiel": 8600.0,
+    "cache": 10500.0,
+    "ecart_pct": -18.0952
+   },
+   {
+    "code": "BICC",
+    "officiel": 31600.0,
+    "cache": 31700.0,
+    "ecart_pct": -0.3155
+   },
+   {
+    "code": "BNBC",
+    "officiel": 1900.0,
+    "cache": 2105.0,
+    "ecart_pct": -9.7387
+   },
+   {
+    "code": "BOAB",
+    "officiel": 9340.0,
+    "cache": 10000.0,
+    "ecart_pct": -6.6
+   },
+   {
+    "code": "BOABF",
+    "officiel": 7900.0,
+    "cache": 8150.0,
+    "ecart_pct": -3.0675
+   },
+   {
+    "code": "BOAC",
+    "officiel": 11285.0,
+    "cache": 12150.0,
+    "ecart_pct": -7.1193
+   },
+   {
+    "code": "BOAM",
+    "officiel": 6095.0,
+    "cache": 6995.0,
+    "ecart_pct": -12.8663
+   },
+   {
+    "code": "BOAN",
+    "officiel": 4900.0,
+    "cache": 5355.0,
+    "ecart_pct": -8.4967
+   },
+   {
+    "code": "BOAS",
+    "officiel": 8145.0,
+    "cache": 8250.0,
+    "ecart_pct": -1.2727
+   }
+  ]
+ },
+ {
+  "date": "2026-09-15",
+  "journee": "15/09/2026",
+  "titres_officiel": 46,
+  "comparaisons": 45,
+  "ecart_median_pct": 7.9148,
+  "ecart_max_pct": 22.3368,
+  "nb_divergences": 45,
+  "details": [
+   {
+    "code": "ABJC",
+    "officiel": 3260.0,
+    "cache": 4015.0,
+    "ecart_pct": -18.8045
+   },
+   {
+    "code": "BICB",
+    "officiel": 8600.0,
+    "cache": 10550.0,
+    "ecart_pct": -18.4834
+   },
+   {
+    "code": "BICC",
+    "officiel": 31600.0,
+    "cache": 31050.0,
+    "ecart_pct": 1.7713
+   },
+   {
+    "code": "BNBC",
+    "officiel": 1900.0,
+    "cache": 2275.0,
+    "ecart_pct": -16.4835
+   },
+   {
+    "code": "BOAB",
+    "officiel": 9340.0,
+    "cache": 10200.0,
+    "ecart_pct": -8.4314
+   },
+   {
+    "code": "BOABF",
+    "officiel": 7900.0,
+    "cache": 8495.0,
+    "ecart_pct": -7.0041
+   },
+   {
+    "code": "BOAC",
+    "officiel": 11285.0,
+    "cache": 12200.0,
+    "ecart_pct": -7.5
+   },
+   {
+    "code": "BOAM",
+    "officiel": 6095.0,
+    "cache": 7000.0,
+    "ecart_pct": -12.9286
+   },
+   {
+    "code": "BOAN",
+    "officiel": 4900.0,
+    "cache": 5360.0,
+    "ecart_pct": -8.5821
+   },
+   {
+    "code": "BOAS",
+    "officiel": 8145.0,
+    "cache": 8300.0,
+    "ecart_pct": -1.8675
+   }
+  ]
+ },
+ {
+  "date": "2025-12-31",
+  "journee": "31/12/2025",
+  "titres_officiel": 46,
+  "comparaisons": 45,
+  "ecart_median_pct": 50.1053,
+  "ecart_max_pct": 191.6512,
+  "nb_divergences": 45,
+  "details": [
+   {
+    "code": "ABJC",
+    "officiel": 3260.0,
+    "cache": 2900.0,
+    "ecart_pct": 12.4138
+   },
+   {
+    "code": "BICB",
+    "officiel": 8600.0,
+    "cache": 4975.0,
+    "ecart_pct": 72.8643
+   },
+   {
+    "code": "BICC",
+    "officiel": 31600.0,
+    "cache": 19445.0,
+    "ecart_pct": 62.5096
+   },
+   {
+    "code": "BNBC",
+    "officiel": 1900.0,
+    "cache": 1410.0,
+    "ecart_pct": 34.7518
+   },
+   {
+    "code": "BOAB",
+    "officiel": 9340.0,
+    "cache": 5850.0,
+    "ecart_pct": 59.6581
+   },
+   {
+    "code": "BOABF",
+    "officiel": 7900.0,
+    "cache": 3750.0,
+    "ecart_pct": 110.6667
+   },
+   {
+    "code": "BOAC",
+    "officiel": 11285.0,
+    "cache": 7180.0,
+    "ecart_pct": 57.1727
+   },
+   {
+    "code": "BOAM",
+    "officiel": 6095.0,
+    "cache": 4000.0,
+    "ecart_pct": 52.375
+   },
+   {
+    "code": "BOAN",
+    "officiel": 4900.0,
+    "cache": 2610.0,
+    "ecart_pct": 87.7395
+   },
+   {
+    "code": "BOAS",
+    "officiel": 8145.0,
+    "cache": 5240.0,
+    "ecart_pct": 55.4389
+   }
+  ]
+ },
+ {
+  "date": "2024-12-31",
+  "journee": "31/12/2024",
+  "titres_officiel": 46,
+  "comparaisons": 43,
+  "ecart_median_pct": 125.9259,
+  "ecart_max_pct": 487.5,
+  "nb_divergences": 43,
+  "details": [
+   {
+    "code": "ABJC",
+    "officiel": 3260.0,
+    "cache": 1900.0,
+    "ecart_pct": 71.5789
+   },
+   {
+    "code": "BICC",
+    "officiel": 31600.0,
+    "cache": 14000.0,
+    "ecart_pct": 125.7143
+   },
+   {
+    "code": "BNBC",
+    "officiel": 1900.0,
+    "cache": 1065.0,
+    "ecart_pct": 78.4038
+   },
+   {
+    "code": "BOAB",
+    "officiel": 9340.0,
+    "cache": 3685.0,
+    "ecart_pct": 153.46
+   },
+   {
+    "code": "BOABF",
+    "officiel": 7900.0,
+    "cache": 3035.0,
+    "ecart_pct": 160.2965
+   },
+   {
+    "code": "BOAC",
+    "officiel": 11285.0,
+    "cache": 4995.0,
+    "ecart_pct": 125.9259
+   },
+   {
+    "code": "BOAM",
+    "officiel": 6095.0,
+    "cache": 1890.0,
+    "ecart_pct": 222.4868
+   },
+   {
+    "code": "BOAN",
+    "officiel": 4900.0,
+    "cache": 2575.0,
+    "ecart_pct": 90.2913
+   },
+   {
+    "code": "BOAS",
+    "officiel": 8145.0,
+    "cache": 3150.0,
+    "ecart_pct": 158.5714
+   },
+   {
+    "code": "CABC",
+    "officiel": 3300.0,
+    "cache": 1040.0,
+    "ecart_pct": 217.3077
+   }
+  ]
+ },
+ {
+  "date": "2023-12-29",
+  "journee": "29/12/2023",
+  "titres_officiel": 46,
+  "comparaisons": 37,
+  "ecart_median_pct": 141.4373,
+  "ecart_max_pct": 487.3684,
+  "nb_divergences": 37,
+  "details": [
+   {
+    "code": "ABJC",
+    "officiel": 3260.0,
+    "cache": 1330.0,
+    "ecart_pct": 145.1128
+   },
+   {
+    "code": "BNBC",
+    "officiel": 1900.0,
+    "cache": 1000.0,
+    "ecart_pct": 90.0
+   },
+   {
+    "code": "BOAB",
+    "officiel": 9340.0,
+    "cache": 6360.0,
+    "ecart_pct": 46.8553
+   },
+   {
+    "code": "BOABF",
+    "officiel": 7900.0,
+    "cache": 6980.0,
+    "ecart_pct": 13.1805
+   },
+   {
+    "code": "BOAC",
+    "officiel": 11285.0,
+    "cache": 6895.0,
+    "ecart_pct": 63.6693
+   },
+   {
+    "code": "BOAM",
+    "officiel": 6095.0,
+    "cache": 1475.0,
+    "ecart_pct": 313.2203
+   },
+   {
+    "code": "BOAN",
+    "officiel": 4900.0,
+    "cache": 5390.0,
+    "ecart_pct": -9.0909
+   },
+   {
+    "code": "BOAS",
+    "officiel": 8145.0,
+    "cache": 3200.0,
+    "ecart_pct": 154.5312
+   },
+   {
+    "code": "CABC",
+    "officiel": 3300.0,
+    "cache": 1110.0,
+    "ecart_pct": 197.2973
+   },
+   {
+    "code": "CBIBF",
+    "officiel": 31440.0,
+    "cache": 9300.0,
+    "ecart_pct": 238.0645
+   }
+  ]
+ }
+]

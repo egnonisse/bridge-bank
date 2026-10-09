@@ -1,0 +1,47 @@
+{
+  "_objet": "Hypotheses de CONTROLE du juge, avant tout appel a un modele.",
+  "_principe": "On connait la reponse attendue de chacune. Si le juge ne les separe pas correctement, c'est LUI qui est en cause — pas la strategie. On ne depense un centime d'API qu'apres ce test.",
+  "_dsl": "Termes : <indicateur> <comparateur> <nombre>, relies par 'et' / 'ou'. Aucune fonction, aucun appel.",
+  "hypotheses": [
+    {
+      "id": "CTRL-1",
+      "nom": "Rebond confirme apres chute profonde",
+      "achat": "r60 > 0.10 et r120 > 0.20 et dd_atl < -0.50",
+      "vente": "r20 < -0.15",
+      "duree_max": 250,
+      "rationale": "Signal deja documente dans le projet (reprise apres effondrement). ATTENDU : non rejetee.",
+      "attendu": "positive",
+      "source": "controle interne"
+    },
+    {
+      "id": "CTRL-2",
+      "nom": "Acheter la faiblesse persistante (TEMOIN FAUX)",
+      "achat": "r60 < -0.20 et r120 < -0.30",
+      "vente": "r20 > 0.05",
+      "duree_max": 120,
+      "rationale": "Choix contre-intuitif, VOLONTAIREMENT FAUX : sur la BRVM la faiblesse persistante ne rejoue pas (un titre sous sa moyenne y reste des annees). ATTENDU : REJETEE par le juge.",
+      "attendu": "rejetee",
+      "source": "controle interne"
+    },
+    {
+      "id": "CTRL-3",
+      "nom": "Achat systematique (temoin technique)",
+      "achat": "vol_ratio > -1",
+      "vente": "r20 > 0.05",
+      "duree_max": 60,
+      "rationale": "Regle toujours vraie a l'achat : equivalt a entrer partout. ATTENDU : avantage nul contre la baseline aleatoire — si le juge y voit un avantage, sa baseline est fausse.",
+      "attendu": "neutre",
+      "source": "controle interne"
+    },
+    {
+      "id": "CTRL-4",
+      "nom": "Expression hors langage (test de robustesse)",
+      "achat": "__import__('os').system('echo pirated') > 0",
+      "vente": "r20 < -0.10",
+      "duree_max": 60,
+      "rationale": "Tentative d'injection. ATTENDU : REJETEE avant toute execution.",
+      "attendu": "rejetee_syntaxe",
+      "source": "controle de securite"
+    }
+  ]
+}

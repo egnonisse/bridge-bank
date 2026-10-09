@@ -1,9 +1,14 @@
 {
-  "date": "2026-10-03",
+  "date": "2026-10-05",
   "opportunities": [
     {
-      "code": "SOGC",
-      "name": "SOGB CI",
+      "code": "STBC",
+      "name": "SITAB",
+      "cours": 0.0
+    },
+    {
+      "code": "NEIC",
+      "name": "NEI CEDA CI",
       "cours": 0.0
     }
   ]

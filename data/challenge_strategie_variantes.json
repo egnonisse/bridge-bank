@@ -1,0 +1,607 @@
+{
+ "variantes": [
+  {
+   "nom": "Équilibre discipliné",
+   "parametres": {
+    "nb_tranches": 4,
+    "espacement_jours": 15,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.06,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.33
+     ],
+     [
+      0.3,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.15
+   },
+   "rationale": "Quatre tranches réduisent de moitié les frais d'achat par rapport aux huit ordres observés : environ 5 600 F CFA contre 11 200 F CFA pour des ordres de 100 000 F CFA, à 1,4 % par ordre. Un espacement de 15 jours conserve l'entrée progressive sans immobiliser le capital pendant 30 jours. Le renforcement à -6 % reste proche des baisses historiques de 4 à 5 %, mais évite de réagir à un simple bruit de marché. Les ventes à +15 % et +30 % reproduisent une prise de bénéfices graduelle tout en conservant 34 % de la position. Une réserve de 15 % limite le risque d'investir tout le capital avant une correction, alors que le drawdown médian atteint -55,7 %.",
+   "source": "openai/gpt-5.6-luna-pro",
+   "id": "gpt-5.6-luna-V1"
+  },
+  {
+   "nom": "Sans renforcement",
+   "parametres": {
+    "nb_tranches": 3,
+    "espacement_jours": 20,
+    "renforcement_actif": false,
+    "seuil_renforcement": 0.15,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.5
+     ],
+     [
+      0.3,
+      0.25
+     ]
+    ],
+    "cash_cible": 0.25
+   },
+   "rationale": "Cette variante supprime explicitement l'habitude de renforcer une position en baisse afin de mesurer son coût. Trois achats coûtent environ 4 200 F CFA sur la jambe d'achat, contre 11 200 F CFA pour huit ordres de 100 000 F CFA. L'espacement de 20 jours permet néanmoins de lisser le prix. Le seuil de renforcement est fixé à 15 % mais devient inactif, ce qui évite toute ambiguïté. Vendre 50 % à +15 % puis 25 % à +30 % récupère rapidement du capital et laisse seulement 25 % exposé. Le cash de 25 % tient compte du risque qu'un titre perde 55,7 % en médiane et jusqu'à 82,3 % dans le pire cas.",
+   "source": "openai/gpt-5.6-luna-pro",
+   "id": "gpt-5.6-luna-V2"
+  },
+  {
+   "nom": "Progression intensive",
+   "parametres": {
+    "nb_tranches": 10,
+    "espacement_jours": 7,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.04,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.1,
+      0.25
+     ],
+     [
+      0.2,
+      0.25
+     ],
+     [
+      0.35,
+      0.25
+     ]
+    ],
+    "cash_cible": 0.1
+   },
+   "rationale": "Cette variante intensifie l'entrée progressive au-delà des huit achats observés : dix tranches espacées de sept jours réduisent le risque de concentrer l'achat au mauvais moment. Le coût indicatif atteint 14 000 F CFA sur la jambe d'achat pour dix ordres de 100 000 F CFA, soit 2 800 F CFA de plus que huit ordres, ce qui mesure explicitement le prix de cette granularité. Le renforcement à -4 % reprend le palier historique de 4 à 5 %. Les ventes à +10 %, +20 % et +35 % sécurisent successivement 75 % de la position, avec 25 % conservé pour une poursuite de tendance. Le cash de 10 % est inférieur aux autres variantes car cette option privilégie l'exposition et accepte davantage de risque.",
+   "source": "openai/gpt-5.6-luna-pro",
+   "id": "gpt-5.6-luna-V3"
+  },
+  {
+   "nom": "Simplicité à faible coût",
+   "parametres": {
+    "nb_tranches": 2,
+    "espacement_jours": 30,
+    "renforcement_actif": false,
+    "seuil_renforcement": 0.15,
+    "paliers_actifs": false,
+    "seuils_vente": [],
+    "cash_cible": 0.2
+   },
+   "rationale": "Deux ordres d'achat de 100 000 F CFA coûtent environ 2 800 F CFA sur la jambe d'achat, soit 8 400 F CFA de moins que huit ordres, hors ventes. La stratégie supprime à la fois le renforcement et les ventes par paliers pour réduire les décisions, les frais et le risque d'ordres trop petits : sous environ 71 429 F CFA, le minimum de 1 000 F CFA dépasse déjà 1,4 % de la transaction. Un espacement de 30 jours conserve une entrée différée mais sans multiplication des ordres. La réserve de 20 % compense l'absence de renforcement conditionnel et protège contre une baisse très supérieure aux seuils historiques de 4 à 5 %.",
+   "source": "openai/gpt-5.6-luna-pro",
+   "id": "gpt-5.6-luna-V4"
+  },
+  {
+   "nom": "Défense du capital",
+   "parametres": {
+    "nb_tranches": 5,
+    "espacement_jours": 25,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.12,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.12,
+      0.25
+     ],
+     [
+      0.25,
+      0.35
+     ]
+    ],
+    "cash_cible": 0.35
+   },
+   "rationale": "Cinq tranches représentent environ 7 000 F CFA de frais sur la jambe d'achat à 100 000 F CFA par ordre, un compromis entre les huit ordres historiques et une approche minimale. L'espacement de 25 jours laisse davantage de temps pour observer la tendance. Le renforcement n'intervient qu'à -12 %, afin d'éviter de moyenner sur chaque baisse de 4 à 5 % et de réserver le capital aux corrections significatives. Les ventes à +12 % et +25 % libèrent 60 % de la position avant qu'un gain ne se transforme en perte, tout en conservant 40 % pour la hausse. Le cash cible de 35 %, proche du plafond autorisé de 40 %, est justifié par le drawdown maximal observé de -82,3 %.",
+   "source": "openai/gpt-5.6-luna-pro",
+   "id": "gpt-5.6-luna-V5"
+  },
+  {
+   "nom": "Variante 1 : Simplification et réduction des frais",
+   "parametres": {
+    "nb_tranches": 3,
+    "espacement_jours": 20,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.05,
+    "paliers_actifs": false,
+    "seuils_vente": [],
+    "cash_cible": 0.15
+   },
+   "rationale": "Cette variante vise à simplifier la méthode en réduisant le nombre d'ordres pour minimiser les frais de courtage, particulièrement pénalisants sur de petits montants. L'investisseur réalise actuellement des ordres d'environ 100 000 F CFA. Avec un minimum de 1 000 F CFA par ordre, un ordre représente déjà 1% de frais (1000/100000). Ses 8 achats sur PALM CI, même si le montant unitaire est plus faible, engendrent au minimum 8 * 1000 = 8000 F CFA de frais. En réduisant 'nb_tranches' à 3, on divise par 2.6 le nombre d'ordres d'achat, réduisant ainsi les frais d'entrée de manière significative (potentiellement 5000 F CFA d'économie sur un investissement similaire). L'espacement de 20 jours permet de lisser le point d'entrée sans être trop dispersé. Le renforcement sur faiblesse est maintenu car il est protecteur dans un marché volatil. Les ventes par paliers sont désactivées ('paliers_actifs': false) pour réduire la complexité et le nombre d'ordres de vente, qui génèrent également des frais minimums. Le 'cash_cible' est ramené à 15% pour une meilleure allocation du capital tout en conservant une marge de sécurité.",
+   "source": "google/gemini-2.5-flash",
+   "id": "gemini-2.5-f-V1"
+  },
+  {
+   "nom": "Variante 2 : Intensification du renforcement sur faiblesse",
+   "parametres": {
+    "nb_tranches": 4,
+    "espacement_jours": 15,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.03,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.1,
+      0.25
+     ],
+     [
+      0.18,
+      0.35
+     ],
+     [
+      0.25,
+      0.4
+     ]
+    ],
+    "cash_cible": 0.2
+   },
+   "rationale": "Cette variante intensifie la stratégie de renforcement sur faiblesse, particulièrement pertinente dans un marché avec un drawdown médian de -55.7%. En abaissant le 'seuil_renforcement' à 0.03 (3%), l'investisseur achète plus fréquemment les baisses, ce qui permet de réduire le prix moyen d'acquisition plus rapidement en cas de correction. Ses observations sur PALM CI montraient des paliers de 4 à 5%, un seuil de 3% permet une réactivité accrue. Le 'nb_tranches' est légèrement augmenté à 4 pour mieux étaler les achats initiaux dans une optique de renforcement. Les ventes par paliers sont conservées et affinées avec des seuils plus granulaires et une part croissante pour capturer des gains plus importants ('seuils_vente': [[0.10, 0.25], [0.18, 0.35], [0.25, 0.40]]), reflétant l'objectif de 'gains croissants' de l'investisseur. Le 'cash_cible' est maintenu à 20% pour financer ces renforcements opportunistes.",
+   "source": "google/gemini-2.5-flash",
+   "id": "gemini-2.5-f-V2"
+  },
+  {
+   "nom": "Variante 3 : Suppression du rebalancement (coût caché)",
+   "parametres": {
+    "nb_tranches": 4,
+    "espacement_jours": 25,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.06,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.5
+     ],
+     [
+      0.25,
+      0.25
+     ]
+    ],
+    "cash_cible": 0.3
+   },
+   "rationale": "Cette variante supprime implicitement la pratique du 'rebalancement' (vendre un titre gagnant pour financer un titre en retard) en augmentant la 'cash_cible' et en ajustant les ventes. Le rebalancement, bien qu'intuitif, génère des frais de transaction supplémentaires (vente + achat) et peut limiter le potentiel de croissance des titres gagnants. Si un titre gagne +28%, le vendre pour acheter un titre 'en retard' dont la performance est incertaine est une perte d'opportunité et un coût de transaction. En augmentant le 'cash_cible' à 30%, l'investisseur dispose de plus de liquidités pour financer de nouveaux achats ou renforcements sans avoir à vendre ses positions gagnantes. Les 'seuils_vente' sont ajustés pour prendre des profits sur les gagnants (ex: vendre 50% à 15% de gain) mais en conservant une part significative pour laisser courir les gains ('conserve un tiers' devient ici 25% non vendu après deux paliers), ce qui est plus efficace que de revendre pour réinvestir ailleurs. L'espacement de 25 jours est plus large pour réduire la fréquence des ordres d'achat.",
+   "source": "google/gemini-2.5-flash",
+   "id": "gemini-2.5-f-V3"
+  },
+  {
+   "nom": "Variante 4 : Protection du capital et discipline accrue",
+   "parametres": {
+    "nb_tranches": 5,
+    "espacement_jours": 10,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.04,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.12,
+      0.33
+     ],
+     [
+      0.2,
+      0.33
+     ],
+     [
+      0.3,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.4
+   },
+   "rationale": "Cette variante met l'accent sur la protection du capital et la discipline face à la forte volatilité du marché (drawdown médian de -55.7%). L'augmentation du 'nb_tranches' à 5, avec un 'espacement_jours' plus court (10 jours), permet d'étaler encore plus le point d'entrée, réduisant le risque lié au timing. Le 'seuil_renforcement' est fixé à 4%, similaire à l'observation de l'investisseur, pour déclencher des achats réactifs sur les baisses. La 'cash_cible' est portée à 40%, proche de son observation maximale de 46%, pour assurer une grande flexibilité et capacité de renforcement ou de saisie d'opportunités, tout en limitant l'exposition au marché. Les 'seuils_vente' sont maintenus avec 3 paliers égaux pour une prise de profit systématique et disciplinée, capturant les gains tout en laissant courir le reste. Cette approche favorise la prudence dans un marché où les pertes peuvent être importantes (-82.3% pire drawdown).",
+   "source": "google/gemini-2.5-flash",
+   "id": "gemini-2.5-f-V4"
+  },
+  {
+   "nom": "Variante 5 : Focus sur la valeur moyenne d'acquisition",
+   "parametres": {
+    "nb_tranches": 1,
+    "espacement_jours": 0,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.07,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.4
+     ],
+     [
+      0.25,
+      0.3
+     ]
+    ],
+    "cash_cible": 0.25
+   },
+   "rationale": "Cette variante supprime l'entrée progressive ('nb_tranches': 1, 'espacement_jours': 0) pour réduire drastiquement les frais d'entrée liés au minimum de 1000 F CFA par ordre. Au lieu de 8 ordres d'achat comme observé, on n'en fait qu'un seul, ce qui réduit les frais de 8000 F CFA à 1000 F CFA (pour un montant total similaire). Cependant, le 'renforcement_actif' est maintenu et son 'seuil_renforcement' est légèrement augmenté à 7% pour des baisses plus significatives. L'objectif est de concentrer les achats additionnels sur des corrections plus marquées, maximisant l'impact sur le prix moyen d'acquisition. Les ventes par paliers sont conservées pour la prise de profit, avec des fractions ajustées pour laisser une part plus importante courir ('seuils_vente': [[0.15, 0.40], [0.25, 0.30]]), car le point d'entrée unique demande une plus grande confiance dans le potentiel de croissance. Le 'cash_cible' de 25% permet de financer les renforcements opportunistes sans sur-exposer le portefeuille.",
+   "source": "google/gemini-2.5-flash",
+   "id": "gemini-2.5-f-V5"
+  },
+  {
+   "nom": "Suppression du renforcement",
+   "parametres": {
+    "nb_tranches": 1,
+    "espacement_jours": 0,
+    "renforcement_actif": false,
+    "seuil_renforcement": 0,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.33
+     ],
+     [
+      0.3,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.2
+   },
+   "rationale": "En supprimant le renforcement, on reduit les frais de courtage lies aux petites tranches d'achat. Avec un minimum de 1 000 F CFA par ordre, les petites tranches peuvent representer jusqu'a 10% du montant investi en frais (1 000 F CFA / 10 000 F CFA). En achetant en une seule tranche, on evite ces frais excessifs.",
+   "source": "meta-llama/llama-3.3-70b-instruct",
+   "id": "llama-3.3-70-V1"
+  },
+  {
+   "nom": "Intensification du renforcement",
+   "parametres": {
+    "nb_tranches": 5,
+    "espacement_jours": 10,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.03,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.1,
+      0.25
+     ],
+     [
+      0.2,
+      0.25
+     ]
+    ],
+    "cash_cible": 0.15
+   },
+   "rationale": "En intensifiant le renforcement, on peut profiter des baisses de cours pour acheter a des prix plus bas. Avec un seuil de renforcement de 3%, on peut acheter plus rapidement lorsque le cours baisse, ce qui peut permettre de reduire le cout moyen d'achat.",
+   "source": "meta-llama/llama-3.3-70b-instruct",
+   "id": "llama-3.3-70-V2"
+  },
+  {
+   "nom": "Simplification des paliers de vente",
+   "parametres": {
+    "nb_tranches": 2,
+    "espacement_jours": 15,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.06,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.2,
+      0.5
+     ]
+    ],
+    "cash_cible": 0.1
+   },
+   "rationale": "En simplifiant les paliers de vente, on reduit les frais de courtage lies aux ventes fractionnees. Avec un seul palier de vente a 20% de gain, on peut eviter les frais excessifs lies aux petites ventes.",
+   "source": "meta-llama/llama-3.3-70b-instruct",
+   "id": "llama-3.3-70-V3"
+  },
+  {
+   "nom": "Augmentation de la reserve de cash",
+   "parametres": {
+    "nb_tranches": 3,
+    "espacement_jours": 20,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.06,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.33
+     ],
+     [
+      0.3,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.3
+   },
+   "rationale": "En augmentant la reserve de cash, on peut proteger le capital en cas de drawdown important. Avec un drawdown median de -55,7%, il est important de conserver une partie du capital en liquidites pour eviter de devoir vendre des actifs a des prix defavorables.",
+   "source": "meta-llama/llama-3.3-70b-instruct",
+   "id": "llama-3.3-70-V4"
+  },
+  {
+   "nom": "Discipline d'achat",
+   "parametres": {
+    "nb_tranches": 2,
+    "espacement_jours": 30,
+    "renforcement_actif": false,
+    "seuil_renforcement": 0,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.33
+     ],
+     [
+      0.3,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.2
+   },
+   "rationale": "En espaçant les achats de 30 jours, on peut eviter de prendre des decisions d'achat emotives et impulsivees. Cela peut aider a reduire les frais de courtage et a améliorer la discipline d'achat.",
+   "source": "meta-llama/llama-3.3-70b-instruct",
+   "id": "llama-3.3-70-V5"
+  },
+  {
+   "nom": "Simplification pour reduire les frais",
+   "parametres": {
+    "nb_tranches": 3,
+    "espacement_jours": 20,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.05,
+    "paliers_actifs": false,
+    "seuils_vente": [],
+    "cash_cible": 0.1
+   },
+   "rationale": "Reduction du nombre de tranches a 3 et espacement de 20 jours pour diminuer les frais de courtage. Avec un minimum de 1 000 F CFA par ordre, 3 tranches au lieu de 8 economisent environ 5 000 F CFA sur PALM CI. Renforcement actif maintenu pour profiter des baisses, mais paliers de vente supprimes pour simplifier la strategie.",
+   "source": "deepseek/deepseek-chat",
+   "id": "deepseek-cha-V1"
+  },
+  {
+   "nom": "Intensification du renforcement",
+   "parametres": {
+    "nb_tranches": 6,
+    "espacement_jours": 10,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.03,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.33
+     ],
+     [
+      0.3,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.2
+   },
+   "rationale": "Augmentation du nombre de tranches a 6 et reduction de l'espacement a 10 jours pour intensifier le renforcement. Seuil de renforcement reduit a 3% pour reagir plus rapidement aux baisses. Cash cible augmente a 20% pour proteger le capital en cas de forte volatilite.",
+   "source": "deepseek/deepseek-chat",
+   "id": "deepseek-cha-V2"
+  },
+  {
+   "nom": "Suppression du renforcement",
+   "parametres": {
+    "nb_tranches": 4,
+    "espacement_jours": 15,
+    "renforcement_actif": false,
+    "seuil_renforcement": 0.0,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.15,
+      0.33
+     ],
+     [
+      0.3,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.15
+   },
+   "rationale": "Suppression du renforcement pour evaluer son impact. Nombre de tranches reduit a 4 et espacement de 15 jours pour limiter les frais de courtage. Cash cible augmente a 15% pour compenser l'absence de renforcement et proteger le capital.",
+   "source": "deepseek/deepseek-chat",
+   "id": "deepseek-cha-V3"
+  },
+  {
+   "nom": "Optimisation pour drawdown eleve",
+   "parametres": {
+    "nb_tranches": 5,
+    "espacement_jours": 25,
+    "renforcement_actif": true,
+    "seuil_renforcement": 0.1,
+    "paliers_actifs": true,
+    "seuils_vente": [
+     [
+      0.2,
+      0.33
+     ],
+     [
+      0.4,
+      0.33
+     ]
+    ],
+    "cash_cible": 0.3
+   },
+   "rationale": "Augmentation du seuil de renforcement a 10% et cash cible a 30% pour mieux gerer les drawdowns eleves (-55,7% median). Nombre de tranches a 5 et espacement de 25 jours pour equilibrer frais et protection du capital. Seuils de vente augmentes pour maximiser les gains en cas de rebond.",
+   "source": "deepseek/deepseek-chat",
+   "id": "deepseek-cha-V4"
+  },
+  {
+   "nom": "Strategie ultra-simplifiee",
+   "parametres": {
+    "nb_tranches": 2,
+    "espacement_jours": 30,
+    "renforcement_actif": false,
+    "seuil_renforcement": 0.0,
+    "paliers_actifs": false,
+    "seuils_vente": [],
+    "cash_cible": 0.4
+   },
+   "rationale": "Strategie ultra-simplifiee avec seulement 2 tranches et espacement de 30 jours pour minimiser les frais de courtage. Suppression de toutes les habitudes complexes (renforcement, paliers de vente) pour une gestion tres simple et conservative. Cash cible a 40% pour maximiser la protection du capital en cas de forte volatilite.",
+   "source": "deepseek/deepseek-chat",
+   "id": "deepseek-cha-V5"
+  }
+ ],
+ "critiques": {
+  "google/gemini-2.5-flash": [
+   {
+    "id": "V1",
+    "garde": true,
+    "critique": "PLAUSIBLE. Le coût des frais est bien calculé et représente un compromis raisonnable (5600 FCFA vs 11200 FCFA pour 8 ordres de 100k). Le renforcement à -6% est pertinent pour éviter le bruit. Le piège principal est une prise de bénéfices trop limitée (seulement 2 paliers), potentiellement laisser de l'argent sur la table en cas de forte hausse. Je la garderais pour un test."
+   },
+   {
+    "id": "V2",
+    "garde": false,
+    "critique": "IRRÉALISTE. La suppression du renforcement actif dans un marché volatil est dangereuse. Le coût des frais est réduit, mais au prix d'une perte de flexibilité. Le piège principal est de ne pas profiter des baisses pour moyenner, ce qui peut bloquer l'investisseur sur une position perdante. J'écarterais cette variante car elle semble contre-intuitive pour un marché volatile."
+   },
+   {
+    "id": "V3",
+    "garde": true,
+    "critique": "PLAUSIBLE. La granularité de 10 tranches est intéressante pour lisser le point d'entrée, bien que le coût de 14000 FCFA pour 10 ordres de 100k soit élevé. Le renforcement à -4% est agressif et adapté à un marché volatile. Le piège principal est le surcoût des frais qui pourrait éroder une partie des gains. Je la garderais pour tester l'impact de la granularité sur la performance nette."
+   },
+   {
+    "id": "V4",
+    "garde": false,
+    "critique": "IRRÉALISTE. Deux ordres d'achat avec un espacement de 30 jours, sans renforcement ni vente par paliers, c'est de la pure loterie. Le coût de 2800 FCFA est faible, mais le risque est maximal. Le piège principal est l'absence totale de gestion active, exposant l'investisseur à la pleine volatilité du marché sans mécanisme de protection ou de prise de bénéfices. J'écarterais cette variante, elle est trop simpliste et risquée."
+   },
+   {
+    "id": "V5",
+    "garde": true,
+    "critique": "PLAUSIBLE. Cinq tranches à 7000 FCFA de frais est un compromis acceptable. Le renforcement à -12% est plus conservateur, évitant les sur-réactions aux faibles baisses. Le piège principal est de rater des opportunités de renforcement sur des baisses modérées mais soutenues. Je la garderais pour tester une approche moins agressive sur le renforcement."
+   },
+   {
+    "id": "V6",
+    "garde": false,
+    "critique": "IRRÉALISTE. Réduire le nombre de tranches à 3 pour économiser les frais est louable, mais le fait de désactiver les paliers de vente ('paliers_actifs': false) et de ne pas spécifier de seuils de vente ('seuils_vente': []) rend cette variante incomplète et dangereuse. Le piège principal est l'absence de stratégie de sortie, ce qui peut entraîner des gains non réalisés ou des pertes importantes. J'écarterais cette variante en l'état car elle est mal définie sur la partie vente."
+   },
+   {
+    "id": "V7",
+    "garde": true,
+    "critique": "PLAUSIBLE. Le renforcement à -3% est très agressif et peut être pertinent dans un marché avec un drawdown médian de -55.7%. Le coût des frais sera plus élevé en cas de nombreuses baisses. Le piège principal est le risque de sur-renforcement dans un marché baissier prolongé, ce qui peut rapidement épuiser le capital disponible. Je la garderais pour tester l'efficacité d'un renforcement très réactif."
+   },
+   {
+    "id": "V8",
+    "garde": true,
+    "critique": "PLAUSIBLE. L'augmentation du 'cash_cible' et l'ajustement des ventes pour éviter le rebalancement est une approche intéressante pour réduire les frais et les décisions. Les frais liés aux 4 tranches sont de 5600 FCFA. Le piège principal est de ne pas profiter du rebalancement qui peut être un levier pour optimiser le portefeuille, surtout si des titres gagnants deviennent surévalués. Je la garderais pour tester l'impact de cette suppression du rebalancement."
+   },
+   {
+    "id": "V9",
+    "garde": true,
+    "critique": "PLAUSIBLE. Le 'nb_tranches' à 5 et l''espacement_jours' à 10 jours offre une bonne granularité d'entrée. Le 'cash_cible' à 40% est élevé mais reflète une volonté de protection dans un marché volatile. Le piège principal est un coût d'opportunité élevé en cash non investi, surtout si le marché progresse. Je la garderais pour tester une approche très prudente avec une forte protection du capital."
+   },
+   {
+    "id": "V10",
+    "garde": false,
+    "critique": "IRRÉALISTE. Supprimer l'entrée progressive ('nb_tranches': 1) pour réduire les frais à 1000 FCFA est une fausse bonne idée. Le risque de 'market timing' est maximal, et le seul renforcement à -7% ne compense pas l'absence d'étalement initial. Le piège principal est de concentrer l'achat au pire moment, sans aucune flexibilité. J'écarterais cette variante car elle sacrifie la protection de l'entrée progressive pour une économie de frais minime par rapport au risque encouru."
+   },
+   {
+    "id": "V11",
+    "garde": false,
+    "critique": "IRRÉALISTE. Supprimer le renforcement et n'avoir qu'une seule tranche d'achat est extrêmement risqué, même avec des paliers de vente. Le coût de 1000 FCFA est certes faible, mais le risque de 'market timing' est trop élevé. Le piège principal est l'absence de toute capacité d'adaptation aux mouvements du marché après l'achat initial. J'écarterais cette variante, elle est trop rigide."
+   },
+   {
+    "id": "V12",
+    "garde": true,
+    "critique": "PLAUSIBLE. Le renforcement à -3% est très agressif, similaire à V7, mais avec 5 tranches d'entrée initiales, ce qui permet un meilleur lissage. Le piège principal est le surcoût en frais lié à la multiplication des ordres de renforcement dans un marché baissier. Je la garderais pour tester une stratégie de renforcement très active combinée à une entrée progressive."
+   }
+  ],
+  "meta-llama/llama-3.3-70b-instruct": [
+   {
+    "id": "V1",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "Les paramètres choisis semblent équilibrés, avec un nombre de tranches raisonnable (4) et un espacement de 15 jours qui permet une entrée progressive sans immobiliser le capital pendant trop longtemps. Le seuil de renforcement à -6% est également raisonnable.",
+    "piege": "Le piège principal est que le seuil de renforcement pourrait ne pas être suffisamment bas pour réagir aux baisses de cours mineures, ce qui pourrait entraîner des pertes potentielles.",
+    "garde": true
+   },
+   {
+    "id": "V2",
+    "plausibilite": "IRREALISTE",
+    "justification": "La suppression du renforcement et la fixation d'un seuil de renforcement inactif à 15% pourraient entraîner des pertes importantes en cas de baisse de cours significative.",
+    "piege": "Le piège principal est que l'absence de renforcement pourrait exposer l'investisseur à des pertes importantes en cas de baisse de cours.",
+    "garde": false
+   },
+   {
+    "id": "V3",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "L'intensification de l'entrée progressive avec 10 tranches espacées de 7 jours pourrait permettre de réduire le risque de concentrer l'achat au mauvais moment. Le seuil de renforcement à -4% est également raisonnable.",
+    "piege": "Le piège principal est que le coût indicatif pourrait être trop élevé en raison du grand nombre de tranches.",
+    "garde": true
+   },
+   {
+    "id": "V4",
+    "plausibilite": "IRREALISTE",
+    "justification": "La suppression du renforcement et des ventes par paliers pourrait entraîner des pertes importantes en cas de baisse de cours significative.",
+    "piege": "Le piège principal est que l'absence de renforcement et de ventes par paliers pourrait exposer l'investisseur à des pertes importantes en cas de baisse de cours.",
+    "garde": false
+   },
+   {
+    "id": "V5",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "Les paramètres choisis semblent équilibrés, avec un nombre de tranches raisonnable (5) et un espacement de 25 jours qui permet une entrée progressive sans immobiliser le capital pendant trop longtemps. Le seuil de renforcement à -12% est également raisonnable.",
+    "piege": "Le piège principal est que le seuil de renforcement pourrait ne pas être suffisamment bas pour réagir aux baisses de cours mineures, ce qui pourrait entraîner des pertes potentielles.",
+    "garde": true
+   },
+   {
+    "id": "V6",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "La réduction du nombre de tranches à 3 pourrait permettre de minimiser les frais de courtage. Le seuil de renforcement à -5% est également raisonnable.",
+    "piege": "Le piège principal est que la réduction du nombre de tranches pourrait augmenter le risque de concentrer l'achat au mauvais moment.",
+    "garde": true
+   },
+   {
+    "id": "V7",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "L'intensification de la stratégie de renforcement sur faiblesse avec un seuil de renforcement à 3% pourrait permettre de réduire le prix moyen d'acquisition plus rapidement en cas de correction.",
+    "piege": "Le piège principal est que le seuil de renforcement trop bas pourrait entraîner des achats trop fréquents et des frais de courtage élevés.",
+    "garde": true
+   },
+   {
+    "id": "V8",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "La suppression implicite de la pratique du rebalancement pourrait permettre de réduire les frais de transaction supplémentaires. Le seuil de renforcement à -6% est également raisonnable.",
+    "piege": "Le piège principal est que la suppression du rebalancement pourrait entraîner des pertes importantes en cas de baisse de cours significative.",
+    "garde": true
+   },
+   {
+    "id": "V9",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "L'augmentation du nombre de tranches à 5 avec un espacement de 10 jours pourrait permettre de réduire le risque lié au timing. Le seuil de renforcement à 4% est également raisonnable.",
+    "piege": "Le piège principal est que le coût indicatif pourrait être trop élevé en raison du grand nombre de tranches.",
+    "garde": true
+   },
+   {
+    "id": "V10",
+    "plausibilite": "IRREALISTE",
+    "justification": "La suppression de l'entrée progressive avec un seul achat pourrait augmenter le risque de concentrer l'achat au mauvais moment.",
+    "piege": "Le piège principal est que l'absence d'entrée progressive pourrait exposer l'investisseur à des pertes importantes en cas de baisse de cours.",
+    "garde": false
+   },
+   {
+    "id": "V11",
+    "plausibilite": "IRREALISTE",
+    "justification": "La suppression du renforcement pourrait entraîner des pertes importantes en cas de baisse de cours significative.",
+    "piege": "Le piège principal est que l'absence de renforcement pourrait exposer l'investisseur à des pertes importantes en cas de baisse de cours.",
+    "garde": false
+   },
+   {
+    "id": "V12",
+    "plausibilite": "PLAUSIBLE",
+    "justification": "L'intensification du renforcement avec un seuil de renforcement à 3% pourrait permettre de profiter des baisses de cours pour acheter à des prix plus bas.",
+    "piege": "Le piège principal est que le seuil de renforcement trop bas pourrait entraîner des achats trop fréquents et des frais de courtage élevés.",
+    "garde": true
+   }
+  ]
+ },
+ "cout_usd": 0.0899875
+}

@@ -1,0 +1,462 @@
+{
+ "titres_ajustes": 34,
+ "sans_operation": [
+  "BBGC",
+  "BICB",
+  "ETIT",
+  "LNBB",
+  "NSBC",
+  "ABJC",
+  "SNTS",
+  "SHEC",
+  "ORGT",
+  "ORAC",
+  "SICC",
+  "UNLC"
+ ],
+ "operations": [
+  {
+   "code": "BOAC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-10-26",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SIVC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-12-21",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "BOAN",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-10-27",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "BOAS",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-10-30",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "BNBC",
+   "debut_historique": "2017-01-16",
+   "facteur_cumule": 20.0,
+   "operations": [
+    {
+     "date": "2017-07-27",
+     "facteur": 20.0,
+     "type": "division",
+     "sens": "20 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "BOABF",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-10-24",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "BOAB",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-10-31",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "BOAM",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 5.0,
+   "operations": [
+    {
+     "date": "2017-12-22",
+     "facteur": 5.0,
+     "type": "division",
+     "sens": "5 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "BICC",
+   "debut_historique": "2017-01-05",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-10-06",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "CBIBF",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 5.0,
+   "operations": [
+    {
+     "date": "2017-12-14",
+     "facteur": 5.0,
+     "type": "division",
+     "sens": "5 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "CFAC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 100.0,
+   "operations": [
+    {
+     "date": "2017-12-13",
+     "facteur": 100.0,
+     "type": "division",
+     "sens": "100 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SDSC",
+   "debut_historique": "2017-01-12",
+   "facteur_cumule": 50.0,
+   "operations": [
+    {
+     "date": "2017-07-29",
+     "facteur": 50.0,
+     "type": "division",
+     "sens": "50 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "CIEC",
+   "debut_historique": "2017-01-03",
+   "facteur_cumule": 20.0,
+   "operations": [
+    {
+     "date": "2017-10-19",
+     "facteur": 20.0,
+     "type": "division",
+     "sens": "20 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "ECOC",
+   "debut_historique": "2017-12-12",
+   "facteur_cumule": 5.0,
+   "operations": [
+    {
+     "date": "2018-12-27",
+     "facteur": 5.0,
+     "type": "division",
+     "sens": "5 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "FTSC",
+   "debut_historique": "2017-01-04",
+   "facteur_cumule": 4.0,
+   "operations": [
+    {
+     "date": "2018-01-31",
+     "facteur": 4.0,
+     "type": "division",
+     "sens": "4 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "NTLC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 20.0,
+   "operations": [
+    {
+     "date": "2017-09-08",
+     "facteur": 20.0,
+     "type": "division",
+     "sens": "20 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "ONTBF",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 2.0,
+   "operations": [
+    {
+     "date": "2018-08-29",
+     "facteur": 2.0,
+     "type": "division",
+     "sens": "2 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "NEIC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 25.0,
+   "operations": [
+    {
+     "date": "2017-08-10",
+     "facteur": 25.0,
+     "type": "division",
+     "sens": "25 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "PALC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 2.0,
+   "operations": [
+    {
+     "date": "2017-11-03",
+     "facteur": 2.0,
+     "type": "division",
+     "sens": "2 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SPHC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 5.0,
+   "operations": [
+    {
+     "date": "2017-07-21",
+     "facteur": 5.0,
+     "type": "division",
+     "sens": "5 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "STAC",
+   "debut_historique": "2017-01-20",
+   "facteur_cumule": 100.0,
+   "operations": [
+    {
+     "date": "2017-10-25",
+     "facteur": 100.0,
+     "type": "division",
+     "sens": "100 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SGBC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-08-25",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "CABC",
+   "debut_historique": "2017-01-17",
+   "facteur_cumule": 40.0,
+   "operations": [
+    {
+     "date": "2017-08-16",
+     "facteur": 40.0,
+     "type": "division",
+     "sens": "40 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SIBC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 5.0,
+   "operations": [
+    {
+     "date": "2018-06-15",
+     "facteur": 5.0,
+     "type": "division",
+     "sens": "5 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "STBC",
+   "debut_historique": "2017-01-03",
+   "facteur_cumule": 20.0,
+   "operations": [
+    {
+     "date": "2018-07-27",
+     "facteur": 20.0,
+     "type": "division",
+     "sens": "20 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SMBC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 4.0,
+   "operations": [
+    {
+     "date": "2019-02-25",
+     "facteur": 4.0,
+     "type": "division",
+     "sens": "4 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SDCC",
+   "debut_historique": "2017-01-04",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-12-28",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SLBC",
+   "debut_historique": "2017-01-06",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2024-09-30",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SOGC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-08-18",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "SCRC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 4.0,
+   "operations": [
+    {
+     "date": "2017-12-04",
+     "facteur": 4.0,
+     "type": "division",
+     "sens": "4 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "PRSC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 64.0,
+   "operations": [
+    {
+     "date": "2019-09-17",
+     "facteur": 64.0,
+     "type": "division",
+     "sens": "64 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "TTLS",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 10.0,
+   "operations": [
+    {
+     "date": "2017-11-02",
+     "facteur": 10.0,
+     "type": "division",
+     "sens": "10 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "TTLC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 5.0,
+   "operations": [
+    {
+     "date": "2018-02-12",
+     "facteur": 5.0,
+     "type": "division",
+     "sens": "5 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  },
+  {
+   "code": "UNXC",
+   "debut_historique": "2017-01-02",
+   "facteur_cumule": 5.0,
+   "operations": [
+    {
+     "date": "2017-08-11",
+     "facteur": 5.0,
+     "type": "division",
+     "sens": "5 nouvelles pour 1 ancienne(s)"
+    }
+   ]
+  }
+ ],
+ "aberrantes_corrigees": 14
+}

@@ -1,0 +1,2019 @@
+{
+ "ABJC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-08-22",
+    "montant": 57.73,
+    "devise": "XOF",
+    "record": "2022-08-24",
+    "paiement": "2022-08-24"
+   },
+   {
+    "ex_date": "2023-08-29",
+    "montant": 92.0,
+    "devise": "XOF",
+    "record": "2023-08-31",
+    "paiement": "2023-08-31"
+   },
+   {
+    "ex_date": "2024-09-26",
+    "montant": 206.195,
+    "devise": "XOF",
+    "record": "2024-09-30",
+    "paiement": "2024-09-30"
+   },
+   {
+    "ex_date": "2026-09-29",
+    "montant": 229.0,
+    "devise": "XOF",
+    "record": "2026-09-30",
+    "paiement": "2026-09-30"
+   }
+  ],
+  "bpa": {
+   "2025": 121.98,
+   "2024": 121.98,
+   "2023": 138.84,
+   "2022": 124.45
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 29.84 vs reference 27.05, ecart +10.3 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 10.3
+ },
+ "BICB": {
+  "dividendes": [
+   {
+    "ex_date": "2025-09-11",
+    "montant": 268.0,
+    "devise": "XOF",
+    "record": "2025-09-15",
+    "paiement": "2025-09-15"
+   },
+   {
+    "ex_date": "2026-07-30",
+    "montant": 254.6,
+    "devise": "XOF",
+    "record": "2026-07-31",
+    "paiement": "2026-07-31"
+   }
+  ],
+  "bpa": {
+   "2025": 657.95,
+   "2024": 627.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 13.54 vs reference 13.75, ecart -1.5 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -1.5
+ },
+ "BICC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-07-13",
+    "montant": 518.0,
+    "devise": "XOF",
+    "record": "2022-07-15",
+    "paiement": "2022-07-15"
+   },
+   {
+    "ex_date": "2023-07-27",
+    "montant": 401.4,
+    "devise": "XOF",
+    "record": "2023-07-31",
+    "paiement": "2023-07-31"
+   },
+   {
+    "ex_date": "2024-06-25",
+    "montant": 540.9,
+    "devise": "XOF",
+    "record": "2024-06-27",
+    "paiement": "2024-06-27"
+   },
+   {
+    "ex_date": "2025-05-21",
+    "montant": 944.0,
+    "devise": "XOF",
+    "record": "2025-05-23",
+    "paiement": "2025-05-23"
+   },
+   {
+    "ex_date": "2026-07-03",
+    "montant": 1315.0,
+    "devise": "XOF",
+    "record": "2026-07-06",
+    "paiement": "2026-07-06"
+   }
+  ],
+  "bpa": {
+   "2025": 1001.64,
+   "2024": 743.46,
+   "2023": 576.18
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA ECARTE : PER recalcul 32.55 vs reference 14.42 (+125.7 %) — le BPA publie ne correspond pas au nombre d'actions actuel"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": 125.7
+ },
+ "BNBC": {
+  "dividendes": [
+   {
+    "ex_date": "2018-07-23",
+    "montant": 70.0,
+    "devise": "XOF",
+    "record": "2018-07-25",
+    "paiement": "2018-07-25"
+   },
+   {
+    "ex_date": "2019-07-17",
+    "montant": 45.0,
+    "devise": "XOF",
+    "record": "2019-07-19",
+    "paiement": "2019-07-19"
+   },
+   {
+    "ex_date": "2023-07-20",
+    "montant": 150.0,
+    "devise": "XOF",
+    "record": "2023-07-24",
+    "paiement": "2023-07-24"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "BOAB": {
+  "dividendes": [
+   {
+    "ex_date": "2022-05-23",
+    "montant": 287.5,
+    "devise": "XOF",
+    "record": "2022-05-25",
+    "paiement": "2022-05-25"
+   },
+   {
+    "ex_date": "2023-05-23",
+    "montant": 330.0,
+    "devise": "XOF",
+    "record": "2023-05-25",
+    "paiement": "2023-05-25"
+   },
+   {
+    "ex_date": "2024-05-23",
+    "montant": 371.5,
+    "devise": "XOF",
+    "record": "2024-05-27",
+    "paiement": "2024-05-27"
+   },
+   {
+    "ex_date": "2025-05-30",
+    "montant": 468.0,
+    "devise": "XOF",
+    "record": "2025-06-03",
+    "paiement": "2025-06-03"
+   },
+   {
+    "ex_date": "2026-05-22",
+    "montant": 585.0,
+    "devise": "XOF",
+    "record": "2026-05-26",
+    "paiement": "2026-05-26"
+   }
+  ],
+  "bpa": {
+   "2025": 496.0,
+   "2024": 496.0,
+   "2023": 484.0,
+   "2022": 531.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 19.66 vs reference 18.90, ecart +4.0 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 4.0
+ },
+ "BOABF": {
+  "dividendes": [
+   {
+    "ex_date": "2021-04-29",
+    "montant": 211.5,
+    "devise": "XOF",
+    "record": "2021-05-03",
+    "paiement": "2021-05-03"
+   },
+   {
+    "ex_date": "2022-04-29",
+    "montant": 256.0,
+    "devise": "XOF",
+    "record": "2022-05-04",
+    "paiement": "2022-05-04"
+   },
+   {
+    "ex_date": "2023-05-03",
+    "montant": 329.5,
+    "devise": "XOF",
+    "record": "2023-05-05",
+    "paiement": "2023-05-05"
+   },
+   {
+    "ex_date": "2024-05-02",
+    "montant": 402.5,
+    "devise": "XOF",
+    "record": "2024-05-06",
+    "paiement": "2024-05-06"
+   },
+   {
+    "ex_date": "2025-04-17",
+    "montant": 428.0,
+    "devise": "XOF",
+    "record": "2025-04-22",
+    "paiement": "2025-04-22"
+   },
+   {
+    "ex_date": "2026-04-22",
+    "montant": 397.0,
+    "devise": "XOF",
+    "record": "2026-04-23",
+    "paiement": "2026-04-23"
+   }
+  ],
+  "bpa": {
+   "2025": 495.41,
+   "2024": 437.55,
+   "2023": 509.53,
+   "2022": 660.5,
+   "2021": 579.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 16.55 vs reference 18.06, ecart -8.4 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -8.4
+ },
+ "BOAC": {
+  "dividendes": [
+   {
+    "ex_date": "2021-05-10",
+    "montant": 157.5,
+    "devise": "XOF",
+    "record": "2021-05-12",
+    "paiement": "2021-05-12"
+   },
+   {
+    "ex_date": "2022-04-26",
+    "montant": 187.0,
+    "devise": "XOF",
+    "record": "2022-04-29",
+    "paiement": "2022-04-29"
+   },
+   {
+    "ex_date": "2023-04-26",
+    "montant": 270.0,
+    "devise": "XOF",
+    "record": "2023-04-28",
+    "paiement": "2023-04-28"
+   },
+   {
+    "ex_date": "2024-04-25",
+    "montant": 378.34,
+    "devise": "XOF",
+    "record": "2024-04-29",
+    "paiement": "2024-04-29"
+   },
+   {
+    "ex_date": "2025-05-16",
+    "montant": 469.0,
+    "devise": "XOF",
+    "record": "2025-05-20",
+    "paiement": "2025-05-20"
+   },
+   {
+    "ex_date": "2026-05-05",
+    "montant": 594.528,
+    "devise": "XOF",
+    "record": "2026-05-06",
+    "paiement": "2026-05-06"
+   }
+  ],
+  "bpa": {
+   "2024": 801.0,
+   "2023": 652.0,
+   "2022": 501.5,
+   "2021": 416.0,
+   "2020": 355.4
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 14.36 vs reference 12.72, ecart +12.9 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 12.9
+ },
+ "BOAM": {
+  "dividendes": [
+   {
+    "ex_date": "2024-05-16",
+    "montant": 103.33333,
+    "devise": "XOF",
+    "record": "2024-05-21",
+    "paiement": "2024-05-21"
+   },
+   {
+    "ex_date": "2025-05-30",
+    "montant": 237.15,
+    "devise": "XOF",
+    "record": "2025-06-03",
+    "paiement": "2025-06-03"
+   },
+   {
+    "ex_date": "2026-06-02",
+    "montant": 305.04,
+    "devise": "XOF",
+    "record": "2026-06-03",
+    "paiement": "2026-06-03"
+   }
+  ],
+  "bpa": {
+   "2025": 332.0,
+   "2024": 210.0,
+   "2023": 89.63,
+   "2022": 76.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 18.51 vs reference 15.09, ecart +22.7 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 22.7
+ },
+ "BOAN": {
+  "dividendes": [
+   {
+    "ex_date": "2021-05-04",
+    "montant": 288.75,
+    "devise": "XOF",
+    "record": "2021-05-06",
+    "paiement": "2021-05-06"
+   },
+   {
+    "ex_date": "2022-05-10",
+    "montant": 381.25,
+    "devise": "XOF",
+    "record": "2022-05-12",
+    "paiement": "2022-05-12"
+   },
+   {
+    "ex_date": "2023-05-23",
+    "montant": 412.5,
+    "devise": "XOF",
+    "record": "2023-05-25",
+    "paiement": "2023-05-25"
+   },
+   {
+    "ex_date": "2024-05-29",
+    "montant": 409.375,
+    "devise": "XOF",
+    "record": "2024-05-31",
+    "paiement": "2024-05-31"
+   },
+   {
+    "ex_date": "2025-05-30",
+    "montant": 209.25,
+    "devise": "XOF",
+    "record": "2025-06-03",
+    "paiement": "2025-06-03"
+   }
+  ],
+  "bpa": {
+   "2025": 19.66,
+   "2024": 250.0,
+   "2023": 484.38,
+   "2022": 487.22,
+   "2021": 451.88
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 269.58 vs reference 254.11, ecart +6.1 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 6.1
+ },
+ "BOAS": {
+  "dividendes": [
+   {
+    "ex_date": "2022-05-30",
+    "montant": 107.33333,
+    "devise": "XOF",
+    "record": "2022-06-01",
+    "paiement": "2022-06-01"
+   },
+   {
+    "ex_date": "2023-05-30",
+    "montant": 125.0,
+    "devise": "XOF",
+    "record": "2023-06-01",
+    "paiement": "2023-06-01"
+   },
+   {
+    "ex_date": "2024-06-25",
+    "montant": 221.25333,
+    "devise": "XOF",
+    "record": "2024-06-27",
+    "paiement": "2024-06-27"
+   },
+   {
+    "ex_date": "2025-05-28",
+    "montant": 350.0,
+    "devise": "XOF",
+    "record": "2025-06-02",
+    "paiement": "2025-06-02"
+   },
+   {
+    "ex_date": "2026-05-29",
+    "montant": 450.0,
+    "devise": "XOF",
+    "record": "2026-06-01",
+    "paiement": "2026-06-01"
+   }
+  ],
+  "bpa": {
+   "2025": 627.53,
+   "2024": 608.47,
+   "2023": 555.11,
+   "2022": 472.83,
+   "2021": 432.81
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 12.98 vs reference 13.39, ecart -3.1 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -3.1
+ },
+ "CABC": {
+  "dividendes": [
+   {
+    "ex_date": "2021-07-29",
+    "montant": 147.78,
+    "devise": "XOF",
+    "record": "2021-08-02",
+    "paiement": "2021-08-02"
+   },
+   {
+    "ex_date": "2022-07-29",
+    "montant": 76.67,
+    "devise": "XOF",
+    "record": "2022-08-02",
+    "paiement": "2022-08-02"
+   },
+   {
+    "ex_date": "2023-07-31",
+    "montant": 76.67,
+    "devise": "XOF",
+    "record": "2023-08-02",
+    "paiement": "2023-08-02"
+   },
+   {
+    "ex_date": "2024-05-29",
+    "montant": 88.42,
+    "devise": "XOF",
+    "record": "2024-05-31",
+    "paiement": "2024-05-31"
+   },
+   {
+    "ex_date": "2025-05-28",
+    "montant": 128.1,
+    "devise": "XOF",
+    "record": "2025-06-02",
+    "paiement": "2025-06-02"
+   },
+   {
+    "ex_date": "2026-05-29",
+    "montant": 152.02,
+    "devise": "XOF",
+    "record": "2026-06-01",
+    "paiement": "2026-06-01"
+   }
+  ],
+  "bpa": {
+   "2025": 287.91,
+   "2024": 287.91,
+   "2023": 206.9
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 11.79 vs reference 13.76, ecart -14.3 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -14.3
+ },
+ "CBIBF": {
+  "dividendes": [
+   {
+    "ex_date": "2021-07-02",
+    "montant": 464.0,
+    "devise": "XOF",
+    "record": "2021-07-06",
+    "paiement": "2021-07-06"
+   },
+   {
+    "ex_date": "2022-07-04",
+    "montant": 448.0,
+    "devise": "XOF",
+    "record": "2022-07-06",
+    "paiement": "2022-07-06"
+   },
+   {
+    "ex_date": "2023-07-04",
+    "montant": 600.0,
+    "devise": "XOF",
+    "record": "2023-07-06",
+    "paiement": "2023-07-06"
+   },
+   {
+    "ex_date": "2024-07-03",
+    "montant": 902.86,
+    "devise": "XOF",
+    "record": "2024-07-05",
+    "paiement": "2024-07-05"
+   },
+   {
+    "ex_date": "2025-07-03",
+    "montant": 555.0,
+    "devise": "XOF",
+    "record": "2025-07-07",
+    "paiement": "2025-07-07"
+   },
+   {
+    "ex_date": "2026-06-18",
+    "montant": 900.0,
+    "devise": "XOF",
+    "record": "2026-06-19",
+    "paiement": "2026-06-19"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "CFAC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-07-29",
+    "montant": 77.19,
+    "devise": "XOF",
+    "record": "2022-08-02",
+    "paiement": "2022-08-02"
+   },
+   {
+    "ex_date": "2023-09-13",
+    "montant": 30.5,
+    "devise": "XOF",
+    "record": "2023-09-15",
+    "paiement": "2023-09-15"
+   },
+   {
+    "ex_date": "2024-08-28",
+    "montant": 15.87,
+    "devise": "XOF",
+    "record": "2024-08-30",
+    "paiement": "2024-08-30"
+   },
+   {
+    "ex_date": "2025-08-14",
+    "montant": 8.0,
+    "devise": "XOF",
+    "record": "2025-08-19",
+    "paiement": "2025-08-19"
+   },
+   {
+    "ex_date": "2026-08-13",
+    "montant": 63.0,
+    "devise": "XOF",
+    "record": "2026-08-14",
+    "paiement": "2026-08-14"
+   }
+  ],
+  "bpa": {
+   "2025": 46.4,
+   "2024": 46.4,
+   "2023": 25.88,
+   "2022": 35.28,
+   "2021": 30.51
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 33.30 vs reference 33.19, ecart +0.3 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 0.3
+ },
+ "CIEC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-07-21",
+    "montant": 170.18,
+    "devise": "XOF",
+    "record": "2022-07-25",
+    "paiement": "2022-07-25"
+   },
+   {
+    "ex_date": "2023-07-27",
+    "montant": 175.0,
+    "devise": "XOF",
+    "record": "2023-07-31",
+    "paiement": "2023-07-31"
+   },
+   {
+    "ex_date": "2024-07-26",
+    "montant": 190.0,
+    "devise": "XOF",
+    "record": "2024-07-30",
+    "paiement": "2024-07-30"
+   },
+   {
+    "ex_date": "2025-07-29",
+    "montant": 180.0,
+    "devise": "XOF",
+    "record": "2025-07-31",
+    "paiement": "2025-07-31"
+   },
+   {
+    "ex_date": "2026-07-27",
+    "montant": 234.0,
+    "devise": "XOF",
+    "record": "2026-07-28",
+    "paiement": "2026-07-28"
+   }
+  ],
+  "bpa": {
+   "2025": 233.93,
+   "2024": 233.93,
+   "2023": 187.96,
+   "2022": 205.0,
+   "2021": 183.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 27.57 vs reference 26.45, ecart +4.2 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 4.2
+ },
+ "ECOC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-04-26",
+    "montant": 467.0,
+    "devise": "XOF",
+    "record": "2022-04-29",
+    "paiement": "2022-04-29"
+   },
+   {
+    "ex_date": "2023-05-25",
+    "montant": 610.0,
+    "devise": "XOF",
+    "record": "2023-05-30",
+    "paiement": "2023-05-30"
+   },
+   {
+    "ex_date": "2024-05-28",
+    "montant": 594.0,
+    "devise": "XOF",
+    "record": "2024-05-30",
+    "paiement": "2024-05-30"
+   },
+   {
+    "ex_date": "2025-05-27",
+    "montant": 804.0,
+    "devise": "XOF",
+    "record": "2025-05-30",
+    "paiement": "2025-05-30"
+   },
+   {
+    "ex_date": "2026-05-22",
+    "montant": 888.0,
+    "devise": "XOF",
+    "record": "2026-05-26",
+    "paiement": "2026-05-26"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "ETIT": {
+  "dividendes": [
+   {
+    "ex_date": "2022-06-16",
+    "montant": 100.8944,
+    "devise": "XOF",
+    "record": "2022-06-20",
+    "paiement": "2022-06-20"
+   },
+   {
+    "ex_date": "2023-06-06",
+    "montant": 0.67354,
+    "devise": "XOF",
+    "record": "2023-06-08",
+    "paiement": "2023-06-08"
+   },
+   {
+    "ex_date": "2026-06-29",
+    "montant": 0.9184,
+    "devise": "XOF",
+    "record": "2026-06-30",
+    "paiement": "2026-06-30"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "FTSC": {
+  "dividendes": [
+   {
+    "ex_date": "2021-07-28",
+    "montant": 235.0,
+    "devise": "XOF",
+    "record": "2021-07-30",
+    "paiement": "2021-07-30"
+   },
+   {
+    "ex_date": "2024-09-26",
+    "montant": 143.1,
+    "devise": "XOF",
+    "record": "2024-09-30",
+    "paiement": "2024-09-30"
+   },
+   {
+    "ex_date": "2025-09-26",
+    "montant": 2000.67,
+    "devise": "XOF",
+    "record": "2025-09-30",
+    "paiement": "2025-09-30"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "LNBB": {
+  "dividendes": [
+   {
+    "ex_date": "2025-07-29",
+    "montant": 290.0,
+    "devise": "XOF",
+    "record": "2025-07-31",
+    "paiement": "2025-07-31"
+   },
+   {
+    "ex_date": "2026-07-31",
+    "montant": 164.1709,
+    "devise": "XOF",
+    "record": "2026-08-03",
+    "paiement": "2026-08-03"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "NEIC": {
+  "dividendes": [
+   {
+    "ex_date": "2023-09-20",
+    "montant": 35.25,
+    "devise": "XOF",
+    "record": "2023-09-22",
+    "paiement": "2023-09-22"
+   },
+   {
+    "ex_date": "2024-06-21",
+    "montant": 81.78,
+    "devise": "XOF",
+    "record": "2024-06-25",
+    "paiement": "2024-06-25"
+   },
+   {
+    "ex_date": "2026-09-09",
+    "montant": 159.54,
+    "devise": "XOF",
+    "record": "2026-09-10",
+    "paiement": "2026-09-10"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "NSBC": {
+  "dividendes": [
+   {
+    "ex_date": "2023-07-05",
+    "montant": 404.0,
+    "devise": "XOF",
+    "record": "2023-07-07",
+    "paiement": "2023-07-07"
+   },
+   {
+    "ex_date": "2024-07-04",
+    "montant": 505.0,
+    "devise": "XOF",
+    "record": "2024-07-08",
+    "paiement": "2024-07-08"
+   },
+   {
+    "ex_date": "2025-07-07",
+    "montant": 759.2612,
+    "devise": "XOF",
+    "record": "2025-07-09",
+    "paiement": "2025-07-09"
+   },
+   {
+    "ex_date": "2026-08-03",
+    "montant": 768.16,
+    "devise": "XOF",
+    "record": "2026-08-04",
+    "paiement": "2026-08-04"
+   }
+  ],
+  "bpa": {
+   "2025": 1798.54,
+   "2024": 1645.96,
+   "2023": 1540.84,
+   "2022": 1407.46,
+   "2021": 1309.18
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 11.95 vs reference 12.76, ecart -6.3 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -6.3
+ },
+ "NTLC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-07-29",
+    "montant": 856.8,
+    "devise": "XOF",
+    "record": "2022-08-02",
+    "paiement": "2022-08-02"
+   },
+   {
+    "ex_date": "2023-08-03",
+    "montant": 728.1,
+    "devise": "XOF",
+    "record": "2023-08-08",
+    "paiement": "2023-08-08"
+   },
+   {
+    "ex_date": "2024-08-16",
+    "montant": 675.0,
+    "devise": "XOF",
+    "record": "2024-08-20",
+    "paiement": "2024-08-20"
+   },
+   {
+    "ex_date": "2025-08-13",
+    "montant": 820.0,
+    "devise": "XOF",
+    "record": "2025-08-18",
+    "paiement": "2025-08-18"
+   },
+   {
+    "ex_date": "2026-09-04",
+    "montant": 420.0,
+    "devise": "XOF",
+    "record": "2026-09-07",
+    "paiement": "2026-09-07"
+   }
+  ],
+  "bpa": {
+   "2025": 16698.29,
+   "2024": 16698.29,
+   "2023": 16447.64,
+   "2022": 15003.53,
+   "2021": 19273.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA ECARTE : PER recalcul 0.90 vs reference 18.56 (-95.2 %) — le BPA publie ne correspond pas au nombre d'actions actuel"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": -95.2
+ },
+ "ONTBF": {
+  "dividendes": [
+   {
+    "ex_date": "2022-06-13",
+    "montant": 476.0904,
+    "devise": "XOF",
+    "record": "2022-06-15",
+    "paiement": "2022-06-15"
+   },
+   {
+    "ex_date": "2023-06-22",
+    "montant": 329.0056,
+    "devise": "XOF",
+    "record": "2023-06-26",
+    "paiement": "2023-06-26"
+   },
+   {
+    "ex_date": "2024-07-29",
+    "montant": 304.51,
+    "devise": "XOF",
+    "record": "2024-07-31",
+    "paiement": "2024-07-31"
+   },
+   {
+    "ex_date": "2025-07-17",
+    "montant": 216.6056,
+    "devise": "XOF",
+    "record": "2025-07-21",
+    "paiement": "2025-07-21"
+   },
+   {
+    "ex_date": "2026-06-12",
+    "montant": 166.0816,
+    "devise": "XOF",
+    "record": "2026-06-15",
+    "paiement": "2026-06-15"
+   }
+  ],
+  "bpa": {
+   "2025": 315.75,
+   "2024": 310.72
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 9.33 vs reference 13.68, ecart -31.8 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -31.8
+ },
+ "ORAC": {
+  "dividendes": [
+   {
+    "ex_date": "2023-06-13",
+    "montant": 836.4,
+    "devise": "XOF",
+    "record": "2023-06-15",
+    "paiement": "2023-06-15"
+   },
+   {
+    "ex_date": "2024-05-30",
+    "montant": 866.66,
+    "devise": "XOF",
+    "record": "2024-06-03",
+    "paiement": "2024-06-03"
+   },
+   {
+    "ex_date": "2025-06-05",
+    "montant": 750.0,
+    "devise": "XOF",
+    "record": "2025-06-11",
+    "paiement": "2025-06-11"
+   },
+   {
+    "ex_date": "2026-06-05",
+    "montant": 800.0,
+    "devise": "XOF",
+    "record": "2026-06-08",
+    "paiement": "2026-06-08"
+   }
+  ],
+  "bpa": {
+   "2025": 857.1,
+   "2024": 857.1
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 25.08 vs reference 18.41, ecart +36.3 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 36.3
+ },
+ "ORGT": {
+  "dividendes": [
+   {
+    "ex_date": "2019-06-27",
+    "montant": 61.0,
+    "devise": "XOF",
+    "record": "2019-07-01",
+    "paiement": "2019-07-01"
+   },
+   {
+    "ex_date": "2020-07-15",
+    "montant": 64.0,
+    "devise": "XOF",
+    "record": "2020-07-17",
+    "paiement": "2020-07-17"
+   }
+  ],
+  "bpa": {
+   "2025": 241.0,
+   "2024": -545.0,
+   "2023": -280.0,
+   "2022": 154.83
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 12.03 vs reference 9.30, ecart +29.4 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 29.4
+ },
+ "PALC": {
+  "dividendes": [
+   {
+    "ex_date": "2021-08-25",
+    "montant": 114.0,
+    "devise": "XOF",
+    "record": "2021-08-27",
+    "paiement": "2021-08-27"
+   },
+   {
+    "ex_date": "2022-08-29",
+    "montant": 1374.0,
+    "devise": "XOF",
+    "record": "2022-08-31",
+    "paiement": "2022-08-31"
+   },
+   {
+    "ex_date": "2023-07-17",
+    "montant": 1348.0,
+    "devise": "XOF",
+    "record": "2023-07-19",
+    "paiement": "2023-07-19"
+   },
+   {
+    "ex_date": "2024-07-24",
+    "montant": 563.306,
+    "devise": "XOF",
+    "record": "2024-07-26",
+    "paiement": "2024-07-26"
+   },
+   {
+    "ex_date": "2025-09-08",
+    "montant": 513.012,
+    "devise": "XOF",
+    "record": "2025-09-10",
+    "paiement": "2025-09-10"
+   },
+   {
+    "ex_date": "2026-06-26",
+    "montant": 501.596,
+    "devise": "XOF",
+    "record": "2026-06-29",
+    "paiement": "2026-06-29"
+   }
+  ],
+  "bpa": {
+   "2025": 1003.19,
+   "2024": 1003.19,
+   "2023": 1026.02,
+   "2022": 1251.79,
+   "2021": 2696.96
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 8.26 vs reference 8.32, ecart -0.7 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -0.7
+ },
+ "PRSC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-08-26",
+    "montant": 195.4,
+    "devise": "XOF",
+    "record": "2022-08-30",
+    "paiement": "2022-08-30"
+   },
+   {
+    "ex_date": "2023-09-11",
+    "montant": 249.0,
+    "devise": "XOF",
+    "record": "2023-09-13",
+    "paiement": "2023-09-13"
+   },
+   {
+    "ex_date": "2024-09-20",
+    "montant": 182.7,
+    "devise": "XOF",
+    "record": "2024-09-24",
+    "paiement": "2024-09-24"
+   },
+   {
+    "ex_date": "2025-09-26",
+    "montant": 207.0,
+    "devise": "XOF",
+    "record": "2025-09-30",
+    "paiement": "2025-09-30"
+   },
+   {
+    "ex_date": "2026-09-29",
+    "montant": 209.0,
+    "devise": "XOF",
+    "record": "2026-09-30",
+    "paiement": "2026-09-30"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SAFC": {
+  "dividendes": [],
+  "bpa": {
+   "2025": 2158.25,
+   "2024": 2158.25,
+   "2023": -508.0,
+   "2021": -1856.58,
+   "2020": -5049.42
+  },
+  "source_ok": true,
+  "notes": [
+   "aucun dividende daté",
+   "BPA ECARTE : PER recalcul 2.13 vs reference 71.54 (-97.0 %) — le BPA publie ne correspond pas au nombre d'actions actuel"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": -97.0
+ },
+ "SCRC": {
+  "dividendes": [
+   {
+    "ex_date": "2017-09-27",
+    "montant": 137.25,
+    "devise": "XOF",
+    "record": "2017-09-29",
+    "paiement": "2017-09-29"
+   },
+   {
+    "ex_date": "2018-09-26",
+    "montant": 80.0,
+    "devise": "XOF",
+    "record": "2018-09-28",
+    "paiement": "2018-09-28"
+   },
+   {
+    "ex_date": "2021-08-18",
+    "montant": 45.0,
+    "devise": "XOF",
+    "record": "2021-08-20",
+    "paiement": "2021-08-20"
+   }
+  ],
+  "bpa": {
+   "2025": -347.37,
+   "2024": -406.0,
+   "2023": 126.0,
+   "2022": -459.7,
+   "2021": -357.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SDCC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-10-19",
+    "montant": 480.0,
+    "devise": "XOF",
+    "record": "2022-10-21",
+    "paiement": "2022-10-21"
+   },
+   {
+    "ex_date": "2023-09-13",
+    "montant": 450.0,
+    "devise": "XOF",
+    "record": "2023-09-15",
+    "paiement": "2023-09-15"
+   },
+   {
+    "ex_date": "2024-09-23",
+    "montant": 481.5,
+    "devise": "XOF",
+    "record": "2024-09-25",
+    "paiement": "2024-09-25"
+   },
+   {
+    "ex_date": "2025-09-26",
+    "montant": 400.0,
+    "devise": "XOF",
+    "record": "2025-09-30",
+    "paiement": "2025-09-30"
+   },
+   {
+    "ex_date": "2026-09-15",
+    "montant": 525.0,
+    "devise": "XOF",
+    "record": "2026-09-16",
+    "paiement": "2026-09-16"
+   }
+  ],
+  "bpa": {
+   "2025": 653.0,
+   "2024": 451.0,
+   "2023": 680.78,
+   "2022": 599.67,
+   "2021": 576.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 19.91 vs reference 19.79, ecart +0.6 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 0.6
+ },
+ "SDSC": {
+  "dividendes": [
+   {
+    "ex_date": "2020-12-16",
+    "montant": 100.0,
+    "devise": "XOF",
+    "record": "2020-12-18",
+    "paiement": "2020-12-18"
+   },
+   {
+    "ex_date": "2021-08-09",
+    "montant": 100.0,
+    "devise": "XOF",
+    "record": "2021-08-11",
+    "paiement": "2021-08-11"
+   },
+   {
+    "ex_date": "2022-06-21",
+    "montant": 130.0,
+    "devise": "XOF",
+    "record": "2022-06-23",
+    "paiement": "2022-06-23"
+   },
+   {
+    "ex_date": "2023-11-16",
+    "montant": 92.0,
+    "devise": "XOF",
+    "record": "2023-11-20",
+    "paiement": "2023-11-20"
+   },
+   {
+    "ex_date": "2024-12-10",
+    "montant": 92.0,
+    "devise": "XOF",
+    "record": "2024-12-12",
+    "paiement": "2024-12-12"
+   },
+   {
+    "ex_date": "2025-08-27",
+    "montant": 92.0,
+    "devise": "XOF",
+    "record": "2025-08-29",
+    "paiement": "2025-08-29"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SEMC": {
+  "dividendes": [],
+  "bpa": {},
+  "source_ok": false,
+  "notes": [
+   "aucun dividende daté",
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SGBC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-06-08",
+    "montant": 1004.93,
+    "devise": "XOF",
+    "record": "2022-06-10",
+    "paiement": "2022-06-10"
+   },
+   {
+    "ex_date": "2023-05-26",
+    "montant": 1230.0,
+    "devise": "XOF",
+    "record": "2023-05-31",
+    "paiement": "2023-05-31"
+   },
+   {
+    "ex_date": "2024-06-21",
+    "montant": 1553.847,
+    "devise": "XOF",
+    "record": "2024-06-25",
+    "paiement": "2024-06-25"
+   },
+   {
+    "ex_date": "2025-08-01",
+    "montant": 1863.0,
+    "devise": "XOF",
+    "record": "2025-08-05",
+    "paiement": "2025-08-05"
+   },
+   {
+    "ex_date": "2026-08-21",
+    "montant": 2606.0,
+    "devise": "XOF",
+    "record": "2026-08-24",
+    "paiement": "2026-08-24"
+   }
+  ],
+  "bpa": {
+   "2025": 3257.74,
+   "2024": 3253.76,
+   "2023": 3125.25,
+   "2022": 2398.24,
+   "2021": 2167.65
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 11.97 vs reference 11.97, ecart -0.0 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -0.0
+ },
+ "SHEC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-10-26",
+    "montant": 29.0,
+    "devise": "XOF",
+    "record": "2022-10-28",
+    "paiement": "2022-10-28"
+   },
+   {
+    "ex_date": "2023-12-26",
+    "montant": 53.0,
+    "devise": "XOF",
+    "record": "2023-12-28",
+    "paiement": "2023-12-28"
+   },
+   {
+    "ex_date": "2024-09-25",
+    "montant": 57.0,
+    "devise": "XOF",
+    "record": "2024-09-27",
+    "paiement": "2024-09-27"
+   },
+   {
+    "ex_date": "2025-10-20",
+    "montant": 85.56,
+    "devise": "XOF",
+    "record": "2025-10-22",
+    "paiement": "2025-10-22"
+   },
+   {
+    "ex_date": "2026-09-24",
+    "montant": 96.67,
+    "devise": "XOF",
+    "record": "2026-09-25",
+    "paiement": "2026-09-25"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SIBC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-06-28",
+    "montant": 225.0,
+    "devise": "XOF",
+    "record": "2022-06-30",
+    "paiement": "2022-06-30"
+   },
+   {
+    "ex_date": "2023-08-09",
+    "montant": 275.0,
+    "devise": "XOF",
+    "record": "2023-08-11",
+    "paiement": "2023-08-11"
+   },
+   {
+    "ex_date": "2024-07-29",
+    "montant": 247.5,
+    "devise": "XOF",
+    "record": "2024-07-31",
+    "paiement": "2024-07-31"
+   },
+   {
+    "ex_date": "2025-07-29",
+    "montant": 375.0,
+    "devise": "XOF",
+    "record": "2025-07-31",
+    "paiement": "2025-07-31"
+   },
+   {
+    "ex_date": "2026-07-30",
+    "montant": 425.0,
+    "devise": "XOF",
+    "record": "2026-07-31",
+    "paiement": "2026-07-31"
+   }
+  ],
+  "bpa": {
+   "2025": 556.23,
+   "2024": 502.0,
+   "2023": 435.0,
+   "2022": 400.9,
+   "2021": 340.31
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 16.47 vs reference 16.28, ecart +1.2 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 1.2
+ },
+ "SICC": {
+  "dividendes": [],
+  "bpa": {},
+  "source_ok": false,
+  "notes": [
+   "aucun dividende daté",
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SIVC": {
+  "dividendes": [],
+  "bpa": {
+   "2025": 20.53,
+   "2024": 20.53,
+   "2023": 102.55
+  },
+  "source_ok": true,
+  "notes": [
+   "aucun dividende daté",
+   "BPA verifie (PER recalcul 97.42 vs reference 96.70, ecart +0.7 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 0.7
+ },
+ "SLBC": {
+  "dividendes": [
+   {
+    "ex_date": "2021-07-30",
+    "montant": 304.0,
+    "devise": "XOF",
+    "record": "2021-08-03",
+    "paiement": "2021-08-03"
+   },
+   {
+    "ex_date": "2022-08-10",
+    "montant": 450.0,
+    "devise": "XOF",
+    "record": "2022-08-12",
+    "paiement": "2022-08-12"
+   },
+   {
+    "ex_date": "2024-09-12",
+    "montant": 270.0,
+    "devise": "XOF",
+    "record": "2024-09-16",
+    "paiement": "2024-09-16"
+   },
+   {
+    "ex_date": "2025-07-25",
+    "montant": 1220.0,
+    "devise": "XOF",
+    "record": "2025-07-29",
+    "paiement": "2025-07-29"
+   },
+   {
+    "ex_date": "2026-07-29",
+    "montant": 2127.0,
+    "devise": "XOF",
+    "record": "2026-07-30",
+    "paiement": "2026-07-30"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SMBC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-08-22",
+    "montant": 800.0,
+    "devise": "XOF",
+    "record": "2022-08-24",
+    "paiement": "2022-08-24"
+   },
+   {
+    "ex_date": "2023-08-29",
+    "montant": 800.0,
+    "devise": "XOF",
+    "record": "2023-08-31",
+    "paiement": "2023-08-31"
+   },
+   {
+    "ex_date": "2024-09-26",
+    "montant": 1080.0,
+    "devise": "XOF",
+    "record": "2024-09-30",
+    "paiement": "2024-09-30"
+   },
+   {
+    "ex_date": "2025-09-11",
+    "montant": 700.0,
+    "devise": "XOF",
+    "record": "2025-09-15",
+    "paiement": "2025-09-15"
+   },
+   {
+    "ex_date": "2026-09-17",
+    "montant": 800.0,
+    "devise": "XOF",
+    "record": "2026-09-18",
+    "paiement": "2026-09-18"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "SNTS": {
+  "dividendes": [
+   {
+    "ex_date": "2022-05-16",
+    "montant": 1556.0,
+    "devise": "XOF",
+    "record": "2022-05-18",
+    "paiement": "2022-05-18"
+   },
+   {
+    "ex_date": "2023-05-15",
+    "montant": 1667.0,
+    "devise": "XOF",
+    "record": "2023-05-17",
+    "paiement": "2023-05-17"
+   },
+   {
+    "ex_date": "2024-05-15",
+    "montant": 1750.0,
+    "devise": "XOF",
+    "record": "2024-05-17",
+    "paiement": "2024-05-17"
+   },
+   {
+    "ex_date": "2025-05-20",
+    "montant": 1838.89,
+    "devise": "XOF",
+    "record": "2025-05-22",
+    "paiement": "2025-05-22"
+   },
+   {
+    "ex_date": "2026-05-22",
+    "montant": 1740.0,
+    "devise": "XOF",
+    "record": "2026-05-26",
+    "paiement": "2026-05-26"
+   }
+  ],
+  "bpa": {
+   "2025": 3419.63,
+   "2024": 3287.5,
+   "2023": 2794.0,
+   "2022": 2359.0,
+   "2021": 2110.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 12.57 vs reference 10.88, ecart +15.6 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 15.6
+ },
+ "SOGC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-07-19",
+    "montant": 602.0,
+    "devise": "XOF",
+    "record": "2022-07-21",
+    "paiement": "2022-07-21"
+   },
+   {
+    "ex_date": "2023-07-13",
+    "montant": 620.0,
+    "devise": "XOF",
+    "record": "2023-07-17",
+    "paiement": "2023-07-17"
+   },
+   {
+    "ex_date": "2024-08-02",
+    "montant": 207.0,
+    "devise": "XOF",
+    "record": "2024-08-06",
+    "paiement": "2024-08-06"
+   },
+   {
+    "ex_date": "2025-07-11",
+    "montant": 600.0,
+    "devise": "XOF",
+    "record": "2025-07-15",
+    "paiement": "2025-07-15"
+   },
+   {
+    "ex_date": "2026-08-05",
+    "montant": 570.0,
+    "devise": "XOF",
+    "record": "2026-08-06",
+    "paiement": "2026-08-06"
+   }
+  ],
+  "bpa": {
+   "2025": 578.31,
+   "2024": 578.31,
+   "2023": 707.0,
+   "2022": 288.0,
+   "2021": 648.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 13.74 vs reference 13.66, ecart +0.6 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": 0.6
+ },
+ "SPHC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-08-02",
+    "montant": 406.0,
+    "devise": "XOF",
+    "record": "2022-08-04",
+    "paiement": "2022-08-04"
+   },
+   {
+    "ex_date": "2023-09-26",
+    "montant": 327.0,
+    "devise": "XOF",
+    "record": "2023-09-29",
+    "paiement": "2023-09-29"
+   },
+   {
+    "ex_date": "2024-08-08",
+    "montant": 64.82,
+    "devise": "XOF",
+    "record": "2024-08-12",
+    "paiement": "2024-08-12"
+   },
+   {
+    "ex_date": "2025-07-15",
+    "montant": 368.0,
+    "devise": "XOF",
+    "record": "2025-07-17",
+    "paiement": "2025-07-17"
+   },
+   {
+    "ex_date": "2026-08-27",
+    "montant": 489.0,
+    "devise": "XOF",
+    "record": "2026-08-28",
+    "paiement": "2026-08-28"
+   }
+  ],
+  "bpa": {
+   "2025": 977.07,
+   "2024": 735.19,
+   "2023": 243.83,
+   "2022": 535.92,
+   "2021": 829.74
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 8.09 vs reference 8.19, ecart -1.3 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -1.3
+ },
+ "STAC": {
+  "dividendes": [
+   {
+    "ex_date": "2021-07-14",
+    "montant": 66.15,
+    "devise": "XOF",
+    "record": "2021-07-16",
+    "paiement": "2021-07-16"
+   },
+   {
+    "ex_date": "2022-07-14",
+    "montant": 66.15,
+    "devise": "XOF",
+    "record": "2022-07-18",
+    "paiement": "2022-07-18"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "STBC": {
+  "dividendes": [
+   {
+    "ex_date": "2022-07-19",
+    "montant": 480.0,
+    "devise": "XOF",
+    "record": "2022-07-21",
+    "paiement": "2022-07-21"
+   },
+   {
+    "ex_date": "2023-07-25",
+    "montant": 600.0,
+    "devise": "XOF",
+    "record": "2023-07-27",
+    "paiement": "2023-07-27"
+   },
+   {
+    "ex_date": "2024-07-25",
+    "montant": 675.0,
+    "devise": "XOF",
+    "record": "2024-07-29",
+    "paiement": "2024-07-29"
+   },
+   {
+    "ex_date": "2025-08-27",
+    "montant": 2375.0,
+    "devise": "XOF",
+    "record": "2025-08-29",
+    "paiement": "2025-08-29"
+   },
+   {
+    "ex_date": "2026-08-12",
+    "montant": 1940.0,
+    "devise": "XOF",
+    "record": "2026-08-13",
+    "paiement": "2026-08-13"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "TTLC": {
+  "dividendes": [
+   {
+    "ex_date": "2021-09-23",
+    "montant": 121.46,
+    "devise": "XOF",
+    "record": "2021-09-27",
+    "paiement": "2021-09-27"
+   },
+   {
+    "ex_date": "2022-08-23",
+    "montant": 159.2874,
+    "devise": "XOF",
+    "record": "2022-08-25",
+    "paiement": "2022-08-25"
+   },
+   {
+    "ex_date": "2023-09-19",
+    "montant": 195.0287,
+    "devise": "XOF",
+    "record": "2023-09-21",
+    "paiement": "2023-09-21"
+   },
+   {
+    "ex_date": "2024-09-13",
+    "montant": 199.5353,
+    "devise": "XOF",
+    "record": "2024-09-17",
+    "paiement": "2024-09-17"
+   },
+   {
+    "ex_date": "2025-09-01",
+    "montant": 222.3578,
+    "devise": "XOF",
+    "record": "2025-09-03",
+    "paiement": "2025-09-03"
+   },
+   {
+    "ex_date": "2026-08-28",
+    "montant": 158.827,
+    "devise": "XOF",
+    "record": "2026-08-31",
+    "paiement": "2026-08-31"
+   }
+  ],
+  "bpa": {
+   "2025": 189.0,
+   "2024": 180.0
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 16.80 vs reference 20.96, ecart -19.9 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -19.9
+ },
+ "TTLS": {
+  "dividendes": [
+   {
+    "ex_date": "2021-07-28",
+    "montant": 223.6,
+    "devise": "XOF",
+    "record": "2021-07-30",
+    "paiement": "2021-07-30"
+   },
+   {
+    "ex_date": "2022-07-20",
+    "montant": 187.3,
+    "devise": "XOF",
+    "record": "2022-07-22",
+    "paiement": "2022-07-22"
+   },
+   {
+    "ex_date": "2023-07-11",
+    "montant": 241.01,
+    "devise": "XOF",
+    "record": "2023-07-13",
+    "paiement": "2023-07-13"
+   },
+   {
+    "ex_date": "2024-06-26",
+    "montant": 207.58,
+    "devise": "XOF",
+    "record": "2024-06-28",
+    "paiement": "2024-06-28"
+   },
+   {
+    "ex_date": "2025-07-09",
+    "montant": 222.4,
+    "devise": "XOF",
+    "record": "2025-07-11",
+    "paiement": "2025-07-11"
+   },
+   {
+    "ex_date": "2026-07-16",
+    "montant": 176.65,
+    "devise": "XOF",
+    "record": "2026-07-17",
+    "paiement": "2026-07-17"
+   }
+  ],
+  "bpa": {
+   "2025": 208.09,
+   "2024": 208.09,
+   "2023": 219.0,
+   "2022": 122.0,
+   "2021": 269.94
+  },
+  "source_ok": true,
+  "notes": [
+   "BPA verifie (PER recalcul 17.37 vs reference 17.54, ecart -1.0 %)"
+  ],
+  "bpa_fiable": true,
+  "ecart_per_pct": -1.0
+ },
+ "UNLC": {
+  "dividendes": [],
+  "bpa": {},
+  "source_ok": false,
+  "notes": [
+   "aucun dividende daté",
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ },
+ "UNXC": {
+  "dividendes": [
+   {
+    "ex_date": "2018-07-11",
+    "montant": 173.7,
+    "devise": "XOF",
+    "record": "2018-07-13",
+    "paiement": "2018-07-13"
+   },
+   {
+    "ex_date": "2019-07-09",
+    "montant": 181.8,
+    "devise": "XOF",
+    "record": "2019-07-11",
+    "paiement": "2019-07-11"
+   },
+   {
+    "ex_date": "2021-07-14",
+    "montant": 20.0,
+    "devise": "XOF",
+    "record": "2021-07-16",
+    "paiement": "2021-07-16"
+   },
+   {
+    "ex_date": "2022-07-27",
+    "montant": 67.5,
+    "devise": "XOF",
+    "record": "2022-07-29",
+    "paiement": "2022-07-29"
+   }
+  ],
+  "bpa": {},
+  "source_ok": true,
+  "notes": [
+   "aucun BPA extrait",
+   "BPA non verifiable (donnee de reference absente)"
+  ],
+  "bpa_fiable": false,
+  "ecart_per_pct": null
+ }
+}

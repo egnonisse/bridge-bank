@@ -1,0 +1,660 @@
+{
+ "_source": "Releve systematique des fiches societe publiees par la BRVM (via richbourse.com)",
+ "_consulte_le": "2026-10-07",
+ "_methode": "48 titres parcourus : cours de cloture reel + toutes les operations de nominal",
+ "_semantique": "Le cours anterieur est divise par facteur = nouvelles/anciennes.",
+ "_perimetre": "Seules les operations posterieures au 2017-01-02 sont retenues.",
+ "_controle": "Aucune estimation : chaque entree vient d'une ligne publiee.",
+ "cours_reels_07_10_2026": {
+  "ABJC": 3295,
+  "BBGC": 9950,
+  "BICB": 8650,
+  "BICC": 31500,
+  "BNBC": 1950,
+  "BOAB": 9360,
+  "BOABF": 7900,
+  "BOAC": 11300,
+  "BOAM": 6095,
+  "BOAN": 5000,
+  "BOAS": 8195,
+  "CABC": 3250,
+  "CBIBF": 31500,
+  "CFAC": 1535,
+  "CIEC": 6500,
+  "ECOC": 16700,
+  "ETIT": 66,
+  "FTSC": 1970,
+  "LNBB": 3890,
+  "NEIC": 2200,
+  "NSBC": 21000,
+  "NTLC": 15500,
+  "ONTBF": 2770,
+  "ORAC": 22000,
+  "ORGT": 2990,
+  "PALC": 8375,
+  "SAFC": 4295,
+  "SCRC": 2700,
+  "SDCC": 13000,
+  "SDSC": 3055,
+  "SGBC": 39000,
+  "SHEC": 2250,
+  "SIBC": 8750,
+  "SLBC": 37400,
+  "SMBC": 16500,
+  "SNTS": 44980,
+  "SPHC": 8005,
+  "STAC": 2065,
+  "STBC": 21770,
+  "SIVC": 1985,
+  "SOGC": 7895,
+  "TTLC": 2990,
+  "TTLS": 3610,
+  "UNLC": 48000,
+  "UNXC": 2300
+ },
+ "divisions": [
+  {
+   "code": "BICC",
+   "date": "2017-10-06",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "BNBC",
+   "date": "2017-07-27",
+   "nouvelles": 20,
+   "anciennes": 1,
+   "facteur": 20.0,
+   "type": "division",
+   "sens": "20 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "BOAB",
+   "date": "2017-10-31",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "BOABF",
+   "date": "2017-10-24",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "BOAC",
+   "date": "2017-10-26",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "BOAM",
+   "date": "2017-12-22",
+   "nouvelles": 5,
+   "anciennes": 1,
+   "facteur": 5.0,
+   "type": "division",
+   "sens": "5 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "BOAN",
+   "date": "2017-10-27",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "BOAS",
+   "date": "2017-10-30",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "CABC",
+   "date": "2017-08-16",
+   "nouvelles": 40,
+   "anciennes": 1,
+   "facteur": 40.0,
+   "type": "division",
+   "sens": "40 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "CBIBF",
+   "date": "2017-12-14",
+   "nouvelles": 5,
+   "anciennes": 1,
+   "facteur": 5.0,
+   "type": "division",
+   "sens": "5 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "CFAC",
+   "date": "2017-12-13",
+   "nouvelles": 100,
+   "anciennes": 1,
+   "facteur": 100.0,
+   "type": "division",
+   "sens": "100 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "CIEC",
+   "date": "2017-10-19",
+   "nouvelles": 20,
+   "anciennes": 1,
+   "facteur": 20.0,
+   "type": "division",
+   "sens": "20 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "ECOC",
+   "date": "2018-12-27",
+   "nouvelles": 5,
+   "anciennes": 1,
+   "facteur": 5.0,
+   "type": "division",
+   "sens": "5 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "FTSC",
+   "date": "2018-01-31",
+   "nouvelles": 4,
+   "anciennes": 1,
+   "facteur": 4.0,
+   "type": "division",
+   "sens": "4 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "NEIC",
+   "date": "2017-08-10",
+   "nouvelles": 25,
+   "anciennes": 1,
+   "facteur": 25.0,
+   "type": "division",
+   "sens": "25 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "NTLC",
+   "date": "2017-09-08",
+   "nouvelles": 20,
+   "anciennes": 1,
+   "facteur": 20.0,
+   "type": "division",
+   "sens": "20 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "ONTBF",
+   "date": "2018-08-29",
+   "nouvelles": 2,
+   "anciennes": 1,
+   "facteur": 2.0,
+   "type": "division",
+   "sens": "2 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "PALC",
+   "date": "2017-11-03",
+   "nouvelles": 2,
+   "anciennes": 1,
+   "facteur": 2.0,
+   "type": "division",
+   "sens": "2 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "PRSC",
+   "date": "2019-09-17",
+   "nouvelles": 64,
+   "anciennes": 1,
+   "facteur": 64.0,
+   "type": "division",
+   "sens": "64 nouvelles pour 1 ancienne (mesure sur les cours)",
+   "source": "detection sur les cours — fiche societe injoignable"
+  },
+  {
+   "code": "SAFC",
+   "date": "2017-10-12",
+   "nouvelles": 3,
+   "anciennes": 2,
+   "facteur": 1.5,
+   "type": "division",
+   "sens": "3 nouvelles pour 2 ancienne(s)"
+  },
+  {
+   "code": "SAFC",
+   "date": "2018-12-24",
+   "nouvelles": 25,
+   "anciennes": 1,
+   "facteur": 25.0,
+   "type": "division",
+   "sens": "25 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SCRC",
+   "date": "2017-12-04",
+   "nouvelles": 4,
+   "anciennes": 1,
+   "facteur": 4.0,
+   "type": "division",
+   "sens": "4 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SDCC",
+   "date": "2017-12-28",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SDSC",
+   "date": "2017-07-29",
+   "nouvelles": 50,
+   "anciennes": 1,
+   "facteur": 50.0,
+   "type": "division",
+   "sens": "50 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SEMC",
+   "date": "2018-12-20",
+   "nouvelles": 40,
+   "anciennes": 1,
+   "facteur": 40.0,
+   "type": "division",
+   "sens": "40 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SGBC",
+   "date": "2017-08-25",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SIBC",
+   "date": "2018-06-15",
+   "nouvelles": 5,
+   "anciennes": 1,
+   "facteur": 5.0,
+   "type": "division",
+   "sens": "5 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SIVC",
+   "date": "2017-12-21",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SLBC",
+   "date": "2024-09-30",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SMBC",
+   "date": "2019-02-25",
+   "nouvelles": 4,
+   "anciennes": 1,
+   "facteur": 4.0,
+   "type": "division",
+   "sens": "4 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SOGC",
+   "date": "2017-08-18",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "SPHC",
+   "date": "2017-07-21",
+   "nouvelles": 5,
+   "anciennes": 1,
+   "facteur": 5.0,
+   "type": "division",
+   "sens": "5 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "STAC",
+   "date": "2017-10-25",
+   "nouvelles": 100,
+   "anciennes": 1,
+   "facteur": 100.0,
+   "type": "division",
+   "sens": "100 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "STBC",
+   "date": "2018-07-27",
+   "nouvelles": 20,
+   "anciennes": 1,
+   "facteur": 20.0,
+   "type": "division",
+   "sens": "20 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "TTLC",
+   "date": "2018-02-12",
+   "nouvelles": 5,
+   "anciennes": 1,
+   "facteur": 5.0,
+   "type": "division",
+   "sens": "5 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "TTLS",
+   "date": "2017-11-02",
+   "nouvelles": 10,
+   "anciennes": 1,
+   "facteur": 10.0,
+   "type": "division",
+   "sens": "10 nouvelles pour 1 ancienne(s)"
+  },
+  {
+   "code": "UNXC",
+   "date": "2017-08-11",
+   "nouvelles": 5,
+   "anciennes": 1,
+   "facteur": 5.0,
+   "type": "division",
+   "sens": "5 nouvelles pour 1 ancienne(s)"
+  }
+ ],
+ "ignorees_anterieures": [
+  {
+   "code": "ABJC",
+   "date": "2016-09-30",
+   "n": 20,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAB",
+   "date": "2010-06-29",
+   "n": 1,
+   "m": 9,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAB",
+   "date": "2009-12-09",
+   "n": 1,
+   "m": 8,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAB",
+   "date": "2004-11-22",
+   "n": 1,
+   "m": 9,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOABF",
+   "date": "2014-09-25",
+   "n": 1,
+   "m": 10,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOABF",
+   "date": "2013-06-13",
+   "n": 1,
+   "m": 4,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOABF",
+   "date": "2011-10-07",
+   "n": 13,
+   "m": 147,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAC",
+   "date": "2016-06-08",
+   "n": 9,
+   "m": 41,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAC",
+   "date": "2014-12-04",
+   "n": 5,
+   "m": 36,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAN",
+   "date": "2016-06-03",
+   "n": 1,
+   "m": 19,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAN",
+   "date": "2014-07-30",
+   "n": 2,
+   "m": 17,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "BOAN",
+   "date": "2013-09-27",
+   "n": 1,
+   "m": 16,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "ETIT",
+   "date": "2008-06-09",
+   "n": 5,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "ETIT",
+   "date": "2007-02-13",
+   "n": 2,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "FTSC",
+   "date": "2004-01-05",
+   "n": 1,
+   "m": 3,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "FTSC",
+   "date": "2003-01-23",
+   "n": 1,
+   "m": 2,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "FTSC",
+   "date": "2001-08-03",
+   "n": 1,
+   "m": 3,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "ONTBF",
+   "date": "2013-11-29",
+   "n": 10,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "SDCC",
+   "date": "2000-09-15",
+   "n": 1,
+   "m": 8,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "SHEC",
+   "date": "2016-11-04",
+   "n": 50,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "SHEC",
+   "date": "2001-06-20",
+   "n": 3,
+   "m": 4,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "SLBC",
+   "date": "2014-12-30",
+   "n": 2,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "SNTS",
+   "date": "2012-11-23",
+   "n": 10,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "TTLC",
+   "date": "2015-07-27",
+   "n": 20,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  },
+  {
+   "code": "UNXC",
+   "date": "2015-04-30",
+   "n": 5,
+   "m": 1,
+   "raison": "anterieure au debut de l'historique"
+  }
+ ],
+ "_neutres_ecartes": 8,
+ "_regroupements_ecartes": [
+  {
+   "code": "BOAM",
+   "date": "2017-09-20",
+   "nouvelles": 1,
+   "anciennes": 2,
+   "facteur": 0.5,
+   "type": "regroupement",
+   "sens": "1 nouvelles pour 2 ancienne(s)"
+  },
+  {
+   "code": "BOAM",
+   "date": "2021-10-06",
+   "nouvelles": 19,
+   "anciennes": 103,
+   "facteur": 0.184466,
+   "type": "regroupement",
+   "sens": "19 nouvelles pour 103 ancienne(s)"
+  },
+  {
+   "code": "BOAM",
+   "date": "2024-08-28",
+   "nouvelles": 1,
+   "anciennes": 2,
+   "facteur": 0.5,
+   "type": "regroupement",
+   "sens": "1 nouvelles pour 2 ancienne(s)"
+  },
+  {
+   "code": "BOAN",
+   "date": "2017-06-21",
+   "nouvelles": 3,
+   "anciennes": 10,
+   "facteur": 0.3,
+   "type": "regroupement",
+   "sens": "3 nouvelles pour 10 ancienne(s)"
+  },
+  {
+   "code": "BOAN",
+   "date": "2024-09-04",
+   "nouvelles": 3,
+   "anciennes": 5,
+   "facteur": 0.6,
+   "type": "regroupement",
+   "sens": "3 nouvelles pour 5 ancienne(s)"
+  },
+  {
+   "code": "BOAS",
+   "date": "2024-08-29",
+   "nouvelles": 1,
+   "anciennes": 2,
+   "facteur": 0.5,
+   "type": "regroupement",
+   "sens": "1 nouvelles pour 2 ancienne(s)"
+  },
+  {
+   "code": "CBIBF",
+   "date": "2017-09-21",
+   "nouvelles": 3,
+   "anciennes": 125,
+   "facteur": 0.024,
+   "type": "regroupement",
+   "sens": "3 nouvelles pour 125 ancienne(s)"
+  },
+  {
+   "code": "SAFC",
+   "date": "2026-04-24",
+   "nouvelles": 6,
+   "anciennes": 13,
+   "facteur": 0.461538,
+   "type": "regroupement",
+   "sens": "6 nouvelles pour 13 ancienne(s)"
+  }
+ ],
+ "_titres_douteux": {
+  "NTLC": "hausse x12 entre 2020 et 2021 non expliquee par une operation documentee",
+  "STBC": "hausse x6,6 entre 2020 et 2021 non expliquee par une operation documentee"
+ },
+ "_version": "v3 — divisions seules, verifiees sur les cours",
+ "_note_regroupements": "Les operations N pour M (M>1) ne sont PAS des divisions de nominal : les appliquer cree des anomalies verifiees (CBIBF, BOAM, BOAC).",
+ "_correction_07_10_2026": {
+  "retirees": [
+   {
+    "code": "SLBC",
+    "date": "2024-03-27",
+    "facteur": 5.0,
+    "motif": "mesure heuristique confondue avec une donnee publiee : la fiche officielle ne liste pas cette operation"
+   }
+  ],
+  "effet": "SLBC etait divise par 50 au lieu de 10 sur les cours anterieurs a mars 2024 (progression x13 fabriquee)"
+ }
+}

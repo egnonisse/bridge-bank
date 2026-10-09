@@ -1,0 +1,58 @@
+[
+ {
+  "id": "CTRL-1",
+  "attendu": "positive",
+  "valide_syntaxe": true,
+  "nb_trades": 200,
+  "rendement_net_pct": 23.641454050037268,
+  "baseline_mediane_pct": 0.5771560504825589,
+  "avantage_vs_baseline_pts": 23.06429799955471,
+  "p_value": 0.0,
+  "in_sample_pct": 24.929756714925865,
+  "out_sample_pct": 21.300735123690373,
+  "verdict": "RETENUE SOUS CONDITION — bat le hasard de +23.1 pts (p=0.000) sur 200 trades, et tient sur les deux moities",
+  "duree_s": 0.15
+ },
+ {
+  "id": "CTRL-2",
+  "attendu": "rejetee",
+  "valide_syntaxe": true,
+  "nb_trades": 291,
+  "rendement_net_pct": -2.5375043513866227,
+  "baseline_mediane_pct": -1.4636228080500149,
+  "avantage_vs_baseline_pts": -1.0738815433366078,
+  "p_value": 0.94,
+  "in_sample_pct": -2.992866472099257,
+  "out_sample_pct": -1.6937451277132125,
+  "verdict": "NON CONCLUANTE — 94 % des paniers aleatoires font aussi bien ou mieux (hasard non ecarte)",
+  "duree_s": 0.17
+ },
+ {
+  "id": "CTRL-3",
+  "attendu": "neutre",
+  "valide_syntaxe": true,
+  "nb_trades": 12771,
+  "rendement_net_pct": -2.3432934518573236,
+  "baseline_mediane_pct": -2.691573999508819,
+  "avantage_vs_baseline_pts": 0.3482805476514952,
+  "p_value": 0.0,
+  "in_sample_pct": -2.4121185255055257,
+  "out_sample_pct": -2.297371134440096,
+  "verdict": "REJETEE — avantage present sur une seule moitie de la periode (probable surajustement)",
+  "duree_s": 4.53
+ },
+ {
+  "id": "CTRL-4",
+  "attendu": "rejetee_syntaxe",
+  "valide_syntaxe": false,
+  "nb_trades": 0,
+  "rendement_net_pct": null,
+  "baseline_mediane_pct": null,
+  "avantage_vs_baseline_pts": null,
+  "p_value": null,
+  "in_sample_pct": null,
+  "out_sample_pct": null,
+  "verdict": "REJETEE — hypothese non conforme au langage autorise",
+  "duree_s": 0.0
+ }
+]

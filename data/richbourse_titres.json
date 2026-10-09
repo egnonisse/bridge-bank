@@ -1,0 +1,617 @@
+{
+ "ABJC": {
+  "cours": "3295",
+  "frac": [
+   {
+    "date": "30 Septembre 2016",
+    "nouvelles": 20,
+    "anciennes": 1
+   }
+  ]
+ },
+ "BBGC": {
+  "cours": "9950",
+  "frac": []
+ },
+ "BICB": {
+  "cours": "8650",
+  "frac": []
+ },
+ "BICC": {
+  "cours": "31500",
+  "frac": [
+   {
+    "date": "06 Octobre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   }
+  ]
+ },
+ "BNBC": {
+  "cours": "1950",
+  "frac": [
+   {
+    "date": "27 Juillet 2017",
+    "nouvelles": 20,
+    "anciennes": 1
+   }
+  ]
+ },
+ "BOAB": {
+  "cours": "9360",
+  "frac": [
+   {
+    "date": "31 Octobre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   },
+   {
+    "date": "03 Septembre 2024",
+    "nouvelles": 1,
+    "anciennes": 1
+   },
+   {
+    "date": "20 Juin 2017",
+    "nouvelles": 1,
+    "anciennes": 1
+   },
+   {
+    "date": "29 Juin 2010",
+    "nouvelles": 1,
+    "anciennes": 9
+   },
+   {
+    "date": "09 Décembre 2009",
+    "nouvelles": 1,
+    "anciennes": 8
+   },
+   {
+    "date": "22 Novembre 2004",
+    "nouvelles": 1,
+    "anciennes": 9
+   }
+  ]
+ },
+ "BOABF": {
+  "cours": "7900",
+  "frac": [
+   {
+    "date": "24 Octobre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   },
+   {
+    "date": "28 Août 2024",
+    "nouvelles": 1,
+    "anciennes": 1
+   },
+   {
+    "date": "27 Juin 2017",
+    "nouvelles": 1,
+    "anciennes": 1
+   },
+   {
+    "date": "25 Septembre 2014",
+    "nouvelles": 1,
+    "anciennes": 10
+   },
+   {
+    "date": "13 Juin 2013",
+    "nouvelles": 1,
+    "anciennes": 4
+   },
+   {
+    "date": "07 Octobre 2011",
+    "nouvelles": 13,
+    "anciennes": 147
+   }
+  ]
+ },
+ "BOAC": {
+  "cours": "11300",
+  "frac": [
+   {
+    "date": "26 Octobre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   },
+   {
+    "date": "25 Octobre 2024",
+    "nouvelles": 1,
+    "anciennes": 1
+   },
+   {
+    "date": "20 Juin 2017",
+    "nouvelles": 1,
+    "anciennes": 1
+   },
+   {
+    "date": "08 Juin 2016",
+    "nouvelles": 9,
+    "anciennes": 41
+   },
+   {
+    "date": "04 Décembre 2014",
+    "nouvelles": 5,
+    "anciennes": 36
+   }
+  ]
+ },
+ "BOAM": {
+  "cours": "6095",
+  "frac": [
+   {
+    "date": "22 Décembre 2017",
+    "nouvelles": 5,
+    "anciennes": 1
+   },
+   {
+    "date": "28 Août 2024",
+    "nouvelles": 1,
+    "anciennes": 2
+   },
+   {
+    "date": "06 Octobre 2021",
+    "nouvelles": 19,
+    "anciennes": 103
+   },
+   {
+    "date": "20 Septembre 2017",
+    "nouvelles": 1,
+    "anciennes": 2
+   }
+  ]
+ },
+ "BOAN": {
+  "cours": "5000",
+  "frac": [
+   {
+    "date": "27 Octobre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   },
+   {
+    "date": "04 Septembre 2024",
+    "nouvelles": 3,
+    "anciennes": 5
+   },
+   {
+    "date": "21 Juin 2017",
+    "nouvelles": 3,
+    "anciennes": 10
+   },
+   {
+    "date": "03 Juin 2016",
+    "nouvelles": 1,
+    "anciennes": 19
+   },
+   {
+    "date": "30 Juillet 2014",
+    "nouvelles": 2,
+    "anciennes": 17
+   },
+   {
+    "date": "27 Septembre 2013",
+    "nouvelles": 1,
+    "anciennes": 16
+   }
+  ]
+ },
+ "BOAS": {
+  "cours": "8195",
+  "frac": [
+   {
+    "date": "30 Octobre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   },
+   {
+    "date": "29 Août 2024",
+    "nouvelles": 1,
+    "anciennes": 2
+   },
+   {
+    "date": "27 Juin 2017",
+    "nouvelles": 1,
+    "anciennes": 1
+   }
+  ]
+ },
+ "CABC": {
+  "cours": "3250",
+  "frac": [
+   {
+    "date": "16 Août 2017",
+    "nouvelles": 40,
+    "anciennes": 1
+   }
+  ]
+ },
+ "CBIBF": {
+  "cours": "31500",
+  "frac": [
+   {
+    "date": "14 Décembre 2017",
+    "nouvelles": 5,
+    "anciennes": 1
+   },
+   {
+    "date": "21 Septembre 2017",
+    "nouvelles": 3,
+    "anciennes": 125
+   }
+  ]
+ },
+ "CFAC": {
+  "cours": "1535",
+  "frac": [
+   {
+    "date": "13 Décembre 2017",
+    "nouvelles": 100,
+    "anciennes": 1
+   }
+  ]
+ },
+ "CIEC": {
+  "cours": "6500",
+  "frac": [
+   {
+    "date": "19 Octobre 2017",
+    "nouvelles": 20,
+    "anciennes": 1
+   }
+  ]
+ },
+ "ECOC": {
+  "cours": "16700",
+  "frac": [
+   {
+    "date": "27 Décembre 2018",
+    "nouvelles": 5,
+    "anciennes": 1
+   }
+  ]
+ },
+ "ETIT": {
+  "cours": "66",
+  "frac": [
+   {
+    "date": "09 Juin 2008",
+    "nouvelles": 5,
+    "anciennes": 1
+   },
+   {
+    "date": "13 Février 2007",
+    "nouvelles": 2,
+    "anciennes": 1
+   }
+  ]
+ },
+ "FTSC": {
+  "cours": "1970",
+  "frac": [
+   {
+    "date": "31 Janvier 2018",
+    "nouvelles": 4,
+    "anciennes": 1
+   },
+   {
+    "date": "05 Janvier 2004",
+    "nouvelles": 1,
+    "anciennes": 3
+   },
+   {
+    "date": "23 Janvier 2003",
+    "nouvelles": 1,
+    "anciennes": 2
+   },
+   {
+    "date": "03 Août 2001",
+    "nouvelles": 1,
+    "anciennes": 3
+   }
+  ]
+ },
+ "LNBB": {
+  "cours": "3890",
+  "frac": []
+ },
+ "NEIC": {
+  "cours": "2200",
+  "frac": [
+   {
+    "date": "10 Août 2017",
+    "nouvelles": 25,
+    "anciennes": 1
+   }
+  ]
+ },
+ "NSBC": {
+  "cours": "21000",
+  "frac": []
+ },
+ "NTLC": {
+  "cours": "15500",
+  "frac": [
+   {
+    "date": "08 Septembre 2017",
+    "nouvelles": 20,
+    "anciennes": 1
+   }
+  ]
+ },
+ "ONTBF": {
+  "cours": "2770",
+  "frac": [
+   {
+    "date": "29 Août 2018",
+    "nouvelles": 2,
+    "anciennes": 1
+   },
+   {
+    "date": "29 Novembre 2013",
+    "nouvelles": 10,
+    "anciennes": 1
+   }
+  ]
+ },
+ "ORAC": {
+  "cours": "22000",
+  "frac": []
+ },
+ "ORGT": {
+  "cours": "2990",
+  "frac": []
+ },
+ "PALC": {
+  "cours": "8375",
+  "frac": [
+   {
+    "date": "03 Novembre 2017",
+    "nouvelles": 2,
+    "anciennes": 1
+   }
+  ]
+ },
+ "PRSC": {
+  "erreur": "Page.navigate timed out after 5s waiting for the d"
+ },
+ "SAFC": {
+  "cours": "4295",
+  "frac": [
+   {
+    "date": "24 Décembre 2018",
+    "nouvelles": 25,
+    "anciennes": 1
+   },
+   {
+    "date": "24 Avril 2026",
+    "nouvelles": 6,
+    "anciennes": 13
+   },
+   {
+    "date": "12 Octobre 2017",
+    "nouvelles": 3,
+    "anciennes": 2
+   }
+  ]
+ },
+ "SCRC": {
+  "cours": "2700",
+  "frac": [
+   {
+    "date": "04 Décembre 2017",
+    "nouvelles": 4,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SDCC": {
+  "cours": "13000",
+  "frac": [
+   {
+    "date": "28 Décembre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   },
+   {
+    "date": "15 Septembre 2000",
+    "nouvelles": 1,
+    "anciennes": 8
+   }
+  ]
+ },
+ "SDSC": {
+  "cours": "3055",
+  "frac": [
+   {
+    "date": "29 Juillet 2017",
+    "nouvelles": 50,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SEMC": {
+  "cours": null,
+  "frac": [
+   {
+    "date": "20 Décembre 2018",
+    "nouvelles": 40,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SGBC": {
+  "cours": "39000",
+  "frac": [
+   {
+    "date": "25 Août 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SHEC": {
+  "cours": "2250",
+  "frac": [
+   {
+    "date": "04 Novembre 2016",
+    "nouvelles": 50,
+    "anciennes": 1
+   },
+   {
+    "date": "20 Juin 2001",
+    "nouvelles": 3,
+    "anciennes": 4
+   }
+  ]
+ },
+ "SIBC": {
+  "cours": "8750",
+  "frac": [
+   {
+    "date": "15 Juin 2018",
+    "nouvelles": 5,
+    "anciennes": 1
+   },
+   {
+    "date": "14 Novembre 2024",
+    "nouvelles": 1,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SICC": {
+  "cours": null,
+  "frac": []
+ },
+ "SLBC": {
+  "cours": "37400",
+  "frac": [
+   {
+    "date": "30 Septembre 2024",
+    "nouvelles": 10,
+    "anciennes": 1
+   },
+   {
+    "date": "30 Décembre 2014",
+    "nouvelles": 2,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SMBC": {
+  "cours": "16500",
+  "frac": [
+   {
+    "date": "25 Février 2019",
+    "nouvelles": 4,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SNTS": {
+  "cours": "44980",
+  "frac": [
+   {
+    "date": "23 Novembre 2012",
+    "nouvelles": 10,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SPHC": {
+  "cours": "8005",
+  "frac": [
+   {
+    "date": "21 Juillet 2017",
+    "nouvelles": 5,
+    "anciennes": 1
+   }
+  ]
+ },
+ "STAC": {
+  "cours": "2065",
+  "frac": [
+   {
+    "date": "25 Octobre 2017",
+    "nouvelles": 100,
+    "anciennes": 1
+   }
+  ]
+ },
+ "STBC": {
+  "cours": "21770",
+  "frac": [
+   {
+    "date": "27 Juillet 2018",
+    "nouvelles": 20,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SIVC": {
+  "cours": "1985",
+  "frac": [
+   {
+    "date": "21 Décembre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   }
+  ]
+ },
+ "SOGC": {
+  "cours": "7895",
+  "frac": [
+   {
+    "date": "18 Août 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   }
+  ]
+ },
+ "TTLC": {
+  "cours": "2990",
+  "frac": [
+   {
+    "date": "12 Février 2018",
+    "nouvelles": 5,
+    "anciennes": 1
+   },
+   {
+    "date": "27 Juillet 2015",
+    "nouvelles": 20,
+    "anciennes": 1
+   }
+  ]
+ },
+ "TTLS": {
+  "cours": "3610",
+  "frac": [
+   {
+    "date": "02 Novembre 2017",
+    "nouvelles": 10,
+    "anciennes": 1
+   }
+  ]
+ },
+ "UNLC": {
+  "cours": "48000",
+  "frac": []
+ },
+ "UNXC": {
+  "cours": "2300",
+  "frac": [
+   {
+    "date": "11 Août 2017",
+    "nouvelles": 5,
+    "anciennes": 1
+   },
+   {
+    "date": "30 Avril 2015",
+    "nouvelles": 5,
+    "anciennes": 1
+   }
+  ]
+ }
+}

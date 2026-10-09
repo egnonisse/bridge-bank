@@ -1,0 +1,172 @@
+[
+  {
+    "code": "BOAB",
+    "date": "2017-06-20",
+    "avant": 210000.0,
+    "apres": 105000.0,
+    "ratio": 2.0,
+    "ratio_rond": 2,
+    "ecart_au_ratio": 0.0,
+    "division_probable": true
+  },
+  {
+    "code": "BOAC",
+    "date": "2017-06-21",
+    "avant": 178000.0,
+    "apres": 88385.0,
+    "ratio": 2.014,
+    "ratio_rond": 2,
+    "ecart_au_ratio": 0.7,
+    "division_probable": true
+  },
+  {
+    "code": "BOAC",
+    "date": "2017-10-26",
+    "avant": 41500.0,
+    "apres": 4250.0,
+    "ratio": 9.765,
+    "ratio_rond": 10,
+    "ecart_au_ratio": 2.4,
+    "division_probable": true
+  },
+  {
+    "code": "BOAN",
+    "date": "2017-10-27",
+    "avant": 39500.0,
+    "apres": 3945.0,
+    "ratio": 10.013,
+    "ratio_rond": 10,
+    "ecart_au_ratio": 0.1,
+    "division_probable": true
+  },
+  {
+    "code": "BOAS",
+    "date": "2017-06-27",
+    "avant": 71000.0,
+    "apres": 35500.0,
+    "ratio": 2.0,
+    "ratio_rond": 2,
+    "ecart_au_ratio": 0.0,
+    "division_probable": true
+  },
+  {
+    "code": "BOAS",
+    "date": "2017-10-30",
+    "avant": 30500.0,
+    "apres": 3000.0,
+    "ratio": 10.167,
+    "ratio_rond": 10,
+    "ecart_au_ratio": 1.7,
+    "division_probable": true
+  },
+  {
+    "code": "CBIBF",
+    "date": "2017-12-14",
+    "avant": 45400.0,
+    "apres": 9150.0,
+    "ratio": 4.962,
+    "ratio_rond": 5,
+    "ecart_au_ratio": 0.8,
+    "division_probable": true
+  },
+  {
+    "code": "ECOC",
+    "date": "2018-12-27",
+    "avant": 20360.0,
+    "apres": 4245.0,
+    "ratio": 4.796,
+    "ratio_rond": 5,
+    "ecart_au_ratio": 4.1,
+    "division_probable": true
+  },
+  {
+    "code": "PALC",
+    "date": "2017-11-06",
+    "avant": 9000.0,
+    "apres": 4300.0,
+    "ratio": 2.093,
+    "ratio_rond": 2,
+    "ecart_au_ratio": 4.7,
+    "division_probable": true
+  },
+  {
+    "code": "SCRC",
+    "date": "2017-12-05",
+    "avant": 3150.0,
+    "apres": 800.0,
+    "ratio": 3.938,
+    "ratio_rond": 4,
+    "ecart_au_ratio": 1.6,
+    "division_probable": true
+  },
+  {
+    "code": "SGBC",
+    "date": "2017-08-25",
+    "avant": 117600.0,
+    "apres": 12000.0,
+    "ratio": 9.8,
+    "ratio_rond": 10,
+    "ecart_au_ratio": 2.0,
+    "division_probable": true
+  },
+  {
+    "code": "SIBC",
+    "date": "2024-11-14",
+    "avant": 7100.0,
+    "apres": 3540.0,
+    "ratio": 2.006,
+    "ratio_rond": 2,
+    "ecart_au_ratio": 0.3,
+    "division_probable": true
+  },
+  {
+    "code": "SIVC",
+    "date": "2017-12-22",
+    "avant": 4300.0,
+    "apres": 430.0,
+    "ratio": 10.0,
+    "ratio_rond": 10,
+    "ecart_au_ratio": 0.0,
+    "division_probable": true
+  },
+  {
+    "code": "SPHC",
+    "date": "2017-07-21",
+    "avant": 15400.0,
+    "apres": 3000.0,
+    "ratio": 5.133,
+    "ratio_rond": 5,
+    "ecart_au_ratio": 2.7,
+    "division_probable": true
+  },
+  {
+    "code": "STAC",
+    "date": "2017-10-30",
+    "avant": 17990.0,
+    "apres": 180.0,
+    "ratio": 99.944,
+    "ratio_rond": 100,
+    "ecart_au_ratio": 0.1,
+    "division_probable": true
+  },
+  {
+    "code": "STBC",
+    "date": "2018-07-31",
+    "avant": 40000.0,
+    "apres": 1960.0,
+    "ratio": 20.408,
+    "ratio_rond": 20,
+    "ecart_au_ratio": 2.0,
+    "division_probable": true
+  },
+  {
+    "code": "UNXC",
+    "date": "2017-08-11",
+    "avant": 21090.0,
+    "apres": 4220.0,
+    "ratio": 4.998,
+    "ratio_rond": 5,
+    "ecart_au_ratio": 0.0,
+    "division_probable": true
+  }
+]

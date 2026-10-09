@@ -4,27 +4,39 @@
     "threshold": 0.1,
     "down_prob": 63,
     "median_pct": -1.8,
-    "episodes": 30
+    "episodes": 30,
+    "borne_basse": 46,
+    "significatif": false,
+    "mode": "informatif"
   },
   "SLBC": {
     "code": "SLBC",
     "threshold": 0.05,
     "down_prob": 54,
-    "median_pct": -0.8,
-    "episodes": 41
+    "median_pct": -0.4,
+    "episodes": 41,
+    "borne_basse": 39,
+    "significatif": false,
+    "mode": "informatif"
   },
   "SNTS": {
     "code": "SNTS",
     "threshold": 0.13,
     "down_prob": 86,
     "median_pct": -3.1,
-    "episodes": 7
+    "episodes": 7,
+    "borne_basse": 49,
+    "significatif": false,
+    "mode": "informatif"
   },
   "PALC": {
     "code": "PALC",
     "threshold": 0.05,
-    "down_prob": 45,
-    "median_pct": 1.1,
-    "episodes": 55
+    "down_prob": 46,
+    "median_pct": 1.0,
+    "episodes": 56,
+    "borne_basse": 34,
+    "significatif": false,
+    "mode": "informatif"
   }
 }
