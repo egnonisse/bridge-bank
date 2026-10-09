@@ -75,19 +75,51 @@ GET /repos/egnonisse/bridge-bank/rulesets
 → 403 (même message)
 ```
 
-Plan du compte : **free**. Les deux mécanismes de blocage (protection de branche *et* rulesets)
-sont réservés aux dépôts publics ou aux comptes payants. Trois voies, à trancher :
+Plan du compte : **free**. Les deux mécanismes de blocage côté serveur (protection de branche
+*et* rulesets) sont donc hors de portée sans payer.
 
-| Voie | Effet | Coût |
-|---|---|---|
-| **GitHub Pro** | protection de branche + rulesets sur dépôt privé : la fusion exige la CI verte | ~4 $/mois |
-| **Crochet git `pre-push`** (local) | bloque la poussée si un filet rapide échoue — y compris depuis cette machine ; n'empêche pas une poussée depuis ailleurs | gratuit |
-| **Détection seule** (état actuel) | la poussée passe, la CI devient rouge dans la minute, la poussée suivante la corrige | gratuit |
+**Décision du 09/10 : crochet git `pre-push` local** (gratuit). Il bloque la poussée depuis ce
+poste quand un filet rapide est rouge — là où le travail se fait réellement.
 
-⚠️ Contrainte à respecter dans les deux premières voies : **la sauvegarde hebdomadaire ne doit
-jamais être bloquée** par un filet rouge. `scripts/git_backup.py` pousse un état *de travail* —
-le perdre serait pire que de l'intégrer rouge. Elle passerait donc en `--no-verify` explicite,
-avec un commentaire disant pourquoi.
+`.githooks/pre-push` exécute, en quelques secondes :
+
+| Contrôle | Ce qu'il bloque |
+|---|---|
+| `verifier_chemins.py --strict` | un chemin de données recalculé à la main |
+| `verifier_configuration.py` | seuils non conformes, secret versionné, `config.yaml` cassé |
+| `auditer_constantes.py --comparer` | une valeur effective de constante qui a bougé |
+
+`pytest` est **volontairement absent** : 90 s à chaque poussée découragerait de pousser, donc de
+committer — le remède serait pire que le mal. Il reste dans la CI.
+
+**Quel interpréteur ?** Il en faut un qui ait les dépendances, sinon le contrôle des constantes
+échoue pour une mauvaise raison. Ordre : `$BRIDGE_PYTHON`, puis `git config bridge.python`
+(réglage **par machine**, non versionné — le chemin d'un interpréteur n'a rien à faire dans le
+dépôt), puis `python3`/`python` s'ils passent la sonde.
+
+**Si l'environnement est cassé, on NE bloque PAS : on prévient.** Bloquer une poussée parce
+qu'une dépendance manque ne protège rien (la CI rattrapera), alors que perdre une poussée de
+sauvegarde serait pire que l'intégrer rouge.
+
+**Activation** (une fois par clone) : `git config core.hooksPath .githooks`
+
+**Comportement vérifié**, pas supposé :
+
+```
+état sain                           -> exit 0, « ✓ filets verts »
+chemin recalculé réintroduit        -> exit 1, « ✗ POUSSÉE BLOQUÉE » (1 occurrence détectée)
+secret dans config.yaml             -> exit 1, « telegram.bot_token est RENSEIGNÉ et le
+                                              fichier est versionné »
+```
+
+⚠️ **La sauvegarde hebdomadaire ne doit jamais être bloquée** par un filet rouge :
+`scripts/git_backup.py` pousse un état *de travail* — le perdre serait pire que de l'intégrer
+rouge. Elle passe donc explicitement en `git push --no-verify`, avec le commentaire qui dit
+pourquoi.
+
+**Si le blocage côté serveur devient souhaitable plus tard** (une poussée depuis une autre
+machine ne passerait pas par le crochet), la seule voie reste GitHub Pro (~4 $/mois) : la
+configuration à poser est décrite dans l'historique de cette décision.
 
 ## 4. Ce que cette décision ne fait pas
 

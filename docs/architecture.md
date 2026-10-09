@@ -191,7 +191,7 @@ décision ; un écart sur les deux autres est une régression.
 | `tests/conftest.py` | ✅ existe (fixture partagée `make_bars`) |
 | `CHANGELOG.md` | à créer |
 | CI | ✅ **créée le 09/10** — `.github/workflows/ci.yml` : chemins, configuration, constantes, `pytest`. Python 3.11, `actions/checkout@v7`. Premier run vert : `37877120841` |
-| Blocage de la fusion | ⚠️ **impossible en compte gratuit sur dépôt privé** (403 GitHub) : voir `docs/DECISION-2026-10-09-ci-et-controle-des-constantes.md` §3 — GitHub Pro, crochet `pre-push` local, ou détection seule |
+| Blocage de la fusion | ⚠️ **pas côté serveur** : GitHub refuse protection de branche et rulesets sur un dépôt privé en compte gratuit (403). **Crochet local `.githooks/pre-push`** à la place — voir `docs/DECISION-2026-10-09-ci-et-controle-des-constantes.md` §3. Activer par clone : `git config core.hooksPath .githooks` |
 | `LICENSE` | à créer si publication |
 
 ## 9. Versionnage — état après le tri du 09/10

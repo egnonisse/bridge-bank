@@ -1,0 +1,69 @@
+#!/bin/sh
+# Crochet pre-push — les filets RAPIDES bloquent une poussée cassée.
+#
+# POURQUOI CE CROCHET
+# -------------------
+# La CI (`.github/workflows/ci.yml`) tourne déjà les mêmes filets à chaque poussée, mais
+# elle les tourne APRÈS : le rouge arrive une minute plus tard, sur un état déjà poussé. Sur
+# un dépôt privé en compte gratuit, GitHub n'offre ni protection de branche ni rulesets
+# (403 « Upgrade to GitHub Pro ») : le blocage ne peut donc exister qu'ici, avant l'envoi.
+#
+# CE QUI TOURNE ICI, ET CE QUI NE TOURNE PAS
+# ------------------------------------------
+#   ici (quelques secondes) : chemins recalculés, configuration, valeurs effectives
+#   en CI (deux minutes)    : la même chose + pytest (le comportement)
+#
+# `pytest` est volontairement ABSENT : 90 s à chaque poussée découragerait de pousser, donc
+# de committer — le remède serait pire que le mal.
+#
+# QUEL INTERPRÉTEUR
+# -----------------
+# Il FAUT un Python qui a les dépendances installées, sinon le contrôle des constantes
+# échoue pour une mauvaise raison. Ordre de recherche :
+#   1. $BRIDGE_PYTHON
+#   2. git config bridge.python « C:/chemin/vers/python.exe »   (réglage PAR MACHINE, non
+#      versionné : le chemin d'un interpréteur n'a rien à faire dans le dépôt)
+#   3. python3, python — s'ils passent la sonde des dépendances
+#
+# ACTIVER (une fois par clone) :  git config core.hooksPath .githooks
+#
+# SI L'ENVIRONNEMENT EST CASSÉ, ON NE BLOQUE PAS : on prévient. Bloquer une poussée parce
+# qu'une dépendance manque ne protège rien — la CI rattrapera, et perdre une poussée de
+# sauvegarde serait pire que l'intégrer rouge.
+
+RACINE=$(git rev-parse --show-toplevel 2>/dev/null) || exit 0
+cd "$RACINE" || exit 0
+
+PY="${BRIDGE_PYTHON:-$(git config --get bridge.python 2>/dev/null || true)}"
+if [ -z "${PY}" ]; then
+  for candidat in python3 python; do
+    if command -v "$candidat" >/dev/null 2>&1 && \
+       "$candidat" -c "import requests, yaml" >/dev/null 2>&1; then
+      PY="$candidat"
+      break
+    fi
+  done
+fi
+
+if [ -z "${PY}" ] || ! "${PY}" -c "import requests, yaml" >/dev/null 2>&1; then
+  echo "⚠ Filets NON exécutés : aucun interpréteur Python avec les dépendances."
+  echo "  Corriger :  pip install -r requirements.txt"
+  echo "  ou :        git config bridge.python \"C:/chemin/vers/python.exe\""
+  echo "  (la CI exécute ces mêmes filets côté serveur)"
+  exit 0
+fi
+
+echo "─ filets rapides ─ ($PY)"
+echec=0
+"${PY}" scripts/verifier_chemins.py --strict || echec=1
+"${PY}" scripts/verifier_configuration.py || echec=1
+"${PY}" scripts/auditer_constantes.py --comparer || echec=1
+
+if [ "${echec}" -ne 0 ]; then
+  echo
+  echo "✗ POUSSÉE BLOQUÉE : un filet est rouge (détail ci-dessus)."
+  echo "  Corriger et recommitter, ou forcer sciemment :  git push --no-verify"
+  exit 1
+fi
+echo "✓ filets verts"
+exit 0
