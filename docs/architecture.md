@@ -163,7 +163,7 @@ Corrections apportées à la première version de cette carte :
 | **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | ✅ **fait le 09/10** — 3 modules déplacés, 35 fichiers d'imports réécrits, 309 tests, snapshot 202 → 202 (16 clés renommées, **0 valeur modifiée**) |
 | **3** | Déplacer `calibration/`, `analyse/`, `backtesting/` | idem | ✅ **fait le 09/10** — 14 modules, 108 imports recalculés dans 53 fichiers + 16 cibles de `monkeypatch` (voir ci-dessous), 309 tests, snapshot 202 → 202 (**61 clés renommées, 0 valeur modifiée**) |
 | **4** | Déplacer `collecte/`, `strategie/` | idem | ✅ **fait le 09/10** — 17 modules, 149 imports recalculés dans 67 fichiers + 37 cibles de `monkeypatch`, 333 tests, snapshot 210 → 210 (**60 clés renommées, 0 valeur modifiée**) |
-| **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire — **⚠ déplacer `regles.py` et `taxation.py` oblige à corriger `MODULE_REGLES`/`MODULE_TAXATION` dans `src/infrastructure/paths.py`** (l'empreinte des alertes les surveille ; `tests/test_empreinte.py` échoue si elles pointent dans le vide) |
+| **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire — **⚠ déplacer `regles.py` et `taxation.py` oblige à corriger `MODULE_REGLES`/`MODULE_TAXATION` dans `src/infrastructure/paths.py`** (l'empreinte des alertes les surveille ; `tests/test_empreinte.py` échoue si elles pointent dans le vide). **Étape 5a (référence de sorties) ✅ faite le 09/10** — voir ci-dessous ; le découpage lui-même n'est pas commencé |
 
 **Le lot 0 était obligatoire avant tout déplacement** — c'est lui qui rend les autres sûrs.
 
@@ -242,16 +242,45 @@ DÉCOUPAGE) — et il exige une comparaison des SORTIES avant/après, pas seulem
 **Le lot 5 est un découpage, pas un déplacement** : c'est le plus risqué, et il vient en
 dernier, quand l'arborescence est stable.
 
-## 6. Non-régression — les trois filets
+### Étape 5a — la référence de sorties (faite le 09/10, AVANT tout découpage)
 
-| Filet | Ce qu'il attrape | Après le lot 0 (09/10) |
+Un déplacement se vérifie par les constantes et les tests. Un **découpage**, non : les mêmes
+valeurs peuvent produire des messages différents si une fonction est recopiée de travers. D'où une
+troisième nature de filet, demandée explicitement : **comparer les SORTIES avant/après**.
+
+- `scripts/capturer_sorties.py` fige **398 sorties réelles** de `portfolio.py` : les messages des
+  5 constructeurs d'alertes, `status_level`, les lignes « 📜 LES AUTRES FOIS », les 4 niveaux du
+  verrou de concentration × 3 régimes de marché, le modèle de position, `record_dividend`, le
+  cooldown, les formats — et **8 sorties de commandes** (`portf status/check/open/dividend/close`,
+  `sustain`) plus le résumé quotidien.
+- `tests/fixtures/sorties_reference.json` porte la référence (versionnée) ;
+  `tests/test_sorties_invariables.py` recalcule et **nomme** les sorties changées.
+- **Reproductible à l'octet** : horloge figée, seuils et profils de retournement en fixtures. Une
+  référence qui casse quand LEO change un seuil ne serait pas une référence de code.
+- **Le contrôle a été testé** : une phrase modifiée dans `portfolio.py` fait échouer le filet en
+  signalant 6 sorties ; puis tout repasse. Un filet qui ne peut pas échouer ne prouve rien.
+- Périmètre vérifié dans le code, pas supposé : sur les 6 commandes candidates, **seules `portf` et
+  `sustain` traversent `portfolio.py`** (`report`, `filet` et `limits` passent à côté).
+
+**Le découpage proprement dit reste à faire** : modèle → `domaine/`, calibrage → `calibration/`,
+messages → `alertes/`, positions/cash → `portefeuille/`, en commits séparés, la référence verte à
+chaque étape.
+
+## 6. Non-régression — les quatre filets
+
+| Filet | Ce qu'il attrape | Valeur de référence (09/10, après le lot 4 + 5a) |
 |---|---|---|
-| **267 tests** | le comportement | ✅ 267 verts |
-| **`auditer_constantes.py --comparer`** | toute valeur effective modifiée | ✅ 189 valeurs identiques au snapshot |
-| **`verifier_chemins.py --strict`** | tout chemin recalculé à la main | ✅ 0 |
+| **les tests** | le comportement | ✅ **336 verts** |
+| **`auditer_constantes.py --comparer`** | toute valeur effective modifiée | ✅ **210 valeurs** identiques au snapshot |
+| **`verifier_chemins.py --strict`** | tout chemin recalculé à la main | ✅ **0** |
+| **`test_sorties_invariables.py`** | toute SORTIE modifiée (message, niveau, texte) | ✅ **398 sorties** identiques à la référence |
 
-Les trois doivent être **identiques** après chaque lot. Un écart sur le deuxième est une
-décision ; un écart sur les deux autres est une régression.
+Les quatre doivent être **identiques** après chaque lot. Un écart sur les deux derniers est une
+décision (à relire et à documenter) ; un écart sur les deux premiers est une régression.
+
+Le quatrième n'existait pas dans le plan d'origine : il a été ajouté pour le lot 5, parce qu'un
+**découpage** peut changer un message sans changer une seule valeur. Les trois premiers
+n'auraient rien vu.
 
 ## 7. Ce que la restructuration ne réglera PAS
 
