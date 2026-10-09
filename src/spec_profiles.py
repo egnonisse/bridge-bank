@@ -11,8 +11,8 @@ sont CALIBRÉES par scripts/calibrate_spec_profiles.py → data/spec_profiles.js
 import json
 import statistics
 from pathlib import Path
+from .paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA = Path(__file__).resolve().parents[1] / "data"
 PROFILES_FILE = DATA / "spec_profiles.json"
 
 ZONE_FORCE = (0.80, 1.01)   # zone de force (83 % de réussite)
@@ -20,7 +20,7 @@ ZONE_HAUT_FRAGILE = (0.60, 0.80)  # danger (0 % gagnants)
 ZONE_BAS_SOLIDE = (0.20, 0.40)    # bas sans être écrasé (80 %)
 ZONE_BAS_ECRASE = (0.0, 0.20)     # piège (50 %)
 
-FRAIS = 0.028
+from .regles import FRAIS_ALLER_RETOUR as FRAIS  # noqa: E402
 HORIZON = 252
 
 

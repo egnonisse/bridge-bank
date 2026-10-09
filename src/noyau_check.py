@@ -17,12 +17,12 @@ from pathlib import Path
 from .fundamentals import get_fundamentals
 from .taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
 
-PER_MAX = 14.0          # IPS : PER ≤ 14
-PAYOUT_TIGHT = 0.80     # payout > 80 % : tendu → pas d'alerte d'achat
+# Filtres d'entrée : définis dans src/regles.py (catalogue unique).
+from .regles import PAYOUT_TIGHT, PER_MAX  # noqa: E402
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 NET_MAX = 0.10          # borne haute anti-mirage (décision 25/09) : net ≤ 10 %
 REFERENCE_AMOUNT = 100_000.0  # taille standard de ligne noyau (pour le calcul d'exemple)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 PREP_WATCH_FILE = DATA_DIR / "prep_watch_state.json"  # *_state.json exclu par .gitignore
 PREP_REALERT_DOWN_PCT = 0.03  # re-alerte si le prix s'améliore de ≥ 3 % sous la limite
 

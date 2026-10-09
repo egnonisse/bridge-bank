@@ -18,8 +18,8 @@ import json
 import statistics
 from datetime import datetime
 from pathlib import Path
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
 
 MAX_JUMP = 3.0          # ratio close[i]/close[i-1] au-delà → cassure à examiner

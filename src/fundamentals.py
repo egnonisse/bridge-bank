@@ -15,6 +15,7 @@ import re
 from pathlib import Path
 
 import requests
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
@@ -40,7 +41,6 @@ def _parse_num(s: str | None) -> float | None:
         return None
 
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 PER_CACHE_FILE = DATA_DIR / "per_cache.json"
 
 

@@ -20,6 +20,7 @@ from pathlib import Path
 import pymupdf
 import requests
 from urllib3.exceptions import InsecureRequestWarning
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -35,7 +36,6 @@ MOIS_FR = {
     7: "JUILLET", 8: "AOUT", 9: "SEPTEMBRE", 10: "OCTOBRE", 11: "NOVEMBRE", 12: "DECEMBRE",
 }
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 STATE_FILE = DATA_DIR / "boc_state.json"
 
 # Mapping nom d'émetteur -> code BRVM, pour le noyau.

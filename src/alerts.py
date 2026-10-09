@@ -18,10 +18,10 @@ from typing import Optional
 from .bsapi import BSApi
 from .models import Quote
 from .notify import TelegramNotifier
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 log = logging.getLogger(__name__)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 STATE_FILE = DATA_DIR / "alerts_state.json"
 
 

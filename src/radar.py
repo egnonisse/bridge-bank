@@ -19,8 +19,8 @@ from __future__ import annotations
 import json
 import statistics
 from pathlib import Path
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 ALERT_STATE_FILE = DATA_DIR / "radar_alert_state.json"
 
 

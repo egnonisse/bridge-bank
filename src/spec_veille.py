@@ -10,6 +10,7 @@ import json
 import sys
 from datetime import date, timedelta
 from pathlib import Path
+from .paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -21,7 +22,6 @@ SPAM_DAYS = 7
 STOPOUT_COOLDOWN_DAYS = 30  # un titre stoppé ne re-entre pas en fiche avant 30 j
 STOPOUT_SUSPEND_DAYS = 60   # 2 stop-outs consécutifs = suspension 60 j
 STOPOUT_SUSPEND_COUNT = 2
-DATA = Path(__file__).resolve().parents[1] / "data"
 STATE_FILE = DATA / "spec_seen_state.json"
 
 

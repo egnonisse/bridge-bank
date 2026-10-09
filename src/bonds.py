@@ -19,8 +19,8 @@ from __future__ import annotations
 import json
 from datetime import date
 from pathlib import Path
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 MARKET_FILE = DATA_DIR / "bonds_market.json"
 POSITIONS_FILE = DATA_DIR / "bonds_positions.json"
 

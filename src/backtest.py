@@ -29,8 +29,8 @@ from statistics import fmean, pstdev
 from .bsapi import BSApi
 from .models import HistoryBar
 from .screening import avg_volume, change_pct, compute_score, ema, rsi_wilder
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 CACHE_FILE = DATA_DIR / "history_cache.pkl"
 HISTORY_START = "20170101"
 MAX_WORKERS = 8

@@ -17,12 +17,12 @@ from pathlib import Path
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 STATE_FILE = DATA_DIR / "news_state.json"
 
 # Pages d'annonces émetteurs à surveiller (clé = type d'événement).

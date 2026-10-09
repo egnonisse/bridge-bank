@@ -25,8 +25,8 @@ from .bsapi import BSApi
 from .notify import TelegramNotifier
 from .screening import analyze as analyze_stock
 from .screening import screen
+from .paths import RACINE as ROOT  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-ROOT = Path(__file__).resolve().parent.parent
 CONFIG_PATH = ROOT / "config.yaml"
 
 
