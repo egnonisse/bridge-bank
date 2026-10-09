@@ -17,8 +17,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 
-from ..bsapi import BSApi
-from ..fundamentals import get_dps, get_per_brvm
+from ..collecte.bsapi import BSApi
+from ..collecte.fundamentals import get_dps, get_per_brvm
 from ..taxation import TARGET_NET_YIELD_ENTRY, gross_yield_for_net, net_yield
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 

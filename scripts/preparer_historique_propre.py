@@ -32,8 +32,8 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src import divisions_officielles as dv  # noqa: E402
-from src import nettoyage_aberrantes as na  # noqa: E402
+from src.collecte import divisions_officielles as dv  # noqa: E402
+from src.collecte import nettoyage_aberrantes as na  # noqa: E402
 
 SOURCE = RACINE / "data" / "history_cache.pkl"
 DEST = RACINE / "data" / "history_clean.pkl"

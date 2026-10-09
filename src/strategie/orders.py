@@ -7,10 +7,10 @@ cible (4 % par défaut, après IRVM + frais), compare au cours actuel et indique
 """
 from __future__ import annotations
 
-from .bsapi import BSApi
-from .fundamentals import get_dps, get_per_brvm
-from .portfolio import PAYOUT_CRITICAL, PAYOUT_TIGHT, payout_ratio
-from .taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
+from ..collecte.bsapi import BSApi
+from ..collecte.fundamentals import get_dps, get_per_brvm
+from ..portfolio import PAYOUT_CRITICAL, PAYOUT_TIGHT, payout_ratio
+from ..taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
 
 
 def _sustainability_label(payout: float | None) -> str:

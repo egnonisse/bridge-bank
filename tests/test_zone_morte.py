@@ -2,7 +2,7 @@
 from datetime import datetime, timedelta
 
 from src.domaine.models import HistoryBar, Quote, Snapshot
-from src.speculation import (
+from src.strategie.speculation import (
     ZONE_DEAD_REVIEW_DAYS,
     SpecPosition,
     check_all,
@@ -35,7 +35,7 @@ class FakeApi:
 
 
 def test_zone_morte_flat(monkeypatch):
-    monkeypatch.setattr("src.speculation.load_all_history", lambda api: {"XXX": make_bars()})
+    monkeypatch.setattr("src.strategie.speculation.load_all_history", lambda api: {"XXX": make_bars()})
     sessions, dead = zone_morte_status(make_pos(days_ago=130), FakeApi())
     assert dead is True
     assert sessions >= ZONE_DEAD_REVIEW_DAYS
@@ -44,7 +44,7 @@ def test_zone_morte_flat(monkeypatch):
 def test_zone_morte_hit_up(monkeypatch):
     bars = make_bars()
     bars[-5].close = 125.0  # +25 % touché → pas zone morte
-    monkeypatch.setattr("src.speculation.load_all_history", lambda api: {"XXX": bars})
+    monkeypatch.setattr("src.strategie.speculation.load_all_history", lambda api: {"XXX": bars})
     _, dead = zone_morte_status(make_pos(), FakeApi())
     assert dead is False
 
@@ -52,7 +52,7 @@ def test_zone_morte_hit_up(monkeypatch):
 def test_zone_morte_hit_down(monkeypatch):
     bars = make_bars()
     bars[-5].close = 80.0  # −20 % → stop touché → pas zone morte
-    monkeypatch.setattr("src.speculation.load_all_history", lambda api: {"XXX": bars})
+    monkeypatch.setattr("src.strategie.speculation.load_all_history", lambda api: {"XXX": bars})
     _, dead = zone_morte_status(make_pos(), FakeApi())
     assert dead is False
 
@@ -71,9 +71,9 @@ def test_zone_morte_skip_when_closed():
 
 def test_check_all_review_once(monkeypatch):
     pos = make_pos(days_ago=130)
-    monkeypatch.setattr("src.speculation.load_positions", lambda: [pos])
-    monkeypatch.setattr("src.speculation.load_all_history", lambda api: {"XXX": make_bars()})
-    monkeypatch.setattr("src.speculation.save_positions", lambda positions: None)
+    monkeypatch.setattr("src.strategie.speculation.load_positions", lambda: [pos])
+    monkeypatch.setattr("src.strategie.speculation.load_all_history", lambda api: {"XXX": make_bars()})
+    monkeypatch.setattr("src.strategie.speculation.save_positions", lambda positions: None)
 
     events = check_all(FakeApi())
     assert any("REVUE" in e for e in events)
@@ -85,9 +85,9 @@ def test_check_all_review_once(monkeypatch):
 
 def test_check_all_no_review_before_threshold(monkeypatch):
     pos = make_pos(days_ago=90)  # ~90 séances < 120
-    monkeypatch.setattr("src.speculation.load_positions", lambda: [pos])
-    monkeypatch.setattr("src.speculation.load_all_history", lambda api: {"XXX": make_bars()})
-    monkeypatch.setattr("src.speculation.save_positions", lambda positions: None)
+    monkeypatch.setattr("src.strategie.speculation.load_positions", lambda: [pos])
+    monkeypatch.setattr("src.strategie.speculation.load_all_history", lambda api: {"XXX": make_bars()})
+    monkeypatch.setattr("src.strategie.speculation.save_positions", lambda positions: None)
 
     events = check_all(FakeApi())
     assert not any("REVUE" in e for e in events)

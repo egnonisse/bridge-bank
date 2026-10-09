@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.bsapi import BSApi
+from src.collecte.bsapi import BSApi
 from src.portfolio import payout_ratio
 from src.analyse.screener import scrape_all_fundamentals, screen_value_dividend
 

@@ -13,8 +13,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.backtest import load_all_history
-from src.bsapi import BSApi
+from src.collecte.backtest import load_all_history
+from src.collecte.bsapi import BSApi
 from src.taxation import commission
 
 STOP, T1, T2, T3 = 0.15, 0.20, 0.35, 0.50

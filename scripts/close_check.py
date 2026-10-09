@@ -24,7 +24,7 @@ def propose_plafond(total: float) -> int:
 
 def check_open_spec_positions(api, notifier) -> None:
     """Filet des paris ouverts : délégué à src.speculation (source unique)."""
-    from src.speculation import check_open_spec_positions as _impl
+    from src.strategie.speculation import check_open_spec_positions as _impl
 
     _impl(api, notifier)
 
@@ -32,11 +32,11 @@ def check_open_spec_positions(api, notifier) -> None:
 def main() -> None:
     import logging
 
-    from src.bsapi import BSApi
-    from src.live import ORDER_CUTOFF_BSTRADE
+    from src.collecte.bsapi import BSApi
+    from src.collecte.live import ORDER_CUTOFF_BSTRADE
     from src.main import get_notifier, load_config, load_dotenv
     from src.portfolio import load_portfolio
-    from src.speculation import (
+    from src.strategie.speculation import (
         MIN_SIGNALS,
         STOP_LOSS,
         TAKE_1,

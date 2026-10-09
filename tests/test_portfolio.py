@@ -454,7 +454,7 @@ def test_check_sustainability_flags_value_trap(monkeypatch):
         def market_snapshot(self):
             return Snapshot(stocks=[Quote(code="SOGC", name="SOGB", last=7315, is_index=False)])
 
-    monkeypatch.setattr("src.fundamentals.get_fundamentals", lambda code: {"per": 13.49, "dps": 570})
+    monkeypatch.setattr("src.collecte.fundamentals.get_fundamentals", lambda code: {"per": 13.49, "dps": 570})
     alerts = check_sustainability(FakeAPI(), ["SOGC"])
     assert len(alerts) == 1
     assert alerts[0].level == LEVEL_FUNDAMENTAL
@@ -471,7 +471,7 @@ def test_check_sustainability_sain(monkeypatch):
         def market_snapshot(self):
             return Snapshot(stocks=[Quote(code="SNTS", name="Sonatel", last=32000, is_index=False)])
 
-    monkeypatch.setattr("src.fundamentals.get_fundamentals", lambda code: {"per": 7.74, "dps": 1977})
+    monkeypatch.setattr("src.collecte.fundamentals.get_fundamentals", lambda code: {"per": 7.74, "dps": 1977})
     assert check_sustainability(FakeAPI(), ["SNTS"]) == []
 
 

@@ -1,7 +1,7 @@
 """Tests de la surveillance des ordres limites + re-alerte renforcement (prix amélioré)."""
 from datetime import datetime
 
-from src.noyau_check import prep_watch_alerts
+from src.strategie.noyau_check import prep_watch_alerts
 from src.portfolio import check_reinforcements, load_portfolio
 
 
@@ -68,7 +68,7 @@ def test_re_alerte_renforcement_quand_le_prix_baisse_de_3_pct_pendant_le_cooldow
     state_file = tmp_path / "reinf_state.json"
     state_file.write_text(str(state).replace("'", '"'), encoding="utf-8")
     monkeypatch.setattr("src.portfolio.REINF_STATE_FILE", state_file)
-    monkeypatch.setattr("src.fundamentals.get_per_brvm", lambda code: 13.7)
+    monkeypatch.setattr("src.collecte.fundamentals.get_per_brvm", lambda code: 13.7)
 
     prices = {"SLBC": 36500.0, "SGBC": 50000.0, "SNTS": 50000.0}  # seul SLBC sous son seuil
     api = _FakeAPI(prices)
@@ -86,7 +86,7 @@ def test_pas_de_re_alerte_renforcement_pour_une_baisse_faible(monkeypatch, tmp_p
     state_file = tmp_path / "reinf_state.json"
     state_file.write_text(str(state).replace("'", '"'), encoding="utf-8")
     monkeypatch.setattr("src.portfolio.REINF_STATE_FILE", state_file)
-    monkeypatch.setattr("src.fundamentals.get_per_brvm", lambda code: 13.7)
+    monkeypatch.setattr("src.collecte.fundamentals.get_per_brvm", lambda code: 13.7)
 
     prices = {"SLBC": 37500.0, "SGBC": 50000.0, "SNTS": 50000.0}  # −1,3 % seulement
     hits = check_reinforcements(_FakeAPI(prices))

@@ -35,7 +35,7 @@ import statistics
 from dataclasses import dataclass, field
 
 # Frais aller-retour : dérivés du courtage réel dans src/regles.py.
-from .regles import FRAIS_ALLER_RETOUR as FRAIS  # noqa: E402
+from ..regles import FRAIS_ALLER_RETOUR as FRAIS  # noqa: E402
 STOP_INITIAL = -0.15   # garde-fou sur la position entiere
 
 

@@ -17,7 +17,7 @@ from typing import Optional
 
 import requests
 
-from .domaine.models import HistoryBar, Quote, Snapshot
+from ..domaine.models import HistoryBar, Quote, Snapshot
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

@@ -40,7 +40,7 @@ from src.backtesting.challenge_indicateurs import (  # noqa: E402
 )
 from src.backtesting.challenge_schema import compiler, evaluer_compilee  # noqa: E402
 from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
-from src.paliers_sortie import bilan, simuler_paliers  # noqa: E402
+from src.strategie.paliers_sortie import bilan, simuler_paliers  # noqa: E402
 
 # Regles d'achat a tester : les mieux etayees du systeme
 REGLES = [

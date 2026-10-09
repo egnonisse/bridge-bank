@@ -23,8 +23,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.backtest import load_all_history  # noqa: E402
-from src.bsapi import BSApi  # noqa: E402
+from src.collecte.backtest import load_all_history  # noqa: E402
+from src.collecte.bsapi import BSApi  # noqa: E402
 from src.calibration import seuils_vente as sv  # noqa: E402
 
 

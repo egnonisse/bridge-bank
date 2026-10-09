@@ -1,7 +1,7 @@
 """Tests du module live (cours temps réel brvm.org + horaires de séance)."""
 from datetime import datetime
 
-from src.live import live_quotes, session_open
+from src.collecte.live import live_quotes, session_open
 
 
 def test_session_open_during_hours():
@@ -31,7 +31,7 @@ def test_live_quotes_parses_prices(monkeypatch):
         def raise_for_status(self):
             pass
 
-    monkeypatch.setattr("src.live.requests.get", lambda *a, **k: FakeResp())
+    monkeypatch.setattr("src.collecte.live.requests.get", lambda *a, **k: FakeResp())
     quotes = live_quotes(["SNTS", "SPHC", "ORAC", "XXXX"])
     assert quotes["SNTS"] == 34400.0
     assert quotes["SPHC"] == 9660.0

@@ -2,7 +2,7 @@
 import json
 from datetime import datetime, timedelta
 
-from src.cache_integrity import (
+from src.collecte.cache_integrity import (
     cache_signature,
     check_against_api,
     check_all_integrity,
@@ -67,7 +67,7 @@ def test_reversal_profile_stale(monkeypatch, tmp_path):
     f = tmp_path / "rev.json"
     f.write_text(json.dumps({"_meta": {"cache_signature": "ancienne"}, "SNTS": {}}),
                  encoding="utf-8")
-    monkeypatch.setattr("src.cache_integrity.REVERSAL_FILE", f)
+    monkeypatch.setattr("src.collecte.cache_integrity.REVERSAL_FILE", f)
     hist = {"AAA": [bar(0, 100)]}
     assert reversal_profile_stale(hist) is True
     f.write_text(json.dumps({"_meta": {"cache_signature": cache_signature(hist)}, "SNTS": {}}),
@@ -80,6 +80,6 @@ def test_check_all_integrity_ok(monkeypatch, tmp_path):
     f = tmp_path / "rev.json"
     f.write_text(json.dumps({"_meta": {"cache_signature": cache_signature(hist)}}),
                  encoding="utf-8")
-    monkeypatch.setattr("src.cache_integrity.REVERSAL_FILE", f)
+    monkeypatch.setattr("src.collecte.cache_integrity.REVERSAL_FILE", f)
     snap = Snapshot(stocks=[Quote(code="AAA", name="X", last=105.0)])
     assert check_all_integrity(hist, snap, TODAY) == []

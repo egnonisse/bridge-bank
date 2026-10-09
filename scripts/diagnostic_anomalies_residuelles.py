@@ -17,7 +17,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.cache_integrity import _is_probable_split  # noqa: E402
+from src.collecte.cache_integrity import _is_probable_split  # noqa: E402
 from src.ajustement import ajuster_historique, ratio_rond  # noqa: E402
 
 DATA = RACINE / "data"

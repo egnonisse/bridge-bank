@@ -6,7 +6,7 @@ ouverture de position, détection de signaux.
 import pytest
 
 from src.domaine.models import Quote, Snapshot
-from src.speculation import (
+from src.strategie.speculation import (
     SpecPosition,
     check_position,
     detect_signals,
@@ -97,7 +97,7 @@ def test_remaining_progression():
 
 # --------------------------------------------------------------- persistance
 def test_persist_roundtrip(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.speculation.POSITIONS_FILE", tmp_path / "spec.json")
+    monkeypatch.setattr("src.strategie.speculation.POSITIONS_FILE", tmp_path / "spec.json")
     p = make_pos()
     p.sold_1 = True
     save_positions([p])
@@ -149,7 +149,7 @@ def test_detect_signals_uptrend(make_bars):
 
 def test_screen_speculation_requires_full_confluence(monkeypatch):
     """Régression : le filtre doit garder les titres >= min_signals (pas l'inverse)."""
-    from src import speculation as sp
+    from src.strategie import speculation as sp
 
     class FakeAPI:
         def market_snapshot(self):

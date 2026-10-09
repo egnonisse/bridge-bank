@@ -4,7 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.dividend_history import (GROWTH_MIN_PCT, MIN_VOLUME_MILLIONS,
+from src.collecte.dividend_history import (GROWTH_MIN_PCT, MIN_VOLUME_MILLIONS,
                                   parse_growth_1y, parse_payout_years_last5,
                                   volume_moyen_millions)
 

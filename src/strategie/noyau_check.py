@@ -14,12 +14,12 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from .fundamentals import get_fundamentals
-from .taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
+from ..collecte.fundamentals import get_fundamentals
+from ..taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
 
 # Filtres d'entrée : définis dans src/regles.py (catalogue unique).
-from .regles import PAYOUT_TIGHT, PER_MAX  # noqa: E402
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..regles import PAYOUT_TIGHT, PER_MAX  # noqa: E402
+from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 NET_MAX = 0.10          # borne haute anti-mirage (décision 25/09) : net ≤ 10 %
 REFERENCE_AMOUNT = 100_000.0  # taille standard de ligne noyau (pour le calcul d'exemple)
 
@@ -68,7 +68,7 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "",
     label = name or code
 
     # nouveaux filtres (régularité, croissance, liquidité) — décision LEO 25/09
-    from .dividend_history import dividend_filters
+    from ..collecte.dividend_history import dividend_filters
 
     extra = dividend_filters(code, hist)
     extra_lines = "\n".join(f"      • {n}" for n in extra["notes"]) if extra["notes"] else ""

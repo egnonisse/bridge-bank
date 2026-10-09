@@ -113,9 +113,9 @@ six mois. Le domaine de code s'appelle **`collecte/`** ; **`data/` reste aux don
 | Domaine cible | Modules actuels | Nb |
 |---|---|---|
 | **`domaine/`** — règles et modèles | `regles.py` · `taxation.py` · `models.py` (cotation, barre OHLCV, analyse — et **modèle de position** à extraire de `portfolio.py`) | 3 |
-| **`collecte/`** | `bsapi.py` · `live.py` · `dividend_history.py` · `backtest.py` (chargement) · `cache_integrity.py` · `fundamentals.py` · `dividends.py` · `divisions_officielles.py` · `nettoyage_aberrantes.py` | 9 |
+| **`collecte/`** | `bsapi.py` · `live.py` · `dividend_history.py` · `backtest.py` (chargement) · `cache_integrity.py` · `fundamentals.py` · `dividends.py` · `divisions_officielles.py` · `nettoyage_aberrantes.py` | 9 | ✅ lot 4 |
 | **`analyse/`** | `fondamentaux_historiques.py` · `screener.py` · `screening.py` · `bonds.py` · `boc.py` · `news.py` · `radar.py` | 7 | ✅ lot 3 |
-| **`strategie/`** | `strategie_leo.py` · `noyau_check.py` · `orders.py` · `speculation.py` · `spec_profiles.py` · `paliers_sortie.py` · `spec_fiche.py` · `spec_veille.py` | 8 |
+| **`strategie/`** | `strategie_leo.py` · `noyau_check.py` · `orders.py` · `speculation.py` · `spec_profiles.py` · `paliers_sortie.py` · `spec_fiche.py` · `spec_veille.py` | 8 | ✅ lot 4 |
 | **`calibration/`** | `seuils_vente.py` · `regime_marche.py` · `schema_seuils.py` (**42e module**, né après la carte) | 3 | ✅ lot 3 |
 | **`portefeuille/`** | `portfolio.py` (positions, cash) · `alerts.py` · `report.py` · `format_fr.py` | 4 |
 | **`alertes/`** | `notify.py` (transport Telegram, utilisé par `alerts` et `report`) + extrait de `portfolio.py` : `_profit_info_alert`, `_msg_regime`, `reinforcement_messages` | 1 + extrait |
@@ -162,7 +162,7 @@ Corrections apportées à la première version de cette carte :
 | **1** | Créer les dossiers décidés (§4) + `__init__.py` | `pytest` inchangé | ✅ **fait le 09/10** — 10 paquets, aucun fichier déplacé, 309 tests inchangés |
 | **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | ✅ **fait le 09/10** — 3 modules déplacés, 35 fichiers d'imports réécrits, 309 tests, snapshot 202 → 202 (16 clés renommées, **0 valeur modifiée**) |
 | **3** | Déplacer `calibration/`, `analyse/`, `backtesting/` | idem | ✅ **fait le 09/10** — 14 modules, 108 imports recalculés dans 53 fichiers + 16 cibles de `monkeypatch` (voir ci-dessous), 309 tests, snapshot 202 → 202 (**61 clés renommées, 0 valeur modifiée**) |
-| **4** | Déplacer `collecte/`, `strategie/` | idem | à faire |
+| **4** | Déplacer `collecte/`, `strategie/` | idem | ✅ **fait le 09/10** — 17 modules, 149 imports recalculés dans 67 fichiers + 37 cibles de `monkeypatch`, 333 tests, snapshot 210 → 210 (**60 clés renommées, 0 valeur modifiée**) |
 | **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire — **⚠ déplacer `regles.py` et `taxation.py` oblige à corriger `MODULE_REGLES`/`MODULE_TAXATION` dans `src/infrastructure/paths.py`** (l'empreinte des alertes les surveille ; `tests/test_empreinte.py` échoue si elles pointent dans le vide) |
 
 **Le lot 0 était obligatoire avant tout déplacement** — c'est lui qui rend les autres sûrs.
@@ -219,6 +219,25 @@ modifiée). Quatre enseignements, dont deux payés par des tests rouges :
 `schema_seuils.py` était né le jour même, après la rédaction de la carte (§4 corrigé).
 
 Le lot 4 peut commencer : `collecte/` (9 modules) et `strategie/` (8 modules).
+
+**Le lot 4 a déplacé `collecte/` et `strategie/`** (09/10) : 17 modules, 149 imports recalculés
+dans 67 fichiers, 37 cibles de `monkeypatch` corrigées, 333 tests, snapshot 210 → 210 (60 clés
+renommées, 0 valeur modifiée). Deux enseignements :
+
+1. **L'outil de déplacement est devenu GÉNÉRIQUE** (la carte du lot est un fichier
+   `{module: domaine}` à côté de lui) : les lots 3, 4 et 5 utilisent le même outil, seule la carte
+   change. Un déplacement de 17 modules n'a plus rien de nouveau à apprendre — c'est ce qui rend
+   la progression par lots tenable.
+2. **Un contrôle dont le résultat doit être interprété est un mauvais contrôle.** Le repérage des
+   « imports restants vers les anciens emplacements » a listé des formes légitimes de MÊME domaine
+   (`src/strategie/spec_veille.py → from .spec_fiche import …`) : la même ligne peut être correcte
+   ou non selon le domaine. La vérification qui ne s'interprète pas est : **tous les modules du
+   paquet s'importent** (`pkgutil` + `import_module`, 54 modules, 0 échec) puis la suite complète.
+3. Le noyau `regles.py` / `taxation.py` **reste à la racine** volontairement : l'empreinte des
+   alertes les surveille par des constantes déclarées (§ lot 5).
+
+Le lot 5 peut commencer : découper `portfolio.py` (le risque n'est plus le déplacement mais le
+DÉCOUPAGE) — et il exige une comparaison des SORTIES avant/après, pas seulement des constantes.
 
 **Le lot 5 est un découpage, pas un déplacement** : c'est le plus risqué, et il vient en
 dernier, quand l'arborescence est stable.

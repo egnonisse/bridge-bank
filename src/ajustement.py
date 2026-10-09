@@ -33,7 +33,7 @@ from __future__ import annotations
 import statistics
 from dataclasses import dataclass, replace
 
-from .cache_integrity import _is_probable_split
+from .collecte.cache_integrity import _is_probable_split
 
 # Ratios de division observes sur la BRVM
 RATIOS_BRVM = (2, 3, 4, 5, 10, 20, 50, 100)

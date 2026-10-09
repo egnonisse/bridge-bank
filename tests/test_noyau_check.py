@@ -1,9 +1,9 @@
 """Tests des filtres noyau (alerte d'achat qualifiée)."""
-from src.noyau_check import evaluate_noyau_candidate
+from src.strategie.noyau_check import evaluate_noyau_candidate
 
 
 def _mock_fund(monkeypatch, per: float, dps: float):
-    monkeypatch.setattr("src.noyau_check.get_fundamentals",
+    monkeypatch.setattr("src.strategie.noyau_check.get_fundamentals",
                         lambda code: {"per": per, "dps": dps})
 
 

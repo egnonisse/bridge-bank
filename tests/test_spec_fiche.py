@@ -4,8 +4,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.spec_fiche import build_fiche
-from src.spec_profiles import detect_schemas, zone_of, zone_label
+from src.strategie.spec_fiche import build_fiche
+from src.strategie.spec_profiles import detect_schemas, zone_of, zone_label
 
 
 def test_cassure_verdict_oui_et_niveaux():
@@ -65,7 +65,7 @@ def test_zone_of_extremes():
 
 
 def test_antispam_state(monkeypatch, tmp_path):
-    from src import spec_veille as sv
+    from src.strategie import spec_veille as sv
 
     monkeypatch.setattr(sv, "STATE_FILE", Path(tmp_path) / "state.json")
     st = sv.load_state()
@@ -77,16 +77,16 @@ def test_antispam_state(monkeypatch, tmp_path):
 
 def test_live_aberrant_ignore(monkeypatch):
     """Règle 19/09 : un live > ±50 % vs clôture est ignoré (parse faux/split)."""
-    from src import spec_veille as sv
+    from src.strategie import spec_veille as sv
 
     hist_fake = {"TEST": None}
     monkeypatch.setattr(sv, "load_all_history",
                         lambda *a, **k: _fake_hist())
     monkeypatch.setattr(sv, "load_state", lambda: {})
     monkeypatch.setattr(sv, "save_state", lambda s: None)
-    # scan() importe live_quotes en local (`from .live import ...`) →
-    # patcher src.live, pas le module spec_veille
-    from src import live as live_mod
+    # scan() importe live_quotes en local (`from ..collecte.live import ...`) →
+    # patcher src.collecte.live, pas le module spec_veille
+    from src.collecte import live as live_mod
 
     monkeypatch.setattr(live_mod, "live_quotes", lambda codes: {"TEST": 363.0})
     res = sv.scan(all_=True)

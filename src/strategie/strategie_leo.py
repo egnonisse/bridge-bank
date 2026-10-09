@@ -42,7 +42,7 @@ from dataclasses import dataclass, field
 # => ~1,4 % par sens, soit 2,8 % aller-retour (minimum 1 000 F par ordre).
 # Frais Bridge Bank : définis dans src/regles.py (dérivés du courtage réel,
 # jamais recopiés — `FRAIS_PAR_SENS` et `FRAIS_ALLER_RETOUR` ont des SENS différents).
-from .regles import FRAIS_MINIMUM, FRAIS_PAR_SENS  # noqa: E402
+from ..regles import FRAIS_MINIMUM, FRAIS_PAR_SENS  # noqa: E402
 
 
 @dataclass

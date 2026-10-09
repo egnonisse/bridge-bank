@@ -17,8 +17,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from src.backtest import load_all_history
-from src.bsapi import BSApi
+from src.collecte.backtest import load_all_history
+from src.collecte.bsapi import BSApi
 
 FRAIS = 0.028  # 2,8 % aller-retour
 MIN_SEANCES = 260  # minimum d'historique par titre

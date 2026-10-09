@@ -10,12 +10,12 @@ import json
 import sys
 from datetime import date, timedelta
 from pathlib import Path
-from .infrastructure.paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from .backtest import load_all_history
-from .bsapi import BSApi
+from ..collecte.backtest import load_all_history
+from ..collecte.bsapi import BSApi
 from .spec_fiche import build_fiche
 
 SPAM_DAYS = 7
@@ -54,7 +54,7 @@ def scan(all_: bool = False) -> list:
     hist = load_all_history(BSApi(), force=False)
     codes = [c for c, bars in hist.items() if len(bars) >= 500]
     try:
-        from .live import live_quotes
+        from ..collecte.live import live_quotes
 
         live = live_quotes(codes)
     except Exception:

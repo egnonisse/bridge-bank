@@ -15,7 +15,7 @@ from datetime import datetime, time as dtime
 from pathlib import Path
 from typing import Optional
 
-from .bsapi import BSApi
+from .collecte.bsapi import BSApi
 from .domaine.models import Quote
 from .notify import TelegramNotifier
 from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)

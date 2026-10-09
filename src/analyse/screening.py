@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 from statistics import fmean
 
-from ..bsapi import BSApi
+from ..collecte.bsapi import BSApi
 from ..domaine.models import Analysis, HistoryBar, Quote
 
 HISTORY_DAYS = 90

@@ -23,10 +23,10 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
-from .bsapi import BSApi
-from .backtest import load_all_history
-from .analyse.screening import avg_volume, change_pct, ema, rsi_wilder
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..collecte.bsapi import BSApi
+from ..collecte.backtest import load_all_history
+from ..analyse.screening import avg_volume, change_pct, ema, rsi_wilder
+from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 POSITIONS_FILE = DATA_DIR / "spec_positions.json"
 CANDIDATES_STATE_FILE = DATA_DIR / "spec_candidates_state.json"
@@ -250,7 +250,7 @@ def zone_morte_status(pos: SpecPosition, api: BSApi) -> tuple[int, bool] | None:
 # ------------------------------------------------------------- haut niveau
 def open_position(api: BSApi, code: str, amount: float) -> SpecPosition:
     """Ouvre une position spéculative de `amount` FCFA au cours actuel."""
-    from .portfolio import load_portfolio  # import local : évite la circularité
+    from ..portfolio import load_portfolio  # import local : évite la circularité
 
     snap = api.market_snapshot()
     quote = snap.by_code(code)

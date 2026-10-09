@@ -120,7 +120,7 @@ def _last_split_index(closes: list[float]) -> int:
     Réutilise l'heuristique éprouvée du contrôle d'intégrité (médianes avant/après
     >= 2,5×) : les niveaux pré-division ne sont pas comparables aux cours actuels.
     """
-    from ..cache_integrity import _is_probable_split
+    from ..collecte.cache_integrity import _is_probable_split
 
     last = 0
     for i in range(10, len(closes) - 10):

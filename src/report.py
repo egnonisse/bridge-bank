@@ -14,12 +14,12 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-from .bsapi import BSApi
+from .collecte.bsapi import BSApi
 from .analyse.bonds import NOMINAL, load_bond_positions, market_line, ytm
-from .dividends import total_encaissé
-from .orders import build_limit_orders
+from .collecte.dividends import total_encaissé
+from .strategie.orders import build_limit_orders
 from .portfolio import load_portfolio
-from .speculation import load_positions
+from .strategie.speculation import load_positions
 from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 STATE_FILE = DATA_DIR / "portfolio_state.json"

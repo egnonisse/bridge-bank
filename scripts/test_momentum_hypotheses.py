@@ -23,8 +23,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.backtest import load_all_history
-from src.bsapi import BSApi
+from src.collecte.backtest import load_all_history
+from src.collecte.bsapi import BSApi
 from src.taxation import commission
 
 COOLDOWN = 120          # séances sans nouveau signal après une entrée (désagrégation)

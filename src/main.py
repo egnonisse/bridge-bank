@@ -21,7 +21,7 @@ from pathlib import Path
 
 import yaml
 
-from .bsapi import BSApi
+from .collecte.bsapi import BSApi
 from .notify import TelegramNotifier
 from .analyse.screening import analyze as analyze_stock
 from .analyse.screening import screen
@@ -317,13 +317,13 @@ def main() -> None:
 
 
 def cmd_backtest(args: argparse.Namespace) -> None:
-    from .backtest import main_backtest
+    from .collecte.backtest import main_backtest
 
     print(main_backtest(top=args.top, horizon=args.horizon, force=args.force))
 
 
 def cmd_spec(args: argparse.Namespace) -> None:
-    from .speculation import (
+    from .strategie.speculation import (
         check_all,
         load_positions,
         open_position,
@@ -362,7 +362,7 @@ def cmd_spec(args: argparse.Namespace) -> None:
         print(f"  Stop-loss −15 % : {pos.stop_loss:,.0f}")
         print("  Paliers : +20 % (vendre ⅓), +35 % (vendre ⅓), +50 % (clôture)")
     elif args.action == "status":
-        from .speculation import ZONE_DEAD_INFO_DAYS, zone_morte_status
+        from .strategie.speculation import ZONE_DEAD_INFO_DAYS, zone_morte_status
 
         positions = load_positions()
         snap = api.market_snapshot()
@@ -398,8 +398,8 @@ def cmd_spec(args: argparse.Namespace) -> None:
             print(e)
             notifier.send(f"🎲 Spéculation : {e}")
     elif args.action == "alert":
-        from .live import ORDER_CUTOFF_BSTRADE
-        from .speculation import STOP_LOSS, TAKE_1, TAKE_2, TAKE_3, detect_new_candidates
+        from .collecte.live import ORDER_CUTOFF_BSTRADE
+        from .strategie.speculation import STOP_LOSS, TAKE_1, TAKE_2, TAKE_3, detect_new_candidates
 
         new = detect_new_candidates(api, min_signals=args.min)
         notifier = get_notifier(load_config())
@@ -500,7 +500,7 @@ def cmd_portf(args: argparse.Namespace) -> None:
     elif args.action == "check":
         from datetime import datetime
 
-        from .fundamentals import get_fundamentals
+        from .collecte.fundamentals import get_fundamentals
         from .portfolio import (
             check_dividend_position,
             is_cooldown_active,
@@ -743,7 +743,7 @@ def cmd_fund(args: argparse.Namespace) -> None:
 
 
 def cmd_limits(args: argparse.Namespace) -> None:
-    from .orders import build_limit_orders
+    from .strategie.orders import build_limit_orders
 
     cfg = load_config()
     codes = cfg.get("noyau", {}).get("codes", [])
@@ -770,7 +770,7 @@ def cmd_limits(args: argparse.Namespace) -> None:
 
 def cmd_div(args: argparse.Namespace) -> None:
     """Saisit et suit les encaissements réels de dividendes (avis BSTrade)."""
-    from .dividends import add_dividend, load_dividends
+    from .collecte.dividends import add_dividend, load_dividends
     from .portfolio import load_portfolio
 
     if args.action == "add":
@@ -943,8 +943,8 @@ def cmd_radar(args: argparse.Namespace) -> None:
     --alert : n'affiche que les niveau 1 et alerte Telegram sur les NOUVEAUX
     (un titre alerté une fois n'est plus jamais re-alerté — anti-spam).
     """
-    from .backtest import load_all_history
-    from .bsapi import BSApi
+    from .collecte.backtest import load_all_history
+    from .collecte.bsapi import BSApi
     from .analyse.radar import filter_new_level1, format_radar, scan
 
     api = BSApi()
@@ -1005,18 +1005,18 @@ def cmd_noyau_check(args: argparse.Namespace) -> None:
 
     Cours : live brvm.org en priorité, sinon snapshot BSTrade (clôture veille).
     """
-    from .bsapi import BSApi
-    from .live import live_quotes
-    from .noyau_check import evaluate_noyau_candidate
+    from .collecte.bsapi import BSApi
+    from .collecte.live import live_quotes
+    from .strategie.noyau_check import evaluate_noyau_candidate
 
     api = BSApi()
     snap = api.market_snapshot()
-    from .noyau_check import load_prep_watchlist, save_prep_watchlist
+    from .strategie.noyau_check import load_prep_watchlist, save_prep_watchlist
 
     watch = load_prep_watchlist()
     found = False
     try:
-        from .backtest import load_all_history
+        from .collecte.backtest import load_all_history
 
         hist = load_all_history(api, force=False)
     except Exception:
@@ -1055,9 +1055,9 @@ def cmd_noyau_check(args: argparse.Namespace) -> None:
 
 def cmd_watchlist(args: argparse.Namespace) -> None:
     """Étape quotidienne : surveille les ordres limites « À PRÉPARER »."""
-    from .bsapi import BSApi
-    from .live import live_quotes
-    from .noyau_check import load_prep_watchlist, prep_watch_alerts, save_prep_watchlist
+    from .collecte.bsapi import BSApi
+    from .collecte.live import live_quotes
+    from .strategie.noyau_check import load_prep_watchlist, prep_watch_alerts, save_prep_watchlist
 
     watch = load_prep_watchlist()
     if not watch:
@@ -1097,8 +1097,8 @@ def cmd_watchlist(args: argparse.Namespace) -> None:
 
 def cmd_filet(args: argparse.Namespace) -> None:
     """Étape quotidienne : filet des paris spéculatifs ouverts (stop −15 %, paliers)."""
-    from .bsapi import BSApi
-    from .speculation import check_open_spec_positions, load_positions
+    from .collecte.bsapi import BSApi
+    from .strategie.speculation import check_open_spec_positions, load_positions
 
     if not load_positions():
         print("Aucun pari ouvert — rien à surveiller.")  # texte silencieux (marker)
@@ -1117,7 +1117,7 @@ def cmd_specveille(args: argparse.Namespace) -> None:
     --print-only (cron no_agent) : stdout = uniquement les fiches OUI/PRUDENCE,
     sans envoi Telegram — le cron livre le stdout tel quel.
     """
-    from .spec_veille import scan
+    from .strategie.spec_veille import scan
 
     res = scan(all_=getattr(args, "all", False))
     # Plafond anti-flood : max 3 fiches par jour, priorité au schéma rare
@@ -1185,8 +1185,8 @@ def cmd_news(args: argparse.Namespace) -> None:
 
 def cmd_live(args: argparse.Namespace) -> None:
     """Affiche les cours temps réel BRVM (brvm.org) + l'état de la séance."""
-    from .bsapi import BSApi
-    from .live import live_quotes, session_open
+    from .collecte.bsapi import BSApi
+    from .collecte.live import live_quotes, session_open
 
     api = BSApi()
     snap = api.market_snapshot()
@@ -1214,8 +1214,8 @@ def cmd_live(args: argparse.Namespace) -> None:
 
 def cmd_integrity(args: argparse.Namespace) -> None:
     """Contrôle d'intégrité des données : cache, cassures, profils dérivés."""
-    from .backtest import load_all_history
-    from .cache_integrity import check_all_integrity
+    from .collecte.backtest import load_all_history
+    from .collecte.cache_integrity import check_all_integrity
 
     api = BSApi()
     hist = load_all_history(api)

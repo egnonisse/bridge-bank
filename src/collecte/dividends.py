@@ -11,7 +11,7 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 DIVIDENDES_FILE = DATA_DIR / "dividendes.json"
 

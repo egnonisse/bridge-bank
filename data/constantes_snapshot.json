@@ -87,10 +87,6 @@
  "src.analyse.screener.YIELD_SUSPECT": 10.0,
  "src.analyse.screening.HISTORY_DAYS": 90,
  "src.analyse.screening.MAX_WORKERS": 6,
- "src.backtest.CACHE_FILE": "<Path history_cache.pkl>",
- "src.backtest.CACHE_MAX_AGE_DAYS": 7,
- "src.backtest.HISTORY_START": "20170101",
- "src.backtest.MAX_WORKERS": 8,
  "src.backtesting.challenge_schema.COMPARATEURS": [
   "<=",
   ">=",
@@ -128,13 +124,6 @@
  "src.backtesting.challenge_schema.TERME": "<Pattern>",
  "src.backtesting.challenge_validateur.NB_TIRAGES_ALEATOIRES": 100,
  "src.backtesting.challenge_validateur.SEANCES_MIN_INDICATEURS": 250,
- "src.bsapi.BASE_URL": "https://bstrade.bridge-securities.com/BSTradeServer/",
- "src.bsapi.SESSION_TIMEOUT": 20,
- "src.cache_integrity.MAX_CACHE_AGE_DAYS": 8,
- "src.cache_integrity.MAX_COMPARE_AGE_DAYS": 3,
- "src.cache_integrity.MAX_JUMP": 3.0,
- "src.cache_integrity.PRICE_TOLERANCE": 0.25,
- "src.cache_integrity.REVERSAL_FILE": "<Path reversal_profiles.json>",
  "src.calibration.regime_marche.BAISSIER": "baissier",
  "src.calibration.regime_marche.FENETRE": 200,
  "src.calibration.regime_marche.HAUSSIER": "haussier",
@@ -201,18 +190,29 @@
   "SLBC": 0.05,
   "SNTS": 0.13
  },
- "src.dividend_history.GROWTH_MIN_PCT": -10.0,
- "src.dividend_history.HEADERS": {
+ "src.collecte.backtest.CACHE_FILE": "<Path history_cache.pkl>",
+ "src.collecte.backtest.CACHE_MAX_AGE_DAYS": 7,
+ "src.collecte.backtest.HISTORY_START": "20170101",
+ "src.collecte.backtest.MAX_WORKERS": 8,
+ "src.collecte.bsapi.BASE_URL": "https://bstrade.bridge-securities.com/BSTradeServer/",
+ "src.collecte.bsapi.SESSION_TIMEOUT": 20,
+ "src.collecte.cache_integrity.MAX_CACHE_AGE_DAYS": 8,
+ "src.collecte.cache_integrity.MAX_COMPARE_AGE_DAYS": 3,
+ "src.collecte.cache_integrity.MAX_JUMP": 3.0,
+ "src.collecte.cache_integrity.PRICE_TOLERANCE": 0.25,
+ "src.collecte.cache_integrity.REVERSAL_FILE": "<Path reversal_profiles.json>",
+ "src.collecte.dividend_history.GROWTH_MIN_PCT": -10.0,
+ "src.collecte.dividend_history.HEADERS": {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
  },
- "src.dividend_history.MIN_VOLUME_MILLIONS": 5.0,
- "src.dividend_history.REGULARITY_MIN_YEARS": 4,
- "src.dividends.DIVIDENDES_FILE": "<Path dividendes.json>",
- "src.divisions_officielles.FICHIER": "<Path divisions_officielles.json>",
- "src.fundamentals.HEADERS": {
+ "src.collecte.dividend_history.MIN_VOLUME_MILLIONS": 5.0,
+ "src.collecte.dividend_history.REGULARITY_MIN_YEARS": 4,
+ "src.collecte.dividends.DIVIDENDES_FILE": "<Path dividendes.json>",
+ "src.collecte.divisions_officielles.FICHIER": "<Path divisions_officielles.json>",
+ "src.collecte.fundamentals.HEADERS": {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
  },
- "src.fundamentals.OFFICIAL_DPS": {
+ "src.collecte.fundamentals.OFFICIAL_DPS": {
   "BOAS": 511.0,
   "PALC": 501.6,
   "SGBC": 2606.0,
@@ -220,7 +220,19 @@
   "SNTS": 1977.0,
   "SOGC": 570.0
  },
- "src.fundamentals.PER_CACHE_FILE": "<Path per_cache.json>",
+ "src.collecte.fundamentals.PER_CACHE_FILE": "<Path per_cache.json>",
+ "src.collecte.live.CASH_CREDIT_OFFSET_DAYS": 1,
+ "src.collecte.live.HEADERS": {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+ },
+ "src.collecte.live.ORDER_CUTOFF_BSTRADE": "<time>",
+ "src.collecte.live.ORDER_CUTOFF_EMAIL": "<time>",
+ "src.collecte.live.SESSION_CLOSE": "<time>",
+ "src.collecte.live.SESSION_START": "<time>",
+ "src.collecte.live.SETTLEMENT_DAYS": 3,
+ "src.collecte.live.URL": "https://www.brvm.org/fr/cours-actions/0",
+ "src.collecte.nettoyage_aberrantes.SEUIL": 5.0,
+ "src.collecte.nettoyage_aberrantes.VOISINS": 20,
  "src.infrastructure.empreinte.EXCLUS_DU_DRAPEAU": [
   ":(exclude)data/*.jsonl"
  ],
@@ -254,25 +266,8 @@
  "src.infrastructure.paths.SEUILS_JOURNAL": "<Path seuils_journal.jsonl>",
  "src.infrastructure.paths.SRC_DIR": "<Path src>",
  "src.infrastructure.paths.TESTS_DIR": "<Path tests>",
- "src.live.CASH_CREDIT_OFFSET_DAYS": 1,
- "src.live.HEADERS": {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
- },
- "src.live.ORDER_CUTOFF_BSTRADE": "<time>",
- "src.live.ORDER_CUTOFF_EMAIL": "<time>",
- "src.live.SESSION_CLOSE": "<time>",
- "src.live.SESSION_START": "<time>",
- "src.live.SETTLEMENT_DAYS": 3,
- "src.live.URL": "https://www.brvm.org/fr/cours-actions/0",
  "src.main.CONFIG_PATH": "<Path config.yaml>",
- "src.nettoyage_aberrantes.SEUIL": 5.0,
- "src.nettoyage_aberrantes.VOISINS": 20,
  "src.notify.TELEGRAM_API": "https://api.telegram.org/bot{token}/sendMessage",
- "src.noyau_check.NET_MAX": 0.1,
- "src.noyau_check.PREP_REALERT_DOWN_PCT": 0.03,
- "src.noyau_check.PREP_WATCH_FILE": "<Path prep_watch_state.json>",
- "src.noyau_check.REFERENCE_AMOUNT": 100000.0,
- "src.paliers_sortie.STOP_INITIAL": -0.15,
  "src.portfolio.ALERT_COOLDOWN_DAYS": 7,
  "src.portfolio.ALERT_STATE_FILE": "<Path portf_alert_state.json>",
  "src.portfolio.DIV_CUT_RATIO": 0.5,
@@ -337,22 +332,27 @@
  "src.report.TARGET_CASH": 30.0,
  "src.report.TARGET_SPEC": 0.0,
  "src.report.TARGET_STOCKS": 70.0,
- "src.spec_fiche.SCHEMA_LABELS": {
+ "src.strategie.noyau_check.NET_MAX": 0.1,
+ "src.strategie.noyau_check.PREP_REALERT_DOWN_PCT": 0.03,
+ "src.strategie.noyau_check.PREP_WATCH_FILE": "<Path prep_watch_state.json>",
+ "src.strategie.noyau_check.REFERENCE_AMOUNT": 100000.0,
+ "src.strategie.paliers_sortie.STOP_INITIAL": -0.15,
+ "src.strategie.spec_fiche.SCHEMA_LABELS": {
   "CASSURE": "🔓 CASSURE DE 1 AN",
   "EVEIL": "🌅 REBOND CONFIRMÉ",
   "PANIQUE": "🩹 RACHAT DE PANIQUE"
  },
- "src.spec_fiche.SCHEMA_ORDER": [
+ "src.strategie.spec_fiche.SCHEMA_ORDER": [
   "CASSURE",
   "EVEIL",
   "PANIQUE"
  ],
- "src.spec_fiche.SCHEMA_WORDS": {
+ "src.strategie.spec_fiche.SCHEMA_WORDS": {
   "CASSURE": "cassure de 1 an",
   "EVEIL": "rebond confirmé de +10 % depuis le creux des 60 séances",
   "PANIQUE": "rachat de panique"
  },
- "src.spec_fiche.ZONE_LABELS": {
+ "src.strategie.spec_fiche.ZONE_LABELS": {
   "BAS_ECRASE": [
    "🔴 ZONE PIÈGE",
    "les 20 % du bas : « pas cher » ne paie pas (50 % de réussite, +3,5 % médian)"
@@ -374,39 +374,39 @@
    "zone neutre"
   ]
  },
- "src.spec_profiles.HORIZON": 252,
- "src.spec_profiles.PROFILES_FILE": "<Path spec_profiles.json>",
- "src.spec_profiles.ZONE_BAS_ECRASE": [
+ "src.strategie.spec_profiles.HORIZON": 252,
+ "src.strategie.spec_profiles.PROFILES_FILE": "<Path spec_profiles.json>",
+ "src.strategie.spec_profiles.ZONE_BAS_ECRASE": [
   0.0,
   0.2
  ],
- "src.spec_profiles.ZONE_BAS_SOLIDE": [
+ "src.strategie.spec_profiles.ZONE_BAS_SOLIDE": [
   0.2,
   0.4
  ],
- "src.spec_profiles.ZONE_FORCE": [
+ "src.strategie.spec_profiles.ZONE_FORCE": [
   0.8,
   1.01
  ],
- "src.spec_profiles.ZONE_HAUT_FRAGILE": [
+ "src.strategie.spec_profiles.ZONE_HAUT_FRAGILE": [
   0.6,
   0.8
  ],
- "src.spec_veille.SPAM_DAYS": 7,
- "src.spec_veille.STATE_FILE": "<Path spec_seen_state.json>",
- "src.spec_veille.STOPOUT_COOLDOWN_DAYS": 30,
- "src.spec_veille.STOPOUT_SUSPEND_COUNT": 2,
- "src.spec_veille.STOPOUT_SUSPEND_DAYS": 60,
- "src.speculation.CANDIDATES_STATE_FILE": "<Path spec_candidates_state.json>",
- "src.speculation.MIN_SIGNALS": 3,
- "src.speculation.POSITIONS_FILE": "<Path spec_positions.json>",
- "src.speculation.STOP_LOSS": 0.15,
- "src.speculation.TAKE_1": 0.2,
- "src.speculation.TAKE_2": 0.35,
- "src.speculation.TAKE_3": 0.5,
- "src.speculation.TRAILING": 0.1,
- "src.speculation.ZONE_DEAD_INFO_DAYS": 60,
- "src.speculation.ZONE_DEAD_REVIEW_DAYS": 120,
+ "src.strategie.spec_veille.SPAM_DAYS": 7,
+ "src.strategie.spec_veille.STATE_FILE": "<Path spec_seen_state.json>",
+ "src.strategie.spec_veille.STOPOUT_COOLDOWN_DAYS": 30,
+ "src.strategie.spec_veille.STOPOUT_SUSPEND_COUNT": 2,
+ "src.strategie.spec_veille.STOPOUT_SUSPEND_DAYS": 60,
+ "src.strategie.speculation.CANDIDATES_STATE_FILE": "<Path spec_candidates_state.json>",
+ "src.strategie.speculation.MIN_SIGNALS": 3,
+ "src.strategie.speculation.POSITIONS_FILE": "<Path spec_positions.json>",
+ "src.strategie.speculation.STOP_LOSS": 0.15,
+ "src.strategie.speculation.TAKE_1": 0.2,
+ "src.strategie.speculation.TAKE_2": 0.35,
+ "src.strategie.speculation.TAKE_3": 0.5,
+ "src.strategie.speculation.TRAILING": 0.1,
+ "src.strategie.speculation.ZONE_DEAD_INFO_DAYS": 60,
+ "src.strategie.speculation.ZONE_DEAD_REVIEW_DAYS": 120,
  "src.taxation.BROKERAGE_FEE": 0.014,
  "src.taxation.BROKERAGE_MIN": 1000.0,
  "src.taxation.BROKERAGE_RATE": 0.008,

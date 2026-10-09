@@ -15,8 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from src.backtest import load_all_history
-from src.bsapi import BSApi
+from src.collecte.backtest import load_all_history
+from src.collecte.bsapi import BSApi
 from src.analyse.radar import (
     load_alerted,
     load_seen_state,

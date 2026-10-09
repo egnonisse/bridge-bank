@@ -19,7 +19,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src import divisions_officielles as dv  # noqa: E402
+from src.collecte import divisions_officielles as dv  # noqa: E402
 
 def _j(d1, d2):
     """Ecart en jours entre deux dates AAAA-MM-JJ."""

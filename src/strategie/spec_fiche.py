@@ -87,7 +87,7 @@ def build_fiche(code: str, name: str, closes: list,
     # fondamental connu (la fiche ne juge PAS le loyer, mais SIGNALE les
     # risques connus : payout > 100 %, PER extrême — règle LEO 25/09)
     try:
-        from .fundamentals import get_fundamentals
+        from ..collecte.fundamentals import get_fundamentals
 
         fund = get_fundamentals(code)
         dps = fund.get("dps") or 0

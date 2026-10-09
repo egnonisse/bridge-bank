@@ -24,8 +24,8 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.backtest import load_all_history
-from src.bsapi import BSApi
+from src.collecte.backtest import load_all_history
+from src.collecte.bsapi import BSApi
 from src.taxation import commission
 
 WINDOW = 250          # fenêtre de régression

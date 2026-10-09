@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 
-from .bsapi import BSApi
+from .collecte.bsapi import BSApi
 from .calibration import seuils_vente
 from .calibration.seuils_vente import (  # calibrage + persistance : un seul endroit
     SEUILS_CANDIDATS,
@@ -89,7 +89,7 @@ def calibrate_missing_thresholds(api) -> int:
     Chaque changement est ÉCRIT AU JOURNAL (`data/seuils_journal.jsonl`) : c'est la seule
     trace de ce qui a bougé pendant l'exécution, là où git ne voit rien.
     """
-    from .backtest import load_all_history
+    from .collecte.backtest import load_all_history
 
     calibrated = load_profit_thresholds()
     codes = {p.code for p in load_portfolio() if not p.closed}
@@ -416,7 +416,7 @@ def check_sustainability(api: BSApi, codes: list[str]) -> list[PositionAlert]:
     Garde-fou anti value-trap systématique : alerte (niveau 3) si payout > 80 %
     (tendu) ou > 100 % (non couvert), même sans position ouverte.
     """
-    from .fundamentals import get_fundamentals
+    from .collecte.fundamentals import get_fundamentals
 
     snap = api.market_snapshot()
     alerts: list[PositionAlert] = []
@@ -721,7 +721,7 @@ def save_reinf_state(state: dict) -> None:
 
 def check_reinforcements(api) -> list[tuple[str, str]]:
     """Renforcements du noyau, avec anti-spam 7 jours par titre."""
-    from .fundamentals import get_per_brvm
+    from .collecte.fundamentals import get_per_brvm
 
     positions = load_portfolio()
     snap = api.market_snapshot()
@@ -819,7 +819,7 @@ def open_dividend_position(
     api: BSApi, code: str, amount: float, dps: float, per_open: float
 ) -> DividendPosition:
     """Ouvre une position dividende de `amount` FCFA au cours actuel."""
-    from .speculation import load_positions  # import local : évite la circularité
+    from .strategie.speculation import load_positions  # import local : évite la circularité
 
     snap = api.market_snapshot()
     quote = snap.by_code(code)
