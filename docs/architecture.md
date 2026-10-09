@@ -119,7 +119,7 @@ six mois. Le domaine de code s'appelle **`collecte/`** ; **`data/` reste aux don
 | **`calibration/`** | `seuils_vente.py` · `regime_marche.py` | 2 |
 | **`portefeuille/`** | `portfolio.py` (positions, cash) · `alerts.py` · `report.py` · `format_fr.py` | 4 |
 | **`alertes/`** | `notify.py` (transport Telegram, utilisé par `alerts` et `report`) + extrait de `portfolio.py` : `_profit_info_alert`, `_msg_regime`, `reinforcement_messages` | 1 + extrait |
-| **`backtest/`** | `backtest_noyau.py` · `challenge_validateur.py` · `challenge_schema.py` · `challenge_indicateurs.py` | 4 |
+| **`backtesting/`** | `backtest_noyau.py` · `challenge_validateur.py` · `challenge_schema.py` · `challenge_indicateurs.py` | 4 |
 | **`cli/`** | `main.py` (**1 310 lignes, 25 commandes**) · `ajustement.py` | 2 |
 | **`infrastructure/`** | `paths.py` (puis la plomberie : `cache.py`, `http.py`) | 1 |
 
@@ -139,6 +139,10 @@ Corrections apportées à la première version de cette carte :
   plomberie — `alertes/` est distinct de `portefeuille/`.
 - **`screener.py` et `screening.py` se recouvrent** (indicateurs techniques, RSI/EMA/momentum) :
   à fusionner au lot 3, sinon la duplication de règles revient par la porte de derrière.
+- **Aucun paquet ne doit porter le nom d'un module existant** : Python résout le **dossier**
+  d'abord, donc `src/backtest/` masquait `src/backtest.py`. Mesuré au lot 1 : 7 erreurs de
+  collecte en test, et le contrôle des constantes en échec (il lit en important les modules).
+  D'où `backtesting/` — et c'est la seule collision de la carte.
 
 **La carte reste indicative** : plusieurs modules sont à **découper**, pas seulement à déplacer
 (`portfolio.py`, `main.py`, `backtest.py`).
@@ -150,16 +154,23 @@ Corrections apportées à la première version de cette carte :
 | Lot | Action | Vérification | État |
 |---|---|---|---|
 | **0** | Migrer les 19 chemins vers `src/paths.py` | `verifier_chemins.py --strict` → 0 | ✅ **fait le 09/10** |
-| **1** | Créer les dossiers décidés (§4) + `__init__.py` | `pytest` inchangé | à faire |
+| **1** | Créer les dossiers décidés (§4) + `__init__.py` | `pytest` inchangé | ✅ **fait le 09/10** — 10 paquets, aucun fichier déplacé, 309 tests inchangés |
 | **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | à faire |
-| **3** | Déplacer `calibration/`, `analyse/`, `backtest/` | idem | à faire |
+| **3** | Déplacer `calibration/`, `analyse/`, `backtesting/` | idem | à faire |
 | **4** | Déplacer `collecte/`, `strategie/` | idem | à faire |
 | **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire |
 
 **Le lot 0 était obligatoire avant tout déplacement** — c'est lui qui rend les autres sûrs.
 
-**Le lot 1 fige les noms de dossiers** : c'est pour ça que les deux questions de §3 devaient être
-tranchées avant lui. Elles le sont (09/10) — il n'y a plus d'attente.
+**Le lot 1 a figé les noms de dossiers** (09/10) — les deux questions de §3 étaient bien à
+trancher AVANT lui. Deux enseignements du lot, tous les deux mesurés :
+
+1. le dossier de simulation s'appelle **`backtesting/`** : un paquet `backtest/` **masquait**
+   `src/backtest.py` (7 erreurs de collecte en test, contrôle des constantes en échec) ;
+2. l'auditeur des constantes marche désormais **dans les sous-dossiers** (`SRC.rglob` + noms
+   pointés) — sans quoi il aurait cessé de surveiller chaque module déplacé, sans le dire.
+
+Le lot 2 peut donc commencer : les filets suivent les modules où qu'ils aillent.
 
 **Le lot 5 est un découpage, pas un déplacement** : c'est le plus risqué, et il vient en
 dernier, quand l'arborescence est stable.

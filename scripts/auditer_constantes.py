@@ -79,6 +79,16 @@ def _est_constante(nom: str) -> bool:
     return nom.isupper() and len(nom) > 2 and not nom.startswith("_")
 
 
+def nom_module(f: Path) -> str:
+    """Nom pointé d'un module, à TOUT niveau : src/collecte/bsapi.py -> src.collecte.bsapi.
+
+    Sans cela, déplacer un module dans un domaine le ferait sortir de l'inventaire — et le
+    contrôle des constantes cesserait silencieusement de le surveiller. Les fichiers
+    `__init__.py` ne sont pas des constantes : ils sont ignorés par `_est_constante`.
+    """
+    return ".".join(f.relative_to(RACINE).with_suffix("").parts)
+
+
 def scanner_module(chemin: Path) -> dict:
     """Extrait les constantes module-level SANS executer le fichier (analyse AST).
 
@@ -163,10 +173,16 @@ def domaine_de(nom: str) -> str:
 
 
 def auditer():
-    fichiers = sorted(p for p in SRC.glob("*.py") if not p.name.startswith("_"))
+    # rglob : l'inventaire doit suivre les modules jusque dans leurs domaines (src/collecte/…).
+    fichiers = sorted(
+        p for p in SRC.rglob("*.py")
+        if not p.name.startswith("_")
+        and "__pycache__" not in p.parts
+        and not any(part.startswith(".") for part in p.parts)
+    )
     inventaire: dict[str, dict] = {}
     for f in fichiers:
-        module = f"src.{f.stem}"
+        module = nom_module(f)
         for nom, valeur in scanner_module(f).items():
             if nom.startswith("_"):
                 continue
@@ -222,7 +238,7 @@ def ecrire_snapshot(inventaire: dict, fichiers: list[Path]) -> int:
     snap = {}
     illisibles: list[str] = []
     for f in fichiers:
-        module = f"src.{f.stem}"
+        module = nom_module(f)
         constantes = list(inventaire.keys())
         for nom in constantes:
             if not any(d["module"] == module for d in inventaire[nom]):
