@@ -221,6 +221,21 @@
   "SOGC": 570.0
  },
  "src.fundamentals.PER_CACHE_FILE": "<Path per_cache.json>",
+ "src.infrastructure.empreinte.EXCLUS_DU_DRAPEAU": [
+  ":(exclude)data/*.jsonl"
+ ],
+ "src.infrastructure.empreinte.FICHIERS_CONFIG": [
+  "<Path config.yaml>"
+ ],
+ "src.infrastructure.empreinte.FICHIERS_REGLES": [
+  "<Path regles.py>",
+  "<Path taxation.py>"
+ ],
+ "src.infrastructure.empreinte.FICHIERS_SEUILS": [
+  "<Path profit_thresholds.json>"
+ ],
+ "src.infrastructure.empreinte.LONGUEUR": 12,
+ "src.infrastructure.paths.ALERTES_JOURNAL": "<Path alertes_journal.jsonl>",
  "src.infrastructure.paths.DATA_DIR": "<Path data>",
  "src.infrastructure.paths.DECISIONS_DIR": "<Path decisions>",
  "src.infrastructure.paths.DIVISIONS_OFFICIELLES": "<Path divisions_officielles.json>",
@@ -228,6 +243,8 @@
  "src.infrastructure.paths.FUNDAMENTALS_HISTORIQUES": "<Path fondamentaux_historiques.json>",
  "src.infrastructure.paths.HISTORY_CACHE": "<Path history_clean.pkl>",
  "src.infrastructure.paths.MARKET_DIR": "<Path market>",
+ "src.infrastructure.paths.MODULE_REGLES": "<Path regles.py>",
+ "src.infrastructure.paths.MODULE_TAXATION": "<Path taxation.py>",
  "src.infrastructure.paths.PORTFOLIO_DIR": "<Path portfolio>",
  "src.infrastructure.paths.PORTFOLIO_STATE": "<Path portfolio_state.json>",
  "src.infrastructure.paths.PROFIT_THRESHOLDS": "<Path profit_thresholds.json>",

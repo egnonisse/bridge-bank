@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**202 définitions** pour **186 constantes distinctes**.
+**210 définitions** pour **194 constantes distinctes**.
 
 ---
 
@@ -134,7 +134,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (101)
+### autre (107)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -161,8 +161,12 @@ chemin distinct dans chaque module). Rien à corriger.
 | `DECALAGE_PUBLICATION_BPA` | `1` | src.analyse.fondamentaux_historiques |
 | `DIVISIONS_OFFICIELLES` | `<expression: DATA_DIR / 'divisions_officielles.json'>` | src.infrastructure.paths |
 | `DIV_CUT_RATIO` | `0.5` | src.portfolio |
+| `EXCLUS_DU_DRAPEAU` | `[':(exclude)data/*.jsonl']` | src.infrastructure.empreinte |
 | `FENETRE` | `200` | src.calibration.regime_marche |
 | `FICHIER` | `<expression: RACINE / 'data' / 'divisions_officielles.json'>` | src.divisions_officielles |
+| `FICHIERS_CONFIG` | `<expression: (RACINE / 'config.yaml',)>` | src.infrastructure.empreinte |
+| `FICHIERS_REGLES` | `<expression: (MODULE_REGLES, MODULE_TAXATION)>` | src.infrastructure.empreinte |
+| `FICHIERS_SEUILS` | `<expression: (PROFIT_THRESHOLDS,)>` | src.infrastructure.empreinte |
 | `FONDAMENTAUX_BIAISES` | `['per', 'net_yield', 'payout']` | src.backtesting.challenge_schema |
 | `FUNDAMENTALS_HISTORIQUES` | `<expression: DATA_DIR / 'fondamentaux_historiques.json'>` | src.infrastructure.paths |
 | `GROWTH_MIN_PCT` | `-10.0` | src.dividend_history |
@@ -176,6 +180,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `LEVEL_EXIT` | `4` | src.portfolio |
 | `LEVEL_FUNDAMENTAL` | `3` | src.portfolio |
 | `LEVEL_INFO` | `1` | src.portfolio |
+| `LONGUEUR` | `12` | src.infrastructure.empreinte |
 | `MAX_COMPARE_AGE_DAYS` | `3` | src.cache_integrity |
 | `MAX_JUMP` | `3.0` | src.cache_integrity |
 | `METHODE_DEFAUT` | `episodes de +seuil % en 20 seances, dedoublonnes par vague` | src.calibration.seuils_vente |
@@ -185,6 +190,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `MODES` | `<expression: (MODE_DECLENCHEUR, MODE_INFORMATIF)>` | src.calibration.schema_seuils |
 | `MODE_DECLENCHEUR` | `declencheur` | src.calibration.schema_seuils |
 | `MODE_INFORMATIF` | `informatif` | src.calibration.schema_seuils |
+| `MODULE_REGLES` | `<expression: SRC_DIR / 'regles.py'>` | src.infrastructure.paths |
 | `MOIS_FR` | `{'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'}` | src.analyse.boc |
 | `MOTIF_CALIBRAGE` | `calibrage automatique` | src.calibration.seuils_vente |
 | `MOTIF_MIGRATION` | `migration (ajout du mode)` | src.calibration.seuils_vente |
@@ -268,7 +274,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `YIELD_MIN` | `<expression: gross_yield_for_net(TARGET_NET_YIELD_ENTRY) * 100>` | src.analyse.screener |
 | `YIELD_SUSPECT` | `10.0` | src.analyse.screener |
 
-### fiscalite_frais (5)
+### fiscalite_frais (6)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -277,11 +283,13 @@ chemin distinct dans chaque module). Rien à corriger.
 | `FRAIS_PAR_SENS` | `<expression: BROKERAGE_FEE>` | src.regles |
 | `IRVM` | `<expression: IRVM_DIVIDEND_TAX>` | src.regles |
 | `IRVM_DIVIDEND_TAX` | `0.12` | src.taxation |
+| `MODULE_TAXATION` | `<expression: SRC_DIR / 'taxation.py'>` | src.infrastructure.paths |
 
-### sorties_alertes (15)
+### sorties_alertes (16)
 
 | Constante | Valeur | Module |
 |---|---|---|
+| `ALERTES_JOURNAL` | `<expression: DATA_DIR / 'alertes_journal.jsonl'>` | src.infrastructure.paths |
 | `ALERT_COOLDOWN_DAYS` | `7` | src.portfolio |
 | `ALERT_STATE_FILE` | `<expression: DATA_DIR / 'radar_alert_state.json'>` | src.analyse.radar |
 | `BORNE_BASSE_MIN` | `0.5` | src.regles |

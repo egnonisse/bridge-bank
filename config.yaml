@@ -20,3 +20,7 @@ alerts:
   interval_seconds: 300
   cooldown_minutes: 30
   session_only: true
+  # Empreinte de version AjOUTÉE AU TEXTE des messages Telegram (défaut : non).
+  # La trace est TOUJOURS inscrite dans data/alertes_journal.jsonl ; ce réglage ne fait
+  # qu'ajouter un rappel visible (« — v4434c8a · seuils 7b3e88c1 ») en fin de message.
+  empreinte_dans_message: false

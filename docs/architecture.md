@@ -163,7 +163,7 @@ Corrections apportées à la première version de cette carte :
 | **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | ✅ **fait le 09/10** — 3 modules déplacés, 35 fichiers d'imports réécrits, 309 tests, snapshot 202 → 202 (16 clés renommées, **0 valeur modifiée**) |
 | **3** | Déplacer `calibration/`, `analyse/`, `backtesting/` | idem | ✅ **fait le 09/10** — 14 modules, 108 imports recalculés dans 53 fichiers + 16 cibles de `monkeypatch` (voir ci-dessous), 309 tests, snapshot 202 → 202 (**61 clés renommées, 0 valeur modifiée**) |
 | **4** | Déplacer `collecte/`, `strategie/` | idem | à faire |
-| **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire |
+| **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire — **⚠ déplacer `regles.py` et `taxation.py` oblige à corriger `MODULE_REGLES`/`MODULE_TAXATION` dans `src/infrastructure/paths.py`** (l'empreinte des alertes les surveille ; `tests/test_empreinte.py` échoue si elles pointent dans le vide) |
 
 **Le lot 0 était obligatoire avant tout déplacement** — c'est lui qui rend les autres sûrs.
 

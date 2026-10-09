@@ -55,7 +55,10 @@ def get_notifier(cfg: dict) -> TelegramNotifier:
     tg = cfg.get("telegram", {})
     token = os.getenv("TELEGRAM_BOT_TOKEN") or tg.get("bot_token", "")
     chat_id = os.getenv("TELEGRAM_CHAT_ID") or tg.get("chat_id", "")
-    return TelegramNotifier(token, chat_id)
+    # Empreinte de version visible DANS le message : `alerts.empreinte_dans_message` (faux par
+    # défaut — la trace est toujours inscrite au journal des envois, ceci n'est que l'affichage).
+    empreinte = bool(cfg.get("alerts", {}).get("empreinte_dans_message", False))
+    return TelegramNotifier(token, chat_id, empreinte_dans_message=empreinte)
 
 
 def cmd_screen(args: argparse.Namespace) -> None:

@@ -46,6 +46,7 @@ PORTFOLIO_DIR = DATA_DIR / "portfolio"    # positions, snapshots, relevés
 HISTORY_CACHE = DATA_DIR / "history_clean.pkl"
 PROFIT_THRESHOLDS = DATA_DIR / "profit_thresholds.json"
 SEUILS_JOURNAL = DATA_DIR / "seuils_journal.jsonl"
+ALERTES_JOURNAL = DATA_DIR / "alertes_journal.jsonl"
 REVERSAL_PROFILES = DATA_DIR / "reversal_profiles.json"
 PORTFOLIO_STATE = DATA_DIR / "portfolio_state.json"
 FUNDAMENTALS_HISTORIQUES = DATA_DIR / "fondamentaux_historiques.json"
@@ -57,6 +58,15 @@ SCRIPTS_DIR = RACINE / "scripts"
 TESTS_DIR = RACINE / "tests"
 DOCS_DIR = RACINE / "docs"
 DECISIONS_DIR = DOCS_DIR / "decisions"
+
+# ── Modules porteurs de RÈGLES (empreinte jointe aux alertes) ────────────────
+# Leur CONTENU définit les décisions d'investissement : c'est ce que l'empreinte des règles
+# mesure. Quand le plan (§5, lot 5) déplacera ces modules vers `domaine/`, ces deux lignes sont
+# à corriger — et `tests/test_empreinte.py` échoue immédiatement si elles pointent dans le vide.
+# Un chemin de fichier qui ne désigne plus rien ne doit pas se traduire par une empreinte
+# constante, silencieusement identique à elle-même alors que les règles changent.
+MODULE_REGLES = SRC_DIR / "regles.py"
+MODULE_TAXATION = SRC_DIR / "taxation.py"
 
 
 def chemin_data(nom: str) -> Path:
