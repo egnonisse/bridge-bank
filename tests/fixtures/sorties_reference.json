@@ -1,0 +1,1649 @@
+{
+  "check_dividend_position|PALC|prix=10057": [
+    [
+      2,
+      "ℹ️ INFO — Palmci (PALC) a pris +13,0 % (+13 884 F sur ta ligne)\n   Tu gagnerais 13 884 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 2,7 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ],
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=10680": [
+    [
+      2,
+      "ℹ️ INFO — Palmci (PALC) a pris +20,0 % (+21 360 F sur ta ligne)\n   Tu gagnerais 21 360 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 2,5 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ],
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=12460": [
+    [
+      2,
+      "ℹ️ INFO — Palmci (PALC) a pris +40,0 % (+42 720 F sur ta ligne)\n   Tu gagnerais 42 720 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 2,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ],
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=12571.4": [
+    [
+      4,
+      "🔴 VENDS TOUT — Palmci (PALC) — prix de sortie atteint (12,571 ≥ 12,571)",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=7120": [
+    [
+      2,
+      "⚡ DÉCISION — Palmci (PALC) -20.0 % (-21,360 F)\n   Action : CONSERVE — perte couverte en ~5.1 ans\n   Renforcement : ordre limite d'achat à ≤ 7,120 F (net 4.1 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ],
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=7333.33": [
+    [
+      2,
+      "⚡ DÉCISION — Palmci (PALC) -17.6 % (-18,800 F)\n   Action : CONSERVE — perte couverte en ~4.5 ans\n   Renforcement : ordre limite d'achat à ≤ 7,333 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ],
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=7832": [
+    [
+      2,
+      "⚡ DÉCISION — Palmci (PALC) -12.0 % (-12,816 F)\n   Action : CONSERVE — perte couverte en ~3.0 ans\n   Renforcement : ordre limite d'achat à ≤ 7,832 F (net 3.7 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ],
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=8455": [
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=8900": [
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|PALC|prix=9345": [
+    [
+      2,
+      "ℹ️ INFO — Palmci (PALC) a pris +5,0 % (+5 340 F sur ta ligne)\n   Tu gagnerais 5 340 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 3,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ],
+    [
+      2,
+      "🟡 DÉCISION — Palmci (PALC) — ÉCHÉANCE 3 ans atteinte, réévalue la thèse",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=31200": [
+    [
+      2,
+      "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -20.0 % (-23,400 F)\n   Action : CONSERVE — perte couverte en ~3.0 ans\n   Renforcement : ordre limite d'achat à ≤ 31,200 F (net 7.7 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=34320": [
+    [
+      2,
+      "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -12.0 % (-14,040 F)\n   Action : CONSERVE — perte couverte en ~1.8 ans\n   Renforcement : ordre limite d'achat à ≤ 34,320 F (net 6.9 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=37050": [
+    [
+      1,
+      "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) -5.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=39000": [
+    [
+      1,
+      "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +0.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=40950": [
+    [
+      1,
+      "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +5.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=44070": [
+    [
+      2,
+      "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +13,0 % (+15 210 F sur ta ligne)\n   Tu gagnerais 15 210 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 5,2 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=46800": [
+    [
+      2,
+      "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +20,0 % (+23 400 F sur ta ligne)\n   Tu gagnerais 23 400 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 4,8 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=54600": [
+    [
+      2,
+      "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +40,0 % (+46 800 F sur ta ligne)\n   Tu gagnerais 46 800 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=55000": [
+    [
+      2,
+      "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +41,0 % (+48 000 F sur ta ligne)\n   Tu gagnerais 48 000 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SGBC|prix=94285.7": [
+    [
+      4,
+      "🔴 VENDS TOUT — Société Générale Côte d'Ivoire (SGBC) — prix de sortie atteint (94,286 ≥ 94,286)",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=25666.7": [
+    [
+      2,
+      "⚡ DÉCISION — Solibra (SLBC) -31.6 % (-47,333 F)\n   Action : CONSERVE — perte couverte en ~9.6 ans\n   Renforcement : ordre limite d'achat à ≤ 25,667 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=30000": [
+    [
+      2,
+      "⚡ DÉCISION — Solibra (SLBC) -20.0 % (-30,000 F)\n   Action : CONSERVE — perte couverte en ~6.1 ans\n   Renforcement : ordre limite d'achat à ≤ 30,000 F (net 3.3 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=33000": [
+    [
+      2,
+      "⚡ DÉCISION — Solibra (SLBC) -12.0 % (-18,000 F)\n   Action : CONSERVE — perte couverte en ~3.7 ans\n   Renforcement : ordre limite d'achat à ≤ 33,000 F (net 2.9 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=35625": [
+    [
+      1,
+      "ℹ️ INFORMATION — Solibra (SLBC) -5.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=37500": [
+    [
+      1,
+      "ℹ️ INFORMATION — Solibra (SLBC) +0.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=39375": [
+    [
+      2,
+      "⚡ DÉCISION — Solibra (SLBC) +5.0 % (+7,500 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 39,375 F\n            bénéfice net ≈ 515 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.3 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=42375": [
+    [
+      2,
+      "⚡ DÉCISION — Solibra (SLBC) +13.0 % (+19,500 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 42,375 F\n            bénéfice net ≈ 3,502 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.1 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=44000": [
+    [
+      4,
+      "🔴 VENDS TOUT — Solibra (SLBC) — prix de sortie atteint (44,000 ≥ 44,000)",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=45000": [
+    [
+      4,
+      "🔴 VENDS TOUT — Solibra (SLBC) — prix de sortie atteint (45,000 ≥ 44,000)",
+      ""
+    ]
+  ],
+  "check_dividend_position|SLBC|prix=52500": [
+    [
+      4,
+      "🔴 VENDS TOUT — Solibra (SLBC) — prix de sortie atteint (52,500 ≥ 44,000)",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=25600": [
+    [
+      2,
+      "⚡ DÉCISION — Sonatel (SNTS) -20.0 % (-57,600 F)\n   Action : CONSERVE — perte couverte en ~3.7 ans\n   Renforcement : ordre limite d'achat à ≤ 25,600 F (net 6.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=28160": [
+    [
+      2,
+      "⚡ DÉCISION — Sonatel (SNTS) -12.0 % (-34,560 F)\n   Action : CONSERVE — perte couverte en ~2.2 ans\n   Renforcement : ordre limite d'achat à ≤ 28,160 F (net 5.4 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=30400": [
+    [
+      1,
+      "ℹ️ INFORMATION — Sonatel (SNTS) -5.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=32000": [
+    [
+      1,
+      "ℹ️ INFORMATION — Sonatel (SNTS) +0.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=33600": [
+    [
+      1,
+      "ℹ️ INFORMATION — Sonatel (SNTS) +5.0 % — rien à faire",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=36160": [
+    [
+      2,
+      "⚡ DÉCISION — Sonatel (SNTS) +13.0 % (+37,440 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 36,160 F\n            bénéfice net ≈ 10,805 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=36245": [
+    [
+      2,
+      "⚡ DÉCISION — Sonatel (SNTS) +13.3 % (+38,205 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 36,245 F\n            bénéfice net ≈ 11,059 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=38400": [
+    [
+      2,
+      "⚡ DÉCISION — Sonatel (SNTS) +20.0 % (+57,600 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 38,400 F\n            bénéfice net ≈ 17,495 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 3.7 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=44800": [
+    [
+      2,
+      "⚡ DÉCISION — Sonatel (SNTS) +40.0 % (+115,200 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 44,800 F\n            bénéfice net ≈ 36,518 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 3.1 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+      ""
+    ]
+  ],
+  "check_dividend_position|SNTS|prix=62134.3": [
+    [
+      4,
+      "🔴 VENDS TOUT — Sonatel (SNTS) — prix de sortie atteint (62,134 ≥ 62,134)",
+      ""
+    ]
+  ],
+  "cooldown|absent": false,
+  "cooldown|perime": false,
+  "cooldown|recent": true,
+  "double_option_alert|PALC|prix=10057": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +13.0 % (+13,884 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 10,057 F\n            bénéfice net ≈ 3,265 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 2.7 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=10680": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +20.0 % (+21,360 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 10,680 F\n            bénéfice net ≈ 5,745 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 2.5 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=12460": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +40.0 % (+42,720 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 12,460 F\n            bénéfice net ≈ 12,833 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 2.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=12571.4": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +41.3 % (+44,057 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 12,571 F\n            bénéfice net ≈ 13,276 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 2.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=7120": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -20.0 % (-21,360 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 7,120 F\n            bénéfice net ≈ -8,430 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 4.1 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=7333.33": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -17.6 % (-18,800 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 7,333 F\n            bénéfice net ≈ -7,580 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=7832": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -12.0 % (-12,816 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 7,832 F\n            bénéfice net ≈ -5,595 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 3.7 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=8455": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -5.0 % (-5,340 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 8,455 F\n            bénéfice net ≈ -3,114 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 3.4 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=8900": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +0.0 % (+0 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 8,900 F\n            bénéfice net ≈ -1,342 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 3.2 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|PALC|prix=9345": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +5.0 % (+5,340 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 9,345 F\n            bénéfice net ≈ 430 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,224 F/an de dividendes nets\n   Rendement net actuel : 3.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 45 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=31200": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -20.0 % (-23,400 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 31,200 F\n            bénéfice net ≈ -9,122 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 7.7 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=34320": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -12.0 % (-14,040 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 34,320 F\n            bénéfice net ≈ -6,016 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 6.9 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=37050": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -5.0 % (-5,850 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 37,050 F\n            bénéfice net ≈ -3,299 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 6.3 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=39000": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +0.0 % (+0 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 39,000 F\n            bénéfice net ≈ -1,358 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 6.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=40950": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +5.0 % (+5,850 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 40,950 F\n            bénéfice net ≈ 583 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 5.6 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=44070": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +13.0 % (+15,210 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 44,070 F\n            bénéfice net ≈ 3,689 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 5.2 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=46800": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +20.0 % (+23,400 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 46,800 F\n            bénéfice net ≈ 6,407 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 4.8 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=54600": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +40.0 % (+46,800 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 54,600 F\n            bénéfice net ≈ 14,171 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=55000": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +41.0 % (+48,000 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 55,000 F\n            bénéfice net ≈ 14,569 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SGBC|prix=94285.7": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +141.8 % (+165,857 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 94,286 F\n            bénéfice net ≈ 53,676 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 7,920 F/an de dividendes nets\n   Rendement net actuel : 2.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 63 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=25666.7": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -31.6 % (-47,333 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 25,667 F\n            bénéfice net ≈ -13,130 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=30000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -20.0 % (-30,000 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 30,000 F\n            bénéfice net ≈ -8,817 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 3.3 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=33000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -12.0 % (-18,000 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 33,000 F\n            bénéfice net ≈ -5,830 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.9 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=35625": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -5.0 % (-7,500 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 35,625 F\n            bénéfice net ≈ -3,217 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.7 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=37500": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +0.0 % (+0 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 37,500 F\n            bénéfice net ≈ -1,351 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.5 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=39375": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +5.0 % (+7,500 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 39,375 F\n            bénéfice net ≈ 515 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.3 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=42375": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +13.0 % (+19,500 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 42,375 F\n            bénéfice net ≈ 3,502 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.1 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=44000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +17.3 % (+26,000 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 44,000 F\n            bénéfice net ≈ 5,119 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 2.0 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=45000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +20.0 % (+30,000 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 45,000 F\n            bénéfice net ≈ 6,115 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 1.9 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SLBC|prix=52500": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +40.0 % (+60,000 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 52,500 F\n            bénéfice net ≈ 13,581 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 4,928 F/an de dividendes nets\n   Rendement net actuel : 1.5 %\n   ⚠️ Honnêteté du signal : sur CE titre, après ce niveau de hausse,\n      l'historique ne montre une baisse que dans 54 % des cas.\n      → Vends surtout si tu veux du cash ; ne compte pas sur la baisse.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=25600": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) -20.0 % (-57,600 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 25,600 F\n            bénéfice net ≈ -20,730 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 6.0 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=28160": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) -12.0 % (-34,560 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 28,160 F\n            bénéfice net ≈ -13,085 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 5.4 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=30400": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) -5.0 % (-14,400 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 30,400 F\n            bénéfice net ≈ -6,396 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 4.9 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=32000": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +0.0 % (+0 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 32,000 F\n            bénéfice net ≈ -1,618 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 4.6 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=33600": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +5.0 % (+14,400 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 33,600 F\n            bénéfice net ≈ 3,160 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 4.4 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=36160": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +13.0 % (+37,440 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 36,160 F\n            bénéfice net ≈ 10,805 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=36245": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +13.3 % (+38,205 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 36,245 F\n            bénéfice net ≈ 11,059 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 4.0 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=38400": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +20.0 % (+57,600 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 38,400 F\n            bénéfice net ≈ 17,495 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 3.7 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=44800": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +40.0 % (+115,200 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 44,800 F\n            bénéfice net ≈ 36,518 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 3.1 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "double_option_alert|SNTS|prix=62134.3": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +94.2 % (+271,209 F)\n   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ 62,134 F\n            bénéfice net ≈ 87,793 F (après frais ~1,4 %)\n   Alternative : CONSERVE pour ≈ 15,658 F/an de dividendes nets\n   Rendement net actuel : 2.0 %\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "format_fr|fcfa": "-1 234 567 F",
+  "format_fr|pct": "+8,4 %",
+  "history_line|PALC|prix=10057": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=10680": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=12460": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=12571.4": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=7120": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=7333.33": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=7832": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=8455": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=8900": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|PALC|prix=9345": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).",
+  "history_line|SGBC|prix=31200": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=34320": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=37050": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=39000": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=40950": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=44070": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=46800": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=54600": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=55000": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SGBC|prix=94285.7": "\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).",
+  "history_line|SLBC|prix=25666.7": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=30000": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=33000": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=35625": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=37500": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=39375": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=42375": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=44000": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=45000": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SLBC|prix=52500": "\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).",
+  "history_line|SNTS|prix=25600": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=28160": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=30400": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=32000": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=33600": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=36160": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=36245": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=38400": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=44800": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "history_line|SNTS|prix=62134.3": "\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse",
+  "info_alert|PALC|prix=10057": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) +13.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=10680": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) +20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=12460": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) +40.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=12571.4": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) +41.3 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=7120": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) -20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=7333.33": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) -17.6 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=7832": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) -12.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=8455": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) -5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=8900": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) +0.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|PALC|prix=9345": [
+    1,
+    "ℹ️ INFORMATION — Palmci (PALC) +5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=31200": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) -20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=34320": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) -12.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=37050": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) -5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=39000": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +0.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=40950": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=44070": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +13.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=46800": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=54600": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +40.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=55000": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +41.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SGBC|prix=94285.7": [
+    1,
+    "ℹ️ INFORMATION — Société Générale Côte d'Ivoire (SGBC) +141.8 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=25666.7": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) -31.6 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=30000": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) -20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=33000": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) -12.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=35625": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) -5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=37500": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) +0.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=39375": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) +5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=42375": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) +13.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=44000": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) +17.3 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=45000": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) +20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SLBC|prix=52500": [
+    1,
+    "ℹ️ INFORMATION — Solibra (SLBC) +40.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=25600": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) -20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=28160": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) -12.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=30400": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) -5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=32000": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) +0.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=33600": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) +5.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=36160": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) +13.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=36245": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) +13.3 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=38400": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) +20.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=44800": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) +40.0 % — rien à faire",
+    ""
+  ],
+  "info_alert|SNTS|prix=62134.3": [
+    1,
+    "ℹ️ INFORMATION — Sonatel (SNTS) +94.2 % — rien à faire",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=10057": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +13.0 % (13,884 F)\n   Action : CONSERVE — perte couverte en ~3.3 ans\n   Renforcement : ordre limite d'achat à ≤ 10,057 F (net 2.7 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=10680": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +20.0 % (21,360 F)\n   Action : CONSERVE — perte couverte en ~5.1 ans\n   Renforcement : ordre limite d'achat à ≤ 10,680 F (net 2.5 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=12460": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +40.0 % (42,720 F)\n   Action : CONSERVE — perte couverte en ~10.1 ans\n   Renforcement : ordre limite d'achat à ≤ 12,460 F (net 2.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=12571.4": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +41.3 % (44,057 F)\n   Action : CONSERVE — perte couverte en ~10.4 ans\n   Renforcement : ordre limite d'achat à ≤ 12,571 F (net 2.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=7120": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -20.0 % (-21,360 F)\n   Action : CONSERVE — perte couverte en ~5.1 ans\n   Renforcement : ordre limite d'achat à ≤ 7,120 F (net 4.1 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=7333.33": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -17.6 % (-18,800 F)\n   Action : CONSERVE — perte couverte en ~4.5 ans\n   Renforcement : ordre limite d'achat à ≤ 7,333 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=7832": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -12.0 % (-12,816 F)\n   Action : CONSERVE — perte couverte en ~3.0 ans\n   Renforcement : ordre limite d'achat à ≤ 7,832 F (net 3.7 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=8455": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) -5.0 % (-5,340 F)\n   Action : CONSERVE — perte couverte en ~1.3 ans\n   Renforcement : ordre limite d'achat à ≤ 8,455 F (net 3.4 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=8900": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +0.0 % (0 F)\n   Action : CONSERVE — perte couverte en ~0.0 ans\n   Renforcement : ordre limite d'achat à ≤ 8,900 F (net 3.2 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|PALC|prix=9345": [
+    2,
+    "⚡ DÉCISION — Palmci (PALC) +5.0 % (5,340 F)\n   Action : CONSERVE — perte couverte en ~1.3 ans\n   Renforcement : ordre limite d'achat à ≤ 9,345 F (net 3.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=31200": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -20.0 % (-23,400 F)\n   Action : CONSERVE — perte couverte en ~3.0 ans\n   Renforcement : ordre limite d'achat à ≤ 31,200 F (net 7.7 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=34320": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -12.0 % (-14,040 F)\n   Action : CONSERVE — perte couverte en ~1.8 ans\n   Renforcement : ordre limite d'achat à ≤ 34,320 F (net 6.9 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=37050": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) -5.0 % (-5,850 F)\n   Action : CONSERVE — perte couverte en ~0.7 ans\n   Renforcement : ordre limite d'achat à ≤ 37,050 F (net 6.3 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=39000": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +0.0 % (0 F)\n   Action : CONSERVE — perte couverte en ~0.0 ans\n   Renforcement : ordre limite d'achat à ≤ 39,000 F (net 6.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=40950": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +5.0 % (5,850 F)\n   Action : CONSERVE — perte couverte en ~0.7 ans\n   Renforcement : ordre limite d'achat à ≤ 40,950 F (net 5.6 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=44070": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +13.0 % (15,210 F)\n   Action : CONSERVE — perte couverte en ~1.9 ans\n   Renforcement : ordre limite d'achat à ≤ 44,070 F (net 5.2 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=46800": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +20.0 % (23,400 F)\n   Action : CONSERVE — perte couverte en ~3.0 ans\n   Renforcement : ordre limite d'achat à ≤ 46,800 F (net 4.8 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=54600": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +40.0 % (46,800 F)\n   Action : CONSERVE — perte couverte en ~5.9 ans\n   Renforcement : ordre limite d'achat à ≤ 54,600 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=55000": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +41.0 % (48,000 F)\n   Action : CONSERVE — perte couverte en ~6.1 ans\n   Renforcement : ordre limite d'achat à ≤ 55,000 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SGBC|prix=94285.7": [
+    2,
+    "⚡ DÉCISION — Société Générale Côte d'Ivoire (SGBC) +141.8 % (165,857 F)\n   Action : CONSERVE — perte couverte en ~20.9 ans\n   Renforcement : ordre limite d'achat à ≤ 94,286 F (net 2.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=25666.7": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -31.6 % (-47,333 F)\n   Action : CONSERVE — perte couverte en ~9.6 ans\n   Renforcement : ordre limite d'achat à ≤ 25,667 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=30000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -20.0 % (-30,000 F)\n   Action : CONSERVE — perte couverte en ~6.1 ans\n   Renforcement : ordre limite d'achat à ≤ 30,000 F (net 3.3 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=33000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -12.0 % (-18,000 F)\n   Action : CONSERVE — perte couverte en ~3.7 ans\n   Renforcement : ordre limite d'achat à ≤ 33,000 F (net 2.9 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=35625": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) -5.0 % (-7,500 F)\n   Action : CONSERVE — perte couverte en ~1.5 ans\n   Renforcement : ordre limite d'achat à ≤ 35,625 F (net 2.7 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=37500": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +0.0 % (0 F)\n   Action : CONSERVE — perte couverte en ~0.0 ans\n   Renforcement : ordre limite d'achat à ≤ 37,500 F (net 2.5 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=39375": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +5.0 % (7,500 F)\n   Action : CONSERVE — perte couverte en ~1.5 ans\n   Renforcement : ordre limite d'achat à ≤ 39,375 F (net 2.3 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=42375": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +13.0 % (19,500 F)\n   Action : CONSERVE — perte couverte en ~4.0 ans\n   Renforcement : ordre limite d'achat à ≤ 42,375 F (net 2.1 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=44000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +17.3 % (26,000 F)\n   Action : CONSERVE — perte couverte en ~5.3 ans\n   Renforcement : ordre limite d'achat à ≤ 44,000 F (net 2.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=45000": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +20.0 % (30,000 F)\n   Action : CONSERVE — perte couverte en ~6.1 ans\n   Renforcement : ordre limite d'achat à ≤ 45,000 F (net 1.9 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SLBC|prix=52500": [
+    2,
+    "⚡ DÉCISION — Solibra (SLBC) +40.0 % (60,000 F)\n   Action : CONSERVE — perte couverte en ~12.2 ans\n   Renforcement : ordre limite d'achat à ≤ 52,500 F (net 1.5 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=25600": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) -20.0 % (-57,600 F)\n   Action : CONSERVE — perte couverte en ~3.7 ans\n   Renforcement : ordre limite d'achat à ≤ 25,600 F (net 6.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=28160": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) -12.0 % (-34,560 F)\n   Action : CONSERVE — perte couverte en ~2.2 ans\n   Renforcement : ordre limite d'achat à ≤ 28,160 F (net 5.4 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=30400": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) -5.0 % (-14,400 F)\n   Action : CONSERVE — perte couverte en ~0.9 ans\n   Renforcement : ordre limite d'achat à ≤ 30,400 F (net 4.9 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=32000": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +0.0 % (0 F)\n   Action : CONSERVE — perte couverte en ~0.0 ans\n   Renforcement : ordre limite d'achat à ≤ 32,000 F (net 4.6 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=33600": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +5.0 % (14,400 F)\n   Action : CONSERVE — perte couverte en ~0.9 ans\n   Renforcement : ordre limite d'achat à ≤ 33,600 F (net 4.4 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=36160": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +13.0 % (37,440 F)\n   Action : CONSERVE — perte couverte en ~2.4 ans\n   Renforcement : ordre limite d'achat à ≤ 36,160 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=36245": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +13.3 % (38,205 F)\n   Action : CONSERVE — perte couverte en ~2.4 ans\n   Renforcement : ordre limite d'achat à ≤ 36,245 F (net 4.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=38400": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +20.0 % (57,600 F)\n   Action : CONSERVE — perte couverte en ~3.7 ans\n   Renforcement : ordre limite d'achat à ≤ 38,400 F (net 3.7 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=44800": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +40.0 % (115,200 F)\n   Action : CONSERVE — perte couverte en ~7.4 ans\n   Renforcement : ordre limite d'achat à ≤ 44,800 F (net 3.1 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "loss_coverage_alert|SNTS|prix=62134.3": [
+    2,
+    "⚡ DÉCISION — Sonatel (SNTS) +94.2 % (271,209 F)\n   Action : CONSERVE — perte couverte en ~17.3 ans\n   Renforcement : ordre limite d'achat à ≤ 62,134 F (net 2.0 %) — si dividende soutenable\n   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "modele|PALC": {
+    "dividende_annuel_net": 4224.0,
+    "entry_price_ref": 7333.33,
+    "exit_price": 12571.43,
+    "invested": 106800.0,
+    "net_yield_pct": 3.1550561797752805,
+    "sell_profit_net_13": [
+      3264.5603199999928,
+      4
+    ],
+    "yield_pct": 4.49438202247191
+  },
+  "modele|SGBC": {
+    "dividende_annuel_net": 7920.0,
+    "entry_price_ref": 55000.0,
+    "exit_price": 94285.71,
+    "invested": 117000.0,
+    "net_yield_pct": 5.969230769230769,
+    "sell_profit_net_13": [
+      3689.0407999999925,
+      1
+    ],
+    "yield_pct": 7.6923076923076925
+  },
+  "modele|SLBC": {
+    "dividende_annuel_net": 4928.0,
+    "entry_price_ref": 25666.67,
+    "exit_price": 44000.0,
+    "invested": 150000.0,
+    "net_yield_pct": 2.485333333333334,
+    "sell_profit_net_13": [
+      3501.7699999999927,
+      1
+    ],
+    "yield_pct": 3.733333333333334
+  },
+  "modele|SNTS": {
+    "dividende_annuel_net": 15657.84,
+    "entry_price_ref": 36245.0,
+    "exit_price": 62134.29,
+    "invested": 288000.0,
+    "net_yield_pct": 4.636750000000001,
+    "sell_profit_net_13": [
+      10805.3312,
+      3
+    ],
+    "yield_pct": 6.1781250000000005
+  },
+  "msg_regime|aucun": "",
+  "msg_regime|baissier": "\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant.",
+  "msg_regime|haussier": "\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant.",
+  "payout_ratio|PALC|prix=10057": 0.3778462762255146,
+  "payout_ratio|PALC|prix=10680": 0.35580524344569286,
+  "payout_ratio|PALC|prix=12460": 0.30497592295345105,
+  "payout_ratio|PALC|prix=12571.4": 0.30227269292355763,
+  "payout_ratio|PALC|prix=7120": 0.5337078651685393,
+  "payout_ratio|PALC|prix=7333.33": 0.5181820537191153,
+  "payout_ratio|PALC|prix=7832": 0.4851889683350358,
+  "payout_ratio|PALC|prix=8455": 0.449438202247191,
+  "payout_ratio|PALC|prix=8900": 0.42696629213483145,
+  "payout_ratio|PALC|prix=9345": 0.40663456393793473,
+  "payout_ratio|SGBC|prix=31200": 0.7788461538461539,
+  "payout_ratio|SGBC|prix=34320": 0.708041958041958,
+  "payout_ratio|SGBC|prix=37050": 0.6558704453441295,
+  "payout_ratio|SGBC|prix=39000": 0.6230769230769231,
+  "payout_ratio|SGBC|prix=40950": 0.5934065934065934,
+  "payout_ratio|SGBC|prix=44070": 0.5513955071477196,
+  "payout_ratio|SGBC|prix=46800": 0.5192307692307693,
+  "payout_ratio|SGBC|prix=54600": 0.44505494505494503,
+  "payout_ratio|SGBC|prix=55000": 0.44181818181818183,
+  "payout_ratio|SGBC|prix=94285.7": 0.25772728444214926,
+  "payout_ratio|SLBC|prix=25666.7": 0.6763635485242145,
+  "payout_ratio|SLBC|prix=30000": 0.5786666666666667,
+  "payout_ratio|SLBC|prix=33000": 0.526060606060606,
+  "payout_ratio|SLBC|prix=35625": 0.48729824561403506,
+  "payout_ratio|SLBC|prix=37500": 0.4629333333333333,
+  "payout_ratio|SLBC|prix=39375": 0.4408888888888889,
+  "payout_ratio|SLBC|prix=42375": 0.4096755162241888,
+  "payout_ratio|SLBC|prix=44000": 0.39454545454545453,
+  "payout_ratio|SLBC|prix=45000": 0.3857777777777778,
+  "payout_ratio|SLBC|prix=52500": 0.33066666666666666,
+  "payout_ratio|SNTS|prix=25600": 0.4788046875,
+  "payout_ratio|SNTS|prix=28160": 0.4352769886363636,
+  "payout_ratio|SNTS|prix=30400": 0.403203947368421,
+  "payout_ratio|SNTS|prix=32000": 0.38304375,
+  "payout_ratio|SNTS|prix=33600": 0.3648035714285714,
+  "payout_ratio|SNTS|prix=36160": 0.33897676991150444,
+  "payout_ratio|SNTS|prix=36245": 0.3381818181818182,
+  "payout_ratio|SNTS|prix=38400": 0.319203125,
+  "payout_ratio|SNTS|prix=44800": 0.27360267857142856,
+  "payout_ratio|SNTS|prix=62134.3": 0.1972727136658357,
+  "profit_info_alert|PALC|prix=10057": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris +13,0 % (+13 884 F sur ta ligne)\n   Tu gagnerais 13 884 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 2,7 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=10680": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris +20,0 % (+21 360 F sur ta ligne)\n   Tu gagnerais 21 360 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 2,5 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=12460": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris +40,0 % (+42 720 F sur ta ligne)\n   Tu gagnerais 42 720 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 2,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=12571.4": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris +41,3 % (+44 057 F sur ta ligne)\n   Tu gagnerais 44 057 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 2,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=7120": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris -20,0 % (-21 360 F sur ta ligne)\n   Tu gagnerais -21 360 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 4,1 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=7333.33": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris -17,6 % (-18 800 F sur ta ligne)\n   Tu gagnerais -18 800 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=7832": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris -12,0 % (-12 816 F sur ta ligne)\n   Tu gagnerais -12 816 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 3,7 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=8455": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris -5,0 % (-5 340 F sur ta ligne)\n   Tu gagnerais -5 340 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 3,4 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=8900": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris 0,0 % (0 F sur ta ligne)\n   Tu gagnerais 0 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 3,2 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|PALC|prix=9345": [
+    2,
+    "ℹ️ INFO — Palmci (PALC) a pris +5,0 % (+5 340 F sur ta ligne)\n   Tu gagnerais 5 340 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 224 F par an, soit 3,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      repère mesuré à +21 %, alors que ton seuil est 5 %, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -3,3 % un mois plus tard,\n      avec un point bas vers 11 jours de bourse\n      (-7,1 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=31200": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris -20,0 % (-23 400 F sur ta ligne)\n   Tu gagnerais -23 400 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 7,7 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=34320": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris -12,0 % (-14 040 F sur ta ligne)\n   Tu gagnerais -14 040 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 6,9 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=37050": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris -5,0 % (-5 850 F sur ta ligne)\n   Tu gagnerais -5 850 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 6,3 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=39000": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris 0,0 % (0 F sur ta ligne)\n   Tu gagnerais 0 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 6,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=40950": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +5,0 % (+5 850 F sur ta ligne)\n   Tu gagnerais 5 850 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 5,6 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=44070": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +13,0 % (+15 210 F sur ta ligne)\n   Tu gagnerais 15 210 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 5,2 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=46800": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +20,0 % (+23 400 F sur ta ligne)\n   Tu gagnerais 23 400 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 4,8 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=54600": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +40,0 % (+46 800 F sur ta ligne)\n   Tu gagnerais 46 800 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=55000": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +41,0 % (+48 000 F sur ta ligne)\n   Tu gagnerais 48 000 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SGBC|prix=94285.7": [
+    2,
+    "ℹ️ INFO — Société Générale Côte d'Ivoire (SGBC) a pris +141,8 % (+165 857 F sur ta ligne)\n   Tu gagnerais 165 857 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 7 920 F par an, soit 2,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (30 cas, 9 ans de recul) :\n      après une hausse de 10 % en un mois, la suite n'est pas assez nette pour en faire une règle.\n      Voici ce qui s'est passé :\n      En moyenne : -5,1 % un mois plus tard,\n      avec un point bas vers 9 jours de bourse\n      (-8,0 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=25666.7": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris -31,6 % (-47 333 F sur ta ligne)\n   Tu gagnerais -47 333 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=30000": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris -20,0 % (-30 000 F sur ta ligne)\n   Tu gagnerais -30 000 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 3,3 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=33000": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris -12,0 % (-18 000 F sur ta ligne)\n   Tu gagnerais -18 000 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 2,9 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=35625": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris -5,0 % (-7 500 F sur ta ligne)\n   Tu gagnerais -7 500 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 2,7 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=37500": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris 0,0 % (0 F sur ta ligne)\n   Tu gagnerais 0 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 2,5 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=39375": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris +5,0 % (+7 500 F sur ta ligne)\n   Tu gagnerais 7 500 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 2,3 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=42375": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris +13,0 % (+19 500 F sur ta ligne)\n   Tu gagnerais 19 500 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 2,1 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=44000": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris +17,3 % (+26 000 F sur ta ligne)\n   Tu gagnerais 26 000 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 2,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=45000": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris +20,0 % (+30 000 F sur ta ligne)\n   Tu gagnerais 30 000 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 1,9 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SLBC|prix=52500": [
+    2,
+    "ℹ️ INFO — Solibra (SLBC) a pris +40,0 % (+60 000 F sur ta ligne)\n   Tu gagnerais 60 000 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 4 928 F par an, soit 1,5 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (3 cas — trop peu pour une fréquence fiable) :\n      après une hausse de 5 % en un mois, voici comment ça s'est terminé.\n      En moyenne : -4,2 % un mois plus tard,\n      avec un point bas vers 7 jours de bourse\n      (-6,5 %).\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=25600": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris -20,0 % (-57 600 F sur ta ligne)\n   Tu gagnerais -57 600 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 6,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=28160": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris -12,0 % (-34 560 F sur ta ligne)\n   Tu gagnerais -34 560 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 5,4 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=30400": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris -5,0 % (-14 400 F sur ta ligne)\n   Tu gagnerais -14 400 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 4,9 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=32000": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris 0,0 % (0 F sur ta ligne)\n   Tu gagnerais 0 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 4,6 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=33600": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris +5,0 % (+14 400 F sur ta ligne)\n   Tu gagnerais 14 400 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 4,4 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=36160": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris +13,0 % (+37 440 F sur ta ligne)\n   Tu gagnerais 37 440 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=36245": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris +13,3 % (+38 205 F sur ta ligne)\n   Tu gagnerais 38 205 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 4,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=38400": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris +20,0 % (+57 600 F sur ta ligne)\n   Tu gagnerais 57 600 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 3,7 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=44800": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris +40,0 % (+115 200 F sur ta ligne)\n   Tu gagnerais 115 200 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 3,1 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "profit_info_alert|SNTS|prix=62134.3": [
+    2,
+    "ℹ️ INFO — Sonatel (SNTS) a pris +94,2 % (+271 209 F sur ta ligne)\n   Tu gagnerais 271 209 F en vendant maintenant.\n   <explication du seuil — fournie par seuils_vente>\n   <justification du seuil — seuils_vente>\n   → RIEN À FAIRE. Garde tes actions : elles te paient\n     ≈ 15 658 F par an, soit 2,0 % de ton argent\n     (ton objectif est d'au moins 4 %).\n   Une vente n'a de sens que si l'entreprise coupe son dividende,\n   gagne beaucoup moins, ou si le loyer tombe sous 2 %.\n   📜 LES AUTRES FOIS (56 cas, 9 ans de recul) :\n      après une hausse de 13 % en un mois — le prix a REBAISSÉ dans 86 % des cas.\n      En moyenne : -8,4 % un mois plus tard,\n      avec un point bas vers 12 jours de bourse\n      (-11,2 %).\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse\n   Prochaine vérification : <DATE>",
+    ""
+  ],
+  "record_dividend|PALC": {
+    "cash_residual": 4800.0,
+    "dividends_earned": 4800.0,
+    "quantity": 12,
+    "retour": [
+      4800.0,
+      0,
+      4800.0
+    ]
+  },
+  "record_dividend|SGBC": {
+    "cash_residual": 9000.0,
+    "dividends_earned": 9000.0,
+    "quantity": 3,
+    "retour": [
+      9000.0,
+      0,
+      9000.0
+    ]
+  },
+  "record_dividend|SLBC": {
+    "cash_residual": 5600.0,
+    "dividends_earned": 5600.0,
+    "quantity": 4,
+    "retour": [
+      5600.0,
+      0,
+      5600.0
+    ]
+  },
+  "record_dividend|SNTS": {
+    "cash_residual": 17793.0,
+    "dividends_earned": 17793.0,
+    "quantity": 9,
+    "retour": [
+      17793.0,
+      0,
+      17793.0
+    ]
+  },
+  "renforcement|en_conscience|aucun": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "🟠 RENFORCE EN CONSCIENCE — SNTS (Sonatel) est sous ton seuil\n   (30,000 < 35,745 F) et paie un bon loyer, mais tu as\n   ACHETÉ 71 % de ta poche sur ce titre (repère : 35 %).\n   → Le système ne bloque PAS (ta règle) : il te dit le risque.\n   → Si tu renforces quand même : en connaissance de cause."
+      ],
+      [
+        "SGBC",
+        "💪 RENFORCE SGBC (Société Générale Côte d'Ivoire) — le prix est redescendu à 30,000 F,\n   sous ton seuil de 54,241 F.\n   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n     an (aujourd'hui : 8.0 % net), avec un patron qui partage\n     62 % de ses gains — dans ta zone.\n   → Montant : toi seul décides (jamais au-delà de ton plan)."
+      ]
+    ]
+  },
+  "renforcement|en_conscience|baissier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "🟠 RENFORCE EN CONSCIENCE — SNTS (Sonatel) est sous ton seuil\n   (30,000 < 35,745 F) et paie un bon loyer, mais tu as\n   ACHETÉ 71 % de ta poche sur ce titre (repère : 35 %).\n   → Le système ne bloque PAS (ta règle) : il te dit le risque.\n   → Si tu renforces quand même : en connaissance de cause.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "💪 RENFORCE SGBC (Société Générale Côte d'Ivoire) — le prix est redescendu à 30,000 F,\n   sous ton seuil de 54,241 F.\n   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n     an (aujourd'hui : 8.0 % net), avec un patron qui partage\n     62 % de ses gains — dans ta zone.\n   → Montant : toi seul décides (jamais au-delà de ton plan).\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "renforcement|en_conscience|haussier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "🟠 RENFORCE EN CONSCIENCE — SNTS (Sonatel) est sous ton seuil\n   (30,000 < 35,745 F) et paie un bon loyer, mais tu as\n   ACHETÉ 71 % de ta poche sur ce titre (repère : 35 %).\n   → Le système ne bloque PAS (ta règle) : il te dit le risque.\n   → Si tu renforces quand même : en connaissance de cause.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "💪 RENFORCE SGBC (Société Générale Côte d'Ivoire) — le prix est redescendu à 30,000 F,\n   sous ton seuil de 54,241 F.\n   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n     an (aujourd'hui : 8.0 % net), avec un patron qui partage\n     62 % de ses gains — dans ta zone.\n   → Montant : toi seul décides (jamais au-delà de ton plan).\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "renforcement|libre|aucun": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "💪 RENFORCE SNTS (Sonatel) — le prix est redescendu à 30,000 F,\n   sous ton seuil de 35,745 F.\n   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n     an (aujourd'hui : 5.0 % net), avec un patron qui partage\n     41 % de ses gains — dans ta zone.\n   → Montant : toi seul décides (jamais au-delà de ton plan)."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   90 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité."
+      ]
+    ]
+  },
+  "renforcement|libre|baissier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "💪 RENFORCE SNTS (Sonatel) — le prix est redescendu à 30,000 F,\n   sous ton seuil de 35,745 F.\n   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n     an (aujourd'hui : 5.0 % net), avec un patron qui partage\n     41 % de ses gains — dans ta zone.\n   → Montant : toi seul décides (jamais au-delà de ton plan).\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   90 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "renforcement|libre|haussier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "💪 RENFORCE SNTS (Sonatel) — le prix est redescendu à 30,000 F,\n   sous ton seuil de 35,745 F.\n   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n     an (aujourd'hui : 5.0 % net), avec un patron qui partage\n     41 % de ses gains — dans ta zone.\n   → Montant : toi seul décides (jamais au-delà de ton plan).\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   90 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "renforcement|limite|aucun": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "💪 RENFORCE LIMITÉ SNTS (Sonatel) — le prix est redescendu à 30,000 F, sous ton seuil de 35,745 F (5.0 % net,\n   patron à 41 % — tout est vert).\n   MAIS il pèse déjà 45 % de tes actions — par sa HAUSSE,\n   pas par tes achats (tu n'as acheté que 20 % de ta poche\n   sur lui). Tu peux en profiter : au plus 9 action(s)\n   (~270,000 F), pour ne pas faire de ce titre plus de\n   40 % de TES achats.\n   → La limite, c'est toi qui la signes."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   150 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité."
+      ]
+    ]
+  },
+  "renforcement|limite|baissier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "💪 RENFORCE LIMITÉ SNTS (Sonatel) — le prix est redescendu à 30,000 F, sous ton seuil de 35,745 F (5.0 % net,\n   patron à 41 % — tout est vert).\n   MAIS il pèse déjà 45 % de tes actions — par sa HAUSSE,\n   pas par tes achats (tu n'as acheté que 20 % de ta poche\n   sur lui). Tu peux en profiter : au plus 9 action(s)\n   (~270,000 F), pour ne pas faire de ce titre plus de\n   40 % de TES achats.\n   → La limite, c'est toi qui la signes.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   150 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "renforcement|limite|haussier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "💪 RENFORCE LIMITÉ SNTS (Sonatel) — le prix est redescendu à 30,000 F, sous ton seuil de 35,745 F (5.0 % net,\n   patron à 41 % — tout est vert).\n   MAIS il pèse déjà 45 % de tes actions — par sa HAUSSE,\n   pas par tes achats (tu n'as acheté que 20 % de ta poche\n   sur lui). Tu peux en profiter : au plus 9 action(s)\n   (~270,000 F), pour ne pas faire de ce titre plus de\n   40 % de TES achats.\n   → La limite, c'est toi qui la signes.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   150 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "renforcement|maximum|aucun": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "🔴 ATTENTION MAXIMALE — SNTS (Sonatel) est sous ton seuil\n   (30,000 < 35,745 F), mais il représente déjà\n   68 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   225 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité."
+      ]
+    ]
+  },
+  "renforcement|maximum|baissier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "🔴 ATTENTION MAXIMALE — SNTS (Sonatel) est sous ton seuil\n   (30,000 < 35,745 F), mais il représente déjà\n   68 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   225 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "renforcement|maximum|haussier": {
+    "blocked": [],
+    "hits": [
+      [
+        "SNTS",
+        "🔴 ATTENTION MAXIMALE — SNTS (Sonatel) est sous ton seuil\n   (30,000 < 35,745 F), mais il représente déjà\n   68 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ],
+      [
+        "SGBC",
+        "🔴 ATTENTION MAXIMALE — SGBC (Société Générale Côte d'Ivoire) est sous ton seuil\n   (30,000 < 54,241 F), mais il représente déjà\n   225 % du portefeuille : plus de la moitié dans un seul\n   panier, c'est un pari, pas un loyer.\n   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n     grave qu'il sache émettre. Décision tienne, en pleine lucidité.\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n      Acheter sur baisse marche moins bien dans ces périodes :\n      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n      → Tu peux quand même le faire, en le sachant."
+      ]
+    ]
+  },
+  "soutenabilite|PALC|prix=10057": null,
+  "soutenabilite|PALC|prix=10680": null,
+  "soutenabilite|PALC|prix=12460": null,
+  "soutenabilite|PALC|prix=12571.4": null,
+  "soutenabilite|PALC|prix=7120": null,
+  "soutenabilite|PALC|prix=7333.33": null,
+  "soutenabilite|PALC|prix=7832": null,
+  "soutenabilite|PALC|prix=8455": null,
+  "soutenabilite|PALC|prix=8900": null,
+  "soutenabilite|PALC|prix=9345": null,
+  "soutenabilite|SGBC|prix=31200": null,
+  "soutenabilite|SGBC|prix=34320": null,
+  "soutenabilite|SGBC|prix=37050": null,
+  "soutenabilite|SGBC|prix=39000": null,
+  "soutenabilite|SGBC|prix=40950": null,
+  "soutenabilite|SGBC|prix=44070": null,
+  "soutenabilite|SGBC|prix=46800": null,
+  "soutenabilite|SGBC|prix=54600": null,
+  "soutenabilite|SGBC|prix=55000": null,
+  "soutenabilite|SGBC|prix=94285.7": null,
+  "soutenabilite|SLBC|prix=25666.7": null,
+  "soutenabilite|SLBC|prix=30000": null,
+  "soutenabilite|SLBC|prix=33000": null,
+  "soutenabilite|SLBC|prix=35625": null,
+  "soutenabilite|SLBC|prix=37500": null,
+  "soutenabilite|SLBC|prix=39375": null,
+  "soutenabilite|SLBC|prix=42375": null,
+  "soutenabilite|SLBC|prix=44000": null,
+  "soutenabilite|SLBC|prix=45000": null,
+  "soutenabilite|SLBC|prix=52500": null,
+  "soutenabilite|SNTS|prix=25600": null,
+  "soutenabilite|SNTS|prix=28160": null,
+  "soutenabilite|SNTS|prix=30400": null,
+  "soutenabilite|SNTS|prix=32000": null,
+  "soutenabilite|SNTS|prix=33600": null,
+  "soutenabilite|SNTS|prix=36160": null,
+  "soutenabilite|SNTS|prix=36245": null,
+  "soutenabilite|SNTS|prix=38400": null,
+  "soutenabilite|SNTS|prix=44800": null,
+  "soutenabilite|SNTS|prix=62134.3": null,
+  "status_level|PALC|prix=10057": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|PALC|prix=10680": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|PALC|prix=12460": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|PALC|prix=12571.4": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|PALC|prix=7120": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|PALC|prix=7333.33": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|PALC|prix=7832": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|PALC|prix=8455": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|PALC|prix=8900": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|PALC|prix=9345": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|SGBC|prix=31200": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|SGBC|prix=34320": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|SGBC|prix=37050": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SGBC|prix=39000": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SGBC|prix=40950": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SGBC|prix=44070": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|SGBC|prix=46800": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|SGBC|prix=54600": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|SGBC|prix=55000": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|SGBC|prix=94285.7": [
+    2,
+    "SEUIL ATTEINT (info)"
+  ],
+  "status_level|SLBC|prix=25666.7": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|SLBC|prix=30000": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|SLBC|prix=33000": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|SLBC|prix=35625": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SLBC|prix=37500": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SLBC|prix=39375": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SLBC|prix=42375": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SLBC|prix=44000": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SLBC|prix=45000": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SLBC|prix=52500": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SNTS|prix=25600": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|SNTS|prix=28160": [
+    2,
+    "CONSERVE"
+  ],
+  "status_level|SNTS|prix=30400": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SNTS|prix=32000": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SNTS|prix=33600": [
+    1,
+    "rien à faire"
+  ],
+  "status_level|SNTS|prix=36160": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SNTS|prix=36245": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SNTS|prix=38400": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SNTS|prix=44800": [
+    2,
+    "VENDS 1/3"
+  ],
+  "status_level|SNTS|prix=62134.3": [
+    2,
+    "VENDS 1/3"
+  ]
+}
