@@ -5,7 +5,7 @@ import pytest
 
 from src import portfolio as pm
 from src import speculation as sp
-from src.models import Quote, Snapshot
+from src.domaine.models import Quote, Snapshot
 
 
 def _api(code: str, last: float):

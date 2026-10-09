@@ -44,10 +44,10 @@ qui lit du vide** — le pire des états.
 
 ## 2. Prérequis — fait, migration terminée le 09/10
 
-**`src/paths.py`** : une source unique pour tous les chemins. Chaque module écrit
-`from .paths import DATA_DIR`, ce qui reste vrai **quelle que soit sa profondeur**. Le module
-porte aussi les noms de fichiers (`REVERSAL_PROFILES`, `PROFIT_THRESHOLDS`, `SEUILS_JOURNAL`…)
-et `chemin_data(nom)` — aucun nom de fichier n'a besoin d'être recopié ailleurs.
+**`src/infrastructure/paths.py`** : une source unique pour tous les chemins. Chaque module écrit
+`from .infrastructure.paths import DATA_DIR`, ce qui reste vrai **quelle que soit sa profondeur**.
+Le module porte aussi les noms de fichiers (`REVERSAL_PROFILES`, `PROFIT_THRESHOLDS`,
+`SEUILS_JOURNAL`…) et `chemin_data(nom)` — aucun nom de fichier n'a besoin d'être recopié ailleurs.
 
 **`scripts/verifier_chemins.py`** : liste les chemins encore calculés à la main.
 
@@ -155,7 +155,7 @@ Corrections apportées à la première version de cette carte :
 |---|---|---|---|
 | **0** | Migrer les 19 chemins vers `src/paths.py` | `verifier_chemins.py --strict` → 0 | ✅ **fait le 09/10** |
 | **1** | Créer les dossiers décidés (§4) + `__init__.py` | `pytest` inchangé | ✅ **fait le 09/10** — 10 paquets, aucun fichier déplacé, 309 tests inchangés |
-| **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | à faire |
+| **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | ✅ **fait le 09/10** — 3 modules déplacés, 35 fichiers d'imports réécrits, 309 tests, snapshot 202 → 202 (16 clés renommées, **0 valeur modifiée**) |
 | **3** | Déplacer `calibration/`, `analyse/`, `backtesting/` | idem | à faire |
 | **4** | Déplacer `collecte/`, `strategie/` | idem | à faire |
 | **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire |
@@ -170,7 +170,25 @@ trancher AVANT lui. Deux enseignements du lot, tous les deux mesurés :
 2. l'auditeur des constantes marche désormais **dans les sous-dossiers** (`SRC.rglob` + noms
    pointés) — sans quoi il aurait cessé de surveiller chaque module déplacé, sans le dire.
 
-Le lot 2 peut donc commencer : les filets suivent les modules où qu'ils aillent.
+**Le lot 2 a déplacé les trois modules feuilles** (09/10) : `paths.py` → `infrastructure/`,
+`models.py` → `domaine/`, `format_fr.py` → `portefeuille/`. Trois enseignements :
+
+1. **Le lot 0 a payé exactement comme prévu** : un seul fichier à corriger pour le calcul de
+   chemin (`paths.py` lui-même, passé de `parent.parent` à `parents[2]`), et **zéro** module à
+   reprendre côté données — les 22 modules qui l'importent continuent de lire le bon dossier.
+2. **Un cache `pickle` porte le CHEMIN DE CLASSE de ses objets.** `data/history_clean.pkl` (et
+   les deux autres) contenaient des `src.models.HistoryBar` : les déballer après le déplacement
+   levait `ModuleNotFoundError: No module named 'src.models'` — un test est tombé pour cette
+   raison exacte. Les trois caches ont été **convertis sur place** (valeurs comparées avant/après
+   champ par champ : identiques), plutôt que d'ajouter un module de compatibilité qui aurait
+   survécu des années.
+3. **La CI ne peut PAS voir cette panne** : le cache est ignoré par git et le test qui l'exerce
+   est protégé par `skipif` quand il est absent. Conséquence : le contrôle côté serveur peut être
+   vert alors qu'une machine de travail est cassée. Piste durable à trancher : stocker des
+   **données simples** (dicts) dans le cache au lieu d'instances de classes — un cache ne devrait
+   pas dépendre de l'emplacement d'une classe.
+
+Le lot 3 peut commencer : `calibration/`, `analyse/`, `backtesting/`.
 
 **Le lot 5 est un découpage, pas un déplacement** : c'est le plus risqué, et il vient en
 dernier, quand l'arborescence est stable.

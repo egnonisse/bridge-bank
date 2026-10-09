@@ -120,8 +120,8 @@ def main(strict: bool = False) -> int:
 
     print()
     print("  MIGRATION : remplacer par")
-    print("    from .paths import DATA_DIR          (dans src/)")
-    print("    from src.paths import DATA_DIR       (dans scripts/ et tests/)")
+    print("    from .infrastructure.paths import DATA_DIR       (dans src/)")
+    print("    from src.infrastructure.paths import DATA_DIR    (dans scripts/ et tests/)")
     print()
     print("  Cette migration est un PREREQUIS a tout deplacement de fichier :")
     print("  sans elle, descendre un module d'un niveau change le sens de")

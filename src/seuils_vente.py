@@ -49,7 +49,7 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 Z = 1.96                  # couverture 95 %
 # Règles de significativité : définies dans src/regles.py (catalogue unique).

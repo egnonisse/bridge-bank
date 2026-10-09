@@ -44,7 +44,7 @@ from pathlib import Path
 
 import requests
 import urllib3
-from .paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 urllib3.disable_warnings()
 

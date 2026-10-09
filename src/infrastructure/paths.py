@@ -19,8 +19,8 @@ chemins).
 CE MODULE EST LE PRÉREQUIS À TOUT DÉPLACEMENT
 ---------------------------------------------
 Il permet de réorganiser `src/` en domaines **sans toucher aux chemins** : chaque module
-écrit désormais `from .paths import DATA_DIR`, ce qui reste vrai quelle que soit sa
-profondeur. Le jour où l'arborescence change, il n'y a **qu'un fichier** à corriger.
+écrit désormais `from .infrastructure.paths import DATA_DIR`, ce qui reste vrai quelle que soit
+sa profondeur. Le jour où l'arborescence change, il n'y a **qu'un fichier** à corriger.
 
 Un contrôle automatique vérifie qu'aucun module ne recalcule son chemin à la main :
 
@@ -30,8 +30,12 @@ from __future__ import annotations
 
 from pathlib import Path
 
-# Racine du projet : deux niveaux au-dessus de CE fichier, où qu'il soit dans src/.
-RACINE = Path(__file__).resolve().parent.parent
+# Racine du projet : trois niveaux au-dessus de CE fichier (src/infrastructure/paths.py).
+# C'est LE seul endroit du projet où un chemin se calcule à la main — et c'est précisément le
+# but de ce module : le jour où un fichier descend d'un niveau, il n'y a qu'ici à corriger.
+# (Au lot 2, ce fichier est passé de `src/paths.py` à `src/infrastructure/paths.py` : un
+# `parent.parent` y désignait la racine, il désignait `src/` après le déplacement.)
+RACINE = Path(__file__).resolve().parents[2]
 
 # ── Données ───────────────────────────────────────────────────────────────────
 DATA_DIR = RACINE / "data"

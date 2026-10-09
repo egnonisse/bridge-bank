@@ -1,7 +1,7 @@
 """Tests du noyau dividende (positions long terme + sortie sur fondamentaux)."""
 from datetime import datetime, timedelta
 
-from src.models import Quote, Snapshot
+from src.domaine.models import Quote, Snapshot
 from src.portfolio import (
     LEVEL_DECISION,
     LEVEL_FUNDAMENTAL,
@@ -446,7 +446,7 @@ def test_soutenabilite_losses():
 
 
 def test_check_sustainability_flags_value_trap(monkeypatch):
-    from src.models import Quote, Snapshot
+    from src.domaine.models import Quote, Snapshot
 
     from src.portfolio import check_sustainability
 
@@ -463,7 +463,7 @@ def test_check_sustainability_flags_value_trap(monkeypatch):
 
 
 def test_check_sustainability_sain(monkeypatch):
-    from src.models import Quote, Snapshot
+    from src.domaine.models import Quote, Snapshot
 
     from src.portfolio import check_sustainability
 

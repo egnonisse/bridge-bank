@@ -32,7 +32,7 @@ import copy
 import json
 from dataclasses import dataclass, replace
 from pathlib import Path
-from .paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 FICHIER = RACINE / "data" / "divisions_officielles.json"
 

@@ -133,16 +133,16 @@ def _inserer_import(texte: str, canonique: str, local: str) -> str:
 
     On garde donc le nom local en ALIAS, comme pour `regles.py` :
 
-        from .paths import DATA_DIR as DATA     # conserve tous les usages existants
+        from .infrastructure.paths import DATA_DIR as DATA   # conserve les usages existants
 
     Le nom reste, la source change. C'est ce qui rend la migration sans effet de bord.
     """
     lignes = texte.splitlines()
     dernier = _fin_des_imports(lignes)
     if canonique == local:
-        bloc = f"from .paths import {canonique}  {MARQUEUR}"
+        bloc = f"from .infrastructure.paths import {canonique}  {MARQUEUR}"
     else:
-        bloc = f"from .paths import {canonique} as {local}  {MARQUEUR}"
+        bloc = f"from .infrastructure.paths import {canonique} as {local}  {MARQUEUR}"
     lignes.insert(dernier, bloc)
     return "\n".join(lignes) + ("\n" if texte.endswith("\n") else "")
 

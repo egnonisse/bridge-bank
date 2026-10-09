@@ -7,7 +7,7 @@ Le seuil de rendement est NET (4 % après IRVM 12 % + frais 0,80 %/an),
 soit ≈ 5,45 % de rendement BRUT. Les dps de test sont les dividendes
 officiels BRVM 2025 (en brut).
 """
-from src.models import Quote, Snapshot
+from src.domaine.models import Quote, Snapshot
 from src.screener import flag_value_traps, screen_magic_formula, screen_value_dividend
 
 

@@ -11,7 +11,7 @@ sont CALIBRÉES par scripts/calibrate_spec_profiles.py → data/spec_profiles.js
 import json
 import statistics
 from pathlib import Path
-from .paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 PROFILES_FILE = DATA / "spec_profiles.json"
 

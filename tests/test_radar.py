@@ -1,7 +1,7 @@
 """Tests du radar de veille « sortie de fond » (détection, zéro trading)."""
 from datetime import datetime, timedelta
 
-from src.models import HistoryBar
+from src.domaine.models import HistoryBar
 from src.radar import ath_status, scan
 
 

@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from src.models import HistoryBar
+from src.domaine.models import HistoryBar
 
 
 @pytest.fixture

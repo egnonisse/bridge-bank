@@ -41,7 +41,7 @@ from .taxation import (
     gross_yield_for_net,
     net_yield,
 )
-from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 PORTFOLIO_FILE = DATA_DIR / "portfolio.json"
 REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
@@ -231,7 +231,7 @@ def _history_line(pos: DividendPosition) -> str:
     prof = data.get(pos.code.upper())
     if not prof:
         return ""
-    from .format_fr import pct
+    from .portefeuille.format_fr import pct
 
     seuil_titre = profit_threshold_for(pos.code) * 100
     seuil_profil = prof.get("seuil_pct", 13)
@@ -313,7 +313,7 @@ def _profit_info_alert(pos: DividendPosition, price: float) -> PositionAlert:
     reste utile — mais le système s'abstient de recommander une vente sur un signal que
     les données ne soutiennent pas (bornes basses 49/46/36/34 %, toutes sous 50 %).
     """
-    from .format_fr import fcfa, pct
+    from .portefeuille.format_fr import fcfa, pct
     from .seuils_vente import explication, resume_justification
 
     gain_pct = (price / pos.entry_price - 1) * 100

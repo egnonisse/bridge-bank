@@ -10,7 +10,7 @@ import json
 import sys
 from datetime import date, timedelta
 from pathlib import Path
-from .paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 

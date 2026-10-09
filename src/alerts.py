@@ -16,9 +16,9 @@ from pathlib import Path
 from typing import Optional
 
 from .bsapi import BSApi
-from .models import Quote
+from .domaine.models import Quote
 from .notify import TelegramNotifier
-from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 log = logging.getLogger(__name__)
 

@@ -19,7 +19,7 @@ from .taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
 
 # Filtres d'entrée : définis dans src/regles.py (catalogue unique).
 from .regles import PAYOUT_TIGHT, PER_MAX  # noqa: E402
-from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 NET_MAX = 0.10          # borne haute anti-mirage (décision 25/09) : net ≤ 10 %
 REFERENCE_AMOUNT = 100_000.0  # taille standard de ligne noyau (pour le calcul d'exemple)
 

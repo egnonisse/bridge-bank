@@ -20,7 +20,7 @@ from .dividends import total_encaissé
 from .orders import build_limit_orders
 from .portfolio import load_portfolio
 from .speculation import load_positions
-from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 STATE_FILE = DATA_DIR / "portfolio_state.json"
 
@@ -240,7 +240,7 @@ def alerte_tresorerie(pct_cash: float, history: list | None = None,
     if jours < CASH_ALERT_DAYS:
         return ""
 
-    from .format_fr import fcfa
+    from .portefeuille.format_fr import fcfa
 
     entete = (f"   ℹ️ {fcfa(montant)} dorment sur ton compte ({pct_cash:.0f} % de ton "
               f"argent)" if montant else

@@ -5,7 +5,7 @@ quatre-vingt-quatre. Un lecteur francophone y lit trois francs. Sur une alerte d
 à quelqu'un qui n'a jamais touché à la bourse, c'est une erreur de lecture qui peut
 provoquer une mauvaise décision.
 """
-from src.format_fr import fcfa, nombre
+from src.portefeuille.format_fr import fcfa, nombre
 
 ESPACE = "\u202f"      # espace fine insécable utilisée comme séparateur de milliers
 

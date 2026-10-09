@@ -10,7 +10,7 @@ from src.cache_integrity import (
     detect_jumps,
     reversal_profile_stale,
 )
-from src.models import HistoryBar, Quote, Snapshot
+from src.domaine.models import HistoryBar, Quote, Snapshot
 
 TODAY = datetime(2026, 8, 21)
 

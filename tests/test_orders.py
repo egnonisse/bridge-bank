@@ -1,5 +1,5 @@
 """Tests des ordres limites du noyau dividende (payout + value trap)."""
-from src.models import Quote, Snapshot
+from src.domaine.models import Quote, Snapshot
 from src.orders import build_limit_orders
 
 

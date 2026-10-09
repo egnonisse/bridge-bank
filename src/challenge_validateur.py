@@ -31,7 +31,7 @@ import statistics
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from .paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 sys.path.insert(0, str(RACINE))
 

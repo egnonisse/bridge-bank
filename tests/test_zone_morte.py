@@ -1,7 +1,7 @@
 """Tests de la zone morte spéculative : revue à ~J+120, jamais de clôture auto."""
 from datetime import datetime, timedelta
 
-from src.models import HistoryBar, Quote, Snapshot
+from src.domaine.models import HistoryBar, Quote, Snapshot
 from src.speculation import (
     ZONE_DEAD_REVIEW_DAYS,
     SpecPosition,

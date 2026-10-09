@@ -78,7 +78,7 @@ l'autre produit un chiffre faux sans qu'aucun test ne s'en aperçoive.**
 | `PROFIT_ALERT_THRESHOLD` | `0.13` | src.regles |
 | `PROFIT_DOWN_PROB` | `{'SNTS': 86, 'SGBC': 63, 'SLBC': 54, 'PALC': 45}` | src.portfolio |
 | `PROFIT_SEUILS_CANDIDATS` | `<expression: SEUILS_CANDIDATS>` | src.portfolio |
-| `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.paths |
+| `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.infrastructure.paths |
 | `PROFIT_THRESHOLDS_FILE` | `<expression: SEUILS_FILE>` | src.portfolio |
 | `SELL_FRACTION` | `<expression: 1 / 3>` | src.regles |
 
@@ -110,7 +110,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `CACHE_FILE` | <expression: DATA_DIR / 'fundamentals_ca · <expression: DATA_DIR / 'history_cache.p | src.backtest · src.screener |
 | `COMPANY_HINTS` | {'bank_of_africa_sn': 'BOAS', 'societe_g · {'sgb': 'SGBC', 'sgci': 'SGBC', 'societe | src.boc · src.news |
 | `POSITIONS_FILE` | <expression: DATA_DIR / 'bonds_positions · <expression: DATA_DIR / 'spec_positions. | src.bonds · src.speculation |
-| `PROFIT_THRESHOLDS` | <expression: DATA_DIR / 'profit_threshol · <expression: SEUILS_PAR_DEFAUT> | src.paths · src.portfolio |
+| `PROFIT_THRESHOLDS` | <expression: DATA_DIR / 'profit_threshol · <expression: SEUILS_PAR_DEFAUT> | src.infrastructure.paths · src.portfolio |
 | `ALERT_STATE_FILE` | <expression: DATA_DIR / 'portf_alert_sta · <expression: DATA_DIR / 'radar_alert_sta | src.portfolio · src.radar |
 
 ---
@@ -159,12 +159,12 @@ chemin distinct dans chaque module). Rien à corriger.
 | `CUSTODY_MIN_PER_QUARTER` | `2500.0` | src.taxation |
 | `CUSTODY_PER_QUARTER` | `0.002` | src.taxation |
 | `DECALAGE_PUBLICATION_BPA` | `1` | src.fondamentaux_historiques |
-| `DIVISIONS_OFFICIELLES` | `<expression: DATA_DIR / 'divisions_officielles.json'>` | src.paths |
+| `DIVISIONS_OFFICIELLES` | `<expression: DATA_DIR / 'divisions_officielles.json'>` | src.infrastructure.paths |
 | `DIV_CUT_RATIO` | `0.5` | src.portfolio |
 | `FENETRE` | `200` | src.regime_marche |
 | `FICHIER` | `<expression: RACINE / 'data' / 'divisions_officielles.json'>` | src.divisions_officielles |
 | `FONDAMENTAUX_BIAISES` | `['per', 'net_yield', 'payout']` | src.challenge_schema |
-| `FUNDAMENTALS_HISTORIQUES` | `<expression: DATA_DIR / 'fondamentaux_historiques.json'>` | src.paths |
+| `FUNDAMENTALS_HISTORIQUES` | `<expression: DATA_DIR / 'fondamentaux_historiques.json'>` | src.infrastructure.paths |
 | `GROWTH_MIN_PCT` | `-10.0` | src.dividend_history |
 | `HAUSSIER` | `haussier` | src.regime_marche |
 | `HISTORY_DAYS` | `90` | src.screening |
@@ -200,9 +200,9 @@ chemin distinct dans chaque module). Rien à corriger.
 | `ORIGINE_MANUELLE` | `manuelle` | src.seuils_vente |
 | `PER_ABSURD` | `50.0` | src.regles |
 | `PER_EXPLODE` | `40.0` | src.portfolio |
-| `PORTFOLIO_STATE` | `<expression: DATA_DIR / 'portfolio_state.json'>` | src.paths |
+| `PORTFOLIO_STATE` | `<expression: DATA_DIR / 'portfolio_state.json'>` | src.infrastructure.paths |
 | `PRICE_TOLERANCE` | `0.25` | src.cache_integrity |
-| `RACINE` | `<expression: Path(__file__).resolve().parent.parent>` | src.paths |
+| `RACINE` | `<expression: Path(__file__).resolve().parents[2]>` | src.infrastructure.paths |
 | `RATIOS_BRVM` | `[2, 3, 4, 5, 10, 20, 50, 100]` | src.ajustement |
 | `REENTER_GAP_DAYS` | `5` | src.radar |
 | `REFERENCE_AMOUNT` | `100000.0` | src.noyau_check |
@@ -219,7 +219,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `SETTLEMENT_DAYS` | `3` | src.live |
 | `SEUIL` | `5.0` | src.nettoyage_aberrantes |
 | `SEUILS_CANDIDATS` | `[0.05, 0.08, 0.1, 0.13, 0.15]` | src.seuils_vente |
-| `SEUILS_JOURNAL` | `<expression: DATA_DIR / 'seuils_journal.jsonl'>` | src.paths |
+| `SEUILS_JOURNAL` | `<expression: DATA_DIR / 'seuils_journal.jsonl'>` | src.infrastructure.paths |
 | `SEUILS_PAR_DEFAUT` | `{'SNTS': 0.13, 'SGBC': 0.1, 'SLBC': 0.05, 'PALC': 0.05}` | src.seuils_vente |
 | `SPAM_DAYS` | `7` | src.spec_veille |
 | `TAKE_1` | `0.2` | src.speculation |
@@ -293,7 +293,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `PROFIT_ALERT_THRESHOLD` | `0.13` | src.regles |
 | `PROFIT_DOWN_PROB` | `{'SNTS': 86, 'SGBC': 63, 'SLBC': 54, 'PALC': 45}` | src.portfolio |
 | `PROFIT_SEUILS_CANDIDATS` | `<expression: SEUILS_CANDIDATS>` | src.portfolio |
-| `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.paths |
+| `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.infrastructure.paths |
 | `PROFIT_THRESHOLDS_FILE` | `<expression: SEUILS_FILE>` | src.portfolio |
 | `SELL_FRACTION` | `<expression: 1 / 3>` | src.regles |
 | `STOP_LOSS` | `0.15` | src.speculation |
@@ -320,34 +320,34 @@ chemin distinct dans chaque module). Rien à corriger.
 | `CACHE_MAX_AGE_DAYS` | `7` | src.backtest |
 | `CACHE_MAX_AGE_HOURS` | `24` | src.screener |
 | `CANDIDATES_STATE_FILE` | `<expression: DATA_DIR / 'spec_candidates_state.json'>` | src.speculation |
-| `DATA_DIR` | `<expression: RACINE / 'data'>` | src.paths |
-| `DECISIONS_DIR` | `<expression: DOCS_DIR / 'decisions'>` | src.paths |
+| `DATA_DIR` | `<expression: RACINE / 'data'>` | src.infrastructure.paths |
+| `DECISIONS_DIR` | `<expression: DOCS_DIR / 'decisions'>` | src.infrastructure.paths |
 | `DIVIDENDES_FILE` | `<expression: DATA_DIR / 'dividendes.json'>` | src.dividends |
-| `DOCS_DIR` | `<expression: RACINE / 'docs'>` | src.paths |
+| `DOCS_DIR` | `<expression: RACINE / 'docs'>` | src.infrastructure.paths |
 | `HEADERS` | `{'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}` | src.boc |
-| `HISTORY_CACHE` | `<expression: DATA_DIR / 'history_clean.pkl'>` | src.paths |
+| `HISTORY_CACHE` | `<expression: DATA_DIR / 'history_clean.pkl'>` | src.infrastructure.paths |
 | `JOURNAL_FILE` | `<expression: DATA_DIR / 'seuils_journal.jsonl'>` | src.seuils_vente |
-| `MARKET_DIR` | `<expression: DATA_DIR / 'market'>` | src.paths |
+| `MARKET_DIR` | `<expression: DATA_DIR / 'market'>` | src.infrastructure.paths |
 | `MARKET_FILE` | `<expression: DATA_DIR / 'bonds_market.json'>` | src.bonds |
 | `MAX_CACHE_AGE_DAYS` | `8` | src.cache_integrity |
 | `MAX_WORKERS` | `8` | src.backtest |
 | `NSIA_BOC_URL` | `https://nsiacapital.com/wp-content/uploads/{yyyy}/{mm}/BOC-DU-{dd}-{MOIS}.pdf` | src.boc |
 | `PER_CACHE_FILE` | `<expression: DATA_DIR / 'per_cache.json'>` | src.fundamentals |
-| `PORTFOLIO_DIR` | `<expression: DATA_DIR / 'portfolio'>` | src.paths |
+| `PORTFOLIO_DIR` | `<expression: DATA_DIR / 'portfolio'>` | src.infrastructure.paths |
 | `PORTFOLIO_FILE` | `<expression: DATA_DIR / 'portfolio.json'>` | src.portfolio |
 | `POSITIONS_FILE` | `<expression: DATA_DIR / 'bonds_positions.json'>` | src.bonds |
 | `PREP_WATCH_FILE` | `<expression: DATA_DIR / 'prep_watch_state.json'>` | src.noyau_check |
 | `PROFILES_FILE` | `<expression: DATA / 'spec_profiles.json'>` | src.spec_profiles |
 | `REINF_STATE_FILE` | `<expression: DATA_DIR / 'reinf_alert_state.json'>` | src.portfolio |
 | `REVERSAL_FILE` | `<expression: DATA_DIR / 'reversal_profiles.json'>` | src.cache_integrity |
-| `REVERSAL_PROFILES` | `<expression: DATA_DIR / 'reversal_profiles.json'>` | src.paths |
-| `SCRIPTS_DIR` | `<expression: RACINE / 'scripts'>` | src.paths |
+| `REVERSAL_PROFILES` | `<expression: DATA_DIR / 'reversal_profiles.json'>` | src.infrastructure.paths |
+| `SCRIPTS_DIR` | `<expression: RACINE / 'scripts'>` | src.infrastructure.paths |
 | `SEEN_STATE_FILE` | `<expression: DATA_DIR / 'radar_seen_state.json'>` | src.radar |
 | `SESSION_TIMEOUT` | `20` | src.bsapi |
 | `SEUILS_FILE` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.seuils_vente |
 | `SIKA_DIV_URL` | `https://www.sikafinance.com/marches/dividendes` | src.boc |
-| `SRC_DIR` | `<expression: RACINE / 'src'>` | src.paths |
+| `SRC_DIR` | `<expression: RACINE / 'src'>` | src.infrastructure.paths |
 | `STATE_FILE` | `<expression: DATA_DIR / 'alerts_state.json'>` | src.alerts |
-| `TESTS_DIR` | `<expression: RACINE / 'tests'>` | src.paths |
+| `TESTS_DIR` | `<expression: RACINE / 'tests'>` | src.infrastructure.paths |
 | `URL` | `https://www.brvm.org/fr/cours-actions/0` | src.live |
 | `VALUE_STATE_FILE` | `<expression: DATA_DIR / 'value_state.json'>` | src.screener |

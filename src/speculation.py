@@ -26,7 +26,7 @@ from typing import Optional
 from .bsapi import BSApi
 from .backtest import load_all_history
 from .screening import avg_volume, change_pct, ema, rsi_wilder
-from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 POSITIONS_FILE = DATA_DIR / "spec_positions.json"
 CANDIDATES_STATE_FILE = DATA_DIR / "spec_candidates_state.json"

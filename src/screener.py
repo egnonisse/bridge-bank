@@ -20,7 +20,7 @@ from pathlib import Path
 from .bsapi import BSApi
 from .fundamentals import get_dps, get_per_brvm
 from .taxation import TARGET_NET_YIELD_ENTRY, gross_yield_for_net, net_yield
-from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 CACHE_FILE = DATA_DIR / "fundamentals_cache.json"
 CACHE_MAX_AGE_HOURS = 24

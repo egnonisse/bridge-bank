@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from statistics import fmean
 
 from .bsapi import BSApi
-from .models import Analysis, HistoryBar, Quote
+from .domaine.models import Analysis, HistoryBar, Quote
 
 HISTORY_DAYS = 90
 MAX_WORKERS = 6

@@ -5,7 +5,7 @@ ouverture de position, détection de signaux.
 """
 import pytest
 
-from src.models import Quote, Snapshot
+from src.domaine.models import Quote, Snapshot
 from src.speculation import (
     SpecPosition,
     check_position,

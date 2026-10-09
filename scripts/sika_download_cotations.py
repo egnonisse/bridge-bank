@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))   # racine du projet
 
-from src.paths import DATA_DIR   # noqa: E402  (import après le bootstrap sys.path)
+from src.infrastructure.paths import DATA_DIR   # noqa: E402  (import après le bootstrap sys.path)
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
