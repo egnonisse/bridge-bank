@@ -209,3 +209,31 @@ locales `data/*.bak-avant-*`.
 **Règle pour la suite :** `scripts/git_backup.py` fait **`git add -A`** chaque dimanche 09h. Un
 arbre non trié le jour du cron part donc dans un **commit fourre-tout** — trier les familles
 avant le dimanche, et garder le réflexe « un lot = un commit ».
+
+### ⚠ Sauvegarde distante en échec depuis le 05/10 — cause à trancher
+
+`origin` = `https://github.com/egnonisse/bridge-bank` → **« Repository not found »**, sans
+redirection de renommage. **Ce qui est établi :**
+
+- le run du cron du 05/10 a échoué : `⚠️ Backup Bridge Bank ÉCHOUÉ : remote: Repository not found.` ;
+- dernier commit présent sur `origin/main` : `4d1f21d` (29/09) → les **12 commits suivants ne sont
+  sauvegardés qu'en local** ;
+- le credential git stocké sur cette machine appartient au compte **`aiwatch-ci`**, pas à
+  `egnonisse` (`git credential fill` → `username=aiwatch-ci`).
+
+**Deux causes restent possibles, et rien ici ne les sépare :** GitHub répond *exactement* la même
+chose pour un dépôt privé auquel le compte n'a pas accès que pour un dépôt supprimé.
+
+⚠️ **Fausse piste écartée** (erreur de raisonnement commise puis corrigée le 09/10) :
+`egnonisse/PharmaScan` répond sans aucun credential — ce dépôt est **public**, il ne prouve donc
+rien sur l'authentification. En tirer « les identifiants ne sont pas en cause » était abusif :
+le seul credential disponible est celui d'un **autre compte** que le propriétaire du dépôt.
+
+**À trancher par LEO** : le dépôt existe-t-il toujours sous `egnonisse/bridge-bank` ?
+
+- **oui** → ajouter `aiwatch-ci` comme collaborateur (*write*) : le credential déjà présent suffit,
+  ou s'authentifier en tant qu'`egnonisse` ;
+- **non** → le recréer (privé) et pousser.
+
+Filet en attendant : `D:/PROJETS/bridge-bank-2026-10-09.bundle` — histoire complète vérifiée
+(`git bundle verify` : *complete history*), ~27 Mo, clonable pour restaurer.
