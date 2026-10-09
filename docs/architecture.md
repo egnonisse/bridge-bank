@@ -190,7 +190,8 @@ décision ; un écart sur les deux autres est une régression.
 | `README.md` | ✅ existe (20 Ko) |
 | `tests/conftest.py` | ✅ existe (fixture partagée `make_bars`) |
 | `CHANGELOG.md` | à créer |
-| CI | à créer — doit lancer les **trois** filets : `pytest`, `verifier_chemins.py --strict`, `auditer_constantes.py --comparer` |
+| CI | ✅ **créée le 09/10** — `.github/workflows/ci.yml` : chemins, configuration, constantes, `pytest`. Python 3.11, `actions/checkout@v7`. Premier run vert : `37877120841` |
+| Blocage de la fusion | ⚠️ **impossible en compte gratuit sur dépôt privé** (403 GitHub) : voir `docs/DECISION-2026-10-09-ci-et-controle-des-constantes.md` §3 — GitHub Pro, crochet `pre-push` local, ou détection seule |
 | `LICENSE` | à créer si publication |
 
 ## 9. Versionnage — état après le tri du 09/10
