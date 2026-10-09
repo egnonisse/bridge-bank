@@ -20,8 +20,8 @@ from .dividends import total_encaissé
 from .orders import build_limit_orders
 from .portfolio import load_portfolio
 from .speculation import load_positions
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 STATE_FILE = DATA_DIR / "portfolio_state.json"
 
 # Allocation cible (IPS §2) en % — actions uniquement (obligations retirées 03/09/2026)
@@ -194,6 +194,65 @@ def _allocation_flag(actual: float, target: float) -> str:
     return "✅"
 
 
+CASH_ALERT_MARGIN = 5.0   # au-delà de la cible + 5 points (30 % -> alerte dès 35 %)
+CASH_ALERT_DAYS = 3       # jours de snapshots consécutifs au-dessus avant d'alerter
+
+
+def alerte_tresorerie(pct_cash: float, history: list | None = None,
+                      montant: float | None = None) -> str:
+    """Alerte INFORMATIVE sur l'argent qui dort sur le compte — n'ordonne RIEN.
+
+    POURQUOI (mesure du 08/10/2026) : le renforcement sur faiblesse coûte -59 points de
+    rendement à capital égal en marché haussier, uniquement parce que les tranches non
+    déclenchées dorment à 0 %. La trésorerie n'est pas un problème en soi — c'est une
+    prime d'assurance qui paie pendant les krachs (67-69 % de réussite mesurée). Le
+    problème est qu'elle DORT : non rémunérée, elle ne rapporte rien.
+
+    Rédigé pour un lecteur sans notion de bourse : le montant en francs vient AVANT le
+    pourcentage, la raison d'être de cette poche est rappelée, et la phrase finale dit
+    explicitement qu'aucun ordre n'a été passé.
+
+    GARANTIE : cette fonction ne fait que renvoyer du texte. Elle n'appelle aucun ordre,
+    aucun achat, aucun module d'investissement — décision explicite du 08/10/2026.
+
+    `history` permet d'injecter l'historique des snapshots (tests) ; à None, il est lu
+    depuis l'état du portefeuille.
+    """
+    seuil = TARGET_CASH + CASH_ALERT_MARGIN
+    if pct_cash < seuil:
+        return ""
+
+    # Jours consécutifs au-dessus du seuil, d'après l'historique des snapshots.
+    if history is None:
+        try:
+            history = load_state().get("history", [])
+        except (OSError, ValueError):
+            history = []
+    jours = 0
+    for snap in reversed(history):
+        total = snap.get("total") or 0
+        cash = snap.get("cash") or 0
+        if total > 0 and (cash / total * 100) >= seuil:
+            jours += 1
+        else:
+            break
+
+    if jours < CASH_ALERT_DAYS:
+        return ""
+
+    from .format_fr import fcfa
+
+    entete = (f"   ℹ️ {fcfa(montant)} dorment sur ton compte ({pct_cash:.0f} % de ton "
+              f"argent)" if montant else
+              f"   ℹ️ {pct_cash:.0f} % de ton argent dort sur ton compte")
+    return (f"{entete}\n"
+            f"      C'est ton matelas de sécurité : il te sert à racheter des actions\n"
+            f"      quand tout baisse, et c'est lui qui a le mieux marché pendant les\n"
+            f"      crises. Mais laissé là, il ne rapporte rien du tout.\n"
+            f"      → Aucun ordre n'est passé, rien n'est déplacé. C'est juste pour\n"
+            f"        que tu le saches : à toi de décider si tu le places ailleurs.")
+
+
 def _format(data: dict) -> str:
     d = data
     total = d["total"]
@@ -234,6 +293,11 @@ def _format(data: dict) -> str:
         actual = _pct(value, total)
         flag = _allocation_flag(actual, target)
         L.append(f"   {label} : {actual:.0f}% (cible {target:.0f}%) {flag}")
+
+    # Argent qui dort sur le compte — INFORMATION seule, aucun ordre (décision 08/10/2026).
+    _cash_msg = alerte_tresorerie(_pct(d["cash"], total), montant=d["cash"])
+    if _cash_msg:
+        L.append(_cash_msg)
 
     if d["max_pct"] > CONCENTRATION_WARN:
         L.append(f"   ⚠️ Concentration : {d['max_name']} = {d['max_pct']:.1f}% du portefeuille")

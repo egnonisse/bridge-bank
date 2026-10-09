@@ -20,17 +20,17 @@ from pathlib import Path
 from .bsapi import BSApi
 from .fundamentals import get_dps, get_per_brvm
 from .taxation import TARGET_NET_YIELD_ENTRY, gross_yield_for_net, net_yield
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 CACHE_FILE = DATA_DIR / "fundamentals_cache.json"
 CACHE_MAX_AGE_HOURS = 24
 MAX_WORKERS = 3  # faible pour éviter le rate-limiting des sites
 
 # Filtres value+dividende
-PER_MAX = 14.0
+from .regles import PER_MAX  # noqa: E402  (catalogue : src/regles.py)
 # Rendement BRUT requis pour atteindre le rendement NET cible (4 % après IRVM + frais)
 YIELD_MIN = gross_yield_for_net(TARGET_NET_YIELD_ENTRY) * 100  # ≈ 5,65 % brut
-PER_ABSURD = 50.0  # au-delà : bénéfice quasi nul
+from .regles import PER_ABSURD  # noqa: E402
 YIELD_ABSURD = 30.0  # au-delà : dividende exceptionnel one-off
 
 

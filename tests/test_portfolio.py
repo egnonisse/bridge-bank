@@ -91,18 +91,39 @@ def test_price_drop_does_not_trigger():
     assert any("perte couverte" in a.message for a in alerts)  # alerte de couverture, pas de vente
 
 
-def test_profit_double_option_alert():
-    """Plus-value >= +13% : décision — vendre 1/3 ou conserver pour le dividende."""
+def test_profit_alert_informative_par_defaut():
+    """Plus-value au-delà du seuil : INFORMATION, plus de consigne de vente.
+
+    Changement du 08/10/2026 — aucune borne basse d'intervalle de confiance n'atteint
+    50 % sur les 4 titres du portefeuille : le seuil ne déclenche plus de vente. Le
+    message reste de niveau 2 (donc transmis) mais annonce qu'il n'ordonne rien.
+    """
     p = make_pos()  # entry 32000, qty 3, dps 1740
     alerts = check_dividend_position(p, 40000, current_dps=1740, current_per=8)  # +25%
     assert not p.closed
     assert all(a.level == LEVEL_DECISION for a in alerts)
     joined = "\n".join(a.message for a in alerts)
-    assert "VENDS 1/3" in joined
-    assert "ordre de vente" in joined
-    assert "Alternative" in joined
-    assert "CONSERVE" in joined
-    assert "bénéfice net" in joined
+    assert "INFO" in joined
+    assert "VENDS 1/3" not in joined
+    assert "RIEN À FAIRE" in joined
+    # Le revenu conservé est annoncé en francs (et non en « net » nu).
+    assert "par an" in joined
+
+
+def test_double_option_alert_reste_disponible_pour_un_seuil_fonde():
+    """Le mode DÉCLENCHEUR existe toujours — il n'est simplement plus atteint.
+
+    On le teste directement : si un titre présentait un jour une borne basse ≥ 50 %,
+    c'est ce message qui partirait. Le supprimer ferait perdre la fonctionnalité.
+    """
+    from src.portfolio import _double_option_alert
+
+    p = make_pos()
+    msg = _double_option_alert(p, 40000).message
+    assert "VENDS 1/3" in msg
+    assert "ordre de vente" in msg
+    assert "CONSERVE" in msg
+    assert "bénéfice net" in msg
 
 
 def test_profit_threshold_boundary_13pct():
@@ -144,10 +165,14 @@ def _pos(code, entry=30000.0):
                             dps=2000.0, per_open=10.0)
 
 
-def test_sgbc_seuil_10_pct_declenche_a_11():
+def test_sgbc_seuil_10_pct_atteint_mais_informatif():
+    """SGBC : le seuil de 10 % est toujours SURVEILLÉ, mais n'ordonne plus la vente."""
     alerts = check_dividend_position(_pos("SGBC"), 30000 * 1.11,
                                      current_dps=1000, current_per=10)
-    assert any(a.level == LEVEL_DECISION and "VENDS 1/3" in a.message for a in alerts)
+    decision = [a for a in alerts if a.level == LEVEL_DECISION]
+    assert decision, "le franchissement du seuil doit rester signalé"
+    assert "INFO" in decision[0].message
+    assert "VENDS 1/3" not in decision[0].message
 
 
 def test_sgbc_pas_de_declenchement_a_9_pct():
@@ -156,18 +181,25 @@ def test_sgbc_pas_de_declenchement_a_9_pct():
     assert all(a.level != LEVEL_DECISION for a in alerts)
 
 
-def test_slbc_seuil_5_pct_declenche_a_6():
+def test_slbc_seuil_5_pct_atteint_mais_informatif():
+    """SLBC : signal faible -> information seule."""
     alerts = check_dividend_position(_pos("SLBC"), 30000 * 1.06,
                                      current_dps=1000, current_per=10)
-    assert any(a.level == LEVEL_DECISION and "VENDS 1/3" in a.message for a in alerts)
+    decision = [a for a in alerts if a.level == LEVEL_DECISION]
+    assert decision
+    assert "INFO" in decision[0].message
+    assert "VENDS 1/3" not in decision[0].message
 
 
 def test_palc_seuil_5_pct_avec_avertissement_fiabilite():
+    """PALC : le pire signal du portefeuille — informé, pas vendu, et expliqué simplement."""
     alerts = check_dividend_position(_pos("PALC"), 30000 * 1.06,
                                      current_dps=1000, current_per=10)
     decision = [a for a in alerts if a.level == LEVEL_DECISION]
-    assert decision and "VENDS 1/3" in decision[0].message
-    assert "45 %" in decision[0].message  # l'alerte avoue sa faiblesse (transparence)
+    assert decision and "VENDS 1/3" not in decision[0].message
+    assert "INFO" in decision[0].message
+    # La raison est donnée en langage courant (règle de style néophyte).
+    assert "pile ou face" in decision[0].message
 
 
 def test_snts_reste_a_13_pct_malgre_le_default():
@@ -217,12 +249,14 @@ def test_calibrage_insuffisant_renvoie_none():
 
 # --------------------------------------------------------- ligne 📜 HISTOIRE
 def test_history_line_with_profile(monkeypatch, tmp_path):
+    """Profil SIGNIFICATIF : le taux est fondé, on l'affiche."""
     import json
 
     from src.portfolio import _history_line
 
     prof = {
         "_meta": {}, "SNTS": {
+            "seuil_pct": 13, "significatif": True,
             "episodes": 10, "pct_down_20j": 90, "median_5j": -1.0,
             "median_20j": -3.5, "median_60j": -13.0,
             "trough_delay_median": 44, "trough_depth_median": -14.2,
@@ -235,11 +269,73 @@ def test_history_line_with_profile(monkeypatch, tmp_path):
 
     p = make_pos()  # SNTS
     line = _history_line(p)
-    assert "📜 HISTOIRE SNTS" in line
+    assert "📜 LES AUTRES FOIS" in line
     assert "90 % des cas" in line
-    assert "−3.5" in line or "-3.5" in line
-    assert "44 séances" in line
-    assert "Fenêtre de manœuvre" in line  # pct_down >= 65
+    # Format français : virgule décimale, pas le point anglais.
+    assert "-3,5 %" in line
+    # Langage courant : plus de « séances » ni de « médiane » nus.
+    assert "44 jours de bourse" in line
+    # pct_down_20j = 90 (>= 65) ET profil fiable : le délai est annoncé.
+    assert "2 à 4 semaines" in line
+
+
+def test_history_line_sans_taux_quand_non_significatif(monkeypatch, tmp_path):
+    """Profil NON significatif : le taux ne doit PAS être affiché.
+
+    C'est la condition de transparence statistique : « 86 % » sur 7 cas se lit comme une
+    probabilité de baisse future alors que sa borne basse est 49 % — indiscernable du
+    hasard. Le seuil de vente porte déjà sa propre probabilité ; la répéter ici sans
+    garantie recréerait deux chiffres pour une même notion.
+    """
+    import json
+
+    from src.portfolio import _history_line
+
+    prof = {"_meta": {}, "SNTS": {
+        "seuil_pct": 13, "significatif": False, "borne_basse": 49,
+        "episodes": 7, "pct_down_20j": 86, "median_20j": -3.1,
+        "trough_delay_median": 46, "trough_depth_median": -12.4,
+    }}
+    f = tmp_path / "rev.json"
+    f.write_text(json.dumps(prof), encoding="utf-8")
+    monkeypatch.setattr("src.portfolio.REVERSAL_FILE", f)
+
+    line = _history_line(make_pos())
+    assert "86 %" not in line, "le taux non concluant ne doit pas être affiché"
+    # …mais le descriptif reste : c'est ce que le profil sait vraiment.
+    assert "-3,1 %" in line and "46 jours de bourse" in line
+    assert "trop peu" in line, "7 cas < 8 : le motif doit être dit"
+
+
+def test_history_line_distingue_peu_de_cas_et_signal_flou(monkeypatch, tmp_path):
+    """Deux causes de non-significativité, deux phrases différentes.
+
+    SGBC a 30 cas : dire « trop peu de cas » serait FAUX. Le motif est que la fréquence
+    reste trop proche du hasard, pas la taille de l'échantillon.
+    """
+    import json
+
+    from src.portfolio import _history_line
+
+    prof = {"_meta": {}, "SNTS": {
+        "seuil_pct": 13, "significatif": False, "borne_basse": 46,
+        "episodes": 30, "pct_down_20j": 63, "median_20j": -1.8,
+        "trough_delay_median": 18, "trough_depth_median": -5.4,
+    }}
+    f = tmp_path / "rev.json"
+    f.write_text(json.dumps(prof), encoding="utf-8")
+    monkeypatch.setattr("src.portfolio.REVERSAL_FILE", f)
+
+    line = _history_line(make_pos())
+    assert "30 cas" in line
+    assert "trop peu" not in line, (
+        "30 cas n'est pas « trop peu » — le motif est l'imprécision, pas l'effectif")
+    assert "pas assez nette" in line
+    # Pas de délai annoncé sans base fiable : le ⏳ accompagne le taux, pas le descriptif.
+    assert "2 à 4 semaines" not in line
+    # Aucun jargon ne doit subsister dans cette ligne.
+    for jargon in ("séances", "médiane", "fenêtre de manœuvre"):
+        assert jargon.lower() not in line.lower(), f"jargon non traduit : {jargon}"
 
 
 def test_history_line_missing_code(monkeypatch, tmp_path):

@@ -19,6 +19,20 @@ from pathlib import Path
 from typing import Optional
 
 from .bsapi import BSApi
+from . import seuils_vente
+from .seuils_vente import (  # calibrage + persistance : un seul endroit
+    SEUILS_CANDIDATS,
+    SEUILS_FILE,
+    SEUILS_PAR_DEFAUT,
+)
+from .regles import (EPISODES_MIN as PROFIT_MIN_EPISODES,  # 8 — voir regles.py
+                     LOSS_ALERT_THRESHOLD,                  # −10 % : alerte de couverture
+                     MAX_BUY_WEIGHT, MAX_MARKET_WEIGHT,     # concentration (informatif)
+                     MAX_POSITION_WEIGHT,
+                     PAYOUT_CRITICAL, PAYOUT_TIGHT,         # 1,00 / 0,80
+                     PER_MAX as PER_MAX_NOYAU,              # 14,0 — filtres d'achat
+                     PROFIT_ALERT_THRESHOLD,                # 0,13 — défaut sans historique
+                     SELL_FRACTION)                         # 1/3 — fraction vendue
 from .taxation import (
     IRVM_DIVIDEND_TAX,
     TARGET_NET_YIELD_ENTRY,
@@ -27,8 +41,8 @@ from .taxation import (
     gross_yield_for_net,
     net_yield,
 )
+from .paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 PORTFOLIO_FILE = DATA_DIR / "portfolio.json"
 REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
 REINF_STATE_FILE = DATA_DIR / "reinf_alert_state.json"  # exclu par .gitignore (*_state.json)
@@ -47,81 +61,33 @@ HOLDING_YEARS = 3
 # chaque titre du portefeuille, au seuil le plus fidèle à SON histoire — scripts/
 # seuils_par_titre.py, épreuve re-run le 08/09). Règle de choix : le seuil qui
 # maximise la probabilité de baisse à J+20. Fiabilité (% de baisse historique) :
-PROFIT_THRESHOLDS = {
-    "SNTS": 0.13,  # 86 % ↓ à J+20, médiane −3,1 % — retournement PROUVÉ
-    "SGBC": 0.10,  # 63 % ↓, médiane −1,8 % — signal moyen
-    "SLBC": 0.05,  # 54 % ↓, médiane −0,8 % — signal faible (momentum)
-    "PALC": 0.05,  # 45 % ↓, médiane +1,1 % — AUCUN pouvoir (l'alerte l'avoue)
-}
-PROFIT_DOWN_PROB = {"SNTS": 86, "SGBC": 63, "SLBC": 54, "PALC": 45}
-PROFIT_ALERT_THRESHOLD = 0.13  # défaut (titres hors portefeuille / historique insuffisant)
-PROFIT_THRESHOLDS_FILE = DATA_DIR / "profit_thresholds.json"  # auto-calibré, versionné
-PROFIT_MIN_EPISODES = 6  # minimum d'épisodes pour accepter un calibrage
-PROFIT_SEUILS_CANDIDATS = (0.05, 0.08, 0.10, 0.13, 0.15)
-LOSS_ALERT_THRESHOLD = 0.10    # moins-value ≥ -10 % -> alerte de couverture par les dividendes
-SELL_FRACTION = 1 / 3          # fraction proposée à la vente (1/3 = 33 %)
+# Table de départ et fichier calibré : définis dans src/seuils_vente.py.
+# La table de départ ne sert QUE pour un titre absent du fichier calibré.
+PROFIT_THRESHOLDS = SEUILS_PAR_DEFAUT
+PROFIT_THRESHOLDS_FILE = SEUILS_FILE
+PROFIT_SEUILS_CANDIDATS = SEUILS_CANDIDATS
+PROFIT_DOWN_PROB = {"SNTS": 86, "SGBC": 63, "SLBC": 54, "PALC": 45}  # affichage
+# PROFIT_ALERT_THRESHOLD, PROFIT_MIN_EPISODES, LOSS_ALERT_THRESHOLD et SELL_FRACTION
+# sont définis dans src/regles.py (catalogue unique) et importés en tête de fichier.
 
 
-def profit_threshold_for(code: str) -> float:
-    """Seuil de vente ⅓ pour un code : calibrage auto (fichier) → seed → défaut 13 %."""
-    calibrated = load_profit_thresholds()
-    info = calibrated.get(code.upper())
-    if info:
-        return float(info.get("threshold", PROFIT_ALERT_THRESHOLD))
-    return PROFIT_THRESHOLDS.get(code.upper(), PROFIT_ALERT_THRESHOLD)
-
-
-def _profit_episodes(closes: list[float], seuil: float) -> list[float]:
-    """Épisodes : +seuil % en 20 séances → rendement des 20 séances suivantes."""
-    out, i = [], 20
-    while i < len(closes) - 20:
-        ref = closes[i - 20]
-        if ref > 0 and closes[i] >= ref * (1 + seuil):
-            out.append(closes[i + 20] / closes[i] - 1)
-            i += 20  # dédoublonnage par vague (indépendance)
-        else:
-            i += 1
-    return out
-
-
-def calibrate_profit_threshold(code: str, closes: list[float]) -> dict | None:
-    """Calibre le seuil de vente ⅓ d'un titre sur SON historique (9 ans si dispo).
-
-    Règle : parmi les seuils candidats, celui qui maximise la probabilité de
-    baisse à J+20 (avec ≥ 6 épisodes). None = historique insuffisant → défaut.
-    """
-    import statistics
-
-    best: dict | None = None
-    for seuil in PROFIT_SEUILS_CANDIDATS:
-        ep = _profit_episodes(closes, seuil)
-        if len(ep) < PROFIT_MIN_EPISODES:
-            continue
-        down = sum(1 for r in ep if r < 0) / len(ep) * 100
-        med = statistics.median(ep) * 100
-        if best is None or down > best["down_prob"]:
-            best = {"code": code.upper(), "threshold": seuil, "down_prob": round(down),
-                    "median_pct": round(med, 1), "episodes": len(ep)}
-    return best
-
-
-def load_profit_thresholds() -> dict:
-    try:
-        return json.loads(PROFIT_THRESHOLDS_FILE.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return {}
-
-
-def save_profit_thresholds(data: dict) -> None:
-    PROFIT_THRESHOLDS_FILE.write_text(
-        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+# Calibrage et persistance des seuils : DÉFINIS dans src/seuils_vente.py (un seul endroit).
+# Ces alias préservent les noms historiques attendus par les appelants et les tests.
+profit_threshold_for = seuils_vente.pour
+_profit_episodes = seuils_vente.episodes
+calibrate_profit_threshold = seuils_vente.calibrer
+load_profit_thresholds = seuils_vente.charger
+save_profit_thresholds = seuils_vente.enregistrer
 
 
 def calibrate_missing_thresholds(api) -> int:
     """Calibre le seuil de vente de chaque titre détenu qui n'en a pas encore.
 
-    Appelé au début du check quotidien et après chaque ouverture de position :
-    tout titre acheté reçoit son seuil automatiquement. Retourne le nombre calibré.
+    Appelé au début du check quotidien et après chaque ouverture de position : tout titre
+    acheté reçoit son seuil automatiquement. Retourne le nombre calibré.
+
+    Chaque changement est ÉCRIT AU JOURNAL (`data/seuils_journal.jsonl`) : c'est la seule
+    trace de ce qui a bougé pendant l'exécution, là où git ne voit rien.
     """
     from .backtest import load_all_history
 
@@ -140,13 +106,18 @@ def calibrate_missing_thresholds(api) -> int:
         if info:
             calibrated[code] = info
             done += 1
+            seuils_vente.journaliser(
+                code, avant=None, apres=info.get("threshold"),
+                motif=seuils_vente.MOTIF_CALIBRAGE,
+                origine=seuils_vente.ORIGINE_AUTO,
+                test={k: info[k] for k in ("down_prob", "borne_basse", "episodes",
+                                           "significatif", "mode") if k in info})
     save_profit_thresholds(calibrated)
     return done
 
 # Soutenabilité du dividende (garde-fou anti value-trap) : payout = dividende / BPA.
 # La baisse du cours précède souvent la coupe du dividende ; le payout élevé la détecte avant.
-PAYOUT_TIGHT = 0.80      # payout > 80 % : dividende tendu (vigilance)
-PAYOUT_CRITICAL = 1.00   # payout > 100 % : dividende non couvert par les bénéfices (risque de coupe)
+# PAYOUT_TIGHT (0,80) et PAYOUT_CRITICAL (1,00) viennent de src/regles.py.
 
 # Niveaux d'alerte (gravité croissante) — cf. IPS §3.4
 LEVEL_INFO = 1        # information : rien à faire (console uniquement)
@@ -229,7 +200,29 @@ def _next_check_date() -> str:
 
 
 def _history_line(pos: DividendPosition) -> str:
-    """Ligne « 📜 HISTOIRE » de l'alerte : profil de retournement du titre (si fiable)."""
+    """Ligne « 📜 LES AUTRES FOIS » : ce qui suit une hausse, dit en langage courant.
+
+    HONNÊTETÉ DE LA MESURE (09/10/2026)
+    -----------------------------------
+    Cette ligne affichait « après une hausse de 13 % » **écrit en dur**, alors que le seuil
+    du titre vaut 13 % (SNTS), 10 % (SGBC) ou 5 % (SLBC, PALC). Trois titres sur quatre
+    recevaient l'affirmation d'un seuil qui n'était pas le leur — et pour SLBC, la
+    statistique affichée (39 %, mesurée à +13 %) disait l'inverse de la sienne (54 % à 5 %).
+
+    Deux corrections :
+
+    1. **Le profil est mesuré au seuil du titre** (comme le seuil de vente lui-même) : les
+       deux chiffres ne peuvent plus diverger. Si un profil périmé porte un autre seuil, la
+       ligne le dit au lieu de laisser croire qu'il s'agit du sien.
+
+    2. **Le taux n'est affiché QUE s'il est statistiquement fondé** (`significatif`). Sur
+       peu de cas, « 86 % » se lit comme une probabilité de baisse future alors que sa
+       borne basse est 49 % — indiscernable du hasard. Le profil est alors publié pour ce
+       qu'il sait vraiment : le délai et la profondeur du repli.
+
+    Traductions conservées (règle de style néophyte) : « séances » → « jours de bourse »,
+    pourcentages à la française.
+    """
     try:
         data = json.loads(REVERSAL_FILE.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
@@ -237,14 +230,41 @@ def _history_line(pos: DividendPosition) -> str:
     prof = data.get(pos.code.upper())
     if not prof:
         return ""
-    line = (
-        f"\n   📜 HISTOIRE {pos.code} (9 ans) : après +13 % en 20 séances, baisse dans "
-        f"{prof['pct_down_20j']} % des cas\n"
-        f"      médiane {prof['median_20j']:+.1f} % à ~1 mois · creux à ~{prof['trough_delay_median']} séances "
-        f"({prof['trough_depth_median']:+.1f} %)"
-    )
-    if prof["pct_down_20j"] >= 65:
-        line += "\n      ⏳ Fenêtre de manœuvre estimée : ~2 à 4 semaines avant la baisse franche"
+    from .format_fr import pct
+
+    seuil_titre = profit_threshold_for(pos.code) * 100
+    seuil_profil = prof.get("seuil_pct", 13)
+    n = prof.get("episodes", "?")
+    fiable = bool(prof.get("significatif", False))
+
+    if abs(seuil_titre - seuil_profil) < 0.5:
+        entete = f"après une hausse de {seuil_profil:.0f} % en un mois"
+    else:
+        # Profil périmé : on le dit, sinon le lecteur rattache la statistique à son seuil.
+        entete = (f"repère mesuré à +{seuil_profil:.0f} %, alors que ton seuil "
+                  f"est {seuil_titre:.0f} %")
+
+    if fiable:
+        line = (f"\n   📜 LES AUTRES FOIS ({n} cas, 9 ans de recul) :\n"
+                f"      {entete} — le prix a REBAISSÉ dans {prof['pct_down_20j']} % des cas.\n")
+    elif isinstance(n, int) and n < PROFIT_MIN_EPISODES:
+        # Vraiment peu de cas : on ne peut rien dire de la fréquence.
+        line = (f"\n   📜 LES AUTRES FOIS ({n} cas — trop peu pour une fréquence fiable) :\n"
+                f"      {entete}, voici comment ça s'est terminé.\n")
+    else:
+        # Assez de cas, mais la fréquence reste trop proche du hasard pour en faire une
+        # règle. Dire « trop peu de cas » serait FAUX (SGBC en a 30) : le motif est
+        # l'imprécision de la mesure, pas la taille de l'échantillon.
+        line = (f"\n   📜 LES AUTRES FOIS ({n} cas, 9 ans de recul) :\n"
+                f"      {entete}, la suite n'est pas assez nette pour en faire une règle.\n"
+                f"      Voici ce qui s'est passé :\n")
+
+    if "trough_delay_median" in prof:
+        line += (f"      En moyenne : {pct(prof['median_20j'], signe=True)} un mois plus tard,\n"
+                 f"      avec un point bas vers {prof['trough_delay_median']} jours de bourse\n"
+                 f"      ({pct(prof['trough_depth_median'])}).")
+    if fiable and prof["pct_down_20j"] >= 65:
+        line += "\n      ⏳ Tu as environ 2 à 4 semaines pour décider avant la baisse"
     return line
 
 
@@ -274,6 +294,48 @@ def _double_option_alert(pos: DividendPosition, price: float) -> PositionAlert:
         f"   Alternative : CONSERVE pour ≈ {div_net:,.0f} F/an de dividendes nets\n"
         f"   Rendement net actuel : {net_yld:.1f} %"
         f"{trust}"
+        f"{_history_line(pos)}\n"
+        f"   Prochaine vérification : {_next_check_date()}",
+    )
+
+
+def _profit_info_alert(pos: DividendPosition, price: float) -> PositionAlert:
+    """Plus-value au-delà du seuil — on INFORME, on ne propose pas de vendre.
+
+    Rédigé pour un lecteur sans notion de bourse (règle de style LEO 03/09/2026) :
+    le gain est donné en francs sur SA ligne, la raison de ne pas vendre est donnée en
+    « tant de fois sur tant de cas » avec le repère du pile ou face, et l'action attendue
+    est écrite noir sur blanc (« RIEN À FAIRE »).
+
+    Différence avec `_double_option_alert` : aucune consigne de vente. Le seuil reste
+    VISIBLE (niveau 2, donc transmis) parce que l'information « ce titre a pris X % »
+    reste utile — mais le système s'abstient de recommander une vente sur un signal que
+    les données ne soutiennent pas (bornes basses 49/46/36/34 %, toutes sous 50 %).
+    """
+    from .format_fr import fcfa, pct
+    from .seuils_vente import explication, resume_justification
+
+    gain_pct = (price / pos.entry_price - 1) * 100
+    gain_fcfa = (price - pos.entry_price) * pos.quantity
+    div_net = _dividend_annual_net(pos)
+    net_yld = pos.net_yield_pct(price)
+    info = load_profit_thresholds().get(pos.code.upper())
+    # Traçabilité MINIMALE (réserve LEO 08/10/2026) : l'alerte dit d'où vient le seuil
+    # qui l'a produite — calibrage automatique ou choix manuel, et depuis quand. Sans
+    # cela, un seuil change en silence et personne ne peut savoir sur quoi on a décidé.
+    justif = resume_justification(pos.code)
+    return PositionAlert(
+        LEVEL_DECISION,
+        f"ℹ️ INFO — {pos.name} ({pos.code}) a pris {pct(gain_pct, signe=True)} "
+        f"({fcfa(gain_fcfa, signe=True)} sur ta ligne)\n"
+        f"   Tu gagnerais {fcfa(gain_fcfa)} en vendant maintenant.\n"
+        f"{explication(info)}\n"
+        f"{justif}\n"
+        f"   → RIEN À FAIRE. Garde tes actions : elles te paient\n"
+        f"     ≈ {fcfa(div_net)} par an, soit {pct(net_yld)} de ton argent\n"
+        f"     (ton objectif est d'au moins 4 %).\n"
+        f"   Une vente n'a de sens que si l'entreprise coupe son dividende,\n"
+        f"   gagne beaucoup moins, ou si le loyer tombe sous 2 %."
         f"{_history_line(pos)}\n"
         f"   Prochaine vérification : {_next_check_date()}",
     )
@@ -384,11 +446,16 @@ def status_level(pos: DividendPosition, price: float) -> tuple[int, str]:
     """Niveau + libellé court pour l'affichage console (`portf status`).
 
     Basé sur le cours seul (sans PER/payout, pour éviter le scraping dans `status`).
+    Le libellé distingue un seuil qui DÉCLENCHE (« VENDS 1/3 ») d'un seuil seulement
+    informatif (« +X % (info) ») — cohérent avec l'alerte Telegram.
     """
     if pos.closed:
         return LEVEL_EXIT, "VENDU"
     if price >= pos.entry_price * (1 + profit_threshold_for(pos.code)):
-        return LEVEL_DECISION, "VENDS 1/3"
+        from .seuils_vente import est_declencheur
+        if est_declencheur(load_profit_thresholds().get(pos.code.upper())):
+            return LEVEL_DECISION, "VENDS 1/3"
+        return LEVEL_DECISION, "SEUIL ATTEINT (info)"
     if price <= pos.entry_price * (1 - LOSS_ALERT_THRESHOLD):
         return LEVEL_DECISION, "CONSERVE"
     return LEVEL_INFO, "rien à faire"
@@ -446,9 +513,17 @@ def check_dividend_position(
         if sa:
             alerts.append(sa)
 
-    # 5. plus-value → décision (niveau 2) — seuil CALIBRÉ PAR TITRE
+    # 5. plus-value → décision (niveau 2) — seuil CALIBRÉ PAR TITRE.
+    #    Le seuil ne déclenche une consigne de vente que s'il est statistiquement fondé
+    #    (borne basse de l'intervalle de confiance ≥ 50 %, cf. src/seuils_vente.py).
+    #    Sinon le seuil reste VISIBLE mais informatif : aucune vente n'est proposée.
     if not pos.closed and current_price >= pos.entry_price * (1 + profit_threshold_for(pos.code)):
-        alerts.append(_double_option_alert(pos, current_price))
+        from .seuils_vente import est_declencheur
+        info_seuil = load_profit_thresholds().get(pos.code.upper())
+        if est_declencheur(info_seuil):
+            alerts.append(_double_option_alert(pos, current_price))
+        else:
+            alerts.append(_profit_info_alert(pos, current_price))
 
     # 6. moins-value → décision (niveau 2)
     elif not pos.closed and current_price <= pos.entry_price * (1 - LOSS_ALERT_THRESHOLD):
@@ -502,10 +577,8 @@ def save_portfolio(positions: list[DividendPosition]) -> None:
 
 
 # ------------------------------------------------- renforcements (noyau dynamique)
-PER_MAX_NOYAU = 14.0  # même limite que les filtres d'achat qualifié (noyau_check)
-MAX_POSITION_WEIGHT = 0.35  # poids MARCHÉ par défaut : libre sous 35 %
-MAX_BUY_WEIGHT = 0.40       # poids d'ACHAT max après un renforcement « limité »
-MAX_MARKET_WEIGHT = 0.50    # ligne Buffett : jamais plus de la moitié du portefeuille
+# PER_MAX_NOYAU (14,0) et les trois poids de concentration viennent de src/regles.py.
+# Rappel de la règle LEO : le verrou de concentration INFORME, il ne bloque jamais.
 
 
 def _msg_renfort_libre(p, price, entry_ref, net, payout) -> str:
@@ -554,7 +627,31 @@ def _msg_ligne_buffett(p, price, entry_ref, w_mkt) -> str:
     )
 
 
-def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.0):
+def _msg_regime(regime: dict | None) -> str:
+    """Dit en langage courant dans quel marché on est (règle de style néophyte).
+
+    Mesure de référence (5 196 observations, 28 ans) : renforcer en entrant en année de
+    krach gagne 67-69 % du temps ; en marché haussier, 42-49 %. On traduit en « fois sur
+    dix » — plus parlant qu'un pourcentage pour qui n'a pas l'habitude.
+
+    Règle LEO « ne bloque pas » : le renforcement part TOUJOURS, l'alerte est documentée.
+    """
+    if not regime or not regime.get("etat"):
+        return ""
+    from .regime_marche import BAISSIER
+
+    if regime["etat"] == BAISSIER:
+        return ("\n   📉 En ce moment, le marché BAISSE dans l'ensemble.\n"
+                "      C'est la période où acheter sur baisse a le plus marché :\n"
+                "      sur 28 ans de données, ces achats ont été gagnants 7 fois sur 10.")
+    return ("\n   📈 En ce moment, le marché MONTE dans l'ensemble.\n"
+            "      Acheter sur baisse marche moins bien dans ces périodes :\n"
+            "      gagnant 4 fois sur 10 seulement (contre 7 fois sur 10 quand ça baisse).\n"
+            "      → Tu peux quand même le faire, en le sachant.")
+
+
+def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.0,
+                           regime: dict | None = None):
     """Positions dont le cours est REDESCENDU sous le prix qui garantit 4 % net,
     avec les 4 filtres toujours OK (PER ≤ 14, payout ≤ 80 %) + verrou de
     concentration INFORMATIF (règle LEO 11/09 « ne bloque pas » : l'alerte part
@@ -590,21 +687,23 @@ def reinforcement_messages(positions, price_of, per_of, total_stocks: float = 0.
         w_mkt = (p.quantity * price / total_stocks) if total_stocks > 0 else 0.0
         w_cost = (p.quantity * p.entry_price / total_cost) if total_cost > 0 else 0.0
         net = net_yield(p.dps / price) * 100
+        # Contexte de marché ajouté à CHAQUE message (règle LEO : informer, jamais bloquer).
+        ctx = _msg_regime(regime)
         if w_mkt > MAX_MARKET_WEIGHT:
-            hits.append((p.code, _msg_ligne_buffett(p, price, entry_ref, w_mkt)))
+            hits.append((p.code, _msg_ligne_buffett(p, price, entry_ref, w_mkt) + ctx))
             continue
         if w_cost > MAX_POSITION_WEIGHT:
-            hits.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
+            hits.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost) + ctx))
             continue
         if w_mkt > MAX_POSITION_WEIGHT:
             max_qty = int((MAX_BUY_WEIGHT * total_cost - p.quantity * p.entry_price) // price)
             if max_qty < 1:
-                hits.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost)))
+                hits.append((p.code, _msg_concentration_achats(p, price, entry_ref, w_cost) + ctx))
                 continue
             hits.append((p.code, _msg_renfort_limite(
-                p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty)))
+                p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty) + ctx))
             continue
-        hits.append((p.code, _msg_renfort_libre(p, price, entry_ref, net, payout)))
+        hits.append((p.code, _msg_renfort_libre(p, price, entry_ref, net, payout) + ctx))
     return hits, []
 
 
@@ -636,7 +735,17 @@ def check_reinforcements(api) -> list[tuple[str, str]]:
     total_stocks = sum(
         (p.quantity * price_of(p.code)) for p in positions if not p.closed
     )
-    hits, blocked = reinforcement_messages(positions, price_of, per_of, total_stocks)
+    # Contexte de marché : mesuré une fois par jour (cache), ajouté aux messages.
+    # Il n'empêche RIEN (règle LEO « ne bloque pas ») — il documente le régime, parce que
+    # renforcer paie 67-69 % du temps en marché baissier contre 42-49 % en marché haussier.
+    try:
+        from .regime_marche import regime_du_jour
+        regime = regime_du_jour()
+    except Exception:
+        # Un indicateur indisponible ne doit JAMAIS empêcher l'alerte de partir.
+        regime = None
+    hits, blocked = reinforcement_messages(positions, price_of, per_of, total_stocks,
+                                           regime=regime)
     state = load_reinf_state()
     fresh: list[tuple[str, str]] = []
     now = datetime.now().isoformat()
