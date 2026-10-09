@@ -1,0 +1,66 @@
+name: CI
+
+# Les trois filets du projet, plus le contrôle de configuration, à CHAQUE poussée et à
+# chaque proposition de fusion. Objectif : voir un écart dans la minute qui suit, et pas
+# trois semaines plus tard sur un chiffre qui a servi à décider.
+#
+# Les filets, dans l'ordre du moins coûteux au plus coûteux (retour le plus rapide) :
+#   1. chemins recalculés à la main        (scripts/verifier_chemins.py --strict)
+#   2. configuration                        (scripts/verifier_configuration.py)
+#   3. valeurs effectives des constantes    (scripts/auditer_constantes.py --comparer)
+#   4. comportement                         (pytest)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Une poussée qui en remplace une autre annule l'exécution précédente : on ne paie pas
+# deux fois pour un état qui n'existe plus.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  filets:
+    name: filets du projet
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v7
+
+      - name: Installer Python 3.11
+        uses: actions/setup-python@v7
+        with:
+          # La version qui fait tourner le système et les tests en local — une CI sur une
+          # version différente découvrirait des pannes qui n'existent pas en production.
+          python-version: "3.11"
+          cache: pip
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt -r requirements-dev.txt
+
+      # ── Filet 1 : aucun module ne recalcule son chemin de données ──────────────
+      # C'est le prérequis de la réorganisation en domaines : un module qui descend d'un
+      # niveau casse les chargements SANS erreur visible.
+      - name: Filet 1 — chemins calculés à la main
+        run: python scripts/verifier_chemins.py --strict
+
+      # ── Configuration : schéma des seuils, secrets, fichiers requis ────────────
+      - name: Configuration
+        run: python scripts/verifier_configuration.py
+
+      # ── Filet 2 : aucune valeur effective de constante n'a bougé ───────────────
+      # Échoue aussi si une valeur devient ILLISIBLE (dépendance manquante) : un contrôle
+      # qui saute ce qu'il ne sait pas lire annonce une couverture qu'il n'a pas.
+      - name: Filet 2 — valeurs effectives des constantes
+        run: python scripts/auditer_constantes.py --comparer
+
+      # ── Filet 3 : le comportement ──────────────────────────────────────────────
+      - name: Filet 3 — tests
+        run: pytest -q

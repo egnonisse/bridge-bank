@@ -63,6 +63,12 @@ def _serialisable(valeur):
     if isinstance(valeur, dict):
         return {str(k): _serialisable(v) for k, v in valeur.items()}
     if isinstance(valeur, Path):
+        # Le dossier du projet ne porte PAS le même nom sur toutes les machines : en intégration
+        # continue le dépôt est cloné dans « bridge-bank », ailleurs dans « Bridge Bank ». Un
+        # chemin absolu stocké tel quel ferait échouer le filet pour une raison qui n'a rien à
+        # voir avec une dérive de règle — un faux écart qui apprend à ignorer l'alerte.
+        if valeur == RACINE:
+            return "<Path .>"
         return f"<Path {valeur.name}>"
     if isinstance(valeur, (set, frozenset)):
         return sorted(_serialisable(v) for v in valeur)
@@ -95,13 +101,27 @@ def scanner_module(chemin: Path) -> dict:
     return out
 
 
-def lire_valeur_effective(nom_module: str, constante: str):
-    """Lit la valeur REELLE en important le module. None si l'import echoue."""
+# Sentinelle : « cette constante n'a PAS pu être lue » (module inimportable, nom absent).
+# À NE PAS confondre avec None, qui est une valeur parfaitement légitime. Les deux étaient
+# confondus, et les deux usages SAUTAIENT la ligne en silence : le contrôle annonçait
+# « OK — 189 valeurs identiques au snapshot » alors que 120 d'entre elles n'étaient même pas
+# lues (interpréteur sans les dépendances : requests, pyyaml, pymupdf).
+ILLISIBLE = object()
+
+
+def lire_valeur_effective(nom_module: str, constante: str, motifs: list | None = None):
+    """Lit la valeur REELLE en important le module. `ILLISIBLE` si la lecture est impossible."""
     try:
         mod = importlib.import_module(nom_module)
-        return _serialisable(getattr(mod, constante))
-    except Exception:
-        return None
+    except Exception as exc:                                   # noqa: BLE001
+        if motifs is not None:
+            motifs.append(f"{nom_module} non importable ({type(exc).__name__}: {exc})")
+        return ILLISIBLE
+    if not hasattr(mod, constante):
+        if motifs is not None:
+            motifs.append(f"{nom_module}.{constante} absente du module")
+        return ILLISIBLE
+    return _serialisable(getattr(mod, constante))
 
 
 # Familles SEMANTIQUES : des notions qui portent des noms differents selon le module.
@@ -192,20 +212,39 @@ TOUS_LES_NOMS_METIER = {
 }
 
 
-def ecrire_snapshot(inventaire: dict, fichiers: list[Path]) -> None:
-    """Valeurs EFFECTIVES (modules importes), pour la comparaison avant/apres."""
+def ecrire_snapshot(inventaire: dict, fichiers: list[Path]) -> int:
+    """Valeurs EFFECTIVES (modules importes). REFUSE d'ecrire un snapshot PARTIEL.
+
+    Un snapshot qui retrecit en silence est un filet qui se raccourcit : la comparaison
+    suivante ne porte plus que sur ce qui restait lisible, et elle annonce « OK ». Retourne
+    le nombre de valeurs illisibles (0 = snapshot ecrit).
+    """
     snap = {}
+    illisibles: list[str] = []
     for f in fichiers:
         module = f"src.{f.stem}"
         constantes = list(inventaire.keys())
         for nom in constantes:
             if not any(d["module"] == module for d in inventaire[nom]):
                 continue
-            v = lire_valeur_effective(module, nom)
-            if v is not None:
-                snap[f"{module}.{nom}"] = v
+            motifs: list[str] = []
+            v = lire_valeur_effective(module, nom, motifs)
+            if v is ILLISIBLE:
+                illisibles.append(f"{module}.{nom} — {motifs[0] if motifs else 'illisible'}")
+                continue
+            snap[f"{module}.{nom}"] = v
+    if illisibles:
+        print(f"\n  ARRET : {len(illisibles)} constante(s) illisible(s) — snapshot NON ecrit.")
+        for ligne in illisibles[:10]:
+            print(f"    {ligne}")
+        if len(illisibles) > 10:
+            print(f"    … et {len(illisibles) - 10} autre(s)")
+        print("  Dependances manquantes ? Un snapshot partiel ferait taire le controle")
+        print("  sur tout ce qui manque, tout en affichant « OK ».")
+        return len(illisibles)
     SNAPSHOT.write_text(json.dumps(snap, ensure_ascii=False, indent=1, sort_keys=True),
                         encoding="utf-8")
+    return 0
 
 
 def ecrire_rapport(inventaire: dict, doublons: list[dict], familles: dict) -> None:
@@ -280,22 +319,39 @@ def ecrire_rapport(inventaire: dict, doublons: list[dict], familles: dict) -> No
 
 
 def comparer() -> int:
-    """Compare les valeurs effectives courantes au snapshot. 0 = aucune derive."""
+    """Compare les valeurs effectives courantes au snapshot. 0 = aucune derive.
+
+    Une valeur ILLISIBLE est un ECHEC, jamais une raison d'ignorer la ligne : un contrôle qui
+    saute ce qu'il n'arrive pas à lire annonce une couverture qu'il n'a pas.
+    """
     if not SNAPSHOT.exists():
         print("Aucun snapshot — lancer l'audit d'abord.")
         return 1
     ancien = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
-    inventaire, fichiers = auditer()
     ecarts = []
+    illisibles: list[str] = []
     for cle, valeur in ancien.items():
         module, _, nom = cle.rpartition(".")
-        courante = lire_valeur_effective(module, nom)
-        if courante is None:
+        motifs: list[str] = []
+        courante = lire_valeur_effective(module, nom, motifs)
+        if courante is ILLISIBLE:
+            illisibles.append(f"{cle} — {motifs[0] if motifs else 'illisible'}")
             continue
         if json.dumps(courante, sort_keys=True) != json.dumps(valeur, sort_keys=True):
             ecarts.append((cle, valeur, courante))
+
+    lues = len(ancien) - len(illisibles)
+    if illisibles:
+        print(f"{len(illisibles)} VALEUR(S) ILLISIBLE(S) — le controle n'a verifie que "
+              f"{lues}/{len(ancien)} valeurs :")
+        for ligne in illisibles[:10]:
+            print(f"  {ligne}")
+        if len(illisibles) > 10:
+            print(f"  … et {len(illisibles) - 10} autre(s)")
+        print("  -> dependances manquantes ? installer requirements.txt, puis relancer.")
+        return 1
     if not ecarts:
-        print(f"OK — {len(ancien)} valeurs effectives identiques au snapshot.")
+        print(f"OK — {lues} valeurs effectives identiques au snapshot.")
         return 0
     print(f"{len(ecarts)} VALEUR(S) MODIFIEE(S) :")
     for cle, av, ap in ecarts:
@@ -315,7 +371,9 @@ def main():
     inventaire, fichiers = auditer()
     doublons = detecter_doublons(inventaire)
     familles = familles_semantiques(inventaire)
-    ecrire_snapshot(inventaire, fichiers)
+    manquants = ecrire_snapshot(inventaire, fichiers)
+    if manquants:
+        raise SystemExit(1)          # pas de rapport non plus : il serait partiel lui aussi
     ecrire_rapport(inventaire, doublons, familles)
 
     total = sum(len(d) for d in inventaire.values())

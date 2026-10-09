@@ -1,0 +1,6 @@
+# Dépendances de développement — la CI installe ce fichier EN PLUS de requirements.txt
+# (`pip install -r requirements.txt -r requirements-dev.txt`), pour que l'environnement de
+# vérification soit exactement celui qui fait tourner les tests.
+-r requirements.txt
+
+pytest>=8

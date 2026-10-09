@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**189 définitions** pour **158 constantes distinctes**.
+**202 définitions** pour **186 constantes distinctes**.
 
 ---
 
@@ -77,9 +77,9 @@ l'autre produit un chiffre faux sans qu'aucun test ne s'en aperçoive.**
 | `EPISODES_MIN` | `8` | src.regles |
 | `PROFIT_ALERT_THRESHOLD` | `0.13` | src.regles |
 | `PROFIT_DOWN_PROB` | `{'SNTS': 86, 'SGBC': 63, 'SLBC': 54, 'PALC': 45}` | src.portfolio |
-| `PROFIT_SEUILS_CANDIDATS` | `[0.05, 0.08, 0.1, 0.13, 0.15]` | src.portfolio |
-| `PROFIT_THRESHOLDS` | `{'SNTS': 0.13, 'SGBC': 0.1, 'SLBC': 0.05, 'PALC': 0.05}` | src.portfolio |
-| `PROFIT_THRESHOLDS_FILE` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.portfolio |
+| `PROFIT_SEUILS_CANDIDATS` | `<expression: SEUILS_CANDIDATS>` | src.portfolio |
+| `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.paths |
+| `PROFIT_THRESHOLDS_FILE` | `<expression: SEUILS_FILE>` | src.portfolio |
 | `SELL_FRACTION` | `<expression: 1 / 3>` | src.regles |
 
 ### sortie de secours
@@ -110,6 +110,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `CACHE_FILE` | <expression: DATA_DIR / 'fundamentals_ca · <expression: DATA_DIR / 'history_cache.p | src.backtest · src.screener |
 | `COMPANY_HINTS` | {'bank_of_africa_sn': 'BOAS', 'societe_g · {'sgb': 'SGBC', 'sgci': 'SGBC', 'societe | src.boc · src.news |
 | `POSITIONS_FILE` | <expression: DATA_DIR / 'bonds_positions · <expression: DATA_DIR / 'spec_positions. | src.bonds · src.speculation |
+| `PROFIT_THRESHOLDS` | <expression: DATA_DIR / 'profit_threshol · <expression: SEUILS_PAR_DEFAUT> | src.paths · src.portfolio |
 | `ALERT_STATE_FILE` | <expression: DATA_DIR / 'portf_alert_sta · <expression: DATA_DIR / 'radar_alert_sta | src.portfolio · src.radar |
 
 ---
@@ -118,11 +119,8 @@ chemin distinct dans chaque module). Rien à corriger.
 
 | Constante | Fois | Modules |
 |---|---|---|
-| `DATA_DIR` | 14 | src.alerts · src.backtest · src.boc · src.bonds · src.cache_integrity · src.dividends · src.fundamentals · src.news · src.noyau_check · src.portfolio · src.radar · src.report · src.screener · src.speculation |
 | `HEADERS` | 5 | src.boc · src.dividend_history · src.fundamentals · src.live · src.news |
-| `RACINE` | 3 | src.challenge_validateur · src.divisions_officielles · src.fondamentaux_historiques |
 | `REVERSAL_FILE` | 2 | src.cache_integrity · src.portfolio |
-| `DATA` | 2 | src.spec_profiles · src.spec_veille |
 
 ---
 
@@ -136,7 +134,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (84)
+### autre (101)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -148,18 +146,25 @@ chemin distinct dans chaque module). Rien à corriger.
 | `BRVM_ANNOUNCE_PAGES` | `{'dividendes': 'https://www.brvm.org/fr/esv/paiement-de-dividendes', 'communiques': 'https://www.brvm.org/fr/emetteurs/type-annonces/communiques', 'ag': 'https://www.brvm.org/fr/emetteurs/type-annonces/convocations-assemblees-generales', 'dirigeants': 'https://www.brvm.org/fr/emetteurs/type-annonces/changements-de-dirigeants', 'notations': 'https://www.brvm.org/fr/emetteurs/type-annonces/notations-financieres'}` | src.news |
 | `BRVM_FEES_RATE` | `0.00456` | src.taxation |
 | `CASH_CREDIT_OFFSET_DAYS` | `1` | src.live |
+| `CHAMPS_AUTORISES` | `<expression: ('code', 'protege') + CHAMPS_MESURE + CHAMPS_DECISION>` | src.schema_seuils |
+| `CHAMPS_DECISION` | `['threshold', 'mode']` | src.schema_seuils |
+| `CHAMPS_MESURE` | `['down_prob', 'borne_basse', 'episodes', 'median_pct', 'significatif']` | src.schema_seuils |
+| `CHAMPS_REQUIS_ECRITURE` | `['code', 'threshold', 'down_prob', 'borne_basse', 'episodes', 'significatif', 'mode']` | src.schema_seuils |
+| `CHAMPS_REQUIS_LECTURE` | `['threshold']` | src.schema_seuils |
+| `CODE_ATTENDU` | `<expression: re.compile('^[A-Z0-9][A-Z0-9.\\-]{0,15}$')>` | src.schema_seuils |
 | `COMPANY_HINTS` | `{'sgb': 'SGBC', 'sgci': 'SGBC', 'societe generale': 'SGBC', 'sonatel': 'SNTS', 'solibra': 'SLBC', 'palm': 'PALC', 'palmci': 'PALC', 'sogb': 'SOGC', 'boa senegal': 'BOAS', 'bank of africa senegal': 'BOAS'}` | src.boc |
 | `COMPARATEURS` | `['<=', '>=', '<', '>', '==', '!=']` | src.challenge_schema |
 | `CONFIG_PATH` | `<expression: ROOT / 'config.yaml'>` | src.main |
 | `CUSTODY_ANNUAL` | `<expression: CUSTODY_PER_QUARTER * 4>` | src.taxation |
 | `CUSTODY_MIN_PER_QUARTER` | `2500.0` | src.taxation |
 | `CUSTODY_PER_QUARTER` | `0.002` | src.taxation |
-| `DATA` | `<expression: Path(__file__).resolve().parents[1] / 'data'>` | src.spec_profiles |
 | `DECALAGE_PUBLICATION_BPA` | `1` | src.fondamentaux_historiques |
+| `DIVISIONS_OFFICIELLES` | `<expression: DATA_DIR / 'divisions_officielles.json'>` | src.paths |
 | `DIV_CUT_RATIO` | `0.5` | src.portfolio |
 | `FENETRE` | `200` | src.regime_marche |
 | `FICHIER` | `<expression: RACINE / 'data' / 'divisions_officielles.json'>` | src.divisions_officielles |
 | `FONDAMENTAUX_BIAISES` | `['per', 'net_yield', 'payout']` | src.challenge_schema |
+| `FUNDAMENTALS_HISTORIQUES` | `<expression: DATA_DIR / 'fondamentaux_historiques.json'>` | src.paths |
 | `GROWTH_MIN_PCT` | `-10.0` | src.dividend_history |
 | `HAUSSIER` | `haussier` | src.regime_marche |
 | `HISTORY_DAYS` | `90` | src.screening |
@@ -173,12 +178,17 @@ chemin distinct dans chaque module). Rien à corriger.
 | `LEVEL_INFO` | `1` | src.portfolio |
 | `MAX_COMPARE_AGE_DAYS` | `3` | src.cache_integrity |
 | `MAX_JUMP` | `3.0` | src.cache_integrity |
+| `METHODE_DEFAUT` | `episodes de +seuil % en 20 seances, dedoublonnes par vague` | src.seuils_vente |
 | `MIN_SIGNALS` | `3` | src.speculation |
 | `MIN_TITRES` | `5` | src.regime_marche |
 | `MIN_VOLUME_MILLIONS` | `5.0` | src.dividend_history |
-| `MODE_DECLENCHEUR` | `declencheur` | src.seuils_vente |
-| `MODE_INFORMATIF` | `informatif` | src.seuils_vente |
+| `MODES` | `<expression: (MODE_DECLENCHEUR, MODE_INFORMATIF)>` | src.schema_seuils |
+| `MODE_DECLENCHEUR` | `declencheur` | src.schema_seuils |
+| `MODE_INFORMATIF` | `informatif` | src.schema_seuils |
 | `MOIS_FR` | `{'1': 'JANVIER', '2': 'FEVRIER', '3': 'MARS', '4': 'AVRIL', '5': 'MAI', '6': 'JUIN', '7': 'JUILLET', '8': 'AOUT', '9': 'SEPTEMBRE', '10': 'OCTOBRE', '11': 'NOVEMBRE', '12': 'DECEMBRE'}` | src.boc |
+| `MOTIF_CALIBRAGE` | `calibrage automatique` | src.seuils_vente |
+| `MOTIF_MIGRATION` | `migration (ajout du mode)` | src.seuils_vente |
+| `MOTIF_REFUS` | `refus : ecriture automatique sur un reglage protege` | src.seuils_vente |
 | `NB_TIRAGES_ALEATOIRES` | `100` | src.challenge_validateur |
 | `NET_MAX` | `0.1` | src.noyau_check |
 | `NOMINAL` | `10000.0` | src.bonds |
@@ -186,17 +196,19 @@ chemin distinct dans chaque module). Rien à corriger.
 | `OPERATEURS` | `['et', 'ou']` | src.challenge_schema |
 | `ORDER_CUTOFF_BSTRADE` | `<expression: time(13, 30)>` | src.live |
 | `ORDER_CUTOFF_EMAIL` | `<expression: time(11, 0)>` | src.live |
+| `ORIGINE_AUTO` | `automatique` | src.seuils_vente |
+| `ORIGINE_MANUELLE` | `manuelle` | src.seuils_vente |
 | `PER_ABSURD` | `50.0` | src.regles |
 | `PER_EXPLODE` | `40.0` | src.portfolio |
+| `PORTFOLIO_STATE` | `<expression: DATA_DIR / 'portfolio_state.json'>` | src.paths |
 | `PRICE_TOLERANCE` | `0.25` | src.cache_integrity |
-| `RACINE` | `<expression: Path(__file__).resolve().parent.parent>` | src.challenge_validateur |
+| `RACINE` | `<expression: Path(__file__).resolve().parent.parent>` | src.paths |
 | `RATIOS_BRVM` | `[2, 3, 4, 5, 10, 20, 50, 100]` | src.ajustement |
 | `REENTER_GAP_DAYS` | `5` | src.radar |
 | `REFERENCE_AMOUNT` | `100000.0` | src.noyau_check |
 | `REGULARITY_MIN_YEARS` | `4` | src.dividend_history |
 | `REINF_COOLDOWN_DAYS` | `7` | src.portfolio |
 | `REINF_IMPROVE_DOWN_PCT` | `0.03` | src.portfolio |
-| `ROOT` | `<expression: Path(__file__).resolve().parent.parent>` | src.main |
 | `SAUT_MIN` | `1.8` | src.ajustement |
 | `SCHEMA_LABELS` | `{'CASSURE': '🔓 CASSURE DE 1 AN', 'EVEIL': '🌅 REBOND CONFIRMÉ', 'PANIQUE': '🩹 RACHAT DE PANIQUE'}` | src.spec_fiche |
 | `SCHEMA_ORDER` | `['CASSURE', 'EVEIL', 'PANIQUE']` | src.spec_fiche |
@@ -206,6 +218,9 @@ chemin distinct dans chaque module). Rien à corriger.
 | `SESSION_START` | `<expression: time(9, 0)>` | src.live |
 | `SETTLEMENT_DAYS` | `3` | src.live |
 | `SEUIL` | `5.0` | src.nettoyage_aberrantes |
+| `SEUILS_CANDIDATS` | `[0.05, 0.08, 0.1, 0.13, 0.15]` | src.seuils_vente |
+| `SEUILS_JOURNAL` | `<expression: DATA_DIR / 'seuils_journal.jsonl'>` | src.paths |
+| `SEUILS_PAR_DEFAUT` | `{'SNTS': 0.13, 'SGBC': 0.1, 'SLBC': 0.05, 'PALC': 0.05}` | src.seuils_vente |
 | `SPAM_DAYS` | `7` | src.spec_veille |
 | `TAKE_1` | `0.2` | src.speculation |
 | `TAKE_2` | `0.35` | src.speculation |
@@ -277,9 +292,9 @@ chemin distinct dans chaque module). Rien à corriger.
 | `PREP_REALERT_DOWN_PCT` | `0.03` | src.noyau_check |
 | `PROFIT_ALERT_THRESHOLD` | `0.13` | src.regles |
 | `PROFIT_DOWN_PROB` | `{'SNTS': 86, 'SGBC': 63, 'SLBC': 54, 'PALC': 45}` | src.portfolio |
-| `PROFIT_SEUILS_CANDIDATS` | `[0.05, 0.08, 0.1, 0.13, 0.15]` | src.portfolio |
-| `PROFIT_THRESHOLDS` | `{'SNTS': 0.13, 'SGBC': 0.1, 'SLBC': 0.05, 'PALC': 0.05}` | src.portfolio |
-| `PROFIT_THRESHOLDS_FILE` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.portfolio |
+| `PROFIT_SEUILS_CANDIDATS` | `<expression: SEUILS_CANDIDATS>` | src.portfolio |
+| `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.paths |
+| `PROFIT_THRESHOLDS_FILE` | `<expression: SEUILS_FILE>` | src.portfolio |
 | `SELL_FRACTION` | `<expression: 1 / 3>` | src.regles |
 | `STOP_LOSS` | `0.15` | src.speculation |
 
@@ -294,7 +309,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `STOP_INITIAL` | `-0.15` | src.paliers_sortie |
 | `TARGET_SPEC` | `0.0` | src.report |
 
-### technique (27)
+### technique (38)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -305,23 +320,34 @@ chemin distinct dans chaque module). Rien à corriger.
 | `CACHE_MAX_AGE_DAYS` | `7` | src.backtest |
 | `CACHE_MAX_AGE_HOURS` | `24` | src.screener |
 | `CANDIDATES_STATE_FILE` | `<expression: DATA_DIR / 'spec_candidates_state.json'>` | src.speculation |
-| `DATA_DIR` | `<expression: Path(__file__).resolve().parent.parent / 'data'>` | src.alerts |
+| `DATA_DIR` | `<expression: RACINE / 'data'>` | src.paths |
+| `DECISIONS_DIR` | `<expression: DOCS_DIR / 'decisions'>` | src.paths |
 | `DIVIDENDES_FILE` | `<expression: DATA_DIR / 'dividendes.json'>` | src.dividends |
+| `DOCS_DIR` | `<expression: RACINE / 'docs'>` | src.paths |
 | `HEADERS` | `{'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}` | src.boc |
+| `HISTORY_CACHE` | `<expression: DATA_DIR / 'history_clean.pkl'>` | src.paths |
+| `JOURNAL_FILE` | `<expression: DATA_DIR / 'seuils_journal.jsonl'>` | src.seuils_vente |
+| `MARKET_DIR` | `<expression: DATA_DIR / 'market'>` | src.paths |
 | `MARKET_FILE` | `<expression: DATA_DIR / 'bonds_market.json'>` | src.bonds |
 | `MAX_CACHE_AGE_DAYS` | `8` | src.cache_integrity |
 | `MAX_WORKERS` | `8` | src.backtest |
 | `NSIA_BOC_URL` | `https://nsiacapital.com/wp-content/uploads/{yyyy}/{mm}/BOC-DU-{dd}-{MOIS}.pdf` | src.boc |
 | `PER_CACHE_FILE` | `<expression: DATA_DIR / 'per_cache.json'>` | src.fundamentals |
+| `PORTFOLIO_DIR` | `<expression: DATA_DIR / 'portfolio'>` | src.paths |
 | `PORTFOLIO_FILE` | `<expression: DATA_DIR / 'portfolio.json'>` | src.portfolio |
 | `POSITIONS_FILE` | `<expression: DATA_DIR / 'bonds_positions.json'>` | src.bonds |
 | `PREP_WATCH_FILE` | `<expression: DATA_DIR / 'prep_watch_state.json'>` | src.noyau_check |
 | `PROFILES_FILE` | `<expression: DATA / 'spec_profiles.json'>` | src.spec_profiles |
 | `REINF_STATE_FILE` | `<expression: DATA_DIR / 'reinf_alert_state.json'>` | src.portfolio |
 | `REVERSAL_FILE` | `<expression: DATA_DIR / 'reversal_profiles.json'>` | src.cache_integrity |
+| `REVERSAL_PROFILES` | `<expression: DATA_DIR / 'reversal_profiles.json'>` | src.paths |
+| `SCRIPTS_DIR` | `<expression: RACINE / 'scripts'>` | src.paths |
 | `SEEN_STATE_FILE` | `<expression: DATA_DIR / 'radar_seen_state.json'>` | src.radar |
 | `SESSION_TIMEOUT` | `20` | src.bsapi |
+| `SEUILS_FILE` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.seuils_vente |
 | `SIKA_DIV_URL` | `https://www.sikafinance.com/marches/dividendes` | src.boc |
+| `SRC_DIR` | `<expression: RACINE / 'src'>` | src.paths |
 | `STATE_FILE` | `<expression: DATA_DIR / 'alerts_state.json'>` | src.alerts |
+| `TESTS_DIR` | `<expression: RACINE / 'tests'>` | src.paths |
 | `URL` | `https://www.brvm.org/fr/cours-actions/0` | src.live |
 | `VALUE_STATE_FILE` | `<expression: DATA_DIR / 'value_state.json'>` | src.screener |
