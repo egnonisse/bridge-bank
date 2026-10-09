@@ -28,9 +28,9 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.backtest_noyau import _index_dates, simuler_position  # noqa: E402
-from src.challenge_indicateurs import charger_historique_fondamentaux  # noqa: E402
-from src.challenge_validateur import charger_historique  # noqa: E402
+from src.backtesting.backtest_noyau import _index_dates, simuler_position  # noqa: E402
+from src.backtesting.challenge_indicateurs import charger_historique_fondamentaux  # noqa: E402
+from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
 import random  # noqa: E402
 
 CAPITAL = 1_000_000.0
@@ -57,7 +57,7 @@ def revenu_panier(hist, hf, codes, date_debut, date_fin, capital):
 
 
 def main():
-    from src.backtest_noyau import backtester_noyau
+    from src.backtesting.backtest_noyau import backtester_noyau
 
     hist = charger_historique()
     hf = charger_historique_fondamentaux()

@@ -33,7 +33,7 @@ hist_all = load_all_history(BSApi(), force=False)
 
 def _post_split_closes(closes: list[float]) -> list[float]:
     """Closes après la dernière division de nominal (niveaux comparables)."""
-    from src.radar import _last_split_index
+    from src.analyse.radar import _last_split_index
     return closes[_last_split_index(closes):]
 
 

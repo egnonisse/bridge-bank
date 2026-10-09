@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.backtest import load_all_history
 from src.bsapi import BSApi
-from src.radar import (
+from src.analyse.radar import (
     load_alerted,
     load_seen_state,
     monitor_output,

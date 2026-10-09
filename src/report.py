@@ -15,7 +15,7 @@ from datetime import datetime
 from pathlib import Path
 
 from .bsapi import BSApi
-from .bonds import NOMINAL, load_bond_positions, market_line, ytm
+from .analyse.bonds import NOMINAL, load_bond_positions, market_line, ytm
 from .dividends import total_encaissé
 from .orders import build_limit_orders
 from .portfolio import load_portfolio

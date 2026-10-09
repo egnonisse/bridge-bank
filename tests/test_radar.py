@@ -2,7 +2,7 @@
 from datetime import datetime, timedelta
 
 from src.domaine.models import HistoryBar
-from src.radar import ath_status, scan
+from src.analyse.radar import ath_status, scan
 
 
 def _bars(closes: list[float], start: str = "2020-01-01") -> list[HistoryBar]:
@@ -95,7 +95,7 @@ def test_scan_ignores_short_series():
 
 
 def test_filter_new_level1_anti_spam(tmp_path, monkeypatch):
-    from src import radar as radar_mod
+    from src.analyse import radar as radar_mod
 
     monkeypatch.setattr(radar_mod, "ALERT_STATE_FILE", tmp_path / "state.json")
     hits = [
@@ -110,7 +110,7 @@ def test_filter_new_level1_anti_spam(tmp_path, monkeypatch):
 
 
 def test_monitor_output_permanent_par_cycle():
-    from src.radar import monitor_output
+    from src.analyse.radar import monitor_output
 
     alerted = {"AAA": "2026-01-10", "BBB": "2026-01-10", "CCC": "2026-01-10"}
 

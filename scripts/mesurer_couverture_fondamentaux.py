@@ -100,7 +100,7 @@ def extraire_eps(html: str) -> dict[str, float]:
 
 def main():
     sys.path.insert(0, str(RACINE))
-    from src.challenge_validateur import charger_historique
+    from src.backtesting.challenge_validateur import charger_historique
 
     hist = charger_historique()
     codes = sorted(hist.keys())

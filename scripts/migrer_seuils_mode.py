@@ -28,7 +28,7 @@ RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 sys.path.insert(0, str(RACINE / "src"))
 
-from src import seuils_vente as sv  # noqa: E402
+from src.calibration import seuils_vente as sv  # noqa: E402
 
 FICHIER = RACINE / "data" / "profit_thresholds.json"
 SAUVEGARDE = RACINE / "data" / "profit_thresholds.json.bak-avant-mode"

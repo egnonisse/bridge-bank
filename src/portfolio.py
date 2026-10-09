@@ -19,8 +19,8 @@ from pathlib import Path
 from typing import Optional
 
 from .bsapi import BSApi
-from . import seuils_vente
-from .seuils_vente import (  # calibrage + persistance : un seul endroit
+from .calibration import seuils_vente
+from .calibration.seuils_vente import (  # calibrage + persistance : un seul endroit
     SEUILS_CANDIDATS,
     SEUILS_FILE,
     SEUILS_PAR_DEFAUT,
@@ -314,7 +314,7 @@ def _profit_info_alert(pos: DividendPosition, price: float) -> PositionAlert:
     les données ne soutiennent pas (bornes basses 49/46/36/34 %, toutes sous 50 %).
     """
     from .portefeuille.format_fr import fcfa, pct
-    from .seuils_vente import explication, resume_justification
+    from .calibration.seuils_vente import explication, resume_justification
 
     gain_pct = (price / pos.entry_price - 1) * 100
     gain_fcfa = (price - pos.entry_price) * pos.quantity
@@ -453,7 +453,7 @@ def status_level(pos: DividendPosition, price: float) -> tuple[int, str]:
     if pos.closed:
         return LEVEL_EXIT, "VENDU"
     if price >= pos.entry_price * (1 + profit_threshold_for(pos.code)):
-        from .seuils_vente import est_declencheur
+        from .calibration.seuils_vente import est_declencheur
         if est_declencheur(load_profit_thresholds().get(pos.code.upper())):
             return LEVEL_DECISION, "VENDS 1/3"
         return LEVEL_DECISION, "SEUIL ATTEINT (info)"
@@ -519,7 +519,7 @@ def check_dividend_position(
     #    (borne basse de l'intervalle de confiance ≥ 50 %, cf. src/seuils_vente.py).
     #    Sinon le seuil reste VISIBLE mais informatif : aucune vente n'est proposée.
     if not pos.closed and current_price >= pos.entry_price * (1 + profit_threshold_for(pos.code)):
-        from .seuils_vente import est_declencheur
+        from .calibration.seuils_vente import est_declencheur
         info_seuil = load_profit_thresholds().get(pos.code.upper())
         if est_declencheur(info_seuil):
             alerts.append(_double_option_alert(pos, current_price))
@@ -639,7 +639,7 @@ def _msg_regime(regime: dict | None) -> str:
     """
     if not regime or not regime.get("etat"):
         return ""
-    from .regime_marche import BAISSIER
+    from .calibration.regime_marche import BAISSIER
 
     if regime["etat"] == BAISSIER:
         return ("\n   📉 En ce moment, le marché BAISSE dans l'ensemble.\n"
@@ -740,7 +740,7 @@ def check_reinforcements(api) -> list[tuple[str, str]]:
     # Il n'empêche RIEN (règle LEO « ne bloque pas ») — il documente le régime, parce que
     # renforcer paie 67-69 % du temps en marché baissier contre 42-49 % en marché haussier.
     try:
-        from .regime_marche import regime_du_jour
+        from .calibration.regime_marche import regime_du_jour
         regime = regime_du_jour()
     except Exception:
         # Un indicateur indisponible ne doit JAMAIS empêcher l'alerte de partir.

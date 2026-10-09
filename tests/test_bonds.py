@@ -3,7 +3,7 @@ from datetime import date
 
 import pytest
 
-from src.bonds import (
+from src.analyse.bonds import (
     NOMINAL,
     add_bond_position,
     bonds_market_value,
@@ -74,7 +74,7 @@ def test_buyable_lines_sorted_by_ytm():
 
 
 def test_add_position_and_coupons(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.bonds.POSITIONS_FILE", tmp_path / "positions.json")
+    monkeypatch.setattr("src.analyse.bonds.POSITIONS_FILE", tmp_path / "positions.json")
     entry = add_bond_position("TPCI.O87", 10, 98, buy_date="2026-08-21")
     assert entry["label"] == "TPCI 5,90% 2024-2029"
     assert entry["coupon"] == 5.9
@@ -90,13 +90,13 @@ def test_add_position_and_coupons(monkeypatch, tmp_path):
 
 
 def test_add_position_unknown_code(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.bonds.POSITIONS_FILE", tmp_path / "positions.json")
+    monkeypatch.setattr("src.analyse.bonds.POSITIONS_FILE", tmp_path / "positions.json")
     with pytest.raises(ValueError, match="inconnue"):
         add_bond_position("XXXX.O1", 10, 100)
 
 
 def test_add_position_invalid_qty(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.bonds.POSITIONS_FILE", tmp_path / "positions.json")
+    monkeypatch.setattr("src.analyse.bonds.POSITIONS_FILE", tmp_path / "positions.json")
     with pytest.raises(ValueError, match="Quantité"):
         add_bond_position("TPCI.O87", 0, 100)
 

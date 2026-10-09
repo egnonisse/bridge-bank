@@ -28,7 +28,7 @@ from statistics import fmean, pstdev
 
 from .bsapi import BSApi
 from .domaine.models import HistoryBar
-from .screening import avg_volume, change_pct, compute_score, ema, rsi_wilder
+from .analyse.screening import avg_volume, change_pct, compute_score, ema, rsi_wilder
 from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 CACHE_FILE = DATA_DIR / "history_cache.pkl"

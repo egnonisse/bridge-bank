@@ -12,12 +12,8 @@
  "src.ajustement.SAUT_MIN": 1.8,
  "src.ajustement.TOLERANCE_RATIO": 0.05,
  "src.alerts.STATE_FILE": "<Path alerts_state.json>",
- "src.backtest.CACHE_FILE": "<Path history_cache.pkl>",
- "src.backtest.CACHE_MAX_AGE_DAYS": 7,
- "src.backtest.HISTORY_START": "20170101",
- "src.backtest.MAX_WORKERS": 8,
- "src.boc.BRVM_BOC_URL": "https://www.brvm.org/sites/default/files/boc_{yyyymmdd}_2.pdf",
- "src.boc.COMPANY_HINTS": {
+ "src.analyse.boc.BRVM_BOC_URL": "https://www.brvm.org/sites/default/files/boc_{yyyymmdd}_2.pdf",
+ "src.analyse.boc.COMPANY_HINTS": {
   "bank of africa senegal": "BOAS",
   "boa senegal": "BOAS",
   "palm": "PALC",
@@ -29,10 +25,10 @@
   "solibra": "SLBC",
   "sonatel": "SNTS"
  },
- "src.boc.HEADERS": {
+ "src.analyse.boc.HEADERS": {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
  },
- "src.boc.MOIS_FR": {
+ "src.analyse.boc.MOIS_FR": {
   "1": "JANVIER",
   "10": "OCTOBRE",
   "11": "NOVEMBRE",
@@ -46,20 +42,56 @@
   "8": "AOUT",
   "9": "SEPTEMBRE"
  },
- "src.boc.NSIA_BOC_URL": "https://nsiacapital.com/wp-content/uploads/{yyyy}/{mm}/BOC-DU-{dd}-{MOIS}.pdf",
- "src.boc.SIKA_DIV_URL": "https://www.sikafinance.com/marches/dividendes",
- "src.boc.STATE_FILE": "<Path boc_state.json>",
- "src.bonds.MARKET_FILE": "<Path bonds_market.json>",
- "src.bonds.NOMINAL": 10000.0,
- "src.bonds.POSITIONS_FILE": "<Path bonds_positions.json>",
- "src.bsapi.BASE_URL": "https://bstrade.bridge-securities.com/BSTradeServer/",
- "src.bsapi.SESSION_TIMEOUT": 20,
- "src.cache_integrity.MAX_CACHE_AGE_DAYS": 8,
- "src.cache_integrity.MAX_COMPARE_AGE_DAYS": 3,
- "src.cache_integrity.MAX_JUMP": 3.0,
- "src.cache_integrity.PRICE_TOLERANCE": 0.25,
- "src.cache_integrity.REVERSAL_FILE": "<Path reversal_profiles.json>",
- "src.challenge_schema.COMPARATEURS": [
+ "src.analyse.boc.NSIA_BOC_URL": "https://nsiacapital.com/wp-content/uploads/{yyyy}/{mm}/BOC-DU-{dd}-{MOIS}.pdf",
+ "src.analyse.boc.SIKA_DIV_URL": "https://www.sikafinance.com/marches/dividendes",
+ "src.analyse.boc.STATE_FILE": "<Path boc_state.json>",
+ "src.analyse.bonds.MARKET_FILE": "<Path bonds_market.json>",
+ "src.analyse.bonds.NOMINAL": 10000.0,
+ "src.analyse.bonds.POSITIONS_FILE": "<Path bonds_positions.json>",
+ "src.analyse.fondamentaux_historiques.BASE": "https://stockanalysis.com/quote/brvm/{}/{}",
+ "src.analyse.fondamentaux_historiques.CACHE": "<Path fondamentaux_historiques.json>",
+ "src.analyse.fondamentaux_historiques.DECALAGE_PUBLICATION_BPA": 1,
+ "src.analyse.fondamentaux_historiques.TOLERANCE_PER_PCT": 40.0,
+ "src.analyse.news.BRVM_ANNOUNCE_PAGES": {
+  "ag": "https://www.brvm.org/fr/emetteurs/type-annonces/convocations-assemblees-generales",
+  "communiques": "https://www.brvm.org/fr/emetteurs/type-annonces/communiques",
+  "dirigeants": "https://www.brvm.org/fr/emetteurs/type-annonces/changements-de-dirigeants",
+  "dividendes": "https://www.brvm.org/fr/esv/paiement-de-dividendes",
+  "notations": "https://www.brvm.org/fr/emetteurs/type-annonces/notations-financieres"
+ },
+ "src.analyse.news.COMPANY_HINTS": {
+  "bank_of_africa_sn": "BOAS",
+  "boa_senegal": "BOAS",
+  "boa_sn": "BOAS",
+  "palm": "PALC",
+  "sgci": "SGBC",
+  "societe_generale": "SGBC",
+  "sogb": "SOGC",
+  "solibra": "SLBC",
+  "sonatel": "SNTS"
+ },
+ "src.analyse.news.HEADERS": {
+  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+ },
+ "src.analyse.news.STATE_FILE": "<Path news_state.json>",
+ "src.analyse.radar.ALERT_STATE_FILE": "<Path radar_alert_state.json>",
+ "src.analyse.radar.REENTER_GAP_DAYS": 5,
+ "src.analyse.radar.SEEN_STATE_FILE": "<Path radar_seen_state.json>",
+ "src.analyse.screener.CACHE_FILE": "<Path fundamentals_cache.json>",
+ "src.analyse.screener.CACHE_MAX_AGE_HOURS": 24,
+ "src.analyse.screener.MAX_WORKERS": 3,
+ "src.analyse.screener.PER_SUSPECT": 25.0,
+ "src.analyse.screener.VALUE_STATE_FILE": "<Path value_state.json>",
+ "src.analyse.screener.YIELD_ABSURD": 30.0,
+ "src.analyse.screener.YIELD_MIN": 5.454545454545455,
+ "src.analyse.screener.YIELD_SUSPECT": 10.0,
+ "src.analyse.screening.HISTORY_DAYS": 90,
+ "src.analyse.screening.MAX_WORKERS": 6,
+ "src.backtest.CACHE_FILE": "<Path history_cache.pkl>",
+ "src.backtest.CACHE_MAX_AGE_DAYS": 7,
+ "src.backtest.HISTORY_START": "20170101",
+ "src.backtest.MAX_WORKERS": 8,
+ "src.backtesting.challenge_schema.COMPARATEURS": [
   "<=",
   ">=",
   "<",
@@ -67,12 +99,12 @@
   "==",
   "!="
  ],
- "src.challenge_schema.FONDAMENTAUX_BIAISES": [
+ "src.backtesting.challenge_schema.FONDAMENTAUX_BIAISES": [
   "per",
   "net_yield",
   "payout"
  ],
- "src.challenge_schema.INDICATEURS": {
+ "src.backtesting.challenge_schema.INDICATEURS": {
   "dd250": "distance au plus haut des 250 seances (negatif)",
   "dd_atl": "drawdown depuis le plus haut historique (negatif)",
   "net_yield": "rendement net du dividende",
@@ -89,13 +121,86 @@
   "vol60": "volatilite annualisee sur 60 seances",
   "vol_ratio": "volume du jour / volume median 60 seances - 1"
  },
- "src.challenge_schema.OPERATEURS": [
+ "src.backtesting.challenge_schema.OPERATEURS": [
   "et",
   "ou"
  ],
- "src.challenge_schema.TERME": "<Pattern>",
- "src.challenge_validateur.NB_TIRAGES_ALEATOIRES": 100,
- "src.challenge_validateur.SEANCES_MIN_INDICATEURS": 250,
+ "src.backtesting.challenge_schema.TERME": "<Pattern>",
+ "src.backtesting.challenge_validateur.NB_TIRAGES_ALEATOIRES": 100,
+ "src.backtesting.challenge_validateur.SEANCES_MIN_INDICATEURS": 250,
+ "src.bsapi.BASE_URL": "https://bstrade.bridge-securities.com/BSTradeServer/",
+ "src.bsapi.SESSION_TIMEOUT": 20,
+ "src.cache_integrity.MAX_CACHE_AGE_DAYS": 8,
+ "src.cache_integrity.MAX_COMPARE_AGE_DAYS": 3,
+ "src.cache_integrity.MAX_JUMP": 3.0,
+ "src.cache_integrity.PRICE_TOLERANCE": 0.25,
+ "src.cache_integrity.REVERSAL_FILE": "<Path reversal_profiles.json>",
+ "src.calibration.regime_marche.BAISSIER": "baissier",
+ "src.calibration.regime_marche.FENETRE": 200,
+ "src.calibration.regime_marche.HAUSSIER": "haussier",
+ "src.calibration.regime_marche.MIN_TITRES": 5,
+ "src.calibration.schema_seuils.CHAMPS_AUTORISES": [
+  "code",
+  "protege",
+  "down_prob",
+  "borne_basse",
+  "episodes",
+  "median_pct",
+  "significatif",
+  "threshold",
+  "mode"
+ ],
+ "src.calibration.schema_seuils.CHAMPS_DECISION": [
+  "threshold",
+  "mode"
+ ],
+ "src.calibration.schema_seuils.CHAMPS_MESURE": [
+  "down_prob",
+  "borne_basse",
+  "episodes",
+  "median_pct",
+  "significatif"
+ ],
+ "src.calibration.schema_seuils.CHAMPS_REQUIS_ECRITURE": [
+  "code",
+  "threshold",
+  "down_prob",
+  "borne_basse",
+  "episodes",
+  "significatif",
+  "mode"
+ ],
+ "src.calibration.schema_seuils.CHAMPS_REQUIS_LECTURE": [
+  "threshold"
+ ],
+ "src.calibration.schema_seuils.CODE_ATTENDU": "<Pattern>",
+ "src.calibration.schema_seuils.MODES": [
+  "declencheur",
+  "informatif"
+ ],
+ "src.calibration.schema_seuils.MODE_DECLENCHEUR": "declencheur",
+ "src.calibration.schema_seuils.MODE_INFORMATIF": "informatif",
+ "src.calibration.seuils_vente.JOURNAL_FILE": "<Path seuils_journal.jsonl>",
+ "src.calibration.seuils_vente.METHODE_DEFAUT": "episodes de +seuil % en 20 seances, dedoublonnes par vague",
+ "src.calibration.seuils_vente.MOTIF_CALIBRAGE": "calibrage automatique",
+ "src.calibration.seuils_vente.MOTIF_MIGRATION": "migration (ajout du mode)",
+ "src.calibration.seuils_vente.MOTIF_REFUS": "refus : ecriture automatique sur un reglage protege",
+ "src.calibration.seuils_vente.ORIGINE_AUTO": "automatique",
+ "src.calibration.seuils_vente.ORIGINE_MANUELLE": "manuelle",
+ "src.calibration.seuils_vente.SEUILS_CANDIDATS": [
+  0.05,
+  0.08,
+  0.1,
+  0.13,
+  0.15
+ ],
+ "src.calibration.seuils_vente.SEUILS_FILE": "<Path profit_thresholds.json>",
+ "src.calibration.seuils_vente.SEUILS_PAR_DEFAUT": {
+  "PALC": 0.05,
+  "SGBC": 0.1,
+  "SLBC": 0.05,
+  "SNTS": 0.13
+ },
  "src.dividend_history.GROWTH_MIN_PCT": -10.0,
  "src.dividend_history.HEADERS": {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
@@ -104,10 +209,6 @@
  "src.dividend_history.REGULARITY_MIN_YEARS": 4,
  "src.dividends.DIVIDENDES_FILE": "<Path dividendes.json>",
  "src.divisions_officielles.FICHIER": "<Path divisions_officielles.json>",
- "src.fondamentaux_historiques.BASE": "https://stockanalysis.com/quote/brvm/{}/{}",
- "src.fondamentaux_historiques.CACHE": "<Path fondamentaux_historiques.json>",
- "src.fondamentaux_historiques.DECALAGE_PUBLICATION_BPA": 1,
- "src.fondamentaux_historiques.TOLERANCE_PER_PCT": 40.0,
  "src.fundamentals.HEADERS": {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
  },
@@ -149,28 +250,6 @@
  "src.main.CONFIG_PATH": "<Path config.yaml>",
  "src.nettoyage_aberrantes.SEUIL": 5.0,
  "src.nettoyage_aberrantes.VOISINS": 20,
- "src.news.BRVM_ANNOUNCE_PAGES": {
-  "ag": "https://www.brvm.org/fr/emetteurs/type-annonces/convocations-assemblees-generales",
-  "communiques": "https://www.brvm.org/fr/emetteurs/type-annonces/communiques",
-  "dirigeants": "https://www.brvm.org/fr/emetteurs/type-annonces/changements-de-dirigeants",
-  "dividendes": "https://www.brvm.org/fr/esv/paiement-de-dividendes",
-  "notations": "https://www.brvm.org/fr/emetteurs/type-annonces/notations-financieres"
- },
- "src.news.COMPANY_HINTS": {
-  "bank_of_africa_sn": "BOAS",
-  "boa_senegal": "BOAS",
-  "boa_sn": "BOAS",
-  "palm": "PALC",
-  "sgci": "SGBC",
-  "societe_generale": "SGBC",
-  "sogb": "SOGC",
-  "solibra": "SLBC",
-  "sonatel": "SNTS"
- },
- "src.news.HEADERS": {
-  "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
- },
- "src.news.STATE_FILE": "<Path news_state.json>",
  "src.notify.TELEGRAM_API": "https://api.telegram.org/bot{token}/sendMessage",
  "src.noyau_check.NET_MAX": 0.1,
  "src.noyau_check.PREP_REALERT_DOWN_PCT": 0.03,
@@ -213,13 +292,6 @@
  "src.portfolio.REINF_IMPROVE_DOWN_PCT": 0.03,
  "src.portfolio.REINF_STATE_FILE": "<Path reinf_alert_state.json>",
  "src.portfolio.REVERSAL_FILE": "<Path reversal_profiles.json>",
- "src.radar.ALERT_STATE_FILE": "<Path radar_alert_state.json>",
- "src.radar.REENTER_GAP_DAYS": 5,
- "src.radar.SEEN_STATE_FILE": "<Path radar_seen_state.json>",
- "src.regime_marche.BAISSIER": "baissier",
- "src.regime_marche.FENETRE": 200,
- "src.regime_marche.HAUSSIER": "haussier",
- "src.regime_marche.MIN_TITRES": 5,
  "src.regles.BORNE_BASSE_MIN": 0.5,
  "src.regles.EPISODES_MIN": 8,
  "src.regles.FRAIS_ALLER_RETOUR": 0.028,
@@ -248,78 +320,6 @@
  "src.report.TARGET_CASH": 30.0,
  "src.report.TARGET_SPEC": 0.0,
  "src.report.TARGET_STOCKS": 70.0,
- "src.schema_seuils.CHAMPS_AUTORISES": [
-  "code",
-  "protege",
-  "down_prob",
-  "borne_basse",
-  "episodes",
-  "median_pct",
-  "significatif",
-  "threshold",
-  "mode"
- ],
- "src.schema_seuils.CHAMPS_DECISION": [
-  "threshold",
-  "mode"
- ],
- "src.schema_seuils.CHAMPS_MESURE": [
-  "down_prob",
-  "borne_basse",
-  "episodes",
-  "median_pct",
-  "significatif"
- ],
- "src.schema_seuils.CHAMPS_REQUIS_ECRITURE": [
-  "code",
-  "threshold",
-  "down_prob",
-  "borne_basse",
-  "episodes",
-  "significatif",
-  "mode"
- ],
- "src.schema_seuils.CHAMPS_REQUIS_LECTURE": [
-  "threshold"
- ],
- "src.schema_seuils.CODE_ATTENDU": "<Pattern>",
- "src.schema_seuils.MODES": [
-  "declencheur",
-  "informatif"
- ],
- "src.schema_seuils.MODE_DECLENCHEUR": "declencheur",
- "src.schema_seuils.MODE_INFORMATIF": "informatif",
- "src.screener.CACHE_FILE": "<Path fundamentals_cache.json>",
- "src.screener.CACHE_MAX_AGE_HOURS": 24,
- "src.screener.MAX_WORKERS": 3,
- "src.screener.PER_SUSPECT": 25.0,
- "src.screener.VALUE_STATE_FILE": "<Path value_state.json>",
- "src.screener.YIELD_ABSURD": 30.0,
- "src.screener.YIELD_MIN": 5.454545454545455,
- "src.screener.YIELD_SUSPECT": 10.0,
- "src.screening.HISTORY_DAYS": 90,
- "src.screening.MAX_WORKERS": 6,
- "src.seuils_vente.JOURNAL_FILE": "<Path seuils_journal.jsonl>",
- "src.seuils_vente.METHODE_DEFAUT": "episodes de +seuil % en 20 seances, dedoublonnes par vague",
- "src.seuils_vente.MOTIF_CALIBRAGE": "calibrage automatique",
- "src.seuils_vente.MOTIF_MIGRATION": "migration (ajout du mode)",
- "src.seuils_vente.MOTIF_REFUS": "refus : ecriture automatique sur un reglage protege",
- "src.seuils_vente.ORIGINE_AUTO": "automatique",
- "src.seuils_vente.ORIGINE_MANUELLE": "manuelle",
- "src.seuils_vente.SEUILS_CANDIDATS": [
-  0.05,
-  0.08,
-  0.1,
-  0.13,
-  0.15
- ],
- "src.seuils_vente.SEUILS_FILE": "<Path profit_thresholds.json>",
- "src.seuils_vente.SEUILS_PAR_DEFAUT": {
-  "PALC": 0.05,
-  "SGBC": 0.1,
-  "SLBC": 0.05,
-  "SNTS": 0.13
- },
  "src.spec_fiche.SCHEMA_LABELS": {
   "CASSURE": "🔓 CASSURE DE 1 AN",
   "EVEIL": "🌅 REBOND CONFIRMÉ",

@@ -31,14 +31,14 @@ import statistics
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from .infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 sys.path.insert(0, str(RACINE))
 
-from src.challenge_schema import Hypothese, compiler, evaluer_compilee  # noqa: E402
+from .challenge_schema import Hypothese, compiler, evaluer_compilee  # noqa: E402
 
 # Frais aller-retour : dérivés du courtage réel dans src/regles.py.
-from .regles import FRAIS_ALLER_RETOUR  # noqa: E402
+from ..regles import FRAIS_ALLER_RETOUR  # noqa: E402
 SEANCES_MIN_INDICATEURS = 250   # historique requis avant la 1re decision
 NB_TIRAGES_ALEATOIRES = 100
 

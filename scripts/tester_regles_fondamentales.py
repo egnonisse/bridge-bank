@@ -16,11 +16,11 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.challenge_indicateurs import (  # noqa: E402
+from src.backtesting.challenge_indicateurs import (  # noqa: E402
     charger_historique_fondamentaux, precalculer_historique,
 )
-from src.challenge_schema import Hypothese, valider_hypothese  # noqa: E402
-from src.challenge_validateur import charger_historique  # noqa: E402
+from src.backtesting.challenge_schema import Hypothese, valider_hypothese  # noqa: E402
+from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
 
 REGLES = [
     # (id, nom, condition d'achat, duree_max)
@@ -92,7 +92,7 @@ def main():
     print("  " + "-" * 84)
     print("     NOTE : `r.valide` = la regle est-elle DANS LE DSL (pas « retenue »).")
     print("     Le verdict reel est dans `r.verdict`.\n")
-    from src.challenge_validateur import evaluer_hypothese
+    from src.backtesting.challenge_validateur import evaluer_hypothese
 
     print("     Comparaison AVANT / APRES la prise en compte des dividendes :")
     print(f"     {'Regle':<34} {'sans div.':>10} {'avec div.':>10} "

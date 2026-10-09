@@ -31,8 +31,8 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src import seuils_vente as sv            # noqa: E402
-from src.schema_seuils import valider         # noqa: E402
+from src.calibration import seuils_vente as sv            # noqa: E402
+from src.calibration.schema_seuils import valider         # noqa: E402
 
 CONFIG = RACINE / "config.yaml"
 SNAPSHOT = RACINE / "data" / "constantes_snapshot.json"

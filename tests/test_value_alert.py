@@ -1,5 +1,5 @@
 """Tests de la détection de nouvelles opportunités value+dividende."""
-from src import screener
+from src.analyse import screener
 
 
 class _FakeAPI:

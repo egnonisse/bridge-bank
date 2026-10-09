@@ -44,13 +44,13 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.challenge_schema import (  # noqa: E402
+from src.backtesting.challenge_schema import (  # noqa: E402
     Hypothese, indicateurs_du_champ, valider_hypothese,
 )
-from src.challenge_validateur import (  # noqa: E402
+from src.backtesting.challenge_validateur import (  # noqa: E402
     charger_fondamentaux, charger_historique, evaluer_hypothese,
 )
-from src.challenge_indicateurs import precalculer_historique  # noqa: E402
+from src.backtesting.challenge_indicateurs import precalculer_historique  # noqa: E402
 
 API = "https://openrouter.ai/api/v1/chat/completions"
 DATASET = RACINE / "data" / "challenge_dataset.json"
@@ -441,7 +441,7 @@ def round3(hypotheses: list[Hypothese]) -> list[dict]:
     fond = charger_fondamentaux()
     hf = {}
     try:
-        from src.challenge_indicateurs import charger_historique_fondamentaux
+        from src.backtesting.challenge_indicateurs import charger_historique_fondamentaux
         hf = charger_historique_fondamentaux()
     except Exception:
         pass

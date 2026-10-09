@@ -1,5 +1,5 @@
 """Tests des indicateurs techniques et du score (screening)."""
-from src.screening import avg_volume, change_pct, compute_score, ema, rsi_wilder, sma
+from src.analyse.screening import avg_volume, change_pct, compute_score, ema, rsi_wilder, sma
 
 
 # -------------------------------------------------------------------- RSI

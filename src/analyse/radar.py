@@ -19,7 +19,7 @@ from __future__ import annotations
 import json
 import statistics
 from pathlib import Path
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 ALERT_STATE_FILE = DATA_DIR / "radar_alert_state.json"
 
@@ -120,7 +120,7 @@ def _last_split_index(closes: list[float]) -> int:
     Réutilise l'heuristique éprouvée du contrôle d'intégrité (médianes avant/après
     >= 2,5×) : les niveaux pré-division ne sont pas comparables aux cours actuels.
     """
-    from .cache_integrity import _is_probable_split
+    from ..cache_integrity import _is_probable_split
 
     last = 0
     for i in range(10, len(closes) - 10):

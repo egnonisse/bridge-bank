@@ -114,17 +114,22 @@ six mois. Le domaine de code s'appelle **`collecte/`** ; **`data/` reste aux don
 |---|---|---|
 | **`domaine/`** — règles et modèles | `regles.py` · `taxation.py` · `models.py` (cotation, barre OHLCV, analyse — et **modèle de position** à extraire de `portfolio.py`) | 3 |
 | **`collecte/`** | `bsapi.py` · `live.py` · `dividend_history.py` · `backtest.py` (chargement) · `cache_integrity.py` · `fundamentals.py` · `dividends.py` · `divisions_officielles.py` · `nettoyage_aberrantes.py` | 9 |
-| **`analyse/`** | `fondamentaux_historiques.py` · `screener.py` · `screening.py` · `bonds.py` · `boc.py` · `news.py` · `radar.py` | 7 |
+| **`analyse/`** | `fondamentaux_historiques.py` · `screener.py` · `screening.py` · `bonds.py` · `boc.py` · `news.py` · `radar.py` | 7 | ✅ lot 3 |
 | **`strategie/`** | `strategie_leo.py` · `noyau_check.py` · `orders.py` · `speculation.py` · `spec_profiles.py` · `paliers_sortie.py` · `spec_fiche.py` · `spec_veille.py` | 8 |
-| **`calibration/`** | `seuils_vente.py` · `regime_marche.py` | 2 |
+| **`calibration/`** | `seuils_vente.py` · `regime_marche.py` · `schema_seuils.py` (**42e module**, né après la carte) | 3 | ✅ lot 3 |
 | **`portefeuille/`** | `portfolio.py` (positions, cash) · `alerts.py` · `report.py` · `format_fr.py` | 4 |
 | **`alertes/`** | `notify.py` (transport Telegram, utilisé par `alerts` et `report`) + extrait de `portfolio.py` : `_profit_info_alert`, `_msg_regime`, `reinforcement_messages` | 1 + extrait |
-| **`backtesting/`** | `backtest_noyau.py` · `challenge_validateur.py` · `challenge_schema.py` · `challenge_indicateurs.py` | 4 |
+| **`backtesting/`** | `backtest_noyau.py` · `challenge_validateur.py` · `challenge_schema.py` · `challenge_indicateurs.py` | 4 | ✅ lot 3 |
 | **`cli/`** | `main.py` (**1 310 lignes, 25 commandes**) · `ajustement.py` | 2 |
 | **`infrastructure/`** | `paths.py` (puis la plomberie : `cache.py`, `http.py`) | 1 |
 
 **Total : 41 / 41** — chaque module de `src/` a un domaine, aucun n'est compté deux fois
 (vérifié par script, pas à l'œil).
+
+**+ 1 module né APRÈS la carte** : `schema_seuils.py` (durcissement des seuils du 09/10) →
+`calibration/`. **Total réel : 42.** La carte avait été établie sur l'état du 09/10 au matin ; le
+durcissement des seuils du même jour a ajouté un module, que le lot 3 a rattaché en même temps que
+`seuils_vente` (c'est son vocabulaire).
 
 Corrections apportées à la première version de cette carte :
 
@@ -156,7 +161,7 @@ Corrections apportées à la première version de cette carte :
 | **0** | Migrer les 19 chemins vers `src/paths.py` | `verifier_chemins.py --strict` → 0 | ✅ **fait le 09/10** |
 | **1** | Créer les dossiers décidés (§4) + `__init__.py` | `pytest` inchangé | ✅ **fait le 09/10** — 10 paquets, aucun fichier déplacé, 309 tests inchangés |
 | **2** | Déplacer les modules **feuilles** (aucun dépendant interne) : `format_fr`, `paths`, `models` (`enums.py`, cité dans la première version, n'existe pas) | `pytest` + `--comparer` | ✅ **fait le 09/10** — 3 modules déplacés, 35 fichiers d'imports réécrits, 309 tests, snapshot 202 → 202 (16 clés renommées, **0 valeur modifiée**) |
-| **3** | Déplacer `calibration/`, `analyse/`, `backtesting/` | idem | à faire |
+| **3** | Déplacer `calibration/`, `analyse/`, `backtesting/` | idem | ✅ **fait le 09/10** — 14 modules, 108 imports recalculés dans 53 fichiers + 16 cibles de `monkeypatch` (voir ci-dessous), 309 tests, snapshot 202 → 202 (**61 clés renommées, 0 valeur modifiée**) |
 | **4** | Déplacer `collecte/`, `strategie/` | idem | à faire |
 | **5** | **Découper** `portfolio.py` (calibrage → `calibration/`, alertes → `alertes/`, modèle → `domaine/`) puis `main.py` | idem + relecture | à faire |
 
@@ -188,7 +193,32 @@ trancher AVANT lui. Deux enseignements du lot, tous les deux mesurés :
    **données simples** (dicts) dans le cache au lieu d'instances de classes — un cache ne devrait
    pas dépendre de l'emplacement d'une classe.
 
-Le lot 3 peut commencer : `calibration/`, `analyse/`, `backtesting/`.
+**Le lot 3 a déplacé `calibration/`, `analyse/` et `backtesting/`** (09/10) : 14 modules, 108
+imports recalculés dans 53 fichiers, 309 tests, snapshot 202 → 202 (61 clés renommées, 0 valeur
+modifiée). Quatre enseignements, dont deux payés par des tests rouges :
+
+1. **Il y a DEUX populations à recalculer, pas une** : les importeurs des modules déplacés **et
+   les modules déplacés EUX-MÊMES** — ces derniers importent aussi des modules qui ne bougent pas
+   (`from .regles import X` visait `src.regles` ; depuis `src/analyse/`, la même ligne viserait
+   `src.analyse.regles`). Traiter la seconde population est ce qui sépare « ça importe » de « ça
+   importe le bon fichier ».
+2. **Un import sans point initial n'est JAMAIS relatif.** Le premier essai à blanc a proposé
+   `from ..datetime import date` dans les modules déplacés : sans garde-fou, une quarantaine
+   d'imports de bibliothèque standard auraient été corrompus. *L'essai à blanc n'est pas une
+   précaution, c'est le contrôle qui a trouvé le bug.*
+3. **Les cibles sous forme de CHAÎNE ne sont pas des `import`** : les tests patchaient
+   `monkeypatch.setattr("src.screener.X", …)`, qui importe la cible depuis la chaîne. Tous les
+   `import` étaient justes, et **13 tests sont tombés** pour cette seule raison. Un déplacement
+   doit traiter les deux formes.
+4. **Le filet des constantes a suivi tout seul** (`rglob` + noms pointés, acquis au lot 1) : il a
+   renommé les 61 clés sans intervention. En revanche le script de preuve écrit pour l'occasion
+   était faux (clé reconstruite sans le nom du module, donc « 0 paire » au lieu de 61) — un
+   contrôle qu'on écrit à la main doit être vérifié lui aussi, sinon il rassure à tort.
+
+**Découverte de périmètre** : la carte annonçait 41 modules, il y en avait **42** —
+`schema_seuils.py` était né le jour même, après la rédaction de la carte (§4 corrigé).
+
+Le lot 4 peut commencer : `collecte/` (9 modules) et `strategie/` (8 modules).
 
 **Le lot 5 est un découpage, pas un déplacement** : c'est le plus risqué, et il vient en
 dernier, quand l'arborescence est stable.

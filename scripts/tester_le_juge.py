@@ -20,11 +20,11 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.challenge_schema import Hypothese, valider_hypothese  # noqa: E402
-from src.challenge_indicateurs import (  # noqa: E402
+from src.backtesting.challenge_schema import Hypothese, valider_hypothese  # noqa: E402
+from src.backtesting.challenge_indicateurs import (  # noqa: E402
     precalculer_historique, verifier_anti_lookahead,
 )
-from src.challenge_validateur import (  # noqa: E402
+from src.backtesting.challenge_validateur import (  # noqa: E402
     charger_fondamentaux, charger_historique, evaluer_hypothese,
 )
 

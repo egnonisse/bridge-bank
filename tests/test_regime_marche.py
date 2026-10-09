@@ -12,7 +12,7 @@ from pathlib import Path
 import pytest
 
 from src.portfolio import DividendPosition, reinforcement_messages
-from src.regime_marche import (BAISSIER, FENETRE, HAUSSIER, construire_indice,
+from src.calibration.regime_marche import (BAISSIER, FENETRE, HAUSSIER, construire_indice,
                               etat_marche)
 from src.report import TARGET_CASH, alerte_tresorerie
 
@@ -68,7 +68,7 @@ def test_indice_reel_monte_et_creuse_en_2020():
     Si l'indice baissait sur 2017-2026 (ce que faisait la version à rebalancement
     quotidien, via le volatility drag), il serait inutilisable pour décider.
     """
-    from src.regime_marche import charger_series_quotidiennes
+    from src.calibration.regime_marche import charger_series_quotidiennes
 
     series = charger_series_quotidiennes(RACINE / "data" / "history_clean.pkl")
     idx = construire_indice(series)

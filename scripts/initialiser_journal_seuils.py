@@ -16,7 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src import seuils_vente as sv  # noqa: E402
+from src.calibration import seuils_vente as sv  # noqa: E402
 
 
 def main(dry_run: bool = False) -> int:

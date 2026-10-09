@@ -27,8 +27,8 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.challenge_indicateurs import charger_historique_fondamentaux  # noqa: E402
-from src.challenge_validateur import charger_historique  # noqa: E402
+from src.backtesting.challenge_indicateurs import charger_historique_fondamentaux  # noqa: E402
+from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
 from src.strategie_leo import (  # noqa: E402
     MoteurLeo, Parametres, variante_complete, variante_noyau_passif,
     variante_paliers_seuls, variante_renforcement_seul,

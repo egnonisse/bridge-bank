@@ -15,7 +15,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.fondamentaux_historiques import bpa_connu, collecter_titre  # noqa: E402
+from src.analyse.fondamentaux_historiques import bpa_connu, collecter_titre  # noqa: E402
 
 CODES = ["SGBC", "NTLC", "SNTS", "BOAC", "BICC", "ECOC", "ONTBF", "SLBC",
          "BOAB", "PALC", "CIEC", "CFAC", "SIVC", "UNXC", "SMBC", "BOAN"]

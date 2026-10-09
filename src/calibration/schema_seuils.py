@@ -31,7 +31,8 @@ recalcul automatique : `mode: declencheur` (implicite — ce seuil propose de VE
 `protege: true` (explicite — geler un seuil qu'on ne veut pas voir bouger).
 
 `mode` est défini ICI et réexporté par `seuils_vente` : le vocabulaire de l'enregistrement en
-est la source. Les appelants continuent d'écrire `from src.seuils_vente import MODE_DECLENCHEUR`.
+est la source. Les appelants continuent d'écrire
+`from src.calibration.seuils_vente import MODE_DECLENCHEUR`.
 
 COHÉRENCE `significatif` / `mode`
 ---------------------------------
@@ -198,7 +199,7 @@ def _valider_coherence(code: str, info: dict, erreurs: list[str],
             erreurs.append(f"{code} : mode « {MODE_DECLENCHEUR} » avec « significatif » "
                            f"{sig!r} — un déclencheur de vente exige un test concluant")
         elif _est_entier(bas) and _est_entier(n):
-            from .regles import BORNE_BASSE_MIN, EPISODES_MIN
+            from ..regles import BORNE_BASSE_MIN, EPISODES_MIN
             # ⚠ UNITÉ : `BORNE_BASSE_MIN` est une FRACTION (0.50) — `borne_basse` dans le
             # fichier est un POURCENTAGE (49, 86…). Comparer les deux directement ne
             # déclencherait jamais : le contrôle serait décoratif. D'où la conversion.

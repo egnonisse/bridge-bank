@@ -22,7 +22,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.fondamentaux_historiques import (  # noqa: E402
+from src.analyse.fondamentaux_historiques import (  # noqa: E402
     collecter_titre, sauver_cache, valider_bpa,
 )
 

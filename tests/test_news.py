@@ -1,5 +1,5 @@
 """Tests du suivi des annonces BRVM (parse, mapping, détection de nouveautés)."""
-from src.news import (
+from src.analyse.news import (
     detect_new,
     fetch_announcements,
     filter_codes,
@@ -50,7 +50,7 @@ def test_filter_codes():
 
 # ------------------------------------------------------ détection nouveautés
 def test_detect_new_first_run_all_new(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.news.STATE_FILE", tmp_path / "news.json")
+    monkeypatch.setattr("src.analyse.news.STATE_FILE", tmp_path / "news.json")
     anns = [
         {"code": "SGBC", "url": "https://x/sg.pdf", "date": "2026-08-06"},
         {"code": "SNTS", "url": "https://x/sn.pdf", "date": "2026-07-24"},
@@ -61,7 +61,7 @@ def test_detect_new_first_run_all_new(monkeypatch, tmp_path):
 
 
 def test_detect_new_second_run_nothing(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.news.STATE_FILE", tmp_path / "news.json")
+    monkeypatch.setattr("src.analyse.news.STATE_FILE", tmp_path / "news.json")
     anns = [
         {"code": "SGBC", "url": "https://x/sg.pdf", "date": "2026-08-06"},
         {"code": "SNTS", "url": "https://x/sn.pdf", "date": "2026-07-24"},
@@ -84,9 +84,9 @@ def test_fetch_announcements_parses_real_shape(monkeypatch):
         def raise_for_status(self):
             return None
 
-    monkeypatch.setattr("src.news.requests.get", lambda *a, **k: FakeResp())
+    monkeypatch.setattr("src.analyse.news.requests.get", lambda *a, **k: FakeResp())
     monkeypatch.setattr(
-        "src.news.BRVM_ANNOUNCE_PAGES", {"dividendes": "https://fake/div"}
+        "src.analyse.news.BRVM_ANNOUNCE_PAGES", {"dividendes": "https://fake/div"}
     )
     anns = fetch_announcements()
     codes = {a["code"] for a in anns}

@@ -35,11 +35,11 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.challenge_indicateurs import (  # noqa: E402
+from src.backtesting.challenge_indicateurs import (  # noqa: E402
     charger_historique_fondamentaux, precalculer_historique,
 )
-from src.challenge_schema import compiler, evaluer_compilee  # noqa: E402
-from src.challenge_validateur import charger_historique  # noqa: E402
+from src.backtesting.challenge_schema import compiler, evaluer_compilee  # noqa: E402
+from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
 from src.paliers_sortie import bilan, simuler_paliers  # noqa: E402
 
 # Regles d'achat a tester : les mieux etayees du systeme

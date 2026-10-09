@@ -49,18 +49,19 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 Z = 1.96                  # couverture 95 %
 # Règles de significativité : définies dans src/regles.py (catalogue unique).
-from .regles import BORNE_BASSE_MIN, EPISODES_MIN as MIN_EPISODES  # noqa: E402
+from ..regles import BORNE_BASSE_MIN, EPISODES_MIN as MIN_EPISODES  # noqa: E402
 
 SEUILS_FILE = DATA_DIR / "profit_thresholds.json"
 JOURNAL_FILE = DATA_DIR / "seuils_journal.jsonl"
 
 # Vocabulaire du mode, schéma du fichier et protection des décisions : DÉFINIS dans
-# `src/schema_seuils.py` (source unique) et RÉEXPORTÉS ici — les appelants gardent leurs noms
-# (`from src.seuils_vente import MODE_DECLENCHEUR` continue de fonctionner).
+# `src/calibration/schema_seuils.py` (source unique, déplacé avec ce module au lot 3) et
+# RÉEXPORTÉS ici — les appelants gardent leurs noms
+# (`from src.calibration.seuils_vente import MODE_DECLENCHEUR` continue de fonctionner).
 from .schema_seuils import (MODE_DECLENCHEUR, MODE_INFORMATIF,  # noqa: E402,F401
                             SeuilProtege, SeuilsInvalides, ecrire_atomique, est_protege,
                             lire_et_valider, refus_ecriture, valider)  # noqa: F401

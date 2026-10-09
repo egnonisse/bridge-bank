@@ -20,7 +20,7 @@ from pathlib import Path
 import pymupdf
 import requests
 from urllib3.exceptions import InsecureRequestWarning
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 

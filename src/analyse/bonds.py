@@ -19,7 +19,7 @@ from __future__ import annotations
 import json
 from datetime import date
 from pathlib import Path
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 MARKET_FILE = DATA_DIR / "bonds_market.json"
 POSITIONS_FILE = DATA_DIR / "bonds_positions.json"

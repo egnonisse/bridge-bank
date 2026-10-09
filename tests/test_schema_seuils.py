@@ -18,9 +18,9 @@ import json
 
 import pytest
 
-from src import seuils_vente as sv
-from src import schema_seuils as schema
-from src.schema_seuils import (MODE_DECLENCHEUR, MODE_INFORMATIF, SeuilProtege,
+from src.calibration import seuils_vente as sv
+from src.calibration import schema_seuils as schema
+from src.calibration.schema_seuils import (MODE_DECLENCHEUR, MODE_INFORMATIF, SeuilProtege,
                                SeuilsInvalides, est_protege, refus_ecriture, valider)
 
 CODES_HISTORIQUES = ("SNTS", "SGBC", "SLBC", "PALC")

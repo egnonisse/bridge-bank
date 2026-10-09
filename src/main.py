@@ -23,8 +23,8 @@ import yaml
 
 from .bsapi import BSApi
 from .notify import TelegramNotifier
-from .screening import analyze as analyze_stock
-from .screening import screen
+from .analyse.screening import analyze as analyze_stock
+from .analyse.screening import screen
 from .infrastructure.paths import RACINE as ROOT  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 CONFIG_PATH = ROOT / "config.yaml"
@@ -602,7 +602,7 @@ def cmd_report(args: argparse.Namespace) -> None:
 
 
 def cmd_boc(args: argparse.Namespace) -> None:
-    from .boc import detect_events, fetch_latest_boc
+    from .analyse.boc import detect_events, fetch_latest_boc
     from .portfolio import load_portfolio
 
     result = fetch_latest_boc()
@@ -659,12 +659,12 @@ def cmd_reinforcements(args: argparse.Namespace) -> None:
 
 
 def cmd_fund(args: argparse.Namespace) -> None:
-    from .screener import screen_magic_formula, screen_value_dividend
+    from .analyse.screener import screen_magic_formula, screen_value_dividend
 
     api = BSApi()
     if args.mode == "value":
         if getattr(args, "alert", False):
-            from .screener import detect_new_value_opportunities
+            from .analyse.screener import detect_new_value_opportunities
 
             new = detect_new_value_opportunities(api, force=args.force)
             if not new:
@@ -723,7 +723,7 @@ def cmd_fund(args: argparse.Namespace) -> None:
                 f"{r['per']:>6.2f} {r['yield']:>5.2f}% {r['net_yield']:>5.2f}% {r['score']:>5d}"
             )
     elif args.mode == "traps":
-        from .screener import flag_value_traps
+        from .analyse.screener import flag_value_traps
 
         print("Titres suspects de value trap (⚠️ à vérifier par le fondamental)…\n")
         results = flag_value_traps(api, force=args.force)
@@ -799,7 +799,7 @@ def cmd_div(args: argparse.Namespace) -> None:
 
 def cmd_bond(args: argparse.Namespace) -> None:
     """Obligations BRVM : carnet achetables, YTM précis, positions, coupons."""
-    from .bonds import (
+    from .analyse.bonds import (
         NOMINAL,
         add_bond_position,
         buyable_lines,
@@ -942,7 +942,7 @@ def cmd_radar(args: argparse.Namespace) -> None:
     """
     from .backtest import load_all_history
     from .bsapi import BSApi
-    from .radar import filter_new_level1, format_radar, scan
+    from .analyse.radar import filter_new_level1, format_radar, scan
 
     api = BSApi()
     hist = load_all_history(api, force=False)
@@ -958,7 +958,7 @@ def cmd_radar(args: argparse.Namespace) -> None:
     if getattr(args, "mark", None):
         from datetime import datetime
 
-        from .radar import load_alerted, save_alerted
+        from .analyse.radar import load_alerted, save_alerted
 
         state = load_alerted()
         today = datetime.now().strftime("%Y-%m-%d")
@@ -1148,7 +1148,7 @@ def cmd_specveille(args: argparse.Namespace) -> None:
 
 
 def cmd_news(args: argparse.Namespace) -> None:
-    from .news import detect_new, fetch_announcements, filter_codes
+    from .analyse.news import detect_new, fetch_announcements, filter_codes
 
     cfg = load_config()
     codes = cfg.get("noyau", {}).get("codes", [])

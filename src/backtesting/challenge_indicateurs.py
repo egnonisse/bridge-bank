@@ -78,7 +78,7 @@ def precalculer(barres: list, code: str = "", fondamentaux: dict | None = None,
     # Les transitions sont les dates de detachement des dividendes et les dates
     # de publication des comptes.
     if titre_fond is not None:
-        from src.fondamentaux_historiques import fondamentaux_a_la_date
+        from ..analyse.fondamentaux_historiques import fondamentaux_a_la_date
     else:
         fondamentaux_a_la_date = None
 
@@ -215,7 +215,7 @@ def precalculer_historique(hist: dict, fondamentaux: dict | None = None,
 def charger_historique_fondamentaux(chemin=None) -> dict:
     """Charge le cache des fondamentaux historiques, s'il existe."""
     try:
-        from src.fondamentaux_historiques import charger_cache
+        from ..analyse.fondamentaux_historiques import charger_cache
         return charger_cache(chemin)
     except Exception:
         return {}

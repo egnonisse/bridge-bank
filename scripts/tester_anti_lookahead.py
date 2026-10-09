@@ -18,11 +18,11 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.challenge_indicateurs import (  # noqa: E402
+from src.backtesting.challenge_indicateurs import (  # noqa: E402
     charger_historique_fondamentaux, precalculer,
 )
-from src.challenge_validateur import charger_historique  # noqa: E402
-from src.fondamentaux_historiques import fondamentaux_a_la_date  # noqa: E402
+from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
+from src.analyse.fondamentaux_historiques import fondamentaux_a_la_date  # noqa: E402
 
 
 def main():

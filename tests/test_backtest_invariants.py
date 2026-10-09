@@ -18,7 +18,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from src.backtest_noyau import _drawdown_portefeuille
+from src.backtesting.backtest_noyau import _drawdown_portefeuille
 
 
 def _jours(n: int = 60) -> list[str]:

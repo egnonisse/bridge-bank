@@ -43,7 +43,7 @@ def profil_snts(tmp_path, monkeypatch):
     }), encoding="utf-8")
 
     monkeypatch.setattr(pf, "REVERSAL_FILE", prof)
-    from src import seuils_vente as sv
+    from src.calibration import seuils_vente as sv
     monkeypatch.setattr(sv, "SEUILS_FILE", seuils)
     return prof
 

@@ -37,7 +37,7 @@ from dataclasses import dataclass, field
 # Filtres du noyau (seuils valides par LEO)
 # Filtres d'entrée du noyau : définis dans src/regles.py (catalogue unique).
 # RENDEMENT_NET_MIN = 0,04 · PER_MAX = 14,0 · PAYOUT_MAX = 0,80 · IRVM = 0,12
-from .regles import IRVM, PAYOUT_MAX, PER_MAX, RENDEMENT_NET_MIN  # noqa: E402
+from ..regles import IRVM, PAYOUT_MAX, PER_MAX, RENDEMENT_NET_MIN  # noqa: E402
 
 
 @dataclass
@@ -168,7 +168,7 @@ def backtester_noyau(hist: dict, hf: dict, date_debut: str, date_fin: str,
     Selection : titres dont les fondamentaux CONNUS a date_debut respectent les
     trois filtres. Aucun regard sur le futur (fondamentaux_a_la_date).
     """
-    from src.fondamentaux_historiques import fondamentaux_a_la_date
+    from ..analyse.fondamentaux_historiques import fondamentaux_a_la_date
 
     res = ResultatNoyau(date_debut=date_debut, date_fin=date_fin,
                         capital_initial=capital)
@@ -328,7 +328,7 @@ def panier_aleatoire_noyau(hist: dict, hf: dict, nb_titres: int,
     comparer le noyau a des paniers sans dividendes reviendrait a se donner
     raison d'avance.
     """
-    from src.fondamentaux_historiques import fondamentaux_a_la_date
+    from ..analyse.fondamentaux_historiques import fondamentaux_a_la_date
 
     rng = random.Random(graine)
     # Univers : titres disposant d'un historique couvrant la periode

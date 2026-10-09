@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 
 from src.portfolio import DividendPosition, check_dividend_position, status_level
-from src.seuils_vente import (MODE_DECLENCHEUR, MODE_INFORMATIF, est_declencheur,
+from src.calibration.seuils_vente import (MODE_DECLENCHEUR, MODE_INFORMATIF, est_declencheur,
                               evaluer, intervalle_wilson, mode_pour)
 
 RACINE = Path(__file__).resolve().parent.parent

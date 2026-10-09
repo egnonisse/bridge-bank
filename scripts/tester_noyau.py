@@ -27,11 +27,11 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.backtest_noyau import (  # noqa: E402
+from src.backtesting.backtest_noyau import (  # noqa: E402
     panier_aleatoire_noyau, backtester_noyau,
 )
-from src.challenge_indicateurs import charger_historique_fondamentaux  # noqa: E402
-from src.challenge_validateur import charger_historique  # noqa: E402
+from src.backtesting.challenge_indicateurs import charger_historique_fondamentaux  # noqa: E402
+from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
 
 CAPITAL = 1_000_000.0
 COHORTES = ["2022-01-03", "2022-07-01", "2023-01-03", "2023-07-03",

@@ -1,7 +1,7 @@
 """Tests du scraping BOC (Bulletin Officiel de la Cote)."""
 import pytest
 
-from src.boc import detect_events, match_code, parse_operations
+from src.analyse.boc import detect_events, match_code, parse_operations
 
 OPERATIONS_SAMPLE = """
 OPERATIONS EN COURS
@@ -36,8 +36,8 @@ def test_parse_operations():
 
 
 def test_detect_events_announce_then_rectify(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.boc.STATE_FILE", tmp_path / "state.json")
-    monkeypatch.setattr("src.boc.fetch_sikafinance_dividendes", lambda: {})  # pas de réseau
+    monkeypatch.setattr("src.analyse.boc.STATE_FILE", tmp_path / "state.json")
+    monkeypatch.setattr("src.analyse.boc.fetch_sikafinance_dividendes", lambda: {})  # pas de réseau
 
     # 1er run : annonce
     events = detect_events(OPERATIONS_SAMPLE, None, ["SGBC", "SNTS", "SLBC", "PALC"])
@@ -58,9 +58,9 @@ def test_detect_events_announce_then_rectify(monkeypatch, tmp_path):
 
 
 def test_detect_events_cross_check_divergence(monkeypatch, tmp_path):
-    monkeypatch.setattr("src.boc.STATE_FILE", tmp_path / "state.json")
+    monkeypatch.setattr("src.analyse.boc.STATE_FILE", tmp_path / "state.json")
     # sikafinance (source indépendante) donne un montant différent du BOC
-    monkeypatch.setattr("src.boc.fetch_sikafinance_dividendes", lambda: {"SGBC": 3000.0})
+    monkeypatch.setattr("src.analyse.boc.fetch_sikafinance_dividendes", lambda: {"SGBC": 3000.0})
     events = detect_events(OPERATIONS_SAMPLE, None, ["SGBC"])
     assert len(events) == 1
     assert "cross_sika" in events[0]

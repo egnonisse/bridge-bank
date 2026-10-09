@@ -14,7 +14,7 @@ import json
 
 import pytest
 
-from src import seuils_vente as sv
+from src.calibration import seuils_vente as sv
 from src.infrastructure.paths import DATA_DIR
 from scripts.export_reversal_profiles import _profil_titre
 

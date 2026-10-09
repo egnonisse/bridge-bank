@@ -8,7 +8,7 @@ soit ≈ 5,45 % de rendement BRUT. Les dps de test sont les dividendes
 officiels BRVM 2025 (en brut).
 """
 from src.domaine.models import Quote, Snapshot
-from src.screener import flag_value_traps, screen_magic_formula, screen_value_dividend
+from src.analyse.screener import flag_value_traps, screen_magic_formula, screen_value_dividend
 
 
 class FakeAPI:
@@ -53,7 +53,7 @@ NOYAU = ["SNTS", "BOAS", "SOGC", "PALC", "SLBC", "SGBC"]
 
 
 def test_value_dividend_filters(monkeypatch):
-    monkeypatch.setattr("src.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
+    monkeypatch.setattr("src.analyse.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
     results = screen_value_dividend(FakeAPI(_stocks()))
     codes = [r["code"] for r in results]
     for c in NOYAU:
@@ -65,21 +65,21 @@ def test_value_dividend_filters(monkeypatch):
 
 
 def test_value_dividend_sorted_by_per(monkeypatch):
-    monkeypatch.setattr("src.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
+    monkeypatch.setattr("src.analyse.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
     results = screen_value_dividend(FakeAPI(_stocks()))
     pers = [r["per"] for r in results]
     assert pers == sorted(pers)
 
 
 def test_net_yield_reported(monkeypatch):
-    monkeypatch.setattr("src.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
+    monkeypatch.setattr("src.analyse.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
     results = {r["code"]: r for r in screen_value_dividend(FakeAPI(_stocks()))}
     assert abs(results["BOAS"]["net_yield"] - 5.04) < 0.05
     assert abs(results["SGBC"]["net_yield"] - 5.08) < 0.05
 
 
 def test_magic_formula_ranking(monkeypatch):
-    monkeypatch.setattr("src.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
+    monkeypatch.setattr("src.analyse.screener.scrape_all_fundamentals", lambda api, force=False: _funds())
     results = screen_magic_formula(FakeAPI(_stocks()))
     scores = [r["score"] for r in results]
     assert scores == sorted(scores)  # trié par score croissant
@@ -97,7 +97,7 @@ def test_flag_value_traps(monkeypatch):
         "CHER": {"per": 30, "dps": 50},  # rendement 5%, PER 30 -> élevé
         "OK": {"per": 10, "dps": 500},  # rendement 5%, PER 10 -> sain
     }
-    monkeypatch.setattr("src.screener.scrape_all_fundamentals", lambda api, force=False: funds)
+    monkeypatch.setattr("src.analyse.screener.scrape_all_fundamentals", lambda api, force=False: funds)
     traps = flag_value_traps(FakeAPI(stocks))
     codes = {t["code"] for t in traps}
     assert "SUSP" in codes  # rendement anormal

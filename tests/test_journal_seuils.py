@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pytest
 
-from src import seuils_vente as sv
+from src.calibration import seuils_vente as sv
 
 
 @pytest.fixture
