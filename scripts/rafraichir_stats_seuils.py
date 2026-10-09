@@ -89,7 +89,15 @@ def main(dry_run: bool = False) -> int:
         return 0
 
     if changements:
-        sv.enregistrer(seuils)
+        try:
+            sv.enregistrer(seuils, origine=sv.ORIGINE_AUTO)
+        except (sv.SeuilsInvalides, sv.SeuilProtege) as exc:
+            # Une mesure rafraîchie peut rendre une entrée incohérente (un `declencheur` dont
+            # la preuve s'affaiblit) : l'écriture est refusée et la décision doit être REVUE
+            # À LA MAIN. On le dit — on ne contourne pas.
+            print(f"\nStatistiques NON ecrites : {exc}")
+            print("  -> reglage a revoir a la main (aucun ecrit sur disque, journal inchange).")
+            return 1
         print(f"\n{changements} seuil(s) mis a jour (seuils INCHANGES).")
         print(f"  Journal : {sv.JOURNAL_FILE}")
     else:

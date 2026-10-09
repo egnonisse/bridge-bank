@@ -112,7 +112,8 @@ def calibrate_missing_thresholds(api) -> int:
                 origine=seuils_vente.ORIGINE_AUTO,
                 test={k: info[k] for k in ("down_prob", "borne_basse", "episodes",
                                            "significatif", "mode") if k in info})
-    save_profit_thresholds(calibrated)
+    if done:
+        save_profit_thresholds(calibrated, origine=seuils_vente.ORIGINE_AUTO)
     return done
 
 # Soutenabilité du dividende (garde-fou anti value-trap) : payout = dividende / BPA.

@@ -58,11 +58,16 @@ from .regles import BORNE_BASSE_MIN, EPISODES_MIN as MIN_EPISODES  # noqa: E402
 SEUILS_FILE = DATA_DIR / "profit_thresholds.json"
 JOURNAL_FILE = DATA_DIR / "seuils_journal.jsonl"
 
-MODE_DECLENCHEUR = "declencheur"
-MODE_INFORMATIF = "informatif"
+# Vocabulaire du mode, schéma du fichier et protection des décisions : DÉFINIS dans
+# `src/schema_seuils.py` (source unique) et RÉEXPORTÉS ici — les appelants gardent leurs noms
+# (`from src.seuils_vente import MODE_DECLENCHEUR` continue de fonctionner).
+from .schema_seuils import (MODE_DECLENCHEUR, MODE_INFORMATIF,  # noqa: E402,F401
+                            SeuilProtege, SeuilsInvalides, ecrire_atomique, est_protege,
+                            lire_et_valider, refus_ecriture, valider)  # noqa: F401
 
 MOTIF_CALIBRAGE = "calibrage automatique"
 MOTIF_MIGRATION = "migration (ajout du mode)"
+MOTIF_REFUS = "refus : ecriture automatique sur un reglage protege"
 ORIGINE_AUTO = "automatique"
 ORIGINE_MANUELLE = "manuelle"
 
@@ -205,16 +210,53 @@ def calibrer(code: str, closes: list[float]) -> dict | None:
     return best
 
 
-def charger() -> dict:
-    try:
-        return json.loads(SEUILS_FILE.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return {}
+def charger(chemin: Path | None = None) -> dict:
+    """Lit les seuils calibrés — et REFUSE un fichier inexploitable.
+
+    Renvoyait `{}` sur toute erreur : le système retombait alors sur la table de départ, tout
+    passait en `informatif`, plus aucune vente n'était proposée — et rien ne le disait. Un
+    fichier ABSENT reste légitime (aucun seuil calibré) ; un fichier illisible ne l'est pas :
+    il lève `SeuilsInvalides` en nommant la ligne ou l'entrée fautive.
+    """
+    return lire_et_valider(chemin or SEUILS_FILE)
 
 
-def enregistrer(data: dict) -> None:
-    SEUILS_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2),
-                           encoding="utf-8")
+def enregistrer(data: dict, *, origine: str = ORIGINE_AUTO,
+                autorise_protege: bool = False, chemin: Path | None = None,
+                journal: Path | None = None) -> None:
+    """Écrit les seuils — après validation du contenu ET contrôle de ce qui est remplacé.
+
+    Deux refus, et dans les deux cas le fichier n'est PAS touché :
+
+      - `SeuilsInvalides` : le contenu ne respecte pas le schéma (`src/schema_seuils.py`) ;
+      - `SeuilProtege`    : l'écriture changerait le seuil ou le mode d'une entrée protégée
+        (un `declencheur`, ou toute entrée portant `protege: true`). `autorise_protege=True`
+        déclare l'autorisation explicite : c'est le geste manuel, jamais le recalcul.
+
+    `origine` vaut « automatique » par défaut — le mode le plus restrictif. Un appelant
+    automatique n'a donc rien à déclarer pour être traité comme tel.
+
+    Le refus est JOURNALISÉ avant d'être levé : un refus silencieux serait aussi grave que
+    l'écrasement qu'il évite.
+    """
+    erreurs, _ = valider(data, complet=True)      # contrat d'ÉCRITURE : rien d'incomplet
+    if erreurs:
+        raise SeuilsInvalides("écriture refusée — " + " ; ".join(erreurs))
+    cible = chemin or SEUILS_FILE
+    avant = lire_et_valider(cible)     # on refuse de détruire ce qu'on ne sait pas relire
+    refus = [] if autorise_protege else refus_ecriture(avant, data)
+    if refus:
+        par_code: dict[str, list[str]] = {}
+        for raison in refus:
+            par_code.setdefault(raison.split(" :")[0], []).append(raison)
+        for code, raisons in par_code.items():
+            seuil_actuel = (avant.get(code) or {}).get("threshold")
+            journaliser(code, avant=seuil_actuel, apres=seuil_actuel,
+                        motif=f"{MOTIF_REFUS} — " + " ; ".join(raisons),
+                        origine=origine, methode="ecriture automatique refusee",
+                        chemin=journal)
+        raise SeuilProtege("écriture refusée — " + " ; ".join(refus))
+    ecrire_atomique(cible, data)
 
 
 def pour(code: str, defaut: float = 0.13) -> float:

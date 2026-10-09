@@ -28,23 +28,15 @@ RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 sys.path.insert(0, str(RACINE / "src"))
 
-from src.seuils_vente import evaluer  # noqa: E402
+from src import seuils_vente as sv  # noqa: E402
 
 FICHIER = RACINE / "data" / "profit_thresholds.json"
 SAUVEGARDE = RACINE / "data" / "profit_thresholds.json.bak-avant-mode"
-
-
-def _episodes(closes, seuil):
-    """Copie EXACTE de src/portfolio.py::_profit_episodes (ne pas diverger)."""
-    out, i = [], 20
-    while i < len(closes) - 20:
-        ref = closes[i - 20]
-        if ref > 0 and closes[i] >= ref * (1 + seuil):
-            out.append(closes[i + 20] / closes[i] - 1)
-            i += 20
-        else:
-            i += 1
-    return out
+# La règle d'épisode vit dans src/seuils_vente.py::episodes — définition unique du projet.
+# Ce script la recopiait mot pour mot (« ne pas diverger »), c'est exactement le doublon que
+# la décision du 09/10 a supprimé.
+_episodes = sv.episodes
+evaluer = sv.evaluer
 
 
 def main():
@@ -97,7 +89,7 @@ def main():
     # Application : on AJOUTE / MET A JOUR les champs, sans jamais retirer le seuil
     for code, maj in modifs:
         data[code].update(maj)
-    FICHIER.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    sv.enregistrer(data, origine=sv.ORIGINE_MANUELLE, autorise_protege=True, chemin=FICHIER)
 
     print(f"\n  {len(modifs)} seuil(s) mis a jour — AUCUN supprime")
     decl = [c for c, m in modifs if m["mode"] == "declencheur"]
