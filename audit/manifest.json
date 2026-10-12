@@ -211,5 +211,60 @@
       "lecon": "un « Repository not found » GitHub peut être un problème de CREDENTIAL (mauvais compte présenté), pas un dépôt absent — vérifier le username du credential helper avant de conclure"
     },
     "integrite_du_registre": "Deux lignes du CSV avaient un champ en trop (virgules non quotées : A-002 et R-002) — réparées lors de la mise à jour du 12/10. Toute écriture des CSV d'audit est désormais validée (13 champs) et atomique (tmp + replace)."
+  },
+  "phase3": {
+    "statut": "TERMINÉE le 12/10/2026 — livrable : audit/registre_desaccords.md",
+    "agent_A": {
+      "famille": "Claude",
+      "modele": "anthropic/claude-sonnet-5.5 (OpenRouter)",
+      "perimetre": [
+        "src/strategie/strategie_leo.py",
+        "src/backtesting/challenge_validateur.py",
+        "src/analyse/fondamentaux_historiques.py"
+      ],
+      "brief": "audit/phase3_brief_agentA.md",
+      "livrable": "audit/phase3_agentA_claude.md"
+    },
+    "agent_B": {
+      "famille": "Mistral (décision du 12/10)",
+      "modele": "mistralai/mistral-large-4-0 (OpenRouter, 0,68/2,09 $ par M)",
+      "perimetre": "revue élargie : tout src/ SAUF les 3 modules de l'Agent A + tests + scripts",
+      "brief": "audit/phase3_brief_agentB.md",
+      "livrable": "audit/phase3_agentB_mistral.md"
+    },
+    "budget": "OpenRouter : solde 9,77 $ (46,221 − 36,452) au lancement",
+    "livrable_final": "audit/registre_desaccords.md (croisement A×B)",
+    "note": "séquentiel volontaire : la config delegation est globale, A tourne d'abord sur Claude, puis B sur Mistral (indépendance des familles garantie).",
+    "resultats": {
+      "agent_A_claude": {
+        "findings": 13,
+        "p1": 2,
+        "p2": 10,
+        "p3": 1,
+        "rapport": "phase3_agentA_claude.md"
+      },
+      "agent_B0_avorte": {
+        "pistes recuperees": 4,
+        "note": "run Mistral coupe par panne connexion ; materiel recupere et re-verifie dans phase3_materiel_runB_avorte.md"
+      },
+      "agent_B1_mistral": {
+        "findings": 15,
+        "p1": 1,
+        "p2": 6,
+        "p3": 8,
+        "rapport": "phase3_agentB1_mistral.md"
+      },
+      "agent_B2_mistral": {
+        "findings": 15,
+        "p1": 1,
+        "p2": 7,
+        "p3": 7,
+        "rapport": "phase3_agentB2_mistral.md"
+      },
+      "total_items": 47,
+      "verifications_integrite": "P1 confirmes par execution (A3-01, B1-01, B1-03, B2-04, B0-01) ; B2-01 partiellement faux (date lue 09/09 au lieu de 09/10) — reclass P2, consigne en F-01",
+      "convergences": 10,
+      "top10": "voir registre_desaccords.md section 5"
+    }
   }
 }
