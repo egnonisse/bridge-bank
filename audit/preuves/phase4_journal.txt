@@ -1,0 +1,27 @@
+=== JOURNAL PHASE 4 — 2026-10-12 03:33 UTC ===
+
+--- 1. RELEVÉ AVANT (fichiers de données + git) ---
+$ git status --short
+?? audit/preuves/phase4_journal.txt
+?? tests/test_regressions_audit.py
+
+$ md5sum des fichiers d'état data/*.json (avant)
+fichiers: 47
+
+--- 2. RELEVÉ APRÈS (md5sum des data/*.json) ---
+✅ AUCUN fichier de data/ n'a changé pendant la suite de tests (47 fichiers, md5 identiques)
+
+--- 3. RÉSULTAT DE LA SUITE ---
+338 passed · 6 xfailed (les 6 cibles de correction de la phase 3, échecs ATTENDUS) · 0 failed
+
+--- 4. TESTS AJOUTÉS (phase 4) ---
+tests/test_regressions_audit.py — 6 tests xfail :
+  • test_drip_comptabilise_le_net_apres_irvm
+  • test_portfolio_corrompu_ne_redevient_pas_vide(monkeypatch, tmp_path):
+  • test_fiche_spec_sans_virgule_de_milliers
+  • test_nettoyeur_detecte_les_artefacts_bas(make_bars):
+  • test_cooldown_watchlist_ne_repete_pas(monkeypatch, tmp_path):
+  • test_close_reason_porte_la_date_du_stop
+
+--- 5. NOTE PROTOCOLE ---
+Phase 8 (exécution contrôlée avec gel de data/) : ce relevé avant/après montre que la suite actuelle ne touche PAS data/ — le gel reste requis pour la suite complète étendue.
