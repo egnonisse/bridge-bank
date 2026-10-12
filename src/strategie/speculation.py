@@ -3,11 +3,14 @@
 Signaux d'entrée :
   DÉCLENCHEUR (obligatoire) :
     - breakout 20j : cours au-dessus du plus haut des 20 derniers jours
-    - volume >= 2x la moyenne 20j (valide la cassure — sans volume, faux breakout)
-  CONFIRMATIONS (>= 1 requise, confluence totale >= min_signals) :
+  CONFIRMATIONS (confluence totale >= min_signals) :
     - momentum : variation 20j > +10% ou 60j > +20%
     - RSI entre 50 et 70 (haussier sans surchauffe)
     - golden cross : EMA20 > EMA50 (confirmation de tendance, PAS déclencheur)
+  INFORMATION (jamais comptée) :
+    - volume >= 2x la moyenne 20j : affiché par `volume_info()`, SORTI du décompte
+      (décision LEO du 12/10/2026 — mesuré placebo au challenge multi-modèles,
+      p = 0,44 : il n'apporte rien, il reste visible pour la lecture humaine).
 
 Règles de sortie (mécaniques, non négociables) :
   - stop-loss initial : -15% du prix d'entrée
@@ -46,7 +49,12 @@ ZONE_DEAD_REVIEW_DAYS = 120  # alerte REVUE unique (Telegram)
 
 # ---------------------------------------------------------------- signaux
 def detect_signals(quote, bars) -> list[str]:
-    """Retourne la liste des signaux d'entrée cochés pour un titre."""
+    """Retourne les signaux de CONFLUENCE cochés pour un titre.
+
+    Décision LEO du 12/10/2026 : le volume n'est PLUS un signal de confluence
+    (mesuré placebo, p = 0,44 au challenge multi-modèles) — il reste affiché
+    comme information par `volume_info()`, jamais compté.
+    """
     recent = bars[-90:]
     if len(recent) < 60:
         return []
@@ -56,8 +64,6 @@ def detect_signals(quote, bars) -> list[str]:
     ema50 = ema(closes, 50)
     c20 = change_pct(recent, 20)
     c60 = change_pct(recent, 60)
-    avol = avg_volume(recent)
-    vratio = quote.volume / avol if avol > 0 else 0.0
 
     signals: list[str] = []
     if c20 > 10 or c60 > 20:
@@ -67,8 +73,6 @@ def detect_signals(quote, bars) -> list[str]:
     prior_20 = closes[-21:-1] if len(closes) >= 21 else closes[:-1]
     if prior_20 and quote.last > max(prior_20):
         signals.append("breakout 20j")
-    if vratio > 2:
-        signals.append(f"volume {vratio:.1f}x")
     if rsi is not None and 50 < rsi < 70:
         signals.append(f"RSI {rsi:.0f}")
     if ema20 and ema50 and ema20 > ema50:
@@ -76,9 +80,30 @@ def detect_signals(quote, bars) -> list[str]:
     return signals
 
 
+def volume_info(quote, bars) -> str | None:
+    """Information volume — AFFICHÉE mais JAMAIS comptée (décision du 12/10/2026).
+
+    Retourne « volume X.Xx » si la séance fait >= 2x la moyenne 20j, sinon None.
+    Avant cette décision, ce signal comptait dans la confluence ; la mesure
+    (challenge multi-modèles, p = 0,44) a montré qu'il n'apporte rien.
+    """
+    recent = bars[-90:]
+    if len(recent) < 60 or not quote.volume:
+        return None
+    avol = avg_volume(recent)
+    vratio = quote.volume / avol if avol > 0 else 0.0
+    if vratio > 2:
+        return f"volume {vratio:.1f}x"
+    return None
+
+
 def screen_speculation(api: BSApi, min_signals: int = MIN_SIGNALS) -> list[dict]:
-    """Candidats spéculatifs : breakout (cassure 20j + volume >= 2x) requis
-    + confluence totale >= min_signals (confirmations momentum/RSI/golden cross)."""
+    """Candidats spéculatifs : breakout (cassure 20j) requis + confluence >= min_signals.
+
+    Décision LEO du 12/10/2026 : le volume n'est PLUS un déclencheur requis ni un
+    point de confluence (placebo mesuré, p = 0,44) — il est seulement AFFICHÉ
+    (clé « volume_info ») pour la lecture humaine.
+    """
     hist = load_all_history(api)
     snap = api.market_snapshot()
     results = []
@@ -87,11 +112,9 @@ def screen_speculation(api: BSApi, min_signals: int = MIN_SIGNALS) -> list[dict]
         if quote is None or quote.last <= 0 or quote.is_obligation:
             continue
         signals = detect_signals(quote, bars)
-        # Déclencheur requis : breakout (cassure 20j) validé par un volume >= 2x.
-        # Le golden cross seul ne déclenche plus l'entrée (signal tardif).
-        has_breakout = "breakout 20j" in signals
-        has_volume = any(s.startswith("volume") for s in signals)
-        if not (has_breakout and has_volume):
+        # Déclencheur requis : breakout (cassure 20j). Le golden cross seul ne
+        # déclenche pas l'entrée (signal tardif).
+        if "breakout 20j" not in signals:
             continue
         if len(signals) >= min_signals:
             results.append(
@@ -101,6 +124,7 @@ def screen_speculation(api: BSApi, min_signals: int = MIN_SIGNALS) -> list[dict]
                     "last": quote.last,
                     "signals": signals,
                     "count": len(signals),
+                    "volume_info": volume_info(quote, bars),  # information seule
                 }
             )
     results.sort(key=lambda r: -r["count"])

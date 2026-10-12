@@ -134,3 +134,16 @@ def test_seuils_de_rendement_coherents_avec_la_taxation():
 
     assert regles.RENDEMENT_NET_ENTREE == TARGET_NET_YIELD_ENTRY
     assert regles.RENDEMENT_NET_SORTIE == TARGET_NET_YIELD_EXIT
+
+
+def test_max_buy_weight_confirme_et_inscrit_dans_l_ips():
+    """Le plafond de poids d'ACHAT (0,40) : confirmé par LEO le 12/10/2026 et INSCRIT
+    dans l'IPS — il détermine un nombre d'actions conseillé (`max_qty` dans l'alerte),
+    donc il ne peut pas vivre seulement dans le code (question Q4 de l'audit)."""
+    import src.regles as regles
+
+    assert regles.MAX_BUY_WEIGHT == pytest.approx(0.40)
+    # L'inscription dans l'IPS est verrouillée ici : si l'un des deux bouge, le test casse.
+    ips = (RACINE / "docs" / "IPS.md").read_text(encoding="utf-8")
+    assert "MAX_BUY_WEIGHT" in ips, "la règle doit être inscrite dans docs/IPS.md (décision Q4)"
+    assert "0,40" in ips, "la valeur doit figurer dans docs/IPS.md (décision Q4)"

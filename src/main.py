@@ -333,7 +333,7 @@ def cmd_spec(args: argparse.Namespace) -> None:
 
     api = BSApi()
     if args.action == "screen":
-        print("Screening spéculatif (≥3 signaux)…\n")
+        print("Screening spéculatif (≥3 signaux — le volume est affiché mais NE COMPTE PAS, décision 12/10)…\n")
         results = screen_speculation(api, min_signals=args.min)
         if not results:
             print("Aucun titre avec la confluence requise.")
@@ -341,9 +341,10 @@ def cmd_spec(args: argparse.Namespace) -> None:
         print(f"{'Code':7s} {'Nom':26s} {'Cours':>9s} {'Sig':>3s}  Signaux")
         print("-" * 72)
         for r in results:
+            vol = f"  [info: {r['volume_info']}]" if r.get("volume_info") else ""
             print(
                 f"{r['code']:7s} {r['name'][:25]:26s} {r['last']:>9,.0f} "
-                f"{r['count']:>3d}  {', '.join(r['signals'])}"
+                f"{r['count']:>3d}  {', '.join(r['signals'])}{vol}"
             )
     elif args.action == "open":
         positions = load_positions()

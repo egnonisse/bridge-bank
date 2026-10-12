@@ -2,8 +2,8 @@
 
 Prix d'entrée (rendement NET 4 %) = dps / DIV_YIELD_ENTRY — acheter en dessous.
 Prix de sortie (rendement NET 2 %) = dps / DIV_YIELD_EXIT — vendre au-dessus.
-Le rendement est NET (après IRVM 15 % + frais de conservation 0,80 %/an),
-donc le seuil brut est plus élevé (≈ 5,65 % à l'entrée, ≈ 3,29 % à la sortie).
+Le rendement est NET (après IRVM 12 % + frais de conservation 0,80 %/an),
+donc le seuil brut est plus élevé (≈ 5,45 % à l'entrée, ≈ 3,18 % à la sortie).
 Sortie sur fondamentaux (JAMAIS sur une simple baisse de cours) :
   1. dividende coupé (>50 %) ou suspendu
   2. PER > 40 (décote résorbée ou bénéfices en chute)
@@ -50,8 +50,8 @@ REINF_COOLDOWN_DAYS = 7
 REINF_IMPROVE_DOWN_PCT = 0.03  # re-alerte pendant le cooldown si le prix baisse de ≥ 3 %
 
 # Rendement BRUT requis pour atteindre le rendement NET cible (IRVM + frais déduits)
-DIV_YIELD_ENTRY = gross_yield_for_net(TARGET_NET_YIELD_ENTRY)  # 4 % net -> ≈ 5,65 % brut
-DIV_YIELD_EXIT = gross_yield_for_net(TARGET_NET_YIELD_EXIT)    # 2 % net -> ≈ 3,29 % brut
+DIV_YIELD_ENTRY = gross_yield_for_net(TARGET_NET_YIELD_ENTRY)  # 4 % net -> ≈ 5,45 % brut
+DIV_YIELD_EXIT = gross_yield_for_net(TARGET_NET_YIELD_EXIT)    # 2 % net -> ≈ 3,18 % brut
 PER_EXPLODE = 40.0
 DIV_CUT_RATIO = 0.5
 HOLDING_YEARS = 3

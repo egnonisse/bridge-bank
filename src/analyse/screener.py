@@ -29,7 +29,7 @@ MAX_WORKERS = 3  # faible pour éviter le rate-limiting des sites
 # Filtres value+dividende
 from ..regles import PER_MAX  # noqa: E402  (catalogue : src/regles.py)
 # Rendement BRUT requis pour atteindre le rendement NET cible (4 % après IRVM + frais)
-YIELD_MIN = gross_yield_for_net(TARGET_NET_YIELD_ENTRY) * 100  # ≈ 5,65 % brut
+YIELD_MIN = gross_yield_for_net(TARGET_NET_YIELD_ENTRY) * 100  # ≈ 5,45 % brut
 from ..regles import PER_ABSURD  # noqa: E402
 YIELD_ABSURD = 30.0  # au-delà : dividende exceptionnel one-off
 

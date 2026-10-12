@@ -144,11 +144,19 @@ def test_detect_signals_uptrend(make_bars):
     assert "momentum" in joined
     assert "golden cross" in joined
     assert "breakout 20j" in joined
-    assert "volume" in joined
+    # Décision 12/10 : le volume ne compte PLUS dans la confluence…
+    assert "volume" not in joined
+    # …mais il reste affiché en information (5000 vs moyenne 1000 → 5x).
+    from src.strategie.speculation import volume_info
+    assert volume_info(quote, bars) == "volume 5.0x"
 
 
 def test_screen_speculation_requires_full_confluence(monkeypatch):
-    """Régression : le filtre doit garder les titres >= min_signals (pas l'inverse)."""
+    """Régression : le filtre doit garder les titres >= min_signals (pas l'inverse).
+
+    Décision 12/10 : le volume est sorti du décompte — la confluence se calcule
+    sur breakout + momentum/RSI/golden cross uniquement.
+    """
     from src.strategie import speculation as sp
 
     class FakeAPI:
@@ -162,10 +170,28 @@ def test_screen_speculation_requires_full_confluence(monkeypatch):
     monkeypatch.setattr(sp, "load_all_history",
                         lambda api: {"AAA": [1], "BBB": [1], "CCC": [1]})
     monkeypatch.setattr(sp, "detect_signals", lambda q, bars: {
-        "AAA": ["breakout 20j", "volume 2.5x", "momentum +15%"],   # 3 → candidat
-        "BBB": ["breakout 20j", "volume 2.5x"],                    # 2 → pas candidat
-        "CCC": ["breakout 20j"],                                   # pas de volume → exclu
+        "AAA": ["breakout 20j", "momentum +15%", "RSI 62"],  # 3 → candidat
+        "BBB": ["breakout 20j", "momentum +15%"],            # 2 → pas candidat
+        "CCC": ["momentum +15%", "RSI 62", "golden cross"],  # pas de breakout → exclu
     }[q.code])
+    monkeypatch.setattr(sp, "volume_info", lambda q, bars: None)
 
     res = sp.screen_speculation(FakeAPI(), min_signals=3)
     assert [r["code"] for r in res] == ["AAA"]
+
+
+def test_volume_ne_requalifie_pas_un_titre(monkeypatch):
+    """Un volume énorme sans confluence suffisante ne crée PAS de candidat
+    (avant la décision 12/10, volume + breakout suffisaient à qualifier)."""
+    from src.strategie import speculation as sp
+
+    class FakeAPI:
+        def market_snapshot(self):
+            return Snapshot(stocks=[Quote(code="VOL", name="V", last=100, is_index=False)])
+
+    monkeypatch.setattr(sp, "load_all_history", lambda api: {"VOL": [1]})
+    monkeypatch.setattr(sp, "detect_signals", lambda q, bars: ["breakout 20j"])
+    monkeypatch.setattr(sp, "volume_info", lambda q, bars: "volume 9.9x")
+
+    res = sp.screen_speculation(FakeAPI(), min_signals=3)
+    assert res == []   # le volume (information) ne compte pas dans la confluence
