@@ -19,6 +19,7 @@ import statistics
 from datetime import datetime
 from pathlib import Path
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
 REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
 
@@ -63,8 +64,8 @@ def detect_jumps(hist_all: dict) -> list[str]:
                 if _is_probable_split(closes, i):
                     continue  # division de nominal réelle → légitime
                 problems.append(
-                    f"cassure {code} : {bars[i-1].date:%Y-%m-%d} {closes[i-1]:,.0f} → "
-                    f"{bars[i].date:%Y-%m-%d} {closes[i]:,.0f} (x{ratio:.2f})"
+                    f"cassure {code} : {bars[i-1].date:%Y-%m-%d} {fcfa(closes[i-1], signe=False)} → "
+                    f"{bars[i].date:%Y-%m-%d} {fcfa(closes[i], signe=False)} (x{ratio:.2f})"
                 )
     return problems
 
@@ -88,7 +89,7 @@ def check_against_api(hist_all: dict, snapshot, today: datetime | None = None) -
         gap = abs(last_close / q.last - 1)
         if gap > PRICE_TOLERANCE:
             problems.append(
-                f"incohérence {code} : cache {last_close:,.0f} vs API {q.last:,.0f} "
+                f"incohérence {code} : cache {fcfa(last_close, signe=False)} vs API {fcfa(q.last, signe=False)} "
                 f"(écart {gap*100:.0f} %)"
             )
     return problems

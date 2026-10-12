@@ -21,6 +21,7 @@ from .strategie.orders import build_limit_orders
 from .portfolio import load_portfolio
 from .strategie.speculation import load_positions
 from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
 STATE_FILE = DATA_DIR / "portfolio_state.json"
 
@@ -240,8 +241,6 @@ def alerte_tresorerie(pct_cash: float, history: list | None = None,
     if jours < CASH_ALERT_DAYS:
         return ""
 
-    from .portefeuille.format_fr import fcfa
-
     entete = (f"   ℹ️ {fcfa(montant)} dorment sur ton compte ({pct_cash:.0f} % de ton "
               f"argent)" if montant else
               f"   ℹ️ {pct_cash:.0f} % de ton argent dort sur ton compte")
@@ -267,19 +266,19 @@ def _format(data: dict) -> str:
         "📊 RAPPORT MENSUEL — PORTEFEUILLE BRIDGE BANK",
         f"📅 {datetime.now().strftime('%d/%m/%Y')}",
         "",
-        f"💰 VALEUR TOTALE : {total:,.0f} F  ({evol})",
-        (f"   Noyau {d['stocks']:,.0f} F ({_pct(d['stocks'], total):.0f}%) · "
-         f"Cash {d['cash']:,.0f} F ({_pct(d['cash'], total):.0f}%)"),
+        f"💰 VALEUR TOTALE : {fcfa(total, signe=False)}  ({evol})",
+        (f"   Noyau {fcfa(d['stocks'], signe=False)} ({_pct(d['stocks'], total):.0f}%) · "
+         f"Cash {fcfa(d['cash'], signe=False)} ({_pct(d['cash'], total):.0f}%)"),
         "",
         "📈 NOYAU DIVIDENDE",
     ]
     if d["pos_rows"]:
         for r in d["pos_rows"]:
             L.append(f"   {r['code']} ({r['name']}) {r['qty']} act.")
-            L.append(f"      {r['entry']:,.0f} → {r['last']:,.0f} F · {r['pnl']:+,.0f} F ({r['ret_pct']:+.1f}%)")
+            L.append(f"      {fcfa(r['entry'], signe=False)} → {fcfa(r['last'], signe=False)} · {fcfa(r['pnl'], signe=True)} ({r['ret_pct']:+.1f}%)")
             payout = f"{r['payout']:.0f}%" if r["payout"] is not None else "n/a"
             L.append(f"      rend. net coût {r['net_cost']:.2f}% · actuel {r['net_now']:.2f}% · payout {payout} {r['sustain']}")
-        L.append(f"   → plus/moins-value latente : {d['pnl']:+,.0f} F")
+        L.append(f"   → plus/moins-value latente : {fcfa(d['pnl'], signe=True)}")
     else:
         L.append("   Aucune position.")
 
@@ -307,18 +306,18 @@ def _format(data: dict) -> str:
         for b in d["bond_rows"]:
             ytm_s = f"{b['ytm']:.2f}%" if b["ytm"] is not None else "n/a"
             L.append(f"   {b['code']} ({b['label']}) {b['qty']} titres @ {b['price']:.0f}%")
-            L.append(f"      valeur {b['value']:,.0f} F · coupons {b['coupons']:,.0f} F/an bruts · YTM achat {ytm_s}")
+            L.append(f"      valeur {fcfa(b['value'], signe=False)} · coupons {fcfa(b['coupons'], signe=False)}/an bruts · YTM achat {ytm_s}")
     else:
         L.append("   Aucune position (module `bond` conservé en manuel).")
 
     L.extend(["", "🎲 SPÉCULATION"])
     if d["spec_rows"]:
         for s in d["spec_rows"]:
-            L.append(f"   {s['code']} ({s['name']}) {s['qty']} act. · {s['ret_pct']:+.1f}% · stop {s['stop']:,.0f} F")
+            L.append(f"   {s['code']} ({s['name']}) {s['qty']} act. · {s['ret_pct']:+.1f}% · stop {fcfa(s['stop'], signe=False)}")
     else:
         L.append("   Aucune position ouverte.")
 
-    L.extend(["", f"💵 DIVIDENDES PERÇUS : {d.get('div_real', 0):,.0f} F encaissés (réels) · {d.get('div_earned', 0):,.0f} F théoriques"])
+    L.extend(["", f"💵 DIVIDENDES PERÇUS : {fcfa(d.get('div_real', 0), signe=False)} encaissés (réels) · {fcfa(d.get('div_earned', 0), signe=False)} théoriques"])
     return "\n".join(L)
 
 

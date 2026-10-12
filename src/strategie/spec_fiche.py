@@ -9,6 +9,7 @@ fait / hypothèse / décision séparés, jamais d'ordre automatique.
 """
 from dataclasses import dataclass, field
 
+from ..portefeuille.format_fr import fcfa  # montants à la française (invariant E1, correction B1-02 du 12/10)
 from .spec_profiles import load_profiles, zone_of, zone_label, detect_schemas
 
 # Emojis / libellés par schéma
@@ -149,7 +150,7 @@ def build_message(f: FicheSpec) -> str:
             "un signal de veille (courant en marché haussier : la marée du marché)"
 
     head = (f"{SCHEMA_LABELS[main]} — {f.code} ({f.name})\n\n"
-            f"Cours de référence : {f.price:,.0f} F "
+            f"Cours de référence : {fcfa(f.price)} "
             f"({'LIVE du moment' if b.get('cours_source') == 'live' else 'dernière clôture connue'})\n"
             f"Ce qui se passe : ce cours a déclenché le schéma "
             f"« {mot} » — {rare}, jamais automatique.\n\n"
@@ -168,7 +169,7 @@ def build_message(f: FicheSpec) -> str:
     # fondamental connu — signalé, jamais jugé (la poche spé joue le prix)
     if b.get("dps"):
         net = b["dps"] * 0.88 / f.price * 100 - 0.8 if f.price else 0
-        fund = (f"   • 🏦 Fondamental connu : dividende {b['dps']:,.0f} F/an "
+        fund = (f"   • 🏦 Fondamental connu : dividende {fcfa(b['dps'])}/an "
                 f"(≈ {net:.1f} % net), PER {b['per']:.1f}")
         if b.get("payout") and b["payout"] > 100:
             fund += (f", ⚠️ PAYOUT {b['payout']:.0f} % : elle paie PLUS qu'elle ne "
@@ -187,11 +188,11 @@ def build_message(f: FicheSpec) -> str:
                        "\n🚫 Règle d'or : un pari perdant ne devient JAMAIS un loyer.")
 
     body = (f"\n📋 SI TU DÉCIDES DE JOUER (ta décision, jamais automatique) :\n"
-            f"   • Achat : entre {b['entry_lo']:,.0f} et {b['entry_hi']:,.0f} F — jamais plus cher\n"
-            f"   • Stop −15 % : {b['stop']:,.0f} F → tu vends tout, sans discuter\n"
-            f"   • +20 % ({b['palier20']:,.0f} F) → vends ⅓\n"
-            f"   • +35 % ({b['palier35']:,.0f} F) → vends ⅓\n"
-            f"   • +50 % ({b['palier50']:,.0f} F) → vends le reste\n"
-            f"   • Le signal vit tant que le prix reste au-dessus de {b['entry_lo']:,.0f} F\n"
+            f"   • Achat : entre {fcfa(b['entry_lo'])} et {fcfa(b['entry_hi'])} — jamais plus cher\n"
+            f"   • Stop −15 % : {fcfa(b['stop'])} → tu vends tout, sans discuter\n"
+            f"   • +20 % ({fcfa(b['palier20'])}) → vends ⅓\n"
+            f"   • +35 % ({fcfa(b['palier35'])}) → vends ⅓\n"
+            f"   • +50 % ({fcfa(b['palier50'])}) → vends le reste\n"
+            f"   • Le signal vit tant que le prix reste au-dessus de {fcfa(b['entry_lo'])}\n"
             f"\n🚫 Règle d'or : un pari perdant ne devient JAMAIS un loyer.")
     return head + body

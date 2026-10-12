@@ -30,6 +30,7 @@ from ..collecte.bsapi import BSApi
 from ..collecte.backtest import load_all_history
 from ..analyse.screening import avg_volume, change_pct, ema, rsi_wilder
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
 POSITIONS_FILE = DATA_DIR / "spec_positions.json"
 CANDIDATES_STATE_FILE = DATA_DIR / "spec_candidates_state.json"
@@ -147,6 +148,7 @@ class SpecPosition:
     closed: bool = False
     close_reason: str = ""
     close_price: float = 0.0
+    closed_at: str = ""  # horodatage de la clôture (B0-01 : le cooldown en a besoin)
 
     def __post_init__(self) -> None:
         if not self.opened_at:
@@ -180,8 +182,9 @@ def check_position(pos: SpecPosition, price: float) -> list[str]:
     if price <= pos.stop_loss:
         pos.closed = True
         pos.close_price = price
-        pos.close_reason = f"STOP déclenché à {price:,.0f} (stop {pos.stop_loss:,.0f})"
-        events.append(f"🔴 VENDS TOUT (100 %) {pos.name} ({pos.code}) — stop déclenché, vends tout à {price:,.0f} FCFA")
+        pos.closed_at = datetime.now().isoformat()
+        pos.close_reason = f"STOP déclenché à {fcfa(price, signe=False)} (stop {fcfa(pos.stop_loss, signe=False)}) le {pos.closed_at[:10]}"
+        events.append(f"🔴 VENDS TOUT (100 %) {pos.name} ({pos.code}) — stop déclenché, vends tout à {fcfa(price, signe=False)}")
         return events
 
     # 2. mise à jour du plus haut + stop suiveur (après +35%)
@@ -206,7 +209,8 @@ def check_position(pos: SpecPosition, price: float) -> list[str]:
     if price >= pos.entry_price * (1 + TAKE_3):
         pos.closed = True
         pos.close_price = price
-        pos.close_reason = f"+50% atteint : clôture finale à {price:,.0f}"
+        pos.closed_at = datetime.now().isoformat()
+        pos.close_reason = f"+50% atteint : clôture finale à {fcfa(price, signe=False)} le {pos.closed_at[:10]}"
         events.append(f"🔴 VENDS LE RESTE (dernier 1/3) {pos.name} ({pos.code}) — +50% atteint, encaisse le gain")
 
     return events
@@ -291,7 +295,7 @@ def open_position(api: BSApi, code: str, amount: float) -> SpecPosition:
             )
     quantity = int(amount // quote.last)
     if quantity <= 0:
-        raise ValueError(f"Montant {amount:,.0f} insuffisant pour 1 action à {quote.last:,.0f}")
+        raise ValueError(f"Montant {fcfa(amount, signe=False)} insuffisant pour 1 action à {fcfa(quote.last, signe=False)}")
     return SpecPosition(
         code=quote.code.strip(),
         name=quote.name,
@@ -369,26 +373,26 @@ def check_open_spec_positions(api, notifier) -> None:
         if last <= p.stop_loss:
             msg = (
                 f"🔴 STOP — {p.name} ({p.code})\n\n"
-                f"Ton pari est tombé à {last:,.0f} F : sous ton filet de\n"
-                f"{p.stop_loss:,.0f} F (−15 %).\n\n"
+                f"Ton pari est tombé à {fcfa(last, signe=False)} : sous ton filet de\n"
+                f"{fcfa(p.stop_loss, signe=False)} (−15 %).\n\n"
                 f"📋 Action : VENDS TOUT, sans discuter.\n"
                 f"🚫 Rappel : un pari perdant ne devient JAMAIS un investissement."
             )
         elif last >= p.entry_price * 1.50 and not (p.sold_1 and p.sold_2):
             msg = (
-                f"🎉 DERNIER PALIER — {p.name} ({p.code}) à {last:,.0f} F (+50 %)\n\n"
+                f"🎉 DERNIER PALIER — {p.name} ({p.code}) à {fcfa(last, signe=False)} (+50 %)\n\n"
                 f"📋 Action : VENDS LE RESTE de la position.\n"
                 f"🚫 Rappel : un pari gagné reste un pari — encaisse."
             )
         elif last >= p.entry_price * 1.35 and p.sold_1 and not p.sold_2:
             msg = (
-                f"📈 PALIER +35 % — {p.name} ({p.code}) à {last:,.0f} F\n\n"
+                f"📈 PALIER +35 % — {p.name} ({p.code}) à {fcfa(last, signe=False)}\n\n"
                 f"📋 Action : vends encore 1 sur 3 (il t'en reste 1/3 après).\n"
                 f"🚫 Règle : +20 % vendre 1/3 · +35 % encore 1/3 · +50 % tout."
             )
         elif last >= p.entry_price * 1.20 and not p.sold_1:
             msg = (
-                f"📈 PALIER +20 % — {p.name} ({p.code}) à {last:,.0f} F\n\n"
+                f"📈 PALIER +20 % — {p.name} ({p.code}) à {fcfa(last, signe=False)}\n\n"
                 f"📋 Action : vends 1 sur 3 — tu sécurises et le reste devient gratuit.\n"
                 f"🚫 Règle : +20 % vendre 1/3 · +35 % encore 1/3 · +50 % tout."
             )

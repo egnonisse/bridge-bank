@@ -34,27 +34,33 @@ def test_drip_comptabilise_le_net_apres_irvm():
 
 
 # -------------------------------------------- B1-04 : portefeuille corrompu
-@pytest.mark.xfail(
-    reason="B1-04 (P2) — load_portfolio retourne [] en silence si le fichier est illisible, "
-           "puis le cron écrase ; correction : distinguer absent/illisible, ne jamais écraser",
-    strict=False,
-)
+# CORRIGÉ le 12/10/2026 (lot 1) — test gelé : fichier illisible ⇒ bruyant, jamais « vide ».
 def test_portfolio_corrompu_ne_redevient_pas_vide(monkeypatch, tmp_path):
     from src import portfolio as pf
 
     bad = tmp_path / "portfolio.json"
     bad.write_text("{ceci n'est pas du json", encoding="utf-8")
     monkeypatch.setattr(pf, "PORTFOLIO_FILE", bad)
-    with pytest.raises(Exception):
+    with pytest.raises(pf.PortfolioInvalide):
         pf.load_portfolio()  # un fichier illisible doit être BRUYANT, pas « vide »
 
 
+def test_portfolio_ecriture_atomique(monkeypatch, tmp_path):
+    """B1-04 (CORRIGÉ 12/10) — écriture via temporaire puis `replace` (jamais tronqué)."""
+    from src import portfolio as pf
+
+    cible = tmp_path / "portfolio.json"
+    monkeypatch.setattr(pf, "PORTFOLIO_FILE", cible)
+    monkeypatch.setattr(pf, "DATA_DIR", tmp_path)
+    pos = pf.DividendPosition(code="X", name="X", entry_price=1000.0, quantity=1,
+                              dps=10.0, per_open=5.0, opened_at="2026-01-01T00:00:00")
+    pf.save_portfolio([pos])
+    assert cible.exists()
+    assert not (tmp_path / "portfolio.json.tmp").exists(), "le temporaire doit avoir été remplacé"
+
+
 # ------------------------------------------ B1-02 : format FR dans les fiches
-@pytest.mark.xfail(
-    reason="B1-02 (P2) — les fiches spé (et messages live) formatent les francs avec une "
-           "virgule de milliers ; correction : format_fr.fcfa()",
-    strict=False,
-)
+# CORRIGÉ le 12/10/2026 (lot 1) — test gelé.
 def test_fiche_spec_sans_virgule_de_milliers():
     from src.strategie.spec_fiche import build_fiche
 
@@ -107,11 +113,7 @@ def test_cooldown_watchlist_ne_repete_pas(monkeypatch, tmp_path):
 
 
 # --------------------------------------- B0-01 : date de stop structurée
-@pytest.mark.xfail(
-    reason="B0-01 (P1) — close_reason ne contient aucune date ; le cooldown stop-out de la "
-           "veille retombe sur la date d'ouverture ; correction : horodater le stop",
-    strict=False,
-)
+# CORRIGÉ le 12/10/2026 (lot 1) — test gelé : le stop est horodaté (champ closed_at).
 def test_close_reason_porte_la_date_du_stop():
     from src.strategie.speculation import SpecPosition, check_position
 
@@ -119,6 +121,77 @@ def test_close_reason_porte_la_date_du_stop():
     check_position(pos, 8000.0)  # stop −15 % → clôture
     assert pos.closed
     assert re.search(r"\d{4}-\d{2}-\d{2}", pos.close_reason), (
-        "la date du stop doit figurer dans close_reason (ou un champ dédié `closed_at`) — "
-        "sans elle, le cooldown de la veille est inopérant"
+        "la date du stop doit figurer dans close_reason — sans elle, le cooldown "
+        "« 30 j après stop-out » de la veille est inopérant"
     )
+    assert pos.closed_at[:10] == datetime.now().strftime("%Y-%m-%d"), (
+        "closed_at doit être horodaté au moment de la clôture"
+    )
+
+
+# ───────────────────── B1-01 : la sortie ne se perd plus (CORRIGÉ 12/10) ─────
+
+def _pos_snts():
+    from src.portfolio import DividendPosition
+
+    return DividendPosition(code="SNTS", name="Sonatel", entry_price=32000.0, quantity=3,
+                            dps=1977.0, per_open=7.0, opened_at="2026-01-01T00:00:00")
+
+
+def _cmd_portf_check(monkeypatch, pos, send_ok: bool):
+    """Exécute cmd_portf check : sortie déclenchée (prix > prix de sortie), Telegram simulé.
+    Retourne (position, notifier, saves)."""
+    import argparse
+
+    import src.collecte.fundamentals as fund_mod
+    import src.main as main_mod
+    import src.portfolio as pf
+
+    class FakeApi:
+        def market_snapshot(self):
+            return Snapshot(stocks=[Quote(code="SNTS", name="Sonatel",
+                                          last=pos.exit_price + 100, is_index=False)])
+
+    class FakeNotifier:
+        enabled = True
+
+        def __init__(self):
+            self.messages = []
+
+        def send(self, msg):
+            self.messages.append(msg)
+            return send_ok
+
+    notif = FakeNotifier()
+    saves = []
+    monkeypatch.setattr(main_mod, "BSApi", FakeApi)
+    monkeypatch.setattr(pf, "load_portfolio", lambda: [pos])
+    monkeypatch.setattr(pf, "save_portfolio", lambda positions: saves.append(True))
+    monkeypatch.setattr(pf, "load_alert_state", lambda: {})
+    monkeypatch.setattr(pf, "save_alert_state", lambda s: None)
+    monkeypatch.setattr(fund_mod, "get_fundamentals", lambda code: {"dps": 1977.0, "per": 8.0})
+    monkeypatch.setattr(main_mod, "get_notifier", lambda cfg: notif)
+    monkeypatch.setattr(main_mod, "load_config", lambda: {})
+
+    args = argparse.Namespace(action="check", code=None, amount=100000,
+                              dps=None, per=None, _actions=None)
+    main_mod.cmd_portf(args)
+    return pos, notif, saves
+
+
+def test_sortie_non_delivree_annule_la_cloture(monkeypatch):
+    """B1-01 (CORRIGÉ) — envoi Telegram en échec ⇒ la clôture est ANNULÉE : la position
+    redevient surveillée et la sortie sera re-tentée au prochain run (jamais perdue)."""
+    pos = _pos_snts()
+    pos, notif, saves = _cmd_portf_check(monkeypatch, pos, send_ok=False)
+    assert notif.messages, "la sortie devait être tentée via Telegram"
+    assert pos.closed is False, "position clôturée alors que l'alerte est perdue !"
+    assert saves, "sauvegarde attendue (sans la fausse clôture)"
+
+
+def test_sortie_delivree_est_persistee(monkeypatch):
+    """B1-01 (CORRIGÉ) — envoi réussi ⇒ la clôture est conservée."""
+    pos = _pos_snts()
+    pos, notif, saves = _cmd_portf_check(monkeypatch, pos, send_ok=True)
+    assert notif.messages
+    assert pos.closed is True

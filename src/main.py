@@ -26,6 +26,7 @@ from .notify import TelegramNotifier
 from .analyse.screening import analyze as analyze_stock
 from .analyse.screening import screen
 from .infrastructure.paths import RACINE as ROOT  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
 CONFIG_PATH = ROOT / "config.yaml"
 
@@ -85,16 +86,16 @@ def cmd_analyze(args: argparse.Namespace) -> None:
         sys.exit(1)
     q = a.quote
     print(f"=== {q.name} ({q.code}) ===")
-    print(f"Cours: {q.last:,.0f} FCFA   Var jour: {q.change_pct:+.2f}%")
-    print(f"Ouverture: {q.open:,.0f}   +Haut: {q.high:,.0f}   +Bas: {q.low:,.0f}   Volume: {q.volume:,}")
-    print(f"Range 52 sem: {q.low_52w:,.0f} – {q.high_52w:,.0f} (position: {q.range_52w*100:.0f}%)")
+    print(f"Cours: {fcfa(q.last, signe=False)}   Var jour: {q.change_pct:+.2f}%")
+    print(f"Ouverture: {fcfa(q.open, signe=False)}   +Haut: {fcfa(q.high, signe=False)}   +Bas: {fcfa(q.low, signe=False)}   Volume: {nombre(q.volume)}")
+    print(f"Range 52 sem: {fcfa(q.low_52w, signe=False)} – {fcfa(q.high_52w, signe=False)} (position: {q.range_52w*100:.0f}%)")
     if q.vwap:
         print(f"Prix moyen jour: {q.vwap:,.2f} FCFA")
     print()
     print(f"RSI(14): {a.rsi:.1f}" if a.rsi is not None else "RSI(14): n/a")
-    print(f"EMA20: {a.ema20:,.0f}   EMA50: {a.ema50:,.0f}" if a.ema20 else "EMA: n/a")
+    print(f"EMA20: {fcfa(a.ema20, signe=False)}   EMA50: {fcfa(a.ema50, signe=False)}" if a.ema20 else "EMA: n/a")
     print(f"Var 5j: {a.change_5d:+.2f}%   Var 20j: {a.change_20d:+.2f}%")
-    print(f"Volume: {q.volume:,}  (moy 20j: {a.avg_volume_20:,.0f}, ratio {a.volume_ratio:.1f}x)")
+    print(f"Volume: {nombre(q.volume)}  (moy 20j: {fcfa(a.avg_volume_20, signe=False)}, ratio {a.volume_ratio:.1f}x)")
     print(f"Score: {a.score}/7")
     print("\nSignaux:")
     for s in a.signals:
@@ -343,7 +344,7 @@ def cmd_spec(args: argparse.Namespace) -> None:
         for r in results:
             vol = f"  [info: {r['volume_info']}]" if r.get("volume_info") else ""
             print(
-                f"{r['code']:7s} {r['name'][:25]:26s} {r['last']:>9,.0f} "
+                f"{r['code']:7s} {r['name'][:25]:26s} {fcfa(r['last']):>11} "
                 f"{r['count']:>3d}  {', '.join(r['signals'])}{vol}"
             )
     elif args.action == "open":
@@ -359,8 +360,8 @@ def cmd_spec(args: argparse.Namespace) -> None:
         positions.append(pos)
         save_positions(positions)
         print(f"✓ Position ouverte : {pos.name} ({pos.code})")
-        print(f"  {pos.quantity} actions à {pos.entry_price:,.0f} = {pos.quantity * pos.entry_price:,.0f} FCFA")
-        print(f"  Stop-loss −15 % : {pos.stop_loss:,.0f}")
+        print(f"  {pos.quantity} actions à {fcfa(pos.entry_price, signe=False)} = {fcfa(pos.quantity * pos.entry_price, signe=False)}")
+        print(f"  Stop-loss −15 % : {fcfa(pos.stop_loss, signe=False)}")
         print("  Paliers : +20 % (vendre ⅓), +35 % (vendre ⅓), +50 % (clôture)")
     elif args.action == "status":
         from .strategie.speculation import ZONE_DEAD_INFO_DAYS, zone_morte_status
@@ -378,8 +379,8 @@ def cmd_spec(args: argparse.Namespace) -> None:
             perf = (cur / p.entry_price - 1) * 100
             etat = "CLÔTURÉ" if p.closed else "ouverte"
             print(
-                f"{p.code:7s} {p.name[:21]:22s} {p.entry_price:>8,.0f} {cur:>8,.0f} "
-                f"{perf:>+6.1f}% {p.stop_loss:>8,.0f}  {etat}"
+                f"{p.code:7s} {p.name[:21]:22s} {fcfa(p.entry_price):>10} {fcfa(cur):>10} "
+                f"{perf:>+6.1f}% {fcfa(p.stop_loss):>10}  {etat}"
             )
         for p in positions:
             if p.closed:
@@ -419,13 +420,13 @@ def cmd_spec(args: argparse.Namespace) -> None:
                 f"🎲 SPÉCULATION — NOUVEAU CANDIDAT\n\n"
                 f"🟢 ACHÈTE {c['name']} ({c['code']})\n"
                 f"   Signaux ({c['count']}) : {', '.join(c['signals'])}\n"
-                f"   Cours (clôture veille) : {last:,.0f} F\n\n"
-                f"   📋 Ordre : ACHAT {qty} act. {c['code']} à ≤ {limit:,.0f} F (limite +3 %)\n"
-                f"      → investi ≈ {qty * last:,.0f} F\n\n"
-                f"   🛑 Stop −15 % : {stop:,.0f} F → vends tout\n"
-                f"   🎯 Paliers : +20 % ({t1:,.0f}) vends ⅓ → stop remonte à {last:,.0f}\n"
-                f"               +35 % ({t2:,.0f}) vends ⅓ → stop suiveur\n"
-                f"               +50 % ({t3:,.0f}) clôture\n\n"
+                f"   Cours (clôture veille) : {fcfa(last, signe=False)}\n\n"
+                f"   📋 Ordre : ACHAT {qty} act. {c['code']} à ≤ {fcfa(limit, signe=False)} (limite +3 %)\n"
+                f"      → investi ≈ {fcfa(qty * last, signe=False)}\n\n"
+                f"   🛑 Stop −15 % : {fcfa(stop, signe=False)} → vends tout\n"
+                f"   🎯 Paliers : +20 % ({fcfa(t1, signe=False)}) vends ⅓ → stop remonte à {fcfa(last, signe=False)}\n"
+                f"               +35 % ({fcfa(t2, signe=False)}) vends ⅓ → stop suiveur\n"
+                f"               +50 % ({fcfa(t3, signe=False)}) clôture\n\n"
                 f"   ⏰ Passe l'ordre sur BSTrade avant {ORDER_CUTOFF_BSTRADE:%Hh%M} "
                 f"(courriel avant 11h).\n"
                 f"   ⚠️ Vérifie le cours du jour (brvm.org) avant d'envoyer l'ordre."
@@ -475,9 +476,9 @@ def cmd_portf(args: argparse.Namespace) -> None:
         positions.append(pos)
         save_portfolio(positions)
         print(f"✓ Position ouverte : {pos.name} ({pos.code})")
-        print(f"  {pos.quantity} actions à {pos.entry_price:,.0f} = {pos.invested:,.0f} FCFA")
-        print(f"  Dividende : {pos.dps:,.0f} FCFA/action (brut {pos.yield_pct(pos.entry_price):.2f}%, net {pos.net_yield_pct(pos.entry_price):.2f}%)")
-        print(f"  Prix d'entrée (net 4 %) : {pos.entry_price_ref:,.0f} | Prix de sortie (net 2 %) : {pos.exit_price:,.0f}")
+        print(f"  {pos.quantity} actions à {fcfa(pos.entry_price, signe=False)} = {fcfa(pos.invested, signe=False)}")
+        print(f"  Dividende : {fcfa(pos.dps, signe=False)}/action (brut {pos.yield_pct(pos.entry_price):.2f}%, net {pos.net_yield_pct(pos.entry_price):.2f}%)")
+        print(f"  Prix d'entrée (net 4 %) : {fcfa(pos.entry_price_ref, signe=False)} | Prix de sortie (net 2 %) : {fcfa(pos.exit_price, signe=False)}")
     elif args.action == "status":
         from .portfolio import status_level
 
@@ -495,8 +496,8 @@ def cmd_portf(args: argparse.Namespace) -> None:
             yld = p.net_yield_pct(cur)
             _, label = status_level(p, cur)
             print(
-                f"{p.code:7s} {p.name[:19]:20s} {p.entry_price:>8,.0f} {cur:>8,.0f} "
-                f"{perf:>+6.1f}% {yld:>5.2f}% {p.exit_price:>9,.0f} {p.years_held:>5.1f}a  {label}"
+                f"{p.code:7s} {p.name[:19]:20s} {fcfa(p.entry_price):>10} {fcfa(cur):>10} "
+                f"{perf:>+6.1f}% {yld:>5.2f}% {fcfa(p.exit_price):>11} {p.years_held:>5.1f}a  {label}"
             )
     elif args.action == "check":
         from datetime import datetime
@@ -512,7 +513,7 @@ def cmd_portf(args: argparse.Namespace) -> None:
         positions = load_portfolio()
         snap = api.market_snapshot()
         alert_state = load_alert_state()
-        events: list[tuple[str, object]] = []
+        events: list[tuple[str, object, bool]] = []  # (code, alerte, est_sortie)
         for p in positions:
             if p.closed:
                 continue
@@ -525,20 +526,21 @@ def cmd_portf(args: argparse.Namespace) -> None:
             # Niveaux 2-3 (décision/fondamental) soumis au cooldown 7 jours.
             actionable = [a for a in alerts if a.level > 1]
             if p.closed:
-                events.extend((p.code, a) for a in actionable)
+                # B1-01 : une SORTIE ne sera persistée qu'APRÈS un envoi réussi
+                # (on envoie d'abord, on sauvegarde ensuite).
+                events.extend((p.code, a, True) for a in actionable)
             elif actionable and not is_cooldown_active(alert_state, p.code):
-                events.extend((p.code, a) for a in actionable)
-                alert_state[p.code] = datetime.now().isoformat()
-        save_portfolio(positions)
-        save_alert_state(alert_state)
+                events.extend((p.code, a, False) for a in actionable)
         if not events:
+            save_portfolio(positions)
+            save_alert_state(alert_state)
             print("Aucune alerte actionnable (niveaux 2-3) ni sortie fondamentale.")
             return
         notifier = get_notifier(load_config())
         actions = getattr(args, "_actions", None)
-        for code, a in events:
+        for code, a, est_sortie in events:
             print(a.message)
-            notifier.send(f"🏦 Noyau :\n{a.message}")
+            envoye = notifier.send(f"🏦 Noyau :\n{a.message}")
             if actions is not None:
                 if "VENDS TOUT" in a.message:
                     actions.append("VENDS TOUT " + code)
@@ -546,6 +548,21 @@ def cmd_portf(args: argparse.Namespace) -> None:
                     actions.append("Vends 1 sur 3 de " + code)
                 else:
                     actions.append("Décision sur " + code)
+            if est_sortie and notifier.enabled and not envoye:
+                # B1-01 : sortie NON délivrée → on annule la clôture en mémoire ;
+                # elle sera re-détectée et re-envoyée au prochain run (jamais perdue).
+                for p in positions:
+                    if p.code == code and p.closed:
+                        p.closed = False
+                        p.close_reason = ""
+                        p.close_price = 0.0
+                        p.closed_at = ""
+                print(f"⚠ Sortie {code} NON délivrée par Telegram — clôture annulée, "
+                      f"nouvel essai au prochain check (la position reste surveillée).")
+            elif not est_sortie and envoye:
+                alert_state[code] = datetime.now().isoformat()
+        save_portfolio(positions)
+        save_alert_state(alert_state)
     elif args.action == "dividend":
         from .portfolio import record_dividend
 
@@ -558,9 +575,9 @@ def cmd_portf(args: argparse.Namespace) -> None:
                 quote = snap.by_code(code)
                 price = quote.last if quote else p.entry_price
                 cash, shares, residual = record_dividend(p, price)
-                print(f"✓ Dividende versé : {cash:,.0f} FCFA ({p.dps:,.0f} × {p.quantity - shares} actions)")
-                print(f"  Réinvesti : {shares} actions à {price:,.0f} (résidu {residual:,.0f} FCFA)")
-                print(f"  Nouvelle quantité : {p.quantity} | Total reçu : {p.dividends_earned:,.0f} FCFA")
+                print(f"✓ Dividende versé : {fcfa(cash, signe=False)} ({fcfa(p.dps, signe=False)} × {p.quantity - shares} actions)")
+                print(f"  Réinvesti : {shares} actions à {fcfa(price, signe=False)} (résidu {fcfa(residual, signe=False)})")
+                print(f"  Nouvelle quantité : {p.quantity} | Total reçu : {fcfa(p.dividends_earned, signe=False)}")
                 found = True
         if found:
             save_portfolio(positions)
@@ -625,12 +642,12 @@ def cmd_boc(args: argparse.Namespace) -> None:
     for e in events:
         if e["action"] == "RECTIFIÉ":
             msg = (f"📢 BOC {date.strftime('%d/%m')} — {e['code']} : dividende RECTIFIÉ "
-                   f"{e['ancien']:,.0f} → {e['montant']:,.0f} F (payé le {e['date']})")
+                   f"{fcfa(e['ancien'], signe=False)} → {fcfa(e['montant'], signe=False)} (payé le {e['date']})")
         else:
             msg = (f"📢 BOC {date.strftime('%d/%m')} — {e['code']} : dividende "
-                   f"{e['montant']:,.0f} F payé le {e['date']}")
+                   f"{fcfa(e['montant'], signe=False)} payé le {e['date']}")
         if "cross_sika" in e:
-            msg += f" ⚠️ sikafinance indique {e['cross_sika']:,.0f} F (à vérifier)"
+            msg += f" ⚠️ sikafinance indique {fcfa(e['cross_sika'], signe=False)} (à vérifier)"
         print(msg)
         if notifier.enabled:
             notifier.send(msg)
@@ -694,7 +711,7 @@ def cmd_fund(args: argparse.Namespace) -> None:
             for r in new:
                 msg = (
                     f"🔎 NOUVELLE opportunité value : {r['code']} ({r['name']})\n"
-                    f"   cours {r['last']:,.0f} F · PER {r['per']:.1f} · "
+                    f"   cours {fcfa(r['last'], signe=False)} · PER {r['per']:.1f} · "
                     f"rend. net {r['net_yield']:.2f} %\n"
                     f"   → analyser (payout + fondamentaux) avant d'acheter"
                 )
@@ -713,8 +730,8 @@ def cmd_fund(args: argparse.Namespace) -> None:
         print("-" * 66)
         for r in results:
             print(
-                f"{r['code']:7s} {r['name'][:21]:22s} {r['last']:>8,.0f} "
-                f"{r['per']:>6.2f} {r['dps']:>8,.0f} {r['yield']:>5.2f}% {r['net_yield']:>5.2f}%"
+                f"{r['code']:7s} {r['name'][:21]:22s} {fcfa(r['last']):>10} "
+                f"{r['per']:>6.2f} {fcfa(r['dps']):>10} {r['yield']:>5.2f}% {r['net_yield']:>5.2f}%"
             )
     elif args.mode == "magic":
         print("Magic Formula BRVM (rang PER + rang rendement)…\n")
@@ -723,7 +740,7 @@ def cmd_fund(args: argparse.Namespace) -> None:
         print("-" * 62)
         for r in results[:15]:
             print(
-                f"{r['code']:7s} {r['name'][:19]:20s} {r['last']:>8,.0f} "
+                f"{r['code']:7s} {r['name'][:19]:20s} {fcfa(r['last']):>10} "
                 f"{r['per']:>6.2f} {r['yield']:>5.2f}% {r['net_yield']:>5.2f}% {r['score']:>5d}"
             )
     elif args.mode == "traps":
@@ -764,8 +781,8 @@ def cmd_limits(args: argparse.Namespace) -> None:
             continue
         payout_str = f"{o['payout']}%" if o.get("payout") is not None else "-"
         print(
-            f"{o['code']:7s} {o['name'][:19]:20s} {o['last']:>8,.0f} {o['dps']:>8,.0f} "
-            f"{o['entry_price']:>8,.0f} {o['net_yield']:>5.2f}% {payout_str:>7s}  {o['action']}"
+            f"{o['code']:7s} {o['name'][:19]:20s} {fcfa(o['last']):>10} {fcfa(o['dps']):>10} "
+            f"{fcfa(o['entry_price']):>10} {o['net_yield']:>5.2f}% {payout_str:>7s}  {o['action']}"
         )
 
 
@@ -785,7 +802,7 @@ def cmd_div(args: argparse.Namespace) -> None:
             brut = pos.dps * entry["actions"] if pos else 0.0
             if brut > 0:
                 tax = (1 - entry["montant_net"] / brut) * 100
-                print(f"   brut attendu {brut:,.0f} F → imposition implicite {tax:.1f} % (attendu 12 %)")
+                print(f"   brut attendu {fcfa(brut, signe=False)} → imposition implicite {tax:.1f} % (attendu 12 %)")
         return
 
     items = load_dividends()
@@ -796,7 +813,7 @@ def cmd_div(args: argparse.Namespace) -> None:
     print(f"{'Code':7s} {'Date':12s} {'Net':>10s} {'Act.':>5s}")
     print("-" * 38)
     for d in items:
-        print(f"{d['code']:7s} {d['date']:12s} {d['montant_net']:>10,.0f} {d.get('actions', 0):>5d}")
+        print(f"{d['code']:7s} {d['date']:12s} {fcfa(d['montant_net']):>12} {d.get('actions', 0):>5d}")
     print("-" * 38)
     print(f"Total encaissé : {sum(d['montant_net'] for d in items):,.2f} F net")
 
@@ -829,7 +846,7 @@ def cmd_bond(args: argparse.Namespace) -> None:
                 f"{r['code']:10s} {r['label'][:32]:33s} {r['bid']:>5.0f} {r['qty_bid']:>5d} "
                 f"{r['coupon']:>6.2f}% {r['maturity']:>5d} {y:>7s}  {r['risk']}"
             )
-        print(f"\nNominal : {NOMINAL:,.0f} F/titre — prix en % du nominal (100 = {NOMINAL:,.0f} F).")
+        print(f"\nNominal : {fcfa(NOMINAL, signe=False)}/titre — prix en % du nominal (100 = {fcfa(NOMINAL, signe=False)}).")
         print("Frais Bridge et fiscalité des coupons : à confirmer avant tout ordre.")
     elif args.action == "ytm":
         if not args.code:
@@ -864,8 +881,8 @@ def cmd_bond(args: argparse.Namespace) -> None:
         cost = entry["qty"] * NOMINAL * entry["price"] / 100.0
         y = ytm(entry["price"], entry["coupon"], entry["maturity"])
         print(f"✓ Achat enregistré : {entry['label']} ({entry['code']})")
-        print(f"   {entry['qty']} titres @ {entry['price']:.2f} % = {cost:,.0f} FCFA (hors frais)")
-        print(f"   Coupons annuels attendus : {entry['qty'] * NOMINAL * entry['coupon'] / 100.0:,.0f} F bruts")
+        print(f"   {entry['qty']} titres @ {entry['price']:.2f} % = {fcfa(cost, signe=False)} (hors frais)")
+        print(f"   Coupons annuels attendus : {fcfa(entry['qty'] * NOMINAL * entry['coupon'] / 100.0, signe=False)} bruts")
         print(f"   YTM à l'achat : {y:.2f} %/an" if y is not None else "   YTM : n/a")
         print("   N'oublie pas : confirmer nominal + frais avec Bridge Securities.")
     elif args.action == "show":
@@ -883,11 +900,11 @@ def cmd_bond(args: argparse.Namespace) -> None:
             cpn = p["qty"] * NOMINAL * p["coupon"] / 100.0
             print(
                 f"{p['code']:10s} {p['label'][:32]:33s} {p['qty']:>4d} {p['price']:>6.2f} "
-                f"{val:>10,.0f} {cpn:>10,.0f}"
+                f"{fcfa(val):>12} {fcfa(cpn):>12}"
             )
         print("-" * 80)
-        print(f"Total valeur (cours veille) : {sum(p['qty'] * NOMINAL * (market_line(p['code'])['prev_close'] if market_line(p['code']) and market_line(p['code']).get('prev_close') else p['price']) / 100.0 for p in positions):,.0f} F")
-        print(f"Coupons annuels attendus : {coupons_per_year(positions):,.0f} F bruts")
+        print(f"Total valeur (cours veille) : {fcfa(sum(p['qty'] * NOMINAL * (market_line(p['code'])['prev_close'] if market_line(p['code']) and market_line(p['code']).get('prev_close') else p['price']) / 100.0 for p in positions), signe=False)}")
+        print(f"Coupons annuels attendus : {fcfa(coupons_per_year(positions), signe=False)} bruts")
 
 
 def cmd_sustain(args: argparse.Namespace) -> None:
@@ -983,7 +1000,7 @@ def cmd_radar(args: argparse.Namespace) -> None:
             for h in new:
                 msg = (
                     f"📡 RADAR — NOUVELLE SORTIE DE FOND (veille, PAS un ordre)\n\n"
-                    f"{h['name'] or h['code']} ({h['code']}) — {h['last']:,.0f} F\n"
+                    f"{h['name'] or h['code']} ({h['code']}) — {fcfa(h['last'], signe=False)}\n"
                     f"   {h['r60']:+.0f} % sur 60 séances · {h['r120']:+.0f} % sur 120\n"
                     f"   {h['pct_ath']:+.0f} % vs plus haut historique\n\n"
                     f"   ❓ La question : qu'est-ce qui a changé dans les fondamentaux ?\n"
@@ -1082,7 +1099,7 @@ def cmd_watchlist(args: argparse.Namespace) -> None:
         for code, info in watch.items():  # affichage silencieux (marker « au-dessus »)
             p = price_of(code)
             if p > 0:
-                print(f"   [ordre limite] {code} : {p:,.0f} F — au-dessus de {info['limit']:,.0f} F")
+                print(f"   [ordre limite] {code} : {fcfa(p, signe=False)} — au-dessus de {fcfa(info['limit'], signe=False)}")
         save_prep_watchlist(watch)
         return
     save_prep_watchlist(watch)
@@ -1209,8 +1226,8 @@ def cmd_live(args: argparse.Namespace) -> None:
         name = q.name if q else code
         prev = q.last if q and q.last > 0 else 0.0
         var = f"{(quotes[code] / prev - 1) * 100:+.1f}%" if prev else "—"
-        prev_s = f"{prev:,.0f}" if prev else "—"
-        print(f"{code:7s} {name[:21]:22s} {quotes[code]:>10,.0f} {prev_s:>8s} {var:>7s}")
+        prev_s = f"{fcfa(prev, signe=False)}" if prev else "—"
+        print(f"{code:7s} {name[:21]:22s} {fcfa(quotes[code]):>12} {prev_s:>8s} {var:>7s}")
 
 
 def cmd_integrity(args: argparse.Namespace) -> None:
@@ -1265,6 +1282,7 @@ def cmd_daily(args: argparse.Namespace) -> None:
         # (monitor + agent) — un seul flux, pas de double alerte ici.
     ]
     summaries: list[tuple[str, bool]] = []
+    echecs: list[str] = []
     for label, func, kwargs, quiet_marker in steps:
         print(f"\n— {label} —")
         buf = StringIO()
@@ -1274,14 +1292,15 @@ def cmd_daily(args: argparse.Namespace) -> None:
             func(argparse.Namespace(**kwargs))
         except Exception as e:
             print(f"⚠ échec : {e}")
+            echecs.append(label)
         finally:
             sys.stdout = old_stdout
         text = buf.getvalue()
         print(text, end="")
         summaries.append((label, quiet_marker in text))
 
-    print("\n✓ Check quotidien terminé.")
-    heartbeat = _build_heartbeat(summaries, actions)
+    print("\n✓ Check quotidien terminé." if not echecs else "\n⚠ Check quotidien terminé AVEC ÉCHECS.")
+    heartbeat = _build_heartbeat(summaries, actions, echecs)
     print(heartbeat)
     notifier = get_notifier(load_config())
     if notifier.enabled:
@@ -1289,15 +1308,27 @@ def cmd_daily(args: argparse.Namespace) -> None:
 
 
 def _build_heartbeat(summaries: list[tuple[str, bool]],
-                     actions: list[str] | None = None) -> str:
-    """Message quotidien de clôture : résumé par étape + plan d'action « AUJOURD'HUI »."""
+                     actions: list[str] | None = None,
+                     echecs: list[str] | None = None) -> str:
+    """Message quotidien de clôture : résumé par étape + plan d'action « AUJOURD'HUI ».
+
+    B2-04 : le titre passe en « ⚠️ N étape(s) en ÉCHEC » dès qu'une étape a levé —
+    un check qui plante ne doit JAMAIS s'annoncer « ✅ ».
+    """
     from datetime import datetime
 
+    echecs = echecs or []
     parts = []
     for label, quiet in summaries:
-        parts.append(f"{label} : {'✅ rien à signaler' if quiet else '🔔 événement (alerte ci-dessus)'}")
+        if label in echecs:
+            statut = "❌ ÉCHEC (voir logs/daily.log)"
+        else:
+            statut = "✅ rien à signaler" if quiet else "🔔 événement (alerte ci-dessus)"
+        parts.append(f"{label} : {statut}")
+    titre = ("⚠️ Check quotidien Bridge Bank — "
+             f"{len(echecs)} étape(s) en ÉCHEC" if echecs else "✅ Check quotidien Bridge Bank")
     msg = (
-        f"✅ Check quotidien Bridge Bank — {datetime.now().strftime('%d/%m %H:%M')}\n"
+        f"{titre} — {datetime.now().strftime('%d/%m %H:%M')}\n"
         + "\n".join(f"   {p}" for p in parts)
     )
     if actions:

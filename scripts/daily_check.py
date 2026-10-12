@@ -20,6 +20,7 @@ def main() -> None:
     import argparse
     from datetime import datetime
 
+    echec = False
     with LOG.open("a", encoding="utf-8") as fh:
         fh.write(f"\n{'=' * 62}\n")
         fh.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Démarrage\n")
@@ -31,9 +32,12 @@ def main() -> None:
         except Exception:
             import traceback
             traceback.print_exc()
+            echec = True
         finally:
             sys.stdout, sys.stderr = _stdout, _stderr
-        fh.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Terminé\n")
+        fh.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Terminé{' (ÉCHEC)' if echec else ''}\n")
+    if echec:
+        sys.exit(1)  # B2-04 : le planificateur doit VOIR l'échec — fini le faux-vert
 
 
 if __name__ == "__main__":

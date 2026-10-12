@@ -18,6 +18,7 @@ from typing import Optional
 from .collecte.bsapi import BSApi
 from .domaine.models import Quote
 from .notify import TelegramNotifier
+from .portefeuille.format_fr import nombre  # montants à la française (invariant E1, correction B1-02 du 12/10)
 from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 log = logging.getLogger(__name__)
@@ -93,9 +94,9 @@ class AlertEngine:
         var = quote.change_pct
 
         if rules.get("max") and last >= float(rules["max"]):
-            out.append(f"Prix atteint {last:,.0f} FCFA (seuil haut {float(rules['max']):,.0f})")
+            out.append(f"Prix atteint {nombre(last)} FCFA (seuil haut {nombre(float(rules['max']))})")
         if rules.get("min") and last <= float(rules["min"]):
-            out.append(f"Prix tombé à {last:,.0f} FCFA (seuil bas {float(rules['min']):,.0f})")
+            out.append(f"Prix tombé à {nombre(last)} FCFA (seuil bas {nombre(float(rules['min']))})")
         if rules.get("change_pct") and abs(var) >= float(rules["change_pct"]):
             out.append(f"Variation {var:+.2f}% (seuil ±{float(rules['change_pct']):.0f}%)")
         return out

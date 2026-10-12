@@ -1,4 +1,5 @@
 """Tests des filtres noyau (alerte d'achat qualifiée)."""
+from src.portefeuille.format_fr import fcfa
 from src.strategie.noyau_check import evaluate_noyau_candidate
 
 
@@ -22,7 +23,7 @@ def test_limit_fondamentaux_ok_mais_trop_cher(monkeypatch):
     assert res["verdict"] == "limit"
     assert "📉 À PRÉPARER" in res["message"]
     # prix d'entrée du code : dps / 0,054545 / 1,014 (frais de transaction inclus)
-    assert "9,040" in res["message"]
+    assert fcfa(9040) in res["message"]  # format FR (invariant E1, correction C1)
 
 
 def test_silence_payout_tendu(monkeypatch):

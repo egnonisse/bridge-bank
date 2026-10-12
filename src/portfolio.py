@@ -41,6 +41,7 @@ from .taxation import (
     gross_yield_for_net,
     net_yield,
 )
+from .portefeuille.format_fr import fcfa, pct  # montants à la française (invariant E1, correction B1-02 du 12/10)
 from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 PORTFOLIO_FILE = DATA_DIR / "portfolio.json"
@@ -289,10 +290,10 @@ def _double_option_alert(pos: DividendPosition, price: float) -> PositionAlert:
         )
     return PositionAlert(
         LEVEL_DECISION,
-        f"⚡ DÉCISION — {pos.name} ({pos.code}) {gain_pct:+.1f} % ({gain_fcfa:+,.0f} F)\n"
-        f"   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ {price:,.0f} F\n"
-        f"            bénéfice net ≈ {profit_net:,.0f} F (après frais ~1,4 %)\n"
-        f"   Alternative : CONSERVE pour ≈ {div_net:,.0f} F/an de dividendes nets\n"
+        f"⚡ DÉCISION — {pos.name} ({pos.code}) {gain_pct:+.1f} % ({fcfa(gain_fcfa, signe=True)})\n"
+        f"   Action : VENDS 1/3 (33 %) → ordre de vente à ≥ {fcfa(price)}\n"
+        f"            bénéfice net ≈ {fcfa(profit_net)} (après frais ~1,4 %)\n"
+        f"   Alternative : CONSERVE pour ≈ {fcfa(div_net)}/an de dividendes nets\n"
         f"   Rendement net actuel : {net_yld:.1f} %"
         f"{trust}"
         f"{_history_line(pos)}\n"
@@ -355,9 +356,9 @@ def _loss_coverage_alert(pos: DividendPosition, price: float) -> PositionAlert:
     )
     return PositionAlert(
         LEVEL_DECISION,
-        f"⚡ DÉCISION — {pos.name} ({pos.code}) {loss_pct:+.1f} % ({loss_fcfa:,.0f} F)\n"
+        f"⚡ DÉCISION — {pos.name} ({pos.code}) {loss_pct:+.1f} % ({fcfa(loss_fcfa)})\n"
         f"   Action : CONSERVE — {coverage}\n"
-        f"   Renforcement : ordre limite d'achat à ≤ {price:,.0f} F (net {net_yld:.1f} %) — si dividende soutenable\n"
+        f"   Renforcement : ordre limite d'achat à ≤ {fcfa(price)} (net {net_yld:.1f} %) — si dividende soutenable\n"
         f"   Alternative : vendre seulement si la thèse change (jamais sur le prix)\n"
         f"   Prochaine vérification : {_next_check_date()}",
     )
@@ -506,7 +507,7 @@ def check_dividend_position(
     if not pos.closed and pos.exit_price > 0 and current_price >= pos.exit_price:
         pos.closed = True
         pos.close_reason = "prix de sortie atteint"
-        alerts.append(PositionAlert(LEVEL_EXIT, f"🔴 VENDS TOUT — {pos.name} ({pos.code}) — prix de sortie atteint ({current_price:,.0f} ≥ {pos.exit_price:,.0f})"))
+        alerts.append(PositionAlert(LEVEL_EXIT, f"🔴 VENDS TOUT — {pos.name} ({pos.code}) — prix de sortie atteint ({fcfa(current_price)} ≥ {fcfa(pos.exit_price)})"))
 
     # 4. soutenabilité (niveau 3)
     if not pos.closed and current_dps is not None and current_dps > 0:
@@ -560,21 +561,30 @@ def record_dividend(pos: DividendPosition, price: float) -> tuple[float, int, fl
 
 
 # -------------------------------------------------------------- persistance
+class PortfolioInvalide(RuntimeError):
+    """portfolio.json illisible — on refuse d'écraser ce qu'on ne sait pas relire (B1-04)."""
+
+
 def load_portfolio() -> list[DividendPosition]:
     if not PORTFOLIO_FILE.exists():
         return []
     try:
         return [DividendPosition(**d) for d in json.loads(PORTFOLIO_FILE.read_text(encoding="utf-8"))]
-    except (OSError, json.JSONDecodeError, TypeError):
-        return []
+    except (OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
+        raise PortfolioInvalide(
+            f"{PORTFOLIO_FILE.name} illisible ({type(exc).__name__}: {exc}) — "
+            "aucune écriture ne sera faite (corrige ou restaure le fichier)"
+        ) from exc
 
 
 def save_portfolio(positions: list[DividendPosition]) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    PORTFOLIO_FILE.write_text(
+    tmp = PORTFOLIO_FILE.with_name(PORTFOLIO_FILE.name + ".tmp")
+    tmp.write_text(
         json.dumps([asdict(p) for p in positions], indent=2, ensure_ascii=False),
         encoding="utf-8",
     )
+    tmp.replace(PORTFOLIO_FILE)  # atomique : un crash ne peut plus tronquer l'original (B1-04)
 
 
 # ------------------------------------------------- renforcements (noyau dynamique)
@@ -584,8 +594,8 @@ def save_portfolio(positions: list[DividendPosition]) -> None:
 
 def _msg_renfort_libre(p, price, entry_ref, net, payout) -> str:
     return (
-        f"💪 RENFORCE {p.code} ({p.name}) — le prix est redescendu à {price:,.0f} F,\n"
-        f"   sous ton seuil de {entry_ref:,.0f} F.\n"
+        f"💪 RENFORCE {p.code} ({p.name}) — le prix est redescendu à {fcfa(price)},\n"
+        f"   sous ton seuil de {fcfa(entry_ref)}.\n"
         f"   → Chaque 1 000 F investi ici te paierait au moins 4 % de loyer par\n"
         f"     an (aujourd'hui : {net:.1f} % net), avec un patron qui partage\n"
         f"     {payout*100:.0f} % de ses gains — dans ta zone.\n"
@@ -596,12 +606,12 @@ def _msg_renfort_libre(p, price, entry_ref, net, payout) -> str:
 def _msg_renfort_limite(p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty) -> str:
     return (
         f"💪 RENFORCE LIMITÉ {p.code} ({p.name}) — le prix est redescendu à "
-        f"{price:,.0f} F, sous ton seuil de {entry_ref:,.0f} F ({net:.1f} % net,\n"
+        f"{fcfa(price)}, sous ton seuil de {fcfa(entry_ref)} ({net:.1f} % net,\n"
         f"   patron à {payout*100:.0f} % — tout est vert).\n"
         f"   MAIS il pèse déjà {w_mkt*100:.0f} % de tes actions — par sa HAUSSE,\n"
         f"   pas par tes achats (tu n'as acheté que {w_cost*100:.0f} % de ta poche\n"
         f"   sur lui). Tu peux en profiter : au plus {max_qty} action(s)\n"
-        f"   (~{max_qty*price:,.0f} F), pour ne pas faire de ce titre plus de\n"
+        f"   (~{fcfa(max_qty*price)}), pour ne pas faire de ce titre plus de\n"
         f"   {MAX_BUY_WEIGHT*100:.0f} % de TES achats.\n"
         f"   → La limite, c'est toi qui la signes."
     )
@@ -610,7 +620,7 @@ def _msg_renfort_limite(p, price, entry_ref, net, payout, w_mkt, w_cost, max_qty
 def _msg_concentration_achats(p, price, entry_ref, w_cost) -> str:
     return (
         f"🟠 RENFORCE EN CONSCIENCE — {p.code} ({p.name}) est sous ton seuil\n"
-        f"   ({price:,.0f} < {entry_ref:,.0f} F) et paie un bon loyer, mais tu as\n"
+        f"   ({fcfa(price)} < {fcfa(entry_ref)}) et paie un bon loyer, mais tu as\n"
         f"   ACHETÉ {w_cost*100:.0f} % de ta poche sur ce titre (repère : 35 %).\n"
         f"   → Le système ne bloque PAS (ta règle) : il te dit le risque.\n"
         f"   → Si tu renforces quand même : en connaissance de cause."
@@ -620,7 +630,7 @@ def _msg_concentration_achats(p, price, entry_ref, w_cost) -> str:
 def _msg_ligne_buffett(p, price, entry_ref, w_mkt) -> str:
     return (
         f"🔴 ATTENTION MAXIMALE — {p.code} ({p.name}) est sous ton seuil\n"
-        f"   ({price:,.0f} < {entry_ref:,.0f} F), mais il représente déjà\n"
+        f"   ({fcfa(price)} < {fcfa(entry_ref)}), mais il représente déjà\n"
         f"   {w_mkt*100:.0f} % du portefeuille : plus de la moitié dans un seul\n"
         f"   panier, c'est un pari, pas un loyer.\n"
         f"   → Le système ne bloque PAS (ta règle), mais c'est le signal le plus\n"
@@ -836,7 +846,7 @@ def open_dividend_position(
             )
     quantity = int(amount // quote.last)
     if quantity <= 0:
-        raise ValueError(f"Montant {amount:,.0f} insuffisant pour 1 action à {quote.last:,.0f}")
+        raise ValueError(f"Montant {fcfa(amount)} insuffisant pour 1 action à {fcfa(quote.last)}")
     return DividendPosition(
         code=quote.code.strip(),
         name=quote.name,

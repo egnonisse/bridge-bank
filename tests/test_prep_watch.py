@@ -1,6 +1,7 @@
 """Tests de la surveillance des ordres limites + re-alerte renforcement (prix amélioré)."""
 from datetime import datetime
 
+from src.portefeuille.format_fr import fcfa
 from src.strategie.noyau_check import prep_watch_alerts
 from src.portfolio import check_reinforcements, load_portfolio
 
@@ -10,7 +11,7 @@ def test_alerte_quand_le_prix_passe_sous_la_limite():
     alerts, watch = prep_watch_alerts(watch, price_of=lambda c: 34800.0)
     assert len(alerts) == 1
     assert "TON ORDRE LIMITE EST PRÊT" in alerts[0]
-    assert "34,800" in alerts[0]
+    assert fcfa(34800) in alerts[0]  # format FR (invariant E1, correction C1)
 
 
 def test_silence_au_dessus_de_la_limite():

@@ -3,16 +3,17 @@
   "phases_realisees": [
     "0 — capacités",
     "1 — cartographie",
-    "2 — registre des exigences"
+    "2 — registre des exigences",
+    "3 — deux agents indépendants (A=Claude, B1+B2=Mistral, 47 items — registre_desaccords.md)",
+    "4 — matrice de tests (matrice_tests_phase4.md, tests xfail cibles)",
+    "5 — audit financier et statistique (recalculs déterministes + agent DeepSeek — phase5_synthese.md)",
+    "9-11 — corrections LOT 1 (12/10/2026) : B1-01, B0-01, C1/B1-02, B1-04, B2-04 — docs/DECISION-2026-10-12-corrections-lot1.md"
   ],
   "phases_a_venir": [
-    "3 — deux agents indépendants",
-    "4 — matrice de tests",
-    "5 — audit financier et statistique",
     "6 — contrats entre modules",
     "7 — sécurité et intégrité",
     "8 — exécution contrôlée (autorisation requise)",
-    "9-11 — corrections (si autorisées), couverture, rapport final"
+    "9-11 — corrections LOTS 2-3 (DRIP net IRVM, cooldown watchlist, nettoyeur symétrique, look-aheads A3-01/A3-02, TLS, duplications de seuils)"
   ],
   "phase2_resume": {
     "exigences_enregistrees": 43,
@@ -56,7 +57,10 @@
   "dates": {
     "phases_0_1": "2026-10-09",
     "etat_initial_verifie_le": "2026-10-09T06:31:34",
-    "phase_2": "2026-10-12"
+    "phase_2": "2026-10-12",
+    "phase_3": "2026-10-12",
+    "phase_5": "2026-10-12",
+    "corrections_lot1": "2026-10-12"
   },
   "environnement": {
     "os": "Windows 10 (shell bash/MSYS)",
@@ -294,5 +298,31 @@
     },
     "synthese": "audit/phase5_synthese.md — verdict : fondations de calcul SAINES ; seuls écarts = 2 P1 (look-aheads, confirmés par 3 regards) + 2 mineurs",
     "agents_avortes": "Opus 5.5 et Gemini 3.1 Pro bloqués par le plafond de 5 $ de la clé OpenRouter — à reprendre si LEO ajuste la limite"
+  },
+  "corrections_lot1": {
+    "perimetre": "5 corrections critiques de la livraison des alertes et de l'intégrité des données",
+    "items": {
+      "B1-01": "envoi AVANT persistance + annulation de clôture si envoi échoue (main.py cmd_portf check)",
+      "B0-01": "SpecPosition.closed_at horodaté (stop + palier 50 %), spec_veille lit closed_at",
+      "C1/B1-02": "format FR fcfa()/nombre() — messages live + CLI (158 remplacements mécaniques + patches manuels)",
+      "B1-04": "PortfolioInvalide (bruyant) + écriture atomique tmp+replace",
+      "B2-04": "daily_check exit(1) + heartbeat « N étape(s) en ÉCHEC »"
+    },
+    "preuves": [
+      "346 passed, 3 xfailed (12/10) — les 3 xfail = lots 2-3",
+      "gardien des sorties recapturé : 0 divergence numérique sur 115+3 clés changées",
+      "portf status live en format FR (« 38 967 F »)",
+      "8 nouveaux tests de gel (test_regressions_audit.py, test_heartbeat.py)"
+    ],
+    "tests_geles": [
+      "test_close_reason_porte_la_date_du_stop",
+      "test_fiche_spec_sans_virgule_de_milliers",
+      "test_portfolio_corrompu_ne_redevient_pas_vide",
+      "test_portfolio_ecriture_atomique",
+      "test_sortie_non_delivree_annule_la_cloture",
+      "test_sortie_delivree_est_persistee",
+      "test_heartbeat_signale_les_echecs",
+      "test_heartbeat_sans_echec_garde_le_titre_vert"
+    ]
   }
 }

@@ -105,6 +105,24 @@ Classement par (gravité × confiance de vérification × impact réel sur LEO) 
 
 ---
 
+## 6. Statut des corrections — mise à jour du 12/10/2026 (soir)
+
+**LOT 1 appliqué** (autorisé par LEO : « go lot 1 ») — détail : `docs/DECISION-2026-10-12-corrections-lot1.md`.
+
+| Item | Statut | Preuve de gel |
+|---|---|---|
+| **B1-01** (sortie perdue si échec d'envoi) | ✅ **CORRIGÉ** | `test_sortie_non_delivree_annule_la_cloture` + `test_sortie_delivree_est_persistee` (passants) |
+| **B0-01** (date de stop) | ✅ **CORRIGÉ** | `test_close_reason_porte_la_date_du_stop` (passant, ex-xfail) |
+| **C1/B1-02** (format FR) | ✅ **CORRIGÉ** | gardien des sorties recapturé (0 divergence numérique) + `test_fiche_spec_sans_virgule_de_milliers` |
+| **B1-04** (portfolio corrompu) | ✅ **CORRIGÉ** | `test_portfolio_corrompu_ne_redevient_pas_vide` + `test_portfolio_ecriture_atomique` |
+| **B2-04** (cron faux-vert) | ✅ **CORRIGÉ** | `test_heartbeat_signale_les_echecs` + `test_heartbeat_sans_echec_garde_le_titre_vert` |
+| B1-03 (DRIP brut), B1-07 (cooldown watchlist), B2-11 (nettoyeur) | ⬜ lot 2-3 | xfail actifs (3) |
+| A3-01/A3-02 (look-aheads), B2-02 (TLS), C2/C5/C6/C7, B1-05/B1-13, B2-01/B2-03 | ⬜ lots 2-3 | voir §5 |
+
+État de la suite : **346 passed, 3 xfailed** (12/10/2026).
+
+---
+
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,
-`phase3_agentB2_mistral.md`, `phase3_materiel_runB_avorte.md`, ce registre. Aucune correction
-n'a été appliquée au code (protocole : les corrections sont les phases 9-11, sur autorisation).*
+`phase3_agentB2_mistral.md`, `phase3_materiel_runB_avorte.md`, ce registre. Les corrections
+du LOT 1 ont été appliquées le 12/10 (section 6) ; les lots 2-3 restent à autoriser.*

@@ -75,7 +75,10 @@ def scan(all_: bool = False) -> list:
                 code = p.code.upper()
                 stop_counts[code] = stop_counts.get(code, 0) + 1
                 try:
-                    d = date.fromisoformat((p.close_reason or "").split(" ")[-1][:10])
+                    if getattr(p, "closed_at", ""):
+                        d = date.fromisoformat(p.closed_at[:10])
+                    else:
+                        d = date.fromisoformat((p.close_reason or "").split(" ")[-1][:10])
                 except Exception:
                     d = date.fromisoformat(p.opened_at[:10])
                 if code not in stopout_last or d > stopout_last[code]:
