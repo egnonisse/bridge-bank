@@ -67,17 +67,23 @@ def test_fiche_spec_sans_virgule_de_milliers():
 
 
 # ------------------------------------- B2-11 : nettoyeur symétrique (bas)
-@pytest.mark.xfail(
-    reason="B2-11 (P3) — reperer_aberrantes ne détecte que les outliers HAUTS ; "
-           "correction : test symétrique (c/med < 1/seuil, comme cache_integrity)",
-    strict=False,
-)
+# CORRIGÉ le 12/10/2026 (lot 3) — test gelé : le test est désormais symétrique.
 def test_nettoyeur_detecte_les_artefacts_bas(make_bars):
     from src.collecte.nettoyage_aberrantes import reperer_aberrantes
 
     closes = [100.0] * 20 + [10.0] + [100.0] * 20  # artefact vers le BAS (0,1×)
     idx = reperer_aberrantes(make_bars(closes))
     assert 20 in idx
+
+
+def test_nettoyeur_ne_touche_pas_une_vraie_baisse(make_bars):
+    """Anti sur-nettoyage : une chute RÉELLE (÷2,5) reste dans la fourchette [÷5, ×5]
+    et n'est PAS corrigée — seul un artefact isolé hors fourchette l'est."""
+    from src.collecte.nettoyage_aberrantes import reperer_aberrantes
+
+    closes = [100.0] * 10 + [40.0] * 3 + [100.0] * 10  # creux durable à 40 (ratio 0,4)
+    idx = reperer_aberrantes(make_bars(closes))
+    assert idx == [], f"une vraie baisse ne doit pas être nettoyée : {idx}"
 
 
 # ═══════════════════════════ CORRECTIONS APPLIQUÉES — LOT 2 (12/10/2026)

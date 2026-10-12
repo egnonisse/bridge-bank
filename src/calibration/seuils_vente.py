@@ -54,6 +54,7 @@ from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du pl
 Z = 1.96                  # couverture 95 %
 # Règles de significativité : définies dans src/regles.py (catalogue unique).
 from ..regles import BORNE_BASSE_MIN, EPISODES_MIN as MIN_EPISODES  # noqa: E402
+from ..regles import PROFIT_ALERT_THRESHOLD  # noqa: E402  (B1-12 : défaut central, 12/10)
 
 SEUILS_FILE = DATA_DIR / "profit_thresholds.json"
 JOURNAL_FILE = DATA_DIR / "seuils_journal.jsonl"
@@ -260,8 +261,15 @@ def enregistrer(data: dict, *, origine: str = ORIGINE_AUTO,
     ecrire_atomique(cible, data)
 
 
-def pour(code: str, defaut: float = 0.13) -> float:
-    """Seuil applicable à un code : fichier calibré → table de départ → défaut."""
+def pour(code: str, defaut: float | None = None) -> float:
+    """Seuil applicable à un code : fichier calibré → table de départ → défaut central.
+
+    B1-12 (corrigé le 12/10) : le défaut était un littéral `0.13` recopié — il vient
+    désormais de `regles.PROFIT_ALERT_THRESHOLD` (catalogue unique), pour qu'une
+    évolution du défaut n'existe qu'en un seul endroit.
+    """
+    if defaut is None:
+        defaut = PROFIT_ALERT_THRESHOLD
     info = charger().get(code.upper())
     if info:
         return float(info.get("threshold", defaut))

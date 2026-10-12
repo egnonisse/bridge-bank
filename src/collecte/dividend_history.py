@@ -29,7 +29,7 @@ def fetch_dividend_page(code: str) -> str | None:
     """HTML de la page dividend de stockanalysis (None si injoignable)."""
     url = f"https://stockanalysis.com/quote/brvm/{code}/dividend/"
     try:
-        r = requests.get(url, headers=HEADERS, timeout=40, verify=False)
+        r = requests.get(url, headers=HEADERS, timeout=40)
         if r.status_code != 200:
             return None
         return r.text

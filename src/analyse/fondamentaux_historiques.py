@@ -25,8 +25,8 @@ lecture approximative de HTML.
 REGLES DE TIMING (le point crucial)
 -----------------------------------
   - un dividende est connu a sa DATE DE DETACHEMENT (`dt`) ;
-  - un BPA d'exercice N est considere connu a partir de l'annee N+1
-    (publication des etats financiers, ~avril).
+  - un BPA d'exercice N n'est considere connu qu'a partir du 30 juin N+1
+    (etats financiers publies d'avril a juin, apres l'AG — conservateur ; A3-02).
 Sans ces regles, on remplace un look-ahead par un autre.
 
 COUVERTURE MESUREE
@@ -45,6 +45,7 @@ from pathlib import Path
 import requests
 import urllib3
 from ..infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..taxation import net_yield  # C4 : plus de 0,88/0,008 en dur (correction 12/10)
 
 urllib3.disable_warnings()
 
@@ -52,8 +53,17 @@ CACHE = RACINE / "data" / "fondamentaux_historiques.json"
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 BASE = "https://stockanalysis.com/quote/brvm/{}/{}"
 
-# Un BPA d'exercice N est publie vers avril N+1. On applique ce decalage.
-DECALAGE_PUBLICATION_BPA = 1
+# Publication d'un BPA : à la BRVM, les états financiers sortent d'avril à juin N+1,
+# après l'assemblée générale. On exige le 30 juin N+1 — CONSERVATEUR.
+# A3-02 (corrigé le 12/10) : l'ancien test par ANNÉE seule (« connu dès le 01/01 N+1 »)
+# faisait acheter en janvier-mars sur des comptes que le marché ne connaissait pas encore
+# (fuite du futur de 3 à 6 mois).
+DATE_PUBLICATION_BPA = "{annee}-06-30"
+
+
+def bpa_public_avant(annee_exercice: int, date: str) -> bool:
+    """Le BPA de l'exercice `annee_exercice` est-il PUBLIÉ à la date `date` (AAAA-MM-JJ) ?"""
+    return date >= DATE_PUBLICATION_BPA.format(annee=annee_exercice + 1)
 
 
 @dataclass
@@ -167,16 +177,30 @@ def extraire_dividendes(html: str) -> list[dict]:
 def extraire_bpa(html: str) -> dict[str, float]:
     """Extrait le BPA (EPS) par exercice depuis le tableau financier.
 
-    Le tableau porte des colonnes « FY 2025 ... FY 2021 ». On lit d'abord ces
-    en-tetes (source de verite de l'ordre des colonnes), puis on cherche la
-    ligne « Earnings Per Share » et on associe les valeurs dans CET ordre :
-    se fier a l'ordre des nombres sans lire les en-tetes est la cause classique
-    d'un decalage d'une annee.
+    STRUCTURE RÉELLE de la source (vérifiée en direct le 12/10/2026) : le tableau
+    principal a pour colonnes « FY 2025 … FY 2021 », précédées d'une colonne **TTM**
+    (en-tête `<th>TTM</th>`). La ligne « Earnings Per Share » fournit donc UNE cellule
+    de plus que d'exercices — et la cellule TTM peut contenir un NOMBRE (pas seulement
+    un tiret).
+
+    DEUX PIÈGES CORRIGÉS (audit A3-01)
+    ----------------------------------
+    1. l'ancienne version SAUTAIT les cellules non numériques (« - ») sans préserver
+       leur position — toutes les valeurs suivantes étaient décalées d'un rang ;
+    2. la colonne TTM n'était écartée que par une branche MORTE (la boucle s'arrêtait
+       avant) : quand le TTM était un nombre, chaque exercice recevait la valeur de
+       l'exercice SUIVANT et la dernière année était perdue (signature observée :
+       deux exercices consécutifs au montant EXACTEMENT égal — TTM == dernier FY).
+
+    Règle : lire TOUTE la ligne (None aux cellules vides, position préservée), exiger un
+    nombre de cellules cohérent avec les en-têtes (TTM optionnel + FY), écarter le TTM
+    PAR POSITION, et REFUSER (retourner {}) si la structure ne correspond pas — jamais
+    d'à-peu-près sur des données de décision.
     """
     if not html:
         return {}
 
-    # 1. Les en-tetes d'exercice, dans l'ordre du document
+    # 1. Les en-têtes d'exercice, dans l'ordre du document
     annees = re.findall(r"FY\s*(20\d{2})", html)
     if not annees:
         return {}
@@ -189,38 +213,37 @@ def extraire_bpa(html: str) -> dict[str, float]:
     if not ordre:
         return {}
 
-    # 2. La ligne EPS : on cherche la cellule de titre puis les valeurs voisines
-    m = re.search(r"Earnings Per Share", html, re.I)
-    if not m:
-        return {}
-    fenetre = html[m.start(): m.start() + 4000]
+    # 1bis. La colonne TTM du tableau principal (« Fiscal Year » la précède) ?
+    has_ttm = bool(re.search(r"<th[^>]*>\s*TTM\s*</th>", html))
+    n_colonnes = len(ordre) + (1 if has_ttm else 0)
 
-    valeurs = []
-    for cellule in re.findall(r"<td[^>]*>(.*?)</td>", fenetre, re.S | re.I):
-        txt = re.sub(r"<[^>]+>", "", cellule).strip()
-        txt = txt.replace(",", "").replace("\u00a0", "")
-        if not txt:
-            continue
-        mm = re.match(r"^(-?[0-9]+(?:\.[0-9]+)?)$", txt)
-        if mm:
-            try:
-                valeurs.append(float(mm.group(1)))
-            except ValueError:
-                continue
-        if len(valeurs) >= len(ordre):
+    # 2. La ligne EPS : tenter chaque occurrence de « Earnings Per Share » (la page en
+    #    contient deux : variantes de rendu) — retenir la première dont les cellules
+    #    collent EXACTEMENT aux en-têtes.
+    valeurs: list[float | None] | None = None
+    for m in re.finditer(r"Earnings Per Share", html, re.I):
+        fenetre = html[m.start(): m.start() + 3000]
+        cellules: list[float | None] = []
+        for c in re.findall(r"<td[^>]*>(.*?)</td>", fenetre, re.S | re.I):
+            txt = re.sub(r"<[^>]+>", "", c).strip().replace(",", "").replace("\u00a0", "")
+            mm = re.fullmatch(r"-?\d+(?:\.\d+)?", txt)
+            cellules.append(float(mm.group(0)) if mm else None)
+            if len(cellules) == n_colonnes:
+                break
+        if len(cellules) == n_colonnes:
+            valeurs = cellules
             break
-
-    if not valeurs:
+    if valeurs is None:
         return {}
 
-    # Le premier nombre de la ligne EPS est le TTM : on l'ecarte si on a
-    # exactement une valeur de plus que d'annees.
-    if len(valeurs) == len(ordre) + 1:
+    # 3. Écarter la colonne TTM PAR POSITION (jamais en sautant des valeurs)
+    if has_ttm:
         valeurs = valeurs[1:]
 
-    out = {}
+    out: dict[str, float] = {}
     for annee, val in zip(ordre, valeurs):
-        out[annee] = val
+        if val is not None:
+            out[annee] = val
     return out
 
 
@@ -231,7 +254,7 @@ def extraire_bpa(html: str) -> dict[str, float]:
 def _get(url: str, essais: int = 2) -> str | None:
     for i in range(essais):
         try:
-            r = requests.get(url, headers=H, timeout=40, verify=False)
+            r = requests.get(url, headers=H, timeout=40)
             if r.status_code == 200:
                 return r.text
         except Exception:
@@ -315,20 +338,20 @@ def dernier_dividende_connu(t: TitreFondamentaux, date: str) -> dict | None:
 
 
 def bpa_connu(t: TitreFondamentaux, date: str) -> tuple[str, float] | None:
-    """Dernier BPA PUBLIE a la date donnee.
+    """Dernier BPA PUBLIÉ à la date donnée (AAAA-MM-JJ).
 
-    Un BPA d'exercice N n'est connu qu'apres la publication des comptes, soit
-    l'annee N+DECALAGE. Sans ce decalage, on utiliserait un resultat avant sa
-    publication — fuite du futur.
+    Un BPA d'exercice N n'est connu qu'après la publication des comptes : on exige le
+    **30 juin N+1** (`bpa_public_avant`). A3-02 (corrigé le 12/10) : l'ancienne version
+    comparait des ANNÉES (« connu dès le 01/01 N+1 »), soit un look-ahead de 3 à 6 mois
+    sur tous les PER/payout point-in-time.
     """
-    annee = int(date[:4])
     candidats = []
     for a_str, val in t.bpa.items():
         try:
             a = int(a_str)
         except ValueError:
             continue
-        if a + DECALAGE_PUBLICATION_BPA <= annee:
+        if bpa_public_avant(a, date):
             candidats.append((a, val))
     if not candidats:
         return None
@@ -356,7 +379,7 @@ def fondamentaux_a_la_date(t: TitreFondamentaux, date: str,
         out["ex_date_dividende"] = d["ex_date"]
         if cours:
             brut = d["montant"] / cours
-            out["net_yield"] = round(brut * 0.88 - 0.008, 6)
+            out["net_yield"] = round(net_yield(brut), 6)
 
     # Le BPA n'est utilise QUE s'il a passe le controle croise : un BPA faux
     # produit un PER absurde et une regle qui n'a aucun sens.

@@ -39,6 +39,7 @@ from .challenge_schema import Hypothese, compiler, evaluer_compilee  # noqa: E40
 
 # Frais aller-retour : dérivés du courtage réel dans src/regles.py.
 from ..regles import FRAIS_ALLER_RETOUR  # noqa: E402
+from ..taxation import IRVM_DIVIDEND_TAX  # noqa: E402  (C4 : plus de 0,88 en dur, 12/10)
 SEANCES_MIN_INDICATEURS = 250   # historique requis avant la 1re decision
 NB_TIRAGES_ALEATOIRES = 100
 
@@ -209,7 +210,7 @@ def _dividendes_detaches(titre_fond, date_entree: str, date_sortie: str) -> floa
     total = 0.0
     for d in titre_fond.dividendes:
         if date_entree < d["ex_date"] <= date_sortie:
-            total += d["montant"] * 0.88      # net d'IRVM
+            total += d["montant"] * (1 - IRVM_DIVIDEND_TAX)  # net d'IRVM (taxation.py)
     return total
 
 

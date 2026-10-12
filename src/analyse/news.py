@@ -80,7 +80,7 @@ def fetch_announcements() -> list[dict]:
     out: list[dict] = []
     for ptype, url in BRVM_ANNOUNCE_PAGES.items():
         try:
-            r = requests.get(url, headers=HEADERS, timeout=25, verify=False)
+            r = requests.get(url, headers=HEADERS, timeout=25)
             r.raise_for_status()
         except requests.RequestException:
             continue  # source indisponible = couverture inconnue, pas une erreur fatale

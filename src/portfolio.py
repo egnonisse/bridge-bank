@@ -32,7 +32,6 @@ from .regles import (EPISODES_MIN as PROFIT_MIN_EPISODES,  # 8 — voir regles.p
                      MAX_POSITION_WEIGHT,
                      PAYOUT_CRITICAL, PAYOUT_TIGHT,         # 1,00 / 0,80
                      PER_MAX as PER_MAX_NOYAU,              # 14,0 — filtres d'achat
-                     PROFIT_ALERT_THRESHOLD,                # 0,13 — défaut sans historique
                      SELL_FRACTION)                         # 1/3 — fraction vendue
 from .taxation import (
     IRVM_DIVIDEND_TAX,
@@ -69,9 +68,11 @@ HOLDING_YEARS = 3
 PROFIT_THRESHOLDS = SEUILS_PAR_DEFAUT
 PROFIT_THRESHOLDS_FILE = SEUILS_FILE
 PROFIT_SEUILS_CANDIDATS = SEUILS_CANDIDATS
-PROFIT_DOWN_PROB = {"SNTS": 86, "SGBC": 63, "SLBC": 54, "PALC": 45}  # affichage
+# B1-12 (corrigé le 12/10) : la copie figée PROFIT_DOWN_PROB a été SUPPRIMÉE — elle
+# divergeait déjà (PALC 45 vs 46 dans data/profit_thresholds.json) et servait de repli
+# muet. Le % de baisse historique ne s'affiche que s'il vient de la mesure calibrée.
 # PROFIT_ALERT_THRESHOLD, PROFIT_MIN_EPISODES, LOSS_ALERT_THRESHOLD et SELL_FRACTION
-# sont définis dans src/regles.py (catalogue unique) et importés en tête de fichier.
+# sont définis dans src/regles.py (catalogue unique).
 
 
 # Calibrage et persistance des seuils : DÉFINIS dans src/seuils_vente.py (un seul endroit).
@@ -284,10 +285,9 @@ def _double_option_alert(pos: DividendPosition, price: float) -> PositionAlert:
     profit_net, _ = _sell_profit_net(pos, price, SELL_FRACTION)
     div_net = _dividend_annual_net(pos)
     net_yld = pos.net_yield_pct(price)
-    # Transparence : chaque titre a sa fiabilité historique (calibrage auto 08/09)
+    # Transparence : chaque titre a sa fiabilité historique (calibrage auto 08/09).
+    # Pas de copie de repli (B1-12) : sans mesure calibrée, la phrase est simplement omise.
     prob = load_profit_thresholds().get(pos.code, {}).get("down_prob")
-    if prob is None:
-        prob = PROFIT_DOWN_PROB.get(pos.code)
     trust = ""
     if prob is not None and prob < 65:
         trust = (

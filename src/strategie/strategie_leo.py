@@ -28,6 +28,15 @@ triche : on fabriquerait une methode qui marche sur l'historique et echoue en
 reel. Le challenge multi-modeles (phase 4) fera varier ces parametres, mais le
 code jugera — et le point de depart reste ce que LEO fait.
 
+DIVERGENCE ASSUMEE AVEC L'IPS (audit A3-07, corrige le 12/10/2026)
+--------------------------------------------------------------------
+Ce moteur simule le comportement OBSERVE, pas l'allocation IPS :
+  - `cash_cible` 15 % ici (reserve jamais investie) contre 30 % de liquidites dans l'IPS ;
+  - sorties +15 %/+20 % (seuils reels observes) contre +20/+35/+50 documentes ;
+  - aucun stop-loss -15 % modelise.
+Consequence : ses rendements decrivent un portefeuille PLUS investi et SANS protection
+a la baisse. Ne jamais les presenter comme ceux de l'allocation IPS.
+
 Les valeurs observees sont documentees avec leur INCERTITUDE : les achats de
 LEO sont opportunistes (SONATEL en 2 lots le meme jour, PALM en 8 lots sur un
 mois), donc un parametre unique ne peut pas tout capturer. C'est assume.
@@ -43,6 +52,7 @@ from dataclasses import dataclass, field
 # Frais Bridge Bank : définis dans src/regles.py (dérivés du courtage réel,
 # jamais recopiés — `FRAIS_PAR_SENS` et `FRAIS_ALLER_RETOUR` ont des SENS différents).
 from ..regles import FRAIS_MINIMUM, FRAIS_PAR_SENS  # noqa: E402
+from ..taxation import IRVM_DIVIDEND_TAX  # noqa: E402  (C4 : plus de 0,88 en dur, 12/10)
 
 
 @dataclass
@@ -179,7 +189,7 @@ class MoteurLeo:
         t = self.hf.get(code)
         if t is None or not getattr(t, "dividendes", None):
             return 0.0
-        return sum(d["montant"] * 0.88 for d in t.dividendes
+        return sum(d["montant"] * (1 - IRVM_DIVIDEND_TAX) for d in t.dividendes
                    if d1 < d["ex_date"] <= d2)
 
     def _acheter(self, code: str, date: str, cours: float, montant: float,

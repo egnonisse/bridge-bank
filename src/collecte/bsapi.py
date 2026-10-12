@@ -6,7 +6,9 @@ L'API interne expose les données de marché BRVM SANS authentification :
 - MarketDetails.aspx?mode=3 : snapshot complet (indices + titres + carnet)
 - Service.svc/GetDataStockByCodeAndInterval2 : historique OHLCV (JSON)
 
-Note : le certificat SSL du serveur est invalide → verify=False (données publiques).
+Note : le certificat SSL du serveur BSTrade est invalide → verify=False (données publiques).
+Vérifié le 12/10/2026 : verify=True → SSLError ; c'est le SEUL site du projet dans ce cas
+(brvm.org, nsiacapital, stockanalysis, sikafinance, madisinvest vérifiés valides en TLS).
 """
 from __future__ import annotations
 

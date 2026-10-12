@@ -23,6 +23,8 @@ import math
 import statistics
 from dataclasses import dataclass
 
+from ..taxation import net_yield  # C4 : plus de 0,88/0,008 en dur (correction 12/10)
+
 
 @dataclass
 class SerieIndicateurs:
@@ -148,7 +150,7 @@ def precalculer(barres: list, code: str = "", fondamentaux: dict | None = None,
             # seance, sinon on figerait le rendement sur le cours de janvier.
             if cache_pti.get("dps") and c:
                 brut = cache_pti["dps"] / c
-                ind["net_yield"] = round(brut * 0.88 - 0.008, 6)
+                ind["net_yield"] = round(net_yield(brut), 6)
                 if cache_pti.get("bpa"):
                     ind["payout"] = round(cache_pti["dps"] / cache_pti["bpa"], 6)
                 if cache_pti.get("bpa"):

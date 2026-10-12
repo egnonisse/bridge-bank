@@ -12,8 +12,7 @@
   "phases_a_venir": [
     "6 — contrats entre modules",
     "7 — sécurité et intégrité",
-    "8 — exécution contrôlée (autorisation requise)",
-    "9-11 — corrections LOT 3 (A3-01/A3-02 look-aheads, TLS B2-02, nettoyeur B2-11, duplications de seuils)"
+    "8 — exécution contrôlée (autorisation requise)"
   ],
   "phase2_resume": {
     "exigences_enregistrees": 43,
@@ -62,7 +61,8 @@
     "phase_5": "2026-10-12",
     "corrections_lot1": "2026-10-12",
     "corrections_lot2": "2026-10-12",
-    "chantier_cache_historique": "2026-10-12"
+    "chantier_cache_historique": "2026-10-12",
+    "phase_lot3": "2026-10-12"
   },
   "environnement": {
     "os": "Windows 10 (shell bash/MSYS)",
@@ -362,5 +362,20 @@
       "361 passed, 1 xfailed (5 nouveaux tests)"
     ],
     "doc": "docs/DECISION-2026-10-12-cache-historique.md"
+  },
+  "corrections_lot3": {
+    "date": "2026-10-12",
+    "autorisation": "LEO « oui vas -y »",
+    "items_corriges": {
+      "A3-01": "parseur BPA — TTM écarté par position, positions préservées, refus si incohérent (12 doublons -> 0 ; 22/47 titres recalculés)",
+      "A3-02": "date de publication du BPA = 30/06 N+1 (bpa_public_avant)",
+      "B2-02/B0-03": "TLS verify=False retiré de 5 sources (6 domaines testés en verify=True -> 200 ; BSTrade seul conserve l'exception, SSLError vérifié)",
+      "B2-11": "nettoyeur symétrique [div5, x5] + test anti sur-nettoyage (xfail gelé)",
+      "C4/A3-06": "0,88/0,008 -> net_yield()/IRVM_DIVIDEND_TAX (6 modules) ; test gardien récursif + littéraux fiscaux + AnnAssign",
+      "C10/B1-12": "PROFIT_DOWN_PROB supprimé ; défaut 0,13 -> regles.PROFIT_ALERT_THRESHOLD ; import mort retiré",
+      "A3-07": "divergence IPS documentée dans la docstring du moteur strategie_leo"
+    },
+    "tests": "374 passed, 0 xfailed (+13 ; B2-11 gelé, plus aucun xfail)",
+    "doc": "docs/DECISION-2026-10-12-corrections-lot3.md"
   }
 }

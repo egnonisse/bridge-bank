@@ -15,7 +15,8 @@ import json
 from pathlib import Path
 
 from ..collecte.fundamentals import get_fundamentals
-from ..taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield
+from ..taxation import TARGET_NET_YIELD_ENTRY, entry_price_for_net, net_yield  # noqa: E402
+from ..taxation import IRVM_DIVIDEND_TAX  # noqa: E402  (C4 : plus de 0,88 en dur, 12/10)
 
 # Filtres d'entrée : définis dans src/regles.py (catalogue unique).
 from ..regles import PAYOUT_TIGHT, PER_MAX  # noqa: E402
@@ -82,7 +83,7 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "",
     if net >= TARGET_NET_YIELD_ENTRY:
         margin = (entry / price - 1) * 100 if price > 0 else 0.0
         qty = max(1, int(REFERENCE_AMOUNT // price))
-        net_annual = qty * dps * 0.88
+        net_annual = qty * dps * (1 - IRVM_DIVIDEND_TAX)
         payout_note = ""
         if payout > 0.75:
             payout_note = f" ⚠️ frontière (limite 80 %) — re-vérifier au prochain résultat"

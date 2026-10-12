@@ -49,7 +49,7 @@ def live_quotes(codes: list[str], timeout: int = 30) -> dict[str, float]:
     Le cours est le premier montant formaté (ex. « 34 400 ») qui suit le code
     dans la page. Codes inconnus ou non cotés : absents du résultat.
     """
-    resp = requests.get(URL, headers=HEADERS, timeout=timeout, verify=False)
+    resp = requests.get(URL, headers=HEADERS, timeout=timeout)
     resp.raise_for_status()
     txt = resp.text
     out: dict[str, float] = {}

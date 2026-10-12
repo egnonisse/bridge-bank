@@ -142,6 +142,20 @@ fini le mtime trompeur qui a figé le cache 7 j) ; **registre des titres dormant
 (`data/titres_inactifs.json`, SEMC/SICC = source muette au 15/09 → information, pas alerte).
 Suite : **361 passed, 1 xfailed** (+5 tests).
 
+### Mise à jour du 12/10/2026 (nuit) — LOT 3 APPLIQUÉ
+
+Détail : `docs/DECISION-2026-10-12-corrections-lot3.md`. **A3-01** (parseur BPA : colonne
+TTM écartée par position, cellules vides préservées, refus si incohérent → **12 doublons
+exacts → 0**, **22/47 titres recalculés**, ABJC 2024 : 121,98 → 138,84) · **A3-02**
+(publication au 30/06 N+1, fini le look-ahead de 3-6 mois) · **B2-02/B0-03** (TLS :
+`verify=False` retiré de 5 sources, 6 domaines testés en `verify=True` → 200 ; seul
+BSTrade garde l'exception, SSLError vérifié) · **B2-11** (nettoyeur symétrique [÷5, ×5]
++ anti sur-nettoyage) · **C4/A3-06** (0,88/0,008 → `net_yield()`/`IRVM_DIVIDEND_TAX`
+dans 6 modules ; test gardien **récursif** + littéraux fiscaux + `AnnAssign`) · **C10/B1-12**
+(`PROFIT_DOWN_PROB` supprimé — PALC 45 vs 46 acta la divergence ; défaut 0,13 →
+`regles.PROFIT_ALERT_THRESHOLD`) · **A3-07** (divergence IPS documentée dans la docstring
+du moteur). Suite : **374 passed, 0 xfailed** (+13 tests ; plus aucun xfail).
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,

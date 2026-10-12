@@ -76,7 +76,7 @@ def fetch_boc_text(date: datetime) -> tuple[str, str] | None:
     """
     for source, url in _boc_urls(date):
         try:
-            r = requests.get(url, headers=HEADERS, timeout=30, verify=False)
+            r = requests.get(url, headers=HEADERS, timeout=30)
             if r.status_code == 200 and r.content.startswith(b"%PDF"):
                 doc = pymupdf.open(stream=r.content, filetype="pdf")
                 return "\n".join(page.get_text() for page in doc), source
@@ -129,7 +129,7 @@ def parse_operations(text: str) -> list[dict]:
 def fetch_sikafinance_dividendes() -> dict[str, float]:
     """Dividendes sikafinance (source indépendante) → {code: montant}."""
     try:
-        r = requests.get(SIKA_DIV_URL, headers=HEADERS, timeout=30, verify=False)
+        r = requests.get(SIKA_DIV_URL, headers=HEADERS, timeout=30)
         clean = re.sub(r"<[^>]+>", " ", r.text)
         clean = re.sub(r"\s+", " ", clean)
     except requests.RequestException:

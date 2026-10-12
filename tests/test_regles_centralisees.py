@@ -50,16 +50,24 @@ TOUS_LES_NOMS = REGLES_CENTRALISEES | ALIAS_LOCAUX
 
 
 def _definitions_litterales(chemin: Path) -> list[tuple[str, int]]:
-    """Noms assignés à une valeur LITTERALE dans ce fichier (pas un import, pas un calcul)."""
+    """Noms assignés à une valeur LITTERALE dans ce fichier (pas un import, pas un calcul).
+
+    B1-12 (12/10) : couvre aussi les assignations ANNOTÉES (`cash_cible: float = 0.15`)
+    que l'ancien scan (`ast.Assign` seul) ne voyait pas.
+    """
     try:
         arbre = ast.parse(chemin.read_text(encoding="utf-8"))
     except (OSError, SyntaxError):
         return []
     out = []
     for noeud in arbre.body:
-        if not isinstance(noeud, ast.Assign):
+        if isinstance(noeud, ast.Assign):
+            cibles = noeud.targets
+        elif isinstance(noeud, ast.AnnAssign) and noeud.value is not None:
+            cibles = [noeud.target]
+        else:
             continue
-        for cible in noeud.targets:
+        for cible in cibles:
             if isinstance(cible, ast.Name) and cible.id in TOUS_LES_NOMS:
                 out.append((cible.id, noeud.lineno))
     return out
@@ -74,13 +82,18 @@ def test_le_catalogue_existe_et_est_complet():
 
 
 def test_aucune_regle_redefinie_ailleurs():
-    """Aucune règle du catalogue ne doit être réécrite en dur dans un autre module."""
+    """Aucune règle du catalogue ne doit être réécrite en dur dans un autre module.
+
+    B1-12/A3-06 (12/10) : le scan était LIMITÉ aux fichiers de `src/` racine — les
+    sous-dossiers (strategie/, analyse/, collecte/, backtesting/, calibration/) lui
+    étaient INVISIBLES. Il balaie désormais tout l'arbre source.
+    """
     fautes = []
-    for f in sorted(SRC.glob("*.py")):
-        if f.name == CATALOGUE.name:
+    for f in sorted(SRC.rglob("*.py")):
+        if f.name == CATALOGUE.name or "__pycache__" in f.parts:
             continue          # le catalogue EST la source
         for nom, ligne in _definitions_litterales(f):
-            fautes.append(f"{f.name}:{ligne} redéfinit `{nom}`")
+            fautes.append(f"{f.relative_to(RACINE)}:{ligne} redéfinit `{nom}`")
     assert not fautes, (
         "ces règles doivent être importées de src/regles.py :\n  " + "\n  ".join(fautes))
 
@@ -147,3 +160,47 @@ def test_max_buy_weight_confirme_et_inscrit_dans_l_ips():
     ips = (RACINE / "docs" / "IPS.md").read_text(encoding="utf-8")
     assert "MAX_BUY_WEIGHT" in ips, "la règle doit être inscrite dans docs/IPS.md (décision Q4)"
     assert "0,40" in ips, "la valeur doit figurer dans docs/IPS.md (décision Q4)"
+
+
+# Valeurs fiscales à ne JAMAIS recopier : la liste est volontairement courte et
+# SPECIFIQUE (0,88 = 1 − IRVM ; 0,008 = conservation annuelle en points) — un simple
+# « 0,12 » serait trop générique (probabilités, seuils divers).
+VALEURS_FISCALES_EN_DUR = {
+    0.88: "net d'IRVM — utiliser IRVM_DIVIDEND_TAX ou net_yield()",
+    0.008: "conservation 0,80 %/an — utiliser CUSTODY_ANNUAL ou net_yield()",
+}
+
+
+def test_aucun_litteral_fiscal_en_dur():
+    """C4 (A3-06, corrigé le 12/10/2026) : `brut * 0.88 - 0.008` était recopié dans
+    6 modules — le jour où l'IRVM change (il a fait 10 % → 15 % → 12 %), ces copies
+    seraient restées muettes. Le scan couvre TOUT l'arbre source, taxation.py excepté."""
+    fautes = []
+    for f in sorted(SRC.rglob("*.py")):
+        if f.name == "taxation.py" or "__pycache__" in f.parts:
+            continue          # la source fiscale EST taxation.py
+        try:
+            arbre = ast.parse(f.read_text(encoding="utf-8"))
+        except (OSError, SyntaxError):
+            continue
+        for noeud in ast.walk(arbre):
+            if (isinstance(noeud, ast.Constant) and isinstance(noeud.value, float)
+                    and noeud.value in VALEURS_FISCALES_EN_DUR):
+                fautes.append(
+                    f"{f.relative_to(RACINE)}:{noeud.lineno} : {noeud.value} — "
+                    f"{VALEURS_FISCALES_EN_DUR[noeud.value]}")
+    assert not fautes, (
+        "ces taux doivent venir de src/taxation.py :\n  " + "\n  ".join(fautes))
+
+
+def test_pour_na_pas_de_defaut_litteral():
+    """B1-12 : le défaut du seuil de vente (« 0,13 ») doit venir du catalogue."""
+    import inspect
+
+    import src.regles as regles
+
+    from src.calibration import seuils_vente
+
+    assert inspect.signature(seuils_vente.pour).parameters["defaut"].default is None
+    # Un code totalement inconnu reçoit le défaut central — jamais une copie.
+    assert seuils_vente.pour("INCONNU_XYZ") == pytest.approx(regles.PROFIT_ALERT_THRESHOLD)

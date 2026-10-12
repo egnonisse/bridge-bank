@@ -10,6 +10,7 @@ fait / hypothèse / décision séparés, jamais d'ordre automatique.
 from dataclasses import dataclass, field
 
 from ..portefeuille.format_fr import fcfa  # montants à la française (invariant E1, correction B1-02 du 12/10)
+from ..taxation import net_yield  # C4 : plus de 0,88/0,8 en dur (correction 12/10)
 from .spec_profiles import load_profiles, zone_of, zone_label, detect_schemas
 
 # Emojis / libellés par schéma
@@ -168,7 +169,7 @@ def build_message(f: FicheSpec) -> str:
 
     # fondamental connu — signalé, jamais jugé (la poche spé joue le prix)
     if b.get("dps"):
-        net = b["dps"] * 0.88 / f.price * 100 - 0.8 if f.price else 0
+        net = net_yield(b["dps"] / f.price) * 100 if f.price else 0
         fund = (f"   • 🏦 Fondamental connu : dividende {fcfa(b['dps'])}/an "
                 f"(≈ {net:.1f} % net), PER {b['per']:.1f}")
         if b.get("payout") and b["payout"] > 100:
