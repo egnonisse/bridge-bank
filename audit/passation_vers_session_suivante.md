@@ -86,3 +86,13 @@ for s in validation_longue tester_entree_progressive tester_rebalancement tester
 
 Le crochet **pre-push** rejoue les filets et bloque une poussée cassée. Les 5 sorties brutes de la
 re-mesure sont dans `audit/preuves/remesure_*.txt` — elles servent de valeurs de référence.
+
+⚠️ **Ces mesures ÉCRIVENT dans `data/`** — c'est vérifié, ne le découvre pas en cassant quelque
+chose : `tester_rebalancement.py`, `tester_entree_progressive.py`, `mesurer_detachements.py`,
+`validation_longue.py` et `tester_paliers.py` déposent leurs résultats dans des fichiers **suivis**
+par git (`data/test_rebalancement.json`, `data/test_entree_progressive.json`,
+`data/mesure_detachements.json`, `data/validation_longue.json`…). Conséquence pratique :
+**prendre l'empreinte de `data/` AVANT de les lancer**, puis committer les nouveaux résultats
+explicitement (« re-mesuré le … sur données et code corrigés ») — jamais les laisser en modification
+silencieuse. Les valeurs précédentes restent récupérables (`git show HEAD:data/<fichier>.json`),
+contrairement aux caches `data/*.pkl` qui, eux, ne sont pas versionnés.

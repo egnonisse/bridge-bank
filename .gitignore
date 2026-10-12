@@ -8,6 +8,12 @@ __pycache__/
 .venv/
 venv/
 
+# Couverture de tests (pytest-cov) — artefact régénérable, jamais versionné
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
 # Temporaires Hermes
 .hermes-tmp*/
 
