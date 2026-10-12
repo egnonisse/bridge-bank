@@ -119,7 +119,19 @@ Classement par (gravité × confiance de vérification × impact réel sur LEO) 
 | B1-03 (DRIP brut), B1-07 (cooldown watchlist), B2-11 (nettoyeur) | ⬜ lot 2-3 | xfail actifs (3) |
 | A3-01/A3-02 (look-aheads), B2-02 (TLS), C2/C5/C6/C7, B1-05/B1-13, B2-01/B2-03 | ⬜ lots 2-3 | voir §5 |
 
-État de la suite : **346 passed, 3 xfailed** (12/10/2026).
+### Mise à jour du 12/10/2026 (soir) — LOT 2 APPLIQUÉ
+
+Détail : `docs/DECISION-2026-10-12-corrections-lot2.md`. **B1-03** (DRIP net IRVM) ·
+**B1-07** (clé de cooldown stable) · **B1-05** (prix de sortie recalculé au dps courant) ·
+**B1-09** (stop-outs rapprochés, plus cumulatifs) · **B1-13** (anti-spam consommé à la
+livraison) · **B2-01/B2-03** (PER ≤ 0 rejeté, cache daté + verrou + écriture atomique) ·
+**B0-04/B1-08** (formule d'entrée unique, portfolio.json migré) → tous **CORRIGÉS et gelés**
+par tests. Plus **2 découvertes d'infrastructure réparées** : BOC cassé depuis le 02/10
+(pymupdf — venv projet + `--interpreter` sur les 5 jobs cron, testé en réel) et la course
+sur `per_cache.json` (48 → 5 entrées, atomicité + verrou, cache restauré).
+
+État de la suite : **356 passed, 1 xfailed** (B2-11 = lot 3). **Découvertes hors lot** :
+cache historique en retard (dernières barres au 30/09) — prochain chantier candidat.
 
 ---
 

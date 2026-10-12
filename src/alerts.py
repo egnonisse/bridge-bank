@@ -79,8 +79,10 @@ class AlertEngine:
             quote = snapshot.by_code(code)
             if quote is None or quote.last <= 0:
                 continue
-            for cond in self._check_rules(quote, rules):
-                key = f"{code}:{cond}"
+            for cond_type, cond in self._check_rules(quote, rules):
+                # B1-07 (lot 2) : clé SANS le prix — sinon un cours qui bouge
+                # à chaque tick change la clé et re-notifie malgré le cooldown.
+                key = f"{code}:{cond_type}"
                 if self.state.get(key, 0) > now - self.cooldown:
                     continue
                 self.state[key] = now
@@ -88,17 +90,21 @@ class AlertEngine:
         self._save_state()
         return messages
 
-    def _check_rules(self, quote: Quote, rules: dict) -> list[str]:
-        out: list[str] = []
+    def _check_rules(self, quote: Quote, rules: dict) -> list[tuple[str, str]]:
+        """Retourne [(clé stable sans le prix, message)] — la clé sert au cooldown (B1-07)."""
+        out: list[tuple[str, str]] = []
         last = quote.last
         var = quote.change_pct
 
         if rules.get("max") and last >= float(rules["max"]):
-            out.append(f"Prix atteint {nombre(last)} FCFA (seuil haut {nombre(float(rules['max']))})")
+            out.append((f"max:{rules['max']}",
+                        f"Prix atteint {nombre(last)} FCFA (seuil haut {nombre(float(rules['max']))})"))
         if rules.get("min") and last <= float(rules["min"]):
-            out.append(f"Prix tombé à {nombre(last)} FCFA (seuil bas {nombre(float(rules['min']))})")
+            out.append((f"min:{rules['min']}",
+                        f"Prix tombé à {nombre(last)} FCFA (seuil bas {nombre(float(rules['min']))})"))
         if rules.get("change_pct") and abs(var) >= float(rules["change_pct"]):
-            out.append(f"Variation {var:+.2f}% (seuil ±{float(rules['change_pct']):.0f}%)")
+            out.append((f"var:{rules['change_pct']}",
+                        f"Variation {var:+.2f}% (seuil ±{float(rules['change_pct']):.0f}%)"))
         return out
 
     # ---------------------------------------------------------------- session

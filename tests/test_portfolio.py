@@ -29,10 +29,14 @@ def make_pos(dps=1740, per=7.74, entry=32000, qty=3, opened=None):
 
 # -------------------------------------------------------- prix entrée/sortie
 def test_exit_and_entry_prices():
+    from src.taxation import entry_price_for_net
+
     p = make_pos(dps=1740)
-    # rendement NET 4 % -> brut 5,45 % ; NET 2 % -> brut 3,18 %
+    # rendement NET 2 % -> brut 3,18 % pour la sortie ; entrée = formule UNIQUE du code
+    # (frais de courtage inclus — B0-04/B1-08 du 12/10).
     assert abs(p.exit_price - 54685.71) < 0.01
-    assert abs(p.entry_price_ref - 31900.0) < 0.01
+    assert abs(p.entry_price_ref - entry_price_for_net(1740)) < 0.01
+    assert abs(p.entry_price_ref - 31459.57) < 0.01  # et la valeur concrète est gelée
 
 
 def test_yield_pct():
@@ -160,7 +164,10 @@ def test_small_profit_info_only():
 # --- Seuils de vente ⅓ CALIBRÉS PAR TITRE (décision LEO 08/09) ---
 
 def _pos(code, entry=30000.0):
-    # dps 2000 : rendement net ~4,5 % → reste au-dessus du seuil de sortie 2 %
+    # dps 2000 : rendement net ~4,5 % → reste au-dessus du seuil de sortie 2 %.
+    # Les tests de SEUIL de plus-value passent current_dps=2000 (dps inchangé) : un dps
+    # courant réduit ferait légitimement déclencher la SORTIE (prix de sortie recalculé
+    # au dividende courant — correction B1-05), ce qui masquerait le seuil testé.
     return DividendPosition(code=code, name=code, entry_price=entry, quantity=3,
                             dps=2000.0, per_open=10.0)
 
@@ -168,7 +175,7 @@ def _pos(code, entry=30000.0):
 def test_sgbc_seuil_10_pct_atteint_mais_informatif():
     """SGBC : le seuil de 10 % est toujours SURVEILLÉ, mais n'ordonne plus la vente."""
     alerts = check_dividend_position(_pos("SGBC"), 30000 * 1.11,
-                                     current_dps=1000, current_per=10)
+                                     current_dps=2000, current_per=10)
     decision = [a for a in alerts if a.level == LEVEL_DECISION]
     assert decision, "le franchissement du seuil doit rester signalé"
     assert "INFO" in decision[0].message
@@ -177,14 +184,14 @@ def test_sgbc_seuil_10_pct_atteint_mais_informatif():
 
 def test_sgbc_pas_de_declenchement_a_9_pct():
     alerts = check_dividend_position(_pos("SGBC"), 30000 * 1.09,
-                                     current_dps=1000, current_per=10)
+                                     current_dps=2000, current_per=10)
     assert all(a.level != LEVEL_DECISION for a in alerts)
 
 
 def test_slbc_seuil_5_pct_atteint_mais_informatif():
     """SLBC : signal faible -> information seule."""
     alerts = check_dividend_position(_pos("SLBC"), 30000 * 1.06,
-                                     current_dps=1000, current_per=10)
+                                     current_dps=2000, current_per=10)
     decision = [a for a in alerts if a.level == LEVEL_DECISION]
     assert decision
     assert "INFO" in decision[0].message
@@ -194,7 +201,7 @@ def test_slbc_seuil_5_pct_atteint_mais_informatif():
 def test_palc_seuil_5_pct_avec_avertissement_fiabilite():
     """PALC : le pire signal du portefeuille — informé, pas vendu, et expliqué simplement."""
     alerts = check_dividend_position(_pos("PALC"), 30000 * 1.06,
-                                     current_dps=1000, current_per=10)
+                                     current_dps=2000, current_per=10)
     decision = [a for a in alerts if a.level == LEVEL_DECISION]
     assert decision and "VENDS 1/3" not in decision[0].message
     assert "INFO" in decision[0].message
@@ -204,7 +211,7 @@ def test_palc_seuil_5_pct_avec_avertissement_fiabilite():
 
 def test_snts_reste_a_13_pct_malgre_le_default():
     alerts = check_dividend_position(_pos("SNTS"), 30000 * 1.12,
-                                     current_dps=1000, current_per=10)
+                                     current_dps=2000, current_per=10)
     assert all(a.level != LEVEL_DECISION for a in alerts)  # 12 % < 13 % : rien
 
 
@@ -487,34 +494,35 @@ def test_open_dividend_position():
     pos = open_dividend_position(FakeAPI(), "SNTS", 100000, dps=1740, per_open=7.74)
     assert pos.quantity == 3  # 100000 // 32000
     assert abs(pos.exit_price - 54685.71) < 0.01
-    assert abs(pos.entry_price_ref - 31900.0) < 0.01
+    from src.taxation import entry_price_for_net
+    assert abs(pos.entry_price_ref - entry_price_for_net(1740)) < 0.01  # formule unique B0-04/B1-08
 
 
 # ---------------------------------------------------------- réinvestissement
 def test_record_dividend_not_enough_for_share():
-    p = make_pos(dps=1740, qty=3)  # cash = 5220 < prix 32000
+    p = make_pos(dps=1740, qty=3)  # net d'IRVM = 1740×0,88×3 = 4593,60 < prix 32000
     cash, shares, residual = record_dividend(p, 32000)
-    assert cash == 5220.0
+    assert cash == 4593.60  # NET d'IRVM 12 % — le cash réellement reçu (correction B1-03)
     assert shares == 0
-    assert residual == 5220.0
+    assert residual == 4593.60
     assert p.quantity == 3  # inchangé
-    assert p.dividends_earned == 5220.0
+    assert p.dividends_earned == 4593.60
 
 
 def test_record_dividend_buys_shares():
-    p = make_pos(dps=1740, qty=20)  # cash = 34800, à 32000 -> 1 action
-    cash, shares, residual = record_dividend(p, 32000)
-    assert cash == 34800.0
+    p = make_pos(dps=1740, qty=20)  # net = 30624, à 30000 -> 1 action
+    cash, shares, residual = record_dividend(p, 30000)
+    assert cash == 30624.0
     assert shares == 1
-    assert residual == 2800.0  # 34800 - 32000
+    assert residual == 624.0  # 30624 - 30000
     assert p.quantity == 21
-    assert p.cash_residual == 2800.0
+    assert p.cash_residual == 624.0
 
 
 def test_record_dividend_compounds():
-    """Le réinvestissement augmente la base -> dividende suivant plus gros."""
-    p = make_pos(dps=1740, qty=20)  # 34800 -> 1 action -> 21 actions
-    record_dividend(p, 32000)
+    """Le réinvestissement augmente la base -> dividende suivant plus gros (net d'IRVM)."""
+    p = make_pos(dps=1740, qty=20)  # net 30624 -> 1 action -> 21 actions
+    record_dividend(p, 30000)
     # second versement sur 21 actions
-    cash2, _, _ = record_dividend(p, 32000)
-    assert cash2 == 1740 * 21  # 36540
+    cash2, _, _ = record_dividend(p, 30000)
+    assert cash2 == 1740 * 0.88 * 21  # 32 155,20 net

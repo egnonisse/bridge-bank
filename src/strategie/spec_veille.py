@@ -40,6 +40,45 @@ def save_state(state: dict) -> None:
                           encoding="utf-8")
 
 
+def stopout_cooldowns(spec_pos) -> tuple[dict, dict]:
+    """Cooldowns par titre après stop-out (B0-01 + B1-09).
+
+    - `stopout_last[code]` : date du DERNIER stop-out (SUSPEND_DAYS de repli si illisible).
+    - `stopout_days[code]` : STOPOUT_SUSPEND_DAYS si ≥ 2 stop-outs RAPPROCHÉS (dans la
+      fenêtre de suspension précédant le dernier = « échecs répétés dans une tendance
+      baissière »), sinon STOPOUT_COOLDOWN_DAYS.
+      B1-09 (lot 2) : avant, TOUS les stop-outs historiques étaient comptés cumulativement —
+      deux stop-outs espacés de deux ans déclenchaient la suspension de 60 j à tort.
+    """
+    stop_dates: dict[str, list[date]] = {}
+    for p in spec_pos:
+        if not (p.closed and "stop" in (p.close_reason or "").lower()):
+            continue
+        code = p.code.upper()
+        try:
+            if getattr(p, "closed_at", ""):
+                d = date.fromisoformat(p.closed_at[:10])
+            else:
+                d = date.fromisoformat((p.close_reason or "").split(" ")[-1][:10])
+        except Exception:
+            try:
+                d = date.fromisoformat(p.opened_at[:10])
+            except Exception:
+                continue
+        stop_dates.setdefault(code, []).append(d)
+
+    stopout_last: dict[str, date] = {}
+    stopout_days: dict[str, int] = {}
+    for code, ds in stop_dates.items():
+        ds.sort()
+        dernier = ds[-1]
+        stopout_last[code] = dernier
+        rapproches = [d for d in ds if (dernier - d).days <= STOPOUT_SUSPEND_DAYS]
+        stopout_days[code] = (STOPOUT_SUSPEND_DAYS if len(rapproches) >= STOPOUT_SUSPEND_COUNT
+                              else STOPOUT_COOLDOWN_DAYS)
+    return stopout_last, stopout_days
+
+
 def scan(all_: bool = False) -> list:
     """Retourne [(fiche, message)] pour les titres à signaler aujourd'hui.
 
@@ -66,27 +105,7 @@ def scan(all_: bool = False) -> list:
     try:
         from .speculation import load_positions
 
-        spec_pos = load_positions()
-        stopout_last: dict[str, date] = {}
-        stopout_days: dict[str, int] = {}
-        stop_counts: dict[str, int] = {}
-        for p in spec_pos:
-            if p.closed and "stop" in (p.close_reason or "").lower():
-                code = p.code.upper()
-                stop_counts[code] = stop_counts.get(code, 0) + 1
-                try:
-                    if getattr(p, "closed_at", ""):
-                        d = date.fromisoformat(p.closed_at[:10])
-                    else:
-                        d = date.fromisoformat((p.close_reason or "").split(" ")[-1][:10])
-                except Exception:
-                    d = date.fromisoformat(p.opened_at[:10])
-                if code not in stopout_last or d > stopout_last[code]:
-                    stopout_last[code] = d
-        for code, n_stops in stop_counts.items():
-            # 2 stop-outs consécutifs = suspension longue, sinon cooldown simple
-            stopout_days[code] = (STOPOUT_SUSPEND_DAYS if n_stops >= STOPOUT_SUSPEND_COUNT
-                                  else STOPOUT_COOLDOWN_DAYS)
+        stopout_last, stopout_days = stopout_cooldowns(load_positions())
     except Exception:
         stopout_last, stopout_days = {}, {}
     for code in codes:
@@ -125,10 +144,27 @@ def scan(all_: bool = False) -> list:
                     continue
             except ValueError:
                 pass
-        state[key] = today
-        out.append((f, f.message()))
+        out.append((f, f.message(), key))
+        # B1-13 (lot 2) : seules les fiches NON décidables (NON) sont marquées ici — c'est
+        # le filtre anti-bruit local, pas un envoi. Les fiches décidables (OUI/PRUDENCE)
+        # sont marquées par l'APPELANT après livraison réussie (`mark_delivered`) : un envoi
+        # échoué (Telegram en panne) ne consomme plus les 7 jours — la fiche revient demain,
+        # et une fiche écartée par le plafond 3/j n'est plus perdue non plus.
+        if f.verdict not in ("OUI", "PRUDENCE"):
+            state[key] = today
     save_state(state)
     return out
+
+
+def mark_delivered(keys: list[str]) -> None:
+    """Marque des fiches comme LIVRÉES (anti-spam 7 j) — appelé APRÈS livraison (B1-13)."""
+    if not keys:
+        return
+    state = load_state()
+    today = date.today().isoformat()
+    for k in keys:
+        state[k] = today
+    save_state(state)
 
 
 def main() -> None:
@@ -137,10 +173,12 @@ def main() -> None:
     if not res:
         print("Aucun nouveau signal de veille spé aujourd'hui.")
         return
-    for f, msg in res:
+    for f, msg, _key in res:
         print(f"───── {f.code} ({f.verdict}) ─────")
         print(msg)
         print()
+    # affichage local = livraison : on marque les fiches montrées (B1-13)
+    mark_delivered([k for _f, _m, k in res])
 
 
 if __name__ == "__main__":

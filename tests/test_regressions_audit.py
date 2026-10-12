@@ -15,12 +15,8 @@ import pytest
 from src.domaine.models import Quote, Snapshot
 
 
-# ------------------------------------------------- B1-03 : DRIP net d'IRVM
-@pytest.mark.xfail(
-    reason="B1-03 (P2) — record_dividend comptabilise le BRUT ; "
-           "correction : cash = dps × (1−IRVM) × quantité",
-    strict=False,
-)
+# ------------------------------------------- B1-03 : DRIP net d'IRVM
+# CORRIGÉ le 12/10/2026 (lot 2) — test gelé : le cash comptabilisé est le NET (IRVM retenue).
 def test_drip_comptabilise_le_net_apres_irvm():
     from src.portfolio import DividendPosition, record_dividend
 
@@ -84,12 +80,154 @@ def test_nettoyeur_detecte_les_artefacts_bas(make_bars):
     assert 20 in idx
 
 
+# ═══════════════════════════ CORRECTIONS APPLIQUÉES — LOT 2 (12/10/2026)
+
+# ------------------------------------------- B1-05 : sortie au dps COURANT
+
+def test_sortie_rapprochee_par_un_dividende_reduit():
+    """B1-05 (CORRIGÉ) — dividende réduit (sans coupe > 50 %) ⇒ le prix de sortie (net 2 %)
+    est recalculé au dps courant et RAPPROCHÉ : le rendement tombe sous 2 % ⇒ VENDS TOUT."""
+    from src.portfolio import LEVEL_EXIT, DividendPosition, check_dividend_position
+
+    p = DividendPosition(code="X", name="X", entry_price=30000.0, quantity=1,
+                         dps=2000.0, per_open=10.0)
+    # exit figé (dps 2000) = 62 857 ; dps courant 1000 -> exit recalculé ≈ 31 429 < 33 000
+    alerts = check_dividend_position(p, 33000, current_dps=1000, current_per=10)
+    assert p.closed and "sortie" in p.close_reason
+    assert any(a.level == LEVEL_EXIT for a in alerts)
+
+
+def test_sortie_eloignee_par_un_dividende_en_hausse():
+    """B1-05 (CORRIGÉ) — dividende en HAUSSE ⇒ le prix de sortie s'ÉLOIGNE : un cours qui
+    déclenchait la sortie avec l'ancien dps ne la déclenche plus (on garde le loyer)."""
+    from src.portfolio import LEVEL_EXIT, DividendPosition, check_dividend_position
+
+    p = DividendPosition(code="X", name="X", entry_price=30000.0, quantity=1,
+                         dps=1000.0, per_open=10.0)
+    # exit figé (dps 1000) = 31 429 ; dps courant 2000 -> exit recalculé = 62 857 > 33 000
+    alerts = check_dividend_position(p, 33000, current_dps=2000, current_per=10)
+    assert not p.closed
+    assert not any(a.level == LEVEL_EXIT for a in alerts)
+
+
+# --------------------------------------- B1-09 : stop-outs CONSÉCUTIFS
+
+def test_stopouts_espaces_ne_suspendent_pas():
+    """B1-09 (CORRIGÉ) — deux stop-outs espacés de 2 ans = cooldown simple (30 j) ;
+    seuls des stop-outs RAPPROCHÉS (échecs répétés) déclenchent la suspension (60 j)."""
+    from src.strategie.spec_veille import (STOPOUT_COOLDOWN_DAYS, STOPOUT_SUSPEND_DAYS,
+                                           stopout_cooldowns)
+    from src.strategie.speculation import SpecPosition
+
+    def stop(quand: str):
+        return SpecPosition(code="X", name="X", entry_price=100.0, quantity=1,
+                            closed=True, close_reason="STOP déclenché", closed_at=quand)
+
+    _last, days = stopout_cooldowns([stop("2024-06-01T10:00:00"), stop("2026-10-01T10:00:00")])
+    assert days["X"] == STOPOUT_COOLDOWN_DAYS, "2 ans d'écart ≠ échecs répétés"
+
+    _last, days = stopout_cooldowns([stop("2026-09-20T10:00:00"), stop("2026-10-01T10:00:00")])
+    assert days["X"] == STOPOUT_SUSPEND_DAYS, "11 jours d'écart = échecs répétés → suspension"
+
+
+# ------------------------------- B1-13 : anti-spam consommé à la LIVRAISON
+
+def _cmd_specveille_avec(monkeypatch, send_ok: bool):
+    """Exécute cmd_specveille avec UNE fiche OUI en attente et un envoi simulé."""
+    import types
+
+    import src.main as main_mod
+    from src.strategie import spec_veille as sv
+
+    fiche = types.SimpleNamespace(code="X", verdict="OUI", blocks={"main": "CASSURE"})
+    monkeypatch.setattr(sv, "scan", lambda all_=False: [(fiche, "msg", "X:CASSURE")])
+    marquees: list[str] = []
+    monkeypatch.setattr(sv, "mark_delivered", lambda keys: marquees.extend(keys))
+
+    class FakeNotifier:
+        enabled = True
+
+        def send(self, msg):
+            return send_ok
+
+    monkeypatch.setattr(main_mod, "load_config", lambda: {})
+    monkeypatch.setattr(main_mod, "get_notifier", lambda cfg: FakeNotifier())
+    main_mod.cmd_specveille(types.SimpleNamespace())
+    return marquees
+
+
+def test_fiche_non_livree_reste_disponible(monkeypatch):
+    """B1-13 (CORRIGÉ) — envoi Telegram en échec ⇒ la fiche n'est PAS marquée « vue 7 j » :
+    elle sera reproposée demain (l'anti-spam se consomme à la LIVRAISON, plus à la génération)."""
+    marquees = _cmd_specveille_avec(monkeypatch, send_ok=False)
+    assert "X:CASSURE" not in marquees, "fiche marquée alors que l'envoi a échoué !"
+
+
+def test_fiche_livree_est_marquee(monkeypatch):
+    """B1-13 (CORRIGÉ) — envoi réussi ⇒ la fiche est marquée (anti-spam 7 j normal)."""
+    marquees = _cmd_specveille_avec(monkeypatch, send_ok=True)
+    assert "X:CASSURE" in marquees
+
+
+# --------------------------------- B2-01/B2-03 : cache PER (valeurs + fraîcheur)
+
+def test_per_cache_rejette_les_valeurs_invalides(monkeypatch, tmp_path):
+    """B2-01 (CORRIGÉ) — un PER ≤ 0 (« 0.00 » affiché par brvm.org = non calculable) est
+    ÉCARTÉ ; l'ancien format plat (float) reste lu (rétro-compatibilité)."""
+    from src.collecte import fundamentals as fu
+
+    fichier = tmp_path / "per_cache.json"
+    fichier.write_text(
+        '{"STAC": 0.0, "SICC": {"per": 0.0, "date": "2026-10-12"}, "SNTS": 10.88}',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(fu, "PER_CACHE_FILE", fichier)
+    lu = fu._load_per_cache()
+    assert "STAC" not in lu and "SICC" not in lu, "un PER ≤ 0 ne doit jamais être servi"
+    assert lu["SNTS"]["per"] == 10.88  # rétro-compat ancien schéma
+    assert lu["SNTS"]["date"] == ""     # date inconnue pour l'ancien format (honnête)
+
+
+def test_per_cache_schema_date_et_pas_de_residu(monkeypatch, tmp_path):
+    """B2-03 (CORRIGÉ) — le cache porte sa DATE de collecte ; l'écriture est atomique
+    (aucun .tmp résiduel, aucun verrou qui traîne)."""
+    from src.collecte import fundamentals as fu
+
+    monkeypatch.setattr(fu, "PER_CACHE_FILE", tmp_path / "per_cache.json")
+    monkeypatch.setattr(fu, "LOCK_FILE", tmp_path / "per_cache.lock")
+    fu._save_per_cache({"SNTS": {"per": 10.88, "date": "2026-10-12"}})
+    assert fu._load_per_cache()["SNTS"]["date"] == "2026-10-12"
+    assert not (tmp_path / "per_cache.json.tmp").exists()
+    assert not (tmp_path / "per_cache.lock").exists()
+
+
+def test_verrou_cache_libere_et_orphelin_purge(monkeypatch, tmp_path):
+    """Incident du 12/10 (course multi-threads) — le verrou du cache se libère après usage
+    et un verrou orphelin (process tué) est purgé plutôt que de bloquer 15 s chaque run."""
+    import os
+    import time
+
+    from src.collecte import fundamentals as fu
+
+    verrou = tmp_path / "per_cache.lock"
+    monkeypatch.setattr(fu, "LOCK_FILE", verrou)
+
+    with fu._cache_lock() as ok:
+        assert ok is True
+        assert verrou.exists()
+    assert not verrou.exists(), "verrou non libéré après usage"
+
+    fd = os.open(verrou, os.O_CREAT | os.O_EXCL | os.O_WRONLY)  # verrou orphelin simulé
+    os.close(fd)
+    vieux = time.time() - 120
+    os.utime(verrou, (vieux, vieux))  # > LOCK_STALE_SECONDS (60 s)
+    with fu._cache_lock(timeout=2.0) as ok:
+        assert ok is True, "un verrou orphelin doit être purgé, pas attendu"
+    assert not verrou.exists()
+
+
 # -------------------------------------- B1-07 : cooldown watchlist (clé fixe)
-@pytest.mark.xfail(
-    reason="B1-07 (P2) — la clé de cooldown contient le prix → re-notification à chaque "
-           "tick ; correction : clé sans le prix (code:type:seuil)",
-    strict=False,
-)
+# CORRIGÉ le 12/10/2026 (lot 2) — test gelé : la clé du cooldown ne contient plus le prix.
 def test_cooldown_watchlist_ne_repete_pas(monkeypatch, tmp_path):
     from src import alerts as al
 

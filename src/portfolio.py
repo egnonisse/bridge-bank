@@ -1,6 +1,7 @@
 """Noyau dividende : positions long terme + sortie sur fondamentaux.
 
-Prix d'entrée (rendement NET 4 %) = dps / DIV_YIELD_ENTRY — acheter en dessous.
+Prix d'entrée (rendement NET 4 %) = `entry_price_for_net(dps)` = dps ÷ 5,45 % ÷ 1,014
+(frais de courtage INCLUS — formule unique, B0-04/B1-08 du 12/10) — acheter en dessous.
 Prix de sortie (rendement NET 2 %) = dps / DIV_YIELD_EXIT — vendre au-dessus.
 Le rendement est NET (après IRVM 12 % + frais de conservation 0,80 %/an),
 donc le seuil brut est plus élevé (≈ 5,45 % à l'entrée, ≈ 3,18 % à la sortie).
@@ -38,6 +39,7 @@ from .taxation import (
     TARGET_NET_YIELD_ENTRY,
     TARGET_NET_YIELD_EXIT,
     commission,
+    entry_price_for_net,
     gross_yield_for_net,
     net_yield,
 )
@@ -160,7 +162,12 @@ class DividendPosition:
             if self.exit_price <= 0:
                 self.exit_price = round(self.dps / DIV_YIELD_EXIT, 2)
             if self.entry_price_ref <= 0:
-                self.entry_price_ref = round(self.dps / DIV_YIELD_ENTRY, 2)
+                # B0-04/B1-08 (lot 2) : UNE SEULE formule de prix d'entrée — frais de
+                # courtage INCLUS (`entry_price_for_net`), la même que le noyau-check,
+                # les ordres limites et l'alerte de renforcement. L'ancienne formule
+                # `dps / DIV_YIELD_ENTRY` (IPS pur, sans frais) surestimait le prix max
+                # de ~1,4 % (frais d'achat non couverts).
+                self.entry_price_ref = round(entry_price_for_net(self.dps), 2)
 
     def yield_pct(self, price: float) -> float:
         return self.dps / price * 100 if price > 0 else 0.0
@@ -503,11 +510,16 @@ def check_dividend_position(
         pos.close_reason = f"PER {current_per:.1f} > {PER_EXPLODE:.0f}"
         alerts.append(PositionAlert(LEVEL_EXIT, f"🔴 VENDS TOUT — {pos.name} ({pos.code}) — PER {current_per:.1f} > {PER_EXPLODE:.0f}"))
 
-    # 3. prix de sortie atteint → VENDS TOUT
-    if not pos.closed and pos.exit_price > 0 and current_price >= pos.exit_price:
+    # 3. prix de sortie atteint → VENDS TOUT — seuil recalculé au dps COURANT quand il est
+    #    connu (B1-05, lot 2) : un dividende qui monte écarte le seuil de sortie (on garde le
+    #    loyer) ; un dividende qui baisse (sans coupe > 50 %) le rapproche. `pos.exit_price`
+    #    (dps d'ouverture) reste le repli quand aucun dps courant n'est fourni.
+    exit_ref = (round(current_dps / DIV_YIELD_EXIT, 2)
+                if current_dps is not None and current_dps > 0 else pos.exit_price)
+    if not pos.closed and exit_ref > 0 and current_price >= exit_ref:
         pos.closed = True
         pos.close_reason = "prix de sortie atteint"
-        alerts.append(PositionAlert(LEVEL_EXIT, f"🔴 VENDS TOUT — {pos.name} ({pos.code}) — prix de sortie atteint ({fcfa(current_price)} ≥ {fcfa(pos.exit_price)})"))
+        alerts.append(PositionAlert(LEVEL_EXIT, f"🔴 VENDS TOUT — {pos.name} ({pos.code}) — prix de sortie atteint ({fcfa(current_price)} ≥ {fcfa(exit_ref)})"))
 
     # 4. soutenabilité (niveau 3)
     if not pos.closed and current_dps is not None and current_dps > 0:
@@ -545,13 +557,18 @@ def check_dividend_position(
 
 
 def record_dividend(pos: DividendPosition, price: float) -> tuple[float, int, float]:
-    """Enregistre un versement de dividende et le réinvestit dans le même titre (DRIP).
+    """Enregistre un versement de dividende NET (IRVM retenue à la source) et le réinvestit
+    dans le même titre (DRIP).
 
-    Retourne (cash reçu, actions achetées, résidu non réinvesti en FCFA).
+    B1-03 (lot 2, 12/10) : le cash RÉELLEMENT reçu est le NET — l'IRVM 12 % est retenue à la
+    source par la SGI. Comptabiliser le brut surestimait de ~13,6 % par versement le cash,
+    les actions rachetées et `dividends_earned` cumulé.
+
+    Retourne (cash reçu NET, actions achetées, résidu non réinvesti en FCFA).
     """
     if pos.dps <= 0 or pos.quantity <= 0:
         return 0.0, 0, 0.0
-    cash = pos.dps * pos.quantity
+    cash = pos.dps * (1 - IRVM_DIVIDEND_TAX) * pos.quantity
     new_shares = int(cash // price) if price > 0 else 0
     pos.quantity += new_shares
     pos.dividends_earned += cash

@@ -7,13 +7,13 @@
     "3 — deux agents indépendants (A=Claude, B1+B2=Mistral, 47 items — registre_desaccords.md)",
     "4 — matrice de tests (matrice_tests_phase4.md, tests xfail cibles)",
     "5 — audit financier et statistique (recalculs déterministes + agent DeepSeek — phase5_synthese.md)",
-    "9-11 — corrections LOT 1 (12/10/2026) : B1-01, B0-01, C1/B1-02, B1-04, B2-04 — docs/DECISION-2026-10-12-corrections-lot1.md"
+    "9-11 — corrections LOT 1+2 (12/10/2026) : B1-01, B0-01, C1/B1-02, B1-04, B2-04 puis B1-03, B1-05, B1-07, B1-09, B1-13, B2-01/B2-03, B0-04/B1-08 — docs/DECISION-2026-10-12-corrections-lot1.md"
   ],
   "phases_a_venir": [
     "6 — contrats entre modules",
     "7 — sécurité et intégrité",
     "8 — exécution contrôlée (autorisation requise)",
-    "9-11 — corrections LOTS 2-3 (DRIP net IRVM, cooldown watchlist, nettoyeur symétrique, look-aheads A3-01/A3-02, TLS, duplications de seuils)"
+    "9-11 — corrections LOT 3 (A3-01/A3-02 look-aheads, TLS B2-02, nettoyeur B2-11, duplications de seuils ; + cache historique en retard)"
   ],
   "phase2_resume": {
     "exigences_enregistrees": 43,
@@ -60,7 +60,8 @@
     "phase_2": "2026-10-12",
     "phase_3": "2026-10-12",
     "phase_5": "2026-10-12",
-    "corrections_lot1": "2026-10-12"
+    "corrections_lot1": "2026-10-12",
+    "corrections_lot2": "2026-10-12"
   },
   "environnement": {
     "os": "Windows 10 (shell bash/MSYS)",
@@ -324,5 +325,27 @@
       "test_heartbeat_signale_les_echecs",
       "test_heartbeat_sans_echec_garde_le_titre_vert"
     ]
+  },
+  "corrections_lot2": {
+    "perimetre": "7 corrections de justesse des calculs + 2 découvertes d'infrastructure",
+    "items": {
+      "B1-03": "DRIP net d'IRVM (cash = dps × 0,88 × quantité)",
+      "B1-07": "clé de cooldown watchlist stable (sans le prix)",
+      "B1-05": "prix de sortie recalculé au dps COURANT",
+      "B1-09": "stop-outs RAPPROCHÉS (pas cumulatifs) pour la suspension",
+      "B1-13": "anti-spam des fiches spé consommé à la LIVRAISON (mark_delivered)",
+      "B2-01": "PER ≤ 0 (« 0.00 » de brvm.org) traité comme indisponible",
+      "B2-03": "cache PER daté + écriture atomique + verrou inter-processus",
+      "B0-04/B1-08": "formule d'entrée UNIQUE (frais inclus) + migration portfolio.json",
+      "B-infra-1": "BOC réparé (10 j d'échec) : venv projet .venv + --interpreter sur les 5 jobs cron",
+      "B-infra-2": "course per_cache.json (48→5) : atomicité + verrou ; cache restauré (44 entrées datées)"
+    },
+    "preuves": [
+      "356 passed, 1 xfailed (B2-11 = lot 3) — venv projet",
+      "gardien des sorties : 10 clés changées, 10/10 transformations attendues (×0,88 et ÷1,014)",
+      "run réel du check via le runner : BOC ✅, heartbeat 9 étapes/9",
+      "portfolio.json migré (SNTS entry_price_ref 36 245 → 35 744,58)"
+    ],
+    "doc": "docs/DECISION-2026-10-12-corrections-lot2.md"
   }
 }

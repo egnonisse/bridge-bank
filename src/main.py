@@ -1135,37 +1135,47 @@ def cmd_specveille(args: argparse.Namespace) -> None:
     --print-only (cron no_agent) : stdout = uniquement les fiches OUI/PRUDENCE,
     sans envoi Telegram — le cron livre le stdout tel quel.
     """
-    from .strategie.spec_veille import scan
+    from .strategie.spec_veille import mark_delivered, scan
 
     res = scan(all_=getattr(args, "all", False))
     # Plafond anti-flood : max 3 fiches par jour, priorité au schéma rare
     PRIO = {"CASSURE": 0, "PRUDENCE": 2, "OUI": 1}
-    keep = sorted([f for f, _ in res if f.verdict in ("OUI", "PRUDENCE")],
+    keep = sorted([f for f, _, _ in res if f.verdict in ("OUI", "PRUDENCE")],
                   key=lambda f: (PRIO.get(f.verdict, 3),
                                  PRIO.get(f.blocks["main"], 3)))
     keep = keep[:3]
-    msg_map = {f.code: msg for f, msg in res}
+    msg_map = {f.code: msg for f, msg, _ in res}
+    key_map = {f.code: key for f, _, key in res}
     if getattr(args, "print_only", False):
         if not keep:
             return  # stdout vide → le cron n'envoie rien
         for f in keep:
             print(f"🎲 VEILLE SPÉ :\n{msg_map[f.code]}")
+        # stdout non vide = livré par le cron : on marque les fiches livrées (B1-13)
+        mark_delivered([key_map[f.code] for f in keep])
         return
     if not res:
         print("Aucun nouveau signal de veille spé aujourd'hui.")
         return
     cfg = load_config()
     notifier = get_notifier(cfg)
-    n_sent = 0
-    for f, msg in res:
+    delivered: list[str] = []
+    for f, msg, _key in res:
         print(f"───── {f.code} ({f.verdict}) ─────")
         print(msg)
         print()
     for f in keep:
+        # B1-13 (lot 2) : la fiche n'est marquée « vue 7 jours » qu'APRÈS livraison réussie.
+        # Envoyée → marquée ; échec d'envoi → elle repassera demain.
         if notifier.enabled:
-            notifier.send(f"🎲 VEILLE SPÉ :\n{msg_map[f.code]}")
-        n_sent += 1
-    print(f"[specveille] {len(res)} fiche(s) générée(s) · {n_sent} envoyée(s) sur Telegram (plafond 3/j).")
+            if notifier.send(f"🎲 VEILLE SPÉ :\n{msg_map[f.code]}"):
+                delivered.append(key_map[f.code])
+        else:
+            delivered.append(key_map[f.code])  # pas de canal Telegram : le log local fait foi
+    mark_delivered(delivered)
+    reportees = len(keep) - len(delivered)
+    print(f"[specveille] {len(res)} fiche(s) générée(s) · {len(delivered)} livrée(s) · "
+          f"{reportees} reportée(s) au lendemain (plafond 3/j).")
 
 
 def cmd_news(args: argparse.Namespace) -> None:

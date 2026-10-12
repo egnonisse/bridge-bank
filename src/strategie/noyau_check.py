@@ -107,7 +107,7 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "",
         f"📉 À PRÉPARER — {code} ({label})\n\n"
         f"💰 Cours : {fcfa(price, signe=False)} — rendement net actuel {net*100:.1f} % (< 4 %)\n\n"
         f"✅ Fondamentaux : PER {per:.1f} (≤ 14), dividende {fcfa(dps, signe=False)} brut{payout_note}{extra_txt}\n\n"
-        f"📋 Ordre limite à poser : ≤ {fcfa(entry, signe=False)} (dps×0,88 ÷ 0,048)\n"
+        f"📋 Ordre limite à poser : ≤ {fcfa(entry, signe=False)} (dps ÷ 5,45 % ÷ 1,014 — frais inclus)\n"
         f"   → si le titre revient dans ta zone : ≥ 4 % net COUVERT\n"
         f"   → sinon : tu l'as regardé passer, sans perdre un franc.\n\n"
         f"🚫 Rappel : veille + décision LEO — l'outil ne passe jamais d'ordre."
