@@ -22,11 +22,20 @@ from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du pl
 from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
 REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
+INACTIFS_FILE = DATA_DIR / "titres_inactifs.json"  # écrit par le refresh (backtest._enregistrer_inactifs)
 
 MAX_JUMP = 3.0          # ratio close[i]/close[i-1] au-delà → cassure à examiner
 PRICE_TOLERANCE = 0.25  # écart toléré entre dernière barre cache et cours API
 MAX_COMPARE_AGE_DAYS = 3  # au-delà, le cache est en retard : pas de comparaison de prix
 MAX_CACHE_AGE_DAYS = 8  # au-delà → cache en retard
+
+
+def load_titres_inactifs() -> dict:
+    """Registre des titres vérifiés DORMANTS (source muette au dernier refresh)."""
+    try:
+        return json.loads(INACTIFS_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
 
 
 def cache_signature(hist_all: dict) -> str:
@@ -96,15 +105,31 @@ def check_against_api(hist_all: dict, snapshot, today: datetime | None = None) -
 
 
 def check_freshness(hist_all: dict, today: datetime | None = None) -> list[str]:
-    """Cache en retard : dernière barre de plus de MAX_CACHE_AGE_DAYS jours."""
+    """Cache en retard : dernière barre de plus de MAX_CACHE_AGE_DAYS jours.
+
+    Les titres DORMANTS (vérifiés au dernier refresh : la source interrogée ne fournit
+    rien de plus récent — registre `data/titres_inactifs.json`) ne déclenchent PAS
+    d'alerte : c'est un fait de marché (titre sans transactions), pas un retard de cache.
+    Une vérification de plus de MAX_CACHE_AGE_DAYS jours redevient une alerte.
+    """
     today = today or datetime.now()
+    inactifs = load_titres_inactifs()
     problems = []
     for code, bars in hist_all.items():
         if not bars:
             continue
         age = (today - bars[-1].date).days
-        if age > MAX_CACHE_AGE_DAYS:
-            problems.append(f"cache en retard {code} : dernière barre au {bars[-1].date:%Y-%m-%d}")
+        if age <= MAX_CACHE_AGE_DAYS:
+            continue
+        info = inactifs.get(code.strip().upper())
+        if info and info.get("derniere_barre") == bars[-1].date.strftime("%Y-%m-%d"):
+            try:
+                verifie = datetime.fromisoformat(info["verifie_le"])
+            except (KeyError, ValueError):
+                verifie = None
+            if verifie and (today - verifie).days <= MAX_CACHE_AGE_DAYS:
+                continue  # vérifié dormant récemment — information, pas un retard de cache
+        problems.append(f"cache en retard {code} : dernière barre au {bars[-1].date:%Y-%m-%d}")
     return problems
 
 

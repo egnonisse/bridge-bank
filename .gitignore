@@ -21,6 +21,7 @@ data/news_state.json
 data/boc_state.json
 data/value_state.json
 data/portf_alert_state.json
+data/titres_inactifs.json  # vérification des titres dormants — réécrite à chaque refresh
 
 # Volumineux / régénérable via scripts/refresh_history.py (~7 Mo chacun)
 data/*.pkl

@@ -17,6 +17,7 @@ Limites connues :
 from __future__ import annotations
 
 import bisect
+import json
 import pickle
 import random
 import time
@@ -35,6 +36,53 @@ CACHE_FILE = DATA_DIR / "history_cache.pkl"
 HISTORY_START = "20170101"
 MAX_WORKERS = 8
 CACHE_MAX_AGE_DAYS = 7  # re-télécharger l'historique si le cache a plus d'une semaine
+CACHE_STALE_DATA_DAYS = 4  # ... et dès que les DONNÉES ont plus de 4 jours (mtime ≠ fraîcheur)
+INACTIFS_FILE = DATA_DIR / "titres_inactifs.json"  # titres vérifiés dormants (source muette)
+INACTIF_APRES_JOURS = 8  # aligné sur cache_integrity.MAX_CACHE_AGE_DAYS
+
+
+def _donnees_fraiches(data: dict, today: datetime | None = None) -> bool:
+    """Les DONNÉES du cache sont-elles récentes (dernière barre < CACHE_STALE_DATA_DAYS) ?
+
+    Le mtime seul ne suffit pas : un refresh peut capturer des données DÉJÀ en retard —
+    cas vécu le 09/10 (fichier daté du jour, dernières barres au 30/09) qui a figé le
+    cache sept jours de plus. Ici on re-télécharge dès que les données ont > 4 jours,
+    ce qui rend aussi le système AUTO-RÉPARANT : un refresh raté est retenté chaque jour.
+    """
+    today = today or datetime.now()
+    dernieres = [bars[-1].date for bars in data.values() if bars]
+    return bool(dernieres) and (today - max(dernieres)).days < CACHE_STALE_DATA_DAYS
+
+
+def _enregistrer_inactifs(data: dict, today: datetime | None = None) -> None:
+    """Après un refresh, note les titres DORMANTS (source muette) dans `titres_inactifs.json`.
+
+    Un titre dont la source interrogée ne fournit aucune barre récente (> INACTIF_APRES_JOURS)
+    est « vérifié dormant » à cette date : le contrôle d'intégrité s'en sert pour ne pas
+    signaler un « cache en retard » sur un titre simplement sans transactions (SEMC/SICC…).
+    Toute barre plus récente au refresh suivant le sort naturellement du registre.
+    """
+    today = today or datetime.now()
+    registre = {}
+    try:
+        registre = json.loads(INACTIFS_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        registre = {}
+    actuels = {}
+    for code, bars in data.items():
+        if not bars:
+            continue
+        age = (today - bars[-1].date).days
+        if age > INACTIF_APRES_JOURS:
+            actuels[code.upper()] = {
+                "derniere_barre": bars[-1].date.strftime("%Y-%m-%d"),
+                "verifie_le": today.strftime("%Y-%m-%d"),
+            }
+    if actuels or registre:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        tmp = INACTIFS_FILE.with_name(INACTIFS_FILE.name + ".tmp")
+        tmp.write_text(json.dumps(actuels, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        tmp.replace(INACTIFS_FILE)
 
 
 # -------------------------------------------------------------------- data
@@ -64,7 +112,7 @@ def load_all_history(api: BSApi, force: bool = False) -> dict[str, list[HistoryB
             try:
                 with CACHE_FILE.open("rb") as fh:
                     data = pickle.load(fh)
-                if data:
+                if data and _donnees_fraiches(data):
                     return data
             except (pickle.PickleError, OSError):
                 pass
@@ -88,6 +136,7 @@ def load_all_history(api: BSApi, force: bool = False) -> dict[str, list[HistoryB
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     with CACHE_FILE.open("wb") as fh:
         pickle.dump(data, fh)
+    _enregistrer_inactifs(data)  # note les titres dormants (source muette) — anti-faux « retard »
     return data
 
 

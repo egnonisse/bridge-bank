@@ -13,7 +13,7 @@
     "6 — contrats entre modules",
     "7 — sécurité et intégrité",
     "8 — exécution contrôlée (autorisation requise)",
-    "9-11 — corrections LOT 3 (A3-01/A3-02 look-aheads, TLS B2-02, nettoyeur B2-11, duplications de seuils ; + cache historique en retard)"
+    "9-11 — corrections LOT 3 (A3-01/A3-02 look-aheads, TLS B2-02, nettoyeur B2-11, duplications de seuils)"
   ],
   "phase2_resume": {
     "exigences_enregistrees": 43,
@@ -61,7 +61,8 @@
     "phase_3": "2026-10-12",
     "phase_5": "2026-10-12",
     "corrections_lot1": "2026-10-12",
-    "corrections_lot2": "2026-10-12"
+    "corrections_lot2": "2026-10-12",
+    "chantier_cache_historique": "2026-10-12"
   },
   "environnement": {
     "os": "Windows 10 (shell bash/MSYS)",
@@ -347,5 +348,19 @@
       "portfolio.json migré (SNTS entry_price_ref 36 245 → 35 744,58)"
     ],
     "doc": "docs/DECISION-2026-10-12-corrections-lot2.md"
+  },
+  "chantier_cache_historique": {
+    "declencheur": "48 alertes « cache en retard » (dernières barres au 30/09), visibles grâce au lot 1",
+    "cause_racine": "fraîcheur jugée sur le mtime (7 j) — un refresh ayant capturé des données en retard fige le cache ; SEMC/SICC = titres dormants (source muette)",
+    "corrections": [
+      "refresh complet relancé (barres jusqu'au 09/10) + history_clean + reversal_profiles ré-exportés",
+      "fraîcheur jugée sur les DONNÉES (_donnees_fraiches, seuil 4 j) — auto-réparant",
+      "registre data/titres_inactifs.json + check_freshness l'utilise (même barre, vérif < 8 j)"
+    ],
+    "preuves": [
+      "48 → 0 problème d'intégrité (check_all_integrity)",
+      "361 passed, 1 xfailed (5 nouveaux tests)"
+    ],
+    "doc": "docs/DECISION-2026-10-12-cache-historique.md"
   }
 }

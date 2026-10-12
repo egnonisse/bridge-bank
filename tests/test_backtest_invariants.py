@@ -16,9 +16,12 @@ visible.
 """
 from types import SimpleNamespace
 
+from datetime import datetime, timedelta
+
 import pytest
 
 from src.backtesting.backtest_noyau import _drawdown_portefeuille
+from src.domaine.models import HistoryBar, Quote, Snapshot
 
 
 def _jours(n: int = 60) -> list[str]:
@@ -86,3 +89,53 @@ def test_serie_trop_courte_ne_plante_pas():
 
 def test_portefeuille_vide_ne_plante_pas():
     assert _drawdown_portefeuille({}, [], "2026-01-01", "2026-03-01") == 0.0
+
+
+# ═══════════ fraîcheur des DONNÉES du cache historique (incident du 12/10/2026) ═══════════
+# Un refresh peut capturer des données DÉJÀ en retard : le 09/10, le fichier était daté du
+# jour mais ses dernières barres dataient du 30/09 — et le mtime « frais » a figé ce cache
+# sept jours de plus (réutilisé jusqu'au 16/10). La leçon : la fraîcheur se juge sur les
+# DONNÉES (dernière barre), pas sur le mtime.
+
+def _barre(quand, close):
+    return HistoryBar(date=quand, open=close, high=close, low=close, close=close, volume=1000)
+
+
+def test_donnees_fraiches_juge_sur_la_derniere_barre():
+    from src.collecte import backtest as bt
+
+    maintenant = datetime.now()
+    vieux = {"AAA": [_barre(maintenant - timedelta(days=10), 100.0)]}
+    frais = {"AAA": [_barre(maintenant - timedelta(days=1), 100.0)]}
+    assert not bt._donnees_fraiches(vieux)
+    assert bt._donnees_fraiches(frais)
+    assert not bt._donnees_fraiches({})  # vide = pas exploitable
+
+
+def test_cache_fichier_recent_mais_donnees_vieilles_declenche_le_refetch(monkeypatch, tmp_path):
+    """Le nœud de l'incident : mtime du jour + barres vieilles ⇒ LE CACHE EST IGNORÉ
+    et un re-téléchargement est déclenché (auto-réparation)."""
+    import pickle
+
+    from src.collecte import backtest as bt
+
+    maintenant = datetime.now()
+    cache = tmp_path / "history_cache.pkl"
+    with cache.open("wb") as fh:  # mtime = maintenant : « fichier frais »
+        pickle.dump({"AAA": [_barre(maintenant - timedelta(days=15), 100.0)]}, fh)
+    monkeypatch.setattr(bt, "CACHE_FILE", cache)
+    monkeypatch.setattr(bt, "INACTIFS_FILE", tmp_path / "inactifs.json")
+
+    appels = []
+
+    class FakeApi:
+        def market_snapshot(self):
+            return Snapshot(stocks=[Quote(code="AAA", name="X", last=2.0)])
+
+        def history(self, code, start, end):
+            appels.append(code)
+            return [_barre(maintenant - timedelta(days=1), 2.0)]
+
+    hist = bt.load_all_history(FakeApi(), force=False)
+    assert appels == ["AAA"], "un re-téléchargement devait être déclenché"
+    assert hist["AAA"][-1].close == 2.0, "les données fraîches doivent remplacer le cache périmé"

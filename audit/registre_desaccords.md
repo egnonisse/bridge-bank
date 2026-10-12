@@ -133,6 +133,15 @@ sur `per_cache.json` (48 → 5 entrées, atomicité + verrou, cache restauré).
 État de la suite : **356 passed, 1 xfailed** (B2-11 = lot 3). **Découvertes hors lot** :
 cache historique en retard (dernières barres au 30/09) — prochain chantier candidat.
 
+### Mise à jour du 12/10/2026 (soir) — CACHE HISTORIQUE RÉPARÉ (chantier dédié)
+
+Détail : `docs/DECISION-2026-10-12-cache-historique.md`. **48 → 0 problème d'intégrité** :
+refresh complet relancé (barres jusqu'au 09/10) + `history_clean` + profils ré-exportés ;
+**fraîcheur désormais jugée sur les DONNÉES** (`_donnees_fraiches`, 4 j — auto-réparant,
+fini le mtime trompeur qui a figé le cache 7 j) ; **registre des titres dormants**
+(`data/titres_inactifs.json`, SEMC/SICC = source muette au 15/09 → information, pas alerte).
+Suite : **361 passed, 1 xfailed** (+5 tests).
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,
