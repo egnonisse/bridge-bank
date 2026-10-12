@@ -134,3 +134,30 @@ sont reproductibles.
   traduisent.
 - Le worktree d'avant correctif a été retiré après usage ; les sorties brutes restent dans
   `preuves/`.
+
+---
+
+## 9. L'attribution qui justifie une décision — RE-MESURÉE (12/10)
+
+Le chiffre « les paliers coûtent −43,1 points » ne décore pas : il justifie la **décision du
+08/10** (rendre les seuils de vente non-déclencheurs) et il est inscrit dans l'**invariant B1**
+(`docs/INVARIANTS-METIER.md`), qui prime sur l'IPS par la hiérarchie adoptée (Q1). Il venait de
+`scripts/tester_strategie_leo.py` — réexécutable, lui. Re-mesuré le 12/10 sur les données et le
+code corrigés (`preuves/attribution_remesuree_2026-10-12.txt`) :
+
+| Variante | Enregistré le 08/10 | Re-mesuré le 12/10 | Écart |
+|---|---|---|---|
+| **A** noyau passif | référence | 232,2 % · DD −26,2 % | — |
+| **C** noyau + renforcement | 239,7 % · 88,1 % · 272,1 % · **+25,8 pt** · DD −16,5 % | 239,7 % · 88,5 % · 270,9 % · **+26,2 pt** · DD −16,5 % | **+0,4 pt** |
+| **D** noyau + paliers | 143,4 % · 70,6 % · 203,2 % · **−43,1 pt** · DD −19,3 % | 143,4 % · 71,9 % · 199,3 % · **−45,4 pt** · DD −19,3 % | **−2,3 pt** |
+| **B** stratégie complète | **−30,3 pt** | **−31,2 pt** | −0,9 pt |
+
+**Lecture** : l'attribution est **reproductible** et elle **résiste** aux corrections des lots 1-3.
+Les écarts vont de 0,4 à 2,3 points, même signe, même ampleur ; les drawdowns sont identiques au
+dixième. Le coût des paliers est même **un peu plus élevé** qu'enregistré (−45,4 contre −43,1) :
+la décision de les rendre non-déclencheurs est donc **mieux justifiée encore**.
+
+**Ce que cela change pour la gouvernance** : le trou de traçabilité du §6 ne touche pas le chiffre
+qui portait la décision. Il touchait « noyau −6,9 pt vs hasard » — une mesure **descriptive** du
+rapport 28 ans, pas un fondement de règle. La règle « toute mesure publiée porte sa provenance »
+reste utile, mais le risque réel était plus faible que craint.
