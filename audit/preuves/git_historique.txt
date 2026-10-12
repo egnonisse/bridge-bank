@@ -1,0 +1,31 @@
+# Preuve brute — git_historique
+# commande   : git log --oneline -25
+# répertoire : C:\Users\LEO\projects\Bridge Bank
+# date       : 2026-10-09T07:17:37
+# code retour: 0
+------------------------------------------------------------------------------
+b810f7d docs(plan): etape 5a (reference de sorties) et le quatrieme filet
+f109329 test(sorties): capture des commandes CLI qui traversent le noyau (etape 5a-2)
+2e7fa93 test(sorties): reference des sorties du noyau dividende (prealable au lot 5)
+263bb6d refactor(domaines): lot 4 — collecte et strategie
+2105552 feat(alertes): empreinte de version sur chaque alerte + journal des envois
+4434c8a refactor(domaines): lot 3 â€” calibration, analyse et backtesting
+9d2867c refactor(domaines): lot 2 — paths, models et format_fr dans leurs domaines
+0ed58db refactor(domaines): lot 1 — dix paquets, aucun fichier deplace
+a563170 feat(git): crochet pre-push qui bloque une poussee cassee
+6b7b7c7 docs: CI en place, et ce que le rendu portable a revele
+b6691b9 ci: les trois filets a chaque poussee + controle de configuration
+d9d17ed feat(seuils): schema, refus d'ecriture et protection des decisions
+dc93a1a docs: sauvegarde distante retablie (jeton egnonisse, depot en prive)
+5349d09 docs: sauvegarde distante â€” cause identifiee (credential aiwatch-ci, pas egnonisse)
+27d1a5e docs: sauvegarde distante en echec depuis le 05/10 — cause a trancher
+f62f759 docs: decisions, audits et rapports des chantiers 08-09/10
+dded83e chore(scripts): mettre sous suivi 46 scripts d'analyse et de validation
+89bd793 test: mettre sous suivi 8 fichiers de test
+601e67a chore(src): mettre sous suivi 14 modules deja utilises en production
+5ea38f7 chore(data): mettre sous suivi les jeux de donnees des chantiers
+b8d4361 chore(git): exclure du versionnage les artefacts de data/
+1b66993 refactor(chemins): src/paths.py, source unique des chemins — lot 0 du plan
+64774a3 fix(retournement): une seule definition du retournement apres hausse
+2c8929e chore: snapshot 01/10 â€” PALC 26 (ordre patient exÃ©cutÃ©, CMP 8 641), cash 699 718, total 1 528 508
+427a30e chore: snapshot 30/09 â€” apport ~696 655 F dÃ©tectÃ©, total 1 544 892 (cash 707 577), SMB rÃ©glÃ© 2/2

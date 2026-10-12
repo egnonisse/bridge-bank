@@ -1,0 +1,82 @@
+# Preuve brute — capacité multi-modèles (Phase 0, complétée)
+
+Date : 2026-10-12 (session) · Machine : Windows 10 · Toutes les valeurs ci-dessous proviennent de
+commandes réellement exécutées ; les clés ne sont jamais affichées.
+
+## 1. État des fournisseurs, tel que rapporté par l'outil officiel
+
+Commande : `hermes doctor` (extrait de la section « connectivity checks »)
+
+```
+✗ Anthropic API (invalid API key)
+✓ OpenRouter API
+✓ DeepSeek
+✓ gemini
+```
+
+→ La clé **Anthropic directe est invalide** ; `ANTHROPIC_BASE_URL` vaut
+`https://api.anthropic.com` (hôte officiel, ce n'est donc pas un relais mal configuré).
+
+## 2. Générations réellement obtenues (consigne « Réponds exactement par le mot OK », 8 jetons)
+
+| Voie | Modèle appelé | Modèle annoncé dans la réponse | Résultat |
+|---|---|---|---|
+| DeepSeek direct | `deepseek-chat` | `deepseek-flash` | ✓ « OK » |
+| Google direct | `gemini-2.5-flash` | `gemini-2.5-flash` | ✓ « OK » |
+| Anthropic direct | `claude-sonnet-4-5` | — | ✗ HTTP 401 `invalid x-api-key` |
+| **OpenRouter** | `anthropic/claude-sonnet-5.5` | `anthropic/claude-sonnet-5.5` | ✓ « OK » |
+| **OpenRouter** | `mistralai/mistral-nemo` | `mistralai/mistral-nemo` | ✓ « OK » |
+| **OpenRouter** | `mistralai/mistral-large-2512` | — | ✗ HTTP 429 (fournisseur momentanément indisponible) |
+
+Compte OpenRouter (lecture de `/api/v1/key`) : **crédit restant 4,824971758 $**, usage cumulé
+0,175028242 $, catalogue **458 modèles**.
+
+Prix relevés au catalogue (entrée / sortie, $ par million de jetons) :
+`anthropic/claude-sonnet-5.5` 2,00 / 10,00 · `mistralai/mistral-large-2512` 0,50 / 1,50 ·
+`qwen/qwen3.5-plus` 0,30 / 1,80 · `mistralai/mistral-nemo` 0,03 / 0,03.
+
+## 3. Preuve que la délégation atteint réellement le second modèle
+
+Configuration (via l'interface officielle, jamais par édition manuelle du fichier) :
+
+```
+hermes config set delegation.provider openrouter   → ✓ Set delegation.provider = openrouter
+hermes config set delegation.model anthropic/claude-sonnet-5.5
+                                                   → ✓ Set delegation.model = anthropic/claude-sonnet-5.5
+hermes config get delegation.max_concurrent_children → 10
+```
+
+Puis un sous-agent réel a été lancé (consigne : exécuter `python -c "print(123456789 % 97)"` et
+répondre l'entier). La base de sessions de Hermes (`state.db`, table `sessions`) enregistre :
+
+```
+('20261012_002641_d0f778', 'anthropic/claude-sonnet-5.5', 'openrouter', 'desktop',
+ 'Subagent: Exécute exactement cette comma…')
+```
+
+Session parente (celle-ci) : `('20261009_015303_6c45b6', 'deepseek-v4-flash', 'deepseek', …)`.
+
+**Conclusion : deux familles distinctes, sur deux fournisseurs distincts, exécutent réellement.**
+Le calcul demandé a été rendu correctement (39) en 9,9 s, depuis le modèle de la seconde famille.
+
+### Confirmation indépendante, rapportée par la plateforme elle-même
+
+L'avis de fin du lot de délégation (`deleg_8fa181a7`) porte, de sa propre source :
+
+```
+Role: leaf   Model: anthropic/claude-sonnet-5.5   Total duration: 10.57s
+TASK 1/1: (status=completed, api_calls=2, 9.87s)
+39
+```
+
+Deux sources indépendantes disent donc la même chose : la table `sessions` de `state.db` **et**
+l'avis d'exécution de la plateforme. Le modèle du sous-agent n'est pas déduit d'une configuration,
+il est **constaté** — et le résultat qu'il a produit est vérifiable à la main
+(123456789 mod 97 = 39).
+
+## 4. Ce qui reste non vérifié
+
+- Le coût réel d'un audit complet n'est pas mesuré : le crédit (4,82 $) borne l'exercice.
+- Le 429 Mistral est transitoire et n'a pas été retesté jusqu'au succès pour cette gamme.
+- Les modèles gratuits (`:free`) et les variantes `:batch` ne sont pas utilisables sur le point
+  d'entrée de conversation — piège rencontré, filtré depuis.

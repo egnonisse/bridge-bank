@@ -1,0 +1,12 @@
+{
+  "scripts": 90,
+  "tests": 39,
+  "docs": 15,
+  "data_suivis": 76,
+  "workflows_ci": [
+    ".github/workflows/ci.yml"
+  ],
+  "hooks": [
+    ".githooks/pre-push"
+  ]
+}

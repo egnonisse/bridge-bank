@@ -1,0 +1,7 @@
+# Preuve brute — alertes_journal
+# commande   : C:\Users\LEO\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -c import pathlib;p=pathlib.Path('data/alertes_journal.jsonl');print(p.read_text(encoding='utf-8') if p.exists() else '(absent : aucune alerte envoyée depuis sa création)')
+# répertoire : C:\Users\LEO\projects\Bridge Bank
+# date       : 2026-10-09T07:17:39
+# code retour: 0
+------------------------------------------------------------------------------
+(absent : aucune alerte envoyée depuis sa création)

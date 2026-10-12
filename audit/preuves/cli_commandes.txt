@@ -1,0 +1,48 @@
+# Preuve brute — cli_commandes
+# commande   : C:\Users\LEO\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -m src.main --help
+# répertoire : C:\Users\LEO\projects\Bridge Bank
+# date       : 2026-10-09T07:17:39
+# code retour: 0
+------------------------------------------------------------------------------
+usage: bstrade [-h]
+               {screen,analyze,top,watch,alert,backtest,spec,portf,report,boc,div,fund,limits,radar,noyau-check,sustain,news,live,integrity,bond,daily,specveille}
+               ...
+
+BS Trade Analyzer — BRVM
+
+positional arguments:
+  {screen,analyze,top,watch,alert,backtest,spec,portf,report,boc,div,fund,limits,radar,noyau-check,sustain,news,live,integrity,bond,daily,specveille}
+    screen              Classement screening du marché
+    analyze             Fiche détaillée d'un titre
+    top                 Top hausses/baisses du jour
+    watch               Gérer la watchlist
+    alert               Vérifier les alertes
+    backtest            Valider le score par backtest
+    spec                Spéculation (signaux + positions)
+    portf               Noyau dividende (positions long terme)
+    report              Rapport mensuel de santé du portefeuille
+    boc                 BOC : dividendes + rectificatifs (source complète)
+    div                 Dividendes encaissés (avis BSTrade) — suivi réel +
+                        IRVM
+    fund                Screener fondamentaux (value+dividende, magic formula)
+    limits              Ordres limites du noyau dividende (prix d'achat net 4
+                        %)
+    radar               Radar de veille : titres en sortie de fond (zéro
+                        trading)
+    noyau-check         Filtres noyau sur un candidat (alerte d'achat
+                        QUALIFIÉE — jamais sans les 4 filtres)
+    sustain             Soutenabilité des dividendes du noyau (payout, anti
+                        value-trap)
+    news                Annonces officielles BRVM sur les titres du noyau
+    live                Cours temps réel BRVM (brvm.org) + état de la séance
+    integrity           Contrôle d'intégrité des données (cache, cassures,
+                        profils)
+    bond                Obligations BRVM (hors stratégie depuis 03/09/2026 —
+                        manuel uniquement)
+    daily               Check quotidien complet (annonces + noyau +
+                        spéculation)
+    specveille          Veille spé : fiches complètes (cassure/éveil/panique)
+                        avec probabilités calibrées
+
+options:
+  -h, --help            show this help message and exit

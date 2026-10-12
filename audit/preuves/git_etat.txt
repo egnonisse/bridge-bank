@@ -1,0 +1,8 @@
+# Preuve brute — git_etat
+# commande   : git status --short --branch
+# répertoire : C:\Users\LEO\projects\Bridge Bank
+# date       : 2026-10-09T07:17:36
+# code retour: 0
+------------------------------------------------------------------------------
+## main...origin/main
+?? audit/

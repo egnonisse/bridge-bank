@@ -1,0 +1,26 @@
+# Anomalie reproduite — `sustain` plante sur un titre du noyau sans fondamentaux
+# date      : 2026-10-09T07:18:15
+# commit    : b810f7d
+# effets de bord neutralisés : load_config, get_fundamentals, save_alert_state
+# commande de reproduction :
+#   C:\Users\LEO\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe audit_anomalie_sustain.py   (depuis C:\Users\LEO\projects\Bridge Bank)
+------------------------------------------------------------------------------
+Scénario : 2 titres du noyau (SNTS avec fondamentaux, SOGC sans).
+Résultat attendu (raisonnable) : aucune alerte pour SOGC, pas d'exception.
+
+RÉSULTAT OBSERVÉ : ✗ TypeError: '<=' not supported between instances of 'NoneType' and 'int'
+
+Pile d'appels (extrait, derniers cadres) :
+          ^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\LEO\projects\Bridge Bank\src\portfolio.py", line 389, in sustainability_alert
+      payout = payout_ratio(dps, price, per)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    File "C:\Users\LEO\projects\Bridge Bank\src\portfolio.py", line 371, in payout_ratio
+      if dps <= 0 or price <= 0 or per is None or per <= 0:
+         ^^^^^^^^
+  TypeError: '<=' not supported between instances of 'NoneType' and 'int'
+
+Sortie console capturée :
+  (vide)
+
+MACHINE : {"coeurs": 4, "ram_go": 17.1, "ram_libre_go": 3.0, "disque_libre_go": 295}

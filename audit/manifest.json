@@ -1,0 +1,206 @@
+{
+  "audit": "Audit technique BRVM — phases 0, 1 et 2 (lecture seule)",
+  "phases_realisees": [
+    "0 — capacités",
+    "1 — cartographie",
+    "2 — registre des exigences"
+  ],
+  "phases_a_venir": [
+    "3 — deux agents indépendants",
+    "4 — matrice de tests",
+    "5 — audit financier et statistique",
+    "6 — contrats entre modules",
+    "7 — sécurité et intégrité",
+    "8 — exécution contrôlée (autorisation requise)",
+    "9-11 — corrections (si autorisées), couverture, rapport final"
+  ],
+  "phase2_resume": {
+    "exigences_enregistrees": 43,
+    "familles": 13,
+    "statuts": {
+      "concordant": 28,
+      "verifie_en_production": 1,
+      "conflit": 4,
+      "non_teste": 6,
+      "a_verifier": 4,
+      "_notes": [
+        "Le premier jet affichait concordant=29 : la somme mélangeait 28 'concordant' + 1 'verifie en production' (DE-04, journal des envois). Desormais explicite : 28 + 1 = 29.",
+        "conflit=4 au REGISTRE (AL-02, SP-01, OB-01, AL-08) + CONFLIT-05 HORS registre : documentation interne au code (commentaire perime, aucun impact calculs) — aucun statut 'conflit' ne lui est affecte dans le CSV.",
+        "non_teste=6 au registre (EX-03, EX-05, AL-03, AL-04, AL-05, AL-06). Total des exigences sans test cible = 9 (§5 de la phase 2 : + SP-01 statut conflit, SP-02 et SP-03 statut a verifier).",
+        "Mise à jour du 12/10/2026 : les 4 conflits du registre + CONFLIT-05 sont TRAITÉS (Q1-Q4 décidées, corrections appliquées — voir docs/DECISION-2026-10-12-hierarchie-sources-et-questions-audit.md). Le statut 'conflit' du registre historique reste à 4 pour la traçabilité ; le compteur ci-dessus indique l'état courant (0 conflit non traité).",
+        "Compteur 'conflit' = 4 : c'est l'état HISTORIQUE du registre (phase 2). Les 4 (+CONFLIT-05) sont désormais TRAITÉS — voir decisions_q1_q4."
+      ]
+    },
+    "references_de_test_citees": 45,
+    "references_de_test_introuvables": 0,
+    "tests_sans_reference_documentaire": 290,
+    "conflits_documentes": [
+      "CONFLIT-01 : trois allocations differentes dans IPS.md (70/60 %, 30/15 %)",
+      "CONFLIT-02 : la poche obligataire supprimee en IPS 2 mais toujours decrite en IPS 5",
+      "CONFLIT-03 : le declencheur +13 % de IPS 3.4 contre la decision du 08/10 (seuils par titre, Wilson)",
+      "CONFLIT-04 : le signal de volume en speculation, mesure placebo (p = 0,44), toujours compte par le code",
+      "CONFLIT-05 : le docstring de portfolio.py annonce IRVM 15 % et 5,65 % brut alors que le code applique 12 % et 5,4545 %"
+    ],
+    "regle_presente_seulement_dans_le_code": "MAX_BUY_WEIGHT = 0,40 (src/regles.py) — aucun document d'exigence ne la porte, et elle produit pourtant un nombre d'actions conseille",
+    "questions_ouvertes_pour_decision_humaine": [
+      "Q1 — hiérarchie des sources : DÉCIDÉE le 12/10/2026 — décision datée > invariant > IPS > commentaire de code + règle « toute contradiction oblige à mettre à jour la source perdante ». Inscrite en tête de docs/IPS.md.",
+      "Q2 — mise à jour de l'IPS : FAITE le 12/10/2026 — CONFLIT-01 (70 %/30 %), CONFLIT-02 (§5 archivé), CONFLIT-03 (seuils par titre informatifs), CONFLIT-05 (docstrings corrigés : IRVM 12 %, 5,45 %/3,18 %).",
+      "Q3 — volume en spéculation : DÉCIDÉE et IMPLÉMENTÉE le 12/10/2026 — volume_info() affiché en information, sorti du décompte de confluence et du déclencheur (src/strategie/speculation.py + CLI + IPS §4.1 + tests).",
+      "Q4 — MAX_BUY_WEIGHT = 0,40 : CONFIRMÉ le 12/10/2026 — inscrit dans l'IPS §3.4 avec test de verrouillage (tests/test_regles_centralisees.py)."
+    ]
+  },
+  "commit_audite": "b810f7d93db6ab8d9dc11b77f0d7e7adb6c1d5c0",
+  "commit_court": "b810f7d",
+  "branche": "main",
+  "depot": "C:\\Users\\LEO\\projects\\Bridge Bank",
+  "dates": {
+    "phases_0_1": "2026-10-09",
+    "etat_initial_verifie_le": "2026-10-09T06:31:34",
+    "phase_2": "2026-10-12"
+  },
+  "environnement": {
+    "os": "Windows 10 (shell bash/MSYS)",
+    "python": "3.11.15",
+    "interpreteur": "C:\\Users\\LEO\\AppData\\Local\\hermes\\hermes-agent\\venv\\Scripts\\python.exe",
+    "machine": {
+      "coeurs": 4,
+      "ram_go": 17.1,
+      "ram_libre_go": 3.0,
+      "disque_libre_go": 295
+    },
+    "reseau": {
+      "brvm_org": "accessible (1.9 s)",
+      "telegram": "accessible (0.8 s)",
+      "github": "accessible (0.4 s)",
+      "note": "IPv4 forcé : l'IPv6 de cette machine ne route pas"
+    }
+  },
+  "modeles_ia": {
+    "agent_principal": "deepseek-v4-flash (fournisseur deepseek) — la session qui mène l'audit",
+    "fournisseur_par_defaut_hermes": "anthropic — clé directe INVALIDE (hermes doctor : « ✗ Anthropic API (invalid API key) »)",
+    "fournisseurs_sains_verifies": [
+      "OpenRouter",
+      "DeepSeek",
+      "gemini"
+    ],
+    "cles_presentes_noms_seuls": [
+      "ANTHROPIC_API_KEY",
+      "DEEPSEEK_API_KEY",
+      "GEMINI_API_KEY",
+      "OPENROUTER_API_KEY",
+      "AI_GATEWAY_API_KEY",
+      "GITHUB_TOKEN"
+    ],
+    "delegation_configuree": true,
+    "delegation_provider": "openrouter",
+    "delegation_model": "anthropic/claude-sonnet-5.5",
+    "deux_modeles_distincts_verifies": true,
+    "preuve_deux_modeles": "sous-agent réel exécuté le 2026-10-12 : la table sessions de state.db enregistre model='anthropic/claude-sonnet-5.5', billing_provider='openrouter' pour la session du sous-agent, tandis que la session parente est 'deepseek-v4-flash'/'deepseek' (voir preuves/modeles_verifies.txt)",
+    "credit_openrouter_au_moment_de_l_audit_usd": 4.824971758,
+    "limite_declaree": "Le crédit (4,82 $) borne l'audit : Claude doit rester sur un périmètre borné, le second auditeur (Mistral/Qwen, 10 à 20 fois moins cher) couvrant la revue élargie."
+  },
+  "outils": {
+    "pytest": "9.1.1",
+    "requests": "2.33.0",
+    "PyYAML": "6.0.3",
+    "pymupdf": "1.28.2",
+    "numpy": "2.4.3",
+    "urllib3": "2.7.0",
+    "rich": "14.3.3",
+    "absents": [
+      "coverage",
+      "mutmut",
+      "hypothesis"
+    ],
+    "non_verifies": [
+      "ruff",
+      "flake8",
+      "mypy"
+    ]
+  },
+  "commandes_executees": [
+    "git status --short --branch / git log / git ls-files / git rev-parse",
+    "python -m pytest --collect-only -q   (collecte seulement, aucune exécution)",
+    "python -m src.main --help",
+    "lecture de data/profit_thresholds.json, data/seuils_journal.jsonl, data/alertes_journal.jsonl, data/constantes_snapshot.json",
+    "analyse statique (ast) de src/**/*.py : inventaire et graphe d'imports",
+    "mesures réseau (brvm.org, api.telegram.org, github.com) en lecture",
+    "cronjob_manage action=list (état des tâches planifiées)",
+    "reproduction de l'anomalie sustain avec effets de bord neutralisés en mémoire",
+    "hermes doctor (état des fournisseurs et des accès)",
+    "appels de génération réels sur DeepSeek, Gemini et OpenRouter (consigne triviale, aucune donnée du projet)",
+    "hermes config set delegation.provider openrouter / delegation.model anthropic/claude-sonnet-5.5",
+    "delegate_task d'un sous-agent de contrôle, puis lecture de son modèle dans state.db (table sessions)"
+  ],
+  "commandes_refusees_par_protocole": [
+    "exécution de la suite de tests (phase 8)",
+    "toute écriture dans le projet, tout appel à un service externe",
+    "toute correction de code"
+  ],
+  "livrables": [
+    "audit/phase0_capacites.md",
+    "audit/phase1_cartographie.md",
+    "audit/inventaire_modules.csv",
+    "audit/registre_anomalies.csv",
+    "audit/manifest.json",
+    "audit/preuves/git_etat.txt",
+    "audit/preuves/git_historique.txt",
+    "audit/preuves/git_fichiers_suivis.txt",
+    "audit/preuves/tests_collecte.txt",
+    "audit/preuves/cli_commandes.txt",
+    "audit/preuves/seuils_actuels.txt",
+    "audit/preuves/journal_seuils.txt",
+    "audit/preuves/alertes_journal.txt",
+    "audit/preuves/regles_effectives.txt",
+    "audit/preuves/phase1_inventaire.json",
+    "audit/preuves/phase1_faits.json",
+    "audit/preuves/anomalie_sustain_sans_fondamentaux.txt",
+    "audit/preuves/modeles_verifies.txt",
+    "audit/phase2_exigences.md",
+    "audit/matrice_exigences_tests.csv",
+    "audit/preuves/phase2_tests_cites.txt"
+  ],
+  "modifications_apportees_au_projet": {
+    "fichiers_existants_modifies": "AUCUN par l'audit",
+    "fichiers_crees": "audit/ (ce dossier, non suivi par git à ce stade)",
+    "fichiers_de_donnees_touches_par_l_audit": "aucun",
+    "ecritures_CONSTATEES_pendant_l_audit_mais_non_imputables_a_l_audit": {
+      "fichiers": [
+        "data/per_cache.json",
+        "data/reinf_alert_state.json",
+        "data/alertes_journal.jsonl (créé)"
+      ],
+      "horodatage": "2026-10-09 entre 09h12 et 09h13",
+      "origine_etablie": "ÉTABLIE par rapprochement du planificateur (correction du 12/10) : job 274a6f528f1a « BridgeBank check quotidien », last_run_at = 2026-10-09T09:13:04.316Z, last_status = ok — les mtimes (09:12:49 → 09:13:04) sont dans la fenêtre du run (démarré 09:00). Le journal porte origine=src.main ; l'audit n'appelle aucun envoi et neutralise les notificateurs. Contrôle complémentaire : le job c3a1b9de4df9 (backup git hebdo) du 05/10 est en erreur 'Repository not found' — anomalie A-001 confirmée.",
+      "preuve": "audit/preuves/alertes_journal.txt (07h17 : journal absent) puis contenu du journal (09h13 : 5 envois réels avec empreinte)",
+      "consequence_pour_la_phase_8": "figer les fichiers de data/ avant toute exécution de test : la production écrit pendant l'audit"
+    },
+    "preuve_d_integrite": "Sortie RÉELLE consignée dans audit/preuves/git_etat_final.txt (contrôle du 2026-10-12 01:11 UTC) : git status --short affiche 'M data/per_cache.json', 'M data/reinf_alert_state.json', '?? audit/' et '?? data/alertes_journal.jsonl' ; git diff --stat : 2 fichiers modifiés, 7 insertions / 7 suppressions. Les mtimes des 3 fichiers de données (2026-10-09 entre 09:12:49 et 09:13:04) tombent dans les 15 dernières secondes du run du job 274a6f528f1a « BridgeBank check quotidien » (last_run_at 2026-10-09T09:13:04.316Z, status ok) : écritures de la PRODUCTION, établies par rapprochement du planificateur — jamais imputables à l'audit, qui n'exécute aucune écriture."
+  },
+  "limites_connues": [
+    "Aucune couverture de code ni test de mutation possible (outils absents) : la phase 10 sera partielle",
+    "La revue croisée multi-modèles (Phase 3) reste À EXÉCUTER — le duo est établi (preuve modeles_verifies.txt : sous-agent anthropic/claude-sonnet-5.5 via OpenRouter vérifié dans state.db) et son budget est borné par le crédit OpenRouter (4,82 $ au moment de l'audit)",
+    "Le graphe de dépendances provient d'une analyse STATIQUE : les imports conditionnels ou dynamiques non détectables ne peuvent pas y figurer",
+    "Le flux de données est reconstitué par lecture du code, pas observé à l'exécution (phases 0-1 sans exécution)",
+    "Les 90 scripts de `scripts/` n'ont pas été examinés un par un à ce stade",
+    "Les scripts d'épreuve statistique n'ont pas été relancés : leurs conclusions restent non revérifiées"
+  ],
+  "revue_qualite_du_2026-10-12": {
+    "source": "contrôle externe relu par LEO — 7 incohérences signalées, 7 corrigées",
+    "corrections": [
+      "1. preuve d'intégrité : remplacée par la sortie réelle git status + git diff --stat (audit/preuves/git_etat_final.txt)",
+      "2. compte des conflits : 4 au registre + CONFLIT-05 hors registre (documentation) — désormais dit explicitement",
+      "3. non testés : 6 au registre / 9 exigences sans test ciblé — distinction explicite (phase 2 §5 réécrit)",
+      "4. CONFLIT-03 : « le code a raison » reformulé en « le code est cohérent avec la décision datée du 08/10 » (constat, pas arbitrage)",
+      "5. phase 0 / manifest : délégation « non configurée » supprimée — duo multi-modèles établi, phase 3 à exécuter",
+      "6. comptage des tests : 39 fichiers .py = 38 test_*.py + conftest.py (phase 0, phase 2 §4 et R-001 harmonisés)",
+      "7. attribution des écritures : ÉTABLIE par rapprochement du planificateur (job 274a6f528f1a, 09:13:04.316Z, status ok)"
+    ],
+    "questions_ouvertes": "Q1-Q4 : avis du contrôle consignés, décisions de LEO en attente (voir phase2_resume.questions_ouvertes_pour_decision_humaine)",
+    "decisions_q1_q4": {
+      "statut": "décidées par LEO le 12/10/2026 et exécutées (code, docs, tests)",
+      "document": "docs/DECISION-2026-10-12-hierarchie-sources-et-questions-audit.md",
+      "tests": "338 passed (2 ajoutés : volume hors confluence, verrou MAX_BUY_WEIGHT↔IPS)"
+    }
+  }
+}

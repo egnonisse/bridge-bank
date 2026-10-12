@@ -1,0 +1,7 @@
+# Preuve brute — regles_effectives
+# commande   : C:\Users\LEO\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -c import json,pathlib;print(json.loads(pathlib.Path('data/constantes_snapshot.json').read_text(encoding='utf-8'))['src.regles.PER_MAX'])
+# répertoire : C:\Users\LEO\projects\Bridge Bank
+# date       : 2026-10-09T07:17:39
+# code retour: 0
+------------------------------------------------------------------------------
+14.0

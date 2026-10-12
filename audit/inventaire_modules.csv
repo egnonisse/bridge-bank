@@ -1,0 +1,56 @@
+module,domaine,lignes,fonctions_publiques,fonctions_privees,classes,depend_de,est_importe_par,tests_qui_le_citent,fichiers_de_test,a_une_docstring,premiere_ligne_docstring
+src.__init__,(racine de src/),0,0,0,0,0,0,0,,False,
+src.ajustement,(racine de src/),162,6,0,1,1,0,0,,True,Ajustement de l'historique des divisions de nominal (splits).
+src.alertes.__init__,alertes,8,0,0,0,0,0,0,,True,Évaluation des signaux et transport des messages.
+src.alertes.journal_alertes,alertes,79,4,0,0,1,0,1,test_journal_alertes.py,True,"Journal des messages sortants — append-only, une ligne = un envoi."
+src.alerts,(racine de src/),134,2,5,1,4,1,0,,True,Moteur d'alertes personnalisées sur la watchlist.
+src.analyse.__init__,analyse,9,0,0,0,0,0,0,,True,"Indicateurs, valorisation et veille."
+src.analyse.boc,analyse,197,8,1,0,1,1,1,test_boc.py,True,Veille des annonces de dividendes BRVM — 3 sources croisées.
+src.analyse.bonds,analyse,174,12,0,0,1,2,1,test_bonds.py,True,Obligations UEMOA cotées à la BRVM.
+src.analyse.fondamentaux_historiques,analyse,374,9,1,1,1,2,0,,True,Fondamentaux HISTORIQUES — reconstitution point-in-time.
+src.analyse.news,analyse,139,8,0,0,1,1,1,test_news.py,True,"Suivi des annonces officielles BRVM (communiqués, dividendes, AG…)."
+src.analyse.radar,analyse,218,9,2,0,2,1,1,test_radar.py,True,Radar « sortie de fond » — veille des transitions de régime. ZÉRO trading.
+src.analyse.screener,analyse,225,7,4,0,5,1,2,test_screener.py test_value_alert.py,True,"Screener fondamentaux BRVM : PER + dividende, avec cache disque."
+src.analyse.screening,analyse,199,8,1,0,2,3,1,test_screening.py,True,Screening et analyse technique des titres BRVM.
+src.backtesting.__init__,backtesting,12,0,0,0,0,0,0,,True,"Simulation historique, frais et performances."
+src.backtesting.backtest_noyau,backtesting,372,5,3,2,2,0,1,test_backtest_invariants.py,True,"Backtest du NOYAU — achat et conservation, dividendes reinvestis."
+src.backtesting.challenge_indicateurs,backtesting,256,4,2,1,1,0,0,,True,Precalcul VECTORISE des indicateurs — une seule passe par titre.
+src.backtesting.challenge_schema,backtesting,290,8,2,1,0,1,0,,True,Schema et evaluation SURE des hypotheses du challenge multi-modeles.
+src.backtesting.challenge_validateur,backtesting,504,8,6,2,3,0,0,,True,Le JUGE du challenge : valide une hypothese par backtest sur donnees reelles.
+src.calibration.__init__,calibration,13,0,0,0,0,0,0,,True,Seuils calibrés et régimes de marché.
+src.calibration.regime_marche,calibration,158,4,0,0,0,1,1,test_regime_marche.py,True,Régime de marché — l'indicateur qui conditionne le renforcement.
+src.calibration.schema_seuils,calibration,315,6,7,2,1,1,1,test_schema_seuils.py,True,Schéma et protection de `data/profit_thresholds.json`.
+src.calibration.seuils_vente,calibration,348,15,0,0,3,1,5,test_history_line_seuil.py test_journal_seuils.py test_schema_seuils.py test_seuils_vente.py test_unification_definition.py,True,"Seuils de vente sur plus-value — significativité, calibrage et journal des changements."
+src.cli.__init__,cli,8,0,0,0,0,0,0,,True,Points d'entrée en ligne de commande.
+src.collecte.__init__,collecte,8,0,0,0,0,0,0,,True,"Collecte, validation et normalisation des données BRVM."
+src.collecte.backtest,collecte,268,7,4,1,4,4,0,,True,Backtest de validation du score de screening.
+src.collecte.bsapi,collecte,189,3,7,2,1,10,0,,True,Client API BS Trade (Bridge Securities).
+src.collecte.cache_integrity,collecte,131,6,1,0,1,3,1,test_cache_integrity.py,True,Contrôle d'intégrité du cache historique + versionning des profils dérivés.
+src.collecte.dividend_history,collecte,121,5,0,0,0,1,1,test_dividend_history.py,True,Historique des dividendes (stockanalysis) pour les filtres noyau ajoutés le 25/09.
+src.collecte.dividends,collecte,53,4,0,0,1,2,1,test_dividends.py,True,Suivi des encaissements RÉELS de dividendes (avis BSTrade).
+src.collecte.divisions_officielles,collecte,234,10,0,1,1,0,0,,True,Divisions de nominal BRVM — source OFFICIELLE et retro-ajustement.
+src.collecte.fundamentals,collecte,118,4,3,0,1,6,2,test_portfolio.py test_prep_watch.py,True,"Récupération des fondamentaux (PER, dividende/action) d'un titre BRVM."
+src.collecte.live,collecte,72,2,0,0,0,2,2,test_live.py test_spec_fiche.py,True,Cours temps réel BRVM + horaires de séance + délais d'exécution Bridge Securities.
+src.collecte.nettoyage_aberrantes,collecte,101,3,1,0,0,0,0,,True,Nettoyage des valeurs aberrantes isolees de l'historique BRVM.
+src.domaine.__init__,domaine,8,0,0,0,0,0,0,,True,Règles métier et modèles.
+src.domaine.models,domaine,83,3,0,4,0,4,9,conftest.py test_cache_integrity.py test_orders.py test_poches_etanches.py test_portfolio.py test_radar.py test_screener.py test_speculation.py test_zone_morte.py,True,Modèles de données pour BS Trade Analyzer.
+src.infrastructure.__init__,infrastructure,8,0,0,0,0,0,0,,True,Plomberie sans logique métier.
+src.infrastructure.empreinte,infrastructure,128,7,2,0,1,1,1,test_empreinte.py,True,Empreinte de version — de quoi expliquer une alerte passée.
+src.infrastructure.paths,infrastructure,92,2,0,0,0,23,1,test_unification_definition.py,True,"Chemins du projet — une seule source, pour que l'arborescence puisse évoluer."
+src.main,(racine de src/),1313,32,2,0,21,0,3,test_heartbeat.py test_journal_alertes.py test_reinforcements.py,True,CLI BS Trade Analyzer — screening BRVM + alertes Telegram.
+src.notify,(racine de src/),93,1,4,1,2,2,1,test_journal_alertes.py,True,Notification Telegram (bot personnel) — et journal des envois.
+src.portefeuille.__init__,portefeuille,8,0,0,0,0,0,0,,True,"Positions, trésorerie et restitution."
+src.portefeuille.format_fr,portefeuille,63,3,0,0,0,2,1,test_format_fr.py,True,Formatage des nombres pour un lecteur francophone.
+src.portfolio,(racine de src/),847,23,16,2,11,4,9,test_history_line_seuil.py test_poches_etanches.py test_portfolio.py test_prep_watch.py test_regime_marche.py test_regles_centralisees.py test_reinforcements.py test_schema_seuils.py test_seuils_vente.py,True,Noyau dividende : positions long terme + sortie sur fondamentaux.
+src.regles,(racine de src/),106,0,0,0,1,10,2,test_regles_centralisees.py test_schema_seuils.py,True,"Catalogue des règles métier de Bridge Bank — une valeur, un endroit, une provenance."
+src.report,(racine de src/),335,5,5,0,8,1,2,test_regime_marche.py test_report.py,True,Rapport mensuel de santé du portefeuille Bridge Bank.
+src.strategie.__init__,strategie,8,0,0,0,0,0,0,,True,"Sélection des titres, renforcement, sorties et rebalancement."
+src.strategie.noyau_check,strategie,145,4,0,0,5,1,2,test_noyau_check.py test_prep_watch.py,True,Filtres noyau appliqués à un candidat — verdict + alerte d'achat QUALIFIÉE.
+src.strategie.orders,strategie,67,1,1,0,4,2,1,test_orders.py,True,Ordres limites du noyau dividende : prix d'achat pour un rendement net cible.
+src.strategie.paliers_sortie,strategie,243,6,0,2,1,0,0,,True,Le systeme de PALIERS de sortie bat-il une sortie simple ?
+src.strategie.spec_fiche,strategie,197,3,0,1,2,1,1,test_spec_fiche.py,True,Fiche spé complète — génération du message néophyte pour un titre détecté.
+src.strategie.spec_profiles,strategie,138,6,0,0,2,1,1,test_spec_fiche.py,True,Profils de spéculation « durée » — détecteurs de schémas + stats calibrées.
+src.strategie.spec_veille,strategie,144,4,0,0,6,1,1,test_spec_fiche.py,True,Veille spé quotidienne — scan des titres et génération des fiches.
+src.strategie.speculation,strategie,392,14,1,1,5,4,4,test_poches_etanches.py test_spec_candidates.py test_speculation.py test_zone_morte.py,True,Moteur de spéculation BRVM : signaux d'entrée + gestion des positions.
+src.strategie.strategie_leo,strategie,476,7,7,4,1,0,0,,True,Moteur de simulation de la STRATEGIE REELLE de LEO.
+src.taxation,(racine de src/),78,4,0,0,0,5,2,test_regles_centralisees.py test_taxation.py,True,"Fiscalité et frais BRVM (Côte d'Ivoire), appliqués aux rendements."

@@ -1,0 +1,25 @@
+=== PREUVE D'INTÉGRITÉ — sortie réelle du 2026-10-12 01:11 UTC ===
+
+$ git status --short
+ M data/per_cache.json
+ M data/reinf_alert_state.json
+?? audit/
+?? data/alertes_journal.jsonl
+
+$ git diff --stat
+ data/per_cache.json         | 10 +++++-----
+ data/reinf_alert_state.json |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+=== mtimes des fichiers constatés modifiés ===
+2026-10-09 09:13:00.667425300 +0000  data/per_cache.json
+2026-10-09 09:12:49.498867300 +0000  data/reinf_alert_state.json
+2026-10-09 09:13:04.164924600 +0000  data/alertes_journal.jsonl
+
+=== RAPPROCHEMENT PLANIFICATEUR (cronjob_manage) ===
+job 274a6f528f1a « BridgeBank check quotidien » : schedule 0 9 * * *
+last_run_at = 2026-10-09T09:13:04.316130+00:00 · last_status = ok
+→ les 3 mtimes (09:12:49 → 09:13:04) tombent dans les 15 dernières secondes
+  du run (démarré 09:00) : écritures de la PRODUCTION, pas de l'audit.
+
+job c3a1b9de4df9 « backup git hebdo » : last_run 2026-10-05 · status error « Repository not found » (anomalie A-001 confirmée)

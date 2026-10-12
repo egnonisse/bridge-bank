@@ -1,0 +1,48 @@
+# Preuve brute — seuils_actuels
+# commande   : C:\Users\LEO\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -c import json,pathlib;print(pathlib.Path('data/profit_thresholds.json').read_text(encoding='utf-8'))
+# répertoire : C:\Users\LEO\projects\Bridge Bank
+# date       : 2026-10-09T07:17:39
+# code retour: 0
+------------------------------------------------------------------------------
+{
+  "SGBC": {
+    "code": "SGBC",
+    "threshold": 0.1,
+    "down_prob": 63,
+    "median_pct": -1.8,
+    "episodes": 30,
+    "borne_basse": 46,
+    "significatif": false,
+    "mode": "informatif"
+  },
+  "SLBC": {
+    "code": "SLBC",
+    "threshold": 0.05,
+    "down_prob": 54,
+    "median_pct": -0.4,
+    "episodes": 41,
+    "borne_basse": 39,
+    "significatif": false,
+    "mode": "informatif"
+  },
+  "SNTS": {
+    "code": "SNTS",
+    "threshold": 0.13,
+    "down_prob": 86,
+    "median_pct": -3.1,
+    "episodes": 7,
+    "borne_basse": 49,
+    "significatif": false,
+    "mode": "informatif"
+  },
+  "PALC": {
+    "code": "PALC",
+    "threshold": 0.05,
+    "down_prob": 46,
+    "median_pct": 1.0,
+    "episodes": 56,
+    "borne_basse": 34,
+    "significatif": false,
+    "mode": "informatif"
+  }
+}

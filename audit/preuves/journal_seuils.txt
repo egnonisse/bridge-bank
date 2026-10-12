@@ -1,0 +1,12 @@
+# Preuve brute — journal_seuils
+# commande   : C:\Users\LEO\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -c import pathlib;print(pathlib.Path('data/seuils_journal.jsonl').read_text(encoding='utf-8'))
+# répertoire : C:\Users\LEO\projects\Bridge Bank
+# date       : 2026-10-09T07:17:39
+# code retour: 0
+------------------------------------------------------------------------------
+{"horodatage": "2026-10-09T01:01:20", "titre": "PALC", "avant": null, "apres": 0.05, "motif": "migration (ajout du mode)", "origine": "manuelle", "methode": "valeur en vigueur au moment de la creation du journal", "test": {"down_prob": 46, "borne_basse": 34, "episodes": 56, "significatif": false, "mode": "informatif"}}
+{"horodatage": "2026-10-09T01:01:20", "titre": "SGBC", "avant": null, "apres": 0.1, "motif": "migration (ajout du mode)", "origine": "manuelle", "methode": "valeur en vigueur au moment de la creation du journal", "test": {"down_prob": 63, "borne_basse": 46, "episodes": 30, "significatif": false, "mode": "informatif"}}
+{"horodatage": "2026-10-09T01:01:20", "titre": "SLBC", "avant": null, "apres": 0.05, "motif": "migration (ajout du mode)", "origine": "manuelle", "methode": "valeur en vigueur au moment de la creation du journal", "test": {"down_prob": 51, "borne_basse": 36, "episodes": 41, "significatif": false, "mode": "informatif"}}
+{"horodatage": "2026-10-09T01:01:20", "titre": "SNTS", "avant": null, "apres": 0.13, "motif": "migration (ajout du mode)", "origine": "manuelle", "methode": "valeur en vigueur au moment de la creation du journal", "test": {"down_prob": 86, "borne_basse": 49, "episodes": 7, "significatif": false, "mode": "informatif"}}
+{"horodatage": "2026-10-09T01:17:33", "titre": "SLBC", "avant": 51, "apres": 54, "motif": "unification de la definition d'episode (fenetres disjointes de 20 seances, sans borne haute)", "origine": "automatique", "methode": "recalcul sur l'historique au seuil inchange du titre", "test": {"down_prob": 54, "borne_basse": 39, "episodes": 41, "significatif": false, "mode": "informatif"}}
+

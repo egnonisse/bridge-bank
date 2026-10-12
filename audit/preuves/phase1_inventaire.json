@@ -1,0 +1,360 @@
+{
+  "audite_le": "2026-10-09T07:16:26",
+  "commit": "b810f7d93db6ab8d9dc11b77f0d7e7adb6c1d5c0",
+  "commit_court": "b810f7d",
+  "branche": "main",
+  "fichiers_suivis": 298,
+  "fichiers_non_suivis": 2,
+  "fichiers_modifies": 0,
+  "modules_src": 55,
+  "lignes_src": 10461,
+  "fichiers_de_test": 39,
+  "fonctions_de_test": 336,
+  "par_extension": {
+    ".py": 184,
+    ".json": 43,
+    ".md": 16,
+    ".pdf": 16,
+    ".txt": 12,
+    ".js": 10,
+    ".png": 9,
+    "(sans)": 2,
+    ".example": 1,
+    ".yml": 1,
+    ".yaml": 1,
+    ".jsonl": 1
+  },
+  "lignes_par_dossier": {
+    "scripts": 11843,
+    "src": 10461,
+    "tests": 4198
+  },
+  "modules_sans_test": [
+    "src.__init__",
+    "src.ajustement",
+    "src.alertes.__init__",
+    "src.alerts",
+    "src.analyse.__init__",
+    "src.analyse.fondamentaux_historiques",
+    "src.backtesting.__init__",
+    "src.backtesting.challenge_indicateurs",
+    "src.backtesting.challenge_schema",
+    "src.backtesting.challenge_validateur",
+    "src.calibration.__init__",
+    "src.cli.__init__",
+    "src.collecte.__init__",
+    "src.collecte.backtest",
+    "src.collecte.bsapi",
+    "src.collecte.divisions_officielles",
+    "src.collecte.nettoyage_aberrantes",
+    "src.domaine.__init__",
+    "src.infrastructure.__init__",
+    "src.portefeuille.__init__",
+    "src.strategie.__init__",
+    "src.strategie.paliers_sortie",
+    "src.strategie.strategie_leo"
+  ],
+  "modules_les_plus_importes": [
+    {
+      "module": "src.infrastructure.paths",
+      "importe_par": 23
+    },
+    {
+      "module": "src.collecte.bsapi",
+      "importe_par": 10
+    },
+    {
+      "module": "src.regles",
+      "importe_par": 10
+    },
+    {
+      "module": "src.collecte.fundamentals",
+      "importe_par": 6
+    },
+    {
+      "module": "src.taxation",
+      "importe_par": 5
+    },
+    {
+      "module": "src.collecte.backtest",
+      "importe_par": 4
+    },
+    {
+      "module": "src.domaine.models",
+      "importe_par": 4
+    },
+    {
+      "module": "src.portfolio",
+      "importe_par": 4
+    },
+    {
+      "module": "src.strategie.speculation",
+      "importe_par": 4
+    },
+    {
+      "module": "src.analyse.screening",
+      "importe_par": 3
+    },
+    {
+      "module": "src.collecte.cache_integrity",
+      "importe_par": 3
+    },
+    {
+      "module": "src.analyse.bonds",
+      "importe_par": 2
+    }
+  ],
+  "modules_les_plus_dependants": [
+    {
+      "module": "src.main",
+      "depend_de": 21
+    },
+    {
+      "module": "src.portfolio",
+      "depend_de": 11
+    },
+    {
+      "module": "src.report",
+      "depend_de": 8
+    },
+    {
+      "module": "src.strategie.spec_veille",
+      "depend_de": 6
+    },
+    {
+      "module": "src.analyse.screener",
+      "depend_de": 5
+    },
+    {
+      "module": "src.strategie.noyau_check",
+      "depend_de": 5
+    },
+    {
+      "module": "src.strategie.speculation",
+      "depend_de": 5
+    },
+    {
+      "module": "src.alerts",
+      "depend_de": 4
+    },
+    {
+      "module": "src.collecte.backtest",
+      "depend_de": 4
+    },
+    {
+      "module": "src.strategie.orders",
+      "depend_de": 4
+    },
+    {
+      "module": "src.backtesting.challenge_validateur",
+      "depend_de": 3
+    },
+    {
+      "module": "src.calibration.seuils_vente",
+      "depend_de": 3
+    }
+  ],
+  "modules_sans_docstring": [
+    "src.__init__"
+  ],
+  "graphe_imports": {
+    "src.__init__": [],
+    "src.ajustement": [
+      "src.collecte.cache_integrity"
+    ],
+    "src.alertes.__init__": [],
+    "src.alertes.journal_alertes": [
+      "src.infrastructure.paths"
+    ],
+    "src.alerts": [
+      "src.collecte.bsapi",
+      "src.domaine.models",
+      "src.infrastructure.paths",
+      "src.notify"
+    ],
+    "src.analyse.__init__": [],
+    "src.analyse.boc": [
+      "src.infrastructure.paths"
+    ],
+    "src.analyse.bonds": [
+      "src.infrastructure.paths"
+    ],
+    "src.analyse.fondamentaux_historiques": [
+      "src.infrastructure.paths"
+    ],
+    "src.analyse.news": [
+      "src.infrastructure.paths"
+    ],
+    "src.analyse.radar": [
+      "src.collecte.cache_integrity",
+      "src.infrastructure.paths"
+    ],
+    "src.analyse.screener": [
+      "src.collecte.bsapi",
+      "src.collecte.fundamentals",
+      "src.infrastructure.paths",
+      "src.regles",
+      "src.taxation"
+    ],
+    "src.analyse.screening": [
+      "src.collecte.bsapi",
+      "src.domaine.models"
+    ],
+    "src.backtesting.__init__": [],
+    "src.backtesting.backtest_noyau": [
+      "src.analyse.fondamentaux_historiques",
+      "src.regles"
+    ],
+    "src.backtesting.challenge_indicateurs": [
+      "src.analyse.fondamentaux_historiques"
+    ],
+    "src.backtesting.challenge_schema": [],
+    "src.backtesting.challenge_validateur": [
+      "src.backtesting.challenge_schema",
+      "src.infrastructure.paths",
+      "src.regles"
+    ],
+    "src.calibration.__init__": [],
+    "src.calibration.regime_marche": [],
+    "src.calibration.schema_seuils": [
+      "src.regles"
+    ],
+    "src.calibration.seuils_vente": [
+      "src.calibration.schema_seuils",
+      "src.infrastructure.paths",
+      "src.regles"
+    ],
+    "src.cli.__init__": [],
+    "src.collecte.__init__": [],
+    "src.collecte.backtest": [
+      "src.analyse.screening",
+      "src.collecte.bsapi",
+      "src.domaine.models",
+      "src.infrastructure.paths"
+    ],
+    "src.collecte.bsapi": [
+      "src.domaine.models"
+    ],
+    "src.collecte.cache_integrity": [
+      "src.infrastructure.paths"
+    ],
+    "src.collecte.dividend_history": [],
+    "src.collecte.dividends": [
+      "src.infrastructure.paths"
+    ],
+    "src.collecte.divisions_officielles": [
+      "src.infrastructure.paths"
+    ],
+    "src.collecte.fundamentals": [
+      "src.infrastructure.paths"
+    ],
+    "src.collecte.live": [],
+    "src.collecte.nettoyage_aberrantes": [],
+    "src.domaine.__init__": [],
+    "src.domaine.models": [],
+    "src.infrastructure.__init__": [],
+    "src.infrastructure.empreinte": [
+      "src.infrastructure.paths"
+    ],
+    "src.infrastructure.paths": [],
+    "src.main": [
+      "src.alerts",
+      "src.analyse.boc",
+      "src.analyse.bonds",
+      "src.analyse.news",
+      "src.analyse.radar",
+      "src.analyse.screener",
+      "src.analyse.screening",
+      "src.collecte.backtest",
+      "src.collecte.bsapi",
+      "src.collecte.cache_integrity",
+      "src.collecte.dividends",
+      "src.collecte.fundamentals",
+      "src.collecte.live",
+      "src.infrastructure.paths",
+      "src.notify",
+      "src.portfolio",
+      "src.report",
+      "src.strategie.noyau_check",
+      "src.strategie.orders",
+      "src.strategie.spec_veille",
+      "src.strategie.speculation"
+    ],
+    "src.notify": [
+      "src.alertes",
+      "src.infrastructure.empreinte"
+    ],
+    "src.portefeuille.__init__": [],
+    "src.portefeuille.format_fr": [],
+    "src.portfolio": [
+      "src.calibration",
+      "src.calibration.regime_marche",
+      "src.calibration.seuils_vente",
+      "src.collecte.backtest",
+      "src.collecte.bsapi",
+      "src.collecte.fundamentals",
+      "src.infrastructure.paths",
+      "src.portefeuille.format_fr",
+      "src.regles",
+      "src.strategie.speculation",
+      "src.taxation"
+    ],
+    "src.regles": [
+      "src.taxation"
+    ],
+    "src.report": [
+      "src.analyse.bonds",
+      "src.collecte.bsapi",
+      "src.collecte.dividends",
+      "src.infrastructure.paths",
+      "src.portefeuille.format_fr",
+      "src.portfolio",
+      "src.strategie.orders",
+      "src.strategie.speculation"
+    ],
+    "src.strategie.__init__": [],
+    "src.strategie.noyau_check": [
+      "src.collecte.dividend_history",
+      "src.collecte.fundamentals",
+      "src.infrastructure.paths",
+      "src.regles",
+      "src.taxation"
+    ],
+    "src.strategie.orders": [
+      "src.collecte.bsapi",
+      "src.collecte.fundamentals",
+      "src.portfolio",
+      "src.taxation"
+    ],
+    "src.strategie.paliers_sortie": [
+      "src.regles"
+    ],
+    "src.strategie.spec_fiche": [
+      "src.collecte.fundamentals",
+      "src.strategie.spec_profiles"
+    ],
+    "src.strategie.spec_profiles": [
+      "src.infrastructure.paths",
+      "src.regles"
+    ],
+    "src.strategie.spec_veille": [
+      "src.collecte.backtest",
+      "src.collecte.bsapi",
+      "src.collecte.live",
+      "src.infrastructure.paths",
+      "src.strategie.spec_fiche",
+      "src.strategie.speculation"
+    ],
+    "src.strategie.speculation": [
+      "src.analyse.screening",
+      "src.collecte.backtest",
+      "src.collecte.bsapi",
+      "src.infrastructure.paths",
+      "src.portfolio"
+    ],
+    "src.strategie.strategie_leo": [
+      "src.regles"
+    ],
+    "src.taxation": []
+  }
+}
