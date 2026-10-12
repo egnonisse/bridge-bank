@@ -274,7 +274,7 @@
       "tests/test_regressions_audit.py",
       "audit/preuves/phase4_journal.txt"
     ],
-    "resultat": "544 tests = 338 passed + 6 xfailed (cibles des corrections) + 0 failed",
+    "resultat": "344 tests = 338 passed + 6 xfailed (cibles des corrections) + 0 failed",
     "integrite": "aucun fichier de data/ modifié pendant la suite (47 md5 identiques, relevé avant/après)",
     "constats": "EX-05 'non testé' (phase 2) était FAUX (4 tests existent) ; AL-05/AL-06 partiels ; AL-04 non testé confirmé",
     "convention": "xfail(strict=False) pour les cibles de correction ; XPASS = signal de retrait"
