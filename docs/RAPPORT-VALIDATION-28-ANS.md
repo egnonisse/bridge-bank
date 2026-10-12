@@ -28,12 +28,33 @@ en disent, un par un — **aucun ne reste sans réponse**.
 
 | # | Composant | Verdict | Preuve |
 |---|---|---|---|
-| **1** | **SÉLECTION** (grandes valeurs à dividende) | **Neutre en performance, positif en revenu** | noyau −6,9 pt vs hasard (0/7 significatif) mais **11,03 %/an** encaissables |
+| **1** | **SÉLECTION** (grandes valeurs à dividende) | **Neutre en performance, positif en revenu** | noyau **+1,1 pt** vs hasard (0/7 significatif) mais **10,65 %/an** encaissables — chiffres **recalculés le 12/10/2026** sur données et code corrigés (voir encadré) |
 | **2** | **ENTRÉE PROGRESSIVE** (par tranches) | **Neutre** (+0 à +0,7 pt, 52-55 % de réussite) | 42 480 observations, 46 titres, test isolé — le progressif **n'apporte rien seul** |
 | **3** | **RENFORCEMENT sur faiblesse** | **Gagnant en krach, coûteux en hausse** | +25,8 pt ajusté ; 67-69 % de réussite en entrant en année de krach (5 196 obs.) |
 | **4** | **PALIERS de sortie** | **Coûte −43,1 pts** ; divise la volatilité ÷3,6 | attribution + 37 514 trades + challenge (sous-représentés chez les gagnantes) |
 | **5** | **REBALANCEMENT** | **+4,7 à +11,6 pt à 3-5 ans, −2 à −9 pt à 10 ans** ; réduit le pire cas (−10,8 % → +2,7 %) | 126 paniers de 5 lignes, frais 1,4 % compris |
 | — | **BILAN** : stratégie complète vs noyau passif | **−30,3 pts**, mais drawdown −17,3 % contre −26,2 % | attribution |
+
+> **Mise à jour du 12/10/2026 — recalcul après les corrections d'audit.**
+> La ligne 1 a été **remesurée** sur les données et le code corrigés (look-aheads BPA/TTM
+> A3-01/A3-02, nettoyeur de cours symétrique, cache historique réparé) :
+>
+> | Mesure | Enregistré le 08/10 | Recalculé le 12/10 |
+> |---|---|---|
+> | Noyau vs hasard (total) | −6,9 pt | **+1,1 pt** — 0/7 significatif, **inchangé** |
+> | Revenu du noyau | 11,03 %/an | **10,65 %/an** |
+> | Revenu vs hasard | (non mesuré) | **+2,23 pt**, significatif sur **1/4** cohortes |
+>
+> **Les chiffres du 08/10 ne sont pas reproductibles** : ils reposaient sur des caches
+> historiques **non versionnés** (`data/*.pkl` est ignoré par git), donc l'état de données
+> exact qui les a produits n'existe plus. Ce n'est pas une erreur de mesure, c'est un
+> **défaut de traçabilité** : un chiffre publié sans les données qui l'ont produit ne peut
+> plus être vérifié. **Toute mesure publiée doit désormais porter sa provenance.**
+>
+> **Les conclusions ne changent pas** : le noyau ne bat pas significativement le hasard
+> (0/7) et son apport reste le revenu. Le correctif rend même la conclusion **plus prudente**
+> — l'avantage de revenu n'est établi que sur **1 cohorte sur 4** au lieu de 2.
+> Preuves : `audit/recalcul_donnees_corrigees.md` · `audit/preuves/recalcul_*.txt`.
 
 ### La conclusion qui compte
 

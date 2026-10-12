@@ -56,6 +56,50 @@ def revenu_panier(hist, hf, codes, date_debut, date_fin, capital):
     return (total / capital / annees) * 100, total
 
 
+def verdict_revenu(moy_noyau: float, moy_hasard: float, gagne: int, total: int) -> list:
+    """Verdict DEDUIT des chiffres mesures — jamais l'inverse.
+
+    Deux questions distinctes qu'il ne faut pas confondre :
+      - l'ECART est-il notable ?      (amplitude)
+      - l'avantage est-il ETABLI ?    (significatif sur au moins la moitie des cohortes)
+
+    L'ancienne logique finissait par un `else` qui imprimait « le hasard apporte plus de
+    revenu ». Ce `else` attrapait en realite le cas « le noyau est DEVANT mais l'avantage
+    n'est pas encore etabli » (mesure du 12/10/2026 : +2,23 pt, significatif sur 1/4) :
+    il annoncait donc le contraire de ses propres chiffres. Corrige le 12/10 (audit).
+    """
+    ecart = moy_noyau - moy_hasard
+    seuil = max(1, total // 2)
+    etabli = gagne >= seuil
+    note = (f"     (avantage etabli sur {gagne}/{total} cohortes)" if etabli
+            else f"     (significatif sur {gagne}/{total} cohortes seulement)")
+
+    if abs(ecart) <= 0.5:
+        return [
+            "  ⚠️  PAS DE DIFFERENCE NOTABLE de revenu avec le hasard.",
+            "     L'argument « cahier des charges different » NE TIENT PAS : sur la BRVM,",
+            "     la plupart des titres paient des dividendes, donc un tirage aleatoire",
+            "     en touche autant. Il faut le dire.",
+        ]
+    if ecart > 0.5 and etabli:
+        return [
+            "  ✅ LE NOYAU APPORTE PLUS DE REVENU que le hasard.",
+            "     Son role est donc reel et distinct : il produit du cash",
+            "     plus regulierement, independamment de la performance totale.",
+            note,
+        ]
+    if ecart > 0.5:
+        return [
+            f"  🟡 LE NOYAU APPORTE PLUS DE REVENU ({ecart:+.2f} pt), MAIS L'AVANTAGE",
+            "     N'EST PAS ETABLI : sur ce nombre de cohortes, l'ecart pourrait relever",
+            "     du hasard. Direction favorable, preuve insuffisante — ne pas conclure.",
+            note,
+        ]
+    return [
+        f"  ❌ LE HASARD APPORTE PLUS DE REVENU ({ecart:+.2f} pt).",
+    ]
+
+
 def main():
     from src.backtesting.backtest_noyau import backtester_noyau
 
@@ -128,17 +172,8 @@ def main():
         print(f"  Cohortes ou l'avantage est significatif (p<0,05) : {gagne}/{len(lignes)}")
 
         print("\n" + "=" * 100)
-        if moy_n > moy_h + 0.5 and gagne >= len(lignes) // 2:
-            print("  ✅ LE NOYAU APPORTE PLUS DE REVENU que le hasard.")
-            print("     Son role est donc reel et distinct : il produit du cash")
-            print("     plus regulierement, independamment de la performance totale.")
-        elif abs(moy_n - moy_h) <= 0.5:
-            print("  ⚠️  PAS DE DIFFERENCE NOTABLE de revenu avec le hasard.")
-            print("     Mon argument « cahier des charges different » NE TIENT PAS :")
-            print("     sur la BRVM, la plupart des titres paient des dividendes, donc")
-            print("     un tirage aleatoire en touche autant. Il faut le dire.")
-        else:
-            print("  ❌ le hasard apporte plus de revenu.")
+        for ligne_verdict in verdict_revenu(moy_n, moy_h, gagne, len(lignes)):
+            print(ligne_verdict)
         print("=" * 100)
 
 
