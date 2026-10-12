@@ -50,7 +50,7 @@
  "src.analyse.bonds.POSITIONS_FILE": "<Path bonds_positions.json>",
  "src.analyse.fondamentaux_historiques.BASE": "https://stockanalysis.com/quote/brvm/{}/{}",
  "src.analyse.fondamentaux_historiques.CACHE": "<Path fondamentaux_historiques.json>",
- "src.analyse.fondamentaux_historiques.DECALAGE_PUBLICATION_BPA": 1,
+ "src.analyse.fondamentaux_historiques.DATE_PUBLICATION_BPA": "{annee}-06-30",
  "src.analyse.fondamentaux_historiques.TOLERANCE_PER_PCT": 40.0,
  "src.analyse.news.BRVM_ANNOUNCE_PAGES": {
   "ag": "https://www.brvm.org/fr/emetteurs/type-annonces/convocations-assemblees-generales",
@@ -192,10 +192,14 @@
  },
  "src.collecte.backtest.CACHE_FILE": "<Path history_cache.pkl>",
  "src.collecte.backtest.CACHE_MAX_AGE_DAYS": 7,
+ "src.collecte.backtest.CACHE_STALE_DATA_DAYS": 4,
  "src.collecte.backtest.HISTORY_START": "20170101",
+ "src.collecte.backtest.INACTIFS_FILE": "<Path titres_inactifs.json>",
+ "src.collecte.backtest.INACTIF_APRES_JOURS": 8,
  "src.collecte.backtest.MAX_WORKERS": 8,
  "src.collecte.bsapi.BASE_URL": "https://bstrade.bridge-securities.com/BSTradeServer/",
  "src.collecte.bsapi.SESSION_TIMEOUT": 20,
+ "src.collecte.cache_integrity.INACTIFS_FILE": "<Path titres_inactifs.json>",
  "src.collecte.cache_integrity.MAX_CACHE_AGE_DAYS": 8,
  "src.collecte.cache_integrity.MAX_COMPARE_AGE_DAYS": 3,
  "src.collecte.cache_integrity.MAX_JUMP": 3.0,
@@ -212,6 +216,8 @@
  "src.collecte.fundamentals.HEADERS": {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
  },
+ "src.collecte.fundamentals.LOCK_FILE": "<Path per_cache.lock>",
+ "src.collecte.fundamentals.LOCK_STALE_SECONDS": 60,
  "src.collecte.fundamentals.OFFICIAL_DPS": {
   "BOAS": 511.0,
   "PALC": 501.6,
@@ -280,12 +286,6 @@
  "src.portfolio.LEVEL_INFO": 1,
  "src.portfolio.PER_EXPLODE": 40.0,
  "src.portfolio.PORTFOLIO_FILE": "<Path portfolio.json>",
- "src.portfolio.PROFIT_DOWN_PROB": {
-  "PALC": 45,
-  "SGBC": 63,
-  "SLBC": 54,
-  "SNTS": 86
- },
  "src.portfolio.PROFIT_SEUILS_CANDIDATS": [
   0.05,
   0.08,

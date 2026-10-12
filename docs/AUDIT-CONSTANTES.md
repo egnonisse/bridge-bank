@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**210 définitions** pour **194 constantes distinctes**.
+**215 définitions** pour **198 constantes distinctes**.
 
 ---
 
@@ -76,7 +76,6 @@ l'autre produit un chiffre faux sans qu'aucun test ne s'en aperçoive.**
 | `BORNE_BASSE_MIN` | `0.5` | src.regles |
 | `EPISODES_MIN` | `8` | src.regles |
 | `PROFIT_ALERT_THRESHOLD` | `0.13` | src.regles |
-| `PROFIT_DOWN_PROB` | `{'SNTS': 86, 'SGBC': 63, 'SLBC': 54, 'PALC': 45}` | src.portfolio |
 | `PROFIT_SEUILS_CANDIDATS` | `<expression: SEUILS_CANDIDATS>` | src.portfolio |
 | `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.infrastructure.paths |
 | `PROFIT_THRESHOLDS_FILE` | `<expression: SEUILS_FILE>` | src.portfolio |
@@ -120,6 +119,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | Constante | Fois | Modules |
 |---|---|---|
 | `HEADERS` | 5 | src.analyse.boc · src.analyse.news · src.collecte.dividend_history · src.collecte.fundamentals · src.collecte.live |
+| `INACTIFS_FILE` | 2 | src.collecte.backtest · src.collecte.cache_integrity |
 | `REVERSAL_FILE` | 2 | src.collecte.cache_integrity · src.portfolio |
 
 ---
@@ -134,7 +134,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (107)
+### autre (109)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -158,7 +158,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `CUSTODY_ANNUAL` | `<expression: CUSTODY_PER_QUARTER * 4>` | src.taxation |
 | `CUSTODY_MIN_PER_QUARTER` | `2500.0` | src.taxation |
 | `CUSTODY_PER_QUARTER` | `0.002` | src.taxation |
-| `DECALAGE_PUBLICATION_BPA` | `1` | src.analyse.fondamentaux_historiques |
+| `DATE_PUBLICATION_BPA` | `{annee}-06-30` | src.analyse.fondamentaux_historiques |
 | `DIVISIONS_OFFICIELLES` | `<expression: DATA_DIR / 'divisions_officielles.json'>` | src.infrastructure.paths |
 | `DIV_CUT_RATIO` | `0.5` | src.portfolio |
 | `EXCLUS_DU_DRAPEAU` | `[':(exclude)data/*.jsonl']` | src.infrastructure.empreinte |
@@ -175,11 +175,13 @@ chemin distinct dans chaque module). Rien à corriger.
 | `HISTORY_START` | `20170101` | src.collecte.backtest |
 | `HOLDING_YEARS` | `3` | src.portfolio |
 | `HORIZON` | `252` | src.strategie.spec_profiles |
+| `INACTIF_APRES_JOURS` | `8` | src.collecte.backtest |
 | `INDICATEURS` | `{'r5': 'rendement sur 5 seances', 'r20': 'rendement sur 20 seances', 'r60': 'rendement sur 60 seances', 'r120': 'rendement sur 120 seances', 'r250': 'rendement sur 250 seances', 'vol60': 'volatilite annualisee sur 60 seances', 'dd250': 'distance au plus haut des 250 seances (negatif)', 'dd_atl': 'drawdown depuis le plus haut historique (negatif)', 'pos5a': 'position dans la fourchette 5 ans', 'prix_vs_mm50': 'cours / moyenne mobile 50 seances - 1', 'prix_vs_mm200': 'cours / moyenne mobile 200 seances - 1', 'vol_ratio': 'volume du jour / volume median 60 seances - 1', 'per': 'PER (cours / benefice par action)', 'net_yield': 'rendement net du dividende', 'payout': 'dividende / benefice'}` | src.backtesting.challenge_schema |
 | `LEVEL_DECISION` | `2` | src.portfolio |
 | `LEVEL_EXIT` | `4` | src.portfolio |
 | `LEVEL_FUNDAMENTAL` | `3` | src.portfolio |
 | `LEVEL_INFO` | `1` | src.portfolio |
+| `LOCK_STALE_SECONDS` | `60` | src.collecte.fundamentals |
 | `LONGUEUR` | `12` | src.infrastructure.empreinte |
 | `MAX_COMPARE_AGE_DAYS` | `3` | src.collecte.cache_integrity |
 | `MAX_JUMP` | `3.0` | src.collecte.cache_integrity |
@@ -285,7 +287,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `IRVM_DIVIDEND_TAX` | `0.12` | src.taxation |
 | `MODULE_TAXATION` | `<expression: SRC_DIR / 'taxation.py'>` | src.infrastructure.paths |
 
-### sorties_alertes (16)
+### sorties_alertes (15)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -299,7 +301,6 @@ chemin distinct dans chaque module). Rien à corriger.
 | `LOSS_ALERT_THRESHOLD` | `0.1` | src.regles |
 | `PREP_REALERT_DOWN_PCT` | `0.03` | src.strategie.noyau_check |
 | `PROFIT_ALERT_THRESHOLD` | `0.13` | src.regles |
-| `PROFIT_DOWN_PROB` | `{'SNTS': 86, 'SGBC': 63, 'SLBC': 54, 'PALC': 45}` | src.portfolio |
 | `PROFIT_SEUILS_CANDIDATS` | `<expression: SEUILS_CANDIDATS>` | src.portfolio |
 | `PROFIT_THRESHOLDS` | `<expression: DATA_DIR / 'profit_thresholds.json'>` | src.infrastructure.paths |
 | `PROFIT_THRESHOLDS_FILE` | `<expression: SEUILS_FILE>` | src.portfolio |
@@ -317,7 +318,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `STOP_INITIAL` | `-0.15` | src.strategie.paliers_sortie |
 | `TARGET_SPEC` | `0.0` | src.report |
 
-### technique (38)
+### technique (41)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -327,6 +328,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `CACHE_FILE` | `<expression: DATA_DIR / 'fundamentals_cache.json'>` | src.analyse.screener |
 | `CACHE_MAX_AGE_DAYS` | `7` | src.collecte.backtest |
 | `CACHE_MAX_AGE_HOURS` | `24` | src.analyse.screener |
+| `CACHE_STALE_DATA_DAYS` | `4` | src.collecte.backtest |
 | `CANDIDATES_STATE_FILE` | `<expression: DATA_DIR / 'spec_candidates_state.json'>` | src.strategie.speculation |
 | `DATA_DIR` | `<expression: RACINE / 'data'>` | src.infrastructure.paths |
 | `DECISIONS_DIR` | `<expression: DOCS_DIR / 'decisions'>` | src.infrastructure.paths |
@@ -334,7 +336,9 @@ chemin distinct dans chaque module). Rien à corriger.
 | `DOCS_DIR` | `<expression: RACINE / 'docs'>` | src.infrastructure.paths |
 | `HEADERS` | `{'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}` | src.analyse.boc |
 | `HISTORY_CACHE` | `<expression: DATA_DIR / 'history_clean.pkl'>` | src.infrastructure.paths |
+| `INACTIFS_FILE` | `<expression: DATA_DIR / 'titres_inactifs.json'>` | src.collecte.backtest |
 | `JOURNAL_FILE` | `<expression: DATA_DIR / 'seuils_journal.jsonl'>` | src.calibration.seuils_vente |
+| `LOCK_FILE` | `<expression: DATA_DIR / 'per_cache.lock'>` | src.collecte.fundamentals |
 | `MARKET_DIR` | `<expression: DATA_DIR / 'market'>` | src.infrastructure.paths |
 | `MARKET_FILE` | `<expression: DATA_DIR / 'bonds_market.json'>` | src.analyse.bonds |
 | `MAX_CACHE_AGE_DAYS` | `8` | src.collecte.cache_integrity |
