@@ -1,0 +1,58 @@
+====================================================================================================
+  LE NOYAU APPORTE-T-IL PLUS DE REVENU QU'UN PANIER ALEATOIRE ?
+====================================================================================================
+
+  Capital : 1,000,000 F · periode jusqu'au 2026-10-09
+  Mesure : dividendes encaisses en % du capital initial PAR AN
+
+----------------------------------------------------------------------------------------------------
+  COHORTE 2022-01-03   (7 titres)
+----------------------------------------------------------------------------------------------------
+    noyau              :    9.77 %/an   (     463,897 F encaisses)
+    panier aleatoire   :    7.39 %/an   (mediane de 100 tirages)
+    avantage           :   +2.37 pts
+    p (part des tirages faisant aussi bien ou mieux) : 0.250
+----------------------------------------------------------------------------------------------------
+  COHORTE 2023-01-03   (18 titres)
+----------------------------------------------------------------------------------------------------
+    noyau              :   10.31 %/an   (     386,568 F encaisses)
+    panier aleatoire   :    8.01 %/an   (mediane de 100 tirages)
+    avantage           :   +2.30 pts
+    p (part des tirages faisant aussi bien ou mieux) : 0.050
+----------------------------------------------------------------------------------------------------
+  COHORTE 2024-01-02   (23 titres)
+----------------------------------------------------------------------------------------------------
+    noyau              :   10.11 %/an   (     277,922 F encaisses)
+    panier aleatoire   :    8.32 %/an   (mediane de 100 tirages)
+    avantage           :   +1.78 pts
+    p (part des tirages faisant aussi bien ou mieux) : 0.070
+----------------------------------------------------------------------------------------------------
+  COHORTE 2025-01-02   (26 titres)
+----------------------------------------------------------------------------------------------------
+    noyau              :   11.23 %/an   (     196,532 F encaisses)
+    panier aleatoire   :    8.75 %/an   (mediane de 100 tirages)
+    avantage           :   +2.48 pts
+    p (part des tirages faisant aussi bien ou mieux) : 0.000
+
+====================================================================================================
+  SYNTHESE
+====================================================================================================
+
+  Cohorte          noyau %/an   hasard %/an   avantage        p
+  --------------------------------------------------------------
+  2022-01-03            9.77%         7.39%     +2.37pt    0.250
+  2023-01-03           10.31%         8.01%     +2.30pt    0.050
+  2024-01-02           10.11%         8.32%     +1.78pt    0.070
+  2025-01-02           11.23%         8.75%     +2.48pt    0.000
+
+  Moyenne noyau  : 10.35 %/an
+  Moyenne hasard : 8.12 %/an
+  Ecart          : +2.23 pts
+  Cohortes ou l'avantage est significatif (p<0,05) : 1/4
+
+====================================================================================================
+  🟡 LE NOYAU APPORTE PLUS DE REVENU (+2.23 pt), MAIS L'AVANTAGE
+     N'EST PAS ETABLI : sur ce nombre de cohortes, l'ecart pourrait relever
+     du hasard. Direction favorable, preuve insuffisante — ne pas conclure.
+     (significatif sur 1/4 cohortes seulement)
+====================================================================================================

@@ -1,0 +1,114 @@
+================================================================================================
+  LE NOYAU (buy & hold + dividendes reinvestis) BAT-IL LE HASARD ?
+================================================================================================
+
+  Capital de reference : 1,000,000 F par cohorte
+  Fin de periode       : 2026-10-09
+  Duree                : 3 a 4 ans selon la cohorte
+
+------------------------------------------------------------------------------------------------
+  COHORTE 2022-01-03   6 titres selectionnes
+------------------------------------------------------------------------------------------------
+    rendement TOTAL (dividendes reinvestis) :  +138.86 %
+      dont sans reinvestir les dividendes   :  +128.21 %
+    dividendes encaisses                    :      449,866 F  (9.47 % du capital par an)
+    reinvestissements                       :           19
+    drawdown maximal du portefeuille        :   -35.04 %
+    panier ALEATOIRE (mediane, 100 tirages) :  +194.32 %
+    avantage vs hasard                      :   -55.46 pts   p = 0.810
+    composition : CABC, STAC, FTSC, TTLC, ORAC, BOAN
+------------------------------------------------------------------------------------------------
+  COHORTE 2022-07-01   9 titres selectionnes
+------------------------------------------------------------------------------------------------
+    rendement TOTAL (dividendes reinvestis) :  +215.73 %
+      dont sans reinvestir les dividendes   :  +192.53 %
+    dividendes encaisses                    :      477,867 F  (11.24 % du capital par an)
+    reinvestissements                       :           30
+    drawdown maximal du portefeuille        :   -23.29 %
+    panier ALEATOIRE (mediane, 100 tirages) :  +185.68 %
+    avantage vs hasard                      :   +30.04 pts   p = 0.240
+    composition : ECOC, ETIT, SNTS, CABC, SGBC, FTSC, SDSC, ORAC...
+------------------------------------------------------------------------------------------------
+  COHORTE 2023-01-03   20 titres selectionnes
+------------------------------------------------------------------------------------------------
+    rendement TOTAL (dividendes reinvestis) :  +179.54 %
+      dont sans reinvestir les dividendes   :  +161.81 %
+    dividendes encaisses                    :      372,936 F  (9.94 % du capital par an)
+    reinvestissements                       :           63
+    drawdown maximal du portefeuille        :    -8.91 %
+    panier ALEATOIRE (mediane, 100 tirages) :  +193.61 %
+    avantage vs hasard                      :   -14.07 pts   p = 0.740
+    composition : BICC, ECOC, STBC, SGBC, SNTS, ETIT, CABC, UNXC...
+------------------------------------------------------------------------------------------------
+  COHORTE 2023-07-03   22 titres selectionnes
+------------------------------------------------------------------------------------------------
+    rendement TOTAL (dividendes reinvestis) :  +197.86 %
+      dont sans reinvestir les dividendes   :  +182.85 %
+    dividendes encaisses                    :      364,356 F  (11.21 % du capital par an)
+    reinvestissements                       :           63
+    drawdown maximal du portefeuille        :   -10.37 %
+    panier ALEATOIRE (mediane, 100 tirages) :  +196.48 %
+    avantage vs hasard                      :    +1.38 pts   p = 0.460
+    composition : BICC, SLBC, STBC, SCRC, CABC, ECOC, SNTS, FTSC...
+------------------------------------------------------------------------------------------------
+  COHORTE 2024-01-02   20 titres selectionnes
+------------------------------------------------------------------------------------------------
+    rendement TOTAL (dividendes reinvestis) :  +199.81 %
+      dont sans reinvestir les dividendes   :  +187.70 %
+    dividendes encaisses                    :      276,212 F  (10.04 % du capital par an)
+    reinvestissements                       :           43
+    drawdown maximal du portefeuille        :   -10.59 %
+    panier ALEATOIRE (mediane, 100 tirages) :  +183.41 %
+    avantage vs hasard                      :   +16.40 pts   p = 0.270
+    composition : SCRC, STBC, NSBC, UNXC, CABC, CBIBF, SHEC, SDCC...
+------------------------------------------------------------------------------------------------
+  COHORTE 2024-07-01   24 titres selectionnes
+------------------------------------------------------------------------------------------------
+    rendement TOTAL (dividendes reinvestis) :  +187.20 %
+      dont sans reinvestir les dividendes   :  +178.26 %
+    dividendes encaisses                    :      240,997 F  (10.71 % du capital par an)
+    reinvestissements                       :           46
+    drawdown maximal du portefeuille        :   -12.40 %
+    panier ALEATOIRE (mediane, 100 tirages) :  +173.66 %
+    avantage vs hasard                      :   +13.53 pts   p = 0.250
+    composition : UNXC, SCRC, BOAM, NSBC, STBC, CABC, CBIBF, SHEC...
+------------------------------------------------------------------------------------------------
+  COHORTE 2025-01-02   25 titres selectionnes
+------------------------------------------------------------------------------------------------
+    rendement TOTAL (dividendes reinvestis) :  +181.94 %
+      dont sans reinvestir les dividendes   :  +176.33 %
+    dividendes encaisses                    :      198,481 F  (11.34 % du capital par an)
+    reinvestissements                       :           38
+    drawdown maximal du portefeuille        :   -12.28 %
+    panier ALEATOIRE (mediane, 100 tirages) :  +168.38 %
+    avantage vs hasard                      :   +13.56 pts   p = 0.220
+    composition : UNXC, STAC, BOAM, STBC, CABC, CBIBF, SCRC, NSBC...
+
+================================================================================================
+  SYNTHESE
+================================================================================================
+
+  Cohorte        titres     total    hasard  avantage       p  revenu/an    ddmax
+  --------------------------------------------------------------------------------------
+  2022-01-03          6    138.9%    194.3%    -55.5pts   0.810      9.47%   -35.0%
+  2022-07-01          9    215.7%    185.7%    +30.0pts   0.240     11.24%   -23.3%
+  2023-01-03         20    179.5%    193.6%    -14.1pts   0.740      9.94%    -8.9%
+  2023-07-03         22    197.9%    196.5%     +1.4pts   0.460     11.21%   -10.4%
+  2024-01-02         20    199.8%    183.4%    +16.4pts   0.270     10.04%   -10.6%
+  2024-07-01         24    187.2%    173.7%    +13.5pts   0.250     10.71%   -12.4%
+  2025-01-02         25    181.9%    168.4%    +13.6pts   0.220     11.34%   -12.3%
+
+  Moyenne : noyau +185.8 %  contre hasard +185.1 %  → AVANTAGE de 0.8 pts
+  Revenu annuel moyen encaisse : 10.57 % du capital
+  Cohortes ou le noyau bat le hasard de facon significative : 0/7
+
+  RAPPEL DE LECTURE
+  -----------------
+  1. La periode (2022-2026) est HAUSSIERE : un panier aleatoire y
+     performe bien. Ne pas battre le hasard ici ne condamne PAS le
+     noyau — ca dit que le marche monte, pas que la selection est nulle.
+  2. Le noyau vise un REVENU regulier, pas la surperformance. Le
+     chiffre a regarder est 'revenu/an', pas l'ecart au hasard.
+  3. 2020 (krach COVID) n'est pas couverte : la ou un noyau
+     defensif se distingue vraiment, on ne peut pas la mesurer.
+================================================================================================

@@ -1,0 +1,74 @@
+# PREUVE BRUTE — Vérification de l'état de la CI (capture de LEO + API GitHub)
+
+**Date** : 2026-10-12 ~20h UTC · **Source** : `Downloads/e40ea719-...pdf` (2 pages, scan → OCR par rendu
+d'image) + API GitHub `repos/egnonisse/bridge-bank/actions/runs`
+**Objet** : un rapport interne affirmait « **24 runs, 24 verts — aucun échec, aucun annulé** ».
+Cette affirmation est **démentie par sa propre capture d'écran**, mesurée au pixel près.
+
+---
+
+## 1. Ce que montre la capture (mesure, pas lecture visuelle)
+
+Méthode : extraction de l'image native du PDF, puis détection des pixels du vert GitHub de la coche
+(`G > 110` et `G − R > 45` et `G − B > 35`) dans la colonne des statuts (x ≈ 271-282).
+
+```
+coches vertes (succès) détectées : 11-12 lignes
+cercles pâles (annulés) détectés :  7 positions, y = 301 · 635 · 702 · 752 · 952 · 1003 · 1136
+```
+
+Ces 7 positions correspondent, ligne à ligne, aux 7 runs **annulés** confirmés par l'API.
+
+## 2. Ce que dit l'API GitHub (preuve machine, 24 runs au total)
+
+```
+conclusions : {'success': 17, 'cancelled': 7}      17 + 7 = 24  ✓ cohérent avec la capture
+
+runs ANNULÉS : #23 134ce1d · #18 20411a9 · #17 af66b79 · #16 893696a
+               #13 968998f · #12 9958977 · #10 f109329
+```
+
+**Chaque commit annulé est un ancêtre de `ec4f460`** (de 1 à 15 commits avant HEAD) : il est donc
+contenu dans l'arbre du run vert **#24**, qui valide l'état final.
+
+```
+#23 134ce1d -> 1 commit avant HEAD      #16 893696a -> 9 commits avant HEAD
+#18 20411a9 -> 7 commits avant HEAD     #13 968998f -> 12 commits avant HEAD
+#17 af66b79 -> 8 commits avant HEAD     #12 9958977 -> 13 commits avant HEAD
+                                        #10 f109329 -> 15 commits avant HEAD
+```
+
+## 3. Cause des annulations — bénigne, et vérifiée
+
+`.github/workflows/ci.yml` :
+
+```yaml
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+```
+
+Chaque poussée annule le run en vol. **Aucun échec** : ce sont des annulations de concurrence.
+
+## 4. Verdict
+
+| Affirmation | Statut |
+|---|---|
+| « 24 runs » | **vrai** |
+| « 24 verts » | **faux** — 17 verts |
+| « aucun annulé » | **faux** — 7 annulés, visibles dans la capture |
+| « #23 `134ce1d` ✓ 2m49s » | **faux** — #23 est annulé |
+| « l'arbre contenant le fix est validé » | **vrai** — mais par #24, pas #23 |
+
+**Portée de l'écart** : la propriété de sécurité tient (l'état final est vert, les 7 annulés y sont
+inclus). L'écart porte sur la **preuve**, et sur 5 états intermédiaires (phases 4 et 5, décisions
+Q1-Q4, sauvegarde automatique) qui n'ont jamais été validés directement.
+
+**Cette affirmation n'est PAS entrée dans un livrable d'audit** : recherche faite dans `audit/` et
+`docs/`, aucune trace.
+
+## 5. Note d'honnêteté sur ma propre méthode
+
+Ma première lecture **visuelle** de la capture a classé la ligne **#10** comme verte. La détection
+par pixels a montré un cercle pâle, et l'API confirme `#10 = cancelled`. C'est la mesure qui a
+tranché contre mon œil — la même discipline que j'exige du reste de l'audit.
