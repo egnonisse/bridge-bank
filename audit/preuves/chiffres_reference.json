@@ -1,0 +1,59 @@
+{
+  "_note": "Chiffres publiés — valeurs de référence gelées. Re-mesurés le 12/10/2026 (données et code corrigés à cette date). Toute re-mesure qui s'en écarte doit être ACTÉE ici et dans les documents (jamais une réécriture silencieuse).",
+  "_provenance": {
+    "date": "2026-10-12",
+    "preuves_brutes": "audit/preuves/remesure_*.txt + audit/preuves/attribution_remesuree_2026-10-12.txt",
+    "documents": "audit/chiffres_publies_verifies.md + docs/INVARIANTS-METIER.md (B1)",
+    "rejeu": "scripts/verifier_chiffres_publies.py (~15 min, à la demande)"
+  },
+  "entree_progressive": {
+    "script": "scripts/tester_entree_progressive.py",
+    "sortie": "data/test_entree_progressive.json",
+    "observations": 43227
+  },
+  "renforcement": {
+    "script": "scripts/validation_longue.py",
+    "sortie": "data/validation_longue.json",
+    "observations": 5196,
+    "seuil": 0.045,
+    "tranches": 3
+  },
+  "rebalancement": {
+    "script": "scripts/tester_rebalancement.py",
+    "sortie": "data/test_rebalancement.json",
+    "medianes_10_ans": {
+      "hold": 1.3175,
+      "rebalance": 1.4019,
+      "contrarian": 1.4551
+    }
+  },
+  "detachements": {
+    "script": "scripts/mesurer_detachements.py",
+    "sortie": "data/mesure_detachements.json",
+    "n": 182,
+    "baisse_mediane_pct": -3.564,
+    "capture_mediane_pct": 3.433,
+    "perte_pct_cas": 18.7,
+    "ratio_signal_bruit": 2.35
+  },
+  "attribution": {
+    "script": "scripts/tester_strategie_leo.py",
+    "normalise_vs_noyau_pt": {
+      "renforcement": 26.2,
+      "paliers": -45.4,
+      "strategie_complete": -31.2
+    },
+    "noyau": {
+      "rendement_pct": 232.2,
+      "exposition_pct": 94.9
+    }
+  },
+  "paliers_3_regles": {
+    "script": "scripts/tester_paliers.py",
+    "ecarts_vs_duree_pt": {
+      "paliers": -16.05,
+      "stop": -3.65,
+      "suiveur": -12.81
+    }
+  }
+}

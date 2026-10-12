@@ -27,7 +27,9 @@ data/news_state.json
 data/boc_state.json
 data/value_state.json
 data/portf_alert_state.json
-data/titres_inactifs.json  # vérification des titres dormants — réécrite à chaque refresh
+# Vérification des titres dormants — réécrite à chaque refresh (le commentaire doit être
+# sur sa PROPRE ligne : gitignore ne connaît pas les commentaires en fin de ligne)
+data/titres_inactifs.json
 
 # Volumineux / régénérable via scripts/refresh_history.py (~7 Mo chacun)
 data/*.pkl

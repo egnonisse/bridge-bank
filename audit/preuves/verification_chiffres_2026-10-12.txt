@@ -1,0 +1,5 @@
+Rejeu des chiffres publiés — 2026-10-12
+Référence : audit/preuves/chiffres_reference.json
+Durée : 11.4 min
+
+Aucun écart : toutes les valeurs rejouées correspondent à la référence.

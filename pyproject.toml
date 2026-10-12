@@ -2,6 +2,14 @@
 pythonpath = ["."]
 testpaths = ["tests"]
 
+# REJEU DES CHIFFRES PUBLIÉS (ajouté le 12/10/2026 — audit) : le rejeu des 6 scripts de
+# mesure dure ~15 min ; il est marqué `preuve` et EXCLU par défaut (la suite standard
+# reste en ~3 min, y compris en CI). Pour le lancer : `pytest -m preuve -s`.
+markers = [
+    "preuve: rejeu complet des mesures publiées (~15 min) — exclu par défaut",
+]
+addopts = "-m 'not preuve'"
+
 # COUVERTURE (ajoutée le 12/10/2026 — audit)
 # Mesure HONNÊTE de ce que la suite exerce réellement. Aucun `fail_under` : un seuil se fixe
 # APRÈS avoir vu la mesure, jamais avant (et jamais pour se rassurer).

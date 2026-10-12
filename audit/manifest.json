@@ -377,5 +377,28 @@
     },
     "tests": "374 passed, 0 xfailed (+13 ; B2-11 gelé, plus aucun xfail)",
     "doc": "docs/DECISION-2026-10-12-corrections-lot3.md"
+  },
+  "chantier_tests_moteurs_de_preuve": {
+    "date": "2026-10-12",
+    "origine": "audit/passation_vers_session_suivante.md §3 (priorités 1 et 2)",
+    "couverture_avant_apres": {
+      "src/strategie/strategie_leo.py": "0 % -> 94 %",
+      "src/strategie/paliers_sortie.py": "0 % -> 96 %",
+      "src/backtesting/backtest_noyau.py": "28 % -> 87 %",
+      "src/collecte/divisions_officielles.py": "0 % -> 84 %"
+    },
+    "dispositif_chiffres_publies": {
+      "reference": "audit/preuves/chiffres_reference.json",
+      "rejeu": "scripts/verifier_chiffres_publies.py (~15 min, 6 scripts en série, exit 1 si écart)",
+      "tests": "tests/test_preuves_publies.py (7 rapides + 1 marqué `preuve`, exclu par défaut)",
+      "casse_volontaire": "sortie cassée -> test rouge ; référence cassée -> rejeu exit 1 (preuves dans audit/preuves/)"
+    },
+    "constats_remontes": [
+      "backtest_noyau ne compte aucun frais (relatifs OK, absolus optimistes) — décision de LEO requise",
+      "strategie_leo : renfort quasi inatteignable par défaut (marge seulement si tranches rabotées) — verrouillé par tests",
+      "simuler_paliers : liste vide -> IndexError (pas de garde) ; un seul palier par séance — verrouillés",
+      "rapport 28 ans §2.1 : encadré de provenance ajouté (règle §4)"
+    ],
+    "suite": "452 passed (avant 379 ; +73) · doc : docs/DECISION-2026-10-12-tests-moteurs-de-preuve.md"
   }
 }

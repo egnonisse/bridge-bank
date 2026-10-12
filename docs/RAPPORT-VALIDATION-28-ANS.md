@@ -93,6 +93,13 @@ bilan. C'est aussi ce qu'a trouvé le challenge multi-modèles, par un chemin in
 
 ### 2.1 Attribution sur les 5 titres réels (2022-2026)
 
+> **Provenance** : les valeurs ci-dessous sont celles **enregistrées le 08/10/2026**, telles
+> quelles. La **re-mesure du 12/10/2026** (données et code corrigés — `audit/recalcul_donnees_corrigees.md`
+> §9, preuve brute `audit/preuves/attribution_remesuree_2026-10-12.txt`) donne : **A** 232,2 % · 94,9 % ·
+> 244,7 % (référence) · **B** −31,2 pt · **C +26,2 pt** · **D −45,4 pt**. Même sens, même ampleur ;
+> le coût des paliers est même un peu **plus élevé** qu'enregistré. Les écarts ci-dessous sont donc
+> à lire comme l'état du 08/10, pas comme la mesure courante.
+
 Rendement **ajusté à l'exposition** (sinon on compare une stratégie investie à une
 stratégie à moitié en cash et on ne mesure que la quantité de cash).
 

@@ -1,0 +1,7 @@
+Rejeu des chiffres publiés — 2026-10-12
+Référence : audit/preuves/chiffres_reference.json
+Durée : 13.6 min
+
+ÉCARTS DÉTECTÉS :
+  ✗ entree_progressive.observations : 43227 != référence 99999
+  ✗ attribution.noyau.exposition_pct : 10.76 != référence 94.9
