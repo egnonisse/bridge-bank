@@ -1,0 +1,51 @@
+====================================================================================================
+  HYPOTHESE 5 — LE REBALANCEMENT : vendre ses gagnants pour renforcer ses retardataires
+====================================================================================================
+
+  47 titres · frais 1.4 % par ordre · panier de 5 lignes
+  14 dates d'entree · paniers tires deterministiquement
+
+  politique     horizon      n  rendement median      pire  meilleur
+  ------------------------------------------------------------------
+  HOLD               3 an     68             38.9 %    -72.5 %    374.8 %
+  HOLD               5 an     88             88.9 %    -58.2 %    884.0 %
+  HOLD              10 an    126            131.7 %    -12.2 %   1157.9 %
+
+  REBALANCE          3 an     68             42.1 %    -72.2 %    372.3 %
+  REBALANCE          5 an     88             94.4 %    -58.0 %    700.6 %
+  REBALANCE         10 an    126            140.2 %     -0.4 %   1127.0 %
+
+  CONTRARIAN         3 an     68             44.6 %    -71.5 %    370.5 %
+  CONTRARIAN         5 an     88             96.3 %    -56.0 %    708.1 %
+  CONTRARIAN        10 an    126            145.5 %      9.5 %   1298.2 %
+
+----------------------------------------------------------------------------------------------------
+  ECART vs HOLD (mediane)
+----------------------------------------------------------------------------------------------------
+
+  horizon        REBALANCE    CONTRARIAN  ordres/an (rebal.)
+  ----------------------------------------------------------
+  3 an(s)             +3.2pt         +5.8pt                  5
+  5 an(s)             +5.4pt         +7.3pt                  3
+  10 an(s)             +8.4pt        +13.8pt                  1
+
+====================================================================================================
+  CE QUE DIT CE TEST
+====================================================================================================
+
+  Sur 5 ans, panier de 5 lignes, frais compris :
+    HOLD         +88.9 %
+    REBALANCE    +94.4 %   (+5.4 pt)
+    CONTRARIAN   +96.3 %   (+7.3 pt)
+
+  Les frais sont COMPTES (1.4 % par ordre) : un rebalancement annuel de
+  5 lignes coute environ 3 ordres par an, soit
+  3.9 % du portefeuille par an.
+
+  ATTENTION A LA LECTURE : le rebalancement MECANIQUE a une propriete connue — il vend ce
+  qui monte et achete ce qui baisse, ce qui REDUIT la volatilite mais peut ROGNER le
+  rendement dans un marche en tendance (la BRVM est un marche de tendance). Un ecart
+  negatif n'est donc pas une erreur de methode : c'est le prix de la regularite.
+====================================================================================================
+
+  Ecrit : test_rebalancement.json

@@ -1,0 +1,60 @@
+====================================================================================================
+  LE COURS BAISSE-T-IL VRAIMENT DU DIVIDENDE AU DETACHEMENT ?
+====================================================================================================
+
+  48 titres dans le cache quotidien
+  184 detachements mesures (sur les 190 dates, ceux couverts par le cache quotidien)
+  2 cas aberrants ecartes (dividende hors bande 0,5-30 %, ex. ETIT a 672 % = montant non a l'echelle) -> 182 cas retenus
+
+----------------------------------------------------------------------------------------------------
+  1. BAISSE OBSERVEE AU DETACHEMENT vs DIVIDENDE ATTENDU
+----------------------------------------------------------------------------------------------------
+
+  dividende moyen (en % du cours) :    6.63 %   median 6.54 %
+  baisse REELLE du cours le jour J :   -3.68 %   median -3.56 %
+
+  => capture moyenne : +2.95 %  ·  mediane +3.43 %
+     le cours a baisse MOINS que le dividende — le titre a tenu
+     cas ou l'achat la veille du detachement PERD : 34/182 (19 %)
+
+----------------------------------------------------------------------------------------------------
+  2. RECUPERATION DANS LES 10 SEANCES SUIVANTES
+----------------------------------------------------------------------------------------------------
+
+  variation mediane a J+10 : -1.29 %  ·  moyenne -0.75 %
+  seances ou le cours remonte : 60/182 (33 %)
+
+----------------------------------------------------------------------------------------------------
+  3. PISTE « DEDUIRE LE DIVIDENDE DE LA BAISSE » — TIENT-ELLE ?
+----------------------------------------------------------------------------------------------------
+
+  rapport dividende / volatilite quotidienne (mediane) : 2.35
+
+  LECTURE : un rapport proche de 1 signifie que la baisse au detachement est du
+  meme ordre que le bruit quotidien du titre — impossible a isoler. Un rapport
+  > 3 serait un signal exploitable.
+
+  VERDICT sur la piste : NON EXPLOITABLE — signal confondu avec le bruit.
+  Le trou 1998-2021 du revenu reste donc OUVERT : aucune reconstitution honnete
+  des dividendes anciens n'est possible avec les seules donnees gratuites.
+
+----------------------------------------------------------------------------------------------------
+  4. LES CAS LES PLUS INSTRUCTIFS
+----------------------------------------------------------------------------------------------------
+
+  code   detach.      divid.   attendu   observe   capture
+  --------------------------------------------------------
+  CIEC   20220721        170     7.42 %     0.22 %    +7.63 %
+  UNXC   20210714         20     1.33 %     6.33 %    +7.67 %
+  NSBC   20240704        505     8.02 %    -0.24 %    +7.78 %
+  BICC   20250521        944     6.09 %     1.74 %    +7.83 %
+  SOGC   20230713        620    14.25 %    -6.32 %    +7.93 %
+  --------------------------------------------------------
+  SLBC   20210730        304     3.31 %   -10.26 %    -6.94 %
+  SLBC   20220810        450     3.33 %   -10.27 %    -6.94 %
+  NEIC   20260909        160     5.35 %   -11.74 %    -6.39 %
+  PALC   20210825        114     2.59 %    -8.75 %    -6.16 %
+  BOAC   20210510        158     4.10 %   -10.16 %    -6.05 %
+
+  Ecrit : mesure_detachements.json
+====================================================================================================

@@ -29,10 +29,10 @@ en disent, un par un — **aucun ne reste sans réponse**.
 | # | Composant | Verdict | Preuve |
 |---|---|---|---|
 | **1** | **SÉLECTION** (grandes valeurs à dividende) | **Neutre en performance, positif en revenu** | noyau **+1,1 pt** vs hasard (0/7 significatif) mais **10,65 %/an** encaissables — chiffres **recalculés le 12/10/2026** sur données et code corrigés (voir encadré) |
-| **2** | **ENTRÉE PROGRESSIVE** (par tranches) | **Neutre** (+0 à +0,7 pt, 52-55 % de réussite) | 42 480 observations, 46 titres, test isolé — le progressif **n'apporte rien seul** |
-| **3** | **RENFORCEMENT sur faiblesse** | **Gagnant en krach, coûteux en hausse** | +25,8 pt ajusté ; 67-69 % de réussite en entrant en année de krach (5 196 obs.) |
-| **4** | **PALIERS de sortie** | **Coûte −43,1 pts** ; divise la volatilité ÷3,6 | attribution + 37 514 trades + challenge (sous-représentés chez les gagnantes) |
-| **5** | **REBALANCEMENT** | **+4,7 à +11,6 pt à 3-5 ans, −2 à −9 pt à 10 ans** ; réduit le pire cas (−10,8 % → +2,7 %) | 126 paniers de 5 lignes, frais 1,4 % compris |
+| **2** | **ENTRÉE PROGRESSIVE** (par tranches) | **Neutre** (−0,5 à +0,5 pt, 52-54 % de réussite) | **43 227 observations, 47 titres** (re-mesuré le 12/10 ; l'écart affiché est « négligeable — le progressif ne crée ni ne détruit de valeur ») |
+| **3** | **RENFORCEMENT sur faiblesse** | **Gagnant en krach, coûteux en hausse** | **+26,2 pt** ajusté (re-mesuré) ; **63-69 %** de réussite en entrant en année de krach (**5 196 obs. — identique** au chiffre d'origine) |
+| **4** | **PALIERS de sortie** | **Coûte −45,4 pts** (re-mesuré) ; divise la volatilité **÷3,6 confirmé au centième** (écart-type 82,0 % → 22,5 % = 3,64) | attribution + **38 262 trades** (re-mesuré ; les 37 514 annoncés) + challenge (sous-représentés chez les gagnantes) |
+| **5** | **REBALANCEMENT** | **Positif à TOUS les horizons** : +3,2 à +5,8 pt (3 ans), +5,4 à +7,3 pt (5 ans), **+8,4 à +13,8 pt (10 ans)** ; réduit le pire cas (−12,2 % → −0,4 %) | 126 paniers de 5 lignes, frais 1,4 % compris. **Re-mesuré le 12/10 : le 10 ans s'inverse** (l'ancien « −2 à −9 pt » devient positif — voir encadré) |
 | — | **BILAN** : stratégie complète vs noyau passif | **−30,3 pts**, mais drawdown −17,3 % contre −26,2 % | attribution |
 
 > **Mise à jour du 12/10/2026 — recalcul après les corrections d'audit.**
@@ -55,6 +55,22 @@ en disent, un par un — **aucun ne reste sans réponse**.
 > (0/7) et son apport reste le revenu. Le correctif rend même la conclusion **plus prudente**
 > — l'avantage de revenu n'est établi que sur **1 cohorte sur 4** au lieu de 2.
 > Preuves : `audit/recalcul_donnees_corrigees.md` · `audit/preuves/recalcul_*.txt`.
+>
+> **Les quatre autres composants ont été re-mesurés de la même façon le 12/10** (sorties brutes :
+> `audit/preuves/remesure_*.txt`, détail : `audit/chiffres_publies_verifies.md`) :
+>
+> | Composant | Enregistré le 08/10 | Re-mesuré le 12/10 | Verdict |
+> |---|---|---|---|
+> | Entrée progressive | 42 480 obs · 46 titres · +0 à +0,7 pt · 52-55 % | 43 227 obs · 47 titres · −0,5 à +0,5 pt · 52-54 % | **tenu** |
+> | Renforcement en krach | 5 196 obs · 67-69 % | **5 196 obs — identique** · 63-69 % | **tenu** |
+> | Paliers | −43,1 pt · ÷3,6 · 37 514 trades | **−45,4 pt** · **÷3,64** · 38 262 trades | **tenu et renforcé** |
+> | Rebalancement | +4,7 à +11,6 pt (3-5 ans) · −2 à −9 pt (10 ans) | +3,2 à +7,3 pt · **+8,4 à +13,8 pt (10 ans)** | **signe inversé, en faveur** |
+> | Détachement de dividende | 179 cas · 6,71 % · −3,73 % · net −0,63 % | **182 cas** · 6,63 % · −3,68 % · net ≈ −0,66 % | **tenu** |
+>
+> **Bilan : cinq chiffres sur six tiennent** — dont celui qui fondait la décision sur les paliers et
+> l'invariant B1. Le seul écart substantiel (le rebalancement à 10 ans) **corrige une conclusion
+> défavorable à tort**. Le sixième (la sélection, −6,9 pt) reste non reproductible : ses entrées
+> n'étaient pas versionnées, et c'est désormais écrit.
 
 ### La conclusion qui compte
 

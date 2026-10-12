@@ -1,0 +1,80 @@
+====================================================================================================
+  HYPOTHESE 2 — L'ENTREE PROGRESSIVE : acheter en plusieurs fois vaut-il mieux ?
+====================================================================================================
+
+  47 titres · cache quotidien (ajuste des divisions)
+  116 dates d'entree (une par mois) · 2017-01-02 -> 2026-10-09
+
+  43227 observations
+
+----------------------------------------------------------------------------------------------------
+  HORIZON 1 AN(S)
+----------------------------------------------------------------------------------------------------
+
+  espacement          n     UNIQUE  PROGRESSIF     ecart    expo  PROG ajuste  ecart ajuste
+  ----------------------------------------------------------------------------
+  12 j            4803       0.5 %        1.0 %     +0.5pt    100 %         1.0 %         +0.5pt
+                                                    gagne dans 52 % des cas
+  20 j            4803       0.5 %        0.8 %     +0.2pt    100 %         0.8 %         +0.2pt
+                                                    gagne dans 52 % des cas
+  30 j            4803       0.5 %        0.9 %     +0.4pt    100 %         0.9 %         +0.4pt
+                                                    gagne dans 54 % des cas
+
+----------------------------------------------------------------------------------------------------
+  HORIZON 3 AN(S)
+----------------------------------------------------------------------------------------------------
+
+  espacement          n     UNIQUE  PROGRESSIF     ecart    expo  PROG ajuste  ecart ajuste
+  ----------------------------------------------------------------------------
+  12 j            4803      46.9 %       46.9 %     +0.0pt    100 %        46.9 %         +0.0pt
+                                                    gagne dans 52 % des cas
+  20 j            4803      46.9 %       46.6 %     -0.3pt    100 %        46.6 %         -0.3pt
+                                                    gagne dans 52 % des cas
+  30 j            4803      46.9 %       46.4 %     -0.5pt    100 %        46.4 %         -0.5pt
+                                                    gagne dans 54 % des cas
+
+----------------------------------------------------------------------------------------------------
+  HORIZON 5 AN(S)
+----------------------------------------------------------------------------------------------------
+
+  espacement          n     UNIQUE  PROGRESSIF     ecart    expo  PROG ajuste  ecart ajuste
+  ----------------------------------------------------------------------------
+  12 j            4803      84.1 %       84.3 %     +0.2pt    100 %        84.3 %         +0.2pt
+                                                    gagne dans 52 % des cas
+  20 j            4803      84.1 %       84.6 %     +0.5pt    100 %        84.6 %         +0.5pt
+                                                    gagne dans 52 % des cas
+  30 j            4803      84.1 %       84.8 %     +0.7pt    100 %        84.8 %         +0.7pt
+                                                    gagne dans 54 % des cas
+
+====================================================================================================
+  CE QUE DIT CE TEST
+====================================================================================================
+
+  Horizon 3 ans, espacement 12 j (celui de LEO) :
+    ACHAT UNIQUE     +46.9 %
+    PROGRESSIF       +46.9 %   (gagne dans 52 % des cas)
+    capital effectivement verse : 100 %
+
+  Lecture : l'ecart est NEGLIGEABLE (moins d'un point) — l'entree progressive ne cree ni ne detruit de valeur.
+
+  ⚠️ PRECISION DE CALCUL : `engage` mesure le capital VERSE, pas le TEMPS d'exposition.
+  Avec 3 tranches etalees sur 24 a 60 jours, tout est verse bien avant l'horizon, donc
+  `engage` vaut 1,0 et le cout du cash dormant N'EST PAS capture. Ce cout est faible
+  (30-60 jours d'attente sur 365, soit 8-16 % du temps), mais il existe : l'ecart reel
+  a exposition-ponderee-par-le-temps est legerement inferieur a celui affiche.
+
+  Horizon 5 ans, espacement 12 j (celui de LEO) :
+    ACHAT UNIQUE     +84.1 %
+    PROGRESSIF       +84.3 %   (gagne dans 52 % des cas)
+    capital effectivement verse : 100 %
+
+  Lecture : l'ecart est NEGLIGEABLE (moins d'un point) — l'entree progressive ne cree ni ne detruit de valeur.
+
+  ⚠️ PRECISION DE CALCUL : `engage` mesure le capital VERSE, pas le TEMPS d'exposition.
+  Avec 3 tranches etalees sur 24 a 60 jours, tout est verse bien avant l'horizon, donc
+  `engage` vaut 1,0 et le cout du cash dormant N'EST PAS capture. Ce cout est faible
+  (30-60 jours d'attente sur 365, soit 8-16 % du temps), mais il existe : l'ecart reel
+  a exposition-ponderee-par-le-temps est legerement inferieur a celui affiche.
+
+  Ecrit : test_entree_progressive.json
+====================================================================================================
