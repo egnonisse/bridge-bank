@@ -202,5 +202,14 @@
       "document": "docs/DECISION-2026-10-12-hierarchie-sources-et-questions-audit.md",
       "tests": "338 passed (2 ajoutés : volume hors confluence, verrou MAX_BUY_WEIGHT↔IPS)"
     }
+  },
+  "resolutions": {
+    "A-001_sauvegarde_git": {
+      "statut": "RÉSOLUE le 12/10/2026",
+      "cause": "le credential git par défaut du PC présentait le compte aiwatch-ci (sans accès au dépôt privé egnonisse/bridge-bank) → git renvoyait « Repository not found »",
+      "correction": "git config --local credential.username egnonisse sur le dépôt ; push manuel vérifié (b810f7d..9958977), puis backup automatique rejoué : 25 fichiers commités et poussés (commit 968998f) — HEAD distant à jour",
+      "lecon": "un « Repository not found » GitHub peut être un problème de CREDENTIAL (mauvais compte présenté), pas un dépôt absent — vérifier le username du credential helper avant de conclure"
+    },
+    "integrite_du_registre": "Deux lignes du CSV avaient un champ en trop (virgules non quotées : A-002 et R-002) — réparées lors de la mise à jour du 12/10. Toute écriture des CSV d'audit est désormais validée (13 champs) et atomique (tmp + replace)."
   }
 }
