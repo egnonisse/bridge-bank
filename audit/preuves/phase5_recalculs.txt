@@ -1,0 +1,61 @@
+=== PHASE 5 — RECALCULS INDÉPENDANTS (déterministes) — 2026-10-12 03:39 ===
+Méthode : chaque formule est redérivée des principes (IPS §1/§3/§7) puis comparée au code.
+
+## A. Frais réels par ordre (IPS §7 : courtage 0,80 % + TVA 18 % + BRVM 0,456 %)
+  Recalcul : 0,008 × 1,18 + 0,00456 = 0.014000 = 1.4000 %
+  ✅ CONFORME · regles.FRAIS_PAR_SENS
+     attendu (recalcul) = 0.0140 · code = 0.0140
+  Aller-retour : 2 × 0.0140 = 2.80 % vs code 2.80 %
+  ✅ CONFORME · regles.FRAIS_ALLER_RETOUR
+     attendu (recalcul) = 0.0280 · code = 0.0280
+
+## B. Rendement net = brut × (1 − IRVM 12 %) − conservation 0,80 pt
+  Recalcul : 1977.0 / 42995.0 = 4.5982 % brut → net = 3.2464 %
+  ✅ CONFORME · taxation.net_yield (SNTS)
+     attendu (recalcul) = 3.2464 · code = 3.2464
+
+## C. Brut requis pour 4 % net = (4 % + 0,80 %) / 0,88
+  Recalcul : (0,04 + 0,008) / 0,88 = 0.054545 = 5.4545 %
+  ✅ CONFORME · taxation.gross_yield_for_net(0,04)
+     attendu (recalcul) = 0.0545 · code = 0.0545
+
+## D. Prix d'entrée SNTS (dps 1977) — deux formules (finding B1-08)
+  Formule IPS (dps / brut4)      : 36,245.00 F
+  Formule frais inclus (/1,014)  : 35,744.58 F   → écart 1.381 %
+  ✅ CONFORME · DividendPosition.entry_price_ref (sans frais)
+     attendu (recalcul) = 36,245.0000 · code = 36,245.0000
+  ✅ CONFORME · taxation.entry_price_for_net (frais inclus)
+     attendu (recalcul) = 35,744.5759 · code = 35,744.5759
+  ⚠️ B1-08 : les DEUX existent dans le code — l'alerte de renforcement utilise celle
+     avec frais, l'IPS publie celle sans frais. À trancher (une seule, ou étiquetées).
+
+## E. Prix de sortie = dps / brut(2 %) ; brut(2 %) = (0,02+0,008)/0,88
+  Recalcul : brut(2 %) = 0.031818 ; sortie SNTS = 62,134.29 F
+  ✅ CONFORME · DividendPosition.exit_price (SNTS)
+     attendu (recalcul) = 62,134.2857 · code = 62,134.2900
+
+## F. DRIP — le dividende est une RETENUE À LA SOURCE (finding B1-03)
+  Code actuel  : dps × qty = 5,931.00 F
+  Attendu (net): dps × 0,88 × qty = 5,219.28 F   → surévaluation 13.64 %
+  ❌ ÉCART CONFIRMÉ : 711.72 F de trop à chaque versement (B1-03)
+
+## G. Filet spéculatif — cas construit (entrée 10 000 F)
+  Stop initial : attendu 8 500 (−15 %) · code 8,500
+  ✅ CONFORME · stop −15 %
+     attendu (recalcul) = 8,500.0000 · code = 8,500.0000
+  +20 % : palier touché, stop → break-even. stop recalculé = 10,000 (attendu 10 000)
+  ✅ CONFORME · break-even après +20 %
+     attendu (recalcul) = 10,000.0000 · code = 10,000.0000
+  +35 % : stop suiveur −10 % du plus haut = 12,150 (attendu 12 150)
+  ✅ CONFORME · suiveur −10 % après +35 %
+     attendu (recalcul) = 12,150.0000 · code = 12,150.0000
+
+## H. Déclencheurs — cas numériques construits
+  Cas 1 (PER 41 > 40)      : 1 alerte(s) niveau ≥ 2 → ✅
+  Cas 2 (prix 62 500 ≥ sortie 62,134 ; net recalc 1.98 %) : 1 alerte(s) → ✅
+
+## SYNTHÈSE
+  Contrôles conformes : 12
+  Écarts confirmés    : 2 (B1-08 deux formules ; B1-03 DRIP brut) + le reste des findings déjà au registre
+  Formules recalculées à la main et IDENTIQUES au code : frais 1,4 % · net_yield · brut requis ·
+  prix d'entrée/sortie · stop −15 %/break-even/suiveur · déclencheurs PER & prix de sortie.

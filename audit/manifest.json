@@ -278,5 +278,19 @@
     "integrite": "aucun fichier de data/ modifié pendant la suite (47 md5 identiques, relevé avant/après)",
     "constats": "EX-05 'non testé' (phase 2) était FAUX (4 tests existent) ; AL-05/AL-06 partiels ; AL-04 non testé confirmé",
     "convention": "xfail(strict=False) pour les cibles de correction ; XPASS = signal de retrait"
+  },
+  "phase5": {
+    "statut": "EN COURS (lancée le 12/10/2026)",
+    "volet_recalculs_deterministes": {
+      "statut": "TERMINÉ",
+      "outil": "audit/phase5_recalculs_deterministes.py → audit/preuves/phase5_recalculs.txt",
+      "resultat": "12 contrôles CONFORMES (frais 1,4 %, net_yield, brut requis 5,4545 %, prix entrée 36 245/35 744,58, sortie 62 134,29, stop/break-even/suiveur, 2 déclencheurs) + 2 écarts confirmés (B1-08 deux formules d'entrée ; B1-03 DRIP brut +13,64 %)"
+    },
+    "volet_verification_tierce": {
+      "statut": "EN COURS — agent deepseek-v4-pro (clé DeepSeek directe)",
+      "raison": "OpenRouter bloqué : plafond de clé 5 $ atteint (4,00 $ consommés ; Opus et Gemini refusés sur le worst-case). La vérification tierce passe par la clé DeepSeek directe.",
+      "livrable_attendu": "audit/phase5_agent_deepseek.md (recalculs + reproduction A3-01/A3-02)"
+    },
+    "pistes_avortees": "agents Opus 5.5 et Gemini 3.1 Pro bloqués par la limite de clé OpenRouter (0,996 $ puis ~0,7 $ restants) — reprendre quand la limite sera ajustée"
   }
 }
