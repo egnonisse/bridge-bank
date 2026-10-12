@@ -4,3 +4,4 @@
 -r requirements.txt
 
 pytest>=8
+pytest-cov>=7      # couverture : la carte de ce qui n'est PAS testé (aucun seuil imposé)

@@ -1,3 +1,15 @@
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+
+# COUVERTURE (ajoutée le 12/10/2026 — audit)
+# Mesure HONNÊTE de ce que la suite exerce réellement. Aucun `fail_under` : un seuil se fixe
+# APRÈS avoir vu la mesure, jamais avant (et jamais pour se rassurer).
+[tool.coverage.run]
+source = ["src"]
+branch = false
+omit = ["*/__pycache__/*"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:"]
