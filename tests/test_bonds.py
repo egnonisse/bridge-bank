@@ -3,6 +3,7 @@ from datetime import date
 
 import pytest
 
+from src.infrastructure.ecriture import FichierEtatIllisible
 from src.analyse.bonds import (
     NOMINAL,
     add_bond_position,
@@ -99,6 +100,15 @@ def test_add_position_invalid_qty(monkeypatch, tmp_path):
     monkeypatch.setattr("src.analyse.bonds.POSITIONS_FILE", tmp_path / "positions.json")
     with pytest.raises(ValueError, match="Quantité"):
         add_bond_position("TPCI.O87", 0, 100)
+
+
+def test_load_bond_positions_corrompu_leve(monkeypatch, tmp_path):
+    """P7-01 : JSON valide mais structure inattendue — ne jamais retourner [] en silence."""
+    fichier = tmp_path / "positions.json"
+    fichier.write_text("[]", encoding="utf-8")
+    monkeypatch.setattr("src.analyse.bonds.POSITIONS_FILE", fichier)
+    with pytest.raises(FichierEtatIllisible):
+        load_bond_positions()
 
 
 def test_nominal_constant():

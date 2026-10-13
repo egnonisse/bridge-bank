@@ -30,6 +30,11 @@ from ..collecte.bsapi import BSApi
 from ..collecte.backtest import load_all_history
 from ..analyse.screening import avg_volume, change_pct, ema, rsi_wilder
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import (  # écriture atomique + lecture stricte (P7-01)
+    FichierEtatIllisible,
+    ecrire_json_atomique,
+    lire_json_strict,
+)
 from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
 POSITIONS_FILE = DATA_DIR / "spec_positions.json"
@@ -218,21 +223,26 @@ def check_position(pos: SpecPosition, price: float) -> list[str]:
 
 # -------------------------------------------------------------- persistance
 def load_positions() -> list[SpecPosition]:
-    if not POSITIONS_FILE.exists():
+    """Charge les positions de la poche spéculative.
+
+    Fichier absent → [] (premier lancement, légitime).
+    Fichier PRÉSENT mais illisible → `FichierEtatIllisible` (P7-01) : jamais de
+    « aucune position » silencieux — ce serait perdre le suivi de l'argent réel.
+    """
+    data = lire_json_strict(POSITIONS_FILE)
+    if data is None:
         return []
     try:
-        data = json.loads(POSITIONS_FILE.read_text(encoding="utf-8"))
         return [SpecPosition(**d) for d in data]
-    except (OSError, json.JSONDecodeError, TypeError):
-        return []
+    except TypeError as exc:
+        raise FichierEtatIllisible(
+            f"{POSITIONS_FILE.name} : structure inattendue ({exc}) — schéma de position "
+            "incompatible ; corriger le fichier plutôt que de repartir de zéro."
+        ) from exc
 
 
 def save_positions(positions: list[SpecPosition]) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    POSITIONS_FILE.write_text(
-        json.dumps([asdict(p) for p in positions], indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
+    ecrire_json_atomique(POSITIONS_FILE, [asdict(p) for p in positions])
 
 
 # -------------------------------------------------------------- zone morte

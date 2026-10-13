@@ -1,7 +1,7 @@
 """Tests du simulateur de paliers de sortie (la règle la plus coûteuse du système).
 
 Pourquoi ce fichier existe (priorité n°1 de la passation du 12/10/2026) : `simuler_paliers`
-et `comparer_modes` produisent l'attribution « paliers = −45,4 pt » qui fonde la décision
+et `comparer_modes` produisent l'attribution « paliers = −49,0 pt » (re-mesurée le 13/10 après le lot 4 ; −45,4 pt avant)
 du 08/10 ; le module était à 0 % de couverture.
 
 Ce qui est vérifié ici, ce sont les RÈGLES telles qu'écrites dans le module (pas une

@@ -20,6 +20,11 @@ import json
 from datetime import date
 from pathlib import Path
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import (  # écriture atomique + lecture stricte (P7-01)
+    FichierEtatIllisible,
+    ecrire_json_atomique,
+    lire_json_strict,
+)
 
 MARKET_FILE = DATA_DIR / "bonds_market.json"
 POSITIONS_FILE = DATA_DIR / "bonds_positions.json"
@@ -116,19 +121,19 @@ def buyable_lines(today: date | None = None) -> list[dict]:
 
 # --------------------------------------------------------------- positions
 def load_bond_positions() -> list[dict]:
-    try:
-        data = json.loads(POSITIONS_FILE.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
+    """Positions d'obligations. Absent → []. Présent mais illisible → `FichierEtatIllisible` (P7-01)."""
+    data = lire_json_strict(POSITIONS_FILE)
+    if data is None:
         return []
+    if not isinstance(data, dict):
+        raise FichierEtatIllisible(
+            f"{POSITIONS_FILE.name} : structure inattendue (attendu {{\"positions\": [...]}})."
+        )
     return data.get("positions", [])
 
 
 def save_bond_positions(positions: list[dict]) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    POSITIONS_FILE.write_text(
-        json.dumps({"positions": positions}, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
+    ecrire_json_atomique(POSITIONS_FILE, {"positions": positions})
 
 
 def add_bond_position(code: str, qty: int, price: float, buy_date: str | None = None) -> dict:

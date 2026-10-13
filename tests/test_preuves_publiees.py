@@ -35,7 +35,7 @@ def _sortie(mesure: str) -> dict:
 def test_la_reference_porte_sa_provenance():
     """Toute mesure publiée porte sa provenance : date, preuves brutes, documents."""
     prov = REFERENCE["_provenance"]
-    assert prov["date"] == "2026-10-12"
+    assert prov["date"] == "2026-10-13"
     preuves = RACINE / "audit" / "preuves"
     assert preuves.is_dir()
     assert list(preuves.glob("remesure_*.txt")), "les preuves brutes de re-mesure existent"
@@ -85,8 +85,8 @@ def test_l_invariant_b1_cite_le_chiffre_re_mesure():
     la source perdante est mise à jour, jamais laissée divergente)."""
     invariant = (RACINE / "docs" / "INVARIANTS-METIER.md").read_text(encoding="utf-8")
     ligne_b1 = next((l for l in invariant.splitlines() if l.startswith("| B1 |")), "")
-    assert "45,4 pt" in ligne_b1, "B1 doit citer l'attribution re-mesurée (45,4 pt)"
-    assert REFERENCE["attribution"]["normalise_vs_noyau_pt"]["paliers"] == pytest.approx(-45.4)
+    assert "49,0 pt" in ligne_b1, "B1 doit citer la re-mesure du 13/10 sur moteur corrigé (49,0 pt)"
+    assert REFERENCE["attribution"]["normalise_vs_noyau_pt"]["paliers"] == pytest.approx(-49.0)
 
 
 def test_le_document_de_verification_cite_les_valeurs_cles():
@@ -94,9 +94,9 @@ def test_le_document_de_verification_cite_les_valeurs_cles():
     (une divergence document ↔ mesure casse ici)."""
     for chemin, motifs in (
         ("audit/chiffres_publies_verifies.md",
-         (r"43\s227", r"5\s196", r"182\s+cas", r"45,4")),
+         (r"43\s227", r"5\s196", r"182\s+cas", r"45,4", r"49,0")),
         ("docs/RAPPORT-VALIDATION-28-ANS.md",
-         (r"43\s227", r"5\s196", r"45,4", r"\+26,2")),
+         (r"43\s227", r"5\s196", r"45,4", r"49,0", r"\+26,7")),
     ):
         texte = (RACINE / chemin).read_text(encoding="utf-8")
         for motif in motifs:

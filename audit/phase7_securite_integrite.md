@@ -6,7 +6,7 @@
 
 | # | Item | Sévérité | Statut |
 |---|---|---|---|
-| P7-01 | **Atomicité non généralisée** — `spec_positions.json` (trading réel) écrit directement + le loader avale la corruption en silence | **HAUTE** | Constat |
+| P7-01 | **Atomicité non généralisée** — `spec_positions.json` (trading réel) écrit directement + le loader avale la corruption en silence | **HAUTE** | ✅ **CORRIGÉ 13/10** (lot 5) |
 | P7-02 | Le token du bot peut fuiter dans les logs d'erreur (exceptions `requests` qui contiennent l'URL) | Moyenne | Constat |
 | P7-03 | `pickle.load` du cache historique sans contrôle de provenance AVANT chargement | Basse-Moyenne | Constat |
 | P7-04 | Micro : `open()` sans context manager ; journal `.jsonl` sans garde de ligne tronquée | Basse | Constat |

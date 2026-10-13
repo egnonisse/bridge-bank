@@ -1,7 +1,7 @@
 """Tests du moteur de simulation de la stratégie réelle de LEO (MoteurLeo).
 
 Pourquoi ce fichier existe (priorité n°1 de la passation du 12/10/2026) : ce moteur a
-produit les chiffres d'attribution (−45,4 / +26,2 pt) qui fondent des décisions, et il
+produit les chiffres d'attribution (−49,0 / +26,7 pt, re-mesurés le 13/10 après le lot 4 ; −45,4 / +26,2 avant) qui fondent des décisions, et il
 était à 0 % de couverture.
 
 Ce qui est vérifié : le coût d'un ordre (minimum inclus), le CMP frais inclus, le

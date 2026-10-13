@@ -6,6 +6,7 @@ ouverture de position, détection de signaux.
 import pytest
 
 from src.domaine.models import Quote, Snapshot
+from src.infrastructure.ecriture import FichierEtatIllisible
 from src.strategie.speculation import (
     SpecPosition,
     check_position,
@@ -106,6 +107,31 @@ def test_persist_roundtrip(monkeypatch, tmp_path):
     assert loaded[0].code == "TEST"
     assert loaded[0].sold_1 is True
     assert loaded[0].remaining == 66
+
+
+def test_load_positions_fichier_absent_retourne_vide(monkeypatch, tmp_path):
+    monkeypatch.setattr("src.strategie.speculation.POSITIONS_FILE", tmp_path / "absent.json")
+    assert load_positions() == []
+
+
+def test_load_positions_corrompu_leve_bruyamment(monkeypatch, tmp_path):
+    """P7-01 : un fichier présent mais illisible ne doit JAMAIS donner une liste vide."""
+    fichier = tmp_path / "spec_positions.json"
+    fichier.write_text("{pas du json", encoding="utf-8")
+    monkeypatch.setattr("src.strategie.speculation.POSITIONS_FILE", fichier)
+    with pytest.raises(FichierEtatIllisible):
+        load_positions()
+
+
+def test_save_positions_atomique_sans_residu(monkeypatch, tmp_path):
+    """P7-01 : écriture via .tmp + replace — aucun résidu, fichier relisible."""
+    monkeypatch.setattr(
+        "src.strategie.speculation.POSITIONS_FILE", tmp_path / "spec_positions.json"
+    )
+    save_positions([make_pos()])
+    assert (tmp_path / "spec_positions.json").exists()
+    assert not (tmp_path / "spec_positions.json.tmp").exists()
+    assert len(load_positions()) == 1
 
 
 # ------------------------------------------------------------ open_position
