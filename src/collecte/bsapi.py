@@ -13,6 +13,7 @@ Vérifié le 12/10/2026 : verify=True → SSLError ; c'est le SEUL site du proje
 from __future__ import annotations
 
 import re
+import logging
 import urllib3
 from datetime import datetime
 from typing import Optional
@@ -20,6 +21,8 @@ from typing import Optional
 import requests
 
 from ..domaine.models import HistoryBar, Quote, Snapshot
+
+log = logging.getLogger(__name__)
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -84,9 +87,15 @@ class BSApi:
         bars: list[HistoryBar] = []
         for item in data:
             ts = item.get("CurrentDate", 0)
+            if not ts:
+                # B2-06 (corrigé le 13/10/2026) : une barre SANS horodatage n'était pas
+                # datée « maintenant » (date fabriquée, fausse dans tout historique) —
+                # elle est écartée et signalée.
+                log.warning("Barre sans horodatage ignorée pour %s : %r", code, item)
+                continue
             bars.append(
                 HistoryBar(
-                    date=datetime.fromtimestamp(ts / 1000) if ts else datetime.now(),
+                    date=datetime.fromtimestamp(ts / 1000),
                     open=float(item.get("OpenP") or 0),
                     high=float(item.get("HighP") or 0),
                     low=float(item.get("LowP") or 0),
@@ -103,10 +112,19 @@ _NUM = re.compile(r"^-?\d+(\.\d+)?$")
 
 
 def _to_float(value: str) -> float:
+    """Champ numérique d'une ligne de cotation.
+
+    B2-06 (corrigé le 13/10/2026) : « absent » (champ vide) vaut 0.0 par convention,
+    mais « illisible » (texte non numérique) est SIGNALÉ — l'ancien repli muet
+    transformait une ligne corrompue en cotation à zéro sans aucune trace.
+    """
     value = (value or "").strip()
+    if not value:
+        return 0.0
     try:
         return float(value)
     except ValueError:
+        log.warning("Valeur numérique illisible traitée comme 0.0 : %r", value)
         return 0.0
 
 

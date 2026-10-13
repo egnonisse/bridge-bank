@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import bisect
 import json
+import logging
 import pickle
 import random
 import time
@@ -39,6 +40,8 @@ CACHE_MAX_AGE_DAYS = 7  # re-télécharger l'historique si le cache a plus d'une
 CACHE_STALE_DATA_DAYS = 4  # ... et dès que les DONNÉES ont plus de 4 jours (mtime ≠ fraîcheur)
 INACTIFS_FILE = DATA_DIR / "titres_inactifs.json"  # titres vérifiés dormants (source muette)
 INACTIF_APRES_JOURS = 8  # aligné sur cache_integrity.MAX_CACHE_AGE_DAYS
+
+log = logging.getLogger(__name__)
 
 
 def _donnees_fraiches(data: dict, today: datetime | None = None) -> bool:
@@ -95,8 +98,12 @@ def _fetch_history(api: BSApi, code: str, end: str) -> list[HistoryBar]:
     """
     try:
         return api.history(code, HISTORY_START, end)
-    except Exception:
+    except Exception as exc:
+        # B2-06 (corrigé le 13/10/2026) : le repli sur ~2 ans fait perdre jusqu'à 8 ans
+        # d'historique — il n'est JAMAIS silencieux (cache régénéré tronqué, cf. audit C9).
         recent = (datetime.now() - timedelta(days=2 * 365)).strftime("%Y%m%d")
+        log.warning("Historique %s : échec depuis %s (%s) → repli sur %s",
+                    code, HISTORY_START, exc, recent)
         return api.history(code, recent, end)
 
 
@@ -124,14 +131,27 @@ def load_all_history(api: BSApi, force: bool = False) -> dict[str, list[HistoryB
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
         futures = {pool.submit(_fetch_history, api, c, end): c for c in codes}
+        echecs: dict[str, str] = {}
+        sans_barres: list[str] = []
         for fut in as_completed(futures):
             code = futures[fut]
             try:
                 bars = [b for b in fut.result() if b.close > 0]
-            except Exception:
+            except Exception as exc:
+                # B2-06 (corrigé le 13/10/2026) : un titre en échec disparaissait du cache
+                # en silence — désormais compté et signalé en fin de collecte.
+                echecs[code] = f"{type(exc).__name__}: {exc}"
                 continue
             if bars:
                 data[code] = bars
+            else:
+                sans_barres.append(code)
+        if echecs:
+            log.warning("Collecte historique : %d titre(s) en ÉCHEC (absents du cache) — %s",
+                        len(echecs), ", ".join(sorted(echecs)))
+        if sans_barres:
+            log.warning("Collecte historique : %d titre(s) sans barres exploitables — %s",
+                        len(sans_barres), ", ".join(sorted(sans_barres)))
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     with CACHE_FILE.open("wb") as fh:

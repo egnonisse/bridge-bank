@@ -45,11 +45,30 @@ FICHIERS_REGLES = (MODULE_REGLES, MODULE_TAXATION)
 FICHIERS_SEUILS = (PROFIT_THRESHOLDS,)
 FICHIERS_CONFIG = (RACINE / "config.yaml",)
 
-# Fichiers modifiés par le fonctionnement normal (journaux append-only) : les compter comme
-# « arbre modifié » ferait porter un `*` à chaque alerte, pour toujours. Ils sont donc exclus
-# du calcul du drapeau : un journal qui s'allonge n'est pas un changement de règles.
+# Fichiers modifiés par le fonctionnement normal (journaux append-only + états de veille,
+# caches et snapshots SUIVIS par git) : les compter comme « arbre modifié » ferait porter un
+# `*` à chaque alerte, pour toujours (constaté en production le 09/10 : `b810f7d*` en
+# continu). B2-12 corrigé le 13/10/2026 : ne restent sous surveillance QUE les fichiers dont
+# le contenu définit une famille de décisions (regles.py, taxation.py, profit_thresholds.json,
+# config.yaml) et le reste du code source. Les sorties de mesure (data/test_*.json,
+# validation_longue.json, fondamentaux_historiques.json…) restent surveillées : leur contenu
+# ne change pas tout seul — s'il change sans commit, c'est un signal légitime.
 EXCLUS_DU_DRAPEAU = (
     ":(exclude)data/*.jsonl",
+    ":(exclude)data/per_cache.json",
+    ":(exclude)data/fundamentals_cache.json",
+    ":(exclude)data/portfolio.json",
+    ":(exclude)data/portfolio_state.json",
+    ":(exclude)data/reversal_profiles.json",
+    ":(exclude)data/regime_marche.json",
+    ":(exclude)data/radar_seen_state.json",
+    ":(exclude)data/radar_seen2_state.json",
+    ":(exclude)data/radar_alert_state.json",
+    ":(exclude)data/reinf_alert_state.json",
+    ":(exclude)data/spec_seen_state.json",
+    ":(exclude)data/madis_seen_state.json",
+    ":(exclude)data/prep_watch_state.json",
+    ":(exclude)data/value_new_state.json",
 )
 LONGUEUR = 12
 

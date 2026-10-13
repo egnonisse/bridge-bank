@@ -154,12 +154,12 @@ def test_ajuster_historique_rapport_et_perimetre(tmp_path):
     assert hist["SNTS"][0].close == 1000.0            # l'entrée n'est pas modifiée
 
 
-def test_ajuster_historique_sans_fichier_reference():
-    """Fichier absent -> aucune division appliquée, pas de plantage."""
-    res = do.ajuster_historique({"A": [_barre("2026-01-01", 100)]},
-                                chemin=__import__("pathlib").Path("fichier_absent_xyz.json"))
-    assert res["nb_titres_ajustes"] == 0
-    assert res["sans_division"] == ["A"]
+def test_ajuster_historique_sans_fichier_reference_leve():
+    """B2-05 (corrigé le 13/10/2026) : fichier absent -> ÉCHEC BRUYANT, plus jamais un
+    historique brut non ajusté en silence (classe de l'incident du 21/08, −96 % faux)."""
+    with pytest.raises(FileNotFoundError, match="divisions"):
+        do.ajuster_historique({"A": [_barre("2026-01-01", 100)]},
+                              chemin=__import__("pathlib").Path("fichier_absent_xyz.json"))
 
 
 # ═════════════════════════════════ cours_reels ══════════════════════════════════════

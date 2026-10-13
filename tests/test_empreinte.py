@@ -13,6 +13,49 @@ import pytest
 from src.infrastructure import empreinte
 
 
+# ═════════════ B2-12 : le drapeau `*` ne doit pas se déclencher sur du bruit ══════════
+
+def test_b2_12_les_etats_du_fonctionnement_sont_exclus_du_drapeau():
+    """Le drapeau signale un changement de RÈGLES, pas le fonctionnement normal (B2-12)."""
+    exclusions = " ".join(empreinte.EXCLUS_DU_DRAPEAU)
+    for nom in ("per_cache.json", "fundamentals_cache.json", "portfolio.json",
+                "portfolio_state.json", "reversal_profiles.json", "regime_marche.json",
+                "radar_seen_state.json", "radar_seen2_state.json", "radar_alert_state.json",
+                "reinf_alert_state.json", "spec_seen_state.json", "madis_seen_state.json",
+                "prep_watch_state.json", "value_new_state.json"):
+        assert nom in exclusions, f"{nom} (état du fonctionnement) devrait être exclu"
+    # Les fichiers dont le contenu DÉFINIT des décisions restent surveillés.
+    assert "profit_thresholds.json" not in exclusions
+    assert not any("src/" in p or "regles" in p or "taxation" in p
+                   for p in empreinte.EXCLUS_DU_DRAPEAU)
+
+
+def test_b2_12_ecrire_un_etat_ne_change_pas_le_statut_git():
+    """Fonctionnel (sur le dépôt réel) : écrire dans un fichier d'état suivi ne modifie PAS
+    la sortie de `git status` filtrée — le drapeau reste stable. Restauration garantie."""
+    import subprocess
+
+    etat = empreinte.RACINE / "data" / "per_cache.json"
+    if not etat.exists():
+        pytest.skip("per_cache.json absent de cette copie de travail")
+
+    def statut() -> str:
+        r = subprocess.run(
+            ["git", "status", "--porcelain", "--", ".", *empreinte.EXCLUS_DU_DRAPEAU],
+            cwd=str(empreinte.RACINE), capture_output=True, text=True, timeout=30,
+        )
+        return r.stdout
+
+    avant_octets = etat.read_bytes()
+    avant = statut()
+    try:
+        etat.write_bytes(avant_octets + b" ")          # le contenu change…
+        apres = statut()
+    finally:
+        etat.write_bytes(avant_octets)                 # … restauration exacte
+    assert apres == avant                              # … et le drapeau ne bouge pas
+
+
 def test_sha256_du_meme_contenu_est_stable(tmp_path):
     f = tmp_path / "a.json"
     f.write_text('{"x": 1}', encoding="utf-8")

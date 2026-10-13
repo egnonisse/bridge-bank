@@ -170,7 +170,16 @@ def ajuster_historique(hist: dict, chemin: Path | None = None) -> dict:
     try:
         par_code = charger(chemin)
     except FileNotFoundError:
-        par_code = {}
+        # B2-05 (corrigé le 13/10/2026) : NE PLUS avaler l'absence du fichier de divisions.
+        # L'ancien repli silencieux (`par_code = {}`) retournait un historique BRUT, non
+        # ajusté — la classe exacte de l'incident du 21/08/2026 (faux drawdowns de −96 %).
+        # La docstring de `charger()` le dit : « Indispensable : sans elle, les performances
+        # sont fausses ». L'échec doit être bruyant, comme dans `charger()`.
+        raise FileNotFoundError(
+            f"Fichier des divisions officielles introuvable ({chemin or 'chemin par défaut'}) : "
+            "un historique non ajusté serait FAUX (drawdowns, performances). "
+            "Vérifier data/divisions_officielles.json avant de relancer."
+        ) from None
 
     ajuste: dict = {}
     rapport: list[dict] = []
