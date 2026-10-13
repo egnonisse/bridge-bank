@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**215 définitions** pour **198 constantes distinctes**.
+**217 définitions** pour **200 constantes distinctes**.
 
 ---
 
@@ -134,7 +134,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (109)
+### autre (111)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -161,7 +161,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `DATE_PUBLICATION_BPA` | `{annee}-06-30` | src.analyse.fondamentaux_historiques |
 | `DIVISIONS_OFFICIELLES` | `<expression: DATA_DIR / 'divisions_officielles.json'>` | src.infrastructure.paths |
 | `DIV_CUT_RATIO` | `0.5` | src.portfolio |
-| `EXCLUS_DU_DRAPEAU` | `[':(exclude)data/*.jsonl']` | src.infrastructure.empreinte |
+| `EXCLUS_DU_DRAPEAU` | `[':(exclude)data/*.jsonl', ':(exclude)data/per_cache.json', ':(exclude)data/fundamentals_cache.json', ':(exclude)data/portfolio.json', ':(exclude)data/portfolio_state.json', ':(exclude)data/reversal_profiles.json', ':(exclude)data/regime_marche.json', ':(exclude)data/radar_seen_state.json', ':(exclude)data/radar_seen2_state.json', ':(exclude)data/radar_alert_state.json', ':(exclude)data/reinf_alert_state.json', ':(exclude)data/spec_seen_state.json', ':(exclude)data/madis_seen_state.json', ':(exclude)data/prep_watch_state.json', ':(exclude)data/value_new_state.json']` | src.infrastructure.empreinte |
 | `FENETRE` | `200` | src.calibration.regime_marche |
 | `FICHIER` | `<expression: RACINE / 'data' / 'divisions_officielles.json'>` | src.collecte.divisions_officielles |
 | `FICHIERS_CONFIG` | `<expression: (RACINE / 'config.yaml',)>` | src.infrastructure.empreinte |
@@ -181,8 +181,10 @@ chemin distinct dans chaque module). Rien à corriger.
 | `LEVEL_EXIT` | `4` | src.portfolio |
 | `LEVEL_FUNDAMENTAL` | `3` | src.portfolio |
 | `LEVEL_INFO` | `1` | src.portfolio |
+| `LIMITE_TELEGRAM` | `4096` | src.notify |
 | `LOCK_STALE_SECONDS` | `60` | src.collecte.fundamentals |
 | `LONGUEUR` | `12` | src.infrastructure.empreinte |
+| `MARGE_DECOUPE` | `96` | src.notify |
 | `MAX_COMPARE_AGE_DAYS` | `3` | src.collecte.cache_integrity |
 | `MAX_JUMP` | `3.0` | src.collecte.cache_integrity |
 | `METHODE_DEFAUT` | `episodes de +seuil % en 20 seances, dedoublonnes par vague` | src.calibration.seuils_vente |

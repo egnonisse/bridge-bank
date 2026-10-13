@@ -240,7 +240,21 @@
  "src.collecte.nettoyage_aberrantes.SEUIL": 5.0,
  "src.collecte.nettoyage_aberrantes.VOISINS": 20,
  "src.infrastructure.empreinte.EXCLUS_DU_DRAPEAU": [
-  ":(exclude)data/*.jsonl"
+  ":(exclude)data/*.jsonl",
+  ":(exclude)data/per_cache.json",
+  ":(exclude)data/fundamentals_cache.json",
+  ":(exclude)data/portfolio.json",
+  ":(exclude)data/portfolio_state.json",
+  ":(exclude)data/reversal_profiles.json",
+  ":(exclude)data/regime_marche.json",
+  ":(exclude)data/radar_seen_state.json",
+  ":(exclude)data/radar_seen2_state.json",
+  ":(exclude)data/radar_alert_state.json",
+  ":(exclude)data/reinf_alert_state.json",
+  ":(exclude)data/spec_seen_state.json",
+  ":(exclude)data/madis_seen_state.json",
+  ":(exclude)data/prep_watch_state.json",
+  ":(exclude)data/value_new_state.json"
  ],
  "src.infrastructure.empreinte.FICHIERS_CONFIG": [
   "<Path config.yaml>"
@@ -273,6 +287,8 @@
  "src.infrastructure.paths.SRC_DIR": "<Path src>",
  "src.infrastructure.paths.TESTS_DIR": "<Path tests>",
  "src.main.CONFIG_PATH": "<Path config.yaml>",
+ "src.notify.LIMITE_TELEGRAM": 4096,
+ "src.notify.MARGE_DECOUPE": 96,
  "src.notify.TELEGRAM_API": "https://api.telegram.org/bot{token}/sendMessage",
  "src.portfolio.ALERT_COOLDOWN_DAYS": 7,
  "src.portfolio.ALERT_STATE_FILE": "<Path portf_alert_state.json>",
