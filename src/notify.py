@@ -21,6 +21,35 @@ log = logging.getLogger(__name__)
 
 TELEGRAM_API = "https://api.telegram.org/bot{token}/sendMessage"
 
+# Limite dure de l'API Telegram (400 « message is too long » au-delà) ; la marge couvre
+# le suffixe d'empreinte éventuel (`_suffixe`), ajouté avant le découpage.
+LIMITE_TELEGRAM = 4096
+MARGE_DECOUPE = 96
+
+
+def _decouper(texte: str, limite: int = LIMITE_TELEGRAM - MARGE_DECOUPE) -> list[str]:
+    """Découpe un message trop long en morceaux ≤ limite, aux frontières de lignes.
+
+    Une ligne seule plus longue que la limite est coupée brutalement (cas rare : une
+    alerte est faite de lignes courtes). Un texte vide donne un unique morceau vide,
+    que l'appelant envoie tel quel (comportement d'origine conservé).
+    """
+    if len(texte) <= limite:
+        return [texte]
+    morceaux: list[str] = []
+    courant = ""
+    for ligne in texte.splitlines(keepends=True):
+        if len(courant) + len(ligne) > limite and courant:
+            morceaux.append(courant.rstrip())
+            courant = ""
+        while len(ligne) > limite:
+            morceaux.append(ligne[:limite])
+            ligne = ligne[limite:]
+        courant += ligne
+    if courant.strip():
+        morceaux.append(courant.rstrip())
+    return morceaux or [""]
+
 
 def _origine() -> str:
     """Module ayant demandé l'envoi (« src.main »), lu dans la pile d'appels.
@@ -78,16 +107,19 @@ class TelegramNotifier:
         if not self.enabled:
             log.warning("Telegram non configuré (token/chat_id manquants)")
             return False
-        try:
-            resp = requests.post(
-                TELEGRAM_API.format(token=self.bot_token),
-                json={"chat_id": self.chat_id, "text": texte, "disable_web_page_preview": True},
-                timeout=15,
-            )
-            if resp.status_code != 200:
-                log.error("Telegram %s: %s", resp.status_code, resp.text[:200])
+        # Découpage (13/10/2026) : l'API refuse > 4096 caractères par message — sans lui,
+        # un rapport long (radar, analyse value) était PERDU à l'envoi (B2-07 et radar).
+        for morceau in _decouper(texte):
+            try:
+                resp = requests.post(
+                    TELEGRAM_API.format(token=self.bot_token),
+                    json={"chat_id": self.chat_id, "text": morceau, "disable_web_page_preview": True},
+                    timeout=15,
+                )
+                if resp.status_code != 200:
+                    log.error("Telegram %s: %s", resp.status_code, resp.text[:200])
+                    return False
+            except requests.RequestException as exc:
+                log.error("Telegram send failed: %s", exc)
                 return False
-            return True
-        except requests.RequestException as exc:
-            log.error("Telegram send failed: %s", exc)
-            return False
+        return True

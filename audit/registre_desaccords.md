@@ -156,6 +156,28 @@ dans 6 modules ; test gardien **récursif** + littéraux fiscaux + `AnnAssign`) 
 `regles.PROFIT_ALERT_THRESHOLD`) · **A3-07** (divergence IPS documentée dans la docstring
 du moteur). Suite : **374 passed, 0 xfailed** (+13 tests ; plus aucun xfail).
 
+### Mise à jour du 13/10/2026 (nuit) — LOT 4 · 1re partie : LIVRAISON DES JOBS AGENTS (B2-07 + radar)
+
+**Constat en réel** : le job value (`9bf21948f66b`) échouait à CHAQUE run depuis ≥ le 07/10
+(`[blocked_config:silent] delivery platform 'telegram' has no gateway credentials`) et le
+radar (`e8974cd7337d`) était en `delivery: suppressed` sur TOUS ses runs — **aucun rapport
+de ces 2 jobs n'atteignait LEO**. Cause : la passerelle Telegram d'Hermes n'est pas
+connectée sur cette machine (s'applique la règle du 18/09 : les crons livrent par le
+NOTIFIER INTERNE du projet).
+
+**Correction** :
+- `src/notify.py` : découpage des messages > 4096 caractères (limite API Telegram) aux
+  frontières de lignes — un rapport long était PERDU à l'envoi (7 tests, `tests/test_notify.py`).
+- `scripts/notifier_envoyer.py` : pont CLI agent → notifier interne (« envoyé »/« ÉCHEC »,
+  journalisé dans `data/alertes_journal.jsonl`).
+- Les 2 jobs passés en `deliver=local` + étape d'ENVOI explicite dans le prompt (+ note
+  anti-conflit contre le bandeau système « do NOT deliver the output yourself »).
+
+**Preuves (13/10 ~00h20)** : message de test reçu (299 car.) ; run value → `completed`,
+réponse « ✅ Analyse value : rien de nouveau aujourd'hui. » ; run radar → `completed`,
+monitor `no_change` (normal sans code L1/L2) ; plus aucun `failed`/`blocked_config`.
+Suite : **468 passed, 0 xfailed**. Le premier rapport réel validera la chaîne de bout en bout.
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,
