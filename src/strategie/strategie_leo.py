@@ -106,6 +106,9 @@ class Position:
     code: str
     actions: float = 0.0
     cout_total: float = 0.0            # frais inclus
+    investi_total: float = 0.0         # A3-12(d) : capital CUMULÉ investi — ne redescend
+                                       # pas aux ventes (le plafond de ligne ne se contourne
+                                       # plus en réinvestissant le produit d'une vente)
     tranches_achetees: int = 0
     date_dernier_achat: str = ""
     cours_dernier_achat: float = 0.0
@@ -168,6 +171,9 @@ class MoteurLeo:
         self.frais_payes = 0.0
         self.nb_achats = 0
         self.nb_ventes = 0
+        # A3-12(a) : dividendes CUMULÉS du moteur — une position soldée disparaît de
+        # `positions` (pop) mais ses dividendes restent comptés (revenu réel encaissé).
+        self.dividendes_encaisses = 0.0
         self.journal: list[tuple] = []
 
     # ------------------------------------------------------------------
@@ -206,6 +212,7 @@ class MoteurLeo:
         pos = self.positions.setdefault(code, Position(code=code))
         pos.actions += actions
         pos.cout_total += montant          # frais inclus dans le CMP
+        pos.investi_total += montant       # A3-12(d) : plafond mesuré sur le cumul investi
         pos.tranches_achetees += 1
         pos.date_dernier_achat = date
         pos.cours_dernier_achat = cours
@@ -316,13 +323,31 @@ class MoteurLeo:
                 if dd < pire_drawdown:
                     pire_drawdown = dd
 
+            # --- 2. DIVIDENDES (AVANT les ordres du jour — A3-12(c)) -------------
+            # Le droit au dividende va aux détenteurs d'AVANT l'ex-date : le crédit se
+            # fait donc sur les positions d'ENTRÉE de séance. Avant cette correction,
+            # un achat le jour de l'ex-date touchait un dividende qu'un détenteur réel
+            # n'aurait pas eu (et une vente ce jour-là en perdait un dû).
+            if i > 0:
+                for code, pos in list(self.positions.items()):
+                    if code not in series:
+                        continue
+                    d = self._dividendes_periode(code, toutes_dates[i - 1], date)
+                    if d > 0:
+                        montant = pos.actions * d
+                        self.cash += montant
+                        pos.dividendes += montant
+                        self.dividendes_encaisses += montant   # A3-12(a)
+                        self.journal.append((date, "DIVIDENDE", code,
+                                             round(montant), ""))
+
             for code, (dates, closes, par_date) in series.items():
                 cours = par_date.get(date)
                 if cours is None:
                     continue
                 pos = self.positions.get(code)
 
-                # --- 2. PALIERS DE SORTIE --------------------------------
+                # --- 3. PALIERS DE SORTIE --------------------------------
                 # On ne vend chaque palier qu'UNE fois : la liste des seuils
                 # deja executes est portee par pos.ventes (marqueur `seuil`).
                 if pos is not None and self.p.paliers_actifs and pos.cmp:
@@ -337,28 +362,34 @@ class MoteurLeo:
                                              f"palier +{seuil*100:.0f} %",
                                              marqueur=seuil)
 
-                # --- 3. ENTREE PROGRESSIVE / RENFORCEMENT ----------------
+                # --- 4. ENTREE PROGRESSIVE / RENFORCEMENT ----------------
                 dispo = self.cash - self.capital * self.p.cash_cible
                 # Taille d'une tranche : le plafond de la ligne divise par le
                 # nombre de tranches prevues. Ainsi TOUTES les variantes engagent
                 # le meme capital par titre ; seule la repartition dans le temps
                 # change (c'est la question posee).
                 tranche = self.p.budget_max_ligne / max(self.p.nb_tranches, 1)
-                engage = pos.cout_total if pos else 0.0
+                # A3-12(d) : le plafond se mesure sur le capital CUMULÉ investi
+                # (`investi_total`) — `cout_total` diminue au prorata des ventes, ce
+                # qui permettait de réinvestir le produit d'une vente au-delà du
+                # plafond de ligne.
+                engage = pos.investi_total if pos else 0.0
 
                 if pos is None:
-                    # Premiere entree : ouvre la position
+                    # Premiere entree : ouvre la position.
+                    # A3-12(b) : montant borné par le disponible — la réserve de cash
+                    # (cash_cible) ne peut plus être franchie d'une demi-tranche.
                     if dispo > tranche * 0.5:
-                        self._acheter(code, date, cours, tranche,
+                        self._acheter(code, date, cours, min(tranche, dispo),
                                       f"entree 1/{self.p.nb_tranches}")
 
                 elif pos.tranches_achetees < self.p.nb_tranches:
-                    # Tranches suivantes : espacees dans le temps
+                    # Tranches suivantes : espacees dans le temps (idem A3-12(b))
                     if self._jours_ecoules(pos.date_dernier_achat, date,
                                            dates) >= self.p.espacement_jours:
                         if dispo > tranche * 0.5:
                             k = pos.tranches_achetees + 1
-                            self._acheter(code, date, cours, tranche,
+                            self._acheter(code, date, cours, min(tranche, dispo),
                                           f"entree {k}/{self.p.nb_tranches}")
 
                 # Renforcement sur faiblesse, DANS la limite du plafond de ligne
@@ -367,21 +398,9 @@ class MoteurLeo:
                     baisse = cours / pos.cours_dernier_achat - 1
                     if (baisse <= -self.p.seuil_renforcement
                             and reste > tranche * 0.5 and dispo > tranche * 0.5):
-                        self._acheter(code, date, cours, min(tranche, reste),
+                        self._acheter(code, date, cours,
+                                      min(tranche, reste, dispo),
                                       f"renfort ({baisse*100:+.1f} %)")
-
-            # --- 4. DIVIDENDES (credites chaque jour) -------------------
-            if i > 0:
-                for code, pos in list(self.positions.items()):
-                    if code not in series:
-                        continue
-                    d = self._dividendes_periode(code, toutes_dates[i - 1], date)
-                    if d > 0:
-                        montant = pos.actions * d
-                        self.cash += montant
-                        pos.dividendes += montant
-                        self.journal.append((date, "DIVIDENDE", code,
-                                             round(montant), ""))
 
         # --- 5. VALEUR FINALE -------------------------------------------
         derniere = toutes_dates[-1]
@@ -414,7 +433,7 @@ class MoteurLeo:
         r.capital_initial = self.capital
         r.cash_final = self.cash
         r.valeur_finale = valeur_titres + self.cash
-        r.dividendes = sum(p.dividendes for p in self.positions.values())
+        r.dividendes = self.dividendes_encaisses   # A3-12(a) : inclut les positions soldées
         r.frais_payes = self.frais_payes
         r.nb_achats = self.nb_achats
         r.nb_ventes = self.nb_ventes

@@ -30,10 +30,10 @@ en disent, un par un — **aucun ne reste sans réponse**.
 |---|---|---|---|
 | **1** | **SÉLECTION** (grandes valeurs à dividende) | **Neutre en performance, positif en revenu** | noyau **+1,1 pt** vs hasard (0/7 significatif) mais **10,65 %/an** encaissables — chiffres **recalculés le 12/10/2026** sur données et code corrigés (voir encadré) |
 | **2** | **ENTRÉE PROGRESSIVE** (par tranches) | **Neutre** (−0,5 à +0,5 pt, 52-54 % de réussite) | **43 227 observations, 47 titres** (re-mesuré le 12/10 ; l'écart affiché est « négligeable — le progressif ne crée ni ne détruit de valeur ») |
-| **3** | **RENFORCEMENT sur faiblesse** | **Gagnant en krach, coûteux en hausse** | **+26,2 pt** ajusté (re-mesuré) ; **63-69 %** de réussite en entrant en année de krach (**5 196 obs. — identique** au chiffre d'origine) |
-| **4** | **PALIERS de sortie** | **Coûte −45,4 pts** (re-mesuré) ; divise la volatilité **÷3,6 confirmé au centième** (écart-type 82,0 % → 22,5 % = 3,64) | attribution + **38 262 trades** (re-mesuré ; les 37 514 annoncés) + challenge (sous-représentés chez les gagnantes) |
+| **3** | **RENFORCEMENT sur faiblesse** | **Gagnant en krach, coûteux en hausse** | **+26,7 pt** ajusté (re-mesuré le 13/10) ; **63-69 %** de réussite en entrant en année de krach (**5 196 obs. — identique** au chiffre d'origine) |
+| **4** | **PALIERS de sortie** | **Coûte −49,0 pts** (re-mesuré le 13/10) ; divise la volatilité **÷3,6 confirmé au centième** (écart-type 82,0 % → 22,5 % = 3,64) | attribution + **38 262 trades** (re-mesuré ; les 37 514 annoncés) + challenge (sous-représentés chez les gagnantes) |
 | **5** | **REBALANCEMENT** | **Positif à TOUS les horizons** : +3,2 à +5,8 pt (3 ans), +5,4 à +7,3 pt (5 ans), **+8,4 à +13,8 pt (10 ans)** ; réduit le pire cas (−12,2 % → −0,4 %) | 126 paniers de 5 lignes, frais 1,4 % compris. **Re-mesuré le 12/10 : le 10 ans s'inverse** (l'ancien « −2 à −9 pt » devient positif — voir encadré) |
-| — | **BILAN** : stratégie complète vs noyau passif | **−30,3 pts**, mais drawdown −17,3 % contre −26,2 % | attribution |
+| — | **BILAN** : stratégie complète vs noyau passif | **−43,0 pts**, mais drawdown −17,3 % contre −26,2 % | attribution |
 
 > **Mise à jour du 12/10/2026 — recalcul après les corrections d'audit.**
 > La ligne 1 a été **remesurée** sur les données et le code corrigés (look-aheads BPA/TTM
@@ -96,9 +96,12 @@ bilan. C'est aussi ce qu'a trouvé le challenge multi-modèles, par un chemin in
 > **Provenance** : les valeurs ci-dessous sont celles **enregistrées le 08/10/2026**, telles
 > quelles. La **re-mesure du 12/10/2026** (données et code corrigés — `audit/recalcul_donnees_corrigees.md`
 > §9, preuve brute `audit/preuves/attribution_remesuree_2026-10-12.txt`) donne : **A** 232,2 % · 94,9 % ·
-> 244,7 % (référence) · **B** −31,2 pt · **C +26,2 pt** · **D −45,4 pt**. Même sens, même ampleur ;
-> le coût des paliers est même un peu **plus élevé** qu'enregistré. Les écarts ci-dessous sont donc
-> à lire comme l'état du 08/10, pas comme la mesure courante.
+> 244,7 % (référence) · **B** −31,2 pt · **C +26,2 pt** · **D −45,4 pt**. La **re-mesure du 13/10/2026**
+> (moteur corrigé — lot 4, A3-12 ; preuve brute `audit/preuves/attribution_remesuree_2026-10-13.txt`)
+> donne : **A** 233,0 % · 94,9 % · 245,5 % (référence) · **B** −43,0 pt · **C +26,7 pt** · **D −49,0 pt**.
+> Même sens, même direction ; le coût des paliers est **encore plus élevé** qu'enregistré (la correction
+> du réinvestissement des ventes retire un gain qui n'aurait pas dû être compté). Les écarts ci-dessous
+> sont donc à lire comme l'état du 08/10, pas comme la mesure courante.
 
 Rendement **ajusté à l'exposition** (sinon on compare une stratégie investie à une
 stratégie à moitié en cash et on ne mesure que la quantité de cash).

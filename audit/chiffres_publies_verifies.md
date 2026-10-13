@@ -50,3 +50,22 @@ commit `80437e0`. Sorties brutes : `audit/preuves/remesure_<script>.txt`.
 Étendre la même règle aux autres chiffres du projet qui fondent une règle : les seuils par titre
 (calibrés sur les cours, re-mesurables en une commande via `seuils_vente.calibrer`), les niveaux
 d'alerte, et les profils de sortie. La re-mesure est bon marché ; c'est son absence qui coûte cher.
+
+## Mise à jour du 13/10/2026 — re-mesure après les corrections du moteur (lot 4, A3-12)
+
+La remesure du 13/10 (`audit/preuves/attribution_remesuree_2026-10-13.txt`) — après les 4
+corrections du moteur de simulation (A3-12 : dividendes des positions soldées conservés,
+réserve jamais franchie, dividende crédité avant les ordres du jour, plafond non contournable
+par le réinvestissement d'une vente) — donne :
+
+| Mesure (attribution, 5 titres réels) | 12/10 | **13/10 (moteur corrigé)** |
+|---|---|---|
+| Noyau passif (A) | 232,2 % · expo 94,9 % | **233,0 % · expo 94,9 %** |
+| Renforcement (C) | +26,2 pt | **+26,7 pt** |
+| Paliers (D) | −45,4 pt | **−49,0 pt** |
+| Stratégie complète (B) | −31,2 pt | **−43,0 pt** |
+
+**Le sens est intact, le constat renforcé** (les paliers coûtent davantage). La référence
+`audit/preuves/chiffres_reference.json` est mise à jour (provenance 13/10) ; les invariants
+(B1) et le rapport 28 ans sont alignés — jamais de réécriture silencieuse : l'ancien chiffre
+reste daté dans l'historique. Détail : `docs/DECISION-2026-10-13-lot4-residuels.md`.

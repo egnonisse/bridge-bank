@@ -174,7 +174,10 @@ def _moteur_avec_position_pleine(cash, closes):
                           budget_max_ligne=300_000.0), capital=300_000)
     m.cash = cash
     pos = m.positions.setdefault("X", Position(code="X"))
-    pos.actions, pos.cout_total, pos.tranches_achetees = 200.0, 200_000.0, 3
+    # A3-12(d) : le plafond se mesure sur le cumul investi — le helper le renseigne
+    # comme le ferait une vraie séquence d'achats (200 k déjà investis).
+    pos.actions, pos.cout_total, pos.investi_total, pos.tranches_achetees = \
+        200.0, 200_000.0, 200_000.0, 3
     pos.cours_dernier_achat, pos.date_dernier_achat = 1_000.0, "2026-01-01"
     return m
 
@@ -205,9 +208,10 @@ def test_renfort_bloque_si_plafond_ou_cash_insuffisant():
     m = _moteur_avec_position_pleine(cash=40_000.0, closes=closes)
     m.executer("2026-01-01", "2026-02-09", univers=["X"])
     assert m.nb_achats == 0
-    # Plafond déjà consommé : plus de marge (reste 0).
+    # Plafond déjà consommé : plus de marge (reste 0). Le plafond se mesure sur le cumul
+    # investi (A3-12(d)) — on simule donc un titre ayant déjà investi ses 300 k.
     m2 = _moteur_avec_position_pleine(cash=100_000.0, closes=closes)
-    m2.positions["X"].cout_total = 300_000.0     # plafond atteint
+    m2.positions["X"].investi_total = 300_000.0   # plafond atteint
     m2.executer("2026-01-01", "2026-02-09", univers=["X"])
     assert m2.nb_achats == 0
 
@@ -294,3 +298,73 @@ def test_variantes_de_l_attribution():
     paliers = variante_paliers_seuls()
     assert paliers.paliers_actifs and not paliers.renforcement_actif
     assert paliers.nb_tranches == 1
+
+
+# ═══════════════════════════ A3-12 — moteur honnête (4 corrections) ═══════════════════
+# Audit du 12/10 : (a) dividendes d'une position soldée perdus du compte-rendu ;
+# (b) réserve de cash franchie d'une demi-tranche ; (c) dividende crédité après les ordres
+# du jour (achat à l'ex-date rémunéré à tort) ; (d) plafond de ligne contournable en
+# réinvestissant le produit d'une vente. Corrigés le 13/10.
+
+def test_a3_12a_dividendes_conserves_apres_vente_totale():
+    """Une position soldée disparaît de `positions` (pop) mais son dividende reste dans le
+    compte-rendu — c'est un revenu réellement encaissé (avant : perdu du total).
+
+    La vente est placée au DERNIER jour pour isoler le compte-rendu : le ré-achat après une
+    ligne soldée est un comportement séparé du moteur (jamais atteint avec les paliers réels
+    ⅓ + ⅓ — c'est pourquoi une vente totale est ici forcée)."""
+    closes = [1_000.0] * 29 + [1_300.0]   # +30 % au dernier jour : le palier solde la ligne
+    hf = {"X": SimpleNamespace(dividendes=[{"ex_date": "2026-01-02", "montant": 50.0}])}
+    m = MoteurLeo({"X": _serie(closes)}, hf,
+                  _params(paliers_actifs=True, seuils_vente=((0.20, 1.0),)),
+                  capital=100_000)
+    r = m.executer("2026-01-01", "2026-02-09", univers=["X"])
+    assert "X" not in m.positions                          # la ligne est soldée…
+    actions = (100_000 - _cout_ordre(100_000)) / 1_000     # …mais le dividende compte
+    attendu = actions * 50.0 * (1 - IRVM_DIVIDEND_TAX)
+    assert r.dividendes == pytest.approx(attendu)
+    assert r.dividendes > 0
+
+
+def test_a3_12b_reserve_de_cash_jamais_franchie_par_la_tranche():
+    """dispo (55 k) > tranche/2 mais < tranche (100 k) : l'achat se cale sur le disponible —
+    la réserve cash_cible (45 %) n'est jamais entamée (avant : achat de 100 k, cash à 0)."""
+    closes = [1_000.0] * 30
+    m = MoteurLeo({"X": _serie(closes)}, {}, _params(cash_cible=0.45), capital=100_000)
+    r = m.executer("2026-01-01", "2026-02-09", univers=["X"])
+    assert m.positions["X"].cout_total == pytest.approx(55_000.0)
+    assert r.cash_final == pytest.approx(45_000.0)      # réserve intacte au franc près
+
+
+def test_a3_12c_achat_le_jour_de_l_ex_date_ne_touche_pas_le_dividende():
+    """Le droit au dividende va aux détenteurs d'AVANT l'ex-date : la tranche achetée LE
+    JOUR du détachement n'est pas rémunérée (avant : crédit après les ordres, donc sur
+    les deux tranches)."""
+    closes = [1_000.0] * 30
+    hf = {"X": SimpleNamespace(dividendes=[{"ex_date": "2026-01-02", "montant": 50.0}])}
+    m = MoteurLeo({"X": _serie(closes)}, hf,
+                  _params(nb_tranches=2, espacement_jours=0,
+                          budget_max_ligne=100_000.0),
+                  capital=100_000)
+    m.executer("2026-01-01", "2026-02-09", univers=["X"])
+    actions_tranche1 = (50_000 - _cout_ordre(50_000)) / 1_000
+    attendu = actions_tranche1 * 50.0 * (1 - IRVM_DIVIDEND_TAX)
+    assert m.positions["X"].dividendes == pytest.approx(attendu)
+
+
+def test_a3_12d_plafond_non_contournable_en_reinvestissant_une_vente():
+    """Après une vente, le plafond se mesure sur le cumul INVESTI : le produit de la vente
+    ne peut plus être réinvesti au-delà du plafond (avant : `cout_total` baissait au
+    prorata, rouvrant 33 k de marge et le renfort passait)."""
+    closes = [1_000.0] * 4 + [1_250.0] * 2 + [820.0] * 24   # palier +25 %, puis −18 %
+    m = MoteurLeo({"X": _serie(closes)}, {},
+                  _params(nb_tranches=2, espacement_jours=0, renforcement_actif=True,
+                          seuil_renforcement=0.045, paliers_actifs=True,
+                          seuils_vente=((0.20, 1 / 3),), budget_max_ligne=100_000.0),
+                  capital=1_000_000)
+    m.executer("2026-01-01", "2026-02-09", univers=["X"])
+    motifs = [j[4] for j in m.journal if j[1] == "ACHAT"]
+    assert not any("renfort" in motif for motif in motifs)
+    # Contrôle : la vente du palier a bien eu lieu (sinon le test ne prouverait rien).
+    assert any(j[1] == "VENTE" for j in m.journal)
+    assert m.positions["X"].investi_total == pytest.approx(100_000.0)   # plafond atteint

@@ -1,9 +1,9 @@
 {
-  "_note": "Chiffres publiés — valeurs de référence gelées. Re-mesurés le 12/10/2026 (données et code corrigés à cette date). Toute re-mesure qui s'en écarte doit être ACTÉE ici et dans les documents (jamais une réécriture silencieuse).",
+  "_note": "Chiffres publiés — valeurs de référence gelées. Re-mesurés le 12/10/2026 (données et code corrigés à cette date), puis l'attribution re-mesurée le 13/10/2026 après les corrections du moteur A3-12 (lot 4 — voir docs/DECISION-2026-10-13-lot4-residuels.md). Toute re-mesure qui s'en écarte doit être ACTÉE ici et dans les documents (jamais une réécriture silencieuse).",
   "_provenance": {
-    "date": "2026-10-12",
-    "preuves_brutes": "audit/preuves/remesure_*.txt + audit/preuves/attribution_remesuree_2026-10-12.txt",
-    "documents": "audit/chiffres_publies_verifies.md + docs/INVARIANTS-METIER.md (B1)",
+    "date": "2026-10-13",
+    "preuves_brutes": "audit/preuves/remesure_*.txt + audit/preuves/attribution_remesuree_2026-10-12.txt + audit/preuves/attribution_remesuree_2026-10-13.txt",
+    "documents": "audit/chiffres_publies_verifies.md + docs/INVARIANTS-METIER.md (B1) + docs/RAPPORT-VALIDATION-28-ANS.md",
     "rejeu": "scripts/verifier_chiffres_publies.py (~15 min, à la demande)"
   },
   "entree_progressive": {
@@ -39,12 +39,12 @@
   "attribution": {
     "script": "scripts/tester_strategie_leo.py",
     "normalise_vs_noyau_pt": {
-      "renforcement": 26.2,
-      "paliers": -45.4,
-      "strategie_complete": -31.2
+      "renforcement": 26.7,
+      "paliers": -49.0,
+      "strategie_complete": -43.0
     },
     "noyau": {
-      "rendement_pct": 232.2,
+      "rendement_pct": 233.0,
       "exposition_pct": 94.9
     }
   },

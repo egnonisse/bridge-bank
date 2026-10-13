@@ -200,6 +200,25 @@ complet des chiffres publiés du 13/10 : EXIT 0 — aucun écart** (les 6 mesure
 sont identiques ; `git status -- data/` vide après rejeu : sorties identiques au bit près).
 Suite : **474 passed, 0 xfailed**.
 
+### Mise à jour du 13/10/2026 (nuit) — LOT 4 · 3e partie : MOTEUR A3-12 + CHIFFRES PUBLIÉS
+
+**A3-12** (4 défauts du moteur de simulation, P2) corrigés : (a) dividendes d'une position
+soldée conservés au compte-rendu (cumul moteur) ; (b) réserve de cash jamais franchie par une
+tranche (montant borné par le disponible) ; (c) dividende crédité AVANT les ordres du jour —
+le droit va aux détenteurs d'avant l'ex-date ; (d) plafond de ligne mesuré sur le cumul
+investi (`investi_total`) — plus de réinvestissement du produit d'une vente au-delà du
+plafond.
+
+**Conséquence assumée sur les chiffres publiés** (re-mesure du 13/10, preuve
+`audit/preuves/attribution_remesuree_2026-10-13.txt`) : noyau 232,2 → **233,0 %** ;
+renforcement +26,2 → **+26,7 pt** ; paliers −45,4 → **−49,0 pt** ; complète −31,2 →
+**−43,0 pt**. Sens intact, constat renforcé (les paliers coûtent davantage). Référence
+(`chiffres_reference.json`), invariant B1 (`INVARIANTS-METIER.md`) et rapport 28 ans alignés —
+jamais de réécriture silencieuse : l'ancien chiffre reste daté. Détail :
+`docs/DECISION-2026-10-13-lot4-residuels.md`.
+
+Suite : **484 passed, 0 xfailed**.
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,
