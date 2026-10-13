@@ -7,7 +7,7 @@
     "horizon_probabilite": 20,
     "horizon_descriptif": 60,
     "min_episodes": 8,
-    "cache_signature": "0974e909260fcf09"
+    "cache_signature": "b35e6f72203e835d"
   },
   "SIVC": {
     "seuil_pct": 13,
@@ -22,62 +22,6 @@
     "trough_delay_median": 22,
     "trough_depth_median": -12.3,
     "trough_depth_worst": -46.9
-  },
-  "BNBC": {
-    "seuil_pct": 13,
-    "episodes": 33,
-    "pct_down_20j": 58,
-    "borne_basse": 41,
-    "significatif": false,
-    "median_5j": -0.4,
-    "median_20j": -2.2,
-    "episodes_60j": 32,
-    "median_60j": -3.7,
-    "trough_delay_median": 22,
-    "trough_depth_median": -15.1,
-    "trough_depth_worst": -34.2
-  },
-  "BICC": {
-    "seuil_pct": 13,
-    "episodes": 24,
-    "pct_down_20j": 38,
-    "borne_basse": 21,
-    "significatif": false,
-    "median_5j": 1.3,
-    "median_20j": 5.1,
-    "episodes_60j": 23,
-    "median_60j": 0.8,
-    "trough_delay_median": 19,
-    "trough_depth_median": -6.7,
-    "trough_depth_worst": -91.2
-  },
-  "BOAN": {
-    "seuil_pct": 13,
-    "episodes": 26,
-    "pct_down_20j": 54,
-    "borne_basse": 35,
-    "significatif": false,
-    "median_5j": -0.0,
-    "median_20j": -1.0,
-    "episodes_60j": 25,
-    "median_60j": 1.5,
-    "trough_delay_median": 28,
-    "trough_depth_median": -9.0,
-    "trough_depth_worst": -48.0
-  },
-  "BOAC": {
-    "seuil_pct": 13,
-    "episodes": 33,
-    "pct_down_20j": 52,
-    "borne_basse": 35,
-    "significatif": false,
-    "median_5j": -1.4,
-    "median_20j": -0.7,
-    "episodes_60j": 31,
-    "median_60j": 1.0,
-    "trough_delay_median": 24,
-    "trough_depth_median": -8.2,
-    "trough_depth_worst": -60.5
   },
   "BOABF": {
     "seuil_pct": 13,
@@ -121,20 +65,6 @@
     "trough_depth_median": -6.2,
     "trough_depth_worst": -32.3
   },
-  "CFAC": {
-    "seuil_pct": 13,
-    "episodes": 33,
-    "pct_down_20j": 55,
-    "borne_basse": 38,
-    "significatif": false,
-    "median_5j": 1.1,
-    "median_20j": -1.1,
-    "episodes_60j": 33,
-    "median_60j": -3.5,
-    "trough_delay_median": 24,
-    "trough_depth_median": -14.7,
-    "trough_depth_worst": -99.0
-  },
   "BOAS": {
     "seuil_pct": 13,
     "episodes": 29,
@@ -149,19 +79,19 @@
     "trough_depth_median": -5.9,
     "trough_depth_worst": -59.5
   },
-  "CIEC": {
+  "BICC": {
     "seuil_pct": 13,
-    "episodes": 29,
-    "pct_down_20j": 55,
-    "borne_basse": 38,
+    "episodes": 24,
+    "pct_down_20j": 38,
+    "borne_basse": 21,
     "significatif": false,
-    "median_5j": -1.1,
-    "median_20j": -1.3,
-    "episodes_60j": 28,
-    "median_60j": 2.2,
-    "trough_delay_median": 22,
-    "trough_depth_median": -11.4,
-    "trough_depth_worst": -39.8
+    "median_5j": 1.3,
+    "median_20j": 5.1,
+    "episodes_60j": 23,
+    "median_60j": 0.8,
+    "trough_delay_median": 19,
+    "trough_depth_median": -6.7,
+    "trough_depth_worst": -91.2
   },
   "SDSC": {
     "seuil_pct": 13,
@@ -177,6 +107,20 @@
     "trough_depth_median": -13.9,
     "trough_depth_worst": -37.5
   },
+  "CIEC": {
+    "seuil_pct": 13,
+    "episodes": 29,
+    "pct_down_20j": 55,
+    "borne_basse": 38,
+    "significatif": false,
+    "median_5j": -1.1,
+    "median_20j": -1.3,
+    "episodes_60j": 28,
+    "median_60j": 2.2,
+    "trough_delay_median": 22,
+    "trough_depth_median": -11.4,
+    "trough_depth_worst": -39.8
+  },
   "SEMC": {
     "seuil_pct": 13,
     "episodes": 19,
@@ -191,33 +135,19 @@
     "trough_depth_median": -10.9,
     "trough_depth_worst": -98.1
   },
-  "CBIBF": {
+  "CFAC": {
     "seuil_pct": 13,
-    "episodes": 15,
-    "pct_down_20j": 47,
-    "borne_basse": 25,
+    "episodes": 33,
+    "pct_down_20j": 55,
+    "borne_basse": 38,
     "significatif": false,
-    "median_5j": -0.4,
-    "median_20j": 0.4,
-    "episodes_60j": 14,
-    "median_60j": -1.5,
-    "trough_delay_median": 10,
-    "trough_depth_median": -6.8,
-    "trough_depth_worst": -18.3
-  },
-  "NEIC": {
-    "seuil_pct": 13,
-    "episodes": 39,
-    "pct_down_20j": 54,
-    "borne_basse": 39,
-    "significatif": false,
-    "median_5j": -1.4,
-    "median_20j": -1.6,
-    "episodes_60j": 37,
-    "median_60j": 20.4,
-    "trough_delay_median": 19,
-    "trough_depth_median": -12.4,
-    "trough_depth_worst": -67.4
+    "median_5j": 1.1,
+    "median_20j": -1.1,
+    "episodes_60j": 33,
+    "median_60j": -3.5,
+    "trough_delay_median": 24,
+    "trough_depth_median": -14.7,
+    "trough_depth_worst": -99.0
   },
   "ECOC": {
     "seuil_pct": 13,
@@ -233,19 +163,47 @@
     "trough_depth_median": -9.5,
     "trough_depth_worst": -83.8
   },
-  "NTLC": {
+  "FTSC": {
     "seuil_pct": 13,
-    "episodes": 30,
-    "pct_down_20j": 37,
-    "borne_basse": 22,
+    "episodes": 32,
+    "pct_down_20j": 56,
+    "borne_basse": 39,
     "significatif": false,
-    "median_5j": 0.1,
-    "median_20j": 1.0,
-    "episodes_60j": 30,
-    "median_60j": 6.5,
-    "trough_delay_median": 16,
-    "trough_depth_median": -8.1,
-    "trough_depth_worst": -34.0
+    "median_5j": -1.5,
+    "median_20j": -1.8,
+    "episodes_60j": 31,
+    "median_60j": -8.8,
+    "trough_delay_median": 33,
+    "trough_depth_median": -15.8,
+    "trough_depth_worst": -73.9
+  },
+  "CBIBF": {
+    "seuil_pct": 13,
+    "episodes": 15,
+    "pct_down_20j": 47,
+    "borne_basse": 25,
+    "significatif": false,
+    "median_5j": -0.4,
+    "median_20j": 0.4,
+    "episodes_60j": 14,
+    "median_60j": -1.5,
+    "trough_delay_median": 10,
+    "trough_depth_median": -6.8,
+    "trough_depth_worst": -18.3
+  },
+  "BOAC": {
+    "seuil_pct": 13,
+    "episodes": 33,
+    "pct_down_20j": 52,
+    "borne_basse": 35,
+    "significatif": false,
+    "median_5j": -1.4,
+    "median_20j": -0.7,
+    "episodes_60j": 31,
+    "median_60j": 1.0,
+    "trough_delay_median": 24,
+    "trough_depth_median": -8.2,
+    "trough_depth_worst": -60.5
   },
   "ETIT": {
     "seuil_pct": 13,
@@ -260,6 +218,20 @@
     "trough_delay_median": 19,
     "trough_depth_median": -8.7,
     "trough_depth_worst": -25.0
+  },
+  "NEIC": {
+    "seuil_pct": 13,
+    "episodes": 39,
+    "pct_down_20j": 54,
+    "borne_basse": 39,
+    "significatif": false,
+    "median_5j": -1.4,
+    "median_20j": -1.6,
+    "episodes_60j": 37,
+    "median_60j": 20.4,
+    "trough_delay_median": 19,
+    "trough_depth_median": -12.4,
+    "trough_depth_worst": -67.4
   },
   "NSBC": {
     "seuil_pct": 13,
@@ -289,34 +261,6 @@
     "trough_depth_median": -11.0,
     "trough_depth_worst": -21.1
   },
-  "FTSC": {
-    "seuil_pct": 13,
-    "episodes": 32,
-    "pct_down_20j": 56,
-    "borne_basse": 39,
-    "significatif": false,
-    "median_5j": -1.5,
-    "median_20j": -1.8,
-    "episodes_60j": 31,
-    "median_60j": -8.8,
-    "trough_delay_median": 33,
-    "trough_depth_median": -15.8,
-    "trough_depth_worst": -73.9
-  },
-  "PALC": {
-    "seuil_pct": 5,
-    "episodes": 56,
-    "pct_down_20j": 46,
-    "borne_basse": 34,
-    "significatif": false,
-    "median_5j": 1.0,
-    "median_20j": 1.0,
-    "episodes_60j": 55,
-    "median_60j": 11.6,
-    "trough_delay_median": 23,
-    "trough_depth_median": -7.7,
-    "trough_depth_worst": -58.9
-  },
   "ORGT": {
     "seuil_pct": 13,
     "episodes": 13,
@@ -330,20 +274,6 @@
     "trough_delay_median": 32,
     "trough_depth_median": -14.2,
     "trough_depth_worst": -26.2
-  },
-  "STAC": {
-    "seuil_pct": 13,
-    "episodes": 36,
-    "pct_down_20j": 53,
-    "borne_basse": 37,
-    "significatif": false,
-    "median_5j": 0.0,
-    "median_20j": -1.5,
-    "episodes_60j": 36,
-    "median_60j": 4.0,
-    "trough_delay_median": 22,
-    "trough_depth_median": -13.3,
-    "trough_depth_worst": -46.8
   },
   "SPHC": {
     "seuil_pct": 13,
@@ -359,6 +289,20 @@
     "trough_depth_median": -8.2,
     "trough_depth_worst": -81.4
   },
+  "PALC": {
+    "seuil_pct": 5,
+    "episodes": 56,
+    "pct_down_20j": 46,
+    "borne_basse": 34,
+    "significatif": false,
+    "median_5j": 1.0,
+    "median_20j": 1.0,
+    "episodes_60j": 55,
+    "median_60j": 11.6,
+    "trough_delay_median": 23,
+    "trough_depth_median": -7.7,
+    "trough_depth_worst": -58.9
+  },
   "ABJC": {
     "seuil_pct": 13,
     "episodes": 37,
@@ -373,19 +317,33 @@
     "trough_depth_median": -10.5,
     "trough_depth_worst": -43.7
   },
-  "SIBC": {
+  "NTLC": {
     "seuil_pct": 13,
-    "episodes": 16,
-    "pct_down_20j": 56,
-    "borne_basse": 33,
+    "episodes": 30,
+    "pct_down_20j": 37,
+    "borne_basse": 22,
     "significatif": false,
-    "median_5j": -0.5,
-    "median_20j": -0.8,
-    "episodes_60j": 15,
-    "median_60j": 3.1,
-    "trough_delay_median": 15,
-    "trough_depth_median": -8.5,
-    "trough_depth_worst": -21.5
+    "median_5j": 0.1,
+    "median_20j": 1.0,
+    "episodes_60j": 30,
+    "median_60j": 6.5,
+    "trough_delay_median": 16,
+    "trough_depth_median": -8.1,
+    "trough_depth_worst": -34.0
+  },
+  "BOAN": {
+    "seuil_pct": 13,
+    "episodes": 26,
+    "pct_down_20j": 54,
+    "borne_basse": 35,
+    "significatif": false,
+    "median_5j": -0.0,
+    "median_20j": -1.0,
+    "episodes_60j": 25,
+    "median_60j": 1.5,
+    "trough_delay_median": 28,
+    "trough_depth_median": -9.0,
+    "trough_depth_worst": -48.0
   },
   "SGBC": {
     "seuil_pct": 10,
@@ -401,19 +359,19 @@
     "trough_depth_median": -5.4,
     "trough_depth_worst": -24.7
   },
-  "CABC": {
+  "STAC": {
     "seuil_pct": 13,
-    "episodes": 34,
-    "pct_down_20j": 47,
-    "borne_basse": 31,
+    "episodes": 36,
+    "pct_down_20j": 53,
+    "borne_basse": 37,
     "significatif": false,
-    "median_5j": -1.0,
-    "median_20j": 0.5,
-    "episodes_60j": 34,
-    "median_60j": -2.4,
-    "trough_delay_median": 18,
-    "trough_depth_median": -11.1,
-    "trough_depth_worst": -32.2
+    "median_5j": 0.0,
+    "median_20j": -1.5,
+    "episodes_60j": 36,
+    "median_60j": 4.0,
+    "trough_delay_median": 22,
+    "trough_depth_median": -13.3,
+    "trough_depth_worst": -46.8
   },
   "STBC": {
     "seuil_pct": 13,
@@ -429,19 +387,19 @@
     "trough_depth_median": -8.0,
     "trough_depth_worst": -39.8
   },
-  "SDCC": {
+  "SIBC": {
     "seuil_pct": 13,
-    "episodes": 21,
-    "pct_down_20j": 62,
-    "borne_basse": 41,
+    "episodes": 16,
+    "pct_down_20j": 56,
+    "borne_basse": 33,
     "significatif": false,
-    "median_5j": 0.1,
-    "median_20j": -4.1,
-    "episodes_60j": 21,
-    "median_60j": -4.1,
-    "trough_delay_median": 32,
-    "trough_depth_median": -12.8,
-    "trough_depth_worst": -92.6
+    "median_5j": -0.5,
+    "median_20j": -0.8,
+    "episodes_60j": 15,
+    "median_60j": 3.1,
+    "trough_delay_median": 15,
+    "trough_depth_median": -8.5,
+    "trough_depth_worst": -21.5
   },
   "SMBC": {
     "seuil_pct": 13,
@@ -457,19 +415,19 @@
     "trough_depth_median": -10.6,
     "trough_depth_worst": -77.4
   },
-  "SLBC": {
-    "seuil_pct": 5,
-    "episodes": 41,
-    "pct_down_20j": 54,
-    "borne_basse": 39,
+  "CABC": {
+    "seuil_pct": 13,
+    "episodes": 34,
+    "pct_down_20j": 47,
+    "borne_basse": 31,
     "significatif": false,
-    "median_5j": -0.0,
-    "median_20j": -0.8,
-    "episodes_60j": 40,
-    "median_60j": 4.4,
-    "trough_delay_median": 12,
-    "trough_depth_median": -8.2,
-    "trough_depth_worst": -88.2
+    "median_5j": -1.0,
+    "median_20j": 0.5,
+    "episodes_60j": 34,
+    "median_60j": -2.4,
+    "trough_delay_median": 18,
+    "trough_depth_median": -11.1,
+    "trough_depth_worst": -32.2
   },
   "SOGC": {
     "seuil_pct": 13,
@@ -485,19 +443,19 @@
     "trough_depth_median": -7.8,
     "trough_depth_worst": -91.2
   },
-  "TTLC": {
+  "SDCC": {
     "seuil_pct": 13,
-    "episodes": 24,
-    "pct_down_20j": 54,
-    "borne_basse": 35,
+    "episodes": 21,
+    "pct_down_20j": 62,
+    "borne_basse": 41,
     "significatif": false,
-    "median_5j": -1.3,
-    "median_20j": -0.3,
-    "episodes_60j": 24,
-    "median_60j": -4.6,
-    "trough_delay_median": 30,
-    "trough_depth_median": -11.6,
-    "trough_depth_worst": -82.3
+    "median_5j": 0.1,
+    "median_20j": -4.1,
+    "episodes_60j": 21,
+    "median_60j": -4.1,
+    "trough_delay_median": 32,
+    "trough_depth_median": -12.8,
+    "trough_depth_worst": -92.6
   },
   "SNTS": {
     "seuil_pct": 13,
@@ -527,6 +485,20 @@
     "trough_depth_median": -12.1,
     "trough_depth_worst": -82.9
   },
+  "SLBC": {
+    "seuil_pct": 5,
+    "episodes": 41,
+    "pct_down_20j": 54,
+    "borne_basse": 39,
+    "significatif": false,
+    "median_5j": -0.0,
+    "median_20j": -0.8,
+    "episodes_60j": 40,
+    "median_60j": 4.4,
+    "trough_delay_median": 12,
+    "trough_depth_median": -8.2,
+    "trough_depth_worst": -88.2
+  },
   "TTLS": {
     "seuil_pct": 13,
     "episodes": 26,
@@ -555,19 +527,19 @@
     "trough_depth_median": -8.3,
     "trough_depth_worst": -56.5
   },
-  "UNXC": {
+  "TTLC": {
     "seuil_pct": 13,
-    "episodes": 28,
+    "episodes": 24,
     "pct_down_20j": 54,
-    "borne_basse": 36,
+    "borne_basse": 35,
     "significatif": false,
-    "median_5j": -1.6,
-    "median_20j": -0.7,
-    "episodes_60j": 27,
-    "median_60j": -4.5,
-    "trough_delay_median": 19,
-    "trough_depth_median": -11.0,
-    "trough_depth_worst": -86.9
+    "median_5j": -1.3,
+    "median_20j": -0.3,
+    "episodes_60j": 24,
+    "median_60j": -4.6,
+    "trough_delay_median": 30,
+    "trough_depth_median": -11.6,
+    "trough_depth_worst": -82.3
   },
   "SHEC": {
     "seuil_pct": 13,
@@ -583,19 +555,33 @@
     "trough_depth_median": -12.9,
     "trough_depth_worst": -39.6
   },
-  "SAFC": {
+  "UNXC": {
     "seuil_pct": 13,
-    "episodes": 13,
-    "pct_down_20j": 31,
-    "borne_basse": 13,
+    "episodes": 28,
+    "pct_down_20j": 54,
+    "borne_basse": 36,
     "significatif": false,
-    "median_5j": 2.9,
-    "median_20j": 8.8,
-    "episodes_60j": 12,
-    "median_60j": 50.9,
-    "trough_delay_median": 13,
-    "trough_depth_median": -11.9,
-    "trough_depth_worst": -47.4
+    "median_5j": -1.6,
+    "median_20j": -0.7,
+    "episodes_60j": 27,
+    "median_60j": -4.5,
+    "trough_delay_median": 19,
+    "trough_depth_median": -11.0,
+    "trough_depth_worst": -86.9
+  },
+  "BNBC": {
+    "seuil_pct": 13,
+    "episodes": 34,
+    "pct_down_20j": 59,
+    "borne_basse": 42,
+    "significatif": false,
+    "median_5j": -0.9,
+    "median_20j": -2.3,
+    "episodes_60j": 32,
+    "median_60j": -3.7,
+    "trough_delay_median": 22,
+    "trough_depth_median": -15.1,
+    "trough_depth_worst": -34.2
   },
   "SICC": {
     "seuil_pct": 13,
@@ -610,6 +596,20 @@
     "trough_delay_median": 15,
     "trough_depth_median": -11.6,
     "trough_depth_worst": -16.6
+  },
+  "SAFC": {
+    "seuil_pct": 13,
+    "episodes": 13,
+    "pct_down_20j": 31,
+    "borne_basse": 13,
+    "significatif": false,
+    "median_5j": 2.9,
+    "median_20j": 8.8,
+    "episodes_60j": 12,
+    "median_60j": 50.9,
+    "trough_delay_median": 13,
+    "trough_depth_median": -11.9,
+    "trough_depth_worst": -47.4
   },
   "UNLC": {
     "seuil_pct": 13,
