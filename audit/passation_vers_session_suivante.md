@@ -63,10 +63,10 @@ se déclenche**. Rien n'était cassé — mais rien ne veillait. (Depuis : les 4
 PY="C:/Users/LEO/AppData/Local/hermes/hermes-agent/venv/Scripts/python"
 cd "C:/Users/LEO/projects/Bridge Bank"
 
-"$PY" -m pytest -q                                  # la suite (484 tests)
+"$PY" -m pytest -q                                  # la suite (496 tests)
 "$PY" -m pytest -q --cov --cov-report=term-missing  # + la couverture
-"$PY" scripts/verifier_chemins.py --strict          # filet 1
-"$PY" scripts/auditer_constantes.py --comparer      # filet 2 (215 valeurs)
+"$PY" scripts/verifier_chemins.py --strict          # filet 1 (2 contrôles : chemins recalculés + noms recopiés)
+"$PY" scripts/auditer_constantes.py --comparer      # filet 2 (217 valeurs)
 "$PY" scripts/verifier_configuration.py             # filet 3
 
 # les 5 mesures du rapport 28 ans (en SÉRIE, jamais en parallèle ; ~15 min au total)
@@ -86,3 +86,24 @@ par git (`data/test_rebalancement.json`, `data/test_entree_progressive.json`,
 explicitement (« re-mesuré le … sur données et code corrigés ») — jamais les laisser en modification
 silencieuse. Les valeurs précédentes restent récupérables (`git show HEAD:data/<fichier>.json`),
 contrairement aux caches `data/*.pkl` qui, eux, ne sont pas versionnés.
+
+## 6. ⏰ ÉVÉNEMENT DATÉ — fractionnement SNTS ×10 (26/10/2026)
+
+**Faits** (communiqué SONATEL du 12/10, lu le 13/10 — PDF scanné, lu par vision) : AGE du 08/10 →
+**10 nouvelles pour 1 ancienne** ; nominal 500 → 50 F (100 M → 1 Md titres) ; dernière cote ancienne
+base **ven. 23/10** ; base fractionnée à l'ouverture du **lun. 26/10** (positions traitées
+automatiquement par le DC/BR, sans frais ; cours de référence publié au BOC).
+
+**Impact portefeuille** (position SNTS **3 @ 32 436**) : → **30 titres @ 3 243,60** (valeur inchangée) ;
+`dps` 1 977 → 197,70 ; `exit_price` 62 134,29 → 6 213,429 ; `entry_price_ref` 35 744,58 → 3 574,458.
+
+**Checklist (le 26/10, ou le 27/10 AVANT 09h — sinon le check crie « cassure SNTS », à raison)** :
+1. `data/divisions_officielles.json`, clé `divisions` : ajouter
+   `{"code": "SNTS", "date": "2026-10-26", "nouvelles": 10, "anciennes": 1, "facteur": 10.0, "type": "division", "sens": "10 nouvelles pour 1 ancienne(s)"}`
+2. Ré-export du cache : `"$PY" scripts/preparer_historique_propre.py` (barres ≤ 23/10 ÷10 ;
+   vérifier le cours de référence SNTS au BOC).
+3. Migration `data/portfolio.json` (SNTS) : `quantity` ×10 ; `entry_price`, `dps`, `exit_price`,
+   `entry_price_ref` ÷10.
+4. Contrôle : `"$PY" -m src.main integrity` (0 problème) ; re-export `reversal_profiles` si prévu.
+5. ⚠️ **NE PAS ajouter l'entrée AVANT le 26/10** : les barres du cache (base 32 000) seraient ÷10
+   face à une API encore en base 32 000 → incohérence signalée à tort pendant 10 jours.
