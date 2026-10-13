@@ -109,3 +109,65 @@ def test_per_indisponible_avant_publication():
     assert juillet["bpa"] == 100.0
     assert juillet["per"] == 15.0
     assert juillet["annee_bpa"] == "2024"
+
+
+# ═════════════════════════════ A3-11 — dividende courant (âge + cumul) ════════════════
+
+def _titre(*versements, bpa=100.0):
+    """Titre point-in-time avec un historique de versements [(ex_date, montant), ...]."""
+    return TitreFondamentaux(
+        code="X",
+        dividendes=[{"ex_date": d, "montant": m} for d, m in versements],
+        bpa={"2024": bpa}, bpa_fiable=True,
+    )
+
+
+def test_dividende_perime_est_inconnu_pas_fictif():
+    """A3-11 : un dividende coupé depuis 3 ans ne donne NI dps NI rendement (avant le fix,
+    ce titre affichait un « 4 % » fictif, scénario BNBC)."""
+    t = _titre(("2023-05-01", 200.0))
+    out = fondamentaux_a_la_date(t, "2026-06-01", cours=5000.0)
+    assert "dps" not in out and "net_yield" not in out and "ex_date_dividende" not in out
+
+
+def test_dividende_de_13_mois_reste_connu():
+    """Un détachement annuel décalé d'un mois (13 mois) décrit encore le présent."""
+    t = _titre(("2025-05-01", 200.0))
+    out = fondamentaux_a_la_date(t, "2026-06-01", cours=5000.0)
+    assert out["dps"] == 200.0
+    assert out["ex_date_dividende"] == "2025-05-01"
+    assert out["net_yield"] == round(200.0 / 5000.0 * 0.88 - 0.008, 6)
+
+
+def test_dividende_au_dela_de_15_mois_perime():
+    """Frontière de péremption : 456 jours (15 mois) — au-delà, « inconnu »."""
+    t = _titre(("2025-03-01", 200.0))
+    assert fondamentaux_a_la_date(t, "2026-05-31", cours=5000.0)["dps"] == 200.0   # 456 j
+    t2 = _titre(("2025-02-28", 200.0))
+    out = fondamentaux_a_la_date(t2, "2026-05-31", cours=5000.0)                   # 457 j
+    assert "dps" not in out
+
+
+def test_dps_cumule_acompte_et_solde_de_l_annee():
+    """A3-11 : le dps = SOMME des versements de l'année écoulée (acompte + solde), plus
+    jamais le seul dernier versement (sous-estimation du rendement et du payout)."""
+    t = _titre(("2026-01-10", 100.0), ("2026-07-10", 150.0))
+    out = fondamentaux_a_la_date(t, "2026-08-01", cours=5000.0)
+    assert out["dps"] == 250.0
+    assert out["net_yield"] == round(250.0 / 5000.0 * 0.88 - 0.008, 6)
+    assert out["payout"] == 2.5                      # 250 / BPA 100 : cohérent annuel/annuel
+
+
+def test_versement_hors_fenetre_non_cumule():
+    """Un versement antérieur à l'année écoulée ne gonfle pas le dps courant."""
+    t = _titre(("2024-06-01", 50.0), ("2026-07-10", 150.0))
+    out = fondamentaux_a_la_date(t, "2026-08-01", cours=5000.0)
+    assert out["dps"] == 150.0
+
+
+def test_dernier_valide_hors_fenetre_reste_le_seul_revenu():
+    """Entre 12 et 15 mois, le dernier versement est valide mais hors fenêtre de cumul :
+    il reste le seul revenu connu (pas de dps à zéro)."""
+    t = _titre(("2025-06-01", 90.0))
+    out = fondamentaux_a_la_date(t, "2026-07-01", cours=5000.0)   # 395 jours
+    assert out["dps"] == 90.0

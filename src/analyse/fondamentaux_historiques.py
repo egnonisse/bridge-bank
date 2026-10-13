@@ -40,6 +40,7 @@ import json
 import re
 import time
 from dataclasses import dataclass, field
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import requests
@@ -59,6 +60,14 @@ BASE = "https://stockanalysis.com/quote/brvm/{}/{}"
 # faisait acheter en janvier-mars sur des comptes que le marché ne connaissait pas encore
 # (fuite du futur de 3 à 6 mois).
 DATE_PUBLICATION_BPA = "{annee}-06-30"
+
+# Dividende « courant » (A3-11, corrigé le 13/10/2026) : le dps point-in-time est la SOMME
+# des versements de l'année écoulée (un exercice peut payer acompte + solde ; ne compter que
+# le dernier versement sous-estimait le dps et faussait le payout). Un dernier versement plus
+# vieux que 15 mois ne décrit plus le présent (société qui a coupé son dividende — cf.
+# invariant D1 : coupe = vente totale) : il vaut « inconnu », jamais un rendement fictif.
+FENETRE_DIVIDENDE_JOURS = 366   # l'année écoulée (bissextiles incluses)
+AGE_MAX_DIVIDENDE_JOURS = 456   # 15 mois : au-delà, le dernier versement est périmé
 
 
 def bpa_public_avant(annee_exercice: int, date: str) -> bool:
@@ -331,10 +340,33 @@ def sauver_cache(titres: dict[str, TitreFondamentaux], chemin: Path | None = Non
 #  POINT-IN-TIME — le cœur du dispositif
 # ---------------------------------------------------------------------------
 
-def dernier_dividende_connu(t: TitreFondamentaux, date: str) -> dict | None:
-    """Dernier dividende dont la date de detachement est <= `date`."""
+def _date_moins_jours(date: str, jours: int) -> str:
+    """Date ISO reculée de `jours` jours (« AAAA-MM-JJ » → « AAAA-MM-JJ »)."""
+    return (datetime.strptime(date[:10], "%Y-%m-%d") - timedelta(days=jours)).strftime("%Y-%m-%d")
+
+
+def dernier_dividende_connu(t: TitreFondamentaux, date: str,
+                            age_max_jours: int = AGE_MAX_DIVIDENDE_JOURS) -> dict | None:
+    """Dernier dividende dont la date de detachement est <= `date`, s'il n'est pas perime.
+
+    A3-11 (corrigé le 13/10/2026) : sans borne d'ancienneté, une société qui a coupé son
+    dividende (ex. dernier détachement 2023) conservait un « rendement 4 % » fictif calculé
+    sur un versement vieux de 3 ans. Au-delà de `age_max_jours`, on retourne None —
+    « inconnu », ce qui laisse les règles refuser de trancher plutôt que trancher faux.
+    """
     connu = [d for d in t.dividendes if d["ex_date"] <= date]
-    return connu[-1] if connu else None
+    if not connu:
+        return None
+    dernier = connu[-1]
+    if dernier["ex_date"] < _date_moins_jours(date, age_max_jours):
+        return None
+    return dernier
+
+
+def dividendes_de_l_annee(t: TitreFondamentaux, date: str) -> list[dict]:
+    """Détachements de l'année écoulée (≤ `date`) : ce que l'actionnaire a réellement perçu."""
+    debut = _date_moins_jours(date, FENETRE_DIVIDENDE_JOURS)
+    return [d for d in t.dividendes if debut < d["ex_date"] <= date]
 
 
 def bpa_connu(t: TitreFondamentaux, date: str) -> tuple[str, float] | None:
@@ -375,10 +407,17 @@ def fondamentaux_a_la_date(t: TitreFondamentaux, date: str,
 
     d = dernier_dividende_connu(t, date)
     if d:
-        out["dps"] = d["montant"]
+        # A3-11 : le dps point-in-time est la SOMME des versements de l'année écoulée
+        # (acompte + solde d'un même exercice), pas le seul dernier versement (qui
+        # sous-estimait le dps et faussait le payout dps/BPA). Si le dernier versement
+        # est valide mais antérieur à la fenêtre (> 12 mois, ≤ 15), il est le seul
+        # revenu connu : on le retient tel quel.
+        versements = dividendes_de_l_annee(t, date)
+        dps = sum(x["montant"] for x in versements) or d["montant"]
+        out["dps"] = dps
         out["ex_date_dividende"] = d["ex_date"]
         if cours:
-            brut = d["montant"] / cours
+            brut = dps / cours
             out["net_yield"] = round(net_yield(brut), 6)
 
     # Le BPA n'est utilise QUE s'il a passe le controle croise : un BPA faux

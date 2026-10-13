@@ -178,6 +178,28 @@ réponse « ✅ Analyse value : rien de nouveau aujourd'hui. » ; run radar → 
 monitor `no_change` (normal sans code L1/L2) ; plus aucun `failed`/`blocked_config`.
 Suite : **468 passed, 0 xfailed**. Le premier rapport réel validera la chaîne de bout en bout.
 
+### Mise à jour du 13/10/2026 (nuit) — LOT 4 · 2e partie : SILENCES DE LA COLLECTE (C9) + DRAPEAU + DIVIDENDE COURANT (C7)
+
+**B2-05** (ajuster_historique avalait l'absence du fichier de divisions → historique brut
+non ajusté, silencieux) : l'échec est désormais **BRUYANT** (FileNotFoundError explicite,
+comme `charger()`) — classe de l'incident du 21/08 (faux drawdowns −96 %).
+**B2-06** (replis et zéros silencieux) : repli d'historique **journalisé** + titres en échec
+**comptés et signalés** (backtest.py) ; barre sans horodatage **écartée** (plus de date
+« maintenant » fabriquée) ; valeur illisible **signalée** vs champ absent muet (bsapi.py).
+**B2-12** (drapeau `*` dilué par le fonctionnement normal) : 14 fichiers d'état exclus du
+calcul (caches, états de veille, snapshots suivis) ; `profit_thresholds.json`, `regles.py`,
+`config.yaml` restent **surveillés** — un vrai changement de règles porte toujours l'étoile.
+**A3-11** (dividende « le plus récent » sans limite d'âge) : le dividende point-in-time est
+désormais (i) **PÉRIMÉ au-delà de 15 mois** → « inconnu », jamais un rendement fictif
+(scénario BNBC), (ii) la **SOMME des versements de l'année écoulée** (acompte + solde ; le
+payout dps/BPA redevient annuel/annuel) — le rendement d'un dividende coupé disparaît de la
+sélection point-in-time.
+
+**Preuves** : 6 nouveaux tests collecte + 2 empreinte + 6 A3-11 (15/15 du fichier) ; **rejeu
+complet des chiffres publiés du 13/10 : EXIT 0 — aucun écart** (les 6 mesures de référence
+sont identiques ; `git status -- data/` vide après rejeu : sorties identiques au bit près).
+Suite : **474 passed, 0 xfailed**.
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,
