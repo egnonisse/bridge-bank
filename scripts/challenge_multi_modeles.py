@@ -458,11 +458,17 @@ def round3(hypotheses: list[Hypothese]) -> list[dict]:
     print(f"  fait en {time.time()-t0:.1f} s")
 
     resultats = []
+    # A3-05 : le seuil de significativité est AJUSTÉ au nombre d'hypothèses
+    # testées (Bonferroni) — 20 tests à p ≤ 0,05 laisseraient ~1 faux positif.
+    seuil_ajuste = 0.05 / max(len(hypotheses), 1)
     print(f"\n  {'Hypothese':<40} {'trades':>7} {'net':>9} {'baseline':>10} "
           f"{'p':>6}  verdict")
+    print(f"  seuil p ajuste (Bonferroni, {len(hypotheses)} hypotheses) : "
+          f"p <= {seuil_ajuste:.4f}")
     print("  " + "-" * 128)
     for h in hypotheses:
-        r = evaluer_hypothese(series, h, date_coupure="2022-01-01")
+        r = evaluer_hypothese(series, h, historique_fond=hf or None,
+                              seuil_p=seuil_ajuste)
         net = f"{r.rendement_net_pct:+.1f}%" if r.rendement_net_pct is not None else "-"
         base = f"{r.baseline_mediane_pct:+.1f}%" if r.baseline_mediane_pct is not None else "-"
         p = f"{r.p_value:.3f}" if r.p_value is not None else "-"

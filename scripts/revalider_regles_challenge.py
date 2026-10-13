@@ -55,6 +55,9 @@ def main():
     print(f"\n  {len(retenues)} regle(s) a re-juger")
     print(f"  Corrections appliquees : division SLBC (÷50 -> ÷10) "
           f"+ dividendes credites")
+    seuil_ajuste = 0.05 / max(len(retenues), 1)
+    print(f"  JUGE DURCI (13/10/2026) : execution J+1, p=(1+#>=)/(1+N), "
+          f"avantage par moitie, seuil Bonferroni p <= {seuil_ajuste:.4f}")
 
     hist = charger_historique()
     hf = charger_historique_fondamentaux()
@@ -70,8 +73,10 @@ def main():
         if not h.valide:
             print(f"  {r['id']} : REJETEE par le DSL — {h.motifs[:1]}")
             continue
-        # Le juge, avec dividendes des deux cotes
-        res = evaluer_hypothese(series, h, historique_fond=hf)
+        # Le juge, avec dividendes des deux cotes ; A3-05 : seuil ajuste au
+        # nombre de regles re-jugees (Bonferroni).
+        res = evaluer_hypothese(series, h, historique_fond=hf,
+                                seuil_p=seuil_ajuste)
         resultats.append((r, res))
 
     # ---------------------------------------------------------------
@@ -92,7 +97,10 @@ def main():
         bas = apres.baseline_mediane_pct
         advantage = apres.avantage_vs_baseline_pts
         p = apres.p_value
-        ok = bool(res.verdict.startswith("RETENUE"))
+        # ⚠️ corrigé le 13/10/2026 : `res` (variable de la boucle d'évaluation
+        # précédente) était utilisé ici — TOUTES les lignes affichaient le
+        # verdict de la DERNIÈRE règle. Le verdict de LA règle est `apres`.
+        ok = bool(apres.verdict.startswith("RETENUE"))
         if ok:
             tiennent += 1
         else:

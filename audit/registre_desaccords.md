@@ -221,6 +221,30 @@ Suite : **484 passed, 0 xfailed**.
 
 ---
 
+### Mise à jour du 13/10/2026 (jour) — LOT 8 : LE CHANTIER DU JUGE (A3-03/04/05/09/10/13)
+
+Détail : `docs/DECISION-2026-10-13-lot8-chantier-challenge.md`. **Le juge a été durci** :
+exécution **J+1**, `p=(1+#≥)/(1+N)` sur **1 000 tirages**, baseline bornée à la fenêtre
+éligible (durées rééchantillonnées, **bootstrap conditionnel aux dates de la règle**),
+**avantage vs baseline par moitié** (repli non régressif), **seuil Bonferroni** déclaré par
+l'appelant. A3-04 (appelants corrigés + signalement), A3-09 (`resume()` robuste),
+A3-13 (bloc mort supprimé, replis signalés). **8 tests créés**
+(`tests/test_challenge_validateur.py` — le juge n'en avait AUCUN, R-001).
+
+**BUG découvert pendant la re-mesure** : `scripts/revalider_regles_challenge.py` affichait
+`res.verdict` (la DERNIÈRE règle évaluée) pour TOUTES les lignes — bilan faussé ; corrigé
+(`apres.verdict`). Les bilans antérieurs de ce script sont à relire avec méfiance.
+
+**Re-mesure — les 6 règles retenues : 1/6** (seule `gemini-2.5-fla-H3` : +2,07 pt, p=0,0050,
+moitiés +3,21/+1,59 ; les 5 autres « non concluantes », p 0,10 à 0,92). L'ère antérieure
+(« 6/6, p=0,000 ») est conservée datée dans le skill et `docs/CHALLENGE-MULTI-MODELES.md`.
+
+**État des 47 items (13/10)** : les P6/P7 clos (lots 5-7) ; chantier A3 : le juge clos (lot 8) ;
+**reste A3-08 (moteur `strategie_leo` — attribution des composants)** ; P6-02 = dette assumée
+(verrouillée par tests).
+
+---
+
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,
-`phase3_agentB2_mistral.md`, `phase3_materiel_runB_avorte.md`, ce registre. Les corrections
-du LOT 1 ont été appliquées le 12/10 (section 6) ; les lots 2-3 restent à autoriser.*
+`phase3_agentB2_mistral.md`, `phase3_materiel_runB_avorte.md`, ce registre, complété par les
+mises à jour des lots 1-8 (§6).*

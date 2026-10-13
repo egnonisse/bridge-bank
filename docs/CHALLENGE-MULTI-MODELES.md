@@ -1,5 +1,15 @@
 # Challenge multi-modèles — Bridge Bank
 
+> **⚠️ ADDENDUM du 13/10/2026 — LE JUGE A ÉTÉ DURCI (audit A3) ET LES 6 RÈGLES
+> RE-JUGÉES : 1/6.**
+> Exécution à **J+1**, **p = (1+#≥)/(1+N)** sur **1 000 tirages**, baseline bornée à
+> la fenêtre éligible (durées rééchantillonnées, **bootstrap conditionnel aux dates de
+> la règle**), robustesse par l'**avantage vs baseline par moitié**, seuil
+> **Bonferroni**. Résultat : seule `gemini-2.5-fla-H3` survit (+2,07 pt, p=0,005) ;
+> les 5 autres sont dans le bruit (p 0,10 à 0,92). L'ancien « 6/6 tiennent
+> (+5 à +19,5 pts, p=0,000) » est l'état ANTÉRIEUR, conservé daté.
+> Détail : `docs/DECISION-2026-10-13-lot8-chantier-challenge.md`.
+
 Faire challenger le système BRVM par les meilleurs modèles du marché, sans
 jamais leur laisser le dernier mot.
 

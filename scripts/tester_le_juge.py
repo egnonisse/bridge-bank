@@ -39,6 +39,14 @@ def main():
     data = json.loads(FICHIER.read_text(encoding="utf-8"))
     hist = charger_historique()
     fond = charger_fondamentaux()
+    # A3-04 : les dividendes doivent être crédités des DEUX côtés (règle ET
+    # baseline) — sans hf, le verdict est biaisé et le juge le signale lui-même.
+    try:
+        from src.backtesting.challenge_indicateurs import charger_historique_fondamentaux
+        hf = charger_historique_fondamentaux()
+    except Exception as exc:
+        print(f"  ⚠️ historique fondamental indisponible ({exc}) — dividendes non crédités")
+        hf = {}
 
     print(f"\n  Historique : {len(hist)} titres "
           f"({sum(len(b) for b in hist.values()):,} barres)")
@@ -75,13 +83,13 @@ def main():
         print("\n" + "-" * 92)
         t0 = time.time()
         if not h.valide:
-            r = evaluer_hypothese(series, h)
+            r = evaluer_hypothese(series, h, historique_fond=hf or None)
             print(f"  {h.id} — {h.nom}")
             print(f"    REJETEE A LA VALIDATION (aucun code execute) :")
             for m in h.motifs:
                 print(f"      - {m}")
         else:
-            r = evaluer_hypothese(series, h, date_coupure="2022-01-01")
+            r = evaluer_hypothese(series, h, historique_fond=hf or None)
             print(r.resume())
         dt = time.time() - t0
         print(f"    (duree d'evaluation : {dt:.1f} s)")
