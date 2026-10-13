@@ -1,5 +1,5 @@
 {
-  "cash": 699718.0,
+  "cash": 199718.0,
   "obligations": [],
   "history": [
     {
@@ -99,7 +99,6 @@
       "cash": 699718.0
     }
   ],
-  "cash_disponible": 199718.0,
-  "produit_cessions_attente": 500000.0,
-  "_definition_cash": "cash = TOTAL liquidité du compte titres (relevé BSTrade 13/10/2026) = cash_disponible + produit_cessions_attente (source de la cession à confirmer par LEO). Champs de décomposition INFORMATIFS : `report cash` ne les met PAS à jour (à recalculer)."
+  "_definition_cash": "cash = liquidité DÉPLOYABLE du compte titres, après la demande de retrait du 13/10/2026 (relevé BSTrade : Total liquidité 699 718, dont 500 000 en instance de retrait → 199 718). Le retrait est un choix de LEO (gestion personnelle) — si le retrait est annulé ou rejeté, remonter cash à 699 718. `report cash` remplace ce champ.",
+  "retrait_en_cours": 500000.0
 }

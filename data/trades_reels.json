@@ -393,7 +393,7 @@
     "ventes_snts_executees": "3 ventes exécutées : 04/09 (3 @ 38 000), 08/09 (2 @ 39 000), 21/09 (1 @ 42 190) → +39 574 F réalisés ≈ « +/- value réalisée 39 577 » du relevé BSTrade (écart 3 F : arrondis).",
     "palc_26_actions": "26 actions = 25 exécutées du 08/09 au 18/09 + 1 exécutée le 09/10 @ 7 750 (frais 1,4 % → 7 859). CMP frais inclus 8 641 — identique au relevé.",
     "cash_699718": "707 577 (30/09, après apport) − 7 859 (achat PALC du 09/10) = 699 718 = Total Liquidité du relevé (réconciliation au franc).",
-    "produit_cessions_500000": "Produit de cessions en attente : 500 000 F (relevé du 13/10 : Total Liquidité = 199 718 disponible + 500 000 en attente). AUCUN ordre action de l'export ne le justifie. DATE DE LA CESSION INCONNUE : le total liquidité est continu (707 577 au 30/09 − 7 859 d'achat PALC = 699 718 ✓) mais la composition dispo/attente du 30/09 n'est pas connue — la cession peut dater de fin septembre comme de début octobre. Source à confirmer par LEO (probablement une cession d'obligations UEMOA : le compte a un compartiment obligations, non couvert par cet export d'actions).",
+    "produit_cessions_500000": "« Produit de cessions en attente : 500 000 » du relevé du 13/10 = DEMANDE DE RETRAIT de LEO (confirmé par LEO : « j'ai juste demandé un retrait ») — PAS une vente, PAS des obligations. La rubrique porte le montant d'un retrait en cours de traitement : Total liquidité 699 718 = 199 718 disponible + 500 000 en instance de sortie du compte titres (699 718 − 500 000 = 199 718 ✓).",
     "ordres_annules": "6 ordres annulés : SNTS 3 @ 37 350 (21/08), PALC 20 @ 9 000 (17/08), SNTS 3 @ 31 000 (17/08), BOA 2 @ 8 000 (22/08), ETI 5 000 (13/07), SICABLE 17 (27/04)."
   },
   "reconciliation_13_10_2026": {
@@ -426,9 +426,10 @@
       }
     },
     "cash": {
-      "total": 699718,
+      "total_liquidite_releve": 699718,
       "disponible": 199718,
-      "produit_cessions_attente": 500000
+      "retrait_demande_en_cours": 500000,
+      "note": "Le retrait de 500 000 quitte le compte titres → cash suivi = 199 718 (déployable)."
     },
     "total_portefeuille": 829590,
     "total_general": 1529308,
