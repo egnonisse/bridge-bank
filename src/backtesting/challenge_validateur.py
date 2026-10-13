@@ -31,7 +31,7 @@ import statistics
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from ..infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import RACINE, HISTORY_CACHE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 sys.path.insert(0, str(RACINE))
 
@@ -496,7 +496,7 @@ def charger_fondamentaux() -> dict:
 
 
 def charger_historique(chemin: Path | None = None) -> dict:
-    p = chemin or (RACINE / "data" / "history_clean.pkl")
+    p = chemin or HISTORY_CACHE  # défini dans paths.py (P6-01)
     if not p.exists():
         raise SystemExit(
             f"Historique propre introuvable : {p}\n"

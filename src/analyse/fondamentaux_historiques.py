@@ -45,12 +45,13 @@ from pathlib import Path
 
 import requests
 import urllib3
-from ..infrastructure.paths import RACINE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import FUNDAMENTALS_HISTORIQUES  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 from ..taxation import net_yield  # C4 : plus de 0,88/0,008 en dur (correction 12/10)
 
 urllib3.disable_warnings()
 
-CACHE = RACINE / "data" / "fondamentaux_historiques.json"
+CACHE = FUNDAMENTALS_HISTORIQUES  # défini dans paths.py (P6-01 : plus de redéfinition locale)
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 BASE = "https://stockanalysis.com/quote/brvm/{}/{}"
 
@@ -331,8 +332,7 @@ def sauver_cache(titres: dict[str, TitreFondamentaux], chemin: Path | None = Non
         }
         for code, t in titres.items()
     }
-    chemin.write_text(json.dumps(data, ensure_ascii=False, indent=1),
-                      encoding="utf-8")
+    ecrire_json_atomique(chemin, data, indent=1)  # P7-01 : écriture atomique
     return chemin
 
 

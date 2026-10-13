@@ -21,6 +21,7 @@ import pymupdf
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -160,8 +161,7 @@ def load_state() -> dict:
 
 
 def save_state(state: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+    ecrire_json_atomique(STATE_FILE, state)  # P7-01 : écriture atomique
 
 
 def detect_events(text: str, date: datetime, codes: list[str]) -> list[dict]:

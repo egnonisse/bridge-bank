@@ -21,6 +21,7 @@ from ..collecte.bsapi import BSApi
 from ..collecte.fundamentals import get_dps, get_per_brvm
 from ..taxation import TARGET_NET_YIELD_ENTRY, gross_yield_for_net, net_yield
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
 CACHE_FILE = DATA_DIR / "fundamentals_cache.json"
 CACHE_MAX_AGE_HOURS = 24
@@ -45,8 +46,7 @@ def _load_cache() -> dict:
 
 
 def _save_cache(cache: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    CACHE_FILE.write_text(json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+    ecrire_json_atomique(CACHE_FILE, cache)  # P7-01 : écriture atomique
 
 
 def _cache_fresh(cache: dict, code: str) -> bool:
@@ -205,11 +205,7 @@ def load_value_state() -> set[str]:
 
 
 def save_value_state(codes: set[str]) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    VALUE_STATE_FILE.write_text(
-        json.dumps({"codes": sorted(codes)}, indent=2, ensure_ascii=False),
-        encoding="utf-8",
-    )
+    ecrire_json_atomique(VALUE_STATE_FILE, {"codes": sorted(codes)})  # P7-01 : écriture atomique
 
 
 def detect_new_value_opportunities(api: BSApi, force: bool = False) -> list[dict]:

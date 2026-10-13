@@ -18,10 +18,10 @@ import json
 import statistics
 from datetime import datetime
 from pathlib import Path
-from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR, REVERSAL_PROFILES  # chemins centralisés (lot 0 du plan docs/architecture.md)
 from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
-REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
+REVERSAL_FILE = REVERSAL_PROFILES  # défini dans paths.py (P6-01)
 INACTIFS_FILE = DATA_DIR / "titres_inactifs.json"  # écrit par le refresh (backtest._enregistrer_inactifs)
 
 MAX_JUMP = 3.0          # ratio close[i]/close[i-1] au-delà → cassure à examiner

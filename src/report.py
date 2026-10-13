@@ -20,10 +20,11 @@ from .collecte.dividends import total_encaissé
 from .strategie.orders import build_limit_orders
 from .portfolio import load_portfolio
 from .strategie.speculation import load_positions
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR, PORTFOLIO_STATE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 from .portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
-STATE_FILE = DATA_DIR / "portfolio_state.json"
+STATE_FILE = PORTFOLIO_STATE  # défini dans paths.py (P6-01 : plus de redéfinition locale)
 
 # Allocation cible (IPS §2) en % — actions uniquement (obligations retirées 03/09/2026)
 TARGET_STOCKS = 70.0
@@ -46,8 +47,7 @@ def load_state() -> dict:
 
 
 def save_state(state: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+    ecrire_json_atomique(STATE_FILE, state)  # P7-01 : écriture atomique
 
 
 def set_cash(amount: float) -> None:

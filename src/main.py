@@ -25,7 +25,8 @@ from .collecte.bsapi import BSApi
 from .notify import TelegramNotifier
 from .analyse.screening import analyze as analyze_stock
 from .analyse.screening import screen
-from .infrastructure.paths import RACINE as ROOT  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import RACINE as ROOT, chemin_data  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 from .portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
 CONFIG_PATH = ROOT / "config.yaml"
@@ -703,9 +704,7 @@ def cmd_fund(args: argparse.Namespace) -> None:
                     for r in new
                 ],
             }
-            _P(__file__).resolve().parent.parent.joinpath(
-                "data", "value_new_state.json"
-            ).write_text(_json.dumps(_trace, ensure_ascii=False, indent=2), encoding="utf-8")
+            ecrire_json_atomique(chemin_data("value_new_state.json"), _trace)  # P7-01 : atomique + chemin centralisé (P6)
             notifier = get_notifier(load_config())
             actions = getattr(args, "_actions", None)
             for r in new:

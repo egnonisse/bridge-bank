@@ -11,6 +11,7 @@ import sys
 from datetime import date, timedelta
 from pathlib import Path
 from ..infrastructure.paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -35,9 +36,7 @@ def load_state() -> dict:
 
 
 def save_state(state: dict) -> None:
-    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n",
-                          encoding="utf-8")
+    ecrire_json_atomique(STATE_FILE, state)  # P7-01 : écriture atomique
 
 
 def stopout_cooldowns(spec_pos) -> tuple[dict, dict]:

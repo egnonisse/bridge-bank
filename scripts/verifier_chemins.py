@@ -1,12 +1,18 @@
-"""Vérifie qu'aucun module ne recalcule son propre chemin de données.
+"""Vérifie que l'arborescence de `data/` a UN SEUL point de vérité : `src/infrastructure/paths.py`.
 
-POURQUOI CE CONTRÔLE
---------------------
-Le chemin `Path(__file__).resolve().parent.parent / "data"` est **implicite** : il dépend de
-la profondeur du fichier. Tant que tout vit dans `src/`, il tombe juste. Dès qu'un module
-descend d'un niveau, il désigne le mauvais dossier — et la panne est **silencieuse** : un
-chargement qui échoue renvoie une valeur par défaut, le programme continue avec des données
-vides, et rien ne le signale.
+DEUX CONTRÔLES
+--------------
+1. **Chemins recalculés à la main** — `Path(__file__).resolve().parent.parent / "data"` est
+   **implicite** : il dépend de la profondeur du fichier. Tant que tout vit dans `src/`, il tombe
+   juste. Dès qu'un module descend d'un niveau, il désigne le mauvais dossier — et la panne est
+   **silencieuse** : un chargement qui échoue renvoie une valeur par défaut, le programme
+   continue avec des données vides, et rien ne le signale.
+2. **Noms de fichiers recopiés** (P6-01/P6-05, ajouté le 13/10) — écrire `DATA_DIR / "x.json"`
+   dans un module au lieu d'importer la constante de `paths.py` recrée une copie du nom : le jour
+   où le fichier est renommé ou déplacé, la copie ne suit pas — panne silencieuse encore.
+   La liste des noms surveillés est **dérivée de `paths.py`** : ajouter une constante y étend
+   automatiquement le contrôle. Périmètre : `src/` — les `scripts/` d'enquête ponctuelle gardent
+   leurs chemins directs (décision documentée dans `docs/architecture.md` §6).
 
 Aucun test de valeur ne détecte ça. Ce contrôle, oui.
 
@@ -85,51 +91,110 @@ def _scanner(dossier: Path, etendue: str = "*.py") -> list[dict]:
     return trouves
 
 
+def _noms_centraux() -> set[str]:
+    """Noms de fichiers dont la constante vit dans `src/infrastructure/paths.py`.
+
+    La source de vérité du contrôle est `paths.py` lui-même : toute constante `DATA_DIR / "x"`
+    ajoutée là-bas devient surveillée ici, sans rien à mettre à jour dans ce script.
+    """
+    sys.path.insert(0, str(RACINE))
+    try:
+        import src.infrastructure.paths as p
+    finally:
+        sys.path.pop(0)
+    return {
+        c.name for c in vars(p).values()
+        if isinstance(c, Path) and c.parent == p.DATA_DIR
+    }
+
+
+def _scanner_noms(dossier: Path) -> list[dict]:
+    """Littéraux de noms de fichiers recopiés dans du code (hors `paths.py`)."""
+    noms = _noms_centraux()
+    trouves = []
+    for f in sorted(dossier.rglob("*.py")):
+        if any(p.startswith(".") for p in f.parts) or "__pycache__" in f.parts:
+            continue
+        if f.parent.name == "infrastructure" and f.name == "paths.py":
+            continue
+        try:
+            texte = f.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        texte_ignore = _lignes_de_texte(texte)
+        for i, ligne in enumerate(texte.splitlines(), 1):
+            if i in texte_ignore:
+                continue
+            if "/" not in ligne and "joinpath" not in ligne:
+                continue
+            for nom in noms:
+                if f'"{nom}"' in ligne or f"'{nom}'" in ligne:
+                    trouves.append({
+                        "fichier": f.relative_to(RACINE).as_posix(),
+                        "ligne": i,
+                        "nom": nom,
+                        "code": ligne.strip()[:78],
+                    })
+                    break
+    return trouves
+
+
 def main(strict: bool = False) -> int:
     src = _scanner(RACINE / "src")
     scripts = _scanner(RACINE / "scripts")
     tests = _scanner(RACINE / "tests")
     total = src + scripts + tests
+    noms = _scanner_noms(RACINE / "src")
 
     print("=" * 78)
-    print("  CHEMINS CALCULES A LA MAIN — cible : src/paths.py")
+    print("  ARBORESCENCE DE DONNEES — un seul point de verite : src/infrastructure/paths.py")
     print("=" * 78)
     print()
-    print(f"  src/     : {len(src):>3d} occurrence(s)")
-    print(f"  scripts/ : {len(scripts):>3d} occurrence(s)")
-    print(f"  tests/   : {len(tests):>3d} occurrence(s)")
-    print(f"  TOTAL    : {len(total):>3d}")
+    print("  1. CHEMINS CALCULES A LA MAIN")
+    print(f"     src/     : {len(src):>3d} occurrence(s)")
+    print(f"     scripts/ : {len(scripts):>3d} occurrence(s)")
+    print(f"     tests/   : {len(tests):>3d} occurrence(s)")
+    print(f"     TOTAL    : {len(total):>3d}")
+    print()
+    print("  2. NOMS DE FICHIERS RECOPIES (perimetre : src/ seulement)")
+    print(f"     TOTAL    : {len(noms):>3d}")
     print()
 
-    if not total:
-        print("  Aucun chemin recalculé a la main : l'arborescence peut changer")
-        print("  sans casser les chargements de donnees.")
+    if not total and not noms:
+        print("  Rien a signaler : l'arborescence peut changer sans casser les")
+        print("  chargements de donnees (un seul point de verite).")
         return 0
 
-    # Regroupe par fichier : c'est l'unite de travail d'une migration.
-    par_fichier: dict[str, list[dict]] = {}
-    for t in total:
-        par_fichier.setdefault(t["fichier"], []).append(t)
+    if total:
+        # Regroupe par fichier : c'est l'unite de travail d'une migration.
+        par_fichier: dict[str, list[dict]] = {}
+        for t in total:
+            par_fichier.setdefault(t["fichier"], []).append(t)
 
-    print(f"  {len(par_fichier)} fichier(s) a migrer :")
-    for fichier, occurrences in sorted(par_fichier.items(),
-                                       key=lambda kv: -len(kv[1])):
-        lignes = ", ".join(str(o["ligne"]) for o in occurrences[:6])
-        suite = f" (+{len(occurrences)-6})" if len(occurrences) > 6 else ""
-        print(f"    {fichier:38s} {len(occurrences):>3d}  l.{lignes}{suite}")
+        print(f"  {len(par_fichier)} fichier(s) a migrer :")
+        for fichier, occurrences in sorted(par_fichier.items(),
+                                           key=lambda kv: -len(kv[1])):
+            lignes = ", ".join(str(o["ligne"]) for o in occurrences[:6])
+            suite = f" (+{len(occurrences)-6})" if len(occurrences) > 6 else ""
+            print(f"    {fichier:38s} {len(occurrences):>3d}  l.{lignes}{suite}")
 
-    print()
-    print("  MIGRATION : remplacer par")
-    print("    from .infrastructure.paths import DATA_DIR       (dans src/)")
-    print("    from src.infrastructure.paths import DATA_DIR    (dans scripts/ et tests/)")
-    print()
-    print("  Cette migration est un PREREQUIS a tout deplacement de fichier :")
-    print("  sans elle, descendre un module d'un niveau change le sens de")
-    print("  `parent.parent` et casse les chargements SANS erreur visible.")
+        print()
+        print("  MIGRATION : remplacer par")
+        print("    from .infrastructure.paths import DATA_DIR       (dans src/)")
+        print("    from src.infrastructure.paths import DATA_DIR    (dans scripts/ et tests/)")
+        print()
+        print("  Cette migration est un PREREQUIS a tout deplacement de fichier :")
+        print("  sans elle, descendre un module d'un niveau change le sens de")
+        print("  `parent.parent` et casse les chargements SANS erreur visible.")
+
+    if noms:
+        print("  Noms recopies — importer la constante de paths.py a la place :")
+        for t in sorted(noms, key=lambda x: (x["fichier"], x["ligne"])):
+            print(f"    {t['fichier']}:{t['ligne']}  ({t['nom']})  {t['code']}")
 
     if strict:
         print()
-        print("  [--strict] Des chemins subsistent : migration incomplete.")
+        print("  [--strict] Des chemins ou des noms subsistent : migration incomplete.")
         return 1
     return 0
 

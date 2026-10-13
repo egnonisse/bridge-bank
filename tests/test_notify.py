@@ -6,7 +6,13 @@ rapport long (radar, analyse value) était PERDU au moment de l'envoi (constat d
 """
 import pytest
 
-from src.notify import LIMITE_TELEGRAM, MARGE_DECOUPE, TelegramNotifier, _decouper
+from src.notify import (
+    LIMITE_TELEGRAM,
+    MARGE_DECOUPE,
+    TelegramNotifier,
+    _decouper,
+    _sans_token,  # P7-02 : assainissement des messages d'erreur
+)
 
 LIMITE = LIMITE_TELEGRAM - MARGE_DECOUPE
 
@@ -89,3 +95,15 @@ def test_notifier_desactive_ne_poste_rien(monkeypatch):
 
     monkeypatch.setattr("src.notify.requests.post", interdit)
     assert TelegramNotifier("", "").send("test") is False
+
+
+def test_message_derreur_logge_sans_token():
+    """P7-02 : l'exception `requests` inclut l'URL — donc le token — dans son message.
+    Ce qui part au log doit être assaini."""
+    brut = (
+        "HTTPSConnectionPool(host='api.telegram.org', port=443): Max retries exceeded "
+        "with url: /bot8123456789:AAH_SECRET-xyz_789/sendMessage (Caused by ConnectTimeout)"
+    )
+    nettoye = _sans_token(brut)
+    assert "AAH_SECRET-xyz_789" not in nettoye
+    assert "/bot***/sendMessage" in nettoye

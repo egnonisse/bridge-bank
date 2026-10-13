@@ -29,7 +29,7 @@ from typing import Optional
 from ..collecte.bsapi import BSApi
 from ..collecte.backtest import load_all_history
 from ..analyse.screening import avg_volume, change_pct, ema, rsi_wilder
-from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR, SPEC_POSITIONS  # chemins centralisés (lot 0 du plan docs/architecture.md)
 from ..infrastructure.ecriture import (  # écriture atomique + lecture stricte (P7-01)
     FichierEtatIllisible,
     ecrire_json_atomique,
@@ -37,7 +37,7 @@ from ..infrastructure.ecriture import (  # écriture atomique + lecture stricte 
 )
 from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 
-POSITIONS_FILE = DATA_DIR / "spec_positions.json"
+POSITIONS_FILE = SPEC_POSITIONS  # défini dans paths.py (P6-05 : 4 consommateurs)
 CANDIDATES_STATE_FILE = DATA_DIR / "spec_candidates_state.json"
 
 STOP_LOSS = 0.15
@@ -360,7 +360,7 @@ def load_candidates_state() -> dict:
 
 def save_candidates_state(state: dict) -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    CANDIDATES_STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+    ecrire_json_atomique(CANDIDATES_STATE_FILE, state)  # P7-01 : écriture atomique
 
 
 def check_open_spec_positions(api, notifier) -> None:

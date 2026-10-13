@@ -39,6 +39,9 @@ from __future__ import annotations
 import statistics
 from pathlib import Path
 
+from ..infrastructure.paths import HISTORY_CACHE, REGIME_MARCHE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
+
 FENETRE = 200          # ~10 mois de cotation
 MIN_TITRES = 5         # en dessous, la médiane n'a pas de sens
 
@@ -110,7 +113,8 @@ def charger_series_quotidiennes(chemin: Path) -> dict[str, dict[str, float]]:
     """Charge data/history_clean.pkl (cours quotidiens, ajustés des divisions)."""
     import pickle
 
-    h = pickle.load(open(chemin, "rb"))
+    with open(chemin, "rb") as fh:  # P7-04 : context manager
+        h = pickle.load(fh)
     out: dict[str, dict[str, float]] = {}
     for code, barres in h.items():
         d = {}
@@ -135,9 +139,8 @@ def regime_du_jour(chemin_hist: Path | None = None,
     import json
     from datetime import date
 
-    base = Path(__file__).resolve().parent.parent
-    chemin_hist = chemin_hist or (base / "data" / "history_clean.pkl")
-    chemin_cache = chemin_cache or (base / "data" / "regime_marche.json")
+    chemin_hist = chemin_hist or HISTORY_CACHE
+    chemin_cache = chemin_cache or REGIME_MARCHE  # P6-01 : définis dans paths.py
     aujourdhui = date.today().isoformat()
 
     try:
@@ -151,8 +154,7 @@ def regime_du_jour(chemin_hist: Path | None = None,
     etat = etat_marche(series)
     etat["calcule_le"] = aujourdhui
     try:
-        chemin_cache.write_text(json.dumps(etat, ensure_ascii=False, indent=2),
-                                encoding="utf-8")
+        ecrire_json_atomique(chemin_cache, etat)  # P7-01 : écriture atomique
     except OSError:
         pass
     return etat

@@ -12,6 +12,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
 DIVIDENDES_FILE = DATA_DIR / "dividendes.json"
 
@@ -27,10 +28,7 @@ def load_dividends() -> list[dict]:
 
 
 def save_dividends(items: list[dict]) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    DIVIDENDES_FILE.write_text(
-        json.dumps(items, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
+    ecrire_json_atomique(DIVIDENDES_FILE, items)  # P7-01 : écriture atomique
 
 
 def add_dividend(code: str, montant_net: float, actions: int = 0,

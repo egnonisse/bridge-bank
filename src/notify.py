@@ -9,6 +9,7 @@ appelant oublié, et la traçabilité deviendrait partielle sans que personne ne
 from __future__ import annotations
 
 import logging
+import re
 import sys
 from datetime import datetime
 
@@ -20,6 +21,15 @@ from .infrastructure.empreinte import carte
 log = logging.getLogger(__name__)
 
 TELEGRAM_API = "https://api.telegram.org/bot{token}/sendMessage"
+
+
+def _sans_token(texte: str) -> str:
+    """Retire le jeton d'un message d'erreur (P7-02).
+
+    Les exceptions `requests` incluent l'URL complète — donc le token — dans leur
+    message : ce qu'on journalise ne doit jamais le contenir.
+    """
+    return re.sub(r"/bot[^/\s]+", "/bot***", texte)
 
 # Limite dure de l'API Telegram (400 « message is too long » au-delà) ; la marge couvre
 # le suffixe d'empreinte éventuel (`_suffixe`), ajouté avant le découpage.
@@ -120,6 +130,6 @@ class TelegramNotifier:
                     log.error("Telegram %s: %s", resp.status_code, resp.text[:200])
                     return False
             except requests.RequestException as exc:
-                log.error("Telegram send failed: %s", exc)
+                log.error("Telegram send failed: %s", _sans_token(str(exc)))  # P7-02 : jamais de jeton dans les logs
                 return False
         return True

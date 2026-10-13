@@ -20,6 +20,7 @@ from .domaine.models import Quote
 from .notify import TelegramNotifier
 from .portefeuille.format_fr import nombre  # montants à la française (invariant E1, correction B1-02 du 12/10)
 from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
 log = logging.getLogger(__name__)
 
@@ -54,10 +55,7 @@ class AlertEngine:
         return {}
 
     def _save_state(self) -> None:
-        DATA_DIR.mkdir(parents=True, exist_ok=True)
-        STATE_FILE.write_text(
-            json.dumps(self.state, indent=2, ensure_ascii=False), encoding="utf-8"
-        )
+        ecrire_json_atomique(STATE_FILE, self.state)  # P7-01 : écriture atomique
 
     # ------------------------------------------------------------- triggering
     def check_once(self) -> list[str]:

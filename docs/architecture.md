@@ -282,6 +282,22 @@ Le quatrième n'existait pas dans le plan d'origine : il a été ajouté pour le
 **découpage** peut changer un message sans changer une seule valeur. Les trois premiers
 n'auraient rien vu.
 
+### Règle de centralisation des chemins (écrite le 13/10 — audit P6-01/P6-05)
+
+- **Le nom de tout fichier de `data/` vit dans `src/infrastructure/paths.py`, une seule fois.**
+  Un module l'importe ; il ne réécrit jamais `DATA_DIR / "..."`, ni un chemin relatif, ni un
+  `Path(__file__)…parent`. Corollaire : ajouter un fichier = ajouter sa constante dans
+  `paths.py`, puis `import`.
+- Le filet `verifier_chemins.py` porte **deux contrôles** depuis le 13/10 : (1) chemins
+  recalculés à la main ; (2) **noms de fichiers recopiés** — la liste des noms surveillés est
+  dérivée de `paths.py` lui-même, donc toute nouvelle constante est surveillée aussitôt.
+- **Périmètre : `src/`.** Les `scripts/` d'enquête ponctuelle (`enquete_*.py`, outils
+  d'analyse) gardent leurs chemins directs — outillage jetable, hors contrôle (décision
+  assumée, affichée par le vérificateur). Un script qui devient un outil durable doit migrer.
+- Ne pas confondre : `portfolio.json` = **état vivant** (positions, cash ; écrit à chaque
+  exécution) ≠ `portfolio_state.json` = trajectoire mensuelle pour le rapport (`PORTFOLIO_STATE`,
+  P6-03). Deux constantes distinctes et commentées dans `paths.py`.
+
 ## 7. Ce que la restructuration ne réglera PAS
 
 - **`main.py`** : 25 commandes dans un fichier de 1 310 lignes. Le déplacer dans `cli/` le

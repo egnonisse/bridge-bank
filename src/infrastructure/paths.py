@@ -43,6 +43,9 @@ MARKET_DIR = DATA_DIR / "market"          # cours archivés (historique, collect
 PORTFOLIO_DIR = DATA_DIR / "portfolio"    # positions, snapshots, relevés
 
 # Fichiers de données — le nom vit ici, jamais recopié dans un module.
+# P7-03 : history_clean.pkl est un pickle LOCAL, produit par scripts/preparer_historique_propre.py.
+# Ne JAMAIS charger un .pkl d'origine externe (le format exécute du code au chargement) — le cache
+# se RÉGÉNÈRE, il ne s'importe pas. Contrôlé par scripts/verifier_chemins.py (2 contrôles).
 HISTORY_CACHE = DATA_DIR / "history_clean.pkl"
 PROFIT_THRESHOLDS = DATA_DIR / "profit_thresholds.json"
 SEUILS_JOURNAL = DATA_DIR / "seuils_journal.jsonl"
@@ -51,6 +54,17 @@ REVERSAL_PROFILES = DATA_DIR / "reversal_profiles.json"
 PORTFOLIO_STATE = DATA_DIR / "portfolio_state.json"
 FUNDAMENTALS_HISTORIQUES = DATA_DIR / "fondamentaux_historiques.json"
 DIVISIONS_OFFICIELLES = DATA_DIR / "divisions_officielles.json"
+
+# État VIVANT du portefeuille (positions, écrit à chaque exécution) — à ne pas confondre
+# avec PORTFOLIO_STATE (trajectoire mensuelle pour le rapport, écrite par report.py).
+PORTFOLIO_FILE = DATA_DIR / "portfolio.json"
+# Positions de la poche spéculative (trading RÉEL) — écrites atomiquement (P7-01, lot 5).
+SPEC_POSITIONS = DATA_DIR / "spec_positions.json"
+# États du radar (anti-spam niveau 1 + veille permanente par cycle).
+RADAR_ALERT_STATE = DATA_DIR / "radar_alert_state.json"
+RADAR_SEEN_STATE = DATA_DIR / "radar_seen_state.json"
+# Cache du régime de marché (indice médian vs MM200), recalculé par jour.
+REGIME_MARCHE = DATA_DIR / "regime_marche.json"
 
 # ── Code et documentation ────────────────────────────────────────────────────
 SRC_DIR = RACINE / "src"

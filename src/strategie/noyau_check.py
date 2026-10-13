@@ -21,6 +21,7 @@ from ..taxation import IRVM_DIVIDEND_TAX  # noqa: E402  (C4 : plus de 0,88 en du
 # Filtres d'entrée : définis dans src/regles.py (catalogue unique).
 from ..regles import PAYOUT_TIGHT, PER_MAX  # noqa: E402
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
 NET_MAX = 0.10          # borne haute anti-mirage (décision 25/09) : net ≤ 10 %
 REFERENCE_AMOUNT = 100_000.0  # taille standard de ligne noyau (pour le calcul d'exemple)
@@ -38,7 +39,7 @@ def load_prep_watchlist() -> dict:
 
 
 def save_prep_watchlist(watch: dict) -> None:
-    PREP_WATCH_FILE.write_text(json.dumps(watch, ensure_ascii=False, indent=2), encoding="utf-8")
+    ecrire_json_atomique(PREP_WATCH_FILE, watch)  # P7-01 : écriture atomique
 
 
 def evaluate_noyau_candidate(code: str, price: float, name: str = "",

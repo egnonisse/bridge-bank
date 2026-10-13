@@ -7,9 +7,14 @@
 | # | Item | Sévérité | Statut |
 |---|---|---|---|
 | P7-01 | **Atomicité non généralisée** — `spec_positions.json` (trading réel) écrit directement + le loader avale la corruption en silence | **HAUTE** | ✅ **CORRIGÉ 13/10** (lot 5) |
-| P7-02 | Le token du bot peut fuiter dans les logs d'erreur (exceptions `requests` qui contiennent l'URL) | Moyenne | Constat |
-| P7-03 | `pickle.load` du cache historique sans contrôle de provenance AVANT chargement | Basse-Moyenne | Constat |
-| P7-04 | Micro : `open()` sans context manager ; journal `.jsonl` sans garde de ligne tronquée | Basse | Constat |
+| P7-02 | Le token du bot peut fuiter dans les logs d'erreur (exceptions `requests` qui contiennent l'URL) | Moyenne | ✅ **CORRIGÉ 13/10** (lot 6 — `_sans_token` + test) |
+| P7-03 | `pickle.load` du cache historique sans contrôle de provenance AVANT chargement | Basse-Moyenne | Règle écrite 13/10 ; option SHA non retenue* |
+| P7-04 | Micro : `open()` sans context manager ; journal `.jsonl` sans garde de ligne tronquée | Basse | ✅ **CORRIGÉ 13/10** (lot 6 — context manager ; journal : aucun lecteur en `src/`, constaté) |
+
+*P7-03 : la règle « provenance locale uniquement, jamais de .pkl externe, le cache se régénère » est
+inscrite près de `HISTORY_CACHE` dans `paths.py`. Le SHA pré-chargement n'est PAS retenu : qui peut
+altérer le `.pkl` peut altérer son `.sha` — la défense utile est la règle + les contrôles existants
+(`cache_integrity`). À re-trancher par LEO si le besoin apparaît.
 
 **1 item de sévérité haute** (P7-01) — limité à l'intégrité des données d'état, pas à une faille exploitable. Le reste est sain (voir ci-dessous).
 

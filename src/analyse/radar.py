@@ -19,9 +19,10 @@ from __future__ import annotations
 import json
 import statistics
 from pathlib import Path
-from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR, RADAR_ALERT_STATE, RADAR_SEEN_STATE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
-ALERT_STATE_FILE = DATA_DIR / "radar_alert_state.json"
+ALERT_STATE_FILE = RADAR_ALERT_STATE  # défini dans paths.py (P6-05)
 
 
 def load_alerted() -> dict:
@@ -35,10 +36,10 @@ def load_alerted() -> dict:
 
 
 def save_alerted(state: dict) -> None:
-    ALERT_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    ecrire_json_atomique(ALERT_STATE_FILE, state)  # P7-01 : écriture atomique
 
 
-SEEN_STATE_FILE = DATA_DIR / "radar_seen_state.json"  # exclu par .gitignore (*_state.json)
+SEEN_STATE_FILE = RADAR_SEEN_STATE  # défini dans paths.py (P6-05) ; exclu par .gitignore (*_state.json)
 REENTER_GAP_DAYS = 5  # absence minimale hors du radar avant re-signal (absorbe les vacillements)
 
 
@@ -53,7 +54,7 @@ def load_seen_state() -> dict:
 
 
 def save_seen_state(state: dict) -> None:
-    SEEN_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    ecrire_json_atomique(SEEN_STATE_FILE, state)  # P7-01 : écriture atomique
 
 
 def monitor_output(level1: list[str], alerted: dict, seen: dict,

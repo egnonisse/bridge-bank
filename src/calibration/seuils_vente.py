@@ -49,15 +49,15 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import PROFIT_THRESHOLDS, SEUILS_JOURNAL  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 Z = 1.96                  # couverture 95 %
 # Règles de significativité : définies dans src/regles.py (catalogue unique).
 from ..regles import BORNE_BASSE_MIN, EPISODES_MIN as MIN_EPISODES  # noqa: E402
 from ..regles import PROFIT_ALERT_THRESHOLD  # noqa: E402  (B1-12 : défaut central, 12/10)
 
-SEUILS_FILE = DATA_DIR / "profit_thresholds.json"
-JOURNAL_FILE = DATA_DIR / "seuils_journal.jsonl"
+SEUILS_FILE = PROFIT_THRESHOLDS  # définis dans paths.py (P6-01)
+JOURNAL_FILE = SEUILS_JOURNAL
 
 # Vocabulaire du mode, schéma du fichier et protection des décisions : DÉFINIS dans
 # `src/calibration/schema_seuils.py` (source unique, déplacé avec ce module au lot 3) et

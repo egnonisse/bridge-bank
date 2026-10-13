@@ -43,10 +43,10 @@ from .taxation import (
     net_yield,
 )
 from .portefeuille.format_fr import fcfa, pct  # montants à la française (invariant E1, correction B1-02 du 12/10)
-from .infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.paths import DATA_DIR, PORTFOLIO_FILE, REVERSAL_PROFILES  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
-PORTFOLIO_FILE = DATA_DIR / "portfolio.json"
-REVERSAL_FILE = DATA_DIR / "reversal_profiles.json"
+REVERSAL_FILE = REVERSAL_PROFILES  # défini dans paths.py (P6-01) ; PORTFOLIO_FILE vient de l'import (P6-03)
 REINF_STATE_FILE = DATA_DIR / "reinf_alert_state.json"  # exclu par .gitignore (*_state.json)
 REINF_COOLDOWN_DAYS = 7
 REINF_IMPROVE_DOWN_PCT = 0.03  # re-alerte pendant le cooldown si le prix baisse de ≥ 3 %
@@ -743,7 +743,7 @@ def load_reinf_state() -> dict:
 
 
 def save_reinf_state(state: dict) -> None:
-    REINF_STATE_FILE.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    ecrire_json_atomique(REINF_STATE_FILE, state)  # P7-01 : écriture atomique
 
 
 def check_reinforcements(api) -> list[tuple[str, str]]:
@@ -825,8 +825,7 @@ def load_alert_state() -> dict:
 
 
 def save_alert_state(state: dict) -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    ALERT_STATE_FILE.write_text(json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8")
+    ecrire_json_atomique(ALERT_STATE_FILE, state)  # P7-01 : écriture atomique
 
 
 def is_cooldown_active(state: dict, code: str) -> bool:

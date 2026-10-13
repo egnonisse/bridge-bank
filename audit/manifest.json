@@ -11,10 +11,14 @@
     "8 — exécution contrôlée (12/10/2026 — phase8_execution_controlee.md)",
     "LOT 3, cache historique, tests des moteurs de preuve, LOT 4 (12-13/10/2026) — docs/DECISION-2026-10-1*.md",
     "6 — contrats entre modules (13/10/2026 — phase6_contrats_modules.md : 5 items, 0 sévérité haute)",
-    "7 — sécurité et intégrité (13/10/2026 — phase7_securite_integrite.md : 4 items, dont 1 haute P7-01)"
+    "7 — sécurité et intégrité (13/10/2026 — phase7_securite_integrite.md : 4 items, dont 1 haute P7-01)",
+    "LOT 5 (13/10/2026) — P7-01 corrigé : ecriture.py (atomique + lecture stricte), positions spec/bonds, 4 tests + gardiens du LOT 4 réalignés — docs/DECISION-2026-10-13-p7-01-atomicite-et-lecture-stricte.md (commit 6d8d958)",
+    "LOT 6 (13/10/2026) — P6-01/03/05 + P7-01c/02/04 corrigés : atomicité généralisée (17 sites + test statique), 8 redéfinitions de chemins migrées, verifier_chemins étendu (2 contrôles), logs assainis — docs/DECISION-2026-10-13-lot6-integrite-etat.md"
   ],
   "phases_a_venir": [
-    "Décisions de LEO sur les items P6-01..05 et P7-01..04 (audit phase 6-7, aucune correction appliquée)"
+    "P6-02 : dette assumée (cycle portfolio⇄speculation — module domaine au plan de réorg)",
+    "P6-04 : garde de format/signature des dérivés du cache historique (ouvert — décision LEO)",
+    "P7-03 : option SHA pré-chargement du .pkl (règle écrite ; SHA non retenu — réévaluable)"
   ],
   "phase2_resume": {
     "exigences_enregistrees": 43,
