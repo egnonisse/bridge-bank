@@ -268,6 +268,24 @@ Détail : `docs/DECISION-2026-10-13-lot10-hygiene-audit.md`. **A-003 (P1) CORRIG
 purge d'historique non faite (décision LEO). **Registres actualisés** : A-001, A-002,
 A-003, R-001 (les 4 modules ont des tests), R-002 (couverture 51 %, mutation assumée).
 
+### Mise à jour du 13/10/2026 — LOT 11 : veille spéculation (B1-10/11/14/15)
+
+Détail : `docs/DECISION-2026-10-13-lot11-veille-speculation.md`. **B1-10** : le repli de
+`spec_profiles` sur les stats figées est désormais JOURNALISÉ (`log.warning`) et MARQUÉ
+(`"_fallback": True`) — la fiche affiche « ⚠️ STATISTIQUES DE SECOURS … » ; et une médiane
+de volumes NULLE ne confirme plus d'office la CASSURE (`med > 0 and volumes[i] >= med` —
+avant, `med <= 0` validait le breakout des titres sans volume). **B1-11** : la fiche publie
+le stop « −15 % du prix PAYÉ » aux DEUX bornes (`stop` = bas × 0,85, `stop_hi` = haut × 0,85)
+— l'ancien libellé unique supposait l'achat au bas et annonçait jusqu'à −19 % du prix réel.
+**B1-14** : `close_price` = prix de VENTE RÉEL partout (nouveau `close_price_detecte` que
+l'auto-clôture renseigne ; `portf close --price X` et `spec close --price X` acceptent une
+position DÉJÀ clôturée et enregistrent le réel, la détection restant consultable).
+**B1-15** : `_profit_info_alert` publie un gain NET (`_sell_profit_net` — même base que le
+chemin jumeau) : « Tu gagnerais X » (brut, ton de certitude) est banni. **Référence des
+sorties régénérée** (procédure du lot 5) : 49 sorties modifiées, toutes la ligne B1-15,
+relues ; 0 disparue ; **398 clés**. **Vérifications** : 517 tests, constantes 224/224,
+chemins 0.
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,
