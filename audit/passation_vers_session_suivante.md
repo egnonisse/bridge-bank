@@ -24,7 +24,8 @@
 - **Référence des sorties** : le delta a été mesuré et **entièrement attribué** aux corrections
   voulues (101 différences de format + 22 substantielles, cf. `phase8_execution_controlee.md` §4).
 - **Chiffres publiés re-mesurés** (`chiffres_publies_verifies.md`) : **5 sur 6 tiennent**, dont
-  l'attribution des paliers (−45,4 pt, fondement de la décision du 08/10 et de l'invariant B1).
+  l'attribution des paliers (−45,4 pt ; **re-mesurée le 13/10 après le lot 4 : −49,0 pt** —
+  fondement de la décision du 08/10 et de l'invariant B1).
   Le rebalancement à 10 ans **change de signe** (en faveur). La sélection (−6,9 pt) reste
   **non reproductible** (entrées non versionnées).
 - **Couverture mesurée** (`couverture_tests.md`).
