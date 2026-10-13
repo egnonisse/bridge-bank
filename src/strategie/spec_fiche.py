@@ -122,6 +122,13 @@ def build_fiche(code: str, name: str, closes: list,
         "entry_lo": entry_lo,
         "entry_hi": entry_hi,
         "stop": stop,
+        # B1-11 (13/10/2026) : le stop est −15 % du PRIX PAYÉ — l'acheteur ne paie pas
+        # forcément le bas de la fourchette ; les DEUX bornes sont donc publiées
+        # (avant, « Stop −15 % : X » supposait l'achat au bas et annonçait jusqu'à
+        # −19 % du prix réellement payé).
+        "stop_hi": entry_hi * 0.85,
+        # B1-10 (13/10/2026) : les stats affichées sont-elles calibrées ou figées ?
+        "stats_fallback": bool(prof.get("_fallback")),
         "palier20": entry_lo * 1.20,
         "palier35": entry_lo * 1.35,
         "palier50": entry_lo * 1.50,
@@ -159,7 +166,11 @@ def build_message(f: FicheSpec) -> str:
             f"   • La fréquence qui DÉCIDE est celle du schéma BRUT (avant\n"
             f"     les filtres zone + volume ci-dessous) : "
             f"{b['win_12m']*100:.0f} % de {b['n']} cas OBSERVÉS finissent plus hauts "
-            f"12 mois après (+{b['median_net']*100:.0f} % net médian)\n")
+            f"12 mois après (+{b['median_net']*100:.0f} % net médian)\n"
+            + ("   ⚠️ STATISTIQUES DE SECOURS : le calibrage courant est indisponible —\n"
+               "      ces chiffres datent des épreuves de septembre 2026 et ne sont\n"
+               "      PAS re-mesurés. Ne les traite pas comme la mesure du jour.\n"
+               if b.get("stats_fallback") else ""))
     if touched:
         head += (f"   • Ton palier +20 % : touché dans {touched.get('0.20', 0)*100:.0f} % des cas observés\n"
                  f"   • Ton palier +50 % : touché dans {touched.get('0.50', 0)*100:.0f} % des cas observés\n")
@@ -197,7 +208,7 @@ def build_message(f: FicheSpec) -> str:
 
     body = (f"\n📋 SI TU DÉCIDES DE JOUER (ta décision, jamais automatique) :\n"
             f"   • Achat : entre {fcfa(b['entry_lo'])} et {fcfa(b['entry_hi'])} — jamais plus cher\n"
-            f"   • Stop −15 % : {fcfa(b['stop'])} → tu vends tout, sans discuter\n"
+            f"   • Stop −15 % de TON prix payé : entre {fcfa(b['stop'])} (achat au bas de la fourchette) et {fcfa(b['stop_hi'])} (achat plus haut) → tu vends tout, sans discuter\n"
             f"   • +20 % ({fcfa(b['palier20'])}) → vends ⅓\n"
             f"   • +35 % ({fcfa(b['palier35'])}) → vends ⅓\n"
             f"   • +50 % ({fcfa(b['palier50'])}) → vends le reste\n"

@@ -241,6 +241,8 @@ def main() -> None:
     p_spec.add_argument("code", nargs="?")
     p_spec.add_argument("--amount", type=float, default=100000, help="Montant à investir (FCFA)")
     p_spec.add_argument("--min", type=int, default=3, help="Confluence minimale de signaux")
+    p_spec.add_argument("--price", type=float,
+                        help="B1-14 : prix de vente RÉEL (à enregistrer sur une position déjà clôturée)")
     p_spec.set_defaults(func=cmd_spec)
 
     p_portf = sub.add_parser("portf", help="Noyau dividende (positions long terme)")
@@ -249,6 +251,8 @@ def main() -> None:
     p_portf.add_argument("--amount", type=float, default=100000, help="Montant à investir (FCFA)")
     p_portf.add_argument("--dps", type=float, help="Dividende par action (FCFA)")
     p_portf.add_argument("--per", type=float, help="PER à l'ouverture")
+    p_portf.add_argument("--price", type=float,
+                         help="B1-14 : prix de vente RÉEL (à enregistrer sur une position déjà clôturée)")
     p_portf.set_defaults(func=cmd_portf)
 
     p_report = sub.add_parser("report", help="Rapport mensuel de santé du portefeuille")
@@ -439,16 +443,31 @@ def cmd_spec(args: argparse.Namespace) -> None:
         code = args.code.upper()
         found = False
         snap = api.market_snapshot()
+        quote = snap.by_code(code)
+        price_arg = args.price if (args.price and args.price > 0) else None
         for p in positions:
-            if p.code == code and not p.closed:
+            if p.code != code:
+                continue
+            if not p.closed:
                 p.closed = True
                 p.close_reason = "clôture manuelle"
-                quote = snap.by_code(code)
-                p.close_price = quote.last if quote else p.entry_price
+                p.close_price = price_arg or (quote.last if quote else p.entry_price)
+                print(f"✓ {code} clôturé manuellement.")
                 found = True
+            elif price_arg:
+                # B1-14 (13/10/2026) : position clôturée AUTOMATIQUEMENT (stop touché —
+                # le champ ne portait que le cours de DÉTECTION). --price enregistre le
+                # prix de vente RÉEL, celui de l'exécution chez le courtier.
+                p.close_price = price_arg
+                print(f"✓ {code} : prix de vente réel enregistré ({fcfa(price_arg, signe=False)}) "
+                      f"— le cours de détection ({fcfa(p.close_price_detecte, signe=False)}) reste à part.")
+                found = True
+            else:
+                print(f"{code} : déjà clôturée automatiquement — ajoute --price X pour "
+                      f"enregistrer ton prix de vente réel (cours de détection affiché : "
+                      f"{fcfa(p.close_price_detecte, signe=False)}).")
         if found:
             save_positions(positions)
-            print(f"✓ {code} clôturé manuellement.")
         else:
             print(f"{code} : aucune position ouverte.")
 
@@ -557,6 +576,7 @@ def cmd_portf(args: argparse.Namespace) -> None:
                         p.closed = False
                         p.close_reason = ""
                         p.close_price = 0.0
+                        p.close_price_detecte = 0.0   # B1-14 : détection effacée avec la clôture
                         p.closed_at = ""
                 print(f"⚠ Sortie {code} NON délivrée par Telegram — clôture annulée, "
                       f"nouvel essai au prochain check (la position reste surveillée).")
@@ -589,16 +609,31 @@ def cmd_portf(args: argparse.Namespace) -> None:
         code = args.code.upper()
         found = False
         snap = api.market_snapshot()
+        quote = snap.by_code(code)
+        price_arg = args.price if (args.price and args.price > 0) else None
         for p in positions:
-            if p.code == code and not p.closed:
+            if p.code != code:
+                continue
+            if not p.closed:
                 p.closed = True
                 p.close_reason = "clôture manuelle"
-                quote = snap.by_code(code)
-                p.close_price = quote.last if quote else p.entry_price
+                p.close_price = price_arg or (quote.last if quote else p.entry_price)
+                print(f"✓ {code} clôturé manuellement.")
                 found = True
+            elif price_arg:
+                # B1-14 (13/10/2026) : position clôturée AUTOMATIQUEMENT (prix de sortie
+                # atteint — le champ ne portait que le cours de DÉTECTION). --price
+                # enregistre le prix de vente RÉEL, celui de l'exécution sur BSTrade.
+                p.close_price = price_arg
+                print(f"✓ {code} : prix de vente réel enregistré ({fcfa(price_arg, signe=False)}) "
+                      f"— le cours de détection ({fcfa(p.close_price_detecte, signe=False)}) reste à part.")
+                found = True
+            else:
+                print(f"{code} : déjà clôturée automatiquement — ajoute --price X pour "
+                      f"enregistrer ton prix de vente réel (cours de détection affiché : "
+                      f"{fcfa(p.close_price_detecte, signe=False)}).")
         if found:
             save_portfolio(positions)
-            print(f"✓ {code} clôturé manuellement.")
         else:
             print(f"{code} : aucune position ouverte.")
 

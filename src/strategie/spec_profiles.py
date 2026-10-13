@@ -9,9 +9,12 @@ Les statistiques globales (n, taux de réussite, médiane, paliers touchés)
 sont CALIBRÉES par scripts/calibrate_spec_profiles.py → data/spec_profiles.json.
 """
 import json
+import logging
 import statistics
 from pathlib import Path
 from ..infrastructure.paths import DATA_DIR as DATA  # chemins centralisés (lot 0 du plan docs/architecture.md)
+
+log = logging.getLogger(__name__)
 
 PROFILES_FILE = DATA / "spec_profiles.json"
 
@@ -61,6 +64,8 @@ def detect_schemas(closes, volumes=None):
     volumes : liste alignée sur closes ; si fournie, la CASSURE exige un
     volume >= médiane des 60 dernières séances (une cassure sans volume
     n'est pas une vraie demande — règle du challenge croisé 25/09).
+    B1-10 (13/10/2026) : une médiane NULLE (titre illiquide, trou de données)
+    ne confirme plus rien d'office — sans volume réel, pas de confirmation.
     """
     if len(closes) < 260 or closes[-1] <= 0:
         return []
@@ -71,7 +76,10 @@ def detect_schemas(closes, volumes=None):
         vol_ok = True
         if volumes and len(volumes) == len(closes):
             med = statistics.median(volumes[-61:-1])
-            vol_ok = med <= 0 or volumes[i] >= med
+            # B1-10 (13/10/2026) : médiane nulle = aucun volume réel sur la fenêtre —
+            # elle ne CONFIRME plus rien d'office (avant : `med <= 0` → vol_ok = True,
+            # le faux breakout que la règle volume du 25/09 devait bloquer).
+            vol_ok = med > 0 and volumes[i] >= med
         if vol_ok:
             found.append("CASSURE")
     # éveil : rebond >= +10 % depuis le creux des 60 séances, confirmé
@@ -82,7 +90,10 @@ def detect_schemas(closes, volumes=None):
         vol_ok = True
         if volumes and len(volumes) == len(closes):
             med = statistics.median(volumes[-61:-1])
-            vol_ok = med <= 0 or volumes[i] >= med
+            # B1-10 (13/10/2026) : médiane nulle = aucun volume réel sur la fenêtre —
+            # elle ne CONFIRME plus rien d'office (avant : `med <= 0` → vol_ok = True,
+            # le faux breakout que la règle volume du 25/09 devait bloquer).
+            vol_ok = med > 0 and volumes[i] >= med
         if vol_ok:
             found.append("EVEIL")
     # panique : RSI 14 < 30
@@ -115,14 +126,26 @@ def zone_label(zone: float) -> str:
 
 
 def load_profiles() -> dict:
-    """Stats calibrées par schéma (fallback : stats historiques figées)."""
+    """Stats calibrées par schéma — le repli sur les valeurs figées est SIGNALÉ.
+
+    B1-10 (13/10/2026) : si le fichier de calibrage est absent ou illisible, le
+    repli (valeurs des épreuves 16-17/09/2026) est journalisé ET marqué
+    `"_fallback": True` — la fiche l'affiche (« statistiques de secours, non
+    recalibrées »). Avant, un fichier perdu faisait afficher ces chiffres de
+    septembre comme s'ils étaient la mesure COURANTE, sans aucune mention.
+    """
     if PROFILES_FILE.exists():
         try:
-            return json.loads(PROFILES_FILE.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-    # Fallback : valeurs des épreuves (16-17/09/2026)
+            data = json.loads(PROFILES_FILE.read_text(encoding="utf-8"))
+            data.pop("_fallback", None)   # le fichier calibré ne porte jamais ce marqueur
+            return data
+        except Exception as exc:
+            log.warning("spec_profiles.json illisible (%s) — repli sur les stats figées", exc)
+    else:
+        log.warning("spec_profiles.json absent — repli sur les stats figées (16-17/09/2026)")
+    # Fallback : valeurs des épreuves (16-17/09/2026) — marqué pour l'affichage.
     return {
+        "_fallback": True,
         "CASSURE": {"n": 10, "win_12m": 0.70, "median_net_12m": 0.569,
                     "touched": {"0.10": 0.90, "0.20": 0.80, "0.35": 0.70,
                                 "0.50": 0.70, "1.00": 0.30}},

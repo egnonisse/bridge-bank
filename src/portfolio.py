@@ -152,7 +152,12 @@ class DividendPosition:
     entry_price_ref: float = 0.0  # prix d'entrée de référence (rendement net 4 %)
     closed: bool = False
     close_reason: str = ""
+    # B1-14 (13/10/2026) : DEUX prix distincts après une sortie.
+    # `close_price` = prix de VENTE RÉEL, saisi par `portf close CODE --price X` une
+    # fois la vente exécutée (reste 0 tant que non confirmé). `close_price_detecte` =
+    # cours au moment où le check a déclenché la sortie — un indicateur, PAS une vente.
     close_price: float = 0.0
+    close_price_detecte: float = 0.0
     dividends_earned: float = 0.0  # cash total reçu en dividendes
     cash_residual: float = 0.0  # reste non réinvesti (fractionnaire)
 
@@ -325,7 +330,11 @@ def _profit_info_alert(pos: DividendPosition, price: float) -> PositionAlert:
     from .calibration.seuils_vente import explication, resume_justification
 
     gain_pct = (price / pos.entry_price - 1) * 100
-    gain_fcfa = (price - pos.entry_price) * pos.quantity
+    gain_fcfa = (price - pos.entry_price) * pos.quantity   # brut du MOUVEMENT (affiché)
+    # B1-15 (13/10/2026) : le chiffre « tu gagnerais » était un gain BRUT (aucun
+    # frais déduit) — contraire au principe NET de l'IPS §1. Le chemin jumeau
+    # (_double_option_alert) publie déjà un net après frais : même base ici.
+    profit_net, _ = _sell_profit_net(pos, price, 1.0)
     div_net = _dividend_annual_net(pos)
     net_yld = pos.net_yield_pct(price)
     info = load_profit_thresholds().get(pos.code.upper())
@@ -337,7 +346,7 @@ def _profit_info_alert(pos: DividendPosition, price: float) -> PositionAlert:
         LEVEL_DECISION,
         f"ℹ️ INFO — {pos.name} ({pos.code}) a pris {pct(gain_pct, signe=True)} "
         f"({fcfa(gain_fcfa, signe=True)} sur ta ligne)\n"
-        f"   Tu gagnerais {fcfa(gain_fcfa)} en vendant maintenant.\n"
+        f"   ≈ {fcfa(profit_net)} nets si tu vendais maintenant (frais de vente ≈ 1,4 % déduits).\n"
         f"{explication(info)}\n"
         f"{justif}\n"
         f"   → RIEN À FAIRE. Garde tes actions : elles te paient\n"
@@ -556,8 +565,11 @@ def check_dividend_position(
     if not pos.closed and not any(a.level >= LEVEL_DECISION for a in alerts):
         alerts.append(_info_alert(pos, current_price))
 
-    if pos.closed and not pos.close_price:
-        pos.close_price = current_price
+    # B1-14 (13/10/2026) : l'auto-clôture note le cours de DÉTECTION — pas un prix de
+    # vente (LEO exécute manuellement, parfois des jours plus tard, à un autre cours).
+    # Le prix de vente réel se saisit ensuite : `portf close CODE --price X`.
+    if pos.closed and not pos.close_price_detecte:
+        pos.close_price_detecte = current_price
     return alerts
 
 

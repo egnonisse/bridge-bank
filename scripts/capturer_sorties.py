@@ -291,7 +291,7 @@ def _capturer_commandes(out: dict) -> None:
     def capturer_commande(nom: str, fonction, **champs) -> None:
         args = argparse.Namespace(**{
             "action": None, "code": None, "amount": 100000.0, "dps": None, "per": None,
-            "target": 4.0, "_actions": None, **champs,
+            "target": 4.0, "_actions": None, "price": None, **champs,
         })
         tampon = io.StringIO()
         with contextlib.redirect_stdout(tampon):

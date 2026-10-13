@@ -531,3 +531,61 @@ def test_record_dividend_compounds():
     # second versement sur 21 actions
     cash2, _, _ = record_dividend(p, 30000)
     assert cash2 == 1740 * 0.88 * 21  # 32 155,20 net
+
+
+# ═══════════════════ B1-14 / B1-15 (13/10/2026) — sortie auto et gain net ══════════════
+
+def test_b1_15_l_info_plus_value_affiche_un_gain_NET():
+    """B1-15 : le chiffre le plus visible de l'alerte est le NET (frais de vente
+    déduits) — « Tu gagnerais » (brut, ton de certitude) est banni par l'IPS §1."""
+    from src.portfolio import _profit_info_alert, _sell_profit_net
+    from src.portefeuille.format_fr import fcfa
+
+    p = make_pos()
+    price = 35000.0
+    a = _profit_info_alert(p, price)
+    net, _ = _sell_profit_net(p, price, 1.0)
+    assert "Tu gagnerais" not in a.message
+    assert "nets si tu vendais maintenant" in a.message
+    assert fcfa(net) in a.message          # le montant affiché est bien CE net
+
+
+def test_b1_14_l_auto_cloture_note_le_cours_de_detection_pas_une_vente():
+    """B1-14 : le check écrit le cours de DÉTECTION dans `close_price_detecte` ;
+    `close_price` (prix de vente RÉEL) reste vide tant que la vente n'est pas
+    confirmée par `portf close --price`."""
+    p = make_pos()
+    p.exit_price = 100.0                      # rend le déclenchement immédiat
+    alerts = check_dividend_position(p, 120.0, current_dps=None, current_per=8)
+    assert p.closed
+    assert alerts                                    # l'alerte de sortie est produite
+    assert p.close_price_detecte == 120.0
+    assert p.close_price == 0.0                      # AUCUN prix de vente inventé
+
+
+def test_b1_14_portf_close_enregistre_le_prix_reel(monkeypatch):
+    """La commande `portf close CODE --price X` accepte une position DÉJÀ clôturée
+    par le check : elle enregistre le prix de vente RÉEL et conserve la détection."""
+    from types import SimpleNamespace
+
+    import src.portfolio as pf
+    from src import main as mainmod
+    from src.portfolio import DividendPosition
+
+    pos = DividendPosition(code="SNTS", name="Sonatel", entry_price=50_000.0,
+                           quantity=3, dps=2000.0, per_open=10.0)
+    pos.closed = True
+    pos.close_reason = "prix de sortie atteint"
+    pos.close_price_detecte = 62_100.0
+
+    class FakeApi:
+        def market_snapshot(self):
+            return SimpleNamespace(by_code=lambda code: SimpleNamespace(last=60_800.0))
+
+    monkeypatch.setattr(mainmod, "BSApi", lambda *a, **k: FakeApi())
+    monkeypatch.setattr(pf, "load_portfolio", lambda: [pos])
+    monkeypatch.setattr(pf, "save_portfolio", lambda ps: None)
+
+    mainmod.cmd_portf(SimpleNamespace(action="close", code="SNTS", price=60_800.0))
+    assert pos.close_price == 60_800.0
+    assert pos.close_price_detecte == 62_100.0     # la détection reste consultable

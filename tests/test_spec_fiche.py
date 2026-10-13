@@ -135,3 +135,45 @@ def test_per_disponible_reste_affiche(monkeypatch):
     msg = f.message()
     assert "PER 12.5" in msg
     assert "PER non calculable" not in msg
+
+
+# ═══════════════════ B1-10 / B1-11 (13/10/2026) — repli signalé, volume, stop ═════════
+
+def test_b1_10_le_repli_est_journalise_et_marque(monkeypatch, tmp_path):
+    """Un spec_profiles.json absent ne doit PLUS produire des chiffres de septembre
+    en silence : le repli est marqué `_fallback` et la fiche le DIT au lecteur."""
+    from src.strategie import spec_profiles as sp
+
+    monkeypatch.setattr(sp, "PROFILES_FILE", tmp_path / "absent.json")
+    prof = sp.load_profiles()
+    assert prof.get("_fallback") is True
+
+    closes = [100.0] * 300 + [150.0]
+    f = build_fiche("TEST", "Test", closes)
+    assert f is not None
+    assert "STATISTIQUES DE SECOURS" in f.message()
+
+
+def test_b1_10_volume_nul_ne_confirme_aucune_cassure():
+    """Médiane de volumes nulle (titre illiquide) : la cassure ne se confirme plus
+    d'office — avant, `med <= 0` accordait la confirmation sans aucun volume réel."""
+    closes = [100.0] * 300 + [150.0]
+    volumes_nuls = [0.0] * len(closes)
+    assert "CASSURE" not in detect_schemas(closes, volumes_nuls)
+    # Contrôle : avec un volume réel, la confirmation repasse (le test sait échouer).
+    volumes_ok = [10.0] * len(closes)
+    volumes_ok[-1] = 50.0
+    assert "CASSURE" in detect_schemas(closes, volumes_ok)
+
+
+def test_b1_11_le_stop_publie_le_prix_paye_aux_deux_bornes():
+    """Le stop est −15 % du PRIX PAYÉ : la fiche publie la borne basse (achat au bas
+    de la fourchette) ET la borne haute — plus de « Stop −15 % » unique trompeur."""
+    closes = [100.0] * 300 + [150.0]
+    f = build_fiche("TEST", "Test", closes)
+    assert f is not None
+    assert abs(f.blocks["stop"] - 85.0) < 1e-6              # 100 × 0,85
+    assert abs(f.blocks["stop_hi"] - 105.0 * 0.85) < 1e-6   # 105 × 0,85
+    msg = f.message()
+    assert "Stop −15 % de TON prix payé" in msg
+    assert "achat plus haut" in msg

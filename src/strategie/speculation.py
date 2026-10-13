@@ -152,7 +152,10 @@ class SpecPosition:
     review_alerted: bool = False  # alerte REVUE (zone morte J+120) déjà envoyée
     closed: bool = False
     close_reason: str = ""
+    # B1-14 (13/10/2026) : `close_price` = prix de VENTE RÉEL (saisi par
+    # `spec close --price`) ; `close_price_detecte` = cours au déclenchement du stop.
     close_price: float = 0.0
+    close_price_detecte: float = 0.0
     closed_at: str = ""  # horodatage de la clôture (B0-01 : le cooldown en a besoin)
 
     def __post_init__(self) -> None:
@@ -186,7 +189,7 @@ def check_position(pos: SpecPosition, price: float) -> list[str]:
     # 1. stop-loss / stop suiveur
     if price <= pos.stop_loss:
         pos.closed = True
-        pos.close_price = price
+        pos.close_price_detecte = price  # B1-14 : cours de DÉTECTION (pas la vente réelle)
         pos.closed_at = datetime.now().isoformat()
         pos.close_reason = f"STOP déclenché à {fcfa(price, signe=False)} (stop {fcfa(pos.stop_loss, signe=False)}) le {pos.closed_at[:10]}"
         events.append(f"🔴 VENDS TOUT (100 %) {pos.name} ({pos.code}) — stop déclenché, vends tout à {fcfa(price, signe=False)}")
@@ -213,7 +216,7 @@ def check_position(pos: SpecPosition, price: float) -> list[str]:
     # 5. palier +50% : clôture finale
     if price >= pos.entry_price * (1 + TAKE_3):
         pos.closed = True
-        pos.close_price = price
+        pos.close_price_detecte = price  # B1-14 : cours de DÉTECTION (pas la vente réelle)
         pos.closed_at = datetime.now().isoformat()
         pos.close_reason = f"+50% atteint : clôture finale à {fcfa(price, signe=False)} le {pos.closed_at[:10]}"
         events.append(f"🔴 VENDS LE RESTE (dernier 1/3) {pos.name} ({pos.code}) — +50% atteint, encaisse le gain")
