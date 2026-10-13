@@ -1,0 +1,38 @@
+── src/alerts.py 55-80 (_in_session + garde) ──
+
+    def _save_state(self) -> None:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        STATE_FILE.write_text(
+            json.dumps(self.state, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+
+    # ------------------------------------------------------------- triggering
+    def check_once(self) -> list[str]:
+        """Vérifie les seuils une fois. Retourne les messages à notifier."""
+        messages: list[str] = []
+        if not self.watchlist:
+            return messages
+        if self.respect_session and self.session_only and not self._in_session():
+            return messages
+
+        try:
+            snapshot = self.api.market_snapshot()
+        except Exception as exc:
+            log.error("Snapshot failed: %s", exc)
+            return messages
+
+        now = time.time()
+        for code, rules in self.watchlist.items():
+            quote = snapshot.by_code(code)
+            if quote is None or quote.last <= 0:
+
+── scripts/daily_check.py : le notifier ? ──
+
+── data/alertes_journal.jsonl : 6 dernières lignes (résumé, sans contenu sensible) ──
+total lignes : 12 ; mtime 1791850784.7679975
+  ts= None | origine= __main__ | envoye= True | type=  | len(msg)= 1489
+  ts= None | origine= __main__ | envoye= True | type=  | len(msg)= 1479
+  ts= None | origine= src.main | envoye= True | type=  | len(msg)= 339
+  ts= None | origine= src.main | envoye= True | type=  | len(msg)= 587
+  ts= None | origine= src.main | envoye= True | type=  | len(msg)= 510
+  ts= None | origine= __main__ | envoye= True | type=  | len(msg)= 299

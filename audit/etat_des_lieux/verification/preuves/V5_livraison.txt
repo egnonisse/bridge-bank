@@ -1,0 +1,117 @@
+═ V5 — 15 derniers runs par job (scheduled_instant, started, finished, status, delivery, source, error) ═
+
+── 274a6f528f1a ──
+  sched=  | start= 2026-10-12T17:03 | fin= 2026-10-12T17:05 | completed | delivery= suppressed | src= direct | err= 
+  sched= 2026-10-12T09:00 | start= 2026-10-12T16:43 | fin= 2026-10-12T16:49 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-10T09:00 | start= 2026-10-11T16:42 | fin= 2026-10-11T19:02 | unknown | delivery= None | src= builtin | err= Scheduler restarted after this execution's owner exited before a durable terminal state; w
+  sched= 2026-10-09T09:00 | start= 2026-10-09T09:12 | fin= 2026-10-09T09:13 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-08T09:00 | start= 2026-10-08T09:22 | fin= 2026-10-08T09:34 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-07T09:00 | start= 2026-10-07T12:02 | fin= 2026-10-07T12:06 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-06T09:00 | start= 2026-10-06T14:30 | fin= 2026-10-06T14:34 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-04T09:00 | start= 2026-10-05T13:01 | fin= 2026-10-05T13:09 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-03T09:00 | start= 2026-10-03T09:00 | fin= 2026-10-03T09:11 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-02T09:00 | start= 2026-10-02T09:00 | fin= 2026-10-02T09:04 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-01T09:00 | start= 2026-10-01T09:00 | fin= 2026-10-01T09:19 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-30T09:00 | start= 2026-09-30T09:00 | fin= 2026-09-30T09:03 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-29T09:00 | start= 2026-09-29T09:00 | fin= 2026-09-29T09:31 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-28T09:00 | start= 2026-09-28T09:01 | fin= 2026-09-28T09:04 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-27T09:00 | start= 2026-09-28T08:31 | fin= 2026-09-28T08:51 | completed | delivery= suppressed | src= builtin | err= 
+
+── 9bf21948f66b ──
+  sched=  | start= 2026-10-13T00:21 | fin= 2026-10-13T00:22 | completed | delivery= suppressed | src= direct | err= 
+  sched= 2026-10-12T09:30 | start= 2026-10-12T16:43 | fin= 2026-10-12T16:43 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-10T09:30 | start= 2026-10-11T16:42 | fin= 2026-10-11T19:02 | unknown | delivery= None | src= builtin | err= Scheduler restarted after this execution's owner exited before a durable terminal state; w
+  sched= 2026-10-09T09:30 | start= 2026-10-09T09:30 | fin= 2026-10-09T09:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-08T09:30 | start= 2026-10-08T09:30 | fin= 2026-10-08T09:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-07T09:30 | start= 2026-10-07T12:03 | fin= 2026-10-07T12:03 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-06T09:30 | start= 2026-10-06T14:30 | fin= 2026-10-06T14:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-04T09:30 | start= 2026-10-05T13:01 | fin= 2026-10-05T13:01 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-03T09:30 | start= 2026-10-03T09:30 | fin= 2026-10-03T09:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-02T09:30 | start= 2026-10-02T09:30 | fin= 2026-10-02T09:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-10-01T09:30 | start= 2026-10-01T09:30 | fin= 2026-10-01T09:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-09-30T09:30 | start= 2026-09-30T09:30 | fin= 2026-09-30T09:31 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-09-29T09:30 | start= 2026-09-29T09:30 | fin= 2026-09-29T09:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-09-28T09:30 | start= 2026-09-28T09:30 | fin= 2026-09-28T09:30 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+  sched= 2026-09-27T09:30 | start= 2026-09-28T08:32 | fin= 2026-09-28T08:32 | failed | delivery= suppressed | src= builtin | err= [blocked_config:silent] delivery platform 'telegram' has no gateway credentials configured
+
+── e8974cd7337d ──
+  sched=  | start= 2026-10-13T00:24 | fin= 2026-10-13T00:24 | completed | delivery= suppressed | src= direct | err= 
+  sched= 2026-10-12T09:45 | start= 2026-10-12T16:43 | fin= 2026-10-12T16:44 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-09T09:45 | start= 2026-10-11T16:42 | fin= 2026-10-11T19:02 | unknown | delivery= None | src= builtin | err= Scheduler restarted after this execution's owner exited before a durable terminal state; w
+  sched= 2026-10-08T09:45 | start= 2026-10-08T09:45 | fin= 2026-10-08T09:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-07T09:45 | start= 2026-10-07T12:02 | fin= 2026-10-07T12:03 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-06T09:45 | start= 2026-10-06T14:30 | fin= 2026-10-06T14:31 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-04T09:45 | start= 2026-10-05T13:01 | fin= 2026-10-05T13:01 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-03T09:45 | start= 2026-10-03T09:45 | fin= 2026-10-03T09:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-02T09:45 | start= 2026-10-02T09:45 | fin= 2026-10-02T09:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-01T09:45 | start= 2026-10-01T09:45 | fin= 2026-10-01T09:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-30T09:45 | start= 2026-09-30T09:45 | fin= 2026-09-30T09:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-29T09:45 | start= 2026-09-29T09:45 | fin= 2026-09-29T09:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-28T09:45 | start= 2026-09-28T09:45 | fin= 2026-09-28T09:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-27T09:45 | start= 2026-09-28T08:32 | fin= 2026-09-28T08:35 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-26T09:45 | start= 2026-09-26T09:45 | fin= 2026-09-26T09:45 | completed | delivery= suppressed | src= builtin | err= 
+
+── c45e3c1bb21c ──
+  sched= 2026-10-12T09:50 | start= 2026-10-12T16:43 | fin= 2026-10-12T16:45 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-09T09:50 | start= 2026-10-11T16:42 | fin= 2026-10-11T19:02 | unknown | delivery= None | src= builtin | err= Scheduler restarted after this execution's owner exited before a durable terminal state; w
+  sched= 2026-10-08T09:50 | start= 2026-10-08T09:50 | fin= 2026-10-08T09:58 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-07T09:50 | start= 2026-10-07T12:03 | fin= 2026-10-07T12:04 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-06T09:50 | start= 2026-10-06T14:30 | fin= 2026-10-06T14:31 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-04T09:50 | start= 2026-10-05T13:01 | fin= 2026-10-05T13:02 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-03T09:50 | start= 2026-10-03T09:50 | fin= 2026-10-03T10:03 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-02T09:50 | start= 2026-10-02T09:50 | fin= 2026-10-02T09:56 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-10-01T09:50 | start= 2026-10-01T09:50 | fin= 2026-10-01T10:00 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-30T09:50 | start= 2026-09-30T09:50 | fin= 2026-09-30T09:53 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-29T09:50 | start= 2026-09-29T09:50 | fin= 2026-09-29T10:06 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-28T09:50 | start= 2026-09-28T09:50 | fin= 2026-09-28T09:50 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-27T09:50 | start= 2026-09-28T08:32 | fin= 2026-09-28T08:35 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-26T09:50 | start= 2026-09-26T09:50 | fin= 2026-09-26T10:06 | completed | delivery= suppressed | src= builtin | err= 
+  sched= 2026-09-25T09:50 | start= 2026-09-25T09:50 | fin= 2026-09-25T09:50 | completed | delivery= suppressed | src= builtin | err= 
+
+── a4f2b2fb2a93 ──
+  sched= 2026-10-01T09:00 | start= 2026-10-01T09:00 | fin= 2026-10-01T09:01 | completed | delivery= suppressed | src= builtin | err= 
+  sched=  | start= 2026-09-01T09:00 | fin= 2026-09-01T09:01 | completed | delivery= None | src= builtin | err= 
+
+── c3a1b9de4df9 ──
+  sched= 2026-10-11T09:00 | start= 2026-10-11T16:42 | fin= 2026-10-11T19:02 | unknown | delivery= None | src= builtin | err= Scheduler restarted after this execution's owner exited before a durable terminal state; w
+  sched= 2026-10-04T09:00 | start= 2026-10-05T13:01 | fin= 2026-10-05T13:01 | failed | delivery= not_configured | src= builtin | err= Script exited with code 1
+stderr:
+Traceback (most recent call last):
+  File "<string>", li
+  sched= 2026-09-27T09:00 | start= 2026-09-28T08:32 | fin= 2026-09-28T08:35 | completed | delivery= not_configured | src= builtin | err= 
+  sched= 2026-09-20T09:00 | start= 2026-09-20T21:46 | fin= 2026-09-20T21:46 | completed | delivery= not_configured | src= builtin | err= 
+  sched= 2026-09-13T09:00 | start= 2026-09-13T22:51 | fin= 2026-09-13T22:51 | completed | delivery= not_configured | src= builtin | err= 
+  sched=  | start= 2026-09-06T13:03 | fin= 2026-09-06T13:03 | completed | delivery= None | src= builtin | err= 
+  sched=  | start= 2026-08-30T12:06 | fin= 2026-08-30T12:07 | completed | delivery= None | src= builtin | err= 
+  sched=  | start= 2026-08-23T14:00 | fin= 2026-08-23T14:00 | completed | delivery= None | src= builtin | err= 
+
+═ delivery_outcome — valeurs distinctes toutes jobs confondus ═
+   ('not_configured', 313)
+   (None, 177)
+   ('suppressed_acked', 149)
+   ('suppressed', 121)
+   ('failed', 3)
+
+═ runs 'unknown' — détail (claimed_at, handoff) ═
+   ('c45e3c1bb21c', '2026-10-11T16:42:25.252755+00:00', 'unknown', '2026-10-11T16:42:23.556480+00:00', 0, '2026-10-09T09:50:00+00:00')
+   ('5a8c972f0b78', '2026-10-11T16:42:24.680480+00:00', 'unknown', '2026-10-11T16:42:22.931148+00:00', 0, '2026-10-09T10:12:06.043224+00:00')
+   ('9bf21948f66b', '2026-10-11T16:42:24.671211+00:00', 'unknown', '2026-10-11T16:42:22.686027+00:00', 0, '2026-10-10T09:30:00+00:00')
+   ('e8974cd7337d', '2026-10-11T16:42:23.698948+00:00', 'unknown', '2026-10-11T16:42:22.673578+00:00', 0, '2026-10-09T09:45:00+00:00')
+   ('c3a1b9de4df9', '2026-10-11T16:42:23.684326+00:00', 'unknown', '2026-10-11T16:42:22.660943+00:00', 0, '2026-10-11T09:00:00+00:00')
+   ('274a6f528f1a', '2026-10-11T16:42:23.661077+00:00', 'unknown', '2026-10-11T16:42:22.647748+00:00', 0, '2026-10-10T09:00:00+00:00')
+   ('e8fc8e7c77bd', '2026-08-26T08:19:36.538692+00:00', 'unknown', '2026-08-26T08:15:01.969526+00:00', 0, None)
+   ('e8fc8e7c77bd', '2026-07-23T14:12:08.159023+00:00', 'unknown', '2026-07-23T14:12:08.134022+00:00', 0, None)
+   ('5a3fd16be2df', '2026-07-23T14:00:59.825292+00:00', 'unknown', '2026-07-23T14:00:59.795278+00:00', 0, None)
+   ('8e90b82c8de7', '2026-07-23T10:58:12.839664+00:00', 'unknown', '2026-07-23T10:58:12.810667+00:00', 0, None)
+
+═ check 274a : runs du 12/10 (pourquoi 17h05 ?) ═
+   ('2026-10-12T09:00:00+00:00', '2026-10-12T16:43:01.256945+00:00', '2026-10-12T16:49:10.908700+00:00', 'completed', 'builtin', '2026-10-12T16:42:55.556713+00:00')
+   (None, '2026-10-12T17:03:19.740313+00:00', '2026-10-12T17:05:50.837190+00:00', 'completed', 'direct', '2026-10-12T17:03:19.014559+00:00')
+
+═ jobs.json — champs des 6 jobs ═
+  274a6f528f1a | deliver=local | workdir=None | script=bridgebank_daily.py | model=None | enabled=True | no_agent=True
+  a4f2b2fb2a93 | deliver=local | workdir=None | script=bridgebank_report.py | model=None | enabled=True | no_agent=True
+  c3a1b9de4df9 | deliver=origin | workdir=None | script=bridgebank_backup.py | model=None | enabled=True | no_agent=True
+  e8974cd7337d | deliver=local | workdir=C:\Users\LEO\projects\Bridge Bank | script=None | model=None | enabled=True | no_agent=False
+  9bf21948f66b | deliver=local | workdir=C:\Users\LEO\projects\Bridge Bank | script=None | model=None | enabled=True | no_agent=False
+  c45e3c1bb21c | deliver=local | workdir=C:\Users\LEO\projects\Bridge Bank | script=bridgebank_specveille.py | model=None | enabled=True | no_agent=True

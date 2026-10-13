@@ -1,0 +1,53 @@
+══ V6 — canal de notification Bridge Bank ══
+── script home bridgebank_daily.py (contenu) ──
+"""Cron Hermes : exécute le check quotidien Bridge Bank.
+
+Le script cible journalise dans logs/daily.log et envoie lui-même les alertes
+Telegram ; sa sortie standard est vide en temps normal (silencieux) et non vide
+en cas d'erreur (le cron Hermes alerte alors).
+"""
+import subprocess
+import sys
+
+SCRIPT = r"C:\Users\LEO\projects\Bridge Bank\scripts\daily_check.py"
+subprocess.run([sys.executable, SCRIPT], check=True)
+
+── recherche session_only dans src/ ──
+src/alerts.py:36:        session_only: bool = True,
+src/alerts.py:43:        self.session_only = session_only
+src/alerts.py:68:        if self.respect_session and self.session_only and not self._in_session():
+src/alerts.py:126:    session_only: bool = True,
+src/alerts.py:130:    engine = AlertEngine(api, notifier, watchlist, cooldown_minutes, session_only, respect_session=True)
+src/main.py:178:    session_only = cfg.get("alerts", {}).get("session_only", True)
+src/main.py:182:        engine = AlertEngine(api, notifier, watchlist, cooldown, session_only, respect_session=False)
+src/main.py:190:        run_loop(api, notifier, watchlist, interval, cooldown, session_only)
+
+── recherche empreinte_dans_message ──
+src/main.py:59:    # Empreinte de version visible DANS le message : `alerts.empreinte_dans_message` (faux par
+src/main.py:61:    empreinte = bool(cfg.get("alerts", {}).get("empreinte_dans_message", False))
+src/main.py:62:    return TelegramNotifier(token, chat_id, empreinte_dans_message=empreinte)
+src/notify.py:67:    def __init__(self, bot_token: str, chat_id: str, empreinte_dans_message: bool = False) -> None:
+src/notify.py:73:        self.empreinte_dans_message = empreinte_dans_message
+src/notify.py:101:        """Rappel visible, si `alerts.empreinte_dans_message` est actif. Vide sinon."""
+
+── qui appelle notifier.send dans le daily ? ──
+25:from .notify import TelegramNotifier
+55:def get_notifier(cfg: dict) -> TelegramNotifier:
+62:    return TelegramNotifier(token, chat_id, empreinte_dans_message=empreinte)
+168:    notifier = get_notifier(cfg)
+169:    if not notifier.enabled:
+182:        engine = AlertEngine(api, notifier, watchlist, cooldown, session_only, respect_session=False)
+188:            notifier.send(msg)
+190:        run_loop(api, notifier, watchlist, interval, cooldown, session_only)
+193:def main() -> None:
+395:        notifier = get_notifier(load_config())
+401:            notifier.send(f"🎲 Spéculation : {e}")
+407:        notifier = get_notifier(load_config())
+435:            notifier.send(msg)
+539:        notifier = get_notifier(load_config())
+543:            envoye = notifier.send(f"🏦 Noyau :\n{a.message}")
+551:            if est_sortie and notifier.enabled and not envoye:
+619:    notifier = get_notifier(load_config())
+620:    if notifier.enabled:
+621:        notifier.send(message)
+641:    notifier = get_notifier(load_config())

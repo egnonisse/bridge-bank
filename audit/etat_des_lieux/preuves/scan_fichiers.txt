@@ -1,0 +1,82 @@
+════ HOME HERMES — config & règles (racine + ciblés) ════
+  C:\Users\LEO\AppData\Local\hermes\config.yaml | 10252 o | 2026-10-12 03:39
+  C:\Users\LEO\AppData\Local\hermes\config.yaml.bak-suppression-linkedin | 10245 o | 2026-09-29 10:53
+  C:\Users\LEO\AppData\Local\hermes\config.yaml.bak-vision-20260914 | 10332 o | 2026-09-14 08:29
+  C:\Users\LEO\AppData\Local\hermes\profile.yaml | 60 o | 2026-08-18 08:15
+  C:\Users\LEO\AppData\Local\hermes\context_length_cache.yaml | 175 o | 2026-08-03 11:20
+  C:\Users\LEO\AppData\Local\hermes\SOUL.md | 7254 o | 2026-08-04 16:45
+  C:\Users\LEO\AppData\Local\hermes\auth.json | 3665 o | 2026-10-12 18:08
+  C:\Users\LEO\AppData\Local\hermes\.env | 25492 o | 2026-10-09 02:24
+  C:\Users\LEO\AppData\Local\hermes\cron\jobs.json | 33399 o | 2026-10-13 00:58
+  C:\Users\LEO\AppData\Local\hermes\gateway_state.json | 600 o | 2026-10-13 01:13
+  C:\Users\LEO\AppData\Local\hermes\memories\MEMORY.md | 44697 o | 2026-10-12 01:36
+  C:\Users\LEO\AppData\Local\hermes\memories\USER.md | 19683 o | 2026-10-12 22:48
+  C:\Users\LEO\AppData\Local\hermes\projects.db | 45056 o | 2026-10-13 01:09
+  C:\Users\LEO\AppData\Local\hermes\state.db | 1032519680 o | 2026-10-13 01:13
+
+════ HOME HERMES — skills (dossiers, SKILL.md) ════
+38 dossiers de skills
+  bot-whatsapp                                     SKILL.md :  40474 car /  544 lignes | 2026-09-09
+  github-actions-ci                                SKILL.md :   6923 car /  125 lignes | 2026-10-12
+  github-profile-presentation                      SKILL.md :  14763 car /  173 lignes | 2026-09-28
+  hermes-desktop-plugins                           SKILL.md :   8777 car /  165 lignes | 2026-07-22
+  hermes-maintenance                               SKILL.md :   4557 car /  102 lignes | 2026-10-07
+  hermes-themes                                    SKILL.md :   7054 car /  139 lignes | 2026-07-22
+  llm-provider-integration                         SKILL.md :   4634 car /   58 lignes | 2026-09-25
+  project-decommissioning                          SKILL.md :   6565 car /  147 lignes | 2026-09-29
+  yuanbao                                          SKILL.md :   3665 car /  109 lignes | 2026-07-13
+
+════ PROJET BRIDGE BANK — racine ════
+  C:\Users\LEO\projects\Bridge Bank\config.yaml | 615 o | 2026-10-09 06:34
+  C:\Users\LEO\projects\Bridge Bank\pyproject.toml | 856 o | 2026-10-12 23:08
+  C:\Users\LEO\projects\Bridge Bank\README.md | 20178 o | 2026-09-03 10:23
+  C:\Users\LEO\projects\Bridge Bank\.env | 94 o | 2026-08-12 16:31
+  C:\Users\LEO\projects\Bridge Bank\requirements.txt | 66 o | 2026-10-12 16:59
+  C:\Users\LEO\projects\Bridge Bank\pyproject.toml | 856 o | 2026-10-12 23:08
+  C:\Users\LEO\projects\Bridge Bank\.gitignore | 1207 o | 2026-10-12 23:36
+
+════ PROJET — docs/ et .github/ ════
+  C:\Users\LEO\projects\Bridge Bank\docs\ANOMALIE-2026-10-09-seuil-13-en-dur.md | 6368 o | 2026-10-09 01:24
+  C:\Users\LEO\projects\Bridge Bank\docs\API-BSTrade.md | 2801 o | 2026-08-12 16:21
+  C:\Users\LEO\projects\Bridge Bank\docs\architecture.md | 24643 o | 2026-10-09 07:10
+  C:\Users\LEO\projects\Bridge Bank\docs\AUDIT-CONSTANTES.md | 23225 o | 2026-10-13 00:36
+  C:\Users\LEO\projects\Bridge Bank\docs\cas-value-etit.md | 2268 o | 2026-08-13 12:36
+  C:\Users\LEO\projects\Bridge Bank\docs\CHALLENGE-MULTI-MODELES.md | 12081 o | 2026-10-07 23:32
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-08-centralisation-regles.md | 5215 o | 2026-10-09 00:42
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-08-seuils-vente.md | 6445 o | 2026-10-09 00:09
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-09-ci-et-controle-des-constantes.md | 6900 o | 2026-10-09 03:10
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-09-empreinte-des-alertes.md | 6998 o | 2026-10-09 06:38
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-09-securisation-seuils.md | 5780 o | 2026-10-09 02:44
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-09-unification-definition-retournement.md | 6851 o | 2026-10-09 01:24
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-12-cache-historique.md | 3591 o | 2026-10-12 17:49
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-12-corrections-lot1.md | 4833 o | 2026-10-12 07:42
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-12-corrections-lot2.md | 7326 o | 2026-10-12 17:24
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-12-corrections-lot3.md | 4061 o | 2026-10-12 18:19
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-12-hierarchie-sources-et-questions-audit.md | 3935 o | 2026-10-12 01:22
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-12-tests-moteurs-de-preuve.md | 6021 o | 2026-10-12 23:24
+  C:\Users\LEO\projects\Bridge Bank\docs\DECISION-2026-10-13-lot4-residuels.md | 5331 o | 2026-10-13 01:08
+  C:\Users\LEO\projects\Bridge Bank\docs\INVARIANTS-METIER.md | 9640 o | 2026-10-13 01:07
+  C:\Users\LEO\projects\Bridge Bank\docs\IPS.md | 13435 o | 2026-10-12 01:22
+  C:\Users\LEO\projects\Bridge Bank\docs\RAPPORT-VALIDATION-28-ANS.md | 16619 o | 2026-10-13 01:08
+  C:\Users\LEO\projects\Bridge Bank\.github\workflows\ci.yml | 2803 o | 2026-10-09 02:57
+
+════ PROJET — audit/ (.md uniquement, 20 récents) ════
+  18 fichiers .md dans audit/ — 20 plus récents :
+  C:\Users\LEO\projects\Bridge Bank\audit\passation_vers_session_suivante.md | 6489 o | 2026-10-13 01:09
+  C:\Users\LEO\projects\Bridge Bank\audit\registre_desaccords.md | 18066 o | 2026-10-13 01:08
+  C:\Users\LEO\projects\Bridge Bank\audit\chiffres_publies_verifies.md | 6002 o | 2026-10-13 01:08
+  C:\Users\LEO\projects\Bridge Bank\audit\couverture_tests.md | 5058 o | 2026-10-12 22:39
+  C:\Users\LEO\projects\Bridge Bank\audit\recalcul_donnees_corrigees.md | 9720 o | 2026-10-12 21:32
+  C:\Users\LEO\projects\Bridge Bank\audit\phase8_execution_controlee.md | 7406 o | 2026-10-12 20:10
+  C:\Users\LEO\projects\Bridge Bank\audit\phase5_synthese.md | 4117 o | 2026-10-12 03:43
+  C:\Users\LEO\projects\Bridge Bank\audit\phase5_agent_deepseek.md | 12820 o | 2026-10-12 03:43
+  C:\Users\LEO\projects\Bridge Bank\audit\matrice_tests_phase4.md | 6150 o | 2026-10-12 03:34
+  C:\Users\LEO\projects\Bridge Bank\audit\phase3_agentB2_mistral.md | 39189 o | 2026-10-12 03:12
+  C:\Users\LEO\projects\Bridge Bank\audit\phase3_agentB1_mistral.md | 45287 o | 2026-10-12 03:03
+  C:\Users\LEO\projects\Bridge Bank\audit\phase3_materiel_runB_avorte.md | 4498 o | 2026-10-12 02:52
+  C:\Users\LEO\projects\Bridge Bank\audit\phase3_agentA_claude.md | 27614 o | 2026-10-12 01:58
+  C:\Users\LEO\projects\Bridge Bank\audit\phase3_brief_agentA.md | 1497 o | 2026-10-12 01:53
+  C:\Users\LEO\projects\Bridge Bank\audit\phase3_brief_agentB.md | 2037 o | 2026-10-12 01:53
+  C:\Users\LEO\projects\Bridge Bank\audit\phase2_exigences.md | 13989 o | 2026-10-12 01:24
+  C:\Users\LEO\projects\Bridge Bank\audit\phase0_capacites.md | 6020 o | 2026-10-12 01:11
+  C:\Users\LEO\projects\Bridge Bank\audit\phase1_cartographie.md | 17368 o | 2026-10-12 00:54

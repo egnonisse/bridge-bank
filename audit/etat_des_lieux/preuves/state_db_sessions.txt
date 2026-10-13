@@ -1,0 +1,24 @@
+── modèles réellement utilisés (table sessions) ──
+  deepseek-v4-flash                        deepseek           239 sessions
+  deepseek-v4-pro                          deepseek           112 sessions
+  deepseek-v4-pro                          ?                    7 sessions
+  claude-opus-5                            ?                    5 sessions
+  deepseek-flash                           ?                    3 sessions
+  deepseek-flash                           deepseek             3 sessions
+  deepseek-reasoner                        deepseek             3 sessions
+  mistralai/mistral-large-4-0              openrouter           3 sessions
+  anthropic/claude-sonnet-5.5              openrouter           2 sessions
+  anthropic/claude-opus-5.5                openrouter           1 sessions
+  google/gemini-3.1-pro-preview            openrouter           1 sessions
+
+── par source (qui tourne) ──
+  source=desktop      profil=default      255
+  source=cron         profil=default      124
+
+── session_model_usage : colonnes ──
+  ['session_id', 'model', 'billing_provider', 'billing_base_url', 'billing_mode', 'task', 'api_call_count', 'input_tokens', 'output_tokens', 'cache_read_tokens', 'cache_write_tokens', 'reasoning_tokens', 'estimated_cost_usd', 'actual_cost_usd', 'cost_status', 'cost_source', 'first_seen', 'last_seen']
+
+── usage par modèle (agrégé) ──
+Traceback (most recent call last):
+  File "<stdin>", line 16, in <module>
+sqlite3.OperationalError: no such column: turns

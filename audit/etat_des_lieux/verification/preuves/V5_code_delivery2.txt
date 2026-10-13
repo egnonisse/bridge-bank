@@ -1,0 +1,81 @@
+══ scheduler.py — sémantique delivery_outcome ══
+    else:
+        finish_execution(
+            execution_id, success=False,
+            error="Fire claim ownership lost; stale result was discarded.")
+
+
+def _classify_delivery_outcome(
+    *, delivery_error, should_deliver: bool, unresolved_origin: bool,
+    normalized_deliver: str, incident_acked: bool, success: bool,
+    delivery_queued=None, notification_suppressed: bool = False,
+) -> str:
+    if delivery_error:
+        return "failed"
+    if should_deliver and delivery_queued:
+        return "queued"
+    if notification_suppressed:
+        return "suppressed"
+    if should_deliver and unresolved_origin:
+        return "not_configured"
+    if should_deliver and normalized_deliver != "local":
+        return "delivered"
+    if incident_acked and not success:
+        # Failure ping withheld for a known signature: operator acked it, or it was already
+        # alerted inside the reminder cooldown (vs. plain "suppressed").
+        return "suppressed_acked"
+    return "suppressed"
+
+
+def _compose_run_delivery(
+    job: dict, *, success: bool, error, final_response: str, output_file,
+    agent_declared: bool = False,
+────
+            execution_id, success=False,
+            error="Fire claim ownership lost before terminal completion.")
+        return True
+    delivery_outcome = _classify_delivery_outcome(
+        delivery_error=d.delivery_error,
+        delivery_queued=job.get("last_delivery_queued"),
+        notification_suppressed=bool(job.get("_notification_all_targets_suppressed")),
+        should_deliver=d.should_deliver,
+        unresolved_origin=d.unresolved_origin,
+        # Read the lane the notice was actually routed through (failure_deliver on failure).
+        normalized_deliver=_normalize_deliver_value(_delivery_lane_value(job, for_failure=not d.success)),
+        incident_acked=d.incident_acked,
+        success=d.success,
+    )
+    if delivery_outcome in ("delivered", "not_configured") and not d.success:
+        # Failure ping left the process (or had a configured target): mark the incident alerted.
+        _mark_incident_alerted(d.failure_incident_id)
+    finish_execution(
+        execution_id, success=d.success, error=d.error, delivery_outcome=delivery_outcome)
+    return True
+
+
+def _deliver_crash_failure(
+    job: dict, err_text: str, *, adapters, loop,
+) -> tuple[Optional[str], str]:
+    """Failure notice for a run that raised out of run_job. Returns (delivery_error, outcome)."""
+    normalized_deliver = _normalize_deliver_value(_delivery_lane_value(job, for_failure=True))
+    # Same ack gate as the normal failure delivery: acked signatures stay silent here too.
+    incident_acked, failure_incident_id = _upsert_incident_for_failure(job, err_text)
+    if incident_acked:
+        return None, "suppressed_acked"
+    delivery_error = None
+    try:
+        delivery_error = _deliver_result(
+            job,
+            # Same text as the normal failure delivery: this run also counts toward
+──── grep not_configured/suppressed dans scheduler.py ────
+2743:            delivery_error = delivery_outcome = None
+2750:                    delivery_error, delivery_outcome = _deliver_crash_failure(
+2826:        return "suppressed"
+2828:        return "not_configured"
+2835:    return "suppressed"
+3098:    delivery_outcome = _classify_delivery_outcome(
+3109:    if delivery_outcome in ("delivered", "not_configured") and not d.success:
+3145:    delivery_outcome = _classify_delivery_outcome(
+3150:    if delivery_outcome in ("delivered", "not_configured"):
+3374:        delivery_outcome = "suppressed"
+3383:            delivery_error, delivery_outcome = _deliver_crash_failure(

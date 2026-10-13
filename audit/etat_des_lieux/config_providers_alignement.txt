@@ -1,0 +1,9 @@
+══ Alignement providers.default — 13/10/2026 02:29 ══
+── AVANT ──
+anthropic
+deepseek
+✓ Set providers.default = deepseek in C:\Users\LEO\AppData\Local\hermes\config.yaml
+set exit=0
+── APRÈS ──
+deepseek
+deepseek

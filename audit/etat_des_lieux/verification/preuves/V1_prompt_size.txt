@@ -1,0 +1,55 @@
+Prompt-size breakdown (platform=cli, model=deepseek-flash)
+
+  System prompt total :   99,601 B  (97.3 KB, 96,918 chars)
+
+  Major blocks:
+    skills index       :   13,458 B  (13.1 KB)
+    memory             :   44,888 B  (43.8 KB)
+    user profile       :   19,940 B  (19.5 KB)
+
+  Prompt tiers:
+    stable (identity/guidance/skills)   :   17,791 B  (17.4 KB)
+    context (AGENTS.md/cwd files)       :        0 B  (0.0 KB)
+    volatile (memory/profile/timestamp) :   81,808 B  (79.9 KB)
+
+  Tool schemas         :   67,967 B  (66.4 KB, 38 tools)
+
+  Toolsets by size (tool-schema JSON, largest first):
+    toolset                tools      schema
+    kanban                    14    24,500 B  (23.9 KB)
+    file                       4     5,678 B  (5.5 KB)
+    skills                     3     4,963 B  (4.8 KB)
+    terminal                   1     4,840 B  (4.7 KB)
+    delegation                 1     4,659 B  (4.5 KB)
+    browser                    5     4,407 B  (4.3 KB)
+    (unknown)                  3     3,898 B  (3.8 KB)
+    browser-use                1     3,871 B  (3.8 KB)
+    memory                     1     3,526 B  (3.4 KB)
+    code_execution             1     2,961 B  (2.9 KB)
+    web                        2     1,910 B  (1.9 KB)
+    clarify                    1     1,833 B  (1.8 KB)
+    vision                     1       845 B  (0.8 KB)
+
+  Skills by size (SKILL.md on-disk = read cost; index cost = attributed always-on bytes, largest first):
+    skill                          SKILL.md  index cost
+    brvm-value-investing           96,308 B        87 B
+    woocommerce-plugin-developm…   84,961 B        80 B
+    zariamall-bot                  79,110 B        78 B
+    youtube-shorts-pipeline        68,150 B        74 B
+    sellercenter                   47,609 B        78 B
+    bot-whatsapp                   42,117 B        79 B
+    woocommerce-seo-audit          35,703 B        89 B
+    claude-code                    35,175 B        70 B
+    humanizer                      34,463 B        65 B
+    p5js                           27,534 B        62 B
+    audit-preuves                  25,810 B        78 B
+    claude-design                  25,767 B        78 B
+    refactoring-sans-regression    25,247 B        89 B
+    application-security-review    25,009 B        97 B
+    comfyui                        24,075 B        73 B
+    llm-wiki                       20,121 B        73 B
+    computer-use                   18,054 B        75 B
+    odoo-deployment                17,502 B        76 B
+    hermes-runtime-administrati…   16,560 B        89 B
+    pharmascan                     15,956 B        76 B
+    … and 116 more (use --json for the full list)

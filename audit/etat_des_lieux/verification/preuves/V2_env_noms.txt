@@ -1,0 +1,23 @@
+── %HERMES_HOME%\.env — noms, occurrences, longueurs (AUCUNE valeur) ──
+  AI_GATEWAY_API_KEY           x1  longueurs=[60]
+  ANTHROPIC_API_KEY            x2  longueurs=[108, 108]  <-- DOUBLON
+  ANTHROPIC_BASE_URL           x1  longueurs=[25]
+  BROWSERBASE_ADVANCED_STEALTH x1  longueurs=[5]
+  BROWSERBASE_PROXIES          x1  longueurs=[4]
+  BROWSER_INACTIVITY_TIMEOUT   x1  longueurs=[3]
+  BROWSER_SESSION_TIMEOUT      x1  longueurs=[3]
+  BU_CDP_URL                   x1  longueurs=[21]
+  DEEPSEEK_API_KEY             x1  longueurs=[35]
+  FIRECRAWL_API_KEY            x1  longueurs=[35]
+  GEMINI_API_KEY               x1  longueurs=[53]
+  GITHUB_TOKEN                 x1  longueurs=[93]
+  IMAGE_TOOLS_DEBUG            x1  longueurs=[5]
+  MOA_TOOLS_DEBUG              x1  longueurs=[5]
+  OPENROUTER_API_KEY           x1  longueurs=[73]
+  TERMINAL_LIFETIME_SECONDS    x1  longueurs=[3]
+  TERMINAL_MODAL_IMAGE         x1  longueurs=[42]
+  TERMINAL_TIMEOUT             x1  longueurs=[2]
+  VISION_TOOLS_DEBUG           x1  longueurs=[5]
+  WEB_TOOLS_DEBUG              x1  longueurs=[5]
+
+total lignes-clés : 21 | noms distincts : 20

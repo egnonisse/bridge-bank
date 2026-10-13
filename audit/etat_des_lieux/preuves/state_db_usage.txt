@@ -1,0 +1,27 @@
+── session_model_usage par (modèle, province facturation) ──
+  deepseek-v4-flash                          deepseek     sessions= 292 appels= 16766 cout_estime=$29.0176
+  deepseek-v4-pro                            deepseek     sessions= 131 appels=  7225 cout_estime=$31.9468
+  deepseek-reasoner                          deepseek     sessions=   4 appels=  1851 cout_estime=$2.0991
+  deepseek-flash                             deepseek     sessions=  22 appels=  1127 cout_estime=$2.4135
+  deepseek-v4-pro                            auto         sessions=   4 appels=   158 cout_estime=$0.0000
+  mistralai/mistral-large-4-0                openrouter   sessions=   3 appels=   133 cout_estime=$2.0614
+  claude-opus-5                              anthropic    sessions=   1 appels=   112 cout_estime=$0.0000
+  deepseek-v4-flash                          auto         sessions=   8 appels=    95 cout_estime=$0.0000
+  claude-opus-5                              auto         sessions=   1 appels=    28 cout_estime=$0.0000
+  anthropic/claude-sonnet-5.5                openrouter   sessions=   2 appels=    17 cout_estime=$0.6623
+  google/gemini-3.1-pro-preview              openrouter   sessions=   1 appels=    17 cout_estime=$0.4807
+  anthropic/claude-opus-5.5                  openrouter   sessions=   1 appels=    16 cout_estime=$0.8486
+  deepseek-v4-pro                                         sessions=   6 appels=     7 cout_estime=$0.0000
+  deepseek-v4-flash                                       sessions=   4 appels=     4 cout_estime=$0.0000
+  gemini-2.5-flash                           gemini       sessions=   2 appels=     3 cout_estime=$0.0018
+  deepseek-flash                                          sessions=   2 appels=     2 cout_estime=$0.0000
+
+── par tâche ──
+   ('', 378, 23768)
+   ('approval', 45, 961)
+   ('background_review', 26, 2641)
+   ('compression', 20, 175)
+   ('title_generation', 13, 13)
+   ('vision', 2, 3)
+
+TOTAL coût estimé = 69.531813953 | coût réel = 0.0

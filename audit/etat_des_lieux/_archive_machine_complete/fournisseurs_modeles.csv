@@ -1,0 +1,10 @@
+﻿fournisseur,cle_api,etat_doctor,usage_constate,modele_associe,notes,preuve
+DeepSeek,DEEPSEEK_API_KEY (presente),OK,"modeles par defaut REELS : deepseek-v4-flash (292 sess.), deepseek-v4-pro (131), reasoner, flash",deepseek-flash (defaut) ; deepseek-v4-pro (delegation),provider reel des sessions desktop+cron,hermes_doctor.txt ; state_db_usage.txt
+Anthropic,"ANTHROPIC_API_KEY (presente, DUPLIQUEE dans .env)",OK,"claude-opus-5 (1 sess., 112 appels) ; via OpenRouter : sonnet 5.5, opus 5.5",claude-opus-5 (5 sess.),providers.default=anthropic MAIS model.default=deepseek-flash -> ECART,hermes_doctor.txt ; config_masque.yaml
+OpenRouter,OPENROUTER_API_KEY (presente),OK,"mistral-large-4-0 (3 sess., 2,06 $) ; gemini-3.1-pro (1) ; claude (3)",-,HTTP 402 Insufficient Balance sur job D2D (01/10) — plafond 5 $ (memoire),hermes_doctor.txt ; state_db_usage.txt ; cronjob_manage list
+Google / Gemini,GEMINI_API_KEY (presente),OK,"gemini-2.5-flash (vision, 3 appels)",vision (auto),vision OK,hermes_doctor.txt ; state_db_usage.txt
+Firecrawl,FIRECRAWL_API_KEY (presente),OK (sur la page),-,-,quota free EPUISE (memoire ; non reverifie — pas d'appel autorise),hermes_doctor.txt
+GitHub,GITHUB_TOKEN (presente),OK,-,-,utilise pour l'auth git du PC,hermes_doctor.txt
+Nous Portal,aucune,not logged in,-,-,-,hermes_status.txt
+OpenAI / xAI / NVIDIA / Z.AI / Kimi / StepFun / MiniMax / DeepInfra / Tavily / Perplexity / ElevenLabs / Browser Use / Browserbase / FAL / Keenable,absentes,non configures,-,-,-,hermes_doctor.txt ; hermes_status.txt
+AI Gateway (Vercel),AI_GATEWAY_API_KEY (presente dans .env),non teste (pas d'appel),-,-,cle presente ; format d'appel Jev non valide (memoire),liste .env

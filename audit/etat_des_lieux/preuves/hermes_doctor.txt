@@ -1,0 +1,158 @@
+
+┌─────────────────────────────────────────────────────────┐
+│                 🩺 Hermes Doctor                        │
+└─────────────────────────────────────────────────────────┘
+
+◆ Security Advisories
+  ✓ No active security advisories
+
+◆ MCP Server Security
+  ✓ No suspicious MCP stdio commands
+
+◆ Python Environment
+  ✓ Python 3.14.7
+  ✓ SQLite 3.53.1
+    → SQLite source id: 2026-05-05 10:34:17 c88b22011a54b4f6fbd149e9f8e4…
+    → state.db: WAL journal mode (984.7 MB)
+    → cron/executions.db: WAL journal mode (656.0 KB)
+    → projects.db: WAL journal mode (44.0 KB)
+    → verification_evidence.db: WAL journal mode (356.0 KB)
+    → kanban.db: WAL journal mode (120.0 KB)
+  ✓ Runtime venv staged (C:\Users\LEO\AppData\Local\hermes\installs\e3120f9861fb8d47\environments\d6048a192e8e4307b6e8c93efc9411b6\venv) (active in this process)
+
+◆ SSL / CA Certificates
+  ✓ TLS platform trust store configured; default SSL context available
+
+◆ Required Packages
+  ✓ OpenAI SDK
+  ✓ Rich (terminal UI)
+  ✓ python-dotenv
+  ✓ ruamel.yaml
+  ✓ HTTPX
+  ✓ Croniter (cron expressions) (optional)
+  ⚠ python-telegram-bot (optional, not installed)
+  ✓ discord.py (optional)
+  ✓ Dashboard web surface (imports cleanly)
+
+◆ Configuration Files
+  ✓ ~/AppData/Local/hermes/.env file exists
+  ✓ API key or custom endpoint configured
+  ✓ ~/AppData/Local/hermes/config.yaml exists
+  ✓ Config version up to date (v49)
+  ✓ No deprecated config keys or env vars
+
+◆ xAI Model Retirement (May 15, 2026)
+  ✓ No retired xAI models in config
+
+◆ Session Reset (timers removed Sep 7, 2026)
+  ⚠ session_reset.mode: both is no longer applied: gateway conversations reset only on /new or /reset. To keep idle/daily resets, run `hermes plugins install hermes-session-reset-policy`.
+
+◆ Auth Providers
+  ⚠ Nous Portal auth (not logged in)
+  ⚠ OpenAI Codex auth (not logged in)
+    → No Codex credentials stored. Run `hermes auth add openai-codex --type oauth` to authenticate.
+    → codex CLI not installed (optional — only required to import tokens from an existing Codex CLI login)
+  ⚠ MiniMax OAuth (not logged in)
+  ⚠ xAI OAuth (not logged in)
+    → No xAI OAuth credentials stored. Select xAI Grok OAuth (SuperGrok / Premium+) in `hermes model`.
+
+◆ Directory Structure
+  ✓ ~/AppData/Local/hermes directory exists
+  ✓ ~/AppData/Local/hermes/cron/ exists
+  ✓ ~/AppData/Local/hermes/sessions/ exists
+  ✓ ~/AppData/Local/hermes/logs/ exists
+  ✓ ~/AppData/Local/hermes/skills/ exists
+  ✓ ~/AppData/Local/hermes/memories/ exists
+  ✓ ~/AppData/Local/hermes/cache/scratch/ is the scratch dir (TMPDIR; 38.5 MB, entries pruned after 24h idle)
+    → TMPDIR=C:\Users\LEO\AppData\Local\Temp is set by you or the OS, so Hermes leaves it alone
+  ✓ ~/AppData/Local/hermes/SOUL.md exists (persona configured)
+  ✓ ~/AppData/Local/hermes/memories/ directory exists
+  ✓ MEMORY.md exists (43347 chars)
+  ✓ USER.md exists (18892 chars)
+  ✓ ~/AppData/Local/hermes/state.db exists (379 sessions)
+    → state.db logical size 984.7 MB, 252,080 pages, 919 free, WAL 13.8 MB
+    → 90,561 messages, 379 sessions, journal_mode=wal
+    → FTS tables: messages_fts, messages_fts_trigram
+    → WAL file is 13 MB (normal for active sessions)
+
+◆ External Tools
+  ✓ git (pm store)
+  ✓ ripgrep (rg) (pm store) (faster file search)
+  ⚠ Docker/Podman not found (optional)
+  ✓ Node.js
+  ✓ agent-browser (C:\Users\LEO\AppData\Local\hermes\tools\agent-browser-0.26.0-win32-x64\bin\agent-browser-win32-x64.exe)
+  ⚠ Browser tools (agent-browser) deps (0 critical, 3 high, 0 moderate — fix is an upstream lockfile bump — a local manual fix does not persist (the next `hermes update` reinstalls from the committed lockfile))
+    →   ^ runtime dependency tree; report/pin the fix in package-lock.json — see #116774
+  ⚠ web workspace deps (0 critical, 4 high, 4 moderate — fix is an upstream lockfile bump — a local manual fix does not persist (the next `hermes update` reinstalls from the committed lockfile))
+    →   ^ build-time tooling (not runtime); if manual npm remediation errors with an arborist crash it's a known npm bug — clears via a lockfile bump
+  ⚠ ui-tui workspace deps (0 critical, 2 high, 4 moderate — fix is an upstream lockfile bump — a local manual fix does not persist (the next `hermes update` reinstalls from the committed lockfile))
+    →   ^ build-time tooling (not runtime); if manual npm remediation errors with an arborist crash it's a known npm bug — clears via a lockfile bump
+
+◆ API Connectivity
+  Running 42 connectivity checks in parallel…                                                                        ✓ IPv6 route (IPv6 path to openrouter.ai reachable)
+  ✓ OpenRouter API
+  ✗ Anthropic API (invalid API key)
+  ✓ DeepSeek            
+  ✓ Vercel AI Gateway   
+  ✓ gemini              
+  ✓ GitHub token (GITHUB_TOKEN from ~/AppData/Local/hermes/.env accepted by api.github.com)
+
+◆ Tool Availability
+  ✓ browser
+  ✓ browser-use
+  ✓ clarify
+  ✓ code_execution
+  ✓ computer_use
+  ✓ cronjob
+  ✓ delegation
+  ✓ desktop_ui
+  ✓ file
+  ✓ kanban (runtime-gated; loaded only for dispatcher-spawned workers)
+  ✓ memory
+  ✓ project
+  ✓ session_search
+  ✓ setup
+  ✓ skills
+  ✓ terminal
+  ✓ todo
+  ✓ video
+  ✓ video_gen
+  ✓ vision
+  ✓ web search (ddgs)
+  ✓ web extract (firecrawl)
+  ⚠ a2a (system dependency not met)
+  ⚠ browser-cdp (system dependency not met)
+  ⚠ connections (system dependency not met)
+  ⚠ discord (missing DISCORD_BOT_TOKEN)
+  ⚠ discord_admin (missing DISCORD_BOT_TOKEN)
+  ⚠ feishu_doc (system dependency not met)
+  ⚠ feishu_drive (system dependency not met)
+  ⚠ hermes-yuanbao (system dependency not met)
+  ⚠ homeassistant (system dependency not met)
+  ⚠ image_gen (image generation unavailable — check the provider selection and its key or SDK with 'hermes tools')
+  ⚠ spotify (system dependency not met)
+  ⚠ tts (system dependency not met)
+  ⚠ x_search (missing XAI_API_KEY)
+
+◆ Skills Hub
+  ✓ Skills Hub directory exists
+  ✓ Lock file OK (8 hub-installed skill(s))
+  ✓ GitHub token configured (validity checked under API Connectivity)
+
+◆ Memory Provider
+  ✓ Built-in memory active (no external provider configured — this is fine)
+
+◆ NeMo Relay Plugins
+  ✓ No Relay plugin files found
+
+────────────────────────────────────────────────────────────
+  Found 5 issue(s) to address:
+
+  1. Browser tools (agent-browser) has 3 npm vulnerabilities
+  2. web workspace has 8 npm vulnerabilities
+  3. ui-tui workspace has 6 npm vulnerabilities
+  4. Run 'hermes setup' to configure missing API keys for full tool access
+  5. session_reset.mode: both is no longer applied: gateway conversations reset only on /new or /reset. To keep idle/daily resets, run `hermes plugins install hermes-session-reset-policy`.
+
+  Tip: run 'hermes doctor --fix' to auto-fix what's possible.
+

@@ -1,0 +1,9 @@
+══ recherche des valeurs delivery_outcome dans le code Hermes — 01:54:41 ══
+C:/Users/LEO/AppData/Local/hermes/hermes-agent/hermes_cli/cli_info_mixin.py:551:                    print(f"    ○ {name:<12} {t('cli.gateway_status.not_configured', env_var=env_var)}")
+C:/Users/LEO/AppData/Local/hermes/hermes-agent/hermes_cli/web_routers/messaging.py:254:        state = "not_configured"
+C:/Users/LEO/AppData/Local/hermes/hermes-agent/hermes_cli/web_server_messaging.py:404:        "telegram_manager_bot_token_not_configured": "Telegram setup service is not configured.",
+══ suite — 01:54:51 ══
+C:/Users/LEO/AppData/Local/hermes/hermes-agent/agent/monitoring/cron_health.py:26:_KNOWN_DELIVERY_OUTCOMES = {"queued", "delivered", "failed", "suppressed", "suppressed_acked", "not_configured"}
+C:/Users/LEO/AppData/Local/hermes/hermes-agent/cron/scheduler.py:2834:        return "suppressed_acked"
+C:/Users/LEO/AppData/Local/hermes/hermes-agent/cron/scheduler.py:3125:        return None, "suppressed_acked"
+C:/Users/LEO/AppData/Local/hermes/hermes-agent/tests/cron/test_restart_safe_worker.py:912:        "suppressed_acked"

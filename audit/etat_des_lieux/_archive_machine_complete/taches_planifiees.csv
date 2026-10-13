@@ -1,0 +1,13 @@
+﻿id,nom,horaire,type,livraison,workdir,statut,dernier_run,dernier_resultat,ecrit_dans_data,preuve
+80bc3ef74f59,Pulse - Broker Daily,0 12 * * *,agent LLM,local,Broker,paused (22/07),2026-07-22 09:11,ok,Broker (pas ce projet),cronjob_manage list
+274a6f528f1a,BridgeBank check quotidien,0 9 * * *,script (no_agent),local,Bridge Bank,scheduled,2026-10-12 17:05,completed,"OUI (value_new_state, etats)",cronjob_manage list ; executions.db
+9cf89880226a,Tracking newsletter AIWATCH (jeu),0 9 * * 4,agent LLM,origin,Aiwatch,scheduled,2026-10-08 09:24,ok,Oui (Aiwatch/data),cronjob_manage list
+a4f2b2fb2a93,BridgeBank rapport mensuel,0 9 1 * *,script (no_agent),local,Bridge Bank,scheduled,2026-10-01 09:01,completed,OUI,cronjob_manage list
+23afec48a0bb,Suivi ventes D2D mensuel,0 8 1 * *,agent LLM + skill,origin,Book,scheduled,2026-10-01 09:10,ERROR (HTTP 402),Non (Book),cronjob_manage list
+82ef71600ac6,PharmaScan Gardes UNPPCI,0 9 1 * *,script (no_agent),origin,pharmascan,scheduled,2026-10-01 09:00,ERROR (fitz),Oui (Firestore),cronjob_manage list
+300a26e0d232,aiwatch-gsc-positions-mensuel,0 8 1 * *,agent LLM,local,(Aiwatch/seo),scheduled,2026-10-01 09:07,ok,Non,cronjob_manage list
+c3a1b9de4df9,BridgeBank backup git hebdo,0 9 * * 0,script (no_agent),origin,Bridge Bank,scheduled,2026-10-05 13:01,ERROR (repo not found ; credential corrige depuis),OUI (git push),cronjob_manage list ; executions.db
+e8974cd7337d,BridgeBank veille radar 09h45,45 9 * * *,agent LLM + monitor,local,Bridge Bank,scheduled,2026-10-13 00:24,ok (no_change),OUI (etats radar),cronjob_manage list
+9bf21948f66b,BridgeBank analyse value 09h30,30 9 * * *,agent LLM,local,Bridge Bank,scheduled,2026-10-13 00:22,ok (repare ; 5 echecs avant),OUI (lecture),cronjob_manage list ; executions.db
+5a8c972f0b78,pharmascan-sentry-watch,every 30m,script (no_agent),origin,pharmascan,scheduled,2026-10-13 00:58,ERROR (Script not found ; 89/7 j),Non,cronjob_manage list ; executions.db
+c45e3c1bb21c,BridgeBank veille spe 09h50,50 9 * * *,script (no_agent),local,Bridge Bank,scheduled,2026-10-12 16:45,ok,OUI (etats spe),cronjob_manage list

@@ -1,0 +1,36 @@
+═ V3/V4 — section moa + delegation des 3 configs ═
+
+── ACTUEL (13/10) ──
+  moa : aggregator: |   model: claude-opus-5 |   provider: anthropic | degraded_reference_policy: loud | enabled: true | fanout: per_iteration | max_tokens: 4096 | presets: |   default: |     aggregator: |       model: claude-opus-5 |       provider: anthropic |     degraded_reference_policy: loud |     fan
+  delegation : max_iterations: 250 | model: deepseek-v4-pro | provider: deepseek | reasoning_effort: medium | 
+
+── BAK-suppression-linkedin (29/09) ──
+  moa : aggregator: |   model: claude-opus-5 |   provider: anthropic | degraded_reference_policy: loud | enabled: true | fanout: per_iteration | max_tokens: 4096 | presets: |   default: |     aggregator: |       model: claude-opus-5 |       provider: anthropic |     degraded_reference_policy: loud |     fan
+  delegation : max_iterations: 250 | reasoning_effort: medium | 
+
+── BAK-vision (14/09) ──
+  moa : aggregator: |   model: claude-opus-5 |   provider: anthropic | degraded_reference_policy: loud | enabled: true | fanout: per_iteration | max_tokens: 4096 | presets: |   default: |     aggregator: |       model: claude-opus-5 |       provider: anthropic |     degraded_reference_policy: loud |     fan
+  delegation : max_iterations: 250 | reasoning_effort: medium | 
+
+═ V3 — références à moa/mixture dans les jobs BRVM ═
+  aucun job BRVM n'appelle MoA (constaté — aucun champ moa/mixture dans jobs.json)
+
+═ V3/V4 — state.db ═
+── sessions/modele contenant 'moa' ? ──
+  (aucune)
+── claude-sonnet-5.5 via openrouter : first_seen / last_seen ──
+   ('claude-opus-5', 'anthropic', 1785759229.4839382, 1785764537.3284965, 112, 0.0)
+   ('claude-opus-5', 'auto', 1785759236.3639052, 1785764460.492078, 28, 0.0)
+   ('anthropic/claude-sonnet-5.5', 'openrouter', 1791764808.9032156, 1791764811.7388055, 2, 0.0554901)
+   ('anthropic/claude-sonnet-5.5', 'openrouter', 1791770020.4674504, 1791770298.1598108, 15, 0.6068239999999999)
+   ('anthropic/claude-opus-5.5', 'openrouter', 1791775916.9654412, 1791776083.7461596, 16, 0.8485946000000001)
+── tâches distinctes dans session_model_usage ──
+   ''
+   'approval'
+   'compression'
+   'title_generation'
+   'background_review'
+   'vision'
+
+═ V2 — les deux ANTHROPIC_API_KEY sont-elles identiques ? (booléen, sans valeur) ═
+  occurrences : 2 | identiques : False

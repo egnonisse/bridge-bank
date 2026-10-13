@@ -1,0 +1,39 @@
+── prompts des jobs AGENTS (caractères) ──
+  80bc3ef74f59 Pulse - Broker Daily                     prompt=218 car.
+  274a6f528f1a BridgeBank check quotidien               script=bridgebank_daily.py
+  9cf89880226a Tracking newsletter AIWATCH (hebdo jeu   prompt=962 car.
+  a4f2b2fb2a93 BridgeBank rapport mensuel               script=bridgebank_report.py
+  23afec48a0bb Suivi ventes D2D mensuel                 prompt=2752 car.
+  82ef71600ac6 PharmaScan — Gardes UNPPCI mensuel       script=pharmascan_gardes.py
+  300a26e0d232 aiwatch-gsc-positions-mensuel            prompt=1044 car.
+  c3a1b9de4df9 BridgeBank backup git hebdo              script=bridgebank_backup.py
+  e8974cd7337d BridgeBank veille radar 09h45            prompt=2496 car.
+  9bf21948f66b BridgeBank analyse value 09h30           prompt=3961 car.
+  5a8c972f0b78 pharmascan-sentry-watch                  script=python scripts/sentry_report.py --check
+  c45e3c1bb21c BridgeBank veille spé 09h50              script=bridgebank_specveille.py
+
+── config.yaml du projet Bridge Bank (valeurs sensibles masquées) ──
+watchlist:
+  SIVC:
+    max: 2600.0
+    min: 2200.0
+    change_pct: 5.0
+  UNLC:
+    max: 60000.0
+noyau:
+  codes:
+  - SNTS
+  - BOAS
+  - SGBC
+  - PALC
+  - SOGC
+  - SLBC
+telegram:
+  bot_token: ''
+  chat_id: ''
+alerts:
+  interval_seconds: 300
+  cooldown_minutes: 30
+  session_only: true
+  empreinte_dans_message: false
+

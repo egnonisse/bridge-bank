@@ -1,0 +1,71 @@
+════ skill brvm-value-investing ════
+  C:\Users\LEO\AppData\Local\hermes\skills\finance\brvm-value-investing\SKILL.md
+  SKILL.md : 90484 car / 978 lignes | mtime 2026-10-12 23:40
+    + references\avis-dividendes.md : 2476 o
+    + references\boc-annonces.md : 3515 o
+    + references\calibration-seuils-sources.md : 4111 o
+    + references\centralisation-regles-sans-regression.md : 15448 o
+    + references\challenge-multi-modeles.md : 12384 o
+    + references\composants-strategie-leo.md : 4442 o
+    + references\croisement-sources-prix.md : 4740 o
+    + references\detachement-mesure-reelle.md : 4075 o
+    + references\dividendes-brvm.md : 2899 o
+    + references\doublons-division-slbc.md : 3087 o
+    + references\epreuves-strategies-trading.md : 7086 o
+    + references\filtres-fiabilite-dividende.md : 2671 o
+    + references\fiscalite-frais.md : 4713 o
+    + references\fondamentaux-point-in-time.md : 4440 o
+    + references\frais-transaction-commission.md : 3967 o
+    + references\momentum-extreme-radar.md : 6479 o
+    + references\noyau-buy-and-hold.md : 5304 o
+    + references\noyau-dynamique-renforcements.md : 10776 o
+    + references\obligations-uemoa.md : 4680 o
+    + references\ocr-avis-pdf.md : 1844 o
+    + references\operations-et-limites-statistiques.md : 4223 o
+    + references\outil-bridge-bank-pitfalls.md : 11379 o
+    + references\paliers-sortie.md : 2427 o
+    + references\poches-etanches-et-veille.md : 2934 o
+    + references\radar-veille-operationnelle.md : 7521 o
+    + references\regime-marche-et-tresorerie.md : 2968 o
+    + references\seuil-plusvalue-calibrage.md : 6663 o
+    + references\seuils-vente-significativite.md : 3359 o
+    + references\speculation-et-suivi.md : 8958 o
+    + references\speculation-pitfalls-1908.md : 3061 o
+    + references\strategie-reelle-vs-mesuree.md : 3979 o
+    + references\style-alertes-neophytes.md : 5042 o
+    + references\tracabilite-alertes.md : 2754 o
+    + references\validation-longue-28-ans.md : 4832 o
+    + references\validation-out-of-sample-nets.md : 3349 o
+    + references\veille-speculation-duree.md : 4771 o
+    + references\viser-20-pct-objectif-rendement.md : 3109 o
+    + SKILL.md : 95285 o
+
+════ scripts de jobs (~/hermes/scripts) ════
+  bridgebank_backup.py : 330 o | 2026-08-22 20:52
+  bridgebank_close.py : 236 o | 2026-08-26 11:47
+  bridgebank_daily.py : 421 o | 2026-08-13 01:17
+  bridgebank_radar_monitor.py : 786 o | 2026-09-01 17:30
+  bridgebank_report.py : 401 o | 2026-08-18 11:59
+  bridgebank_specveille.py : 485 o | 2026-09-18 19:00
+  pharmascan_gardes.py : 1179 o | 2026-08-22 08:26
+
+════ gateway_state.json (contenu, 600 o) ════
+  {"pid":14644,"kind":"hermes-gateway","argv":["C:\\Users\\LEO\\AppData\\Local\\hermes\\hermes-agent\\hermes_cli\\main.py","gateway","run"],"start_time":179176366075,"hermes_home":"C:\\Users\\LEO\\AppData\\Local\\hermes","gateway_state":"running","exit_reason":null,"restart_requested":false,"active_agents":0,"platforms":{},"updated_at":"2026-10-13T01:14:58.048245+00:00","code_sha":"f42f579cf8bac4918ac9599bece71618afadd846","code_version":"0.21.5","session_store":{"status":"ok"},"served_profiles":[
+
+════ fin de SOUL.md (marqueur de fin ?) ════
+  dernières 200 car : 'e\n\nChaque nouveau fichier ou dossier doit répondre à la question :\n\n"Quelle responsabilité métier unique remplit-il ?"\n\nSi la réponse n\'est pas claire, revoir l\'organisation avant de créer le fichier.'
+
+════ fin de MEMORY.md ════
+  dernières 120 car : 'config.yaml (section mcp_servers) → retirer le YAML AVANT de tuer les processus, sinon les fichiers restent verrouillés.'
+
+════ projets Hermes (projects.db) ════
+  colonnes : ['id', 'slug', 'name', 'description', 'icon', 'color', 'board_slug', 'primary_path', 'created_at', 'archived']
+   ('AIWATCH', 'C:\\Users\\LEO\\projects\\Aiwatch')
+   ('BetclicAgent', 'C:\\Users\\LEO\\projects\\BetclicAgent')
+   ('Book', 'C:\\Users\\LEO\\projects\\Book')
+   ('BotWhatsApp', 'C:\\Users\\LEO\\projects\\BotWhatsApp')
+   ('Bridge Bank', 'C:\\Users\\LEO\\projects\\Bridge Bank')
+   ('Pharmascan', 'C:\\Users\\LEO\\projects\\pharmascan')
+   ('SellerCenter', 'C:\\Users\\LEO\\projects\\SellerCenter')
+   ('YouTube', 'C:\\Users\\LEO\\projects\\YouTube')
+   ('ZARIAMALL', 'C:\\Users\\LEO\\projects\\Zariamall')

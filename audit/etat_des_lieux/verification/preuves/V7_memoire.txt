@@ -1,0 +1,89 @@
+MEMORY.md : 73 entrées, 43131 caractères — classification HEURISTIQUE (motifs précis, premier match)
+
+── AIWATCH : 19 entrées, 12270 car. (28%) ──
+     [  478] Firecrawl : quota free ÉPUISÉ → web_search = ddgs (à install
+     [  719] RÈGLE STRICTE LEO (14/08) : les clés/credentials d'un projet
+     [  753] Newsletter Brevo aiwatch.ci (17/08) : compte info@aiwatch.ci
+     [  919] Panier abandonné AIWATCH = PLUGIN WP aiwatch-cart-recovery v
+     [  421] Newsletter AIWATCH — sélection produits par TRANCHES DE PRIX
+     [  951] aiwatch.ci : WC 10.7.0, thème Konte (boutons fiche = konte_a
+     [  545] aiwatch.ci (SEO 17-21/08) : WP Application Password (tribula
+     [  255] Slogan officiel AIWATCH (site aiwatch.ci) : « AÏWATCH, la bo
+     [ 1201] aiwatch.ci GSC + pages footer (17/08/2026) : Compte de servi
+     [  751] Leçons SEO WordPress aiwatch.ci (17/08) : metas RankMath des
+     [  249] AIWATCH pages légales : forme juridique/IFU/hébergeur NON af
+     [  352] Google Business Profile AIWATCH existe DÉJÀ (confirmé par LE
+     [  258] Produits private aiwatch.ci = RUPTURE DE STOCK / réappro imp
+     [  892] Plugin AIWATCH woo-perplexity-enhancer (Aiwatch/plugins/, zi
+     [  395] Catalogue aiwatch.ci : 99 nouveaux produits (28/08) enrichis
+     [  492] Woodmart : LEO détient une LICENCE MULTI-SITE (réutilisable 
+     [ 1212] Aiwatch (aiwatch.ci, thème Konte) : mu-plugin woodmart-bridg
+     [  835] AIWATCH Buffer (02/09, v1.4.2 le 22/09) : token BUFFER_API_T
+     [  592] aiwatch.ci monitoring+perf (11-12/09) : Sentry org aiwatch-c
+
+── Hermes / machine : 14 entrées, 8539 car. (20%) ──
+     [  604] Hermes sur cette machine : HERMES_HOME = C:\Users\LEO\AppDat
+     [  460] Vision Hermes : auxiliary.vision = gemini/gemini-2.5-flash, 
+     [  853] Sur ce PC Windows (git-bash MSYS) : LE RESEAU NE ROUTE PAS L
+     [  313] Firebase boostsocial-a7720 (projet réutilisé, reste CF submi
+     [  284] Quirk Windows/MSYS + Flutter/Dart : une variable d'env `tmp`
+     [  746] Téléphones Android de LEO : Samsung Galaxy A17 (SM A175F, An
+     [  912] Gradle 8.14.2+AGP 8.11.1+Kotlin 2.2.20. Piège AD_ID : fireba
+     [  269] Leçon Windows (14/08) : hermes verify --json boucle (>10 min
+     [  811] browser_exec (Browser Use) : Chrome d'automatisation DÉDIÉ i
+     [  575] Leçons déploiement Firebase functions (22/08) : onDocumentCr
+     [  712] firebase-admin v14 (Node) : `admin.messaging` et `admin.cred
+     [ 1102] YouTube (C:\Users\LEO\projects\YouTube) : chaîne « Why You D
+     [  499] Vercel AI Gateway — accès GLOBAL tous projets : endpoint htt
+     [  399] PROJET LINKEDIN SUPPRIME (29/09/2026, décision LEO, sans arc
+
+── Zariamall / BotWhatsApp : 15 entrées, 7929 car. (18%) ──
+     [  196] L'utilisateur parle français. Préfère réponses concises, DRY
+     [  291] LEO = Egnonisse Léonard (Egno) — c'est son nom PUBLIC/profes
+     [  841] Zariamall : e-commerce Côte d'Ivoire, WooCommerce sur zariam
+     [ 1107] BASE_RULES éditables via dashboard ⚙️ Règles (data/base_rule
+     [  511] VPS BotWhatsApp : vmi3483493 = 169.58.117.185 (Contabo), Ubu
+     [  249] PROD : https://sellercenter-eight.vercel.app (projet Vercel 
+     [  361] Leçons SellerCenter : Next 15.5.23 (16.3.0 cassé au build). 
+     [  257] SellerCenter : avant toute fonctionnalité, consulter C:\User
+     [ 1202] SellerCenter RBAC + modules (09/08) : 4 rôles (SUPER_ADMIN=A
+     [  248] Projet Zariamall (C:\Users\LEO\projects\Zariamall) = projet 
+     [  220] Attributs WC zariamall : doublons EN/FR + termes incohérents
+     [  793] SellerCenter (14/08) : gel du taux de commission À LA VENTE 
+     [  654] BotWhatsApp (24/08) : filtres anti-hallucination passés au S
+     [  809] Plugin zariamall-whatsapp (projet C:\Users\LEO\projects\Zari
+     [  190] test.zariamall.com = site TEST WooCommerce 11.0.1 (Hostinger
+
+── PharmaScan : 13 entrées, 7723 car. (18%) ──
+     [  350] Champs pharmacie : lat/lng + phone1/phone2 (formulaire admin
+     [  439] Hermes desktop Projects : chaque projet est ancré à un prima
+     [ 1282] GitHub — DEUX IDENTITES A NE JAMAIS CONFONDRE (regle LEO 09/
+     [  608] Dashboard admin_web : page Gardes (CRUD dates + import JSON)
+     [  615] Gardes CI : source UNPPCI (unppci.org, PDFs downloads.php 66
+     [  424] Skill gardes-pharmacies-unppci (créé 22/08) est NON-adopté (
+     [  799] Référentiel medications = 13 601 ANSM avec titulaire (recher
+     [  621] Déploiement Play PharmaScan (com.softhubapp.scanapp) : auto-
+     [  525] Piège PharmaScan/Firestore : TOUTE requête `where(champA) + 
+     [  472] Assets officiels PharmaScan (play/screenshots/) : App_Icon_A
+     [  302] Roadmap docs/ROADMAP.md (1.2 parrainage FAIT 28/08 : code 6 
+     [  379] Compte utilisateur PharmaScan (décision LEO finale) : connex
+     [  907] PharmaScan (09/2026) : repo GitHub RENOMMÉ egnonisse/PharmaS
+
+── Book / TapyCash / ShopMa / Broker : 4 entrées, 3185 car. (7%) ──
+     [  682] Projet Book (auto-édition Murmure Nocturne, C:\Users\LEO\pro
+     [ 1483] Projet TapyCash (C:\Users\LEO\projects\Whatnot, créé 26/08/2
+     [  650] Projet BetclicAgent (C:\Users\LEO\projects\BetclicAgent, rep
+     [  370] ShopMa (marque validee 28/09/2026) : Odoo 18 en marque blanc
+
+── Général / divers : 5 entrées, 1957 car. (5%) ──
+     [  235] Préférence LEO : contenu SEO qualitatif rédigé par IA (DeepS
+     [  298] LEO est abonné MTN Côte d'Ivoire et a parfois des zones sans
+     [  572] RÈGLE OUTILLAGE (14/08, décidée par LEO) : pour les recherch
+     [  459] Fiscalité CI 2026 : NCC particulier = présentiel (PAS de por
+     [  393] WooCommerce API : PUT /products/{id} attributes REMPLACE tou
+
+── BRVM (Bridge Bank) : 3 entrées, 1528 car. (4%) ──
+     [  117] IRVM CI dividendes = 12 % en 2026 (BOC 15/06/2026 ; 10 % en 
+     [  466] RADAR+veille 09h45 (job e8974cd7337d, monitor radar_new_code
+     [  945] Bridge Bank (C:\Users\LEO\projects\Bridge Bank ; repo privé 
+

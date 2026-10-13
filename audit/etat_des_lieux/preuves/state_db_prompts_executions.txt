@@ -1,0 +1,36 @@
+system_prompts colonnes : ['hash', 'prompt']
+nb de prompts système stockés : 152
+  longueur: 101082 | hash: a960c9dd91f9299a
+  longueur: 79794 | hash: 23f011b7340baae7
+  longueur: 97215 | hash: ec40e171e0a0f0a7
+
+executions colonnes : ['id', 'job_id', 'source', 'process_id', 'pid', 'process_started_at', 'status', 'claimed_at', 'started_at', 'finished_at', 'error', 'handoff_pending', 'handoff_started_at', 'delivery_outcome', 'scheduled_instant']
+
+── 7 derniers jours : échecs par job ──
+   ('274a6f528f1a', 'completed', 6)
+   ('274a6f528f1a', 'unknown', 1)
+   ('5a8c972f0b78', 'failed', 89)
+   ('5a8c972f0b78', 'unknown', 1)
+   ('9bf21948f66b', 'completed', 1)
+   ('9bf21948f66b', 'failed', 5)
+   ('9bf21948f66b', 'unknown', 1)
+   ('9cf89880226a', 'completed', 1)
+   ('c3a1b9de4df9', 'unknown', 1)
+   ('c45e3c1bb21c', 'completed', 4)
+   ('c45e3c1bb21c', 'unknown', 1)
+   ('e8974cd7337d', 'completed', 5)
+   ('e8974cd7337d', 'unknown', 1)
+
+── sentry-watch : 12 derniers runs ──
+   2026-10-13T00:58:23 failed
+   2026-10-13T00:27:23 failed
+   2026-10-12T23:56:23 failed
+   2026-10-12T23:25:24 failed
+   2026-10-12T22:54:23 failed
+   2026-10-12T22:23:23 failed
+   2026-10-12T21:52:23 failed
+   2026-10-12T21:21:23 failed
+   2026-10-12T20:50:24 failed
+   2026-10-12T20:19:23 failed
+   2026-10-12T19:48:23 failed
+   2026-10-12T19:17:23 failed

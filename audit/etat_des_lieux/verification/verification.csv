@@ -1,0 +1,9 @@
+id,verdict,preuve,limite
+V1,CONFIRME,"preuves/V1_prompt_size.txt (hermes prompt-size : 99 601 B ; skill brvm index 87 B — chargé à la demande)","mesure platform=cli ; pour un job cron NON VÉRIFIÉ"
+V2,CONTREDIT,"preuves/V2_doctor.txt (ligne 95 : invalid API key) ; preuves/V2_env_noms.txt (×2, longueurs 108/108, valeurs différentes) ; preuves/V2_fallback.txt (aucun repli)","le rapport d'inventaire disait « doctor OK » à tort ; impossible de dire laquelle des deux clés est lue"
+V3,CONFIRME,"preuves/V3_V4_moa_delegation.txt (moa.enabled true, agrégateur claude-opus-5/anthropic invalide ; aucun job BRVM ; aucune session MoA)","MoA s'active par session — non invoqué constaté, pas « ne sera jamais invoqué »"
+V4,NON VÉRIFIABLE,"preuves/V3_V4_moa_delegation.txt (3 configs : délégation sans model avant le 13/10) ; state.db claude-sonnet 11-12/10 = audits","date exacte du passage à DeepSeek : intervalle (29/09 → 13/10], indice mtime 12/10 03:39"
+V5,CONFIRME,"preuves/V5_livraison.txt (15 runs × 6 jobs) ; preuves/V5_code_delivery2.txt (sémantique dans cron/scheduler.py)","couvre ~2-3 semaines d'historique par job"
+V6,CONFIRME,"preuves/V6_canal.txt + V6_canal2.txt + V6_canal3.txt (code src/alerts.py:68,111 ; src/main.py:182 ; chaîne daily_check → get_notifier ; journal 13/10 00:19)","—"
+V7,CONFIRME,"preuves/V7_memoire.txt (73 entrées ; BRVM = 3 entrées / 1 528 car. ≈ 4 %)","classification heuristique ; le chargement de MEMORY.md par les jobs cron NON VÉRIFIÉ"
+V8,CONFIRME,"preuves/V8_budget.txt (OpenRouter estimé 4,0531 $ vs 4,82 $ annoncé ; cron 6 j = 0,0185 $) ; V8_usage_help.txt (réseau)","ESTIMATION, solde réel non consulté ; écart entre sources signalé sans trancher"

@@ -1,0 +1,6 @@
+﻿fournisseur,cle_api,etat_doctor,usage_pour_bridge_bank,modele_associe,notes,preuve
+DeepSeek,DEEPSEEK_API_KEY (presente),OK,"LE fournisseur des agents BRVM : sessions desktop (v4-flash 239), jobs cron, delegation (v4-pro 112)",deepseek-flash (defaut) ; deepseek-v4-pro (delegation),provider reel des sessions Bridge Bank,hermes_doctor.txt ; state_db_usage.txt
+Anthropic,"ANTHROPIC_API_KEY (presente, DUPLIQUEE dans .env)",OK,providers.default=anthropic (contradiction avec le reel DeepSeek) ; sessions ponctuelles claude-opus-5,claude-opus-5 (5 sess.),ecart de config a trancher (E4),config_masque.yaml ; hermes_doctor.txt
+Google / Gemini,GEMINI_API_KEY (presente),OK,Vision : lecture des avis PDF / captures des workflows BRVM,gemini-2.5-flash (3 appels),vision OK,hermes_doctor.txt ; state_db_usage.txt
+GitHub,GITHUB_TOKEN (presente),OK,Repo bridge-bank : backup git hebdo + CI GitHub Actions,-,utilise par le job backup et la CI,hermes_doctor.txt
+OpenRouter,OPENROUTER_API_KEY (presente),OK,"Audits multi-modeles Bridge Bank (mistral-large-4-0, claude, gemini-3.1-pro — sessions d'audit)",-,HTTP 402 Insufficient Balance (job D2D 01/10) — plafond 5 $ atteint : bloque les futurs audits multi-modeles,hermes_doctor.txt ; state_db_usage.txt ; cronjob_manage list

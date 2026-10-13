@@ -1,0 +1,13 @@
+═ V8 — usage cumulé OpenRouter (ESTIMATION, solde réel non consulté) ═
+  total openrouter estimé : 4.0531 $   (limite annoncée : 4,82 $ au 09/10 — manifest audit)
+    mistralai/mistral-large-4-0            2.0614 $   (133 appels)
+    anthropic/claude-opus-5.5              0.8486 $   (16 appels)
+    anthropic/claude-sonnet-5.5            0.6623 $   (17 appels)
+    google/gemini-3.1-pro-preview          0.4807 $   (17 appels)
+
+═ coût estimé des sessions source=cron — 6 derniers jours ═
+    2026-10-08 : 0.0141 $
+    2026-10-13 : 0.0044 $
+  TOTAL 6 jours : 0.0185 $ | moyenne ≈ 0.0092 $/jour (jours avec activité : 2)
+
+(méthode : est. cost par session cron via session_model_usage — ESTIMATION, pas la facture)

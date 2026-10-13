@@ -1,0 +1,152 @@
+──── tool_loop_guardrails ────
+warnings_enabled: true
+hard_stop_enabled: false
+warn_after:
+  exact_failure: 2
+  same_tool_failure: 3
+  idempotent_no_progress: 2
+hard_stop_after:
+  exact_failure: 5
+  same_tool_failure: 8
+  idempotent_no_progress: 5
+
+──── compression ────
+enabled: true
+threshold: 0.5
+target_ratio: 0.2
+protect_last_n: 20
+protect_first_n: 3
+codex_gpt55_autoraise: true
+codex_app_server_auto: native
+
+──── memory ────
+memory_enabled: true
+user_profile_enabled: true
+memory_char_limit: 44000
+user_char_limit: 27500
+nudge_interval: 10
+flush_min_turns: 6
+
+──── context ────
+engine: default
+
+──── session_reset ────
+mode: both
+idle_minutes: 1440
+at_hour: 4
+
+──── skills ────
+creation_nudge_interval: 15
+
+──── security ────
+allow_private_urls: true
+
+──── code_execution ────
+mode: strict
+timeout: 300
+max_tool_calls: 50
+
+──── plugins ────
+enabled:
+- rtk-rewrite
+
+──── updates ────
+pre_update_backup: false
+backup_keep: 5
+non_interactive_local_changes: stash
+
+──── telemetry ────
+shared_metrics:
+  enabled: false
+  send: false
+
+──── streaming ────
+enabled: false
+
+──── mcp_servers (détail) ────
+screaming-frog:
+  command: C:\Users\LEO\.local\bin\screaming-frog-mcp.exe
+  env:
+    SF_CLI_PATH: C:\Program Files (x86)\Screaming Frog SEO Spider\ScreamingFrogSEOSpiderCli.exe
+  timeout: 300
+wordpress:
+  command: npx
+  args:
+  - -y
+  - '@automattic/mcp-wordpress-remote'
+  env:
+    WP_API_URL: https://zariamall.com/wp-json/mcp/mcp-adapter-default-server
+    WP_USERNAME: Hermes
+    WP_PASSWORD: '***MASQUÉ*** (longueur 24)'
+woocommerce:
+  command: python
+  args:
+  - C:/Users/LEO/tools/woocommerce-mcp/server.py
+  env:
+    WORDPRESS_SITE_URL: https://zariamall.com
+    WOOCOMMERCE_CONSUMER_KEY: '***MASQUÉ*** (longueur 43)'
+    WOOCOMMERCE_CONSUMER_SECRET: '***MASQUÉ*** (longueur 43)'
+vercel:
+  url: https://mcp.vercel.com
+  auth: oauth
+  enabled: false
+supabase:
+  url: https://mcp.supabase.com/mcp
+  auth: oauth
+  enabled: false
+sentry:
+  url: https://mcp.sentry.dev/mcp
+  auth: oauth
+  enabled: false
+
+──── platform_toolsets ────
+cli:
+- a2a
+- browser
+- clarify
+- code_execution
+- computer_use
+- connections
+- context_engine
+- cronjob
+- delegation
+- file
+- image_gen
+- kanban
+- memory
+- session_search
+- skills
+- terminal
+- todo
+- tts
+- video
+- video_gen
+- vision
+- web
+discord:
+- hermes-discord
+google_chat:
+- hermes-google_chat
+homeassistant:
+- hermes-homeassistant
+qqbot:
+- hermes-qqbot
+signal:
+- hermes-signal
+slack:
+- hermes-slack
+teams:
+- hermes-teams
+telegram:
+- hermes-telegram
+whatsapp:
+- hermes-whatsapp
+yuanbao:
+- hermes
+──── command_allowlist ────
+- force kill processes (Stop-Process -Force)
+- access to Hermes secrets (Windows path)
+- execute_code
+- script execution via heredoc
+- script execution via -e/-c flag
+

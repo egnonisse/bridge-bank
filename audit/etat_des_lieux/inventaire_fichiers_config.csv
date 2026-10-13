@@ -1,0 +1,25 @@
+﻿chemin,role_pour_bridge_bank,taille_octets,date_modif,agent_concerne,preuve
+C:\Users\LEO\AppData\Local\hermes\config.yaml,"Config Hermes : modele des agents BRVM, plafonds, delegation, MCP",10252,2026-10-12 03:39,"desktop, jobs, delegation",scan_fichiers.txt
+C:\Users\LEO\AppData\Local\hermes\SOUL.md,Regles de travail de LEO (s'appliquent a tous les chantiers Bridge Bank) — 525 l,7254,2026-08-04 16:45,desktop,scan_fichiers.txt
+C:\Users\LEO\AppData\Local\hermes\memories\MEMORY.md,Memoire persistante (porte le contexte Bridge Bank) — 98% du plafond,44697,2026-10-12 01:36,"desktop, jobs",scan_fichiers.txt
+C:\Users\LEO\AppData\Local\hermes\memories\USER.md,"Profil de LEO (objectifs, seuils, historique BRVM)",19683,2026-10-12 22:48,"desktop, jobs",scan_fichiers.txt
+C:\Users\LEO\AppData\Local\hermes\.env,"Cles des fournisseurs des agents BRVM (DEEPSEEK, GEMINI, ANTHROPIC, GITHUB...) — contenu jamais lu",25492,2026-10-09 02:24,"desktop, jobs",liste des noms uniquement (masquage)
+C:\Users\LEO\AppData\Local\hermes\cron\jobs.json,Les 12 taches (dont les 6 de Bridge Bank),33399,2026-10-13 00:58,jobs,jobs_prompts_config_projet.txt
+C:\Users\LEO\AppData\Local\hermes\gateway_state.json,Gateway SANS plateforme (platforms={}) — pourquoi les jobs BRVM livrent par notifier interne,600,2026-10-13 01:13,jobs,skills_scripts_projets.txt
+C:\Users\LEO\AppData\Local\hermes\state.db,Sessions/usages/couts (dont les sessions Bridge Bank),1032519680,2026-10-13 01:13,tous,state_db_sessions.txt
+C:\Users\LEO\AppData\Local\hermes\skills\finance\brvm-value-investing\SKILL.md,"Skill Bridge Bank (978 lignes — risque troncature, ecart E2) + 38 references",95285,2026-10-12 23:40,desktop,skills_scripts_projets.txt
+C:\Users\LEO\AppData\Local\hermes\scripts\bridgebank_daily.py,Script du check quotidien,421,2026-08-13 01:17,job-274a,skills_scripts_projets.txt
+C:\Users\LEO\AppData\Local\hermes\scripts\bridgebank_report.py,Script du rapport mensuel,401,2026-08-18 11:59,job-a4f2,skills_scripts_projets.txt
+C:\Users\LEO\AppData\Local\hermes\scripts\bridgebank_backup.py,Script du backup hebdo,330,2026-08-22 20:52,job-c3a1,skills_scripts_projets.txt
+C:\Users\LEO\AppData\Local\hermes\scripts\bridgebank_radar_monitor.py,Monitor du radar (gating),786,2026-09-01 17:30,job-e897,skills_scripts_projets.txt
+C:\Users\LEO\AppData\Local\hermes\scripts\bridgebank_specveille.py,Script de la veille spe,485,2026-09-18 19:00,job-c45e,skills_scripts_projets.txt
+C:\Users\LEO\projects\Bridge Bank\config.yaml,"Config du projet (watchlist, noyau, alerts ; telegram vide — .env fournit)",615,2026-10-09 06:34,jobs BridgeBank,jobs_prompts_config_projet.txt
+C:\Users\LEO\projects\Bridge Bank\.env,TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID (notifier interne des jobs) — contenu jamais lu,94,2026-08-12 16:31,jobs BridgeBank,liste des noms uniquement
+C:\Users\LEO\projects\Bridge Bank\pyproject.toml,"Projet Python (markers pytest, addopts)",856,2026-10-12 23:08,dev,scan_fichiers.txt
+C:\Users\LEO\projects\Bridge Bank\requirements.txt,Dependances,66,2026-10-12 16:59,dev,scan_fichiers.txt
+C:\Users\LEO\projects\Bridge Bank\README.md,Documentation principale,20178,2026-09-03 10:23,dev,scan_fichiers.txt
+C:\Users\LEO\projects\Bridge Bank\.github\workflows\ci.yml,CI GitHub Actions (filets du projet),2803,2026-10-09 02:57,CI,scan_fichiers.txt
+C:\Users\LEO\projects\Bridge Bank\docs\INVARIANTS-METIER.md,Invariants metier (dont B1 — les regles de vente),9640,2026-10-13 01:07,desktop,scan_fichiers.txt
+C:\Users\LEO\projects\Bridge Bank\docs\IPS.md,Politique d'investissement,13435,2026-10-12 01:22,desktop,scan_fichiers.txt
+C:\Users\LEO\projects\Bridge Bank\docs\RAPPORT-VALIDATION-28-ANS.md,Rapport de validation (chiffres publies),16619,2026-10-13 01:08,desktop,scan_fichiers.txt
+C:\Users\LEO\projects\Bridge Bank\docs\AUDIT-CONSTANTES.md,Instantane des 217 constantes (filet pre-push),23225,2026-10-13 00:36,CI,scan_fichiers.txt
