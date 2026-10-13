@@ -25,13 +25,13 @@ l'aveugle. C'est la condition pour que leur raisonnement soit honnete.
 from __future__ import annotations
 
 import math
-import pickle
 import random
 import statistics
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from ..infrastructure.paths import RACINE, HISTORY_CACHE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..collecte.history_io import charger_cache  # lecture centralisée (P6-04) + empreinte (P7-03)
 
 sys.path.insert(0, str(RACINE))
 
@@ -501,5 +501,4 @@ def charger_historique(chemin: Path | None = None) -> dict:
         raise SystemExit(
             f"Historique propre introuvable : {p}\n"
             "Lancer : python scripts/preparer_historique_propre.py")
-    with open(p, "rb") as fh:
-        return pickle.load(fh)
+    return charger_cache(p)  # lecture centralisée (P6-04) + empreinte SHA-256 (P7-03)

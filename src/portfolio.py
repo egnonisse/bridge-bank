@@ -845,7 +845,7 @@ def open_dividend_position(
     api: BSApi, code: str, amount: float, dps: float, per_open: float
 ) -> DividendPosition:
     """Ouvre une position dividende de `amount` FCFA au cours actuel."""
-    from .strategie.speculation import load_positions  # import local : évite la circularité
+    from .strategie.speculation import load_positions  # import local : évite la circularité (verrouillé par tests/test_poches_etanches.py)
 
     snap = api.market_snapshot()
     quote = snap.by_code(code)

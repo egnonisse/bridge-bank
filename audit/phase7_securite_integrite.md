@@ -8,13 +8,16 @@
 |---|---|---|---|
 | P7-01 | **Atomicité non généralisée** — `spec_positions.json` (trading réel) écrit directement + le loader avale la corruption en silence | **HAUTE** | ✅ **CORRIGÉ 13/10** (lot 5) |
 | P7-02 | Le token du bot peut fuiter dans les logs d'erreur (exceptions `requests` qui contiennent l'URL) | Moyenne | ✅ **CORRIGÉ 13/10** (lot 6 — `_sans_token` + test) |
-| P7-03 | `pickle.load` du cache historique sans contrôle de provenance AVANT chargement | Basse-Moyenne | Règle écrite 13/10 ; option SHA non retenue* |
+| P7-03 | `pickle.load` du cache historique sans contrôle de provenance AVANT chargement | Basse-Moyenne | ✅ **CORRIGÉ 13/10** (lot 7 — sidecar `.sha256` vérifié*) |
 | P7-04 | Micro : `open()` sans context manager ; journal `.jsonl` sans garde de ligne tronquée | Basse | ✅ **CORRIGÉ 13/10** (lot 6 — context manager ; journal : aucun lecteur en `src/`, constaté) |
 
-*P7-03 : la règle « provenance locale uniquement, jamais de .pkl externe, le cache se régénère » est
-inscrite près de `HISTORY_CACHE` dans `paths.py`. Le SHA pré-chargement n'est PAS retenu : qui peut
-altérer le `.pkl` peut altérer son `.sha` — la défense utile est la règle + les contrôles existants
-(`cache_integrity`). À re-trancher par LEO si le besoin apparaît.
+*P7-03 : **implémenté le 13/10 (lot 7)** — `src/collecte/history_io.py` : `ecrire_cache()` écrit le
+cache (atomique) + son sidecar `.sha256` ; `charger_cache()` REFUSE de charger si l'empreinte diverge
+(`CacheHistoriqueAltere` + commande de régénération) ; sidecar absent → toléré (ancien cache).
+La règle « provenance locale uniquement, jamais de .pkl externe, le cache se régénère » reste inscrite
+près de `HISTORY_CACHE` dans `paths.py`. Limite assumée : le sidecar protège d'une altération
+ACCIDENTELLE — contre un adversaire qui réécrit les deux fichiers, la défense reste la règle +
+`cache_integrity`. Le sidecar se régénère AVEC le cache, jamais à la main.
 
 **1 item de sévérité haute** (P7-01) — limité à l'intégrité des données d'état, pas à une faille exploitable. Le reste est sain (voir ci-dessous).
 

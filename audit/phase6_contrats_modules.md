@@ -8,9 +8,9 @@
 | # | Item | Sévérité | Statut |
 |---|---|---|---|
 | P6-01 | **Centralisation des chemins incomplète** — 6 redéfinitions locales de fichiers déjà constants | Moyenne | ✅ **CORRIGÉ 13/10** (lot 6 — 8 redéfinitions migrées*) |
-| P6-02 | Cycle bidirectionnel `portfolio ⇄ speculation` (imports locaux documentés) | Basse | Assumé (tracé) |
+| P6-02 | Cycle bidirectionnel `portfolio ⇄ speculation` (imports locaux documentés) | Basse | Assumé — **verrouillé par 4 tests** (poches étanches, les 2 sens) |
 | P6-03 | `portfolio.json` (état vivant) vs `portfolio_state.json` : contrat ambigu, centralisation « à l'envers » | Basse | ✅ **CORRIGÉ 13/10** (lot 6) |
-| P6-04 | `history_clean.pkl` : 3 chemins redéfinis, format implicite, lectures multiples | Moyenne | Chemins ✅ 13/10 ; garde de format : ouvert |
+| P6-04 | `history_clean.pkl` : 3 chemins redéfinis, format implicite, lectures multiples | Moyenne | ✅ **CORRIGÉ 13/10** (lot 7 — lecture unique + signature du cache) |
 | P6-05 | Règle de centralisation non écrite pour ~15 fichiers d'état (dont 3 multi-consommateurs hors `paths.py`) | Basse | ✅ **CORRIGÉ 13/10** (lot 6) |
 
 *6 signalées + 2 découvertes pendant la correction : `report.py` (`portfolio_state.json`) et `portfolio.py` (`reversal_profiles.json`).

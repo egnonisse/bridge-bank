@@ -34,6 +34,7 @@ sys.path.insert(0, str(RACINE))
 
 from src.collecte import divisions_officielles as dv  # noqa: E402
 from src.collecte import nettoyage_aberrantes as na  # noqa: E402
+from src.collecte.history_io import ecrire_cache  # noqa: E402
 
 SOURCE = RACINE / "data" / "history_cache.pkl"
 DEST = RACINE / "data" / "history_clean.pkl"
@@ -105,10 +106,9 @@ def main():
             barre = "#" * int(statistics.median(v) / 5)
             print(f"          {a}  {statistics.median(v):>6.0f}  {barre}")
 
-    # Sauvegarde
-    with open(DEST, "wb") as fh:
-        pickle.dump(propre, fh)
-    print(f"\n  Ecrit : {DEST.name}  ({DEST.stat().st_size / 1024:.0f} Ko)")
+    # Sauvegarde atomique + empreinte de provenance (P7-03 : vérifiée au chargement)
+    ecrire_cache(DEST, propre)
+    print(f"\n  Ecrit : {DEST.name}  ({DEST.stat().st_size / 1024:.0f} Ko)  + .sha256")
 
     # Rapport des operations
     rapport_path = RACINE / "data" / "ajustement_rapport.json"

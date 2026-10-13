@@ -60,6 +60,59 @@ def test_historique_insuffisant_ne_plante_pas():
     assert etat["etat"] in (HAUSSIER, BAISSIER)
 
 
+def _cache_historique_minimal(tmp_path):
+    """Faux cache historique (propre, avec sidecar) pour les tests du régime du jour."""
+    from types import SimpleNamespace
+
+    from src.collecte.history_io import ecrire_cache
+
+    hist = tmp_path / "h.pkl"
+    ecrire_cache(hist, {"AAA": [SimpleNamespace(date="2026-01-01", close=100.0)]})
+    return hist
+
+
+def test_regime_du_jour_recalcule_si_le_cache_historique_change(tmp_path):
+    """P6-04 : un « régime du jour » calculé sur un AUTRE cache n'est PAS réutilisé.
+
+    Le cas réel : le cache de cours est corrigé/régénéré dans la journée — le régime
+    calculé le matin porte l'empreinte de l'ancien cache et doit être recalculé.
+    """
+    from datetime import date
+
+    from src.calibration.regime_marche import regime_du_jour
+    from src.collecte.history_io import lire_sha
+
+    hist = _cache_historique_minimal(tmp_path)
+    cache = tmp_path / "r.json"
+    cache.write_text(json.dumps({
+        "calcule_le": date.today().isoformat(), "raison": "POISON", "_cache_sha": "périmé",
+    }), encoding="utf-8")
+
+    etat = regime_du_jour(chemin_hist=hist, chemin_cache=cache)
+
+    assert etat.get("raison") != "POISON"          # recalculé, pas servi du cache
+    assert json.loads(cache.read_text(encoding="utf-8")).get("_cache_sha") == lire_sha(hist)
+
+
+def test_regime_du_jour_reutilise_un_cache_du_meme_cache(tmp_path):
+    """Voie nominale : même jour + même empreinte → le cache disque est servi tel quel."""
+    from datetime import date
+
+    from src.calibration.regime_marche import regime_du_jour
+    from src.collecte.history_io import lire_sha
+
+    hist = _cache_historique_minimal(tmp_path)
+    cache = tmp_path / "r.json"
+    cache.write_text(json.dumps({
+        "calcule_le": date.today().isoformat(), "raison": "SENTINELLE",
+        "_cache_sha": lire_sha(hist),
+    }), encoding="utf-8")
+
+    etat = regime_du_jour(chemin_hist=hist, chemin_cache=cache)
+
+    assert etat.get("raison") == "SENTINELLE"      # servi sans recalcul
+
+
 @pytest.mark.skipif(not (RACINE / "data" / "history_clean.pkl").exists(),
                     reason="cache quotidien absent")
 def test_indice_reel_monte_et_creuse_en_2020():

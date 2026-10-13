@@ -39,6 +39,7 @@ from __future__ import annotations
 import statistics
 from pathlib import Path
 
+from ..collecte.history_io import charger_cache, lire_sha  # P6-04/P7-03 : lecture vérifiée du cache
 from ..infrastructure.paths import HISTORY_CACHE, REGIME_MARCHE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
@@ -110,11 +111,12 @@ def etat_marche(series: dict[str, dict[str, float]],
 
 
 def charger_series_quotidiennes(chemin: Path) -> dict[str, dict[str, float]]:
-    """Charge data/history_clean.pkl (cours quotidiens, ajustés des divisions)."""
-    import pickle
+    """Charge data/history_clean.pkl (cours quotidiens, ajustés des divisions).
 
-    with open(chemin, "rb") as fh:  # P7-04 : context manager
-        h = pickle.load(fh)
+    Lecture CENTRALISÉE (P6-04) : `history_io.charger_cache` — l'empreinte SHA-256 du
+    cache est vérifiée quand son sidecar existe (P7-03).
+    """
+    h = charger_cache(chemin)
     out: dict[str, dict[str, float]] = {}
     for code, barres in h.items():
         d = {}
@@ -135,6 +137,9 @@ def regime_du_jour(chemin_hist: Path | None = None,
     Le calcul parcourt 46 titres × ~2 400 dates : inutile de le refaire à chaque appel
     dans la même journée. Le cache porte la DATE de calcul, pas une durée — il expire
     donc naturellement au changement de jour, sans minuterie à maintenir.
+
+    P6-04 : le cache porte aussi l'empreinte du cache historique (`_cache_sha`) — un
+    cache de cours régénéré dans la journée invalide le régime calculé avant lui.
     """
     import json
     from datetime import date
@@ -142,10 +147,11 @@ def regime_du_jour(chemin_hist: Path | None = None,
     chemin_hist = chemin_hist or HISTORY_CACHE
     chemin_cache = chemin_cache or REGIME_MARCHE  # P6-01 : définis dans paths.py
     aujourdhui = date.today().isoformat()
+    sha = lire_sha(chemin_hist)  # None si le cache n'a pas encore de sidecar
 
     try:
         cache = json.loads(chemin_cache.read_text(encoding="utf-8"))
-        if cache.get("calcule_le") == aujourdhui:
+        if cache.get("calcule_le") == aujourdhui and (sha is None or cache.get("_cache_sha") == sha):
             return cache
     except (OSError, ValueError):
         pass
@@ -153,6 +159,7 @@ def regime_du_jour(chemin_hist: Path | None = None,
     series = charger_series_quotidiennes(chemin_hist)
     etat = etat_marche(series)
     etat["calcule_le"] = aujourdhui
+    etat["_cache_sha"] = sha
     try:
         ecrire_json_atomique(chemin_cache, etat)  # P7-01 : écriture atomique
     except OSError:

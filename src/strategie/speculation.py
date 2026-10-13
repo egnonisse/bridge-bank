@@ -288,7 +288,7 @@ def zone_morte_status(pos: SpecPosition, api: BSApi) -> tuple[int, bool] | None:
 # ------------------------------------------------------------- haut niveau
 def open_position(api: BSApi, code: str, amount: float) -> SpecPosition:
     """Ouvre une position spéculative de `amount` FCFA au cours actuel."""
-    from ..portfolio import load_portfolio  # import local : évite la circularité
+    from ..portfolio import load_portfolio  # import local : évite la circularité (verrouillé par tests/test_poches_etanches.py)
 
     snap = api.market_snapshot()
     quote = snap.by_code(code)
