@@ -1,20 +1,5 @@
 [
   {
-    "code": "BICC",
-    "name": "BICI CI",
-    "entry_price": 29745.0,
-    "quantity": 1,
-    "opened_at": "2026-09-25T13:35:43.291350",
-    "stop_loss": 25283.25,
-    "highest": 29745.0,
-    "sold_1": false,
-    "sold_2": false,
-    "review_alerted": false,
-    "closed": false,
-    "close_reason": "",
-    "close_price": 0.0
-  },
-  {
     "code": "SMBC",
     "name": "SMB CI",
     "entry_price": 17000.0,
@@ -27,6 +12,8 @@
     "review_alerted": false,
     "closed": false,
     "close_reason": "",
-    "close_price": 0.0
+    "close_price": 0.0,
+    "close_price_detecte": 0.0,
+    "closed_at": ""
   }
 ]

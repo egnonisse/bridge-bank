@@ -98,5 +98,8 @@
       "bonds": 0,
       "cash": 699718.0
     }
-  ]
+  ],
+  "cash_disponible": 199718.0,
+  "produit_cessions_attente": 500000.0,
+  "_definition_cash": "cash = TOTAL liquidité du compte titres (relevé BSTrade 13/10/2026) = cash_disponible + produit_cessions_attente (source de la cession à confirmer par LEO). Champs de décomposition INFORMATIFS : `report cash` ne les met PAS à jour (à recalculer)."
 }
