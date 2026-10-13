@@ -106,3 +106,32 @@ class _Bar:
 def _fake_hist():
     # série : 500 barres plates à 70 → aucune cassure possible à 70
     return {"TEST": [_Bar(70.0)] * 500}
+
+
+# ═════════ l'affichage du PER dans la fiche (B2-01 appliqué, 13/10/2026) ═════════════
+
+def test_per_indisponible_ne_s_affiche_pas_per_zero(monkeypatch):
+    """Défaut vécu (fiches UNXC du 12/10) : un PER INDISPONIBLE s'affichait « PER 0.0 »,
+    ce qui se lit comme un vrai PER nul. Doctrine B2-01 (le « 0.00 » de brvm.org = non
+    calculable) appliquée à l'affichage : « PER non calculable ». Le dividende reste."""
+    monkeypatch.setattr("src.collecte.fundamentals.get_fundamentals",
+                        lambda code: {"code": code, "per": None, "dps": 60.75,
+                                      "per_date": ""})
+    closes = [100.0] * 300 + [150.0]          # cassure de 1 an -> fiche garantie
+    f = build_fiche("TEST", "Test", closes)
+    assert f is not None
+    msg = f.message()
+    assert "PER 0.0" not in msg
+    assert "PER non calculable" in msg
+    assert "Fondamental connu" in msg and "F/an" in msg
+
+
+def test_per_disponible_reste_affiche(monkeypatch):
+    monkeypatch.setattr("src.collecte.fundamentals.get_fundamentals",
+                        lambda code: {"code": code, "per": 12.5, "dps": 60.75,
+                                      "per_date": "2026-10-12"})
+    closes = [100.0] * 300 + [150.0]
+    f = build_fiche("TEST", "Test", closes)
+    msg = f.message()
+    assert "PER 12.5" in msg
+    assert "PER non calculable" not in msg

@@ -171,7 +171,14 @@ def build_message(f: FicheSpec) -> str:
     if b.get("dps"):
         net = net_yield(b["dps"] / f.price) * 100 if f.price else 0
         fund = (f"   • 🏦 Fondamental connu : dividende {fcfa(b['dps'])}/an "
-                f"(≈ {net:.1f} % net), PER {b['per']:.1f}")
+                f"(≈ {net:.1f} % net)")
+        # B2-01 appliqué à l'AFFICHAGE (13/10) : un PER indisponible (« 0.00 » de brvm.org
+        # = non calculable) ne doit jamais s'écrire « PER 0.0 » — ça se lit comme un vrai
+        # PER nul. Même doctrine que le cache PER du noyau (lot 2).
+        if b.get("per") and b["per"] > 0:
+            fund += f", PER {b['per']:.1f}"
+        else:
+            fund += ", PER non calculable"
         if b.get("payout") and b["payout"] > 100:
             fund += (f", ⚠️ PAYOUT {b['payout']:.0f} % : elle paie PLUS qu'elle ne "
                      f"gagne — risque de coupe du dividende (un pari sur ce titre "
