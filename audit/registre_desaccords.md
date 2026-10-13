@@ -286,6 +286,19 @@ sorties régénérée** (procédure du lot 5) : 49 sorties modifiées, toutes la
 relues ; 0 disparue ; **398 clés**. **Vérifications** : 517 tests, constantes 224/224,
 chemins 0.
 
+### Rectification du 13/10/2026 (soir) — les restes RÉELS (vérifiés dans le code)
+
+Les « restes » des mises à jour des lots 8-11 (B2-08 + R-002) ne reprenaient pas les
+**résiduels P3** listés par le lot 4 (`docs/DECISION-2026-10-13-lot4-residuels.md`
+§ « Ce qui reste »). Vérification faite dans le code le 13/10 au soir :
+**B2-10** NON clos (`src/collecte/backtest.py:36` lit toujours `history_cache.pkl` BRUT —
+le backtest de validation ne tourne pas sur la même base que la production ; 3 `.bak` de
+~20 Mo sur le disque) · **B2-09** PARTIEL (le filet déclare 0, mais ~15 scripts gardent
+`RACINE / "data" / …` en dur — l'angle mort du finding subsiste côté scripts) ·
+**C7-partiel** (fraîcheur des deux caches fondamentaux, jamais re-cartographiée).
+**État consolidé : 44/47 items phase 3 clos, 1 partiel (B2-09), 2 ouverts (B2-08 P2,
+B2-10 P3).** Aucun P0/P1 restant.
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,

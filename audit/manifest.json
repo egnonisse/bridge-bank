@@ -21,7 +21,7 @@
     "LOT 11 (13/10/2026) — veille spéculation (B1-10/11/14/15) : repli de spec_profiles SIGNALÉ (log + _fallback + mention fiche) et volumes nuls non confirmants (med > 0) ; stop de la fiche aux DEUX bornes du prix payé (stop + stop_hi) ; close_price = prix de VENTE RÉEL (close_price_detecte pour l'auto-clôture, portf/spec close --price X pour le réel) ; alerte de plus-value en NET (_sell_profit_net) ; référence des sorties régénérée (49 modifs B1-15 relues, 398 clés) ; 517 tests — docs/DECISION-2026-10-13-lot11-veille-speculation.md"
   ],
   "phases_a_venir": [
-    "AUDIT : tous les lots 1-11 faits ; restent des items P2/P3 non statués à décider par LEO : B2-08 (wrappers hors dépôt), R-002 (mutation — assumé)",
+    "AUDIT : lots 1-11 faits ; 44/47 items phase 3 clos, 1 partiel (B2-09 chemins en dur des scripts), 2 ouverts (B2-08 P2 wrappers, B2-10 P3 backtest lit le cache brut) + C7-partiel ; R-002 assumé (mutation)",
     "Décisions LEO : SPHC (achat ≤ 7 780 F ?), SNTS 26/10 (checklist prête), backup dim 18/10 à confirmer, ANTHROPIC_BASE_URL (vestige .env), curator adopt gardes-pharmacies-unppci"
   ],
   "phase2_resume": {
