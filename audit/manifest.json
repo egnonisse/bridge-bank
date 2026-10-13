@@ -7,12 +7,14 @@
     "3 — deux agents indépendants (A=Claude, B1+B2=Mistral, 47 items — registre_desaccords.md)",
     "4 — matrice de tests (matrice_tests_phase4.md, tests xfail cibles)",
     "5 — audit financier et statistique (recalculs déterministes + agent DeepSeek — phase5_synthese.md)",
-    "9-11 — corrections LOT 1+2 (12/10/2026) : B1-01, B0-01, C1/B1-02, B1-04, B2-04 puis B1-03, B1-05, B1-07, B1-09, B1-13, B2-01/B2-03, B0-04/B1-08 — docs/DECISION-2026-10-12-corrections-lot1.md"
+    "9-11 — corrections LOT 1+2 (12/10/2026) : B1-01, B0-01, C1/B1-02, B1-04, B2-04 puis B1-03, B1-05, B1-07, B1-09, B1-13, B2-01/B2-03, B0-04/B1-08 — docs/DECISION-2026-10-12-corrections-lot1.md",
+    "8 — exécution contrôlée (12/10/2026 — phase8_execution_controlee.md)",
+    "LOT 3, cache historique, tests des moteurs de preuve, LOT 4 (12-13/10/2026) — docs/DECISION-2026-10-1*.md",
+    "6 — contrats entre modules (13/10/2026 — phase6_contrats_modules.md : 5 items, 0 sévérité haute)",
+    "7 — sécurité et intégrité (13/10/2026 — phase7_securite_integrite.md : 4 items, dont 1 haute P7-01)"
   ],
   "phases_a_venir": [
-    "6 — contrats entre modules",
-    "7 — sécurité et intégrité",
-    "8 — exécution contrôlée (autorisation requise)"
+    "Décisions de LEO sur les items P6-01..05 et P7-01..04 (audit phase 6-7, aucune correction appliquée)"
   ],
   "phase2_resume": {
     "exigences_enregistrees": 43,
