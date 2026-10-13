@@ -16,11 +16,12 @@
     "LOT 6 (13/10/2026) — P6-01/03/05 + P7-01c/02/04 corrigés : atomicité généralisée (17 sites + test statique), 8 redéfinitions de chemins migrées, verifier_chemins étendu (2 contrôles), logs assainis — docs/DECISION-2026-10-13-lot6-integrite-etat.md",
     "LOT 7 (13/10/2026) — P6-04/P7-03 : history_io.py (lecture unique + sidecar SHA-256 vérifié), régime de marché invalidé si le cache change, cycle poches verrouillé par tests — docs/DECISION-2026-10-13-lot7-signature-cache.md",
     "LOT 8 (13/10/2026) — chantier A3 : juge durci (J+1, p=(1+#≥)/(1+N) 1000 tirages, baseline conditionnelle, avantage par moitié, Bonferroni), 8 tests du juge (R-001), 6 règles re-jugées : 1/6, bug d'affichage du script de re-validation corrigé — docs/DECISION-2026-10-13-lot8-chantier-challenge.md",
-    "LOT 9 (13/10/2026) — chantier A3 (moteur) : plafond de ligne dynamique (même univers pour toutes les variantes), 5 paramètres morts retirés, titres_achetes publiés, exécution J+1, 6 tests ; ATTRIBUTION RE-MESURÉE : renforcement −16,1 pt (change de signe), paliers −42,9, complète −54,4, noyau 203,0 %/87,3 % — docs/DECISION-2026-10-13-lot9-moteur-equitable.md"
+    "LOT 9 (13/10/2026) — chantier A3 (moteur) : plafond de ligne dynamique (même univers pour toutes les variantes), 5 paramètres morts retirés, titres_achetes publiés, exécution J+1, 6 tests ; ATTRIBUTION RE-MESURÉE : renforcement −16,1 pt (change de signe), paliers −42,9, complète −54,4, noyau 203,0 %/87,3 % — docs/DECISION-2026-10-13-lot9-moteur-equitable.md",
+    "LOT 10 (13/10/2026) — hygiène d'audit : A-003 (payout_ratio None, P1) corrigé + test, B2-14 (backup git exclut audit/ — vérifié), B2-15 (30 documents personnels retirés du suivi + gitignore — disque intact), registres A-001/A-002/R-001/R-002 actualisés — docs/DECISION-2026-10-13-lot10-hygiene-audit.md"
   ],
   "phases_a_venir": [
-    "AUCUN item du chantier A3 : COMPLET (juge = lot 8 ; moteur = lot 9)",
-    "Décisions LEO hors audit : clé Anthropic invalide (doublon .env), garde-fous durs, plafond OpenRouter, backup git du dimanche"
+    "AUDIT : tous les lots 1-10 faits ; restent des items P2/P3 non statués à décider par LEO : B1-10/11/14/15 (veille spé), B2-08 (wrappers hors dépôt), R-002 (mutation — assumé)",
+    "Décisions LEO : SPHC (achat ≤ 7 780 F ?), SNTS 26/10 (checklist prête), backup dim 18/10 à confirmer, ANTHROPIC_BASE_URL (vestige .env), curator adopt gardes-pharmacies-unppci"
   ],
   "phase2_resume": {
     "exigences_enregistrees": 43,

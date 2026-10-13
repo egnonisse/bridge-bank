@@ -17,7 +17,13 @@ def run(*args: str) -> str:
 
 
 def main() -> None:
-    run("git", "add", "-A")
+    # B2-14 (13/10/2026) : `git add -A` embarquait AUSSI les livrables d'audit
+    # (audit/) — des commits de backup « fourre-tout » rendaient l'historique
+    # illisible (ex. 968998f : 25 fichiers mêlant audit + état + données). Les
+    # livrables d'audit se committent EXPLICITEMENT dans leur lot (règle « un lot
+    # = un commit », docs/architecture.md §9) ; le backup auto ne s'en occupe plus.
+    # Le reste (src, scripts, tests, docs, data, fichiers racine) reste couvert.
+    run("git", "add", "-A", "--", ".", ":(exclude)audit")
     staged = run("git", "diff", "--cached", "--name-only")
     if not staged:
         # Rien de nouveau : garder le silence (cron no_agent = pas de message)

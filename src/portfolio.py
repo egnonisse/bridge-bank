@@ -371,11 +371,16 @@ def _loss_coverage_alert(pos: DividendPosition, price: float) -> PositionAlert:
     )
 
 
-def payout_ratio(dps: float, price: float, per: float | None) -> float | None:
+def payout_ratio(dps: float | None, price: float | None, per: float | None) -> float | None:
     """Payout ratio implicite = dividende / bénéfice par action (BPA = prix / PER).
 
     Retourne None si PER inconnu ou non positif (pertes), ou si données manquantes.
+    A-003 (13/10/2026) : `None` est accepté pour dps/price — un titre sans dividende
+    connu peut remonter `None` depuis les données, et l'étape de Soutenabilité
+    levait un TypeError au lieu de s'abstenir (donnée manquante ≠ alerte).
     """
+    if dps is None or price is None:
+        return None
     if dps <= 0 or price <= 0 or per is None or per <= 0:
         return None
     return dps * per / price

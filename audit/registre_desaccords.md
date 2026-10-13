@@ -257,6 +257,17 @@ avant : c'était un artefact de composition) ; paliers −42,9 ; complète −54
 invariants B1 (42,9 pt), rapport 28 ans, `chiffres_publies_verifies.md` et tests gardiens
 alignés le même jour. **Le chantier A3 est COMPLET.**
 
+### Mise à jour du 13/10/2026 — LOT 10 : hygiène d'audit (A-003, B2-14, B2-15, registres)
+
+Détail : `docs/DECISION-2026-10-13-lot10-hygiene-audit.md`. **A-003 (P1) CORRIGÉ** :
+`payout_ratio(None)` levait un TypeError (reproduit en réel avant correction) → garde
+`None` + 3 assertions. **B2-14** : le backup git exclut désormais `audit/`
+(`:(exclude)audit`, vérifié en réel) — les livrables d'audit se committent dans leur lot.
+**B2-15** : 30 documents personnels (avis courtier, notes, OCR) retirés du suivi git
+(`git rm --cached`, disque intact) + `.gitignore` (`data/avis/`, `data/*.pdf|png|txt`) ;
+purge d'historique non faite (décision LEO). **Registres actualisés** : A-001, A-002,
+A-003, R-001 (les 4 modules ont des tests), R-002 (couverture 51 %, mutation assumée).
+
 ---
 
 *Phase 3 complète. Livrables : `phase3_agentA_claude.md`, `phase3_agentB1_mistral.md`,

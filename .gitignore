@@ -41,5 +41,11 @@ data/*.html
 # Sauvegardes locales prises avant correction — jamais des données du système
 data/*.bak-avant-*
 
-# Données personnelles sans lien avec le système
-data/avis/releves*
+# Données personnelles et documents de recherche/notation — B2-15 (13/10/2026) :
+# jamais versionnés (un dépôt qui fuit ne doit pas exposer les avis courtier ; le
+# passage en public, un fork ou un bundle les exposeraient). Les fichiers restent
+# SUR LE DISQUE (lus par scripts/parse_avis*.py) — seul le suivi git s'arrête.
+data/avis/
+data/*.pdf
+data/*.png
+data/*.txt

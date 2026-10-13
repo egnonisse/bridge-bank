@@ -419,6 +419,11 @@ def test_payout_ratio():
     assert payout_ratio(1740, 32000, None) is None  # PER inconnu
     assert payout_ratio(1740, 32000, -5) is None     # pertes
     assert payout_ratio(0, 32000, 8) is None         # pas de dividende
+    # A-003 (13/10/2026) : une donnée MANQUANTE (None) ne doit jamais lever —
+    # s'abstenir, c'est ne pas déclencher d'alerte de soutenabilité.
+    assert payout_ratio(None, 32000, 8) is None      # dividende inconnu
+    assert payout_ratio(1740, None, 8) is None       # cours inconnu
+    assert payout_ratio(None, None, None) is None
 
 
 def test_soutenabilite_critical():
