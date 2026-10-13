@@ -67,5 +67,26 @@ par le réinvestissement d'une vente) — donne :
 
 **Le sens est intact, le constat renforcé** (les paliers coûtent davantage). La référence
 `audit/preuves/chiffres_reference.json` est mise à jour (provenance 13/10) ; les invariants
-(B1) et le rapport 28 ans sont alignés — jamais de réécriture silencieuse : l'ancien chiffre
-reste daté dans l'historique. Détail : `docs/DECISION-2026-10-13-lot4-residuels.md`.
+
+## Mise à jour du 13/10/2026 — re-mesure après le LOT 9 (A3-08 + A3-10)
+
+La re-mesure du 13/10 après le lot 9 (`audit/preuves/attribution_remesuree_2026-10-13_lot9.txt` :
+plafond de ligne **équitable** — toutes les variantes achètent le même univers de titres — et
+exécution à **J+1**) donne :
+
+| Mesure (attribution, 5 titres réels) | 13/10 (lot 4) | **13/10 (lot 9)** |
+|---|---|---|
+| Noyau passif (A) | 233,0 % · expo 94,9 % | **203,0 % · expo 87,3 %** |
+| Renforcement (C) | +26,7 pt | **−16,1 pt** — LA CONCLUSION CHANGE DE SIGNE |
+| Paliers (D) | −49,0 pt | **−42,9 pt** |
+| Stratégie complète (B) | −43,0 pt | **−54,4 pt** |
+
+**Ce que la re-mesure enseigne** : l'avantage apparent du renforcement (+26,7 pt) était un
+**artefact de composition** — la variante « renforcement » engageait 300 k F par titre quand la
+variante complète n'en engageait que 100 k ; elle était simplement PLUS INVESTIE sur les mêmes
+titres, et le résultat dépendait de l'ordre du dict `univers`. Avec le plafond équitable, le
+renforcement coûte (−16,1 pt) et le noyau passif reste la meilleure base (232,6 % ajusté).
+La référence `audit/preuves/chiffres_reference.json` est mise à jour ; les invariants (B1 :
+42,9 pt) et le rapport 28 ans sont alignés — jamais de réécriture silencieuse : les anciens
+chiffres restent datés dans l'historique. Détail des lots 4 et 9 :
+`docs/DECISION-2026-10-13-lot4-residuels.md` + `docs/DECISION-2026-10-13-lot9-moteur-equitable.md`.

@@ -9,7 +9,8 @@ leurs propositions en fonction des reponses.
 
 CE QU'ON MESURE PAR VARIANTE
 ----------------------------
-  - rendement total (dividendes reinvestis par le moteur)
+  - rendement total (les dividendes sont ENCAISSES en cash, PAS reinvestis — le cash
+    qui s'accumule fait baisser `exposition_moyenne_pct` au fil du temps)
   - revenu annuel encaisse
   - drawdown maximal
   - exposition moyenne (indispensable : une regle peu investie gagne moins sans
@@ -227,6 +228,19 @@ def main():
             nt = sum(1 for x in resultats if test(x["params"]))
             print(f"  {label:<32}{ng:>8}/{len(meilleures):<3}{nt:>7}/{n}")
 
+    # ------------------------------------------------------------------
+    #  UNIVERS REELLEMENT ACHETE (A3-08 : la comparaison doit porter sur le
+    #  meme univers — on le VERIFIE au lieu de le supposer)
+    # ------------------------------------------------------------------
+    print("\n" + "=" * 112)
+    print("  UNIVERS REELLEMENT ACHETE PAR VARIANTE")
+    print("=" * 112)
+    print(f"\n  {'REFERENCE : strategie reelle LEO':<30}{len(ref.titres_achetes)} titre(s) : "
+          f"{', '.join(ref.titres_achetes)}")
+    for x in resultats:
+        print(f"  {x['nom']:<30}{len(x['r'].titres_achetes)} titre(s) : "
+              f"{', '.join(x['r'].titres_achetes)}")
+
     out = RACINE / "data" / "challenge_strategie_resultats.json"
     out.write_text(json.dumps({
         "reference_leo": {"rendement_pct": ref.rendement_pct,
@@ -235,7 +249,8 @@ def main():
                           "drawdown_pct": ref.drawdown_max_pct,
                           "revenu_annuel_pct": ref.revenu_annuel_pct,
                           "frais": ref.frais_payes,
-                          "ordres": ref.nb_achats + ref.nb_ventes},
+                          "ordres": ref.nb_achats + ref.nb_ventes,
+                          "titres_achetes": ref.titres_achetes},
         "classement": [
             {"nom": x["nom"], "source": x["source"], "ajuste": x["norm"],
              "rendement_pct": x["r"].rendement_pct,
@@ -244,6 +259,7 @@ def main():
              "revenu_annuel_pct": x["r"].revenu_annuel_pct,
              "frais": x["r"].frais_payes,
              "ordres": x["r"].nb_achats + x["r"].nb_ventes,
+             "titres_achetes": x["r"].titres_achetes,
              "ecartee_par_critique": x["ecartee"]}
             for x in resultats],
     }, ensure_ascii=False, indent=1), encoding="utf-8")

@@ -6,9 +6,14 @@ Cinq variantes, memes titres, meme periode, meme capital. Seuls les COMPOSANTS
 changent. On mesure les 5 metriques du projet.
 
   A  noyau passif          achat unique, conservation            (reference)
-  B  strategie complete    les 5 composants de LEO
+  B  strategie complete    les composants modelises de LEO (1,2,3,5)
   C  noyau + renforcement  isole l'effet de la moyenne a la baisse
   D  noyau + paliers       isole l'effet de la vente par fractions
+
+Depuis le lot 9 (13/10/2026, audit A3-08/A3-10) : le plafond de ligne est DYNAMIQUE
+(capital x (1 - cash) / n_titres), l'execution se fait a J+1 (close de la seance
+suivante), et les titres REELLEMENT achetes sont imprimes par variante — toutes les
+variantes doivent ouvrir le MEME univers pour que la comparaison soit equitable.
 
 Le titres sont ceux que LEO detient reellement : SGB, SOLIBRA, SONATEL, PALM,
 SMB. Ce n'est pas un echantillon choisi pour l'occasion, c'est son portefeuille —
@@ -158,6 +163,17 @@ def main():
         print(f"  {code:<10}{d['actions']:>10.2f}{d['cmp']:>12,.0f}"
               f"{d['cours_final']:>12,.0f}{d['valeur']:>12,.0f}"
               f"{d['dividendes']:>13,.0f}{d['tranches']:>10}{d['ventes']:>8}")
+
+    # ------------------------------------------------------------------
+    #  TITRES REELLEMENT ACHETES (A3-08 : verifier l'univers compare)
+    # ------------------------------------------------------------------
+    print("\n" + "=" * 104)
+    print("  TITRES REELLEMENT ACHETES PAR VARIANTE")
+    print("=" * 104)
+    print("\n  (A3-08 : toutes les variantes doivent acheter le MEME univers — c'est ce")
+    print("  qui rend la comparaison equitable, sans dependance a l'ordre du dict)")
+    for nom, r in resultats.items():
+        print(f"  {nom:<24}{len(r.titres_achetes)} titre(s) : {', '.join(r.titres_achetes)}")
 
     print("\n" + "=" * 104)
     print("  COMMENT LIRE")

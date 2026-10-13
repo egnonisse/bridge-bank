@@ -30,10 +30,10 @@ en disent, un par un — **aucun ne reste sans réponse**.
 |---|---|---|---|
 | **1** | **SÉLECTION** (grandes valeurs à dividende) | **Neutre en performance, positif en revenu** | noyau **+1,1 pt** vs hasard (0/7 significatif) mais **10,65 %/an** encaissables — chiffres **recalculés le 12/10/2026** sur données et code corrigés (voir encadré) |
 | **2** | **ENTRÉE PROGRESSIVE** (par tranches) | **Neutre** (−0,5 à +0,5 pt, 52-54 % de réussite) | **43 227 observations, 47 titres** (re-mesuré le 12/10 ; l'écart affiché est « négligeable — le progressif ne crée ni ne détruit de valeur ») |
-| **3** | **RENFORCEMENT sur faiblesse** | **Gagnant en krach, coûteux en hausse** | **+26,7 pt** ajusté (re-mesuré le 13/10) ; **63-69 %** de réussite en entrant en année de krach (**5 196 obs. — identique** au chiffre d'origine) |
-| **4** | **PALIERS de sortie** | **Coûte −49,0 pts** (re-mesuré le 13/10) ; divise la volatilité **÷3,6 confirmé au centième** (écart-type 82,0 % → 22,5 % = 3,64) | attribution + **38 262 trades** (re-mesuré ; les 37 514 annoncés) + challenge (sous-représentés chez les gagnantes) |
+| **3** | **RENFORCEMENT sur faiblesse** | **Gagnant en krach, coûteux en hausse** | **−16,1 pt** ajusté (re-mesuré le 13/10 **après le lot 9 — plafond de ligne équitable** ; l'ancien **+26,7 pt** du lot 4 était un artefact de composition) ; **63-69 %** de réussite en entrant en année de krach (**5 196 obs. — identique** au chiffre d'origine) |
+| **4** | **PALIERS de sortie** | **Coûte −42,9 pts** (re-mesuré le 13/10 après le lot 9 ; −49,0 pt après le lot 4) ; divise la volatilité **÷3,6 confirmé au centième** (écart-type 82,0 % → 22,5 % = 3,64) | attribution + **38 262 trades** (re-mesuré ; les 37 514 annoncés) + challenge (sous-représentés chez les gagnantes) |
 | **5** | **REBALANCEMENT** | **Positif à TOUS les horizons** : +3,2 à +5,8 pt (3 ans), +5,4 à +7,3 pt (5 ans), **+8,4 à +13,8 pt (10 ans)** ; réduit le pire cas (−12,2 % → −0,4 %) | 126 paniers de 5 lignes, frais 1,4 % compris. **Re-mesuré le 12/10 : le 10 ans s'inverse** (l'ancien « −2 à −9 pt » devient positif — voir encadré) |
-| — | **BILAN** : stratégie complète vs noyau passif | **−43,0 pts**, mais drawdown −17,3 % contre −26,2 % | attribution |
+| — | **BILAN** : stratégie complète vs noyau passif | **−54,4 pts** (re-mesuré le 13/10 après le lot 9 ; −43,0 pt après le lot 4), mais drawdown −17,3 % contre −26,2 % | attribution |
 
 > **Mise à jour du 12/10/2026 — recalcul après les corrections d'audit.**
 > La ligne 1 a été **remesurée** sur les données et le code corrigés (look-aheads BPA/TTM
@@ -99,9 +99,15 @@ bilan. C'est aussi ce qu'a trouvé le challenge multi-modèles, par un chemin in
 > 244,7 % (référence) · **B** −31,2 pt · **C +26,2 pt** · **D −45,4 pt**. La **re-mesure du 13/10/2026**
 > (moteur corrigé — lot 4, A3-12 ; preuve brute `audit/preuves/attribution_remesuree_2026-10-13.txt`)
 > donne : **A** 233,0 % · 94,9 % · 245,5 % (référence) · **B** −43,0 pt · **C +26,7 pt** · **D −49,0 pt**.
-> Même sens, même direction ; le coût des paliers est **encore plus élevé** qu'enregistré (la correction
-> du réinvestissement des ventes retire un gain qui n'aurait pas dû être compté). Les écarts ci-dessous
-> sont donc à lire comme l'état du 08/10, pas comme la mesure courante.
+> La **re-mesure du 13/10/2026 APRÈS LE LOT 9** (A3-08 plafond de ligne équitable — le comparatif
+> porte enfin sur le MÊME univers de titres — et A3-10 exécution à J+1 ; preuve brute
+> `audit/preuves/attribution_remesuree_2026-10-13_lot9.txt`) donne : **A** 203,0 % · expo 87,3 % ·
+> **232,6 %** (référence) · **B −54,4 pt · C −16,1 pt · D −42,9 pt**. **La conclusion sur le
+> renforcement CHANGE DE SIGNE** (+26,7 → −16,1 pt) : l'avantage apparent venait de ce que la
+> variante « renforcement » engageait 300 k F par titre contre 100 k pour la complète — une
+> différence de COMPOSITION (et une dépendance à l'ordre du dict `univers`), pas une habitude
+> gagnante. Constat A3-08, désormais mesuré et corrigé. Les écarts ci-dessous sont donc à lire
+> comme l'état du 08/10, pas comme la mesure courante.
 
 Rendement **ajusté à l'exposition** (sinon on compare une stratégie investie à une
 stratégie à moitié en cash et on ne mesure que la quantité de cash).
@@ -227,7 +233,7 @@ en un an).
 
 | Priorité | Action | Fondement |
 |---|---|---|
-| **1** | **Supprimer les paliers de vente** (ou les réduire à un rôle de sécurité, pas de performance) | −43,1 pts en attribution ; sous-représentés chez les gagnantes du challenge |
+| **1** | **Supprimer les paliers de vente** (ou les réduire à un rôle de sécurité, pas de performance) | −42,9 pts en attribution (mesure du 13/10, lot 9 ; −49,0 avant correction du plafond) ; sous-représentés chez les gagnantes du challenge |
 | **2** | **Rémunérer le cash dormant** (obligations UEMOA ou équivalent) | Le renforcement coûte −59 pts à capital égal en marché haussier, uniquement parce que les tranches non déclenchées dorment à 0 % |
 | **3** | **Allonger l'espacement des achats** (~20 jours au lieu de 12) | Meilleure variante du challenge (+80,5 pts) et sur-représenté chez les gagnantes |
 | **4** | **Continuer le renforcement, en le comprenant comme une assurance** | 67-69 % de réussite en entrant en année de krach — c'est sa vraie valeur |

@@ -239,9 +239,23 @@ A3-13 (bloc mort supprimé, replis signalés). **8 tests créés**
 moitiés +3,21/+1,59 ; les 5 autres « non concluantes », p 0,10 à 0,92). L'ère antérieure
 (« 6/6, p=0,000 ») est conservée datée dans le skill et `docs/CHALLENGE-MULTI-MODELES.md`.
 
-**État des 47 items (13/10)** : les P6/P7 clos (lots 5-7) ; chantier A3 : le juge clos (lot 8) ;
-**reste A3-08 (moteur `strategie_leo` — attribution des composants)** ; P6-02 = dette assumée
-(verrouillée par tests).
+**État des 47 items (13/10)** : les P6/P7 clos (lots 5-7) ; chantier A3 : juge clos (lot 8) et
+**moteur clos (LOT 9)** ; P6-02 = dette assumée (verrouillée par tests).
+
+### Mise à jour du 13/10/2026 — LOT 9 : LE MOTEUR ÉQUITABLE (A3-08, A3-10-moteur, A3-13)
+
+Détail : `docs/DECISION-2026-10-13-lot9-moteur-equitable.md`. **Plafond de ligne DYNAMIQUE**
+(`capital × (1 − cash) / n_titres`) : toutes les variantes achètent le MÊME univers — le
+biais d'ordre du dict `univers` (A3-08) est mort. **5 paramètres morts retirés**
+(`budget_ligne`, `max_tranches_renforcement`, `duree_max_seances`, `rebalancement_actif`,
+`seuil_rebalancement`), **`titres_achetes` publiés**, **exécution J+1** (garde-fous
+re-vérifiés à l'exécution, ordre non exécuté en fin de fenêtre jamais appliqué), drawdown
+post-dernière-séance, durée en jours, alerte position sans cours. **6 tests ajoutés** (32 au
+total). **Attribution RE-MESURÉE** (preuve `audit/preuves/attribution_remesuree_2026-10-13_lot9.txt`) :
+noyau 203,0 %/87,3 % ; **renforcement −16,1 pt — LA CONCLUSION CHANGE DE SIGNE** (+26,7
+avant : c'était un artefact de composition) ; paliers −42,9 ; complète −54,4. Référence,
+invariants B1 (42,9 pt), rapport 28 ans, `chiffres_publies_verifies.md` et tests gardiens
+alignés le même jour. **Le chantier A3 est COMPLET.**
 
 ---
 

@@ -14,11 +14,38 @@ reellement, tel qu'il ressort de son releve Bridge Bank (01/01/2025 -> 08/10/202
   3. PALIERS DE SORTIE — il vend par fractions a des gains croissants. SONATEL :
      3 actions a +15,5 %, 2 a +18,6 %, 1 a +28,3 %. NB : les seuils REELS sont
      plus BAS que les +20/+35/+50 documentes.
-  4. REBALANCEMENT — il vend un gagnant pour financer un retardataire. Les
-     ventes SONATEL du 02/09, 08/09 et 21/09 sont suivies d'achats PALM, SMB,
-     SOLIBRA les jours suivants.
+  4. REBALANCEMENT — il vend un gagnant pour financer un retardataire (ventes
+     SONATEL du 02/09, 08/09 et 21/09 suivies d'achats PALM, SMB, SOLIBRA).
+     **NON MODELE ICI** : mesure separement par `scripts/tester_rebalancement.py`.
+     Les parametres fantomes `rebalancement_actif` / `seuil_rebalancement`,
+     declares mais JAMAIS lus par ce moteur, ont ete retires le 13/10/2026
+     (audit A3-08).
   5. RESERVE DE CASH — il conserve une poche de liquidites (46 % au 08/10/2026,
      apres un depot de 700 000 F).
+
+CE QUI A CHANGE LE 13/10/2026 (audit A3, chantier 3)
+----------------------------------------------------
+- **A3-08 — plafond de ligne EQUITABLE.** Avant : `budget_max_ligne = 300 000 F`
+  fixe et `tranche = plafond / nb_tranches` : la variante passive (1 tranche)
+  engageait 300 000 F par titre et epuisait le cash avant d'ouvrir le 4e titre,
+  pendant que la variante complete ouvrait les 5 a 100 000 F — les variantes ne
+  detenaient PAS les memes titres et le resultat dependait de l'ordre du dict
+  `univers` (l'effet meme que la docstring pretendait neutraliser). Maintenant,
+  sans plafond explicite : `plafond = capital x (1 - cash) / n_titres` — chaque
+  variante engage la meme PART de son capital investissable sur CHAQUE titre de
+  l'univers ; seule la repartition DANS LE TEMPS change. Un plafond explicite
+  (`budget_max_ligne=...`) reste possible et prioritaire.
+  Parametres MORTS retires : `budget_ligne`, `max_tranches_renforcement`,
+  `duree_max_seances`, `rebalancement_actif`, `seuil_rebalancement` (aucun n'etait
+  lu par le moteur). Les titres reellement achetes sont publies dans
+  `ResultatStrategie.titres_achetes`.
+- **A3-10 — execution a J+1.** Toute decision prise sur le close de la seance `d`
+  est executee a la seance SUIVANTE DU TITRE, au close. La BRVM cote au fixing :
+  on ne trade pas le close qu'on vient de lire. Les garde-fous (reserve de cash,
+  plafond de ligne) sont RE-VERIFIES a l'execution ; un ordre dont le garde-fou
+  retombe est annule. Un ordre non execute a la fin de la fenetre n'est PAS applique.
+- **A3-13** — drawdown mesure aussi apres la derniere seance ; duree en jours
+  reels pour le revenu annuel ; avertissement si une position n'a aucun cours final.
 
 REGLE DE RIGUEUR
 ----------------
@@ -57,10 +84,15 @@ from ..taxation import IRVM_DIVIDEND_TAX  # noqa: E402  (C4 : plus de 0,88 en du
 
 @dataclass
 class Parametres:
-    """Les 5 composants, avec les valeurs observees dans le releve.
+    """Les composants modelises, avec les valeurs observees dans le releve.
 
     Chaque champ porte la valeur par defaut (= comportement reel observe) et
     peut etre remplace pour tester une variante.
+
+    Un parametre qu'on peut regler SANS EFFET est un mensonge de l'API : les
+    champs fantomes (`budget_ligne`, `max_tranches_renforcement`,
+    `duree_max_seances`, `rebalancement_actif`, `seuil_rebalancement`) ont ete
+    retires le 13/10/2026 (audit A3-08).
     """
 
     # 1. Entree progressive
@@ -70,35 +102,30 @@ class Parametres:
     # 2. Renforcement sur faiblesse
     renforcement_actif: bool = True
     seuil_renforcement: float = 0.045  # PALM : 4,4 % / 4,8 % / 3,1 % -> ~4,5 %
-    max_tranches_renforcement: int = 4
 
     # 3. Paliers de sortie (SEUILS REELS, plus bas que les documentes)
     paliers_actifs: bool = True
     seuils_vente: tuple = ((0.15, 1 / 3), (0.20, 1 / 3))
-    duree_max_seances: int = 250
 
-    # 4. Rebalancement
-    rebalancement_actif: bool = False   # desactive par defaut : voir note ci-dessous
-    seuil_rebalancement: float = 0.20   # gain au-dela duquel on arbitre
-
-    # 5. Reserve de cash (fraction du capital jamais investie)
+    # 4. Reserve de cash (fraction du capital jamais investie)
     cash_cible: float = 0.15
 
-    # Budget par ligne. `budget_max_ligne` est le PLAFOND de capital engage sur
-    # un titre, toutes tranches et renforts confondus.
+    # Plafond de capital engage sur UN titre (tranches et renforts confondus).
     #
     # POURQUOI CE PLAFOND EXISTE
     # --------------------------
     # Sans lui, la variante « renforcement » achete davantage que la variante
-    # passive (14 achats contre 5 dans la premiere mesure) : elle gagne plus,
-    # mais seulement parce qu'elle est PLUS EXPOSEE au marche. Compare un
-    # portefeuille a 50 % investi et un autre a 100 % ne dit rien sur la
-    # qualite des habitudes — cela mesure la part investie.
-    # Avec le plafond, toutes les variantes engagent le meme capital par titre :
-    # seule la REPARTITION DANS LE TEMPS change, ce qui est exactement la
-    # question posee.
-    budget_ligne: float = 100_000.0     # montant d'UNE decision d'achat
-    budget_max_ligne: float = 300_000.0  # plafond de capital engage par titre
+    # passive : elle gagne plus, mais seulement parce qu'elle est PLUS EXPOSEE
+    # au marche. Comparer un portefeuille a 50 % investi et un autre a 100 % ne
+    # dit rien sur la qualite des habitudes — cela mesure la part investie.
+    #
+    # A3-08 (13/10/2026) : par defaut (None), le plafond est DYNAMIQUE —
+    # `capital x (1 - cash) / nombre de titres de l'univers`. Chaque variante
+    # engage la meme part de son capital investissable sur chaque titre (le
+    # MEME univers est ouvert), seule la repartition dans le temps change.
+    # Une valeur explicite reste possible : elle force le plafond, notamment
+    # pour les tests de non-regression.
+    budget_max_ligne: float | None = None
 
 
 @dataclass
@@ -137,6 +164,10 @@ class ResultatStrategie:
     rendement_pct: float = 0.0
     revenu_annuel_pct: float = 0.0
     nb_lignes: int = 0
+    # A3-08 : les titres REELLEMENT achetes pendant la simulation (meme s'ils
+    # ont ete revendus en totalite). Permet de VERIFIER que les variantes
+    # comparent le meme univers, au lieu de le supposer.
+    titres_achetes: list = field(default_factory=list)
     # Exposition : part moyenne du capital investie en titres. Indispensable
     # pour comparer des variantes entre elles : une regle qui vend tot est
     # MOINS exposee, donc gagne moins dans un marche haussier. Sans ce chiffre,
@@ -275,12 +306,22 @@ class MoteurLeo:
             return ResultatStrategie(nom="leo", capital_initial=self.capital)
 
         toutes_dates = sorted({d for (dd, _, _) in series.values() for d in dd})
-        budget = self.p.budget_ligne
 
-        # Echeancier d'achat par titre : on etale l'entree en nb_tranches
-        a_acheter = {code: 0 for code in series}      # tranches restantes
-        dernier_jour_achat = {code: "" for code in series}
-        cible = {code: 0.0 for code in series}
+        # A3-08 : plafond de ligne EQUITABLE. Par defaut, chaque titre recoit la
+        # meme part du capital investissable — les variantes ouvrent le MEME
+        # univers, seule la repartition dans le temps change. Un plafond
+        # explicite (tests de non-regression) est prioritaire.
+        if self.p.budget_max_ligne is not None:
+            plafond = float(self.p.budget_max_ligne)
+        else:
+            plafond = self.capital * (1 - self.p.cash_cible) / max(len(series), 1)
+        tranche = plafond / max(self.p.nb_tranches, 1)
+        seuil_min = tranche * 0.5
+
+        # File d'ordres PENDANTS (A3-10) : une decision prise sur le close de la
+        # seance `d` est executee a la seance SUIVANTE DU TITRE, au close. A la
+        # BRVM (cotation au fixing), on ne trade pas le close qu'on vient de lire.
+        en_attente: dict[str, list[dict]] = {code: [] for code in series}
 
         # Suivi de l'exposition : part du capital investie en titres, mesuree a
         # chaque seance puis moyennee. C'est ce qui permet de distinguer « la
@@ -341,34 +382,69 @@ class MoteurLeo:
                         self.journal.append((date, "DIVIDENDE", code,
                                              round(montant), ""))
 
+            # --- 3. EXECUTION DES ORDRES PENDANTS (A3-10 : J+1) ----------
+            # L'ordre est execute au close de la premiere seance du titre APRES
+            # sa decision. Les garde-fous sont RE-VERIFIES ici : le cash ou le
+            # plafond ont pu changer depuis la decision — un ordre dont le
+            # garde-fou retombe est annule, jamais execute de force.
+            for code, (dates, closes, par_date) in series.items():
+                ordres = en_attente.get(code)
+                if not ordres:
+                    continue
+                cours = par_date.get(date)
+                if cours is None:
+                    continue      # le titre ne cote pas : l'ordre attend sa prochaine cote
+                for o in ordres:
+                    if o["type"] == "achat":
+                        dispo = self.cash - self.capital * self.p.cash_cible
+                        if dispo <= o["seuil_min"]:
+                            continue                     # garde-fou retombe : annule
+                        montant = min(o["montant"], dispo)
+                        if o.get("limite_plafond"):
+                            pos = self.positions.get(code)
+                            engage = pos.investi_total if pos else 0.0
+                            reste = plafond - engage
+                            if reste <= o["seuil_min"]:
+                                continue
+                            montant = min(montant, reste)
+                        self._acheter(code, date, cours, montant, o["motif"])
+                    else:
+                        self._vendre(code, date, cours, o["actions"], o["motif"],
+                                     marqueur=o["marqueur"])
+                en_attente[code] = []
+
+            # --- 4. DECISIONS (executees a la seance suivante) -----------
             for code, (dates, closes, par_date) in series.items():
                 cours = par_date.get(date)
                 if cours is None:
                     continue
+                if en_attente.get(code):
+                    continue          # une seule decision en vol par titre
                 pos = self.positions.get(code)
 
-                # --- 3. PALIERS DE SORTIE --------------------------------
+                # --- 4a. PALIERS DE SORTIE --------------------------------
                 # On ne vend chaque palier qu'UNE fois : la liste des seuils
-                # deja executes est portee par pos.ventes (marqueur `seuil`).
+                # deja executes est portee par pos.ventes (marqueur `seuil`),
+                # completee des ordres deja en vol. Les fractions portent sur
+                # les actions RESTANTES, comme avant (1/3, puis 1/3 du reste).
                 if pos is not None and self.p.paliers_actifs and pos.cmp:
                     gain = cours / pos.cmp - 1
+                    restantes = pos.actions - sum(
+                        o["actions"] for o in en_attente[code] if o["type"] == "vente")
                     for seuil, fraction in self.p.seuils_vente:
                         deja_fait = any(abs(v[3] - seuil) < 1e-9
                                         for v in pos.ventes)
-                        if gain >= seuil and not deja_fait and pos.actions > 0:
-                            n = pos.actions * fraction
+                        if gain >= seuil and not deja_fait and restantes > 0:
+                            n = restantes * fraction
                             if n > 0:
-                                self._vendre(code, date, cours, n,
-                                             f"palier +{seuil*100:.0f} %",
-                                             marqueur=seuil)
+                                en_attente[code].append({
+                                    "type": "vente", "actions": n,
+                                    "motif": f"palier +{seuil*100:.0f} %",
+                                    "marqueur": seuil})
+                                restantes -= n
 
-                # --- 4. ENTREE PROGRESSIVE / RENFORCEMENT ----------------
+                # --- 4b. ENTREE PROGRESSIVE / RENFORCEMENT ----------------
                 dispo = self.cash - self.capital * self.p.cash_cible
-                # Taille d'une tranche : le plafond de la ligne divise par le
-                # nombre de tranches prevues. Ainsi TOUTES les variantes engagent
-                # le meme capital par titre ; seule la repartition dans le temps
-                # change (c'est la question posee).
-                tranche = self.p.budget_max_ligne / max(self.p.nb_tranches, 1)
                 # A3-12(d) : le plafond se mesure sur le capital CUMULÉ investi
                 # (`investi_total`) — `cout_total` diminue au prorata des ventes, ce
                 # qui permettait de réinvestir le produit d'une vente au-delà du
@@ -379,28 +455,34 @@ class MoteurLeo:
                     # Premiere entree : ouvre la position.
                     # A3-12(b) : montant borné par le disponible — la réserve de cash
                     # (cash_cible) ne peut plus être franchie d'une demi-tranche.
-                    if dispo > tranche * 0.5:
-                        self._acheter(code, date, cours, min(tranche, dispo),
-                                      f"entree 1/{self.p.nb_tranches}")
+                    if dispo > seuil_min:
+                        en_attente[code].append({
+                            "type": "achat", "montant": min(tranche, dispo),
+                            "motif": f"entree 1/{self.p.nb_tranches}",
+                            "seuil_min": seuil_min, "limite_plafond": False})
 
                 elif pos.tranches_achetees < self.p.nb_tranches:
                     # Tranches suivantes : espacees dans le temps (idem A3-12(b))
                     if self._jours_ecoules(pos.date_dernier_achat, date,
                                            dates) >= self.p.espacement_jours:
-                        if dispo > tranche * 0.5:
+                        if dispo > seuil_min:
                             k = pos.tranches_achetees + 1
-                            self._acheter(code, date, cours, min(tranche, dispo),
-                                          f"entree {k}/{self.p.nb_tranches}")
+                            en_attente[code].append({
+                                "type": "achat", "montant": min(tranche, dispo),
+                                "motif": f"entree {k}/{self.p.nb_tranches}",
+                                "seuil_min": seuil_min, "limite_plafond": False})
 
                 # Renforcement sur faiblesse, DANS la limite du plafond de ligne
                 elif self.p.renforcement_actif and pos.actions > 0:
-                    reste = self.p.budget_max_ligne - engage
+                    reste = plafond - engage
                     baisse = cours / pos.cours_dernier_achat - 1
                     if (baisse <= -self.p.seuil_renforcement
-                            and reste > tranche * 0.5 and dispo > tranche * 0.5):
-                        self._acheter(code, date, cours,
-                                      min(tranche, reste, dispo),
-                                      f"renfort ({baisse*100:+.1f} %)")
+                            and reste > seuil_min and dispo > seuil_min):
+                        en_attente[code].append({
+                            "type": "achat",
+                            "montant": min(tranche, reste, dispo),
+                            "motif": f"renfort ({baisse*100:+.1f} %)",
+                            "seuil_min": seuil_min, "limite_plafond": True})
 
         # --- 5. VALEUR FINALE -------------------------------------------
         derniere = toutes_dates[-1]
@@ -428,26 +510,48 @@ class MoteurLeo:
                     "tranches": pos.tranches_achetees,
                     "ventes": len(pos.ventes),
                 }
+            else:
+                # A3-13(c) : une position sans aucun cours final etait omise EN
+                # SILENCE de la valeur finale (valeur sous-estimee sans alerte).
+                print(f"  [!] {code} : aucun cours final — position NON valorisee "
+                      f"({pos.actions:.2f} actions)")
+
+        # A3-13(b) : drawdown mesure aussi APRES la derniere seance — les frais
+        # et les ordres du dernier jour ne pouvaient pas apparaitre dans la
+        # mesure prise avant eux.
+        total_final = valeur_titres + self.cash
+        if sommet_valeur:
+            sommet_valeur = max(sommet_valeur, total_final)
+            dd_final = total_final / sommet_valeur - 1
+            if dd_final < pire_drawdown:
+                pire_drawdown = dd_final
 
         r = ResultatStrategie(nom="leo")
         r.capital_initial = self.capital
         r.cash_final = self.cash
-        r.valeur_finale = valeur_titres + self.cash
+        r.valeur_finale = total_final
         r.dividendes = self.dividendes_encaisses   # A3-12(a) : inclut les positions soldées
         r.frais_payes = self.frais_payes
         r.nb_achats = self.nb_achats
         r.nb_ventes = self.nb_ventes
         r.nb_lignes = len(self.positions)
         r.detail = detail
+        # A3-08 : les titres REELLEMENT achetes (le journal porte tous les
+        # achats, y compris les lignes ensuite revendues en totalite).
+        r.titres_achetes = sorted({j[2] for j in self.journal if j[1] == "ACHAT"})
         r.exposition_moyenne_pct = (exposition_cumulee / nb_mesures * 100
                                     if nb_mesures else 0.0)
         r.drawdown_max_pct = pire_drawdown * 100
         r.capital_deploye = sum(p.cout_total for p in self.positions.values())
         if self.capital:
             r.rendement_pct = (r.valeur_finale / self.capital - 1) * 100
+        # A3-13(d) : duree en JOURS reels — l'ecart de mois entiers ignorait les
+        # jours et biaisait le revenu annuel.
         try:
-            a0, a1 = int(date_debut[:4]), int(date_fin[:4])
-            annees = max((a1 - a0) + (int(date_fin[5:7]) - int(date_debut[5:7])) / 12, 0.5)
+            from datetime import date as _date
+            a0 = _date.fromisoformat(date_debut[:10])
+            a1 = _date.fromisoformat(date_fin[:10])
+            annees = max((a1 - a0).days / 365.25, 0.5)
         except Exception:
             annees = 1.0
         r.revenu_annuel_pct = (r.dividendes / self.capital / annees) * 100
@@ -475,17 +579,16 @@ def variante_noyau_passif() -> Parametres:
     """A — achat unique, conservation, dividendes encaisses (reference)."""
     return Parametres(
         nb_tranches=1, espacement_jours=0, renforcement_actif=False,
-        paliers_actifs=False, rebalancement_actif=False, cash_cible=0.0,
+        paliers_actifs=False, cash_cible=0.0,
     )
 
 
 def variante_complete() -> Parametres:
-    """B — la strategie reelle de LEO (les 5 composants)."""
+    """B — la strategie reelle de LEO (composants modelises : 1, 2, 3, 5)."""
     return Parametres(
         nb_tranches=3, espacement_jours=12, renforcement_actif=True,
         seuil_renforcement=0.045, paliers_actifs=True,
         seuils_vente=((0.15, 1 / 3), (0.20, 1 / 3)),
-        rebalancement_actif=False,     # voir note : non modelise par defaut
         cash_cible=0.15,
     )
 

@@ -1,0 +1,92 @@
+========================================================================================================
+  ATTRIBUTION — QUEL COMPOSANT DE LA STRATEGIE DE LEO APPORTE OU COUTE ?
+========================================================================================================
+
+  Titres reels de LEO : SGBC, SLBC, SNTS, PALC, SMBC
+  Periode : 2022-01-03 -> 2026-09-30   Capital : 1,000,000 F
+  Frais : 1,4 % par sens (minimum 1 000 F par ordre)
+
+  A  noyau passif : execute (5 achats, 0 ventes)
+  B  strategie complete : execute (15 achats, 10 ventes)
+  C  noyau + renforcement : execute (15 achats, 0 ventes)
+  D  noyau + paliers : execute (5 achats, 10 ventes)
+
+========================================================================================================
+  RESULTATS
+========================================================================================================
+
+  Variante                  valeur fin.  rendement  revenu/an     frais  achats  ventes  expo moy   DD max
+  ------------------------------------------------------------------------------------------------------------------
+  A  noyau passif            3,030,108 F     203.0%     10.56%   14,000F       5       0     87.3%   -18.6%
+  B  strategie complete      1,842,536 F      84.3%      4.33%   25,033F      15      10     47.3%   -11.3%
+  C  noyau + renforcement    2,662,980 F     166.3%      8.77%   15,000F      15       0     76.8%   -16.2%
+  D  noyau + paliers         1,868,361 F      86.8%      4.38%   21,909F       5      10     45.8%    -9.3%
+
+========================================================================================================
+  ATTRIBUTION — ecart a la reference (noyau passif)
+========================================================================================================
+
+  Variante                   ecart rendement     ecart frais   ecart revenu   ecart expo  verdict
+  ---------------------------------------------------------------------------------------------------------
+  B  strategie complete            -118.76 pt        +11,033F         -6.23 pt       -40.0 pt  COUTE
+  C  noyau + renforcement           -36.71 pt         +1,000F         -1.79 pt       -10.5 pt  COUTE
+  D  noyau + paliers               -116.17 pt         +7,909F         -6.18 pt       -41.5 pt  COUTE
+
+========================================================================================================
+  NORMALISATION — rendement ramene a l'exposition (comparaison equitable)
+========================================================================================================
+
+  Une regle qui vend tot est MOINS investie : dans un marche haussier elle
+  gagne moins, sans que sa methode soit en cause. On divise donc le rendement
+  par l'exposition moyenne pour comparer ce qui est comparable : le rendement
+  PAR UNITE DE CAPITAL EXPOSE.
+
+  Variante                   rendement   expo moy   rend./expo  rendement ajuste
+  --------------------------------------------------------------------------------
+  A  noyau passif               203.0%      87.3%       232.6%             +0.0 pt
+  B  strategie complete          84.3%      47.3%       178.3%            -54.4 pt
+  C  noyau + renforcement       166.3%      76.8%       216.5%            -16.1 pt
+  D  noyau + paliers             86.8%      45.8%       189.8%            -42.9 pt
+
+  LECTURE : si un composant reste nettement negatif APRES normalisation, son
+  cout ne vient pas de l'exposition — il vient vraiment de la methode.
+
+========================================================================================================
+  DETAIL — STRATEGIE COMPLETE (B) : que reste-t-il en portefeuille ?
+========================================================================================================
+
+  cash final : 910,312 F   (49.4 % du total)
+
+  titre        actions         CMP   cours fin      valeur   dividendes  tranches  ventes
+  ---------------------------------------------------------------------------------------
+  PALC           10.55       7,164       8,290      87,431       39,907         3       2
+  SGBC            6.71      11,265      38,990     261,504       48,738         3       2
+  SLBC            4.84      15,618      37,500     181,415       21,146         3       2
+  SMBC           10.57       7,148      16,500     174,419       48,186         3       2
+  SNTS            5.29      14,282      42,995     227,455       47,315         3       2
+
+========================================================================================================
+  TITRES REELLEMENT ACHETES PAR VARIANTE
+========================================================================================================
+
+  (A3-08 : toutes les variantes doivent acheter le MEME univers — c'est ce
+  qui rend la comparaison equitable, sans dependance a l'ordre du dict)
+  A  noyau passif         5 titre(s) : PALC, SGBC, SLBC, SMBC, SNTS
+  B  strategie complete   5 titre(s) : PALC, SGBC, SLBC, SMBC, SNTS
+  C  noyau + renforcement 5 titre(s) : PALC, SGBC, SLBC, SMBC, SNTS
+  D  noyau + paliers      5 titre(s) : PALC, SGBC, SLBC, SMBC, SNTS
+
+========================================================================================================
+  COMMENT LIRE
+========================================================================================================
+
+  Le test repond a UNE question : les habitudes de LEO (entrer par tranches,
+  renforcer a la baisse, vendre par paliers) ajoutent-elles de la valeur a sa
+  SELECTION de titres ?
+
+  Un composant qui COUTE n'est pas forcement a abandonner : il peut acheter du
+  confort (moins de volatilite) ou de la discipline (ne pas tout miser d'un
+  coup). Mais le cout doit etre connu.
+
+  Attention : les frais d'un ordre representent 1,4 %, avec un minimum de
+  1 000 F. Multiplier les petites tranches coute donc cher en proportion.
