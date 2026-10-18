@@ -11,6 +11,7 @@ import re
 import pytest
 
 from src.infrastructure import empreinte
+from src.infrastructure.paths import PER_CACHE  # noqa: E402  (B2-09)
 
 
 # ═════════════ B2-12 : le drapeau `*` ne doit pas se déclencher sur du bruit ══════════
@@ -35,7 +36,7 @@ def test_b2_12_ecrire_un_etat_ne_change_pas_le_statut_git():
     la sortie de `git status` filtrée — le drapeau reste stable. Restauration garantie."""
     import subprocess
 
-    etat = empreinte.RACINE / "data" / "per_cache.json"
+    etat = PER_CACHE
     if not etat.exists():
         pytest.skip("per_cache.json absent de cette copie de travail")
 

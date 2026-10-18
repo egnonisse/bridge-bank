@@ -46,7 +46,7 @@ def test_fetch_history_repli_journalise(caplog):
 
 def test_collecte_titres_en_echec_comptes(caplog, monkeypatch, tmp_path):
     """Un titre en échec disparaissait du cache en silence — il est désormais signalé."""
-    monkeypatch.setattr(bt, "CACHE_FILE", tmp_path / "cache.pkl")
+    monkeypatch.setattr(bt, "CACHE_BRUT", tmp_path / "cache.pkl")
     monkeypatch.setattr(bt, "INACTIFS_FILE", tmp_path / "inactifs.json")
     monkeypatch.setattr(bt, "DATA_DIR", tmp_path)
 

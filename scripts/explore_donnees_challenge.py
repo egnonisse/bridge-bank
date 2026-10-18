@@ -10,10 +10,10 @@ from collections import Counter
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
-DATA = RACINE / "data"
 
 # Le pickle contient des objets de src/models.py -> il faut le projet dans le path
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import DATA_DIR, HISTORY_BRUT, chemin_data  # noqa: E402  (B2-09)
 
 print("=" * 80)
 print("  INVENTAIRE DES DONNEES — BRIDGE BANK")
@@ -23,7 +23,7 @@ print("=" * 80)
 print("\n" + "-" * 80)
 print("  1. FICHIERS DE DONNEES")
 print("-" * 80)
-for f in sorted(DATA.glob("*")):
+for f in sorted(DATA_DIR.glob("*")):
     if f.is_dir() or f.name.startswith(".hermes"):
         continue
     taille = f.stat().st_size
@@ -34,7 +34,7 @@ for f in sorted(DATA.glob("*")):
 print("\n" + "-" * 80)
 print("  2. HISTORIQUE DE COURS (history_cache.pkl)")
 print("-" * 80)
-pkl = DATA / "history_cache.pkl"
+pkl = HISTORY_BRUT
 if pkl.exists():
     with open(pkl, "rb") as fh:
         hist = pickle.load(fh)
@@ -92,7 +92,7 @@ for nom, desc in [("fundamentals_cache.json", "fondamentaux"),
                   ("magic_formula_brvm.json", "magic formula"),
                   ("bonds_market.json", "obligations"),
                   ("madis_seen_state.json", "etat MADIS")]:
-    p = DATA / nom
+    p = chemin_data(nom)
     if not p.exists():
         print(f"  {nom:30} absent")
         continue
@@ -116,7 +116,7 @@ for nom, desc in [("fundamentals_cache.json", "fondamentaux"),
 print("\n" + "-" * 80)
 print("  4. MARCHE OBLIGATAIRE")
 print("-" * 80)
-b = DATA / "bonds_market.json"
+b = chemin_data("bonds_market.json")
 if b.exists():
     try:
         d = json.loads(b.read_text(encoding="utf-8"))

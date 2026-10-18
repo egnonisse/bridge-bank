@@ -29,11 +29,12 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import FUNDAMENTALS_HISTORIQUES, HISTORY_CACHE, chemin_data  # noqa: E402  (B2-09)
 
 
 def main():
-    fond = json.loads((RACINE / "data" / "fondamentaux_historiques.json").read_text(encoding="utf-8"))
-    h = pickle.load(open(RACINE / "data" / "history_clean.pkl", "rb"))
+    fond = json.loads((FUNDAMENTALS_HISTORIQUES).read_text(encoding="utf-8"))
+    h = pickle.load(open(HISTORY_CACHE, "rb"))
 
     # Index quotidien par titre
     series = {}
@@ -188,7 +189,7 @@ def main():
         print(f"  {c['code']:<7}{c['ex']:<10}{c['montant']:>9,.0f}{c['attendu']*100:>9.2f} %"
               f"{c['observe']*100:>9.2f} %{c['capture']*100:>+9.2f} %")
 
-    out = RACINE / "data" / "mesure_detachements.json"
+    out = chemin_data("mesure_detachements.json")
     out.write_text(json.dumps({"n": len(cas),
                                "baisse_mediane_pct": round(statistics.median(obs) * 100, 3),
                                "capture_mediane_pct": round(statistics.median(capt) * 100, 3),

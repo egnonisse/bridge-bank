@@ -31,11 +31,12 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import DIVISIONS_OFFICIELLES, chemin_data  # noqa: E402  (B2-09)
 
 
 def main():
-    collecte = json.loads((RACINE / "data" / "brvm_28ans.json").read_text(encoding="utf-8"))
-    div = json.loads((RACINE / "data" / "divisions_officielles.json").read_text(encoding="utf-8"))
+    collecte = json.loads((chemin_data("brvm_28ans.json")).read_text(encoding="utf-8"))
+    div = json.loads((DIVISIONS_OFFICIELLES).read_text(encoding="utf-8"))
     operations = div.get("divisions", [])
 
     print("=" * 100)
@@ -150,7 +151,7 @@ def main():
     print(f"    strategie a long terme sur cette place. Les dividendes n'y figurent")
     print(f"    PAS : ils s'y ajoutent (5 a 10 % par an selon les titres).")
 
-    out = RACINE / "data" / "brvm_28ans_ajuste.json"
+    out = chemin_data("brvm_28ans_ajuste.json")
     out.write_text(json.dumps(ajuste, ensure_ascii=False), encoding="utf-8")
     print(f"\n  Ecrit : {out.name}")
     print("=" * 100)

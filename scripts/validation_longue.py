@@ -53,6 +53,7 @@ import json
 import statistics
 import sys
 from pathlib import Path
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 RACINE = Path(__file__).resolve().parent.parent
 SEUIL_REPLI = 0.045   # seuil observe sur les achats PALM de LEO
@@ -115,7 +116,7 @@ def _valeur_a(dates, serie, i0, horizon_an, capital, tranches, seuil, titre):
 
 
 def main():
-    data = json.loads((RACINE / "data" / "brvm_28ans_ajuste.json").read_text(encoding="utf-8"))
+    data = json.loads((chemin_data("brvm_28ans_ajuste.json")).read_text(encoding="utf-8"))
     dates = sorted(data)
 
     # --- Classification des annees : krach ou normale ---
@@ -245,7 +246,7 @@ def main():
   dividende, granularite trimestrielle. Ces chiffres mesurent le PRIX, pas le revenu.""")
     print("=" * 104)
 
-    out = RACINE / "data" / "validation_longue.json"
+    out = chemin_data("validation_longue.json")
     out.write_text(json.dumps({"seuil": SEUIL_REPLI, "tranches": NB_TRANCHES,
                                "krachs": sorted(krachs),
                                "observations": len(obs)}, ensure_ascii=False, indent=1),

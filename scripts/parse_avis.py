@@ -1,7 +1,15 @@
 """Télécharge et parse les avis BRVM / SikaFinance partagés par LEO (18/08/2026)."""
 import os
+import sys
+from pathlib import Path
+
 import requests
 import pymupdf
+
+RACINE = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(RACINE))
+
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 UA = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -18,18 +26,18 @@ PDFS = {
     "servair_div_2025": "https://www.sikafinance.com/docs/servair-abidjan-ci-servair-abidjan-cote-d%C2%B7ivoire--paiement-de-dividendes--exercice-2025.pdf",
 }
 
-os.makedirs("data/avis", exist_ok=True)
+os.makedirs(chemin_data("avis"), exist_ok=True)
 
 for name, url in PDFS.items():
     try:
         r = requests.get(url, headers=UA, timeout=90)
         r.raise_for_status()
-        path = f"data/avis/{name}.pdf"
+        path = str(chemin_data(f"avis/{name}.pdf"))
         with open(path, "wb") as f:
             f.write(r.content)
         doc = pymupdf.open(path)
         text = "\n".join(page.get_text() for page in doc).strip()
-        with open(f"data/avis/{name}.txt", "w", encoding="utf-8") as f:
+        with open(chemin_data(f"avis/{name}.txt"), "w", encoding="utf-8") as f:
             f.write(text)
         print(f"\n{'=' * 90}\n### {name}  ({len(text)} chars)\n{'-' * 90}")
         print(text[:1800])

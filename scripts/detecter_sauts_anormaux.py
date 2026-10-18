@@ -28,13 +28,14 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import HISTORY_CACHE  # noqa: E402  (B2-09)
 
 SEUIL_HAUSSE = 1.50     # +150 % en une seance
 SEUIL_BAISSE = -0.60    # -60 % en une seance
 
 
 def main():
-    h = pickle.loads((RACINE / "data" / "history_clean.pkl").read_bytes())
+    h = pickle.loads((HISTORY_CACHE).read_bytes())
 
     print("=" * 100)
     print("  SAUTS ANORMAUX DANS LE CACHE DE PRIX")

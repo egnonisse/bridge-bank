@@ -34,6 +34,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 sys.path.insert(0, str(RACINE / "src"))
+from src.infrastructure.paths import HISTORY_CACHE  # noqa: E402  (B2-09)
 
 SEUILS = (0.05, 0.08, 0.10, 0.13, 0.15)
 
@@ -52,7 +53,7 @@ def _episodes(closes, seuil, saut=20):
 
 
 def main():
-    h = pickle.load(open(RACINE / "data" / "history_clean.pkl", "rb"))
+    h = pickle.load(open(HISTORY_CACHE, "rb"))
     titres = ["SNTS", "SGBC", "SLBC", "PALC"]
 
     print("=" * 100)

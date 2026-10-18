@@ -37,9 +37,10 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import HISTORY_BRUT, chemin_data  # noqa: E402  (B2-09)
 
 PAGE = "https://bfin.brvm.org/Activites_marche.aspx"
-SORTIE = RACINE / "data" / "croisement_officiel.json"
+SORTIE = chemin_data("croisement_officiel.json")
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
 
@@ -161,7 +162,7 @@ def cotations_du_jour(op, caches: dict, journee: str, select_id: str) -> dict:
 def main():
     import pickle
 
-    with open(RACINE / "data" / "history_cache.pkl", "rb") as fh:
+    with open(HISTORY_BRUT, "rb") as fh:
         hist = pickle.load(fh)
 
     print("=" * 88)

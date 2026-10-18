@@ -12,9 +12,9 @@ RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
 from src.ajustement import ajuster_historique, detecter_divisions  # noqa: E402
+from src.infrastructure.paths import HISTORY_BRUT, chemin_data  # noqa: E402  (B2-09)
 
-DATA = RACINE / "data"
-with open(DATA / "history_cache.pkl", "rb") as fh:
+with open(HISTORY_BRUT, "rb") as fh:
     hist = pickle.load(fh)
 
 print("=" * 84)
@@ -110,7 +110,7 @@ else:
 print("=" * 84)
 
 # --- Sauvegarde de l'historique ajuste -----------------------------------
-sortie = DATA / "history_cache_ajuste.pkl"
+sortie = chemin_data("history_cache_ajuste.pkl")
 with open(sortie, "wb") as fh:
     pickle.dump(hist2, fh)
 print(f"\n  Historique ajuste enregistre : {sortie.name} "

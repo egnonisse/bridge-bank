@@ -15,6 +15,7 @@ from src.portfolio import DividendPosition, reinforcement_messages
 from src.calibration.regime_marche import (BAISSIER, FENETRE, HAUSSIER, construire_indice,
                               etat_marche)
 from src.report import TARGET_CASH, alerte_tresorerie
+from src.infrastructure.paths import HISTORY_CACHE  # noqa: E402  (B2-09)
 
 RACINE = Path(__file__).resolve().parent.parent
 
@@ -113,7 +114,7 @@ def test_regime_du_jour_reutilise_un_cache_du_meme_cache(tmp_path):
     assert etat.get("raison") == "SENTINELLE"      # servi sans recalcul
 
 
-@pytest.mark.skipif(not (RACINE / "data" / "history_clean.pkl").exists(),
+@pytest.mark.skipif(not (HISTORY_CACHE).exists(),
                     reason="cache quotidien absent")
 def test_indice_reel_monte_et_creuse_en_2020():
     """Contrôle de vraisemblance sur les vraies données.
@@ -123,7 +124,7 @@ def test_indice_reel_monte_et_creuse_en_2020():
     """
     from src.calibration.regime_marche import charger_series_quotidiennes
 
-    series = charger_series_quotidiennes(RACINE / "data" / "history_clean.pkl")
+    series = charger_series_quotidiennes(HISTORY_CACHE)
     idx = construire_indice(series)
     assert idx[-1][1] > idx[0][1], "l'indice doit monter sur la période"
     creux = min(v for _, v in idx)

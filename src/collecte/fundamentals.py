@@ -19,7 +19,7 @@ from datetime import date
 from pathlib import Path
 
 import requests
-from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR, PER_CACHE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
@@ -45,7 +45,7 @@ def _parse_num(s: str | None) -> float | None:
         return None
 
 
-PER_CACHE_FILE = DATA_DIR / "per_cache.json"
+PER_CACHE_FILE = PER_CACHE  # B2-09/C7 : nom centralisé dans paths.py (alias local = point d'injection des tests)
 
 
 def _load_per_cache() -> dict:

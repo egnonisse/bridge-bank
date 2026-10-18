@@ -33,9 +33,10 @@ sys.path.insert(0, str(RACINE))
 
 from src.calibration import seuils_vente as sv            # noqa: E402
 from src.calibration.schema_seuils import valider         # noqa: E402
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 CONFIG = RACINE / "config.yaml"
-SNAPSHOT = RACINE / "data" / "constantes_snapshot.json"
+SNAPSHOT = chemin_data("constantes_snapshot.json")
 FICHIERS_SECRETS = (".env", ".env.local", ".env.production")
 # Clés qui ne doivent JAMAIS être renseignées dans un fichier suivi par git.
 CLES_SECRETES = (("telegram", "bot_token"), ("telegram", "token"))

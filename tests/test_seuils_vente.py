@@ -15,9 +15,10 @@ import pytest
 from src.portfolio import DividendPosition, check_dividend_position, status_level
 from src.calibration.seuils_vente import (MODE_DECLENCHEUR, MODE_INFORMATIF, est_declencheur,
                               evaluer, intervalle_wilson, mode_pour)
+from src.infrastructure.paths import PROFIT_THRESHOLDS  # noqa: E402  (B2-09)
 
 RACINE = Path(__file__).resolve().parent.parent
-FICHIER_SEUILS = RACINE / "data" / "profit_thresholds.json"
+FICHIER_SEUILS = PROFIT_THRESHOLDS
 TITRES_HISTORIQUES = {"SNTS", "SGBC", "SLBC", "PALC"}
 
 

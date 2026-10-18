@@ -17,6 +17,7 @@ import pytest
 from src.calibration import seuils_vente as sv
 from src.infrastructure.paths import DATA_DIR
 from scripts.export_reversal_profiles import _profil_titre
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 
 def _serie(graine: int = 7, n: int = 700) -> list[float]:
@@ -137,7 +138,7 @@ def test_le_profil_porte_son_seuil():
 def test_le_fichier_exporte_decrit_sa_definition():
     """Le fichier doit documenter sa propre méthode, pour qu'on ne puisse pas la confondre
     avec une autre plus tard."""
-    f = DATA_DIR / "reversal_profiles.json"
+    f = chemin_data("reversal_profiles.json")
     if not f.exists():
         pytest.skip("profils non générés")
     data = json.loads(f.read_text(encoding="utf-8"))
@@ -152,7 +153,7 @@ def test_chaque_profil_exporte_est_mesure_a_son_seuil():
 
     C'est la régression exacte qui a motivé ce chantier : tous les profils portaient +13 %.
     """
-    f = DATA_DIR / "reversal_profiles.json"
+    f = chemin_data("reversal_profiles.json")
     if not f.exists():
         pytest.skip("profils non générés")
     data = json.loads(f.read_text(encoding="utf-8"))

@@ -18,13 +18,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))   # racine du projet
 
 from src.infrastructure.paths import DATA_DIR   # noqa: E402  (import après le bootstrap sys.path)
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
 BASE = "https://www.sikafinance.com"
 PAGE = f"{BASE}/marches/download/BRVMFI"
 
-SORTIE = DATA_DIR / "sika_cotations.csv"
+SORTIE = chemin_data("sika_cotations.csv")
 SORTIE.parent.mkdir(parents=True, exist_ok=True)
 
 # Session avec cookies (le jeton est lie au cookie de session)

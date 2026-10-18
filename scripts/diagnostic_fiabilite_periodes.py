@@ -20,6 +20,7 @@ RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
 from src.collecte import divisions_officielles as dv  # noqa: E402
+from src.infrastructure.paths import HISTORY_BRUT  # noqa: E402  (B2-09)
 
 def _j(d1, d2):
     """Ecart en jours entre deux dates AAAA-MM-JJ."""
@@ -38,7 +39,7 @@ DIVISIONS_COMPLEMENTAIRES = {
     "SLBC": [{"date": "2024-03-27", "facteur": 5.0, "nouvelles": 5, "anciennes": 1}],
 }
 
-with open(RACINE / "data" / "history_cache.pkl", "rb") as fh:
+with open(HISTORY_BRUT, "rb") as fh:
     hist = pickle.load(fh)
 
 OPS = dv.charger()

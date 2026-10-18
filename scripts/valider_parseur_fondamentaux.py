@@ -16,13 +16,14 @@ RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
 from src.analyse.fondamentaux_historiques import bpa_connu, collecter_titre  # noqa: E402
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 CODES = ["SGBC", "NTLC", "SNTS", "BOAC", "BICC", "ECOC", "ONTBF", "SLBC",
          "BOAB", "PALC", "CIEC", "CFAC", "SIVC", "UNXC", "SMBC", "BOAN"]
 
 
 def main():
-    ds = json.loads((RACINE / "data" / "challenge_dataset.json").read_text(encoding="utf-8"))
+    ds = json.loads((chemin_data("challenge_dataset.json")).read_text(encoding="utf-8"))
     per_ref = {t["code"]: t.get("per") for t in ds["titres"]}
     cours = {t["code"]: t.get("cours_final") for t in ds["titres"]}
 

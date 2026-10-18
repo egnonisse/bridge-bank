@@ -19,10 +19,11 @@ C'est le juge : pas de validation sans ce test.
 """
 import json
 from pathlib import Path
+from src.infrastructure.paths import DIVISIONS_OFFICIELLES, chemin_data  # noqa: E402  (B2-09)
 
 RACINE = Path(__file__).resolve().parent.parent
-SRC = RACINE / "data" / "richbourse_titres.json"
-DST = RACINE / "data" / "divisions_officielles.json"
+SRC = chemin_data("richbourse_titres.json")
+DST = DIVISIONS_OFFICIELLES
 
 MOIS = {
     "janvier": 1, "février": 2, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5,

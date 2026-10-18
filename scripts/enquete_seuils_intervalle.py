@@ -37,6 +37,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 sys.path.insert(0, str(RACINE / "src"))
+from src.infrastructure.paths import HISTORY_CACHE  # noqa: E402  (B2-09)
 
 SEUILS = (0.05, 0.08, 0.10, 0.13, 0.15)
 Z = 1.96
@@ -68,7 +69,7 @@ def wilson(k, n):
 
 
 def main():
-    h = pickle.load(open(RACINE / "data" / "history_clean.pkl", "rb"))
+    h = pickle.load(open(HISTORY_CACHE, "rb"))
     print("=" * 102)
     print("  LE CALIBRAGE CHOISIT-IL LE BON SEUIL ? Intervalle de confiance a 95 % (Wilson)")
     print("=" * 102)

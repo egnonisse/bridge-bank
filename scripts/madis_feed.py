@@ -17,6 +17,7 @@ from pathlib import Path
 
 import requests
 import urllib3
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 urllib3.disable_warnings()
 
@@ -32,7 +33,7 @@ KEYWORDS = [
 ]
 
 DATA = Path(__file__).resolve().parents[1] / "data"
-STATE = DATA / "madis_seen_state.json"
+STATE = chemin_data("madis_seen_state.json")
 
 
 def slug_title(url: str) -> str:

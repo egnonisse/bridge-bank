@@ -41,6 +41,7 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 sys.path.insert(0, str(RACINE / "src"))
+from src.infrastructure.paths import HISTORY_CACHE, chemin_data  # noqa: E402  (B2-09)
 
 FRAIS = 0.014          # 1,4 % par ordre (constat du releve Bridge Bank)
 HORIZONS = (3, 5, 10)
@@ -48,7 +49,7 @@ NB_LIGNES = 5          # taille realiste d'un noyau (LEO en detient 5)
 
 
 def _charger():
-    h = pickle.load(open(RACINE / "data" / "history_clean.pkl", "rb"))
+    h = pickle.load(open(HISTORY_CACHE, "rb"))
     out = {}
     for code, barres in h.items():
         d = {}
@@ -226,7 +227,7 @@ def main():
   negatif n'est donc pas une erreur de methode : c'est le prix de la regularite.""")
     print("=" * 100)
 
-    out = RACINE / "data" / "test_rebalancement.json"
+    out = chemin_data("test_rebalancement.json")
     out.write_text(json.dumps({
         "frais_par_ordre": FRAIS, "nb_lignes": NB_LIGNES, "horizons": list(HORIZONS),
         "medianes": {p: {str(h): (round(statistics.median(resultats[p][h]), 4)

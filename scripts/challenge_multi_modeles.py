@@ -51,10 +51,11 @@ from src.backtesting.challenge_validateur import (  # noqa: E402
     charger_fondamentaux, charger_historique, evaluer_hypothese,
 )
 from src.backtesting.challenge_indicateurs import precalculer_historique  # noqa: E402
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 API = "https://openrouter.ai/api/v1/chat/completions"
-DATASET = RACINE / "data" / "challenge_dataset.json"
-SORTIE = RACINE / "data" / "challenge_resultats.json"
+DATASET = chemin_data("challenge_dataset.json")
+SORTIE = chemin_data("challenge_resultats.json")
 PLAFOND_DEFAUT = 4.5          # $ — marge sous les 5 $ disponibles
 
 # Modeles de FAMILLES DIFFERENTES : six variantes du meme raisonnement

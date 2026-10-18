@@ -32,10 +32,11 @@ from src.backtesting.challenge_indicateurs import (  # noqa: E402
 )
 from src.backtesting.challenge_schema import Hypothese, valider_hypothese  # noqa: E402
 from src.backtesting.challenge_validateur import charger_historique, evaluer_hypothese  # noqa: E402
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 
 def main():
-    res_path = RACINE / "data" / "challenge_resultats.json"
+    res_path = chemin_data("challenge_resultats.json")
     d = json.loads(res_path.read_text(encoding="utf-8"))
     publiees = {}
     for r in d["resultats"]:

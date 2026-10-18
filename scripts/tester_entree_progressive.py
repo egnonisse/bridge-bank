@@ -46,12 +46,13 @@ RACINE = Path(__file__).resolve().parent.parent
 # deserialisation echoue avec « No module named 'src' ».
 sys.path.insert(0, str(RACINE))
 sys.path.insert(0, str(RACINE / "src"))
+from src.infrastructure.paths import HISTORY_CACHE, chemin_data  # noqa: E402  (B2-09)
 HORIZONS = (1, 3, 5)
 ESPACEMENTS = (12, 20, 30)
 
 
 def _charger():
-    h = pickle.load(open(RACINE / "data" / "history_clean.pkl", "rb"))
+    h = pickle.load(open(HISTORY_CACHE, "rb"))
     out = {}
     for code, barres in h.items():
         d = {}
@@ -203,7 +204,7 @@ def main():
   (30-60 jours d'attente sur 365, soit 8-16 % du temps), mais il existe : l'ecart reel
   a exposition-ponderee-par-le-temps est legerement inferieur a celui affiche.""")
 
-    out = RACINE / "data" / "test_entree_progressive.json"
+    out = chemin_data("test_entree_progressive.json")
     out.write_text(json.dumps({"observations": len(obs),
                                "espacements": list(ESPACEMENTS),
                                "horizons": list(HORIZONS)},

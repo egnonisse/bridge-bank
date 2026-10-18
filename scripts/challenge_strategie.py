@@ -33,11 +33,12 @@ from pathlib import Path
 
 import requests
 import urllib3
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 urllib3.disable_warnings()
 
 RACINE = Path(__file__).resolve().parent.parent
-SORTIE = RACINE / "data" / "challenge_strategie_variantes.json"
+SORTIE = chemin_data("challenge_strategie_variantes.json")
 BUDGET_MAX = 12.0          # plafond de depense sur ce chantier
 
 MODELES = [

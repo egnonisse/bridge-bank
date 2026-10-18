@@ -25,10 +25,11 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import HISTORY_BRUT, chemin_data  # noqa: E402  (B2-09)
 
-ECHANTILLON = RACINE / "data" / "brvm_officiel_echantillon.json"
-CACHE = RACINE / "data" / "history_cache.pkl"
-SORTIE = RACINE / "data" / "croisement_officiel_final.json"
+ECHANTILLON = chemin_data("brvm_officiel_echantillon.json")
+CACHE = HISTORY_BRUT
+SORTIE = chemin_data("croisement_officiel_final.json")
 
 
 def iso(v: str) -> str:

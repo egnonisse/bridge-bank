@@ -39,20 +39,31 @@ RACINE = Path(__file__).resolve().parents[2]
 
 # ── Données ───────────────────────────────────────────────────────────────────
 DATA_DIR = RACINE / "data"
-MARKET_DIR = DATA_DIR / "market"          # cours archivés (historique, collectes)
-PORTFOLIO_DIR = DATA_DIR / "portfolio"    # positions, snapshots, relevés
+# B2-09 (13/10/2026) : MARKET_DIR et PORTFOLIO_DIR (dossiers-cibles du plan) ont été
+# SUPPRIMÉES — aucune ligne de code ne les utilisait et les dossiers n'existent pas
+# (constantes mortes). Si l'architecture les crée pour de vrai, elles reviendront ici.
 
 # Fichiers de données — le nom vit ici, jamais recopié dans un module.
 # P7-03 : history_clean.pkl est un pickle LOCAL, produit par scripts/preparer_historique_propre.py.
 # Ne JAMAIS charger un .pkl d'origine externe (le format exécute du code au chargement) — le cache
 # se RÉGÉNÈRE, il ne s'importe pas. Contrôlé par scripts/verifier_chemins.py (2 contrôles).
 HISTORY_CACHE = DATA_DIR / "history_clean.pkl"
+
+# B2-10 (13/10/2026) : le cache BRUT est une donnée d'ENTRÉE transitoire (téléchargée
+# par `backtest.load_all_history`), jamais utilisée pour décider. Le pipeline le
+# transforme en HISTORY_CACHE (propre) via `src/collecte/preparation.py`.
+HISTORY_BRUT = DATA_DIR / "history_cache.pkl"
 PROFIT_THRESHOLDS = DATA_DIR / "profit_thresholds.json"
 SEUILS_JOURNAL = DATA_DIR / "seuils_journal.jsonl"
 ALERTES_JOURNAL = DATA_DIR / "alertes_journal.jsonl"
 REVERSAL_PROFILES = DATA_DIR / "reversal_profiles.json"
 PORTFOLIO_STATE = DATA_DIR / "portfolio_state.json"
 FUNDAMENTALS_HISTORIQUES = DATA_DIR / "fondamentaux_historiques.json"
+# B2-09/C7 (13/10/2026) : les deux caches fondamentaux (rôles distincts — per_cache :
+# PER « chaud » rafraîchi par les collectes ; fundamentals_cache : instantané scrapé
+# per+dps avec TTL 24 h pour le screening). Noms centralisés ici.
+PER_CACHE = DATA_DIR / "per_cache.json"
+FUNDAMENTALS_CACHE = DATA_DIR / "fundamentals_cache.json"
 DIVISIONS_OFFICIELLES = DATA_DIR / "divisions_officielles.json"
 
 # État VIVANT du portefeuille (positions, écrit à chaque exécution) — à ne pas confondre

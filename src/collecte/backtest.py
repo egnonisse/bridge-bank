@@ -13,6 +13,11 @@ Limites connues :
   - Survivorship bias : seuls les titres encore cotés aujourd'hui sont testés.
   - Benchmark = panier équipondéré (l'historique de l'indice BRVM-C n'est pas
     exposé par l'API).
+
+B2-10 (13/10/2026) : la VALIDATION tourne sur le cache PROPRE (`history_clean.pkl`,
+ajusté des divisions) — la même base que la production. Avant, elle lisait le BRUT
+(collecte non ajustée) : les cassures de split y biaisaient les rendements mesurés.
+Ce module reste le propriétaire de la COLLECTE (`load_all_history` → brut).
 """
 from __future__ import annotations
 
@@ -31,14 +36,16 @@ from statistics import fmean, pstdev
 from .bsapi import BSApi
 from ..domaine.models import HistoryBar
 from ..analyse.screening import avg_volume, change_pct, compute_score, ema, rsi_wilder
-from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR, HISTORY_BRUT  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from .preparation import charger_historique_propre  # B2-10 : la validation lit le PROPRE
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
-CACHE_FILE = DATA_DIR / "history_cache.pkl"
+CACHE_BRUT = HISTORY_BRUT  # collecte brute (B2-10 — le nom vit dans paths.py)
 HISTORY_START = "20170101"
 MAX_WORKERS = 8
 CACHE_MAX_AGE_DAYS = 7  # re-télécharger l'historique si le cache a plus d'une semaine
 CACHE_STALE_DATA_DAYS = 4  # ... et dès que les DONNÉES ont plus de 4 jours (mtime ≠ fraîcheur)
-INACTIFS_FILE = DATA_DIR / "titres_inactifs.json"  # titres vérifiés dormants (source muette)
+INACTIFS_FILE = chemin_data("titres_inactifs.json")  # titres vérifiés dormants (source muette)
 INACTIF_APRES_JOURS = 8  # aligné sur cache_integrity.MAX_CACHE_AGE_DAYS
 
 log = logging.getLogger(__name__)
@@ -113,11 +120,11 @@ def load_all_history(api: BSApi, force: bool = False) -> dict[str, list[HistoryB
     Le cache est réutilisé s'il a moins de CACHE_MAX_AGE_DAYS jours, sinon
     l'historique est re-téléchargé pour rester à jour.
     """
-    if CACHE_FILE.exists() and not force:
-        age_days = (time.time() - CACHE_FILE.stat().st_mtime) / 86400
+    if CACHE_BRUT.exists() and not force:
+        age_days = (time.time() - CACHE_BRUT.stat().st_mtime) / 86400
         if age_days < CACHE_MAX_AGE_DAYS:
             try:
-                with CACHE_FILE.open("rb") as fh:
+                with CACHE_BRUT.open("rb") as fh:
                     data = pickle.load(fh)
                 if data and _donnees_fraiches(data):
                     return data
@@ -154,7 +161,7 @@ def load_all_history(api: BSApi, force: bool = False) -> dict[str, list[HistoryB
                         len(sans_barres), ", ".join(sorted(sans_barres)))
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    with CACHE_FILE.open("wb") as fh:
+    with CACHE_BRUT.open("wb") as fh:
         pickle.dump(data, fh)
     _enregistrer_inactifs(data)  # note les titres dormants (source muette) — anti-faux « retard »
     return data
@@ -210,7 +217,11 @@ def run_backtest(
     step: int = 20,
     force: bool = False,
 ) -> BacktestResult:
-    hist = load_all_history(api, force=force)
+    if force:
+        # --force : re-collecte complète du BRUT avant de valider. La validation,
+        # elle, tourne TOUJOURS sur le cache PROPRE (même base que la production).
+        load_all_history(api, force=True)
+    hist = charger_historique_propre()  # B2-10
     hist = {c: b for c, b in hist.items() if len(b) >= 80}
 
     # dates de décision : union triée, échantillonnée tous les `step` jours

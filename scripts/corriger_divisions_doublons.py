@@ -33,9 +33,10 @@ import shutil
 from collections import defaultdict
 from datetime import date
 from pathlib import Path
+from src.infrastructure.paths import DIVISIONS_OFFICIELLES  # noqa: E402  (B2-09)
 
 RACINE = Path(__file__).resolve().parent.parent
-FICHIER = RACINE / "data" / "divisions_officielles.json"
+FICHIER = DIVISIONS_OFFICIELLES
 
 # Entrees retirees : (code, date) — motif documente
 A_RETIRER = [

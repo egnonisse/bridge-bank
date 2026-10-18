@@ -48,7 +48,7 @@ def test_la_reference_porte_sa_provenance():
             continue
         assert bloc["script"].startswith("scripts/"), mesure
         if "sortie" in bloc:
-            assert bloc["sortie"].startswith("data/"), mesure
+            assert bloc["sortie"].startswith("data/"), mesure  # noqa: chemin-relatif (FORMAT de sortie)
 
 
 # ═══════════════════ sorties versionnées == référence ════════════════════════════════

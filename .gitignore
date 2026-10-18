@@ -33,6 +33,8 @@ data/titres_inactifs.json
 
 # Volumineux / régénérable via scripts/refresh_history.py (~7 Mo chacun)
 data/*.pkl
+# Empreinte SHA-256 du cache préparé (régénérée avec lui par scripts/preparer_historique_propre.py)
+data/*.pkl.sha256
 
 # Pages HTML brutes téléchargées par les collecteurs — artefacts de diagnostic
 # (data/snts_dividend.html reste versionné : page d'archive conservée comme source)

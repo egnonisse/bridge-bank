@@ -12,9 +12,8 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
-DATA = RACINE / "data"
 
-with open(DATA / "history_cache.pkl", "rb") as fh:
+with open(HISTORY_BRUT, "rb") as fh:
     hist = pickle.load(fh)
 
 print("=" * 86)
@@ -56,6 +55,7 @@ print(f"  et  {len(autres)} autres (variation reelle ou donnee douteuse)\n")
 
 # --- Titres concernes ---------------------------------------------------
 from collections import defaultdict
+from src.infrastructure.paths import HISTORY_BRUT, chemin_data  # noqa: E402  (B2-09)
 par_code = defaultdict(list)
 for s in divisions:
     par_code[s["code"]].append(s)
@@ -111,6 +111,6 @@ else:
 print("=" * 86)
 
 # --- Export pour correction ---------------------------------------------
-sortie = DATA / "divisions_nominal_detectees.json"
+sortie = chemin_data("divisions_nominal_detectees.json")
 sortie.write_text(json.dumps(divisions, ensure_ascii=False, indent=2), encoding="utf-8")
 print(f"\n  Detail exporte : {sortie.name} ({len(divisions)} entrees)")

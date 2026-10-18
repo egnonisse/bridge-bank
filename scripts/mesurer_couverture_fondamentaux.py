@@ -26,11 +26,12 @@ import urllib3
 from pathlib import Path
 
 import requests
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 urllib3.disable_warnings()
 
 RACINE = Path(__file__).resolve().parent.parent
-SORTIE = RACINE / "data" / "couverture_fondamentaux.json"
+SORTIE = chemin_data("couverture_fondamentaux.json")
 H = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 
 

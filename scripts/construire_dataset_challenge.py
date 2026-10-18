@@ -23,9 +23,9 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import FUNDAMENTALS_CACHE, chemin_data  # noqa: E402  (B2-09)
 
-DATA = RACINE / "data"
-SORTIE = DATA / "challenge_dataset.json"
+SORTIE = chemin_data("challenge_dataset.json")
 
 # Historique propre prioritaire ; le brut n'est qu'un repli explicite
 CANDIDATS = ("history_clean.pkl", "history_cache.pkl")
@@ -34,7 +34,7 @@ CANDIDATS = ("history_clean.pkl", "history_cache.pkl")
 def charge_historique():
     """Charge l'historique de cours (pickle contenant des HistoryBar)."""
     for nom in CANDIDATS:
-        p = DATA / nom
+        p = chemin_data(nom)
         if p.exists():
             if nom == "history_cache.pkl":
                 print("  ATTENTION : history_clean.pkl absent — repli sur le BRUT.")
@@ -121,7 +121,7 @@ def main():
 
     # --- Fondamentaux ----------------------------------------------------
     fond = {}
-    fp = DATA / "fundamentals_cache.json"
+    fp = FUNDAMENTALS_CACHE
     if fp.exists():
         fond = json.loads(fp.read_text(encoding="utf-8"))
     print(f"  {len(fond)} titres avec fondamentaux")

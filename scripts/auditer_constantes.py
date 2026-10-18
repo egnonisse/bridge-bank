@@ -37,9 +37,10 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 SRC = RACINE / "src"
-SNAPSHOT = RACINE / "data" / "constantes_snapshot.json"
+SNAPSHOT = chemin_data("constantes_snapshot.json")
 RAPPORT = RACINE / "docs" / "AUDIT-CONSTANTES.md"
 
 # Domaines fonctionnels. Sert uniquement a REGROUPER l'inventaire pour la lecture.

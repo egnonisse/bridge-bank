@@ -995,12 +995,13 @@ def cmd_radar(args: argparse.Namespace) -> None:
     --alert : n'affiche que les niveau 1 et alerte Telegram sur les NOUVEAUX
     (un titre alerté une fois n'est plus jamais re-alerté — anti-spam).
     """
-    from .collecte.backtest import load_all_history
     from .collecte.bsapi import BSApi
+    from .collecte.preparation import charger_historique_propre
     from .analyse.radar import filter_new_level1, format_radar, scan
 
     api = BSApi()
-    hist = load_all_history(api, force=False)
+    # B2-10 : le radar lit le cache PROPRE (même base que la production), jamais le brut.
+    hist = charger_historique_propre()
     hits = scan(hist)
     try:
         snap = api.market_snapshot()
@@ -1068,9 +1069,9 @@ def cmd_noyau_check(args: argparse.Namespace) -> None:
     watch = load_prep_watchlist()
     found = False
     try:
-        from .collecte.backtest import load_all_history
+        from .collecte.preparation import charger_historique_propre
 
-        hist = load_all_history(api, force=False)
+        hist = charger_historique_propre()  # B2-10 : cache propre (base des décisions)
     except Exception:
         hist = None
     for raw in args.code:
@@ -1282,6 +1283,18 @@ def cmd_integrity(args: argparse.Namespace) -> None:
     api = BSApi()
     hist = load_all_history(api)
     problems = check_all_integrity(hist, api.market_snapshot())
+
+    # B2-10 : maillon brut → propre de la chaîne du matin. Le cache des décisions
+    # (history_clean.pkl) est régénéré dès que la collecte a bougé — plus de
+    # préparation manuelle qui prend du retard, et jamais silencieux en cas d'échec.
+    try:
+        from .collecte.preparation import charger_historique_propre
+
+        propre = charger_historique_propre()
+        print(f"Historique propre : {len(propre)} titres (cache des décisions à jour).")
+    except Exception as exc:
+        print(f"⚠ Préparation de l'historique propre impossible : {exc}")
+
     if not problems:
         print("Intégrité des données : OK (cache cohérent, profils à jour).")
         return

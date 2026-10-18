@@ -20,10 +20,10 @@ from pathlib import Path
 from ..collecte.bsapi import BSApi
 from ..collecte.fundamentals import get_dps, get_per_brvm
 from ..taxation import TARGET_NET_YIELD_ENTRY, gross_yield_for_net, net_yield
-from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import DATA_DIR, FUNDAMENTALS_CACHE  # chemins centralisés (lot 0 du plan docs/architecture.md)
 from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 
-CACHE_FILE = DATA_DIR / "fundamentals_cache.json"
+CACHE_FILE = FUNDAMENTALS_CACHE  # B2-09/C7 : nom centralisé dans paths.py (lot 12)
 CACHE_MAX_AGE_HOURS = 24
 MAX_WORKERS = 3  # faible pour éviter le rate-limiting des sites
 

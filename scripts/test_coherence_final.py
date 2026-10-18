@@ -16,8 +16,9 @@ RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
 from src.collecte import divisions_officielles as dv  # noqa: E402
+from src.infrastructure.paths import HISTORY_BRUT  # noqa: E402  (B2-09)
 
-with open(RACINE / "data" / "history_cache.pkl", "rb") as fh:
+with open(HISTORY_BRUT, "rb") as fh:
     hist = pickle.load(fh)
 
 reels = dv.cours_reels()

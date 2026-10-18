@@ -123,7 +123,7 @@ def test_cache_fichier_recent_mais_donnees_vieilles_declenche_le_refetch(monkeyp
     cache = tmp_path / "history_cache.pkl"
     with cache.open("wb") as fh:  # mtime = maintenant : « fichier frais »
         pickle.dump({"AAA": [_barre(maintenant - timedelta(days=15), 100.0)]}, fh)
-    monkeypatch.setattr(bt, "CACHE_FILE", cache)
+    monkeypatch.setattr(bt, "CACHE_BRUT", cache)
     monkeypatch.setattr(bt, "INACTIFS_FILE", tmp_path / "inactifs.json")
 
     appels = []

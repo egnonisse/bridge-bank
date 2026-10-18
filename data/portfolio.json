@@ -12,6 +12,7 @@
     "closed": false,
     "close_reason": "",
     "close_price": 0.0,
+    "close_price_detecte": 0.0,
     "dividends_earned": 6896.25,
     "cash_residual": 0.0
   },
@@ -28,6 +29,7 @@
     "closed": false,
     "close_reason": "",
     "close_price": 0.0,
+    "close_price_detecte": 0.0,
     "dividends_earned": 0.0,
     "cash_residual": 0.0
   },
@@ -44,6 +46,7 @@
     "closed": false,
     "close_reason": "",
     "close_price": 0.0,
+    "close_price_detecte": 0.0,
     "dividends_earned": 0.0,
     "cash_residual": 0.0
   },
@@ -60,6 +63,7 @@
     "closed": false,
     "close_reason": "",
     "close_price": 0.0,
+    "close_price_detecte": 0.0,
     "dividends_earned": 0.0,
     "cash_residual": 0.0
   }

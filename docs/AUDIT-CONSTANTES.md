@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**224 définitions** pour **207 constantes distinctes**.
+**226 définitions** pour **210 constantes distinctes**.
 
 ---
 
@@ -109,7 +109,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `COMPANY_HINTS` | {'bank_of_africa_sn': 'BOAS', 'societe_g · {'sgb': 'SGBC', 'sgci': 'SGBC', 'societe | src.analyse.boc · src.analyse.news |
 | `POSITIONS_FILE` | <expression: DATA_DIR / 'bonds_positions · <expression: SPEC_POSITIONS> | src.analyse.bonds · src.strategie.speculation |
 | `ALERT_STATE_FILE` | <expression: DATA_DIR / 'portf_alert_sta · <expression: RADAR_ALERT_STATE> | src.analyse.radar · src.portfolio |
-| `CACHE_FILE` | <expression: DATA_DIR / 'fundamentals_ca · <expression: DATA_DIR / 'history_cache.p | src.analyse.screener · src.collecte.backtest |
+| `INACTIFS_FILE` | <expression: DATA_DIR / 'titres_inactifs · <expression: chemin_data('titres_inactif | src.collecte.backtest · src.collecte.cache_integrity |
 | `PROFIT_THRESHOLDS` | <expression: DATA_DIR / 'profit_threshol · <expression: SEUILS_PAR_DEFAUT> | src.infrastructure.paths · src.portfolio |
 
 ---
@@ -119,7 +119,6 @@ chemin distinct dans chaque module). Rien à corriger.
 | Constante | Fois | Modules |
 |---|---|---|
 | `HEADERS` | 5 | src.analyse.boc · src.analyse.news · src.collecte.dividend_history · src.collecte.fundamentals · src.collecte.live |
-| `INACTIFS_FILE` | 2 | src.collecte.backtest · src.collecte.cache_integrity |
 | `REVERSAL_FILE` | 2 | src.collecte.cache_integrity · src.portfolio |
 
 ---
@@ -134,7 +133,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (116)
+### autre (117)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -174,6 +173,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `FUNDAMENTALS_HISTORIQUES` | `<expression: DATA_DIR / 'fondamentaux_historiques.json'>` | src.infrastructure.paths |
 | `GROWTH_MIN_PCT` | `-10.0` | src.collecte.dividend_history |
 | `HAUSSIER` | `haussier` | src.calibration.regime_marche |
+| `HISTORY_BRUT` | `<expression: DATA_DIR / 'history_cache.pkl'>` | src.infrastructure.paths |
 | `HISTORY_DAYS` | `90` | src.analyse.screening |
 | `HISTORY_START` | `20170101` | src.collecte.backtest |
 | `HOLDING_YEARS` | `3` | src.portfolio |
@@ -327,14 +327,15 @@ chemin distinct dans chaque module). Rien à corriger.
 | `STOP_INITIAL` | `-0.15` | src.strategie.paliers_sortie |
 | `TARGET_SPEC` | `0.0` | src.report |
 
-### technique (41)
+### technique (43)
 
 | Constante | Valeur | Module |
 |---|---|---|
 | `BASE_URL` | `https://bstrade.bridge-securities.com/BSTradeServer/` | src.collecte.bsapi |
 | `BRVM_BOC_URL` | `https://www.brvm.org/sites/default/files/boc_{yyyymmdd}_2.pdf` | src.analyse.boc |
 | `CACHE` | `<expression: FUNDAMENTALS_HISTORIQUES>` | src.analyse.fondamentaux_historiques |
-| `CACHE_FILE` | `<expression: DATA_DIR / 'fundamentals_cache.json'>` | src.analyse.screener |
+| `CACHE_BRUT` | `<expression: HISTORY_BRUT>` | src.collecte.backtest |
+| `CACHE_FILE` | `<expression: FUNDAMENTALS_CACHE>` | src.analyse.screener |
 | `CACHE_MAX_AGE_DAYS` | `7` | src.collecte.backtest |
 | `CACHE_MAX_AGE_HOURS` | `24` | src.analyse.screener |
 | `CACHE_STALE_DATA_DAYS` | `4` | src.collecte.backtest |
@@ -343,22 +344,23 @@ chemin distinct dans chaque module). Rien à corriger.
 | `DECISIONS_DIR` | `<expression: DOCS_DIR / 'decisions'>` | src.infrastructure.paths |
 | `DIVIDENDES_FILE` | `<expression: DATA_DIR / 'dividendes.json'>` | src.collecte.dividends |
 | `DOCS_DIR` | `<expression: RACINE / 'docs'>` | src.infrastructure.paths |
+| `FUNDAMENTALS_CACHE` | `<expression: DATA_DIR / 'fundamentals_cache.json'>` | src.infrastructure.paths |
 | `HEADERS` | `{'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}` | src.analyse.boc |
 | `HISTORY_CACHE` | `<expression: DATA_DIR / 'history_clean.pkl'>` | src.infrastructure.paths |
-| `INACTIFS_FILE` | `<expression: DATA_DIR / 'titres_inactifs.json'>` | src.collecte.backtest |
+| `INACTIFS_FILE` | `<expression: chemin_data('titres_inactifs.json')>` | src.collecte.backtest |
 | `JOURNAL_FILE` | `<expression: SEUILS_JOURNAL>` | src.calibration.seuils_vente |
 | `LOCK_FILE` | `<expression: DATA_DIR / 'per_cache.lock'>` | src.collecte.fundamentals |
-| `MARKET_DIR` | `<expression: DATA_DIR / 'market'>` | src.infrastructure.paths |
 | `MARKET_FILE` | `<expression: DATA_DIR / 'bonds_market.json'>` | src.analyse.bonds |
 | `MAX_CACHE_AGE_DAYS` | `8` | src.collecte.cache_integrity |
 | `MAX_WORKERS` | `3` | src.analyse.screener |
 | `NSIA_BOC_URL` | `https://nsiacapital.com/wp-content/uploads/{yyyy}/{mm}/BOC-DU-{dd}-{MOIS}.pdf` | src.analyse.boc |
-| `PER_CACHE_FILE` | `<expression: DATA_DIR / 'per_cache.json'>` | src.collecte.fundamentals |
-| `PORTFOLIO_DIR` | `<expression: DATA_DIR / 'portfolio'>` | src.infrastructure.paths |
+| `PER_CACHE` | `<expression: DATA_DIR / 'per_cache.json'>` | src.infrastructure.paths |
+| `PER_CACHE_FILE` | `<expression: PER_CACHE>` | src.collecte.fundamentals |
 | `PORTFOLIO_FILE` | `<expression: DATA_DIR / 'portfolio.json'>` | src.infrastructure.paths |
 | `POSITIONS_FILE` | `<expression: DATA_DIR / 'bonds_positions.json'>` | src.analyse.bonds |
 | `PREP_WATCH_FILE` | `<expression: DATA_DIR / 'prep_watch_state.json'>` | src.strategie.noyau_check |
 | `PROFILES_FILE` | `<expression: DATA / 'spec_profiles.json'>` | src.strategie.spec_profiles |
+| `RAPPORT_FILE` | `<expression: chemin_data('ajustement_rapport.json')>` | src.collecte.preparation |
 | `REINF_STATE_FILE` | `<expression: DATA_DIR / 'reinf_alert_state.json'>` | src.portfolio |
 | `REVERSAL_FILE` | `<expression: REVERSAL_PROFILES>` | src.collecte.cache_integrity |
 | `REVERSAL_PROFILES` | `<expression: DATA_DIR / 'reversal_profiles.json'>` | src.infrastructure.paths |

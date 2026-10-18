@@ -26,9 +26,10 @@ l'explique. Ces deux titres restent marques comme DOUTEUX pour la periode
 """
 import json
 from pathlib import Path
+from src.infrastructure.paths import DIVISIONS_OFFICIELLES  # noqa: E402  (B2-09)
 
 RACINE = Path(__file__).resolve().parent.parent
-FICHIER = RACINE / "data" / "divisions_officielles.json"
+FICHIER = DIVISIONS_OFFICIELLES
 
 COMPLEMENT = [
     {"code": "PRSC", "date": "2019-09-17", "nouvelles": 64, "anciennes": 1,

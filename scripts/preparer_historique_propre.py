@@ -32,39 +32,30 @@ from pathlib import Path
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
 
-from src.collecte import divisions_officielles as dv  # noqa: E402
-from src.collecte import nettoyage_aberrantes as na  # noqa: E402
-from src.collecte.history_io import ecrire_cache  # noqa: E402
-
-SOURCE = RACINE / "data" / "history_cache.pkl"
-DEST = RACINE / "data" / "history_clean.pkl"
+from src.collecte.history_io import charger_cache  # noqa: E402
+from src.collecte.preparation import preparer_historique_propre  # noqa: E402
+from src.infrastructure.paths import HISTORY_BRUT, HISTORY_CACHE  # noqa: E402
+# B2-10 (13/10/2026) : le CALCUL vit dans src/collecte/preparation.py — le check
+# quotidien prepare le propre lui-meme ; ce script reste l'outil de diagnostic.
 
 
 def main():
-    if not SOURCE.exists():
-        raise SystemExit(f"Historique brut introuvable : {SOURCE}")
-
-    with open(SOURCE, "rb") as fh:
-        brut = pickle.load(fh)
-
     print("=" * 82)
     print("  PREPARATION DE L'HISTORIQUE BRVM PROPRE")
     print("=" * 82)
-    print(f"\n  Source : {SOURCE.name}  ({len(brut)} titres)")
+    print(f"\n  Source : {HISTORY_BRUT.name}")
 
-    # 1. Ajustement des divisions
-    res = dv.ajuster_historique(brut)
-    ajuste = res["historique"]
+    stats = preparer_historique_propre()
     print(f"\n  [1/3] Ajustement des divisions")
-    print(f"        {res['nb_titres_ajustes']} titres ajustes, "
-          f"{len(res['sans_division'])} sans operation")
-
-    # 2. Nettoyage
-    net = na.nettoyer_historique(ajuste)
-    propre = net["historique"]
+    print(f"        {stats['titres_ajustes']} titres ajustes, "
+          f"{stats['sans_division']} sans operation")
     print(f"\n  [2/3] Nettoyage des valeurs aberrantes")
-    print(f"        {net['total_corrections']} barres corrigees "
-          f"sur {len(net['rapport'])} titres")
+    print(f"        {stats['aberrantes_corrigees']} barres corrigees")
+
+    # Controle de coherence (diagnostic : lecture des deux caches)
+    with open(HISTORY_BRUT, "rb") as fh:
+        brut = pickle.load(fh)
+    propre = charger_cache()
 
     # 3. Controle de coherence
     print(f"\n  [3/3] Controle de coherence")
@@ -106,21 +97,7 @@ def main():
             barre = "#" * int(statistics.median(v) / 5)
             print(f"          {a}  {statistics.median(v):>6.0f}  {barre}")
 
-    # Sauvegarde atomique + empreinte de provenance (P7-03 : vérifiée au chargement)
-    ecrire_cache(DEST, propre)
-    print(f"\n  Ecrit : {DEST.name}  ({DEST.stat().st_size / 1024:.0f} Ko)  + .sha256")
-
-    # Rapport des operations
-    rapport_path = RACINE / "data" / "ajustement_rapport.json"
-    import json
-    with open(rapport_path, "w", encoding="utf-8") as fh:
-        json.dump({
-            "titres_ajustes": res["nb_titres_ajustes"],
-            "sans_operation": res["sans_division"],
-            "operations": res["rapport"],
-            "aberrantes_corrigees": net["total_corrections"],
-        }, fh, ensure_ascii=False, indent=1)
-    print(f"  Ecrit : {rapport_path.name}")
+    print(f"\n  Ecrit : {HISTORY_CACHE.name}  ({HISTORY_CACHE.stat().st_size / 1024:.0f} Ko)  + .sha256")
     print("\n" + "=" * 82)
 
 

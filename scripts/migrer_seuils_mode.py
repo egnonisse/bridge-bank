@@ -29,9 +29,10 @@ sys.path.insert(0, str(RACINE))
 sys.path.insert(0, str(RACINE / "src"))
 
 from src.calibration import seuils_vente as sv  # noqa: E402
+from src.infrastructure.paths import HISTORY_CACHE, PROFIT_THRESHOLDS, chemin_data  # noqa: E402  (B2-09)
 
-FICHIER = RACINE / "data" / "profit_thresholds.json"
-SAUVEGARDE = RACINE / "data" / "profit_thresholds.json.bak-avant-mode"
+FICHIER = PROFIT_THRESHOLDS
+SAUVEGARDE = chemin_data("profit_thresholds.json.bak-avant-mode")
 # La règle d'épisode vit dans src/seuils_vente.py::episodes — définition unique du projet.
 # Ce script la recopiait mot pour mot (« ne pas diverger »), c'est exactement le doublon que
 # la décision du 09/10 a supprimé.
@@ -41,7 +42,7 @@ evaluer = sv.evaluer
 
 def main():
     data = json.loads(FICHIER.read_text(encoding="utf-8"))
-    hist = pickle.load(open(RACINE / "data" / "history_clean.pkl", "rb"))
+    hist = pickle.load(open(HISTORY_CACHE, "rb"))
 
     print("=" * 100)
     print("  MIGRATION — ajout du mode aux seuils existants")

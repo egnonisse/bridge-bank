@@ -27,14 +27,15 @@ import json
 import statistics
 import sys
 from pathlib import Path
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 RACINE = Path(__file__).resolve().parent.parent
-SOURCE = RACINE / "data" / "brvm_28ans.json"
+SOURCE = chemin_data("brvm_28ans.json")
 
 
 def main():
     if not SOURCE.exists():
-        raise SystemExit("data/brvm_28ans.json absent")
+        raise SystemExit(f"{SOURCE} absent")
 
     # ⚠️ AVERTISSEMENT — CE SCRIPT TOURNE SUR LES COURS BRUTS, NON AJUSTES.
     #

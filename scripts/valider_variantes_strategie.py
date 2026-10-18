@@ -34,6 +34,7 @@ sys.path.insert(0, str(RACINE))
 from src.backtesting.challenge_indicateurs import charger_historique_fondamentaux  # noqa: E402
 from src.backtesting.challenge_validateur import charger_historique  # noqa: E402
 from src.strategie.strategie_leo import MoteurLeo, Parametres, variante_complete  # noqa: E402
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 TITRES = ["SGBC", "SLBC", "SNTS", "PALC", "SMBC"]
 CAPITAL = 1_000_000.0
@@ -76,7 +77,7 @@ def _params_depuis_dict(d: dict) -> Parametres:
 
 
 def main():
-    src = RACINE / "data" / "challenge_strategie_variantes.json"
+    src = chemin_data("challenge_strategie_variantes.json")
     if not src.exists():
         raise SystemExit("Lancez d'abord scripts/challenge_strategie.py")
     data = json.loads(src.read_text(encoding="utf-8"))
@@ -241,7 +242,7 @@ def main():
         print(f"  {x['nom']:<30}{len(x['r'].titres_achetes)} titre(s) : "
               f"{', '.join(x['r'].titres_achetes)}")
 
-    out = RACINE / "data" / "challenge_strategie_resultats.json"
+    out = chemin_data("challenge_strategie_resultats.json")
     out.write_text(json.dumps({
         "reference_leo": {"rendement_pct": ref.rendement_pct,
                           "exposition_pct": ref.exposition_moyenne_pct,

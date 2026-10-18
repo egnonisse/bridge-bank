@@ -41,7 +41,7 @@ import statistics
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from ..infrastructure.paths import RACINE, HISTORY_CACHE  # chemins centralisés (lot 0 du plan docs/architecture.md)
+from ..infrastructure.paths import RACINE, HISTORY_CACHE, FUNDAMENTALS_CACHE, chemin_data  # chemins centralisés (lot 0 du plan docs/architecture.md)
 from ..collecte.history_io import charger_cache  # lecture centralisée (P6-04) + empreinte (P7-03)
 
 sys.path.insert(0, str(RACINE))
@@ -505,7 +505,7 @@ def charger_fondamentaux() -> dict:
     """
     import json
 
-    ds = RACINE / "data" / "challenge_dataset.json"
+    ds = chemin_data("challenge_dataset.json")
     if ds.exists():
         try:
             d = json.loads(ds.read_text(encoding="utf-8"))
@@ -530,7 +530,7 @@ def charger_fondamentaux() -> dict:
                   "repli sur l'ancien cache")
 
     # Repli : ancien cache, si ses cles correspondent deja au langage
-    p = RACINE / "data" / "fundamentals_cache.json"
+    p = FUNDAMENTALS_CACHE
     if p.exists():
         try:
             d = json.loads(p.read_text(encoding="utf-8"))

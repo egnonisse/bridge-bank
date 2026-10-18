@@ -35,11 +35,12 @@ from pathlib import Path
 
 RACINE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RACINE))
+from src.infrastructure.paths import HISTORY_BRUT, chemin_data  # noqa: E402  (B2-09)
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36")
 BASE = "https://afx.kwayisi.org/brvm/{}.html"
-SORTIE = RACINE / "data" / "croisement_prix.json"
+SORTIE = chemin_data("croisement_prix.json")
 
 
 def _nombre(txt: str) -> float | None:
@@ -144,7 +145,7 @@ def croiser(code: str, barres_cache: list) -> dict:
 def main():
     import pickle
 
-    with open(RACINE / "data" / "history_cache.pkl", "rb") as fh:
+    with open(HISTORY_BRUT, "rb") as fh:
         hist = pickle.load(fh)
 
     codes = sorted(hist.keys())

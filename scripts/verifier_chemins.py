@@ -13,6 +13,12 @@ DEUX CONTRÔLES
    La liste des noms surveillés est **dérivée de `paths.py`** : ajouter une constante y étend
    automatiquement le contrôle. Périmètre : `src/` — les `scripts/` d'enquête ponctuelle gardent
    leurs chemins directs (décision documentée dans `docs/architecture.md` §6).
+3. **Formes résiduelles de chemins data/** (B2-09, 13/10/2026) — l'idiome historique
+   `RACINE / "data" / "x"`, un alias local (`DATA = RACINE / "data"` puis `DATA / "x"`), ou la
+   chaîne relative `"data/x"` (dépendante du dossier courant) recréent un chemin qui ne suit
+   PAS un déplacement des données. Interdits : l'idiome et le relatif **partout** ; l'alias
+   dans `scripts/` et `tests/` seulement (dans `src/`, `DATA_DIR` importé de `paths.py` est le
+   style accepté, ses noms restant surveillés par le contrôle 2).
 
 Aucun test de valeur ne détecte ça. Ce contrôle, oui.
 
@@ -41,6 +47,21 @@ MOTIF = re.compile(
     r"Path\(__file__\)[^\n]*?parent\s*/\s*[\"'](data|scripts|docs|tests)[\"']")
 # Variante sans Path() (os.path.dirname(__file__) + join).
 MOTIF_OS = re.compile(r"dirname\(__file__\)[^\n]*?[\"'](data|scripts|docs|tests)[\"']")
+
+# Contrôle 3 (B2-09, 13/10/2026) : formes résiduelles de chemins data/.
+# Idiome historique `RACINE / "data"` (définition d'alias comprise).
+MOTIF_IDIOME = re.compile(
+    r"\b(RACINE|RACINE_PROJET|PROJECT_ROOT|DATA|DATA_DIR)\s*/\s*[\"']data[\"']")
+# Alias local recréé dans le fichier : `DATA / "x"` ou `DATA_DIR / "x"`.
+MOTIF_ALIAS = re.compile(r"\b(DATA|DATA_DIR)\s*/\s*[\"']")
+# Chaîne relative dépendante du dossier courant.
+MOTIF_RELATIF = re.compile(r"[\"']data/")
+# Exemption EXPLICITE, ligne à ligne et visible dans le code concerné : un contrôle de
+# données qui vérifie le FORMAT « data/... » d'une sortie publiée n'est pas un chemin.
+# (Le faux positif se voit ; il se déclare, il ne se devine pas.)
+_EXEMPTION = "noqa: chemin-relatif"
+# Seuls fichiers autorisés à écrire l'idiome : paths.py (source) et le migrateur (outil).
+_FICHIERS_EXCLUS = {"paths.py", "migrer_chemins.py"}
 
 
 def _lignes_de_texte(source: str) -> set[int]:
@@ -139,12 +160,52 @@ def _scanner_noms(dossier: Path) -> list[dict]:
     return trouves
 
 
+def _scanner_formes(dossier: Path, alias_locaux: bool = False) -> list[dict]:
+    """Formes résiduelles de chemins data/ (contrôle 3, B2-09).
+
+    `RACINE / "data"` (idiome) et `"data/…"` (relatif au dossier courant) sont interdits
+    PARTOUT ; l'alias local `DATA / "x"` l'est dans scripts/ et tests/ seulement — dans
+    src/, `DATA_DIR` importé de paths.py est le style accepté (contrôle 2 pour les noms).
+    """
+    trouves = []
+    for f in sorted(dossier.rglob("*.py")):
+        if any(p.startswith(".") for p in f.parts) or "__pycache__" in f.parts:
+            continue
+        if f.name in _FICHIERS_EXCLUS:
+            continue
+        try:
+            texte = f.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        texte_ignore = _lignes_de_texte(texte)
+        for i, ligne in enumerate(texte.splitlines(), 1):
+            if i in texte_ignore or _EXEMPTION in ligne:
+                continue
+            m = MOTIF_IDIOME.search(ligne)
+            if not m and alias_locaux:
+                m = MOTIF_ALIAS.search(ligne)
+            if not m:
+                m = MOTIF_RELATIF.search(ligne)
+            if m:
+                trouves.append({
+                    "fichier": f.relative_to(RACINE).as_posix(),
+                    "ligne": i,
+                    "forme": m.group(0)[:40],
+                    "code": ligne.strip()[:78],
+                })
+    return trouves
+
+
 def main(strict: bool = False) -> int:
     src = _scanner(RACINE / "src")
     scripts = _scanner(RACINE / "scripts")
     tests = _scanner(RACINE / "tests")
     total = src + scripts + tests
     noms = _scanner_noms(RACINE / "src")
+    f_src = _scanner_formes(RACINE / "src")
+    f_scripts = _scanner_formes(RACINE / "scripts", alias_locaux=True)
+    f_tests = _scanner_formes(RACINE / "tests", alias_locaux=True)
+    formes = f_src + f_scripts + f_tests
 
     print("=" * 78)
     print("  ARBORESCENCE DE DONNEES — un seul point de verite : src/infrastructure/paths.py")
@@ -159,8 +220,14 @@ def main(strict: bool = False) -> int:
     print("  2. NOMS DE FICHIERS RECOPIES (perimetre : src/ seulement)")
     print(f"     TOTAL    : {len(noms):>3d}")
     print()
+    print("  3. FORMES RESIDUELLES  (RACINE / \"data\", alias local, chemin relatif)")
+    print(f"     src/     : {len(f_src):>3d} occurrence(s)")
+    print(f"     scripts/ : {len(f_scripts):>3d} occurrence(s)")
+    print(f"     tests/   : {len(f_tests):>3d} occurrence(s)")
+    print(f"     TOTAL    : {len(formes):>3d}")
+    print()
 
-    if not total and not noms:
+    if not total and not noms and not formes:
         print("  Rien a signaler : l'arborescence peut changer sans casser les")
         print("  chargements de donnees (un seul point de verite).")
         return 0
@@ -191,6 +258,11 @@ def main(strict: bool = False) -> int:
         print("  Noms recopies — importer la constante de paths.py a la place :")
         for t in sorted(noms, key=lambda x: (x["fichier"], x["ligne"])):
             print(f"    {t['fichier']}:{t['ligne']}  ({t['nom']})  {t['code']}")
+
+    if formes:
+        print("  Formes residuelles — utiliser paths.py (constante ou chemin_data) :")
+        for t in sorted(formes, key=lambda x: (x["fichier"], x["ligne"])):
+            print(f"    {t['fichier']}:{t['ligne']}  ({t['forme']})  {t['code']}")
 
     if strict:
         print()

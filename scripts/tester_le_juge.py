@@ -27,8 +27,9 @@ from src.backtesting.challenge_indicateurs import (  # noqa: E402
 from src.backtesting.challenge_validateur import (  # noqa: E402
     charger_fondamentaux, charger_historique, evaluer_hypothese,
 )
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
-FICHIER = RACINE / "data" / "hypotheses_controle.json"
+FICHIER = chemin_data("hypotheses_controle.json")
 
 
 def main():
@@ -164,7 +165,7 @@ def main():
     print(f"\n  Temps moyen par hypothese : {statistics.mean(durees):.1f} s "
           f"(total {sum(durees):.0f} s pour {len(resultats)} hypotheses)")
 
-    sortie = RACINE / "data" / "test_juge_resultats.json"
+    sortie = chemin_data("test_juge_resultats.json")
     sortie.write_text(json.dumps(resultats, ensure_ascii=False, indent=1),
                       encoding="utf-8")
     print(f"  Ecrit : {sortie.name}")

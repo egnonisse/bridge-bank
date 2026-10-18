@@ -19,9 +19,9 @@ sys.path.insert(0, str(RACINE))
 
 from src.collecte.cache_integrity import _is_probable_split  # noqa: E402
 from src.ajustement import ajuster_historique, ratio_rond  # noqa: E402
+from src.infrastructure.paths import HISTORY_BRUT  # noqa: E402  (B2-09)
 
-DATA = RACINE / "data"
-with open(DATA / "history_cache.pkl", "rb") as fh:
+with open(HISTORY_BRUT, "rb") as fh:
     hist = pickle.load(fh)
 
 print("=" * 86)

@@ -25,10 +25,11 @@ sys.path.insert(0, str(RACINE))
 from src.analyse.fondamentaux_historiques import (  # noqa: E402
     collecter_titre, sauver_cache, valider_bpa,
 )
+from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 
 def main():
-    ds_path = RACINE / "data" / "challenge_dataset.json"
+    ds_path = chemin_data("challenge_dataset.json")
     if not ds_path.exists():
         raise SystemExit("challenge_dataset.json absent — le lancer d'abord")
     ds = json.loads(ds_path.read_text(encoding="utf-8"))
