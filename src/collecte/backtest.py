@@ -38,6 +38,7 @@ from ..domaine.models import HistoryBar
 from ..analyse.screening import avg_volume, change_pct, compute_score, ema, rsi_wilder
 from ..infrastructure.paths import DATA_DIR, HISTORY_BRUT  # chemins centralisés (lot 0 du plan docs/architecture.md)
 from .preparation import charger_historique_propre  # B2-10 : la validation lit le PROPRE
+from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : écriture atomique
 from src.infrastructure.paths import chemin_data  # noqa: E402  (B2-09)
 
 CACHE_BRUT = HISTORY_BRUT  # collecte brute (B2-10 — le nom vit dans paths.py)
@@ -89,10 +90,9 @@ def _enregistrer_inactifs(data: dict, today: datetime | None = None) -> None:
                 "verifie_le": today.strftime("%Y-%m-%d"),
             }
     if actuels or registre:
-        DATA_DIR.mkdir(parents=True, exist_ok=True)
-        tmp = INACTIFS_FILE.with_name(INACTIFS_FILE.name + ".tmp")
-        tmp.write_text(json.dumps(actuels, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-        tmp.replace(INACTIFS_FILE)
+        # P7-01 + WinError 32 (19/10/2026) : passer par l'écriture atomique CENTRALISÉE —
+        # le motif .tmp/replace écrit ici à la main collisionnait avec un run concurrent.
+        ecrire_json_atomique(INACTIFS_FILE, actuels)
 
 
 # -------------------------------------------------------------------- data

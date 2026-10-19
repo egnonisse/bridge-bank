@@ -18,7 +18,11 @@ Un fichier PRÉSENT mais illisible = incident BRUYANT (doctrine : un système qu
 from __future__ import annotations
 
 import json
+import os
+import time
 from pathlib import Path
+
+TENTATIVES_REPLACE = 6  # verrou Windows transitoire : 6 essais ≈ 4 s au total
 
 
 class FichierEtatIllisible(RuntimeError):
@@ -29,17 +33,34 @@ class FichierEtatIllisible(RuntimeError):
     """
 
 
-def ecrire_json_atomique(chemin: Path, donnees, *, indent: int = 2) -> None:
+def ecrire_json_atomique(chemin: Path, donnees, *, indent: int = 2,
+                         tentatives: int = TENTATIVES_REPLACE) -> None:
     """Écrit `donnees` en JSON dans `chemin` de façon ATOMIQUE (.tmp + replace).
 
     Un crash pendant l'écriture laisse l'ancien fichier intact — jamais de troncature.
+
+    Deux runs CONCURRENTS (cron Hermes + lancement manuel, 19/10/2026) écrivaient le MÊME
+    `X.tmp` puis se disputaient le `replace` → `PermissionError: [WinError 32]` : le
+    lancement du monitor radar est mort là-dessus. D'où deux protections ici :
+      1. temporaire UNIQUE par processus (`.pid.tmp`) — plus de collision d'écriture ;
+      2. `replace` réessayé avec un court palier — Windows refuse un remplacement tant
+         qu'un autre processus a la destination ouverte (verrou transitoire, antivirus).
+    Le temporaire est supprimé si tous les essais échouent (aucun `.tmp` résiduel).
     """
     chemin.parent.mkdir(parents=True, exist_ok=True)
-    temporaire = chemin.with_name(chemin.name + ".tmp")
+    temporaire = chemin.with_name(f"{chemin.name}.{os.getpid()}.tmp")
     temporaire.write_text(
         json.dumps(donnees, indent=indent, ensure_ascii=False), encoding="utf-8"
     )
-    temporaire.replace(chemin)  # atomique sur le même volume
+    for essai in range(tentatives):
+        try:
+            temporaire.replace(chemin)  # atomique sur le même volume
+            return
+        except PermissionError:
+            if essai == tentatives - 1:
+                temporaire.unlink(missing_ok=True)
+                raise
+            time.sleep(0.2 * (essai + 1))
 
 
 def lire_json_strict(chemin: Path):
