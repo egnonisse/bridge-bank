@@ -1,11 +1,11 @@
 {
-  "etat": "baissier",
-  "raison": "indice sous sa moyenne 200 séances",
-  "valeur": 131.87,
-  "moyenne": 140.95,
-  "ecart_pct": -6.44,
-  "points": 2374,
-  "date": "2026-10-12",
-  "calcule_le": "2026-10-16",
-  "_cache_sha": "468b7814652ed8999d8da59a92b7c0cb5e130d69699c22a0dd8e28e94278b8a7"
+  "etat": "haussier",
+  "raison": "indice au-dessus de sa moyenne 200 séances",
+  "valeur": 163.3,
+  "moyenne": 142.57,
+  "ecart_pct": 14.54,
+  "points": 2379,
+  "date": "2026-10-19",
+  "calcule_le": "2026-10-21",
+  "_cache_sha": "60e87773c76d52b3d69832f3a5bdee567f3fbc294ea48b81babdb853fd90743a"
 }
