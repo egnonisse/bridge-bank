@@ -4,8 +4,28 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from src.strategie.spec_fiche import build_fiche
-from src.strategie.spec_profiles import detect_schemas, zone_of, zone_label
+import pytest  # noqa: E402
+
+from src.strategie.spec_fiche import build_fiche  # noqa: E402
+from src.strategie.spec_profiles import detect_schemas, zone_of, zone_label  # noqa: E402
+
+
+@pytest.fixture(autouse=True)
+def _aucun_appel_reseau(monkeypatch):
+    """Aucun test ne doit toucher le réseau.
+
+    Leçon du 30/10/2026 : `build_fiche` interroge le fondamental (`get_fundamentals`
+    -> `get_dps_afx` -> `requests.get`). Tant que le site répondait, l'appel restait
+    invisible (< 1 s) ; quand il a cessé de répondre, CHAQUE test de fiche a bloqué
+    ~128 s (5 tests = 640 s sur 648 : la suite entière passait de 3 min à 11 min).
+    En production l'appel est voulu (la fiche SIGNALE le payout et le PER) ; ici il est
+    remplacé par « fondamental inconnu » — ce que le code traite déjà comme une
+    abstention (dps=0, payout=None), jamais une exception.
+    """
+    from src.collecte import fundamentals
+
+    monkeypatch.setattr(fundamentals, "get_fundamentals", lambda code: {})
+    monkeypatch.setattr(fundamentals, "get_dps", lambda code: None)
 
 
 def test_cassure_verdict_oui_et_niveaux():

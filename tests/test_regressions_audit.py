@@ -57,8 +57,15 @@ def test_portfolio_ecriture_atomique(monkeypatch, tmp_path):
 
 # ------------------------------------------ B1-02 : format FR dans les fiches
 # CORRIGÉ le 12/10/2026 (lot 1) — test gelé.
-def test_fiche_spec_sans_virgule_de_milliers():
+def test_fiche_spec_sans_virgule_de_milliers(monkeypatch):
+    from src.collecte import fundamentals
     from src.strategie.spec_fiche import build_fiche
+
+    # Aucun appel réseau (leçon du 30/10/2026) : build_fiche -> get_fundamentals ->
+    # requests.get bloquait ~128 s par test quand le site des fondamentaux ne répondait
+    # plus. Le format testé (virgule de milliers) ne dépend pas du fondamental.
+    monkeypatch.setattr(fundamentals, "get_fundamentals", lambda code: {})
+    monkeypatch.setattr(fundamentals, "get_dps", lambda code: None)
 
     closes = [10000.0] * 300 + [15000.0]  # cassure, montants à 5 chiffres
     f = build_fiche("TEST", "Test", closes)
