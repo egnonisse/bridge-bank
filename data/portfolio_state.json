@@ -99,6 +99,6 @@
       "cash": 699718.0
     }
   ],
-  "_definition_cash": "cash = liquidité DÉPLOYABLE du compte titres, après la demande de retrait du 13/10/2026 (relevé BSTrade : Total liquidité 699 718, dont 500 000 en instance de retrait → 199 718). Le retrait est un choix de LEO (gestion personnelle) — si le retrait est annulé ou rejeté, remonter cash à 699 718. `report cash` remplace ce champ.",
-  "retrait_en_cours": 500000.0
+  "_definition_cash": "cash = liquidité DÉPLOYABLE du compte titres. Retrait de 500 000 F SORTI le 30/10/2026 (relevé : « Produit de cessions en attente : 0 », « Blocage retrait : 0 ») -> plus aucune somme en instance. 'report cash' remplace ce champ.",
+  "retrait_en_cours": 0
 }
