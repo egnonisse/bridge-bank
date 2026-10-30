@@ -172,3 +172,36 @@ def test_cours_reels_parse_les_espaces(tmp_path):
 def test_cours_reels_valeur_illisible_ignoree(tmp_path):
     chemin = _fichier(tmp_path, [], cours_reels={"SNTS": "n/a", "SGBC": "38 400"})
     assert do.cours_reels(chemin) == {"SGBC": 38400}
+
+
+# ═════════════ B2-16 : une fiche mal formée ÉCHOUE (30/10/2026) ═══════════════════════
+
+def test_b2_16_fiche_au_mauvais_schema_echoue_bruyamment(tmp_path):
+    """Cas réel SNTS 26/10/2026 : la fiche écrite avec les clés `n`/`m` (schéma des
+    opérations ANTÉRIEURES) était ignorée EN SILENCE. La division n'était donc pas
+    appliquée, la série gardait sa cassure ×10, et le nettoyeur d'aberrantes « réparait »
+    ensuite la nouvelle base (4 700 -> 42 000 : ligne valorisée ×10). Elle doit LEVER."""
+    chemin = _fichier(tmp_path, [
+        {"code": "SNTS", "date": "2026-10-26", "n": 10, "m": 1, "raison": "schema ancien"}])
+    with pytest.raises(ValueError) as exc:
+        do.charger(chemin)
+    message = str(exc.value)
+    assert "SNTS" in message and "2026-10-26" in message
+    assert "nouvelles" in message and "ignorees_anterieures" in message
+
+
+def test_b2_16_parite_invalide_echoue(tmp_path):
+    """`nouvelles = 0` n'a aucun sens : refus explicite, jamais un skip silencieux."""
+    chemin = _fichier(tmp_path, [{"code": "SNTS", "date": "2026-10-26",
+                                  "nouvelles": 0, "anciennes": 1}])
+    with pytest.raises(ValueError, match="invalide"):
+        do.charger(chemin)
+
+
+def test_b2_16_le_fichier_reel_charge_sans_erreur():
+    """Garde-fou opposé : le fichier de référence passe (38 fiches, bon schéma) ; les
+    opérations antérieures vivent dans `ignorees_anterieures`, section jamais lue."""
+    ops = do.charger()
+    toutes = [o for liste in ops.values() for o in liste]
+    assert toutes, "le fichier de référence doit charger des operations"
+    assert all(o.nouvelles > 0 and o.anciennes > 0 for o in toutes)

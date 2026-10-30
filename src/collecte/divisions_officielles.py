@@ -75,10 +75,31 @@ def charger(chemin: Path | None = None) -> dict[str, list[Operation]]:
 
     par_code: dict[str, list[Operation]] = {}
     for d in donnees.get("divisions", []):
-        n = int(d.get("nouvelles", 0) or 0)
-        m = int(d.get("anciennes", 1) or 1)
+        # B2-16 (30/10/2026) — ÉCHEC BRUYANT sur une fiche incomplète.
+        # Une fiche écrite avec les clés `n`/`m` (schéma des opérations ANTÉRIEURES,
+        # section `ignorees_anterieures`) était IGNORÉE EN SILENCE : la division n'était
+        # pas appliquée, la série gardait sa cassure, puis le nettoyeur d'aberrantes
+        # « réparait » la nouvelle base (cas SNTS 26/10/2026 : 4 700 -> 42 000, ligne
+        # valorisée ×10). Une opération de nominal invisible fausse les cours, les
+        # rendements et les valorisations : elle doit arrêter le calcul, jamais passer.
+        if "nouvelles" not in d or "anciennes" not in d:
+            raise ValueError(
+                "Operation de nominal mal formee "
+                f"({d.get('code', '?')} {d.get('date', '?')}) : cles attendues "
+                "« nouvelles » + « anciennes » (+ « facteur »). Cles recues : "
+                f"{sorted(k for k in d if not k.startswith('_'))}. "
+                "Les operations anterieures a l'historique vont dans la section "
+                "`ignorees_anterieures` (jamais lue). Une fiche ignoree en silence "
+                "fausse les series de cours.")
+        n = int(d.get("nouvelles") or 0)
+        m = int(d.get("anciennes") or 1)
+        if n <= 0 or m <= 0:
+            raise ValueError(
+                "Operation de nominal invalide "
+                f"({d.get('code', '?')} {d.get('date', '?')}) : "
+                f"nouvelles={n}, anciennes={m} — les deux doivent etre > 0.")
         facteur = float(d.get("facteur") or (n / m if m else 1))
-        if not n or not m or facteur == 1.0:
+        if facteur == 1.0:
             continue  # neutre : aucun effet sur les cours
         op = Operation(
             code=str(d["code"]).upper(),
