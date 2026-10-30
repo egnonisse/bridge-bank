@@ -11,7 +11,7 @@ from __future__ import annotations
 import logging
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -82,30 +82,76 @@ class TelegramNotifier:
         # dans le journal ; ce réglage n'ajoute qu'un rappel visible à la fin du message.
         self.empreinte_dans_message = empreinte_dans_message
 
-    def send(self, text: str) -> bool:
+    def send(self, text: str, reprise_de: str | None = None) -> bool:
         """Envoie le message et l'INSCRIT AU JOURNAL, avec son empreinte de version.
 
         L'ordre compte : on tente l'envoi, PUIS on inscrit le résultat réel. Un message qui
         n'est pas parti est un fait à conserver (l'alerte a bien été déclenchée, Telegram ne
         l'a pas reçue) — c'est exactement ce qu'on veut pouvoir relire trois semaines plus tard.
+
+        `reprise_de` (30/10/2026) : horodatage de l'alerte d'origine quand CE message est la
+        reprise d'un envoi raté — c'est ce champ qui empêche de renvoyer deux fois la même.
         """
         empreinte = carte()
         envoye = self._envoyer(text + self._suffixe(empreinte))
+        entree = {
+            "horodatage": datetime.now().isoformat(timespec="seconds"),
+            "origine": _origine(),
+            "envoye": envoye,
+            "empreinte": empreinte,
+            "message": text,
+        }
+        if reprise_de:
+            entree["reprise_de"] = reprise_de
         try:
-            journal_alertes.enregistrer(
-                {
-                    "horodatage": datetime.now().isoformat(timespec="seconds"),
-                    "origine": _origine(),
-                    "envoye": envoye,
-                    "empreinte": empreinte,
-                    "message": text,
-                }
-            )
+            journal_alertes.enregistrer(entree)
         except Exception as exc:               # pragma: no cover - ceinture et bretelles
             # `enregistrer` ne lève pas (il attrape les erreurs d'écriture). Ce garde couvre
             # l'inattendu : une alerte doit partir même si la traçabilité est cassée.
             log.error("Journal des alertes indisponible (%s) — le message est parti", exc)
         return envoye
+
+    def renvoyer_non_delivrees(self, age_max_heures: int = 48,
+                               max_envois: int = 5) -> list[str]:
+        """Re-tente les alertes dont l'envoi a échoué — une seule fois chacune.
+
+        Le 23/10/2026, l'alerte « check quotidien — 7 étapes en échec, BOC : événement »
+        n'est jamais partie : Telegram était injoignable pour la même raison qui avait fait
+        échouer le run (panne réseau). Une panne ne doit pas EFFACER une alerte.
+
+        Garde-fous : âge maximal (une alerte périmée n'apprend plus rien), une seule reprise
+        (les entrées de reprise portent `reprise_de`), plafond par run (pas de rafale).
+        Retourne les horodatages rattrapés.
+        """
+        if not self.enabled:
+            return []
+        try:
+            entrees = journal_alertes.lire()
+        except Exception as exc:               # pragma: no cover - journal illisible
+            log.warning("Renvoi impossible : journal illisible (%s)", exc)
+            return []
+        deja_reprises = {e.get("reprise_de") for e in entrees if e.get("reprise_de")}
+        limite = datetime.now() - timedelta(hours=age_max_heures)
+        ratees = []
+        for e in entrees:
+            if e.get("envoye") or not e.get("message") or not e.get("horodatage"):
+                continue
+            if e["horodatage"] in deja_reprises:
+                continue
+            try:
+                if datetime.fromisoformat(str(e["horodatage"])) < limite:
+                    continue
+            except ValueError:
+                continue
+            ratees.append(e)
+        rattrapees: list[str] = []
+        for e in ratees[-max_envois:]:
+            quand = str(e["horodatage"])[:16].replace("T", " ")
+            texte = (f"🔁 ALERTE RATTRAPÉE (l'envoi du {quand} avait échoué) :\n"
+                     f"{e['message']}")
+            if self.send(texte, reprise_de=str(e["horodatage"])):
+                rattrapees.append(str(e["horodatage"]))
+        return rattrapees
 
     def _suffixe(self, empreinte: dict) -> str:
         """Rappel visible, si `alerts.empreinte_dans_message` est actif. Vide sinon."""

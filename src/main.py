@@ -263,6 +263,10 @@ def main() -> None:
     p_boc = sub.add_parser("boc", help="BOC : dividendes + rectificatifs (source complète)")
     p_boc.set_defaults(func=cmd_boc)
 
+    p_renvoi = sub.add_parser(
+        "renvoi", help="Rattrape les alertes dont l'envoi a échoué (48 h max, une fois)")
+    p_renvoi.set_defaults(func=cmd_renvoi)
+
     p_div = sub.add_parser("div", help="Dividendes encaissés (avis BSTrade) — suivi réel + IRVM")
     p_div.add_argument("action", choices=["list", "add"], nargs="?", default="list")
     p_div.add_argument("code", nargs="?")
@@ -687,6 +691,22 @@ def cmd_boc(args: argparse.Namespace) -> None:
         print(msg)
         if notifier.enabled:
             notifier.send(msg)
+
+
+def cmd_renvoi(args: argparse.Namespace) -> None:
+    """Renvoie les alertes dont l'envoi a échoué (panne réseau) — une seule fois.
+
+    Le 23/10/2026, l'alerte « check quotidien — 7 étapes en échec, BOC : événement »
+    n'est jamais partie : Telegram était injoignable pour la même raison qui avait fait
+    échouer le run. Une panne ne doit pas effacer une alerte : elle est retentée ici,
+    au run suivant (âge maximal 48 h, une seule reprise par alerte).
+    """
+    notifier = get_notifier(load_config())
+    rattrapees = notifier.renvoyer_non_delivrees()
+    if not rattrapees:
+        print("Rattrapage : aucune alerte à rattraper")  # texte silencieux (marker)
+        return
+    print(f"🔁 {len(rattrapees)} alerte(s) rattrapée(s) : {', '.join(rattrapees)}")
 
 
 def cmd_reinforcements(args: argparse.Namespace) -> None:
@@ -1318,6 +1338,8 @@ def cmd_daily(args: argparse.Namespace) -> None:
 
     calibrate_missing_thresholds(BSApi())
     steps = [
+        # En TÊTE : une alerte perdue (panne réseau) est rattrapée avant les nouvelles.
+        ("Alertes non délivrées", cmd_renvoi, {}, "aucune alerte à rattraper"),
         ("BOC", cmd_boc, {}, "aucun événement dividende"),
         ("Annonces BRVM", cmd_news, {"check": True}, "Aucune nouvelle annonce"),
         ("Soutenabilité", cmd_sustain, {}, "tous les dividendes sont couverts"),
