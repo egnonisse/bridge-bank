@@ -5,6 +5,8 @@
   },
   "SNTS": {
     "limit": 35744.57593688363,
-    "name": "SONATEL SN"
+    "name": "SONATEL SN",
+    "alerted_at": "2026-10-29T09:06:25.229216",
+    "alerted_price": 4200.0
   }
 }

@@ -1,9 +1,9 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-27",
   "opportunities": [
     {
-      "code": "SPHC",
-      "name": "SAPH CI",
+      "code": "SLBC",
+      "name": "SOLIBRA CI",
       "cours": 0.0
     }
   ]
