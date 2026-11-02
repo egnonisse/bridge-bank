@@ -104,3 +104,21 @@ MAX_MARKET_WEIGHT = 0.50     # ligne Buffett : jamais plus de la moitié dans un
 # ══════════════════════════════════════════════════════════════════════════════
 
 LOSS_ALERT_THRESHOLD = 0.10  # moins-value ≥ −10 % : alerte de couverture par les dividendes
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  6. POINT D'ENTRÉE — position du prix dans l'HISTORIQUE du titre
+#  PROVENANCE : constat du 30/10/2026. PALC acheté au 78e percentile d'un titre PLAT
+#  (+1,3 %/an, −44 % sous son ATH) : les 8 filtres du noyau vérifiaient tous le
+#  DIVIDENDE, aucun le PRIX. Coût mesuré : avec le même capital, 36 actions au prix
+#  médian (6 200 F) au lieu de 26 → +4 518 F/an de loyer (+39 %).
+#  Ces seuils INFORMENT (verdict publié dans l'alerte) ; ils ne bloquent JAMAIS un
+#  achat — même doctrine que les limites de concentration (11/09/2026 : le système
+#  informe, LEO décide).
+#  NUANCE FONDATRICE : sur un titre en CROISSANCE, un percentile élevé est NORMAL —
+#  c'est la signature d'un titre qui monte (SGBC 98e à +11,2 %/an, SNTS 99e à
+#  +6,0 %/an). Le signal n'existe que sur un titre PLAT/CYCLIQUE (PALC +1,3 %/an).
+# ══════════════════════════════════════════════════════════════════════════════
+
+POINT_ENTREE_CROISSANCE_AN = 6.0        # ≥ 6 %/an = croissance : percentile non pertinent
+POINT_ENTREE_PERCENTILE_PRUDE = 70.0    # titre plat : au-delà, point d'entrée moyen-haut
+POINT_ENTREE_PERCENTILE_CHER = 85.0     # titre plat : au-delà, achat tardif dans le cycle

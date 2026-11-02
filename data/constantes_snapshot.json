@@ -243,6 +243,7 @@
  "src.collecte.nettoyage_aberrantes.SEUIL": 5.0,
  "src.collecte.nettoyage_aberrantes.VOISINS": 20,
  "src.collecte.preparation.RAPPORT_FILE": "<Path ajustement_rapport.json>",
+ "src.infrastructure.ecriture.TENTATIVES_REPLACE": 6,
  "src.infrastructure.empreinte.EXCLUS_DU_DRAPEAU": [
   ":(exclude)data/*.jsonl",
   ":(exclude)data/per_cache.json",
@@ -344,6 +345,9 @@
  "src.regles.PAYOUT_TIGHT": 0.8,
  "src.regles.PER_ABSURD": 50.0,
  "src.regles.PER_MAX": 14.0,
+ "src.regles.POINT_ENTREE_CROISSANCE_AN": 6.0,
+ "src.regles.POINT_ENTREE_PERCENTILE_CHER": 85.0,
+ "src.regles.POINT_ENTREE_PERCENTILE_PRUDE": 70.0,
  "src.regles.PROFIT_ALERT_THRESHOLD": 0.13,
  "src.regles.RENDEMENT_NET_ENTREE": 0.04,
  "src.regles.RENDEMENT_NET_MIN": 0.04,

@@ -12,6 +12,8 @@ Verdicts :
 from __future__ import annotations
 
 import json
+import statistics
+from datetime import date
 from pathlib import Path
 
 from ..collecte.fundamentals import get_fundamentals
@@ -20,6 +22,11 @@ from ..taxation import IRVM_DIVIDEND_TAX  # noqa: E402  (C4 : plus de 0,88 en du
 
 # Filtres d'entrée : définis dans src/regles.py (catalogue unique).
 from ..regles import PAYOUT_TIGHT, PER_MAX  # noqa: E402
+from ..regles import (  # noqa: E402  (30/10/2026 : position du prix dans l'historique)
+    POINT_ENTREE_CROISSANCE_AN,
+    POINT_ENTREE_PERCENTILE_CHER,
+    POINT_ENTREE_PERCENTILE_PRUDE,
+)
 from ..infrastructure.paths import DATA_DIR  # chemins centralisés (lot 0 du plan docs/architecture.md)
 from ..infrastructure.ecriture import ecrire_json_atomique  # P7-01 : ecriture atomique
 from ..portefeuille.format_fr import fcfa, nombre  # format FR (invariant E1, correction C1)
@@ -40,6 +47,72 @@ def load_prep_watchlist() -> dict:
 
 def save_prep_watchlist(watch: dict) -> None:
     ecrire_json_atomique(PREP_WATCH_FILE, watch)  # P7-01 : écriture atomique
+
+
+def point_entree(code: str, price: float, hist: dict | None) -> dict | None:
+    """Où se situe ce prix dans l'HISTORIQUE du titre — et que vaut ce point d'entrée ?
+
+    Constat du 30/10/2026 : PALC a été acheté au 78e percentile d'un titre PLAT (+1,3 %/an),
+    alors que les 8 filtres du noyau ne regardaient QUE le dividende. Coût mesuré : au prix
+    médian, le même capital achetait 36 actions au lieu de 26 (+4 518 F/an, +39 % de loyer).
+
+    Le percentile BRUT serait trompeur seul : sur un titre en croissance, un prix haut dans
+    sa distribution est NORMAL (SGBC 98e à +11,2 %/an, SNTS 99e à +6,0 %/an). D'où un
+    verdict à deux étages : d'abord la TENDANCE, ensuite la position.
+
+    Retourne None si l'historique est trop court (< 250 séances) — jamais d'extrapolation.
+    """
+    barres = (hist or {}).get(code) or []
+    prix = [float(b.close) for b in barres if getattr(b, "close", 0)]
+    if len(prix) < 250 or price <= 0:
+        return None
+    percentile = sum(1 for p in prix if p < price) / len(prix) * 100
+    debut, fin = str(barres[0].date)[:10], str(barres[-1].date)[:10]
+    annees = max(0.5, (date(int(fin[:4]), int(fin[5:7]), int(fin[8:10]))
+                       - date(int(debut[:4]), int(debut[5:7]), int(debut[8:10]))).days / 365.25)
+    tendance = ((prix[-1] / prix[0]) ** (1 / annees) - 1) * 100
+    if tendance >= POINT_ENTREE_CROISSANCE_AN:
+        verdict = "normal"
+        phrase = ("titre en croissance : un prix haut dans son historique est la norme, "
+                  "pas un signal de cherté")
+    elif percentile >= POINT_ENTREE_PERCENTILE_CHER:
+        verdict = "cher"
+        phrase = ("ACHAT TARDIF : titre plat/cyclique acheté haut dans sa distribution — "
+                  "un repli améliorerait nettement le loyer")
+    elif percentile >= POINT_ENTREE_PERCENTILE_PRUDE:
+        verdict = "prude"
+        phrase = "titre plat/cyclique : point d'entrée moyen-haut, sans excès"
+    elif percentile >= 50:
+        verdict = "normal"
+        phrase = "titre plat/cyclique : milieu de sa distribution (rien d'alarmant)"
+    else:
+        verdict = "normal"
+        phrase = "titre plat/cyclique acheté dans la moitié basse de son historique"
+    return {"percentile": percentile, "mediane": statistics.median(prix), "ath": max(prix),
+            "tendance": tendance, "debut": debut, "verdict": verdict, "phrase": phrase}
+
+
+def bloc_point_entree(pe: dict | None, dps: float, price: float) -> str:
+    """Les lignes « point d'entrée » prêtes à coller dans une alerte (vide si trop court).
+
+    ⚠️ On n'affiche PAS « le loyer qu'on aurait eu au prix médian » : ce calcul appliquerait
+    le dps d'AUJOURD'HUI à un prix d'il y a huit ans (SGBC : 16 % de « loyer » fictif, le
+    dps de 2018 était bien plus faible). On donne l'ÉCART AU PRIX MÉDIAN — factuel et utile.
+    """
+    if not pe:
+        return ""
+    icone = {"normal": "📍", "prude": "🟡", "cher": "🚩"}[pe["verdict"]]
+    loyer_ici = net_yield(dps / price) * 100 if price else 0.0
+    ecart = (price / pe["mediane"] - 1) * 100 if pe["mediane"] else 0.0
+    croissance = pe["tendance"] >= POINT_ENTREE_CROISSANCE_AN
+    nature = "croissance" if croissance else "plat/cyclique"
+    return (
+        f"{icone} Point d'entrée : {pe['percentile']:.0f}e percentile depuis {pe['debut'][:4]} "
+        f"(médiane {fcfa(pe['mediane'], signe=False)}, ATH {fcfa(pe['ath'], signe=False)})\n"
+        f"   Tendance du titre : {pe['tendance']:+.1f} %/an ({nature})\n"
+        f"   Loyer ici {loyer_ici:.1f} % net — ce prix est {ecart:+.0f} % vs la médiane historique\n"
+        f"   → {pe['phrase']}\n"
+    )
 
 
 def evaluate_noyau_candidate(code: str, price: float, name: str = "",
@@ -81,6 +154,11 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "",
               f"{'; '.join(extra['reasons'])}")
         return None
 
+    # Position du prix dans l'historique (30/10/2026) : une INFORMATION, jamais un blocage.
+    # Les 8 filtres ci-dessus vérifient le dividende ; ils ne disaient rien du PRIX.
+    pe = point_entree(code, price, hist)
+    bloc_pe = f"{bloc_point_entree(pe, dps, price)}\n" if pe else ""
+
     if net >= TARGET_NET_YIELD_ENTRY:
         margin = (entry / price - 1) * 100 if price > 0 else 0.0
         qty = max(1, int(REFERENCE_AMOUNT // price))
@@ -97,6 +175,7 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "",
             f"   • Payout : {payout*100:.0f} %{payout_note}\n"
             f"   • Dividende : {fcfa(dps, signe=False)} brut/action\n"
             f"   • Fiabilité :\n{extra_lines}\n\n"
+            f"{bloc_pe}"
             f"📋 Ordre : ACHAT {code} ≤ {fcfa(entry, signe=False)}\n"
             f"   → {qty} action(s) ≈ {fcfa(qty*price, signe=False)} · dividende net ≈ {fcfa(net_annual, signe=False)}/an\n\n"
             f"🚫 Rappel : veille + décision LEO — l'outil ne passe jamais d'ordre."
@@ -109,6 +188,7 @@ def evaluate_noyau_candidate(code: str, price: float, name: str = "",
         f"📉 À PRÉPARER — {code} ({label})\n\n"
         f"💰 Cours : {fcfa(price, signe=False)} — rendement net actuel {net*100:.1f} % (< 4 %)\n\n"
         f"✅ Fondamentaux : PER {per:.1f} (≤ 14), dividende {fcfa(dps, signe=False)} brut{payout_note}{extra_txt}\n\n"
+        f"{bloc_pe}"
         f"📋 Ordre limite à poser : ≤ {fcfa(entry, signe=False)} (dps ÷ 5,45 % ÷ 1,014 — frais inclus)\n"
         f"   → si le titre revient dans ta zone : ≥ 4 % net COUVERT\n"
         f"   → sinon : tu l'as regardé passer, sans perdre un franc.\n\n"

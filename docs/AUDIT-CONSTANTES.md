@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**226 définitions** pour **210 constantes distinctes**.
+**230 définitions** pour **214 constantes distinctes**.
 
 ---
 
@@ -133,7 +133,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (117)
+### autre (121)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -213,6 +213,9 @@ chemin distinct dans chaque module). Rien à corriger.
 | `ORIGINE_MANUELLE` | `manuelle` | src.calibration.seuils_vente |
 | `PER_ABSURD` | `50.0` | src.regles |
 | `PER_EXPLODE` | `40.0` | src.portfolio |
+| `POINT_ENTREE_CROISSANCE_AN` | `6.0` | src.regles |
+| `POINT_ENTREE_PERCENTILE_CHER` | `85.0` | src.regles |
+| `POINT_ENTREE_PERCENTILE_PRUDE` | `70.0` | src.regles |
 | `PORTFOLIO_STATE` | `<expression: DATA_DIR / 'portfolio_state.json'>` | src.infrastructure.paths |
 | `PRICE_TOLERANCE` | `0.25` | src.collecte.cache_integrity |
 | `RACINE` | `<expression: Path(__file__).resolve().parents[2]>` | src.infrastructure.paths |
@@ -241,6 +244,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TAKE_2` | `0.35` | src.strategie.speculation |
 | `TAKE_3` | `0.5` | src.strategie.speculation |
 | `TELEGRAM_API` | `https://api.telegram.org/bot{token}/sendMessage` | src.notify |
+| `TENTATIVES_REPLACE` | `6` | src.infrastructure.ecriture |
 | `TERME` | `<expression: re.compile('^\\s*([a-z_0-9]+)\\s*(<=|>=|<|>|==|!=)\\s*(-?[0->` | src.backtesting.challenge_schema |
 | `TOLERANCE_PER_PCT` | `40.0` | src.analyse.fondamentaux_historiques |
 | `TOLERANCE_RATIO` | `0.05` | src.ajustement |
