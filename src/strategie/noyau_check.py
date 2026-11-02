@@ -208,6 +208,11 @@ def prep_watch_alerts(watch: dict, price_of) -> tuple[list[str], dict]:
 
     alerts: list[str] = []
     today = datetime.now().isoformat()
+    # (02/11/2026) Le bloc « point d'entrée » n'est PAS ajouté ici, volontairement : cette
+    # alerte ne fait que confirmer qu'un ordre limite DÉJÀ CHOISI par LEO est atteignable,
+    # et le bloc exigerait un appel au fondamental par titre (réseau) dans un chemin
+    # quotidien — mesuré : +128 s sur la suite de tests quand le site ne répond pas.
+    # Le point d'entrée est publié là où il décide : OPPORTUNITÉ, À PRÉPARER, RENFORCE.
     for code, info in list(watch.items()):
         limit = info.get("limit", 0.0)
         price = price_of(code)

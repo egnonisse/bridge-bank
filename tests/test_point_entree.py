@@ -80,3 +80,32 @@ def test_bloc_affiche_l_ecart_a_la_mediane_pas_un_loyer_fictif():
     assert "au prix médian" not in bloc
     # le seul rendement affiché est celui du prix courant, calculé avec la vraie formule
     assert f"{net_yield(10.0 / 115.0) * 100:.1f} % net" in bloc
+
+
+# ════════════ les ALERTES DE RENFORT aussi (02/11/2026) ═════════════════════════════════
+# Le chemin 💪 RENFORCE (portfolio.check_reinforcements → reinforcement_messages) ne
+# publiait pas le point d'entrée : c'est pourtant celui de l'alerte PALC du 02/11 09h04.
+
+def _position(code="TEST", dps=10.0, closed=False):
+    from types import SimpleNamespace
+
+    return SimpleNamespace(code=code, closed=closed, dps=dps)
+
+
+def test_les_alertes_de_renfort_recoivent_le_bloc():
+    from src.portfolio import _enrichir_point_entree
+
+    sortie = _enrichir_point_entree([("TEST", "💪 RENFORCE TEST — sous ton seuil")],
+                                    [_position()], lambda code: 120.0, _hist(PLAT))
+    assert sortie[0][1].startswith("💪 RENFORCE TEST")      # message d'origine intact
+    assert "Point d'entrée" in sortie[0][1]                  # + le bloc
+    assert "percentile" in sortie[0][1]
+
+
+def test_renfort_sans_historique_reste_inchange():
+    """Une donnée indisponible ne dégrade jamais l'alerte : message identique."""
+    from src.portfolio import _enrichir_point_entree
+
+    sortie = _enrichir_point_entree([("TEST", "message d'origine")],
+                                    [_position()], lambda code: 120.0, {})
+    assert sortie[0][1] == "message d'origine"

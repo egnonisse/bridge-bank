@@ -14,10 +14,13 @@ Durée : 3 ans minimum, réévaluation à l'échéance (alerte, pas clôture aut
 from __future__ import annotations
 
 import json
+import logging
 from dataclasses import asdict, dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
+
+log = logging.getLogger(__name__)
 
 from .collecte.bsapi import BSApi
 from .calibration import seuils_vente
@@ -763,6 +766,31 @@ def save_reinf_state(state: dict) -> None:
     ecrire_json_atomique(REINF_STATE_FILE, state)  # P7-01 : écriture atomique
 
 
+def _enrichir_point_entree(pairs, positions, price_of, hist) -> list[tuple[str, str]]:
+    """Ajoute le bloc « point d'entrée » aux messages de renfort (02/11/2026).
+
+    Constat : les messages 💪 RENFORCE / RENFORCE LIMITÉ / 🟠 EN CONSCIENCE ne disaient
+    rien de la position du prix dans l'historique du titre — alors que les 8 filtres ne
+    regardent que le dividende. C'est exactement ce chemin qui a produit l'alerte PALC du
+    02/11 à 09h04 (prix au 66e percentile, non signalé).
+    Une information indisponible ne doit JAMAIS empêcher l'alerte de partir : tout est
+    sous try/except chez l'appelant, et un code absent du cache reste inchangé.
+    """
+    from .strategie.noyau_check import bloc_point_entree, point_entree
+
+    par_code = {p.code: p for p in positions if not p.closed}
+    enrichis: list[tuple[str, str]] = []
+    for code, msg in pairs:
+        pos = par_code.get(code)
+        prix = price_of(code)
+        if pos is None or prix <= 0:
+            enrichis.append((code, msg))
+            continue
+        bloc = bloc_point_entree(point_entree(code, prix, hist), pos.dps, prix)
+        enrichis.append((code, msg + (("\n\n" + bloc.rstrip()) if bloc else "")))
+    return enrichis
+
+
 def check_reinforcements(api) -> list[tuple[str, str]]:
     """Renforcements du noyau, avec anti-spam 7 jours par titre."""
     from .collecte.fundamentals import get_per_brvm
@@ -821,6 +849,16 @@ def check_reinforcements(api) -> list[tuple[str, str]]:
                 fresh.append((code, "📉 LE PRIX S'EST ENCORE AMÉLIORÉ —\n" + msg))
                 state[code] = {"date": now, "price": price}
 
+    # Position du prix dans l'historique (02/11/2026) : les alertes de renfort ne disaient
+    # rien du point d'entrée. Une donnée indisponible n'empêche jamais l'alerte de partir.
+    try:
+        from .collecte.preparation import charger_historique_propre
+
+        hist_pe = charger_historique_propre()
+        hits = _enrichir_point_entree(hits, positions, price_of, hist_pe)
+        blocked = _enrichir_point_entree(blocked, positions, price_of, hist_pe)
+    except Exception as exc:                      # cache absent/corrompu : on n'empêche rien
+        log.warning("Point d'entrée indisponible (%s) — alertes de renfort inchangées", exc)
     _emit(hits)     # 💪 RENFORCE (recommandation d'achat)
     _emit(blocked)  # 🚦 CONCENTRATION (blocage — information, jamais un ordre)
     save_reinf_state(state)
