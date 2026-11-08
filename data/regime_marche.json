@@ -1,11 +1,11 @@
 {
   "etat": "haussier",
   "raison": "indice au-dessus de sa moyenne 200 séances",
-  "valeur": 154.59,
-  "moyenne": 142.24,
-  "ecart_pct": 8.68,
-  "points": 2387,
-  "date": "2026-10-29",
-  "calcule_le": "2026-10-31",
-  "_cache_sha": "9cd8208c9f3a5bdda555d71393044c7f6ffcb559f4647f8d84af46bb35e36c64"
+  "valeur": 157.17,
+  "moyenne": 149.63,
+  "ecart_pct": 5.04,
+  "points": 2392,
+  "date": "2026-11-05",
+  "calcule_le": "2026-11-07",
+  "_cache_sha": "81fc55eb0b8e6f6f05825afd7c06858364d1693b33b42349fabdb15fefd8325d"
 }
