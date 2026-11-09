@@ -298,6 +298,13 @@ def build_message(f: FicheSpec) -> str:
                 f"événement propre à ce titre") if n_maree else \
             "un signal de veille (courant en marché haussier : la marée du marché)"
 
+    # (02/11/2026) Le même mensonge de précision que le « 83 % » des zones vivait ici :
+    # « 80 % de 5 cas » était affirmé sans avertissement. Sous SEUIL_CAS_ZONE cas, la
+    # fréquence ET les paliers sont annoncés comme fragiles — une fréquence observée sur
+    # cinq cas n'est pas une statistique, et LEO décide avec ce chiffre.
+    alerte_n = (f"     ⚠️ {b['n']} cas SEULEMENT : une indication, pas une statistique —\n"
+                f"        ne t'appuie pas dessus pour décider.\n"
+                if b["n"] < SEUIL_CAS_ZONE else "")
     head = (f"{SCHEMA_LABELS[main]} — {f.code} ({f.name})\n\n"
             f"Cours de référence : {fcfa(f.price)} "
             f"({'LIVE du moment' if b.get('cours_source') == 'live' else 'dernière clôture connue'})\n"
@@ -310,6 +317,7 @@ def build_message(f: FicheSpec) -> str:
             f"     les filtres zone + volume ci-dessous) : "
             f"{b['win_12m']*100:.0f} % de {b['n']} cas OBSERVÉS finissent plus hauts "
             f"12 mois après (+{b['median_net']*100:.0f} % net médian)\n"
+            + alerte_n
             + ("   ⚠️ STATISTIQUES DE SECOURS : le calibrage courant est indisponible —\n"
                "      ces chiffres datent des épreuves de septembre 2026 et ne sont\n"
                "      PAS re-mesurés. Ne les traite pas comme la mesure du jour.\n"

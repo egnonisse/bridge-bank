@@ -143,19 +143,20 @@ def load_profiles() -> dict:
             log.warning("spec_profiles.json illisible (%s) — repli sur les stats figées", exc)
     else:
         log.warning("spec_profiles.json absent — repli sur les stats figées (16-17/09/2026)")
-    # Fallback : valeurs des épreuves (16-17/09/2026) — marqué pour l'affichage.
+    # Fallback : valeurs RE-MESURÉES le 02/11/2026 (44 séries, 51 cas, cache courant).
+    # Ce bloc portait auparavant des chiffres du 16-17/09/2026 ET un dictionnaire « ZONES »
+    # mort qui contenait le fameux « FORCE 83 % » — deux jeux de chiffres faux qui ne
+    # correspondaient plus aux données et pouvaient ressortir un jour. Le marqueur
+    # _fallback reste : l'affichage de la fiche le signale déjà comme non re-mesuré.
     return {
         "_fallback": True,
-        "CASSURE": {"n": 10, "win_12m": 0.70, "median_net_12m": 0.569,
-                    "touched": {"0.10": 0.90, "0.20": 0.80, "0.35": 0.70,
-                                "0.50": 0.70, "1.00": 0.30}},
-        "EVEIL": {"n": 29, "win_12m": 0.59, "median_net_12m": 0.172,
-                  "touched": {}},
-        "PANIQUE": {"n": 17, "win_12m": 0.59, "median_net_12m": 0.153,
-                    "touched": {}},
-        "ZONES": {"BAS_ECRASE": {"win": 0.50, "median": 0.035},
-                  "BAS_SOLIDE": {"win": 0.80, "median": 0.247},
-                  "MILIEU": {"win": 1.00, "median": 0.443},
-                  "HAUT_FRAGILE": {"win": 0.00, "median": -0.388},
-                  "FORCE": {"win": 0.83, "median": 0.624}},
+        "CASSURE": {"n": 5, "win_12m": 0.80, "median_net_12m": 1.054,
+                    "touched": {"0.10": 1.00, "0.20": 0.80, "0.35": 0.80,
+                                "0.50": 0.80, "1.00": 0.80}},
+        "EVEIL": {"n": 28, "win_12m": 0.607, "median_net_12m": 0.214,
+                  "touched": {"0.10": 0.857, "0.20": 0.786, "0.35": 0.679,
+                              "0.50": 0.571, "1.00": 0.321}},
+        "PANIQUE": {"n": 18, "win_12m": 0.50, "median_net_12m": 0.020,
+                    "touched": {"0.10": 0.889, "0.20": 0.778, "0.35": 0.556,
+                                "0.50": 0.444, "1.00": 0.167}},
     }
