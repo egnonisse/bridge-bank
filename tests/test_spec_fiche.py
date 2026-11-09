@@ -1,4 +1,5 @@
 """Tests de la fiche spé (schémas, zones, verdicts, anti-spam d'état)."""
+import json
 import sys
 from pathlib import Path
 
@@ -39,7 +40,14 @@ def test_cassure_verdict_oui_et_niveaux():
     assert abs(f.blocks["stop"] - 85.0) < 1e-6
     msg = f.message()
     assert "CASSURE" in msg
-    assert "70 % de 10 cas OBSERVÉS" in msg    # stats calibrées (fréquence, pas proba)
+    # Les stats affichées doivent être CELLES DU FICHIER CALIBRÉ, pas un chiffre figé ici :
+    # le calibrage est rejouable (scripts/calibrate_spec_profiles.py) et les effectifs
+    # changent quand le cache de cours évolue — CASSURE est passé de 10 à 5 cas le
+    # 02/11/2026, ce qui a fait échouer la valeur figée « 70 % de 10 cas ».
+    from src.strategie.spec_profiles import PROFILES_FILE
+
+    stats = json.loads(PROFILES_FILE.read_text(encoding="utf-8"))["CASSURE"]
+    assert f"{stats['win_12m'] * 100:.0f} % de {stats['n']} cas OBSERVÉS" in msg
     assert "34,300" not in msg                # pas de chiffre en dur d'un autre titre
 
 
