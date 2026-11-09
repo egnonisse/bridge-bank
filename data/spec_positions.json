@@ -2,11 +2,11 @@
   {
     "code": "SMBC",
     "name": "SMB CI",
-    "entry_price": 17000.0,
+    "entry_price": 17238.0,
     "quantity": 2,
     "opened_at": "2026-09-29T09:00:00",
     "stop_loss": 14450.0,
-    "highest": 17000.0,
+    "highest": 17900.0,
     "sold_1": false,
     "sold_2": false,
     "review_alerted": false,
