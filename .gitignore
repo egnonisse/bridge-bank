@@ -43,6 +43,11 @@ data/*.html
 # Sauvegardes locales prises avant correction — jamais des données du système
 data/*.bak-avant-*
 
+# Dossiers de travail temporaires des collecteurs (téléchargements bruts : PDF d'états
+# financiers, images) — 09/11/2026 : data/tmp_neic/ pesait 6,7 Mo et polluait git status.
+# Le glob data/*.pdf ci-dessus ne couvre PAS les sous-dossiers, d'où cette règle dédiée.
+data/tmp_*/
+
 # Données personnelles et documents de recherche/notation — B2-15 (13/10/2026) :
 # jamais versionnés (un dépôt qui fuit ne doit pas exposer les avis courtier ; le
 # passage en public, un fork ou un bundle les exposeraient). Les fichiers restent
