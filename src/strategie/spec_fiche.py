@@ -39,6 +39,12 @@ ZONE_LABELS = {
 }
 
 
+# Chantier « prix des alertes spé » (09/11/2026) : un percentile « sur 5 ans » exige
+# 5 ans de séances (5 × 252). En deçà, la fiche affiche « indisponible » — abstention,
+# jamais une valeur calculée sur un historique tronqué (règle : ne pas inventer).
+SEANCES_5_ANS = 5 * 252
+
+
 @dataclass
 class FicheSpec:
     code: str
@@ -74,6 +80,18 @@ def build_fiche(code: str, name: str, closes: list,
     price = closes[-1]
     zone = zone_of(closes)
     zl = zone_label(zone)
+
+    # Deux faits mesurés sur le PRIX (chantier « prix des alertes spé », 09/11/2026) :
+    # informatifs, jamais des seuils — la fiche INFORME, elle ne bloque aucun achat.
+    # - percentile_5ans : part des séances des 5 ans strictement sous le cours
+    #   (= zone × 100, arrondi) ; None si l'historique couvre moins de 5 ans.
+    # - depuis_creux_pct : chemin parcouru depuis le creux des 60 séances
+    #   précédentes : (cours − creux) / creux × 100 ; None si le creux est invalide.
+    percentile_5ans = round(zone * 100) if len(closes) >= SEANCES_5_ANS else None
+    creux60 = min(closes[-61:-1]) if len(closes) >= 61 else None
+    depuis_creux_pct = ((price - creux60) / creux60 * 100
+                        if creux60 is not None and creux60 > 0 else None)
+
     prof = load_profiles()
     st = prof.get(main, {})
     zst = prof.get("ZONES", {}).get(zl, {})
@@ -117,6 +135,10 @@ def build_fiche(code: str, name: str, closes: list,
         "touched": touched,
         "zone_pct": zone,
         "zone_label": zl,
+        # Position du prix (chantier « prix des alertes spé », 09/11/2026) — deux FAITS
+        # mesurés, informatifs (jamais des seuils d'achat). None = « indisponible ».
+        "percentile_5ans": percentile_5ans,
+        "depuis_creux_pct": depuis_creux_pct,
         "zone_win": zst.get("win"),
         "zone_median": zst.get("median"),
         "entry_lo": entry_lo,
@@ -140,6 +162,32 @@ def build_fiche(code: str, name: str, closes: list,
                      zone=zone, verdict=verdict, blocks=blocks)
 
 
+def _ordinal_fr(n: int) -> str:
+    """Ordinal français : 1 → « 1er », sinon « Ne » (2e, 3e, 34e…)."""
+    return "1er" if n == 1 else f"{n}e"
+
+
+def format_position_prix(b: dict) -> str:
+    """Ligne « Position du prix » : deux faits mesurés, un chiffre = sa signification.
+
+    Chantier « prix des alertes spé » (09/11/2026). Donnée absente (historique
+    < 5 ans pour le percentile, creux introuvable pour le rebond) → « indisponible »,
+    jamais une valeur inventée ni un zéro trompeur. Un cours SOUS le creux des
+    60 séances (nouveau plus bas) est dit tel quel, pas maquillé en « + ».
+    """
+    p = b.get("percentile_5ans")
+    gauche = (f"{_ordinal_fr(p)} percentile sur 5 ans"
+              if p is not None else "percentile sur 5 ans : indisponible")
+    c = b.get("depuis_creux_pct")
+    if c is None:
+        droite = "depuis le creux des 60 séances : indisponible"
+    elif c < 0:
+        droite = f"−{abs(c):.0f} % sous le creux des 60 séances (nouveau plus bas)"
+    else:
+        droite = f"+{c:.0f} % depuis le creux des 60 séances"
+    return f"💵 Position du prix : {gauche} | {droite}"
+
+
 def build_message(f: FicheSpec) -> str:
     b = f.blocks
     main = b["main"]
@@ -160,6 +208,7 @@ def build_message(f: FicheSpec) -> str:
     head = (f"{SCHEMA_LABELS[main]} — {f.code} ({f.name})\n\n"
             f"Cours de référence : {fcfa(f.price)} "
             f"({'LIVE du moment' if b.get('cours_source') == 'live' else 'dernière clôture connue'})\n"
+            f"{format_position_prix(b)}\n"
             f"Ce qui se passe : ce cours a déclenché le schéma "
             f"« {mot} » — {rare}, jamais automatique.\n\n"
             f"📊 FRÉQUENCES HISTORIQUES (10 ans, hors frais déjà déduits) :\n"
