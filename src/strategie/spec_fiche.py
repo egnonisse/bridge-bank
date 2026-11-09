@@ -26,17 +26,91 @@ SCHEMA_WORDS = {
 }
 SCHEMA_ORDER = ["CASSURE", "EVEIL", "PANIQUE"]
 
-ZONE_LABELS = {
-    "FORCE": ("✅ ZONE DE FORCE", "le prix est près de son plus haut de 5 ans — "
-              "historiquement la meilleure zone (83 % de réussite)"),
-    "BAS_SOLIDE": ("🟡 ZONE BASSE MAIS SAINE", "20-40 % de la fourchette : bon compromis "
-                   "(80 % de réussite)"),
-    "MILIEU": ("🟡 MILIEU DE FOURCHETTE", "zone neutre"),
-    "HAUT_FRAGILE": ("🔴 ZONE DANGER", "60-80 % : les anciens champions qui "
-                     "s'essoufflent — 0 gagnant sur 4 dans l'histoire"),
-    "BAS_ECRASE": ("🔴 ZONE PIÈGE", "les 20 % du bas : « pas cher » ne paie pas "
-                   "(50 % de réussite, +3,5 % médian)"),
+# ── Taux de réussite PAR ZONE — MESURÉS, plus codés en dur ────────────────────────
+# Chantier « prix des alertes spé » (09/11/2026). Remplace les taux figés
+# (FORCE 83 %, BAS_SOLIDE 80 %, HAUT_FRAGILE « 0 sur 4 », BAS_ECRASE 50 %) par la
+# mesure réelle : audit/spec_zones_mesure_2026-11-02.md (mesure du 02/11/2026 —
+# 44 séries, 51 cas observés, 2017-2026, schémas confondus, net de frais 2,8 %).
+# Fréquences observées, PAS des probabilités ; titres radiés ABSENTS (biais de
+# survie) : les taux affichés sont donc optimistes.
+#
+# SEUIL_CAS_ZONE : sous 10 cas, aucune conclusion chiffrée n'est tirée d'une zone.
+# Seuil à PROPOSER pour src/regles.py (non écrit ici — un fichier = une
+# responsabilité) : `SEUIL_CAS_ZONE = 10  # provenance : mesure du 02/11/2026`.
+SEUIL_CAS_ZONE = 10
+
+# Par zone : n cas observés · % finissant plus haut à 12 mois · gain net médian (%).
+ZONES_MESUREES = {
+    "BAS_ECRASE":   {"n": 19, "win": 53,  "median": 56.8,  "plage": "0-20",
+                     "pourquoi": "« pas cher » ne paie pas vraiment"},
+    "BAS_SOLIDE":   {"n": 10, "win": 100, "median": 87.9,  "plage": "20-40",
+                     "pourquoi": "la meilleure zone mesurée"},
+    "MILIEU":       {"n": 13, "win": 62,  "median": 11.2,  "plage": "40-60",
+                     "pourquoi": "ni bonne ni mauvaise"},
+    "HAUT_FRAGILE": {"n": 7,  "win": 14,  "median": -32.9, "plage": "60-80",
+                     "pourquoi": "historiquement la pire zone, les anciens "
+                                 "champions qui s'essoufflent"},
+    "FORCE":        {"n": 2,  "win": 50,  "median": 13.4,  "plage": "80-100",
+                     "pourquoi": ""},
 }
+
+ZONE_CONTEXTES = {
+    "FORCE":        "le prix est près de son plus haut de 5 ans",
+    "BAS_SOLIDE":   "20-40 % de la fourchette",
+    "MILIEU":       "40-60 % de la fourchette",
+    "HAUT_FRAGILE": "60-80 % de la fourchette",
+    "BAS_ECRASE":   "les 20 % du bas",
+}
+
+# Émoji de zone aligné sur le verdict mesuré : avant, « ✅ ZONE DE FORCE » vantait
+# une « meilleure zone » fondée sur le 83 % infondé (2 cas). Le ✅ passe à la zone
+# réellement la meilleure (20-40), la FORCE devient ⚪ (aucune conclusion).
+ZONE_EMOJIS = {
+    "FORCE":        "⚪ ZONE DE FORCE",
+    "BAS_SOLIDE":   "✅ ZONE BASSE MAIS SAINE",
+    "MILIEU":       "🟡 MILIEU DE FOURCHETTE",
+    "HAUT_FRAGILE": "🔴 ZONE DANGER",
+    "BAS_ECRASE":   "🔴 ZONE PIÈGE",
+}
+
+# Verdict prix (ligne informative « à côté » de 💵 Position du prix) : un niveau
+# visuel par zone. INFORMATIF — jamais une règle, aucun achat n'est bloqué par là.
+VERDICT_PRIX = {
+    "BAS_SOLIDE":   ("✅", "favorable"),
+    "MILIEU":       ("🟡", "neutre"),
+    "BAS_ECRASE":   ("🔴", "défavorable"),
+    "HAUT_FRAGILE": ("🔴", "défavorable"),
+    "FORCE":        ("⚪", "non concluant"),
+}
+
+
+def _taux_zone(code: str) -> str:
+    """Taux mesuré d'une zone, TOUJOURS avec son effectif.
+
+    La zone FORCE (2 cas) dit « aucun cas concluant (2 cas) » : le « 83 % » codé
+    en dur était infondé (2 cas seulement) — l'aveu honnête, pas un chiffre
+    rassurant.
+    """
+    m = ZONES_MESUREES[code]
+    if code == "FORCE":
+        return f"aucun cas concluant ({m['n']} cas)"
+    return f"{m['win']} % de réussite sur {m['n']} cas observés"
+
+
+def _texte_zone(code: str) -> str:
+    """Descriptif néophyte d'une zone : contexte + taux (avec effectif) + pourquoi.
+
+    Sous SEUIL_CAS_ZONE cas, ajouter « échantillon insuffisant » — un taux sans
+    effectif est un chiffre nu (règle : ne pas inventer, ne pas rassurer).
+    """
+    m = ZONES_MESUREES[code]
+    insuff = (" — échantillon insuffisant, à prendre comme une indication"
+              if m["n"] < SEUIL_CAS_ZONE else "")
+    pourquoi = f" — {m['pourquoi']}" if m.get("pourquoi") else ""
+    return f"{ZONE_CONTEXTES[code]} : {_taux_zone(code)}{insuff}{pourquoi}"
+
+
+ZONE_LABELS = {code: (ZONE_EMOJIS[code], _texte_zone(code)) for code in ZONE_EMOJIS}
 
 
 # Chantier « prix des alertes spé » (09/11/2026) : un percentile « sur 5 ans » exige
@@ -94,7 +168,6 @@ def build_fiche(code: str, name: str, closes: list,
 
     prof = load_profiles()
     st = prof.get(main, {})
-    zst = prof.get("ZONES", {}).get(zl, {})
 
     # verdict : schéma + zone
     if zl in ("HAUT_FRAGILE", "BAS_ECRASE"):
@@ -139,8 +212,6 @@ def build_fiche(code: str, name: str, closes: list,
         # mesurés, informatifs (jamais des seuils d'achat). None = « indisponible ».
         "percentile_5ans": percentile_5ans,
         "depuis_creux_pct": depuis_creux_pct,
-        "zone_win": zst.get("win"),
-        "zone_median": zst.get("median"),
         "entry_lo": entry_lo,
         "entry_hi": entry_hi,
         "stop": stop,
@@ -188,11 +259,33 @@ def format_position_prix(b: dict) -> str:
     return f"💵 Position du prix : {gauche} | {droite}"
 
 
+def format_verdict_prix(b: dict) -> str:
+    """Ligne « Verdict prix » : niveau visuel + taux mesuré de la zone + pourquoi.
+
+    Chantier « prix des alertes spé » (09/11/2026). Placée juste sous la ligne
+    « 💵 Position du prix ». INFORMATIVE — n'ajoute AUCUNE règle, ne bloque aucun
+    achat. Niveau : ✅ favorable (20-40), 🟡 neutre (40-60), 🔴 défavorable
+    (0-20 et 60-80), ⚪ non concluant (80-100, moins de 10 cas).
+    """
+    zl = b.get("zone_label")
+    if zl not in VERDICT_PRIX or zl not in ZONES_MESUREES:
+        return ""
+    emoji, mot = VERDICT_PRIX[zl]
+    m = ZONES_MESUREES[zl]
+    if zl == "FORCE":
+        taux = f"aucun cas concluant ({m['n']} cas)"
+    else:
+        signe = "−" if m["median"] < 0 else "+"
+        taux = (f"{m['win']} % de réussite sur {m['n']} cas, "
+                f"gain médian {signe}{abs(m['median']):.0f} %")
+    pourquoi = f" : {m['pourquoi']}" if m.get("pourquoi") else ""
+    return f"   {emoji} Verdict prix : {mot} — zone {m['plage']} : {taux}{pourquoi}"
+
+
 def build_message(f: FicheSpec) -> str:
     b = f.blocks
     main = b["main"]
     zlabel, ztxt = ZONE_LABELS[b["zone_label"]]
-    zwin = f" ({b['zone_win']*100:.0f} % de réussite)" if b.get("zone_win") is not None else ""
     touched = b["touched"]
     mot = SCHEMA_WORDS.get(main, main.lower())
     # « rare » n'est vrai que pour la cassure — l'éveil est une marée
@@ -209,6 +302,7 @@ def build_message(f: FicheSpec) -> str:
             f"Cours de référence : {fcfa(f.price)} "
             f"({'LIVE du moment' if b.get('cours_source') == 'live' else 'dernière clôture connue'})\n"
             f"{format_position_prix(b)}\n"
+            f"{format_verdict_prix(b)}\n"
             f"Ce qui se passe : ce cours a déclenché le schéma "
             f"« {mot} » — {rare}, jamais automatique.\n\n"
             f"📊 FRÉQUENCES HISTORIQUES (10 ans, hors frais déjà déduits) :\n"
@@ -223,7 +317,7 @@ def build_message(f: FicheSpec) -> str:
     if touched:
         head += (f"   • Ton palier +20 % : touché dans {touched.get('0.20', 0)*100:.0f} % des cas observés\n"
                  f"   • Ton palier +50 % : touché dans {touched.get('0.50', 0)*100:.0f} % des cas observés\n")
-    head += (f"   • {zlabel} : {ztxt}{zwin} — la zone MODULE le schéma\n"
+    head += (f"   • {zlabel} : {ztxt} — la zone MODULE le schéma\n"
              f"   ⚠️ {b['n']} cas observés, titres radiés ABSENTS (biais de survie) : "
              f"fréquence historique, PAS une probabilité — les perdants existent.\n")
 
