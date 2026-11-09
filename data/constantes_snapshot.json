@@ -229,7 +229,16 @@
   "SNTS": 1977.0,
   "SOGC": 570.0
  },
+ "src.collecte.fundamentals.OFFICIAL_DPS_DATE": {
+  "BOAS": "2026-05-08",
+  "PALC": "2026-06-10",
+  "SGBC": "2026-08-06",
+  "SLBC": "2026-07-13",
+  "SNTS": "2026-04-23",
+  "SOGC": "2026-07-22"
+ },
  "src.collecte.fundamentals.PER_CACHE_FILE": "<Path per_cache.json>",
+ "src.collecte.fundamentals.SEUIL_RENDEMENT_INCOHERENT": 0.15,
  "src.collecte.live.CASH_CREDIT_OFFSET_DAYS": 1,
  "src.collecte.live.HEADERS": {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
@@ -381,26 +390,101 @@
   "EVEIL": "rebond confirmé de +10 % depuis le creux des 60 séances",
   "PANIQUE": "rachat de panique"
  },
+ "src.strategie.spec_fiche.SEANCES_5_ANS": 1260,
+ "src.strategie.spec_fiche.SEUIL_CAS_ZONE": 10,
+ "src.strategie.spec_fiche.VERDICT_PRIX": {
+  "BAS_ECRASE": [
+   "🔴",
+   "défavorable"
+  ],
+  "BAS_SOLIDE": [
+   "✅",
+   "favorable"
+  ],
+  "FORCE": [
+   "⚪",
+   "non concluant"
+  ],
+  "HAUT_FRAGILE": [
+   "🔴",
+   "défavorable"
+  ],
+  "MILIEU": [
+   "🟡",
+   "neutre"
+  ]
+ },
+ "src.strategie.spec_fiche.ZONES_MESUREES": {
+  "BAS_ECRASE": {
+   "median": 56.8,
+   "n": 19,
+   "plage": "0-20",
+   "pourquoi": "« pas cher » ne paie pas vraiment",
+   "win": 53
+  },
+  "BAS_SOLIDE": {
+   "median": 87.9,
+   "n": 10,
+   "plage": "20-40",
+   "pourquoi": "la meilleure zone mesurée",
+   "win": 100
+  },
+  "FORCE": {
+   "median": 13.4,
+   "n": 2,
+   "plage": "80-100",
+   "pourquoi": "",
+   "win": 50
+  },
+  "HAUT_FRAGILE": {
+   "median": -32.9,
+   "n": 7,
+   "plage": "60-80",
+   "pourquoi": "historiquement la pire zone, les anciens champions qui s'essoufflent",
+   "win": 14
+  },
+  "MILIEU": {
+   "median": 11.2,
+   "n": 13,
+   "plage": "40-60",
+   "pourquoi": "ni bonne ni mauvaise",
+   "win": 62
+  }
+ },
+ "src.strategie.spec_fiche.ZONE_CONTEXTES": {
+  "BAS_ECRASE": "les 20 % du bas",
+  "BAS_SOLIDE": "20-40 % de la fourchette",
+  "FORCE": "le prix est près de son plus haut de 5 ans",
+  "HAUT_FRAGILE": "60-80 % de la fourchette",
+  "MILIEU": "40-60 % de la fourchette"
+ },
+ "src.strategie.spec_fiche.ZONE_EMOJIS": {
+  "BAS_ECRASE": "🔴 ZONE PIÈGE",
+  "BAS_SOLIDE": "✅ ZONE BASSE MAIS SAINE",
+  "FORCE": "⚪ ZONE DE FORCE",
+  "HAUT_FRAGILE": "🔴 ZONE DANGER",
+  "MILIEU": "🟡 MILIEU DE FOURCHETTE"
+ },
  "src.strategie.spec_fiche.ZONE_LABELS": {
   "BAS_ECRASE": [
    "🔴 ZONE PIÈGE",
-   "les 20 % du bas : « pas cher » ne paie pas (50 % de réussite, +3,5 % médian)"
+   "les 20 % du bas : 53 % de réussite sur 19 cas observés — « pas cher » ne paie pas vraiment"
   ],
   "BAS_SOLIDE": [
-   "🟡 ZONE BASSE MAIS SAINE",
-   "20-40 % de la fourchette : bon compromis (80 % de réussite)"
+   "✅ ZONE BASSE MAIS SAINE",
+   "20-40 % de la fourchette : 100 % de réussite sur 10 cas observés — la meilleure zone mesurée"
   ],
   "FORCE": [
-   "✅ ZONE DE FORCE",
-   "le prix est près de son plus haut de 5 ans — historiquement la meilleure zone (83 % de réussite)"
+   "⚪ ZONE DE FORCE",
+   "le prix est près de son plus haut de 5 ans : aucun cas concluant (2 cas) — échantillon insuffisant, à prendre comme une indication"
   ],
   "HAUT_FRAGILE": [
    "🔴 ZONE DANGER",
-   "60-80 % : les anciens champions qui s'essoufflent — 0 gagnant sur 4 dans l'histoire"
+   "60-80 % de la fourchette : 14 % de réussite sur 7 cas observés — échantillon insuffisant, à prendre comme une indication — historiquement la pire zone, les anciens champions qui s'essoufflent"
   ],
   "MILIEU": [
    "🟡 MILIEU DE FOURCHETTE",
-   "zone neutre"
+   "40-60 % de la fourchette : 62 % de réussite sur 13 cas observés — ni bonne ni mauvaise"
   ]
  },
  "src.strategie.spec_profiles.HORIZON": 252,

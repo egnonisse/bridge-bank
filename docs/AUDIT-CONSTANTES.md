@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**230 définitions** pour **214 constantes distinctes**.
+**238 définitions** pour **222 constantes distinctes**.
 
 ---
 
@@ -133,7 +133,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (121)
+### autre (128)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -206,6 +206,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `NET_MAX` | `0.1` | src.strategie.noyau_check |
 | `NOMINAL` | `10000.0` | src.analyse.bonds |
 | `OFFICIAL_DPS` | `{'SNTS': 1977.0, 'BOAS': 511.0, 'PALC': 501.6, 'SOGC': 570.0, 'SLBC': 2127.0, 'SGBC': 2606.0}` | src.collecte.fundamentals |
+| `OFFICIAL_DPS_DATE` | `{'SNTS': '2026-04-23', 'BOAS': '2026-05-08', 'PALC': '2026-06-10', 'SOGC': '2026-07-22', 'SLBC': '2026-07-13', 'SGBC': '2026-08-06'}` | src.collecte.fundamentals |
 | `OPERATEURS` | `['et', 'ou']` | src.backtesting.challenge_schema |
 | `ORDER_CUTOFF_BSTRADE` | `<expression: time(13, 30)>` | src.collecte.live |
 | `ORDER_CUTOFF_EMAIL` | `<expression: time(11, 0)>` | src.collecte.live |
@@ -231,6 +232,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `SCHEMA_LABELS` | `{'CASSURE': '🔓 CASSURE DE 1 AN', 'EVEIL': '🌅 REBOND CONFIRMÉ', 'PANIQUE': '🩹 RACHAT DE PANIQUE'}` | src.strategie.spec_fiche |
 | `SCHEMA_ORDER` | `['CASSURE', 'EVEIL', 'PANIQUE']` | src.strategie.spec_fiche |
 | `SCHEMA_WORDS` | `{'CASSURE': 'cassure de 1 an', 'EVEIL': 'rebond confirmé de +10 % depuis le creux des 60 séances', 'PANIQUE': 'rachat de panique'}` | src.strategie.spec_fiche |
+| `SEANCES_5_ANS` | `<expression: 5 * 252>` | src.strategie.spec_fiche |
 | `SEANCES_MIN_INDICATEURS` | `250` | src.backtesting.challenge_validateur |
 | `SESSION_CLOSE` | `<expression: time(15, 0)>` | src.collecte.live |
 | `SESSION_START` | `<expression: time(9, 0)>` | src.collecte.live |
@@ -239,6 +241,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `SEUILS_CANDIDATS` | `[0.05, 0.08, 0.1, 0.13, 0.15]` | src.calibration.seuils_vente |
 | `SEUILS_JOURNAL` | `<expression: DATA_DIR / 'seuils_journal.jsonl'>` | src.infrastructure.paths |
 | `SEUILS_PAR_DEFAUT` | `{'SNTS': 0.13, 'SGBC': 0.1, 'SLBC': 0.05, 'PALC': 0.05}` | src.calibration.seuils_vente |
+| `SEUIL_CAS_ZONE` | `10` | src.strategie.spec_fiche |
 | `SPAM_DAYS` | `7` | src.strategie.spec_veille |
 | `TAKE_1` | `0.2` | src.strategie.speculation |
 | `TAKE_2` | `0.35` | src.strategie.speculation |
@@ -250,14 +253,18 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TOLERANCE_RATIO` | `0.05` | src.ajustement |
 | `TRAILING` | `0.1` | src.strategie.speculation |
 | `TVA_RATE` | `0.18` | src.taxation |
+| `VERDICT_PRIX` | `{'BAS_SOLIDE': ['✅', 'favorable'], 'MILIEU': ['🟡', 'neutre'], 'BAS_ECRASE': ['🔴', 'défavorable'], 'HAUT_FRAGILE': ['🔴', 'défavorable'], 'FORCE': ['⚪', 'non concluant']}` | src.strategie.spec_fiche |
 | `VOISINS` | `20` | src.collecte.nettoyage_aberrantes |
+| `ZONES_MESUREES` | `{'BAS_ECRASE': {'n': 19, 'win': 53, 'median': 56.8, 'plage': '0-20', 'pourquoi': '« pas cher » ne paie pas vraiment'}, 'BAS_SOLIDE': {'n': 10, 'win': 100, 'median': 87.9, 'plage': '20-40', 'pourquoi': 'la meilleure zone mesurée'}, 'MILIEU': {'n': 13, 'win': 62, 'median': 11.2, 'plage': '40-60', 'pourquoi': 'ni bonne ni mauvaise'}, 'HAUT_FRAGILE': {'n': 7, 'win': 14, 'median': -32.9, 'plage': '60-80', 'pourquoi': "historiquement la pire zone, les anciens champions qui s'essoufflent"}, 'FORCE': {'n': 2, 'win': 50, 'median': 13.4, 'plage': '80-100', 'pourquoi': ''}}` | src.strategie.spec_fiche |
 | `ZONE_BAS_ECRASE` | `[0.0, 0.2]` | src.strategie.spec_profiles |
 | `ZONE_BAS_SOLIDE` | `[0.2, 0.4]` | src.strategie.spec_profiles |
+| `ZONE_CONTEXTES` | `{'FORCE': 'le prix est près de son plus haut de 5 ans', 'BAS_SOLIDE': '20-40 % de la fourchette', 'MILIEU': '40-60 % de la fourchette', 'HAUT_FRAGILE': '60-80 % de la fourchette', 'BAS_ECRASE': 'les 20 % du bas'}` | src.strategie.spec_fiche |
 | `ZONE_DEAD_INFO_DAYS` | `60` | src.strategie.speculation |
 | `ZONE_DEAD_REVIEW_DAYS` | `120` | src.strategie.speculation |
+| `ZONE_EMOJIS` | `{'FORCE': '⚪ ZONE DE FORCE', 'BAS_SOLIDE': '✅ ZONE BASSE MAIS SAINE', 'MILIEU': '🟡 MILIEU DE FOURCHETTE', 'HAUT_FRAGILE': '🔴 ZONE DANGER', 'BAS_ECRASE': '🔴 ZONE PIÈGE'}` | src.strategie.spec_fiche |
 | `ZONE_FORCE` | `[0.8, 1.01]` | src.strategie.spec_profiles |
 | `ZONE_HAUT_FRAGILE` | `[0.6, 0.8]` | src.strategie.spec_profiles |
-| `ZONE_LABELS` | `{'FORCE': ['✅ ZONE DE FORCE', 'le prix est près de son plus haut de 5 ans — historiquement la meilleure zone (83 % de réussite)'], 'BAS_SOLIDE': ['🟡 ZONE BASSE MAIS SAINE', '20-40 % de la fourchette : bon compromis (80 % de réussite)'], 'MILIEU': ['🟡 MILIEU DE FOURCHETTE', 'zone neutre'], 'HAUT_FRAGILE': ['🔴 ZONE DANGER', "60-80 % : les anciens champions qui s'essoufflent — 0 gagnant sur 4 dans l'histoire"], 'BAS_ECRASE': ['🔴 ZONE PIÈGE', 'les 20 % du bas : « pas cher » ne paie pas (50 % de réussite, +3,5 % médian)']}` | src.strategie.spec_fiche |
+| `ZONE_LABELS` | `<expression: {code: (ZONE_EMOJIS[code], _texte_zone(code)) for code in ZO>` | src.strategie.spec_fiche |
 
 ### concentration (4)
 
@@ -268,7 +275,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `MAX_MARKET_WEIGHT` | `0.5` | src.regles |
 | `MAX_POSITION_WEIGHT` | `0.35` | src.regles |
 
-### filtres_entree (14)
+### filtres_entree (15)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -281,6 +288,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `RENDEMENT_NET_ENTREE` | `<expression: TARGET_NET_YIELD_ENTRY>` | src.regles |
 | `RENDEMENT_NET_MIN` | `<expression: RENDEMENT_NET_ENTREE>` | src.regles |
 | `RENDEMENT_NET_SORTIE` | `<expression: TARGET_NET_YIELD_EXIT>` | src.regles |
+| `SEUIL_RENDEMENT_INCOHERENT` | `0.15` | src.collecte.fundamentals |
 | `TARGET_NET_YIELD_ENTRY` | `0.04` | src.taxation |
 | `TARGET_NET_YIELD_EXIT` | `0.02` | src.taxation |
 | `YIELD_ABSURD` | `30.0` | src.analyse.screener |
