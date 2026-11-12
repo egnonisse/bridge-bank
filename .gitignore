@@ -48,6 +48,18 @@ data/*.bak-avant-*
 # Le glob data/*.pdf ci-dessus ne couvre PAS les sous-dossiers, d'où cette règle dédiée.
 data/tmp_*/
 
+# Documents de référence (manuels BSTrade, procédures et tarification Bridge Securities,
+# note ORDERS) — SORTIS du suivi le 12/11/2026 : 5,1 Mo de PDF dans un dépôt de code.
+# Les fichiers restent SUR LE DISQUE dans docs/ (consultables) ; seul le suivi git s'arrête.
+# Sans cette règle le backup hebdomadaire (`git add -A`) les réintroduirait.
+docs/*.pdf
+
+# Sorties de scripts et états régénérés — sortis du suivi le 12/11/2026
+# (croisement_officiel_final.json est produit par scripts/comparer_officiel_cache.py ;
+#  value_new_state.json est écrit par src/main.py et exclu du drapeau d'empreinte)
+data/croisement_officiel_final.json
+data/value_new_state.json
+
 # Données personnelles et documents de recherche/notation — B2-15 (13/10/2026) :
 # jamais versionnés (un dépôt qui fuit ne doit pas exposer les avis courtier ; le
 # passage en public, un fork ou un bundle les exposeraient). Les fichiers restent
