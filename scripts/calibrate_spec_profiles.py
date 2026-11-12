@@ -20,47 +20,80 @@ from src.strategie.spec_profiles import (FRAIS, HORIZON, detect_schemas, zone_of
 hist = load_all_history(BSApi(), force=False)
 
 # Agrégation par schéma — spacing INDÉPENDANT par schéma (sinon les signaux
-# rares se font manger par les signaux fréquents et faussent les stats)
-agg = {s: {"rets": [], "peaks": [], "n": 0} for s in ("CASSURE", "EVEIL", "PANIQUE")}
-last_entry = {s: -10**9 for s in agg}
+# rares se font manger par les signaux fréquents et faussent les stats).
+# CORRECTIF 12/11/2026 : le compteur d'espacement vivait HORS de la boucle sur les titres,
+# donc il comparait l'index d'un titre à celui d'un AUTRE titre et écrasait la majorité des
+# cas (PANIQUE : 18 cas au lieu de 414 ; EVEIL : 28 au lieu de 934). Il est désormais remis
+# à zéro POUR CHAQUE TITRE — c'est le sens d'« épisodes non chevauchants ».
+SCHEMAS = ("CASSURE", "EVEIL", "PANIQUE")
+TRANCHE = [(0.0, 0.20, "0-20"), (0.20, 0.40, "20-40"), (0.40, 0.60, "40-60"),
+           (0.60, 0.80, "60-80"), (0.80, 1.01, "80-100")]
+ESPACEMENT = 60
+
+
+def tranche_de(zone: float) -> str:
+    for lo, hi, nom in TRANCHE:
+        if lo <= zone < hi:
+            return nom
+    return "80-100"
+
+
+agg = {s: {"rets": [], "peaks": [], "n": 0} for s in SCHEMAS}
+# Le croisement (schéma x zone) : c'est la donnée qui manquait. La fiche affichait un taux
+# TOUS SCHÉMAS CONFONDUS (10 épisodes) sur une alerte d'un schéma précis — d'où un « 100 %
+# de réussite » annoncé sur un rachat de panique qui vaut 49 % pour ce schéma.
+agg_zones = {s: {t: {"rets": [], "peaks": []} for _, _, t in TRANCHE} for s in SCHEMAS}
 
 for code, bars in hist.items():
     closes = [b.close for b in bars]
     if len(closes) < 500 or closes[0] <= 0:
         continue
+    last_entry = {s: -10**9 for s in SCHEMAS}     # LE CORRECTIF : un compteur par titre
     for i in range(260, len(closes) - HORIZON):
         schemas = detect_schemas(closes[: i + 1])
         if not schemas:
             continue
         ret = closes[i + HORIZON] / closes[i] - 1 - FRAIS
         peak = max(closes[i + 1 : i + HORIZON + 1]) / closes[i] - 1
+        zone = tranche_de(zone_of(closes[: i + 1]))
         for s in schemas:
-            if i - last_entry[s] < 60:
+            if i - last_entry[s] < ESPACEMENT:
                 continue
             agg[s]["rets"].append(ret)
             agg[s]["peaks"].append(peak)
             agg[s]["n"] += 1
+            agg_zones[s][zone]["rets"].append(ret)
+            agg_zones[s][zone]["peaks"].append(peak)
             last_entry[s] = i
 
 PALIERS = ("0.10", "0.20", "0.35", "0.50", "1.00")
+
+def _stats(rets, peaks) -> dict:
+    if not rets:
+        return {"n": 0}
+    return {
+        "n": len(rets),
+        "win_12m": round(sum(1 for r in rets if r > 0) / len(rets), 3),
+        "median_net_12m": round(statistics.median(rets), 3),
+        "touched": {
+            p: round(sum(1 for pk in peaks if pk >= float(p)) / len(peaks), 3)
+            for p in PALIERS
+        },
+    }
+
 
 out = {}
 for s, a in agg.items():
     if not a["rets"]:
         continue
-    out[s] = {
-        "n": a["n"],
-        "win_12m": round(sum(1 for r in a["rets"] if r > 0) / len(a["rets"]), 3),
-        "median_net_12m": round(statistics.median(a["rets"]), 3),
-        "touched": {
-            p: round(sum(1 for pk in a["peaks"] if pk >= float(p)) / len(a["peaks"]), 3)
-            for p in PALIERS
-        },
-    }
+    out[s] = _stats(a["rets"], a["peaks"])
+    # Les stats de la zone POUR CE SCHÉMA : ce sont elles que la fiche doit lire, au lieu
+    # d'un taux tous schémas confondus qui décrit une autre population.
+    out[s]["zones"] = {t: _stats(agg_zones[s][t]["rets"], agg_zones[s][t]["peaks"])
+                       for _, _, t in TRANCHE}
 
-# Les ZONES restent celles de l'épreuve générale « acheter bas » (figées dans
-# src/spec_profiles.py — elles ne sont PAS recalibrées ici, leurs n par
-# tranche sont trop petits dans l'échantillon conditionnel).
+# Les LIBELLÉS de zone restent dans src/spec_fiche.py ; ce fichier porte les MESURES,
+# désormais ventilées par schéma (out[s]["zones"]).
 PROFILES_FILE.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n",
                          encoding="utf-8")
 print(json.dumps(out, ensure_ascii=False, indent=2))

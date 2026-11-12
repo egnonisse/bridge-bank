@@ -75,12 +75,26 @@ ZONE_EMOJIS = {
 
 # Verdict prix (ligne informative « à côté » de 💵 Position du prix) : un niveau
 # visuel par zone. INFORMATIF — jamais une règle, aucun achat n'est bloqué par là.
+# (12/11/2026) Passerelle entre le libellé de zone et la tranche du fichier calibré :
+# data/spec_profiles.json ventile désormais les stats par schéma ET par tranche.
+ZONE_TRANCHE = {
+    "BAS_ECRASE": "0-20",
+    "BAS_SOLIDE": "20-40",
+    "MILIEU": "40-60",
+    "HAUT_FRAGILE": "60-80",
+    "FORCE": "80-100",
+}
+
 VERDICT_PRIX = {
     "BAS_SOLIDE":   ("✅", "favorable"),
     "MILIEU":       ("🟡", "neutre"),
     "BAS_ECRASE":   ("🔴", "défavorable"),
     "HAUT_FRAGILE": ("🔴", "défavorable"),
-    "FORCE":        ("⚪", "non concluant"),
+    # (12/11/2026) La zone 80-100 n'est plus « non concluant » : après réparation de
+    # l'espacement du calibrage, elle compte 91 cas pour EVEIL (67 % de réussite, médiane
+    # +18 %) et 11 pour PANIQUE (72,7 %, +36 %) — c'est la MEILLEURE zone mesurée pour
+    # l'éveil. Le ⚪ venait d'un échantillon de 2 cas, lui-même produit du bug.
+    "FORCE":        ("✅", "favorable"),
 }
 
 
@@ -208,6 +222,11 @@ def build_fiche(code: str, name: str, closes: list,
         "touched": touched,
         "zone_pct": zone,
         "zone_label": zl,
+        # (12/11/2026) Stats de la zone POUR CE SCHÉMA : la fiche affichait le taux tous
+        # schémas confondus (10 épisodes) sur une alerte d'un schéma précis — d'où un
+        # « ✅ 100 % de réussite » annoncé sur un rachat de panique qui vaut 61 %.
+        "zone_stats": ((prof.get(main) or {}).get("zones") or {}).get(
+            ZONE_TRANCHE.get(zl, ""), {}),
         # Position du prix (chantier « prix des alertes spé », 09/11/2026) — deux FAITS
         # mesurés, informatifs (jamais des seuils d'achat). None = « indisponible ».
         "percentile_5ans": percentile_5ans,
@@ -260,26 +279,30 @@ def format_position_prix(b: dict) -> str:
 
 
 def format_verdict_prix(b: dict) -> str:
-    """Ligne « Verdict prix » : niveau visuel + taux mesuré de la zone + pourquoi.
+    """Ligne « Verdict prix » : niveau visuel + taux MESURÉ POUR CE SCHÉMA dans cette zone.
 
-    Chantier « prix des alertes spé » (09/11/2026). Placée juste sous la ligne
-    « 💵 Position du prix ». INFORMATIVE — n'ajoute AUCUNE règle, ne bloque aucun
-    achat. Niveau : ✅ favorable (20-40), 🟡 neutre (40-60), 🔴 défavorable
-    (0-20 et 60-80), ⚪ non concluant (80-100, moins de 10 cas).
+    (12/11/2026) CORRECTION DE FOND. Cette ligne utilisait les taux de ZONES_MESUREES,
+    mesurés TOUS SCHÉMAS CONFONDUS sur 10 épisodes. Une alerte « rachat de panique »
+    affichait donc « ✅ favorable — 100 % de réussite sur 10 cas, gain médian +88 % »,
+    alors que la mesure pour ce schéma dans cette zone est 61 % sur 39 cas, médiane +13 %.
+    Un verdict ne doit jamais décrire une autre population que celle de l'alerte.
+    Sous SEUIL_CAS_ZONE cas POUR CE SCHÉMA, le niveau est ⚪ et l'effectif est annoncé.
     """
     zl = b.get("zone_label")
-    if zl not in VERDICT_PRIX or zl not in ZONES_MESUREES:
+    if zl not in VERDICT_PRIX:
         return ""
     emoji, mot = VERDICT_PRIX[zl]
-    m = ZONES_MESUREES[zl]
-    if zl == "FORCE":
-        taux = f"aucun cas concluant ({m['n']} cas)"
-    else:
-        signe = "−" if m["median"] < 0 else "+"
-        taux = (f"{m['win']} % de réussite sur {m['n']} cas, "
-                f"gain médian {signe}{abs(m['median']):.0f} %")
-    pourquoi = f" : {m['pourquoi']}" if m.get("pourquoi") else ""
-    return f"   {emoji} Verdict prix : {mot} — zone {m['plage']} : {taux}{pourquoi}"
+    zs = b.get("zone_stats") or {}
+    n = int(zs.get("n") or 0)
+    plage = (ZONES_MESUREES.get(zl) or {}).get("plage", "")
+    if n < SEUIL_CAS_ZONE:
+        return (f"   ⚪ Verdict prix : non concluant POUR CE SCHÉMA — zone {plage} : "
+                f"{n} cas seulement (moins de {SEUIL_CAS_ZONE}), aucune conclusion chiffrée")
+    win = (zs.get("win_12m") or 0.0) * 100
+    med = (zs.get("median_net_12m") or 0.0) * 100
+    signe = "−" if med < 0 else "+"
+    return (f"   {emoji} Verdict prix : {mot} — zone {plage} POUR CE SCHÉMA : "
+            f"{win:.0f} % de réussite sur {n} cas, gain médian {signe}{abs(med):.0f} %")
 
 
 def build_message(f: FicheSpec) -> str:

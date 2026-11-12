@@ -79,19 +79,35 @@ def test_aucun_taux_codé_83_nulle_part():
 
 
 def test_verdict_prix_niveau_par_zone():
-    assert "✅ Verdict prix : favorable" in format_verdict_prix({"zone_label": "BAS_SOLIDE"})
-    assert "🟡 Verdict prix : neutre" in format_verdict_prix({"zone_label": "MILIEU"})
-    assert "🔴 Verdict prix : défavorable" in format_verdict_prix({"zone_label": "BAS_ECRASE"})
-    assert "🔴 Verdict prix : défavorable" in format_verdict_prix({"zone_label": "HAUT_FRAGILE"})
-    assert "⚪ Verdict prix : non concluant" in format_verdict_prix({"zone_label": "FORCE"})
+    """Le niveau visuel vient de la ZONE ; le taux affiché vient du SCHÉMA COURANT."""
+    stats = {"n": 40, "win_12m": 0.55, "median_net_12m": 0.05}
+    cas = {"BAS_SOLIDE": "✅", "MILIEU": "🟡", "BAS_ECRASE": "🔴",
+           "HAUT_FRAGILE": "🔴", "FORCE": "✅"}
+    for zl, emoji in cas.items():
+        t = format_verdict_prix({"zone_label": zl, "zone_stats": stats})
+        assert f"{emoji} Verdict prix" in t, f"{zl} devrait porter {emoji} : {t}"
 
 
 def test_verdict_prix_porte_effectif_et_gain_median():
-    t = format_verdict_prix({"zone_label": "HAUT_FRAGILE"})
-    assert "sur 7 cas" in t
-    assert "−33 %" in t
-    t2 = format_verdict_prix({"zone_label": "FORCE"})
-    assert "aucun cas concluant (2 cas)" in t2
+    t = format_verdict_prix({"zone_label": "HAUT_FRAGILE",
+                             "zone_stats": {"n": 28, "win_12m": 0.50, "median_net_12m": 0.017}})
+    assert "sur 28 cas" in t
+    assert "gain médian +2 %" in t
+    assert "POUR CE SCHÉMA" in t
+
+
+def test_verdict_prix_non_concluant_sous_le_seuil_pour_ce_schema():
+    """(12/11/2026) Le défaut corrigé : une zone mesurée « 100 % sur 10 cas » TOUS SCHÉMAS
+    était affichée comme ✅ sur une alerte dont le schéma n'avait que 3 cas. Sous
+    SEUIL_CAS_ZONE cas POUR CE SCHÉMA, la ligne doit dire « non concluant » et annoncer
+    l'effectif — jamais afficher le taux d'une autre population."""
+    t = format_verdict_prix({"zone_label": "BAS_SOLIDE",
+                             "zone_stats": {"n": 3, "win_12m": 1.0, "median_net_12m": 0.88}})
+    assert "⚪ Verdict prix : non concluant" in t
+    assert "3 cas seulement" in t
+    assert "100 %" not in t
+    # sans aucune statistique de zone, on s'abstient aussi
+    assert "non concluant" in format_verdict_prix({"zone_label": "BAS_SOLIDE"})
 
 
 def test_verdict_prix_ligne_placee_juste_apres_position_prix():

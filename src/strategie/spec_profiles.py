@@ -143,20 +143,21 @@ def load_profiles() -> dict:
             log.warning("spec_profiles.json illisible (%s) — repli sur les stats figées", exc)
     else:
         log.warning("spec_profiles.json absent — repli sur les stats figées (16-17/09/2026)")
-    # Fallback : valeurs RE-MESURÉES le 02/11/2026 (44 séries, 51 cas, cache courant).
-    # Ce bloc portait auparavant des chiffres du 16-17/09/2026 ET un dictionnaire « ZONES »
-    # mort qui contenait le fameux « FORCE 83 % » — deux jeux de chiffres faux qui ne
-    # correspondaient plus aux données et pouvaient ressortir un jour. Le marqueur
-    # _fallback reste : l'affichage de la fiche le signale déjà comme non re-mesuré.
+    # Fallback : valeurs RE-MESURÉES le 12/11/2026 (cache courant, espacement réparé).
+    # L'ancien bloc portait CASSURE n=5 / EVEIL n=28 / PANIQUE n=18 : ces effectifs venaient
+    # d'un bug d'espacement (le compteur était partagé entre titres). Après correctif :
+    # 257 / 934 / 421 — et les médianes s'effondrent (+105 % -> +18 %, +21 % -> +5 %), ce qui
+    # illustre le biais de petit échantillon. "zones" reste vide ici : sans le fichier
+    # calibré, la fiche s'abstient (⚪ non concluant) plutôt que d'inventer une zone.
     return {
         "_fallback": True,
-        "CASSURE": {"n": 5, "win_12m": 0.80, "median_net_12m": 1.054,
-                    "touched": {"0.10": 1.00, "0.20": 0.80, "0.35": 0.80,
-                                "0.50": 0.80, "1.00": 0.80}},
-        "EVEIL": {"n": 28, "win_12m": 0.607, "median_net_12m": 0.214,
-                  "touched": {"0.10": 0.857, "0.20": 0.786, "0.35": 0.679,
-                              "0.50": 0.571, "1.00": 0.321}},
-        "PANIQUE": {"n": 18, "win_12m": 0.50, "median_net_12m": 0.020,
-                    "touched": {"0.10": 0.889, "0.20": 0.778, "0.35": 0.556,
-                                "0.50": 0.444, "1.00": 0.167}},
+        "CASSURE": {"n": 257, "win_12m": 0.673, "median_net_12m": 0.183,
+                    "touched": {"0.10": 0.844, "0.20": 0.708, "0.35": 0.568,
+                                "0.50": 0.444, "1.00": 0.198}, "zones": {}},
+        "EVEIL": {"n": 934, "win_12m": 0.55, "median_net_12m": 0.053,
+                  "touched": {"0.10": 0.756, "0.20": 0.6, "0.35": 0.451,
+                              "0.50": 0.353, "1.00": 0.175}, "zones": {}},
+        "PANIQUE": {"n": 421, "win_12m": 0.511, "median_net_12m": 0.019,
+                    "touched": {"0.10": 0.758, "0.20": 0.582, "0.35": 0.399,
+                                "0.50": 0.311, "1.00": 0.138}, "zones": {}},
     }

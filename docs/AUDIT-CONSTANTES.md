@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**238 définitions** pour **222 constantes distinctes**.
+**239 définitions** pour **223 constantes distinctes**.
 
 ---
 
@@ -133,7 +133,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (128)
+### autre (129)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -253,7 +253,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TOLERANCE_RATIO` | `0.05` | src.ajustement |
 | `TRAILING` | `0.1` | src.strategie.speculation |
 | `TVA_RATE` | `0.18` | src.taxation |
-| `VERDICT_PRIX` | `{'BAS_SOLIDE': ['✅', 'favorable'], 'MILIEU': ['🟡', 'neutre'], 'BAS_ECRASE': ['🔴', 'défavorable'], 'HAUT_FRAGILE': ['🔴', 'défavorable'], 'FORCE': ['⚪', 'non concluant']}` | src.strategie.spec_fiche |
+| `VERDICT_PRIX` | `{'BAS_SOLIDE': ['✅', 'favorable'], 'MILIEU': ['🟡', 'neutre'], 'BAS_ECRASE': ['🔴', 'défavorable'], 'HAUT_FRAGILE': ['🔴', 'défavorable'], 'FORCE': ['✅', 'favorable']}` | src.strategie.spec_fiche |
 | `VOISINS` | `20` | src.collecte.nettoyage_aberrantes |
 | `ZONES_MESUREES` | `{'BAS_ECRASE': {'n': 19, 'win': 53, 'median': 56.8, 'plage': '0-20', 'pourquoi': '« pas cher » ne paie pas vraiment'}, 'BAS_SOLIDE': {'n': 10, 'win': 100, 'median': 87.9, 'plage': '20-40', 'pourquoi': 'la meilleure zone mesurée'}, 'MILIEU': {'n': 13, 'win': 62, 'median': 11.2, 'plage': '40-60', 'pourquoi': 'ni bonne ni mauvaise'}, 'HAUT_FRAGILE': {'n': 7, 'win': 14, 'median': -32.9, 'plage': '60-80', 'pourquoi': "historiquement la pire zone, les anciens champions qui s'essoufflent"}, 'FORCE': {'n': 2, 'win': 50, 'median': 13.4, 'plage': '80-100', 'pourquoi': ''}}` | src.strategie.spec_fiche |
 | `ZONE_BAS_ECRASE` | `[0.0, 0.2]` | src.strategie.spec_profiles |
@@ -265,6 +265,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `ZONE_FORCE` | `[0.8, 1.01]` | src.strategie.spec_profiles |
 | `ZONE_HAUT_FRAGILE` | `[0.6, 0.8]` | src.strategie.spec_profiles |
 | `ZONE_LABELS` | `<expression: {code: (ZONE_EMOJIS[code], _texte_zone(code)) for code in ZO>` | src.strategie.spec_fiche |
+| `ZONE_TRANCHE` | `{'BAS_ECRASE': '0-20', 'BAS_SOLIDE': '20-40', 'MILIEU': '40-60', 'HAUT_FRAGILE': '60-80', 'FORCE': '80-100'}` | src.strategie.spec_fiche |
 
 ### concentration (4)
 

@@ -402,8 +402,8 @@
    "favorable"
   ],
   "FORCE": [
-   "⚪",
-   "non concluant"
+   "✅",
+   "favorable"
   ],
   "HAUT_FRAGILE": [
    "🔴",
@@ -486,6 +486,13 @@
    "🟡 MILIEU DE FOURCHETTE",
    "40-60 % de la fourchette : 62 % de réussite sur 13 cas observés — ni bonne ni mauvaise"
   ]
+ },
+ "src.strategie.spec_fiche.ZONE_TRANCHE": {
+  "BAS_ECRASE": "0-20",
+  "BAS_SOLIDE": "20-40",
+  "FORCE": "80-100",
+  "HAUT_FRAGILE": "60-80",
+  "MILIEU": "40-60"
  },
  "src.strategie.spec_profiles.HORIZON": 252,
  "src.strategie.spec_profiles.PROFILES_FILE": "<Path spec_profiles.json>",
