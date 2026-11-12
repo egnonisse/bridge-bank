@@ -12,6 +12,8 @@
    "p50_avant_stop": 0.378,
    "p50_touche_sans_contrainte": 0.434
   },
+  "n_horizon_incomplet": 0,
+  "pct_horizon_incomplet": 0.0,
   "zones": {
    "0-20": {
     "n": 35,
@@ -58,6 +60,8 @@
    "p50_avant_stop": 0.303,
    "p50_touche_sans_contrainte": 0.358
   },
+  "n_horizon_incomplet": 0,
+  "pct_horizon_incomplet": 0.0,
   "zones": {
    "0-20": {
     "n": 352,
@@ -104,6 +108,8 @@
    "p50_avant_stop": 0.242,
    "p50_touche_sans_contrainte": 0.321
   },
+  "n_horizon_incomplet": 0,
+  "pct_horizon_incomplet": 0.0,
   "zones": {
    "0-20": {
     "n": 221,

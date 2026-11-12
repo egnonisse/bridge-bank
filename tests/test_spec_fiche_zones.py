@@ -77,13 +77,24 @@ def test_aucun_taux_code_en_dur_ne_survit_dans_la_fiche():
 
 
 def test_verdict_prix_niveau_par_zone():
-    """Le niveau visuel vient de la ZONE ; le taux affiché vient du SCHÉMA COURANT."""
-    stats = {"n": 40, "win_12m": 0.55, "median_net_12m": 0.05}
-    cas = {"BAS_SOLIDE": "✅", "MILIEU": "🟡", "BAS_ECRASE": "🔴",
-           "HAUT_FRAGILE": "🔴", "FORCE": "✅"}
-    for zl, emoji in cas.items():
-        t = format_verdict_prix({"zone_label": zl, "zone_stats": stats})
-        assert f"{emoji} Verdict prix" in t, f"{zl} devrait porter {emoji} : {t}"
+    """Le niveau suit le TAUX MESURÉ, pas la zone — correctif du 12/11/2026."""
+    for win, emoji, mot in ((0.65, "✅", "favorable"), (0.55, "🟡", "neutre"),
+                            (0.45, "🔴", "défavorable")):
+        t = format_verdict_prix({"zone_label": "BAS_SOLIDE",
+                                 "zone_stats": {"n": 40, "win_12m": win, "median_net_12m": 0.05}})
+        assert f"{emoji} Verdict prix : {mot}" in t, f"win={win} devrait porter {emoji} : {t}"
+
+
+def test_la_zone_ne_commande_plus_la_couleur():
+    """Le défaut d'origine : la zone 60-80 s'affichait 🔴 en annonçant 66 % de réussite.
+    Désormais deux zones différentes avec le MÊME taux portent la même couleur, et c'est le
+    taux qui décide."""
+    stats_bon = {"n": 40, "win_12m": 0.66, "median_net_12m": 0.12}
+    a = format_verdict_prix({"zone_label": "HAUT_FRAGILE", "zone_stats": stats_bon})
+    b = format_verdict_prix({"zone_label": "BAS_SOLIDE", "zone_stats": stats_bon})
+    assert "✅" in a and "✅" in b          # 66 % => favorable, quelle que soit la zone
+    assert "60-80" in a and "20-40" in b   # mais la zone reste nommée
+    assert "🔴" not in a
 
 
 def test_verdict_prix_porte_effectif_et_gain_median():
