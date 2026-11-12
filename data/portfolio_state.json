@@ -1,5 +1,5 @@
 {
-  "cash": 199718.0,
+  "cash": 742738.0,
   "obligations": [],
   "history": [
     {
@@ -97,8 +97,25 @@
       "spec": 32000.0,
       "bonds": 0,
       "cash": 699718.0
+    },
+    {
+      "date": "2026-11-12",
+      "total": 1589219.0,
+      "stocks": 725685.0,
+      "spec": 36000.0,
+      "bonds": 0,
+      "cash": 742738.0,
+      "instance_reglement": 84796.0,
+      "apport": 544500.0
     }
   ],
-  "_definition_cash": "cash = liquidité DÉPLOYABLE du compte titres. Retrait de 500 000 F SORTI le 30/10/2026 (relevé : « Produit de cessions en attente : 0 », « Blocage retrait : 0 ») -> plus aucune somme en instance. 'report cash' remplace ce champ.",
-  "retrait_en_cours": 0
+  "_definition_cash": "cash = liquidite DEPLOYABLE du compte titres. 12/11/2026 : 742 738 disponibles + 84 796 en instance (vente SLBC, J+3). Apport de 544 500 F enregistre dans apports[] — jamais compte comme performance.",
+  "retrait_en_cours": 0,
+  "apports": [
+    {
+      "date": "2026-11-12",
+      "montant": 544500.0,
+      "motif": "nouvel apport LEO (declare le 12/11/2026)"
+    }
+  ]
 }

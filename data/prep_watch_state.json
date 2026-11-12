@@ -1,12 +1,1 @@
-{
-  "SMBC": {
-    "limit": 11137.40959894806,
-    "name": "SMB CI"
-  },
-  "SNTS": {
-    "limit": 35744.57593688363,
-    "name": "SONATEL SN",
-    "alerted_at": "2026-11-06T09:08:29.437770",
-    "alerted_price": 4050.0
-  }
-}
+{}
