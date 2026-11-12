@@ -461,31 +461,9 @@
  "src.strategie.spec_fiche.ZONE_EMOJIS": {
   "BAS_ECRASE": "🔴 ZONE PIÈGE",
   "BAS_SOLIDE": "✅ ZONE BASSE MAIS SAINE",
-  "FORCE": "⚪ ZONE DE FORCE",
+  "FORCE": "✅ ZONE DE FORCE",
   "HAUT_FRAGILE": "🔴 ZONE DANGER",
   "MILIEU": "🟡 MILIEU DE FOURCHETTE"
- },
- "src.strategie.spec_fiche.ZONE_LABELS": {
-  "BAS_ECRASE": [
-   "🔴 ZONE PIÈGE",
-   "les 20 % du bas : 53 % de réussite sur 19 cas observés — « pas cher » ne paie pas vraiment"
-  ],
-  "BAS_SOLIDE": [
-   "✅ ZONE BASSE MAIS SAINE",
-   "20-40 % de la fourchette : 100 % de réussite sur 10 cas observés — la meilleure zone mesurée"
-  ],
-  "FORCE": [
-   "⚪ ZONE DE FORCE",
-   "le prix est près de son plus haut de 5 ans : aucun cas concluant (2 cas) — échantillon insuffisant, à prendre comme une indication"
-  ],
-  "HAUT_FRAGILE": [
-   "🔴 ZONE DANGER",
-   "60-80 % de la fourchette : 14 % de réussite sur 7 cas observés — échantillon insuffisant, à prendre comme une indication — historiquement la pire zone, les anciens champions qui s'essoufflent"
-  ],
-  "MILIEU": [
-   "🟡 MILIEU DE FOURCHETTE",
-   "40-60 % de la fourchette : 62 % de réussite sur 13 cas observés — ni bonne ni mauvaise"
-  ]
  },
  "src.strategie.spec_fiche.ZONE_TRANCHE": {
   "BAS_ECRASE": "0-20",

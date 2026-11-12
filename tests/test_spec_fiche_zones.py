@@ -15,7 +15,7 @@ import pytest  # noqa: E402
 
 from src.strategie.spec_fiche import (  # noqa: E402
     SEUIL_CAS_ZONE,
-    ZONE_LABELS,
+    _texte_zone,
     build_fiche,
     format_verdict_prix,
 )
@@ -35,47 +35,45 @@ def test_seuil_cas_zone_vaut_10():
     assert SEUIL_CAS_ZONE == 10
 
 
-def test_zone_force_n_affiche_plus_83_mais_aucun_cas_concluant():
-    _label, txt = ZONE_LABELS["FORCE"]
+def test_zone_force_n_affiche_plus_83_mais_l_effectif_reel():
+    """(12/11/2026) La zone 80-100 n'est plus « aucun cas concluant » : après réparation
+    de l'espacement du calibrage, ses effectifs sont réels. Le 83 % codé en dur reste banni."""
+    txt = _texte_zone("FORCE", {"n": 91, "win_12m": 0.67, "median_net_12m": 0.18})
     assert "83" not in txt
-    assert "aucun cas concluant (2 cas)" in txt
-    assert "échantillon insuffisant" in txt          # 2 cas < 10
+    assert "67 % de réussite sur 91 cas" in txt
+    assert "gain médian +18 %" in txt
 
 
-def test_zone_haut_fragile_affiche_14_pct_sur_7_cas():
-    _label, txt = ZONE_LABELS["HAUT_FRAGILE"]
-    assert "14 % de réussite sur 7 cas" in txt
-    assert "échantillon insuffisant" in txt          # 7 cas < 10
-    assert "s'essoufflent" in txt
+def test_zone_sans_effectif_suffisant_s_abstient():
+    """Sous SEUIL_CAS_ZONE cas POUR CE SCHÉMA : aucun taux, seulement l'effectif."""
+    for n in (0, 3, 9):
+        txt = _texte_zone("BAS_SOLIDE", {"n": n, "win_12m": 1.0, "median_net_12m": 0.88})
+        assert "cas seulement POUR CE SCHÉMA" in txt
+        assert "100 %" not in txt
+        assert "réussite" not in txt
 
 
-def test_zone_bas_ecrase_affiche_53_pct_sur_19_cas_sans_insuffisant():
-    _label, txt = ZONE_LABELS["BAS_ECRASE"]
-    assert "53 % de réussite sur 19 cas" in txt
-    assert "échantillon insuffisant" not in txt      # 19 cas >= 10
+def test_zone_haut_fragile_porte_son_contexte_et_son_effectif():
+    txt = _texte_zone("HAUT_FRAGILE", {"n": 28, "win_12m": 0.50, "median_net_12m": 0.017})
+    assert "60-80" in txt
+    assert "50 % de réussite sur 28 cas" in txt
 
 
-def test_zone_bas_solide_affiche_100_pct_sur_10_cas():
-    _label, txt = ZONE_LABELS["BAS_SOLIDE"]
-    assert "100 % de réussite sur 10 cas" in txt
-    assert "échantillon insuffisant" not in txt      # 10 n'est pas < 10
+def test_zone_bas_ecrase_affiche_la_mesure_reelle_de_panique():
+    """PANIQUE en zone 0-20 : 317 cas, 48 %, médiane négative — « pas cher ne paie pas »."""
+    txt = _texte_zone("BAS_ECRASE", {"n": 317, "win_12m": 0.483, "median_net_12m": -0.035})
+    assert "48 % de réussite sur 317 cas" in txt
+    assert "gain médian −4 %" in txt
 
 
-def test_zone_milieu_affiche_62_pct_sur_13_cas():
-    _label, txt = ZONE_LABELS["MILIEU"]
-    assert "62 % de réussite sur 13 cas" in txt
-    assert "échantillon insuffisant" not in txt
-
-
-def test_aucun_taux_codé_83_nulle_part():
-    for _label, txt in ZONE_LABELS.values():
-        assert "83 %" not in txt
-        assert "80 % de réussite" not in txt         # l'ancien 80 % a disparu
+def test_aucun_taux_code_en_dur_ne_survit_dans_la_fiche():
     closes = [100.0] * 300 + [150.0]                 # CASSURE -> fiche complète
     f = build_fiche("TEST", "Test", closes)
     assert f is not None
-    assert "83 %" not in f.message()
-    assert "0 gagnant sur 4" not in f.message()
+    msg = f.message()
+    assert "83 %" not in msg
+    assert "0 gagnant sur 4" not in msg
+    assert "100 % de réussite sur 10 cas" not in msg   # l'ancien chiffre tous schémas
 
 
 def test_verdict_prix_niveau_par_zone():

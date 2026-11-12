@@ -62,11 +62,13 @@ ZONE_CONTEXTES = {
     "BAS_ECRASE":   "les 20 % du bas",
 }
 
-# Émoji de zone aligné sur le verdict mesuré : avant, « ✅ ZONE DE FORCE » vantait
-# une « meilleure zone » fondée sur le 83 % infondé (2 cas). Le ✅ passe à la zone
-# réellement la meilleure (20-40), la FORCE devient ⚪ (aucune conclusion).
+# Émoji de zone aligné sur le verdict mesuré. Historique : « ✅ ZONE DE FORCE » vantait
+# une « meilleure zone » fondée sur un 83 % infondé (2 cas) ; le ✅ était passé au 20-40.
+# (12/11/2026) Après réparation de l'espacement du calibrage, la zone 80-100 est MESURÉE
+# meilleure (91 cas EVEIL à 67 %, médiane +18 %) : elle récupère son ✅, et le 20-40 le
+# garde (61 % sur 39 cas pour la panique). Deux zones peuvent être favorables.
 ZONE_EMOJIS = {
-    "FORCE":        "⚪ ZONE DE FORCE",
+    "FORCE":        "✅ ZONE DE FORCE",
     "BAS_SOLIDE":   "✅ ZONE BASSE MAIS SAINE",
     "MILIEU":       "🟡 MILIEU DE FOURCHETTE",
     "HAUT_FRAGILE": "🔴 ZONE DANGER",
@@ -98,33 +100,26 @@ VERDICT_PRIX = {
 }
 
 
-def _taux_zone(code: str) -> str:
-    """Taux mesuré d'une zone, TOUJOURS avec son effectif.
+def _texte_zone(zone_code: str, zone_stats: dict | None = None) -> str:
+    """Descriptif néophyte d'une zone : contexte + taux MESURÉ POUR CE SCHÉMA + effectif.
 
-    La zone FORCE (2 cas) dit « aucun cas concluant (2 cas) » : le « 83 % » codé
-    en dur était infondé (2 cas seulement) — l'aveu honnête, pas un chiffre
-    rassurant.
+    (12/11/2026) Cette ligne lisait ZONES_MESUREES, mesuré TOUS SCHÉMAS CONFONDUS : elle
+    affichait « 100 % de réussite sur 10 cas » sur une alerte de rachat de panique dont le
+    taux réel est 61 % sur 39 cas. Elle reçoit désormais les stats du schéma courant
+    (`prof[schéma]["zones"][tranche]`), et sous SEUIL_CAS_ZONE cas elle s'abstient au lieu
+    d'emprunter le chiffre d'une autre population.
     """
-    m = ZONES_MESUREES[code]
-    if code == "FORCE":
-        return f"aucun cas concluant ({m['n']} cas)"
-    return f"{m['win']} % de réussite sur {m['n']} cas observés"
-
-
-def _texte_zone(code: str) -> str:
-    """Descriptif néophyte d'une zone : contexte + taux (avec effectif) + pourquoi.
-
-    Sous SEUIL_CAS_ZONE cas, ajouter « échantillon insuffisant » — un taux sans
-    effectif est un chiffre nu (règle : ne pas inventer, ne pas rassurer).
-    """
-    m = ZONES_MESUREES[code]
-    insuff = (" — échantillon insuffisant, à prendre comme une indication"
-              if m["n"] < SEUIL_CAS_ZONE else "")
-    pourquoi = f" — {m['pourquoi']}" if m.get("pourquoi") else ""
-    return f"{ZONE_CONTEXTES[code]} : {_taux_zone(code)}{insuff}{pourquoi}"
-
-
-ZONE_LABELS = {code: (ZONE_EMOJIS[code], _texte_zone(code)) for code in ZONE_EMOJIS}
+    contexte = ZONE_CONTEXTES[zone_code]
+    stats = zone_stats or {}
+    n = int(stats.get("n") or 0)
+    if n < SEUIL_CAS_ZONE:
+        return (f"{contexte} : {n} cas seulement POUR CE SCHÉMA — aucune conclusion "
+                f"chiffrée tirée de cet échantillon")
+    win = (stats.get("win_12m") or 0.0) * 100
+    med = (stats.get("median_net_12m") or 0.0) * 100
+    signe = "−" if med < 0 else "+"
+    return (f"{contexte} : {win:.0f} % de réussite sur {n} cas observés, "
+            f"gain médian {signe}{abs(med):.0f} %")
 
 
 # Chantier « prix des alertes spé » (09/11/2026) : un percentile « sur 5 ans » exige
@@ -308,7 +303,8 @@ def format_verdict_prix(b: dict) -> str:
 def build_message(f: FicheSpec) -> str:
     b = f.blocks
     main = b["main"]
-    zlabel, ztxt = ZONE_LABELS[b["zone_label"]]
+    zlabel = ZONE_EMOJIS[b["zone_label"]]
+    ztxt = _texte_zone(b["zone_label"], b.get("zone_stats"))
     touched = b["touched"]
     mot = SCHEMA_WORDS.get(main, main.lower())
     # « rare » n'est vrai que pour la cassure — l'éveil est une marée

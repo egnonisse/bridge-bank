@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**239 définitions** pour **223 constantes distinctes**.
+**238 définitions** pour **222 constantes distinctes**.
 
 ---
 
@@ -133,7 +133,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (129)
+### autre (128)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -261,10 +261,9 @@ chemin distinct dans chaque module). Rien à corriger.
 | `ZONE_CONTEXTES` | `{'FORCE': 'le prix est près de son plus haut de 5 ans', 'BAS_SOLIDE': '20-40 % de la fourchette', 'MILIEU': '40-60 % de la fourchette', 'HAUT_FRAGILE': '60-80 % de la fourchette', 'BAS_ECRASE': 'les 20 % du bas'}` | src.strategie.spec_fiche |
 | `ZONE_DEAD_INFO_DAYS` | `60` | src.strategie.speculation |
 | `ZONE_DEAD_REVIEW_DAYS` | `120` | src.strategie.speculation |
-| `ZONE_EMOJIS` | `{'FORCE': '⚪ ZONE DE FORCE', 'BAS_SOLIDE': '✅ ZONE BASSE MAIS SAINE', 'MILIEU': '🟡 MILIEU DE FOURCHETTE', 'HAUT_FRAGILE': '🔴 ZONE DANGER', 'BAS_ECRASE': '🔴 ZONE PIÈGE'}` | src.strategie.spec_fiche |
+| `ZONE_EMOJIS` | `{'FORCE': '✅ ZONE DE FORCE', 'BAS_SOLIDE': '✅ ZONE BASSE MAIS SAINE', 'MILIEU': '🟡 MILIEU DE FOURCHETTE', 'HAUT_FRAGILE': '🔴 ZONE DANGER', 'BAS_ECRASE': '🔴 ZONE PIÈGE'}` | src.strategie.spec_fiche |
 | `ZONE_FORCE` | `[0.8, 1.01]` | src.strategie.spec_profiles |
 | `ZONE_HAUT_FRAGILE` | `[0.6, 0.8]` | src.strategie.spec_profiles |
-| `ZONE_LABELS` | `<expression: {code: (ZONE_EMOJIS[code], _texte_zone(code)) for code in ZO>` | src.strategie.spec_fiche |
 | `ZONE_TRANCHE` | `{'BAS_ECRASE': '0-20', 'BAS_SOLIDE': '20-40', 'MILIEU': '40-60', 'HAUT_FRAGILE': '60-80', 'FORCE': '80-100'}` | src.strategie.spec_fiche |
 
 ### concentration (4)
