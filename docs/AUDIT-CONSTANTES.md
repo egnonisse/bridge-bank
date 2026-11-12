@@ -177,7 +177,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `HISTORY_DAYS` | `90` | src.analyse.screening |
 | `HISTORY_START` | `20170101` | src.collecte.backtest |
 | `HOLDING_YEARS` | `3` | src.portfolio |
-| `HORIZON` | `252` | src.strategie.spec_profiles |
+| `HORIZON_JOURS` | `365` | src.strategie.spec_profiles |
 | `INACTIF_APRES_JOURS` | `8` | src.collecte.backtest |
 | `INDICATEURS` | `{'r5': 'rendement sur 5 seances', 'r20': 'rendement sur 20 seances', 'r60': 'rendement sur 60 seances', 'r120': 'rendement sur 120 seances', 'r250': 'rendement sur 250 seances', 'vol60': 'volatilite annualisee sur 60 seances', 'dd250': 'distance au plus haut des 250 seances (negatif)', 'dd_atl': 'drawdown depuis le plus haut historique (negatif)', 'pos5a': 'position dans la fourchette 5 ans', 'prix_vs_mm50': 'cours / moyenne mobile 50 seances - 1', 'prix_vs_mm200': 'cours / moyenne mobile 200 seances - 1', 'vol_ratio': 'volume du jour / volume median 60 seances - 1', 'per': 'PER (cours / benefice par action)', 'net_yield': 'rendement net du dividende', 'payout': 'dividende / benefice'}` | src.backtesting.challenge_schema |
 | `LEVEL_DECISION` | `2` | src.portfolio |

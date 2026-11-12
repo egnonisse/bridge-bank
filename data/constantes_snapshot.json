@@ -479,7 +479,7 @@
   "HAUT_FRAGILE": "60-80",
   "MILIEU": "40-60"
  },
- "src.strategie.spec_profiles.HORIZON": 252,
+ "src.strategie.spec_profiles.HORIZON_JOURS": 365,
  "src.strategie.spec_profiles.PROFILES_FILE": "<Path spec_profiles.json>",
  "src.strategie.spec_profiles.ZONE_BAS_ECRASE": [
   0.0,

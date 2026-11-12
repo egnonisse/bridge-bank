@@ -44,6 +44,7 @@ propriétaire des CSV de audit/spec_export/). Usage :
 """
 from __future__ import annotations
 
+import datetime
 import statistics
 import sys
 from pathlib import Path
@@ -52,8 +53,8 @@ RACINE = Path("C:/Users/LEO/projects/Bridge Bank")
 sys.path.insert(0, str(RACINE))
 
 from src.collecte.preparation import charger_historique_propre          # noqa: E402
-from src.strategie.spec_profiles import (FRAIS, HORIZON, detect_schemas,  # noqa: E402
-                                         zone_of)
+from src.strategie.spec_profiles import (FRAIS, HORIZON_JOURS, detect_schemas,  # noqa: E402
+                                         zone_of, index_fin_horizon, fenetre_complete)
 from src.taxation import commission                                      # noqa: E402
 
 STOP = 0.15
@@ -178,16 +179,22 @@ for code, bars in hist.items():
     vols = [float(getattr(b, "volume", 0) or 0) for b in bars]
     if len(closes) < 500 or closes[0] <= 0:
         continue
+    dates = [b.date if isinstance(b.date, datetime.date)
+             else datetime.date.fromisoformat(str(b.date)[:10]) for b in bars]
     dernier = {s: -10**9 for s in SCHEMAS}
     for i in range(260, len(closes) - 1):
+        # Horizon CALENDAIRE (365 jours) au lieu de 252 seances : voir HORIZON_JOURS.
+        j_fin = index_fin_horizon(dates, i)
+        if not fenetre_complete(dates, i, j_fin):
+            continue
         schemas = detect_schemas(closes[: i + 1])
         if not schemas:
             continue
         zone = zone_of(closes[: i + 1])
         entry = closes[i]
-        futur = closes[i + 1: i + HORIZON + 1]
-        futvols = vols[i + 1: i + HORIZON + 1]
-        complet = len(futur) == HORIZON
+        futur = closes[i + 1: j_fin + 1]
+        futvols = vols[i + 1: j_fin + 1]
+        complet = True
         for s in schemas:
             if i - dernier[s] < ESPACEMENT:
                 continue

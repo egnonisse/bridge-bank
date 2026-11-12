@@ -8,6 +8,8 @@ Trois schémas éprouvés (épreuves 10 ans, net de frais 2,8 %) :
 Les statistiques globales (n, taux de réussite, médiane, paliers touchés)
 sont CALIBRÉES par scripts/calibrate_spec_profiles.py → data/spec_profiles.json.
 """
+import bisect
+import datetime
 import json
 import logging
 import statistics
@@ -24,7 +26,50 @@ ZONE_BAS_SOLIDE = (0.20, 0.40)    # bas sans être écrasé (80 %)
 ZONE_BAS_ECRASE = (0.0, 0.20)     # piège (50 %)
 
 from ..regles import FRAIS_ALLER_RETOUR as FRAIS  # noqa: E402
-HORIZON = 252
+
+# HORIZON_JOURS remplace l'ancien HORIZON = 252 (SEANCES), qui etait faux de ~15 jours.
+#
+# Mesure du 12/11/2026 sur les 1 615 cas : une annee calendaire ne contient qu'une MEDIANE
+# DE 240 SEANCES sur la BRVM (min 69, max 249), et 1 615 cas sur 1 615 ont MOINS de 252
+# seances dans 365 jours. Mesurer sur 252 seances revenait donc a mesurer sur ~380 jours,
+# soit 13 mois. Effet mesure (252 seances -> 365 jours calendaires) :
+#   CASSURE  mediane +16,3 % -> +17,1 % | reussite 65,9 % -> 68,2 %  (stable)
+#   EVEIL    mediane  +5,9 % ->  +3,5 % | reussite 55,6 % -> 54,2 %  (favorable -> neutre)
+#   PANIQUE  mediane  +3,2 % ->  -0,6 % | reussite 52,2 % -> 49,3 %  (neutre -> defavorable)
+# L'ecart MOYEN atteint -12,3 points sur PANIQUE alors que l'ecart MEDIAN est nul : les trois
+# mois de fenetre en trop laissaient courir les cas extremes jusqu'a un pic. C'est le biais
+# que ce changement supprime.
+HORIZON_JOURS = 365
+
+
+def index_fin_horizon(dates, i, jours=HORIZON_JOURS):
+    """Index de la derniere seance dont la date est <= dates[i] + `jours` calendaires.
+
+    `dates` doit etre une liste TRIEE d'objets comparables entre eux (datetime.date de
+    preference). Recherche binaire : O(log n), appelable sur 1 615 cas sans ralentir.
+
+    Renvoie i quand aucune seance ne suit dans la fenetre (fenetre vide) — l'appelant doit
+    alors traiter le cas comme non mature plutot que comme un rendement nul.
+    """
+    limite = dates[i] + datetime.timedelta(days=jours)
+    return bisect.bisect_right(dates, limite) - 1
+
+
+def fenetre_complete(dates, i, j):
+    """Vrai si la fenetre calendaire contient au moins une seance ET est terminee.
+
+    `j > i` est indispensable : quand aucune seance ne suit dans la fenetre,
+    index_fin_horizon renvoie i, la tranche closes[i+1:j+1] serait VIDE, et max() ou
+    futur[-1] levent alors ValueError / IndexError — vecu au premier lancement.
+
+    La fenetre est terminee soit parce qu'une seance existe AU-DELA de la limite
+    (j < len-1), soit parce que la serie s'arrete mais couvre deja les 365 jours.
+    Une fenetre qui s'arrete faute de donnees donne un rendement PARTIEL : la compter
+    comme un rendement a 12 mois surestime les cas recents.
+    """
+    if j <= i:
+        return False
+    return j < len(dates) - 1 or (dates[j] - dates[i]).days >= HORIZON_JOURS
 
 
 def ema(vals, n):
@@ -151,13 +196,13 @@ def load_profiles() -> dict:
     # fichier calibré, la fiche s'abstient (⚪) plutôt que d'inventer une zone.
     return {
         "_fallback": True,
-        "CASSURE": {"n": 267, "win_12m": 0.659, "median_net_12m": 0.163,
-                    "touched": {"0.10": 0.828, "0.20": 0.693, "0.35": 0.558,
-                                "0.50": 0.434, "1.00": 0.199}, "zones": {}},
-        "EVEIL": {"n": 934, "win_12m": 0.556, "median_net_12m": 0.059,
-                  "touched": {"0.10": 0.761, "0.20": 0.606, "0.35": 0.454,
-                              "0.50": 0.358, "1.00": 0.179}, "zones": {}},
-        "PANIQUE": {"n": 414, "win_12m": 0.522, "median_net_12m": 0.032,
-                    "touched": {"0.10": 0.773, "0.20": 0.589, "0.35": 0.408,
-                                "0.50": 0.321, "1.00": 0.147}, "zones": {}},
+        "CASSURE": {"n": 270, "win_12m": 0.681, "median_net_12m": 0.172,
+                    "touched": {"0.10": 0.822, "0.20": 0.685, "0.35": 0.548,
+                                "0.50": 0.433, "1.00": 0.196}, "zones": {}},
+        "EVEIL": {"n": 940, "win_12m": 0.544, "median_net_12m": 0.037,
+                  "touched": {"0.10": 0.745, "0.20": 0.591, "0.35": 0.433,
+                              "0.50": 0.331, "1.00": 0.156}, "zones": {}},
+        "PANIQUE": {"n": 420, "win_12m": 0.498, "median_net_12m": -0.005,
+                    "touched": {"0.10": 0.762, "0.20": 0.564, "0.35": 0.371,
+                                "0.50": 0.276, "1.00": 0.11}, "zones": {}},
     }

@@ -38,6 +38,7 @@ Sortie : audit/spec_export/ (3 CSV + un resume JSON).
 #                           et la fin de fenêtre = (annee_fin - annee_cas)*12 +
 #                           (mois_fin - mois_cas), ~12 (séances = jours ouvrés).
 import csv
+import datetime
 import json
 import statistics
 import sys
@@ -47,7 +48,8 @@ RACINE = Path("C:/Users/LEO/projects/Bridge Bank")
 sys.path.insert(0, str(RACINE))
 from src.infrastructure.paths import HISTORY_CACHE                        # noqa: E402
 from src.collecte.history_io import charger_cache                          # noqa: E402
-from src.strategie.spec_profiles import FRAIS, HORIZON, detect_schemas, zone_of  # noqa: E402
+from src.strategie.spec_profiles import (FRAIS, HORIZON_JOURS, detect_schemas, zone_of,  # noqa: E402
+                                         index_fin_horizon, fenetre_complete)
 
 SORTIE = RACINE / "audit" / "spec_export"
 SORTIE.mkdir(parents=True, exist_ok=True)
@@ -82,16 +84,22 @@ for code, bars in hist.items():
     # doit rejouer EXACTEMENT le même univers que scripts/calibrate_spec_profiles.py.
     closes = [float(b.close) for b in bars]
     vols = [float(getattr(b, "volume", 0) or 0) for b in bars]
+    dates = [b.date if isinstance(b.date, datetime.date)
+             else datetime.date.fromisoformat(str(b.date)[:10]) for b in bars]
     if len(closes) < 500 or closes[0] <= 0:
         continue
     dernier = {"CASSURE": -10**9, "EVEIL": -10**9, "PANIQUE": -10**9}
-    for i in range(260, len(closes) - HORIZON):
+    for i in range(260, len(closes) - 1):
+        # Horizon CALENDAIRE (365 jours) et non 252 seances : voir HORIZON_JOURS.
+        j = index_fin_horizon(dates, i)
+        if not fenetre_complete(dates, i, j):
+            continue            # fenetre non terminee : rendement partiel, cas ecarte
         schemas = detect_schemas(closes[: i + 1])
         if not schemas:
             continue
         zone = zone_of(closes[: i + 1])
         pct = percentile_rang(closes[: i + 1], closes[i])
-        futur = closes[i + 1: i + HORIZON + 1]
+        futur = closes[i + 1: j + 1]
         # parcours jour par jour : ou est le stop, et quand les paliers sont-ils atteints ?
         jour_stop = None
         jour_premier_palier = None   # +10 % : le palier le plus bas de l'échelle
@@ -109,7 +117,7 @@ for code, bars in hist.items():
         pic = max(futur) / closes[i] - 1
         creux = min(futur) / closes[i] - 1
         d_sig = bars[i].date
-        d_fin = bars[i + len(futur)].date
+        d_fin = bars[j].date
         for s in schemas:
             if i - dernier[s] < ESPACEMENT:
                 continue
@@ -135,7 +143,7 @@ for code, bars in hist.items():
                                         if jour_premier_palier else ""),
                 "date_stop": str(bars[i + jour_stop].date)[:10] if jour_stop else "",
                 "seances_ecoulees": len(futur),
-                "horizon_complet": "oui" if len(futur) >= HORIZON else "non",
+                "horizon_complet": "oui" if fenetre_complete(dates, i, j) else "non",
                 "mois_calendaires": (d_fin.year - d_sig.year) * 12
                                     + (d_fin.month - d_sig.month),
             }

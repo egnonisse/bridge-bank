@@ -35,6 +35,7 @@ manque, le script lève une erreur claire au lieu d'inventer un chiffre.
 """
 from __future__ import annotations
 
+import datetime
 import statistics
 import sys
 from pathlib import Path
@@ -45,7 +46,8 @@ sys.path.insert(0, str(RACINE))
 from src.collecte.history_io import charger_cache          # lecture centralisée P6-04
 from src.infrastructure.paths import HISTORY_CACHE         # chemin central (lot 0)
 from src.strategie.spec_profiles import (                  # machinerie existante
-    FRAIS, HORIZON, detect_schemas, zone_of, zone_label,
+    FRAIS, HORIZON_JOURS, detect_schemas, zone_of, zone_label,
+    index_fin_horizon, fenetre_complete,
 )
 
 SCHEMAS = ("CASSURE", "EVEIL", "PANIQUE")
@@ -94,14 +96,21 @@ def mesurer() -> dict:
         if len(closes) < 500 or closes[0] <= 0:
             continue
         series_prises += 1
-        for i in range(260, len(closes) - HORIZON):
+        # dates du titre, pour l'horizon calendaire
+        bars_t = hist[code]
+        dates_t = [b.date if isinstance(b.date, datetime.date)
+                   else datetime.date.fromisoformat(str(b.date)[:10]) for b in bars_t]
+        for i in range(260, len(closes) - 1):
+            j_fin = index_fin_horizon(dates_t, i)
+            if not fenetre_complete(dates_t, i, j_fin):
+                continue
             schemas = detect_schemas(closes[: i + 1])
             if not schemas:
                 continue
             zone = zone_of(closes[: i + 1])
             zl = zone_label(zone)
-            ret = closes[i + HORIZON] / closes[i] - 1 - FRAIS
-            peak = max(closes[i + 1 : i + HORIZON + 1]) / closes[i] - 1
+            ret = closes[j_fin] / closes[i] - 1 - FRAIS
+            peak = max(closes[i + 1 : j_fin + 1]) / closes[i] - 1
             for s in schemas:
                 if i - last_entry[s] < 60:
                     continue

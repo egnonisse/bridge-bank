@@ -49,6 +49,7 @@ audit/spec_export/HORS-PERIODE.md (un seul écrivain : cet agent, fichier P6).
 """
 from __future__ import annotations
 
+import datetime
 import json
 import math
 import statistics
@@ -61,7 +62,8 @@ RACINE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RACINE))
 
 from src.collecte.preparation import charger_historique_propre          # noqa: E402
-from src.strategie.spec_profiles import (FRAIS, HORIZON, rsi, zone_of,  # noqa: E402
+from src.strategie.spec_profiles import (FRAIS, HORIZON_JOURS, rsi, zone_of,  # noqa: E402
+                                         index_fin_horizon, fenetre_complete, detect_schemas,
                                          PROFILES_FILE)
 
 # ── Constantes de la validation ────────────────────────────────────────────────
@@ -169,18 +171,19 @@ def mannwhitney_u(a: list, b: list):
     return (u, z, 2 * (1 - _phi(abs(z))))
 
 
-def p20_avant_stop(closes: list, i: int) -> bool:
+def p20_avant_stop(closes: list, i: int, j_fin: int) -> bool:
     """+20 % atteint à une séance STRICTEMENT antérieure au premier contact du stop −15 %.
 
     Identique à la définition de scripts/exporter_cas_spec.py (jour_palier < jour_stop,
-    ou jour_stop jamais atteint).
+    ou jour_stop jamais atteint). `j_fin` borne la fenêtre : horizon CALENDAIRE (365 jours),
+    plus les 252 séances d'avant.
     """
     base = closes[i]
     if base <= 0:
         return False
     jour_stop = None
     jour_palier = None
-    for j in range(i + 1, i + HORIZON + 1):
+    for j in range(i + 1, j_fin + 1):
         r = closes[j] / base - 1.0
         if jour_stop is None and r <= -STOP:
             jour_stop = j
@@ -213,14 +216,19 @@ def collecter():
 
     for code, bars in hist.items():
         closes = [float(b.close) for b in bars]
-        dates = [b.date for b in bars]
+        dates = [b.date if isinstance(b.date, datetime.date)
+                 else datetime.date.fromisoformat(str(b.date)[:10]) for b in bars]
         if len(closes) < 500 or closes[0] <= 0:
             continue
         r = rsi(closes)
         dernier = {s: -10 ** 9 for s in SCHEMAS}
-        for i in range(260, len(closes) - HORIZON):
+        for i in range(260, len(closes) - 1):
+            # Horizon CALENDAIRE (365 jours) au lieu de 252 seances : voir HORIZON_JOURS.
+            j_fin = index_fin_horizon(dates, i)
+            if not fenetre_complete(dates, i, j_fin):
+                continue
             period = "dev" if as_date(dates[i]) < COUPURE else "val"
-            ret = closes[i + HORIZON] / closes[i] - 1.0 - FRAIS
+            ret = closes[j_fin] / closes[i] - 1.0 - FRAIS
             # Détection — réplique EXACTE de detect_schemas(closes[:i+1]) sans volumes.
             schemas = []
             if closes[i] > 0:
@@ -237,9 +245,9 @@ def collecter():
                 continue
             # Un cas de signal accepté pour (au moins) un schéma.
             zone = tranche_de(zone_of(closes[: i + 1]))
-            p20 = p20_avant_stop(closes, i)
+            p20 = p20_avant_stop(closes, i, j_fin)
             stop_touche = any(closes[j] / closes[i] - 1.0 <= -STOP
-                              for j in range(i + 1, i + HORIZON + 1))
+                              for j in range(i + 1, j_fin + 1))
             for s in acceptes:
                 dernier[s] = i
                 global_n[s] += 1

@@ -6,6 +6,7 @@ Calcule pour chaque schéma (CASSURE/EVEIL/PANIQUE) : n, taux de réussite à
 
 Usage : python scripts/calibrate_spec_profiles.py
 """
+import datetime
 import json
 import statistics
 import sys
@@ -14,8 +15,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from src.collecte.preparation import charger_historique_propre
 from src.infrastructure.paths import HISTORY_BRUT, HISTORY_CACHE
-from src.strategie.spec_profiles import (FRAIS, HORIZON, detect_schemas, zone_of,
-                                         zone_label, PROFILES_FILE)
+from src.strategie.spec_profiles import (FRAIS, HORIZON_JOURS, detect_schemas, zone_of,
+                                         zone_label, PROFILES_FILE, index_fin_horizon,
+                                         fenetre_complete)
 
 # CORRECTIF 12/11/2026 — le calibrage tournait sur des cours FAUX pour 37 titres sur 48.
 #
@@ -68,15 +70,21 @@ agg_zones = {s: {t: {"rets": [], "peaks": []} for _, _, t in TRANCHE} for s in S
 
 for code, bars in hist.items():
     closes = [b.close for b in bars]
+    dates = [b.date if isinstance(b.date, datetime.date)
+             else datetime.date.fromisoformat(str(b.date)[:10]) for b in bars]
     if len(closes) < 500 or closes[0] <= 0:
         continue
     last_entry = {s: -10**9 for s in SCHEMAS}     # LE CORRECTIF : un compteur par titre
-    for i in range(260, len(closes) - HORIZON):
+    for i in range(260, len(closes) - 1):
+        # Horizon CALENDAIRE (365 jours), pas 252 seances : voir HORIZON_JOURS.
+        j = index_fin_horizon(dates, i)
+        if not fenetre_complete(dates, i, j):
+            continue            # fenetre non terminee : rendement partiel, on ecarte le cas
         schemas = detect_schemas(closes[: i + 1])
         if not schemas:
             continue
-        ret = closes[i + HORIZON] / closes[i] - 1 - FRAIS
-        peak = max(closes[i + 1 : i + HORIZON + 1]) / closes[i] - 1
+        ret = closes[j] / closes[i] - 1 - FRAIS
+        peak = max(closes[i + 1 : j + 1]) / closes[i] - 1
         zone = tranche_de(zone_of(closes[: i + 1]))
         for s in schemas:
             if i - last_entry[s] < ESPACEMENT:
