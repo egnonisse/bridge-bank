@@ -127,32 +127,6 @@ def simulate_entry(bars, i: int) -> tuple[float, str]:
     return cash - 1.0, reason  # capital initial = 1 F
 
 
-def run_period(period_bars, label: str) -> None:
-    closes = [float(b.close) for b in period_bars]
-    vols = [float(b.volume) for b in period_bars]
-    entries, rets, reasons = [], [], []
-    for i in range(21, len(closes) - 60):
-        if closes[i] <= 0 or closes[i] <= max(closes[i - 20:i]):
-            continue
-        avg20 = statistics.mean(vols[i - 20:i])
-        if avg20 <= 0 or vols[i] < 2 * avg20:
-            continue
-        r, reason = simulate_entry(period_bars, i)
-        entries.append(i)
-        rets.append(r)
-        reasons.append(reason)
-    if len(entries) < 10:
-        print(f"{label} : {len(entries)} entrées (échantillon trop petit)")
-        return
-    n = len(entries)
-    print(f"{label} : {n} entrées — rendement net médian {statistics.median(rets)*100:+.1f} % · "
-          f"moyen {statistics.mean(rets)*100:+.1f} %")
-    for reason in ("stop", "+50 clôture", "paliers partiels", "zone morte"):
-        cnt = reasons.count(reason)
-        print(f"    {reason:<16s}: {cnt:>4d} ({cnt/n*100:.0f} %)")
-    print(f"    gagnants nets : {sum(1 for r in rets if r > 0)/n*100:.0f} %")
-
-
 for label, bounds in (("IN-SAMPLE 2017-2022", (None, SPLIT_DATE)),
                       ("OUT-OF-SAMPLE 2023-2026", (SPLIT_DATE, None))):
     total_rets: list[float] = []

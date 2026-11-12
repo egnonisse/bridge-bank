@@ -30,10 +30,6 @@ BASE_URL = "https://bstrade.bridge-securities.com/BSTradeServer/"
 SESSION_TIMEOUT = 20
 
 
-class BSApiError(Exception):
-    pass
-
-
 class BSApi:
     def __init__(self, base_url: str = BASE_URL, timeout: int = SESSION_TIMEOUT) -> None:
         self.base_url = base_url

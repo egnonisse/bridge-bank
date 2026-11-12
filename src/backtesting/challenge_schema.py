@@ -187,31 +187,6 @@ def valider_hypothese(h: Hypothese, fondamentaux_pti: bool = True) -> Hypothese:
     return h
 
 
-def evaluer_terme(terme: str, indicateurs: dict) -> bool:
-    """Evalue UN terme contre les indicateurs d'une seance (version lente)."""
-    t = terme.strip().strip("()")
-    m = TERME.match(t)
-    if not m:
-        return False
-    ind, op, val = m.group(1), m.group(2), float(m.group(3))
-    x = indicateurs.get(ind)
-    if x is None:
-        return False
-    if op == "<":
-        return x < val
-    if op == ">":
-        return x > val
-    if op == "<=":
-        return x <= val
-    if op == ">=":
-        return x >= val
-    if op == "==":
-        return abs(x - val) < 1e-9
-    if op == "!=":
-        return abs(x - val) >= 1e-9
-    return False
-
-
 def compiler(expr: str):
     """Compile une expression en structure evaluable SANS regex ni parsing.
 

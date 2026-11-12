@@ -152,11 +152,3 @@ def ajuster_historique(hist: dict) -> dict:
     return {"historique": resultat, "divisions": rapport}
 
 
-def decrire(barres_avant: list, barres_apres: list) -> str:
-    """Resume l'effet de l'ajustement sur un titre."""
-    def perf(bs):
-        cl = [float(b.close) for b in bs if getattr(b, "close", None)]
-        return (cl[-1] / cl[0] - 1) * 100 if len(cl) > 1 and cl[0] else 0
-
-    return (f"  avant : {perf(barres_avant):+8.1f} %\n"
-            f"  apres : {perf(barres_apres):+8.1f} %")

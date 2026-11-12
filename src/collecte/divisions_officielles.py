@@ -242,17 +242,6 @@ def ajuster_historique(hist: dict, chemin: Path | None = None) -> dict:
     }
 
 
-def ajuster_titre(barres: list, code: str | None = None, chemin: Path | None = None) -> list:
-    """Ajuste les barres d'UN titre identifie par son code."""
-    if not barres:
-        return barres
-    code = code or getattr(barres[0], "code", None) or getattr(barres[0], "symbol", None)
-    if not code:
-        return copy.deepcopy(barres)
-    divs = charger(chemin).get(str(code).upper(), [])
-    return ajuster_barres(barres, divs)
-
-
 def resume(rapport: list[dict]) -> str:
     """Rendu lisible du rapport d'ajustement."""
     lignes = []
