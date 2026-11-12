@@ -375,6 +375,13 @@
  "src.strategie.noyau_check.PREP_WATCH_FILE": "<Path prep_watch_state.json>",
  "src.strategie.noyau_check.REFERENCE_AMOUNT": 100000.0,
  "src.strategie.paliers_sortie.STOP_INITIAL": -0.15,
+ "src.strategie.spec_fiche.NOMS_ZONE": {
+  "BAS_ECRASE": "ZONE PIÈGE",
+  "BAS_SOLIDE": "ZONE BASSE MAIS SAINE",
+  "FORCE": "ZONE DE FORCE",
+  "HAUT_FRAGILE": "ZONE DANGER",
+  "MILIEU": "MILIEU DE FOURCHETTE"
+ },
  "src.strategie.spec_fiche.SCHEMA_LABELS": {
   "CASSURE": "🔓 CASSURE DE 1 AN",
   "EVEIL": "🌅 REBOND CONFIRMÉ",

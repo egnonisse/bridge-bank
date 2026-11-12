@@ -12,12 +12,34 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from src.collecte.backtest import load_all_history
-from src.collecte.bsapi import BSApi
+from src.collecte.preparation import charger_historique_propre
+from src.infrastructure.paths import HISTORY_BRUT, HISTORY_CACHE
 from src.strategie.spec_profiles import (FRAIS, HORIZON, detect_schemas, zone_of,
-                               zone_label, PROFILES_FILE)
+                                         zone_label, PROFILES_FILE)
 
-hist = load_all_history(BSApi(), force=False)
+# CORRECTIF 12/11/2026 — le calibrage tournait sur des cours FAUX pour 37 titres sur 48.
+#
+# Il lisait `load_all_history(BSApi())`, qui renvoie CACHE_BRUT : les cours NON AJUSTÉS des
+# divisions du nominal. Une division « 10 nouvelles pour 1 ancienne » y apparaît comme une
+# chute de −90 % en une séance, ce qui :
+#   - fait plonger le RSI sous 30            -> FAUX signal PANIQUE,
+#   - projette le titre dans la zone basse   -> fausse répartition par zone,
+#   - fausse le rendement à 12 mois          -> il traverse la division.
+# Mesure : 421 cas sur le brut (dont 39 en zone 20-40) contre 414 sur le propre (81 en 20-40).
+# C'est le piège que le skill interdit explicitement : « ajustement des divisions VÉRIFIÉ
+# avant de backtester ». Il avait été respecté pour le noyau, pas pour ce calibrage.
+hist = charger_historique_propre()
+
+# Garde-fou de fraîcheur : si le cache brut a été rafraîchi APRÈS le propre, le propre ne
+# contient pas les dernières séances — on le DIT plutôt que de calibrer en silence sur du retard.
+try:
+    if HISTORY_BRUT.exists() and HISTORY_CACHE.exists():
+        retard_j = (HISTORY_CACHE.stat().st_mtime - HISTORY_BRUT.stat().st_mtime) / 86400
+        if retard_j < 0:
+            print(f"ATTENTION : le cache PROPRE a {-retard_j:.1f} jour(s) de retard sur le "
+                  f"brut — lancer scripts/preparer_historique_propre.py avant de publier.")
+except OSError:
+    pass
 
 # Agrégation par schéma — spacing INDÉPENDANT par schéma (sinon les signaux
 # rares se font manger par les signaux fréquents et faussent les stats).

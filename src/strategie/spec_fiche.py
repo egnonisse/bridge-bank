@@ -79,6 +79,31 @@ ZONE_EMOJIS = {
 # visuel par zone. INFORMATIF — jamais une règle, aucun achat n'est bloqué par là.
 # (12/11/2026) Passerelle entre le libellé de zone et la tranche du fichier calibré :
 # data/spec_profiles.json ventile désormais les stats par schéma ET par tranche.
+# Nom de la zone SANS son émoji : l'émoji est désormais calculé à partir du taux MESURÉ
+# pour le schéma courant (voir _niveau_mesure), plus d'une table figée par zone.
+NOMS_ZONE = {code: libelle.split(" ", 1)[1] for code, libelle in ZONE_EMOJIS.items()}
+
+
+def _niveau_mesure(win: float, n: int) -> tuple[str, str]:
+    """Niveau visuel DÉRIVÉ du taux mesuré pour CE schéma — jamais d'une table par zone.
+
+    (12/11/2026) La couleur venait d'une table figée héritée du « 0 gagnant sur 4 » : la
+    zone 60-80 affichait 🔴 « défavorable » en annonçant 66 % de réussite et +12 % de gain
+    médian. Une couleur qui contredit le chiffre qu'elle accompagne est pire que pas de
+    couleur : elle fait douter du chiffre alors que c'est la couleur qui est périmée.
+
+    Seuils : ≥ 60 % favorable · 50-60 % neutre · < 50 % défavorable · n < SEUIL_CAS_ZONE :
+    non concluant (aucune conclusion chiffrée ne sort d'un échantillon trop mince).
+    """
+    if n < SEUIL_CAS_ZONE:
+        return "⚪", "non concluant"
+    if win >= 0.60:
+        return "✅", "favorable"
+    if win >= 0.50:
+        return "🟡", "neutre"
+    return "🔴", "défavorable"
+
+
 ZONE_TRANCHE = {
     "BAS_ECRASE": "0-20",
     "BAS_SOLIDE": "20-40",
@@ -284,26 +309,30 @@ def format_verdict_prix(b: dict) -> str:
     Sous SEUIL_CAS_ZONE cas POUR CE SCHÉMA, le niveau est ⚪ et l'effectif est annoncé.
     """
     zl = b.get("zone_label")
-    if zl not in VERDICT_PRIX:
+    if zl not in ZONE_TRANCHE:
         return ""
-    emoji, mot = VERDICT_PRIX[zl]
     zs = b.get("zone_stats") or {}
     n = int(zs.get("n") or 0)
+    win = float(zs.get("win_12m") or 0.0)
+    # Le niveau (couleur + mot) est DÉRIVÉ du taux mesuré pour ce schéma, pas de la zone :
+    # une table par zone affichait 🔴 sur une zone à 66 % de réussite.
+    emoji, mot = _niveau_mesure(win, n)
     plage = (ZONES_MESUREES.get(zl) or {}).get("plage", "")
     if n < SEUIL_CAS_ZONE:
-        return (f"   ⚪ Verdict prix : non concluant POUR CE SCHÉMA — zone {plage} : "
+        return (f"   {emoji} Verdict prix : non concluant POUR CE SCHÉMA — zone {plage} : "
                 f"{n} cas seulement (moins de {SEUIL_CAS_ZONE}), aucune conclusion chiffrée")
-    win = (zs.get("win_12m") or 0.0) * 100
-    med = (zs.get("median_net_12m") or 0.0) * 100
+    med = float(zs.get("median_net_12m") or 0.0) * 100
     signe = "−" if med < 0 else "+"
     return (f"   {emoji} Verdict prix : {mot} — zone {plage} POUR CE SCHÉMA : "
-            f"{win:.0f} % de réussite sur {n} cas, gain médian {signe}{abs(med):.0f} %")
+            f"{win*100:.0f} % de réussite sur {n} cas, gain médian {signe}{abs(med):.0f} %")
 
 
 def build_message(f: FicheSpec) -> str:
     b = f.blocks
     main = b["main"]
-    zlabel = ZONE_EMOJIS[b["zone_label"]]
+    _zs = b.get("zone_stats") or {}
+    _emoji_zone, _ = _niveau_mesure(float(_zs.get("win_12m") or 0.0), int(_zs.get("n") or 0))
+    zlabel = f"{_emoji_zone} {NOMS_ZONE[b['zone_label']]}"
     ztxt = _texte_zone(b["zone_label"], b.get("zone_stats"))
     touched = b["touched"]
     mot = SCHEMA_WORDS.get(main, main.lower())

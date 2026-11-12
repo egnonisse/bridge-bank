@@ -143,21 +143,21 @@ def load_profiles() -> dict:
             log.warning("spec_profiles.json illisible (%s) — repli sur les stats figées", exc)
     else:
         log.warning("spec_profiles.json absent — repli sur les stats figées (16-17/09/2026)")
-    # Fallback : valeurs RE-MESURÉES le 12/11/2026 (cache courant, espacement réparé).
-    # L'ancien bloc portait CASSURE n=5 / EVEIL n=28 / PANIQUE n=18 : ces effectifs venaient
-    # d'un bug d'espacement (le compteur était partagé entre titres). Après correctif :
-    # 257 / 934 / 421 — et les médianes s'effondrent (+105 % -> +18 %, +21 % -> +5 %), ce qui
-    # illustre le biais de petit échantillon. "zones" reste vide ici : sans le fichier
-    # calibré, la fiche s'abstient (⚪ non concluant) plutôt que d'inventer une zone.
+    # Fallback : valeurs RE-MESURÉES le 12/11/2026 sur le CACHE PROPRE (divisions ajustées).
+    # Historique : ce bloc a porté 5/28/18 cas (bug d'espacement), puis 257/934/421 (mesuré
+    # sur CACHE_BRUT, donc avec de faux signaux créés par les divisions), et enfin les valeurs
+    # ci-dessous. Une division 10:1 apparaît comme une chute de −90 % sur une série brute :
+    # RSI < 30 → faux PANIQUE, titre projeté en zone basse. "zones" reste vide ici : sans le
+    # fichier calibré, la fiche s'abstient (⚪) plutôt que d'inventer une zone.
     return {
         "_fallback": True,
-        "CASSURE": {"n": 257, "win_12m": 0.673, "median_net_12m": 0.183,
-                    "touched": {"0.10": 0.844, "0.20": 0.708, "0.35": 0.568,
-                                "0.50": 0.444, "1.00": 0.198}, "zones": {}},
-        "EVEIL": {"n": 934, "win_12m": 0.55, "median_net_12m": 0.053,
-                  "touched": {"0.10": 0.756, "0.20": 0.6, "0.35": 0.451,
-                              "0.50": 0.353, "1.00": 0.175}, "zones": {}},
-        "PANIQUE": {"n": 421, "win_12m": 0.511, "median_net_12m": 0.019,
-                    "touched": {"0.10": 0.758, "0.20": 0.582, "0.35": 0.399,
-                                "0.50": 0.311, "1.00": 0.138}, "zones": {}},
+        "CASSURE": {"n": 267, "win_12m": 0.659, "median_net_12m": 0.163,
+                    "touched": {"0.10": 0.828, "0.20": 0.693, "0.35": 0.558,
+                                "0.50": 0.434, "1.00": 0.199}, "zones": {}},
+        "EVEIL": {"n": 934, "win_12m": 0.556, "median_net_12m": 0.059,
+                  "touched": {"0.10": 0.761, "0.20": 0.606, "0.35": 0.454,
+                              "0.50": 0.358, "1.00": 0.179}, "zones": {}},
+        "PANIQUE": {"n": 414, "win_12m": 0.522, "median_net_12m": 0.032,
+                    "touched": {"0.10": 0.773, "0.20": 0.589, "0.35": 0.408,
+                                "0.50": 0.321, "1.00": 0.147}, "zones": {}},
     }

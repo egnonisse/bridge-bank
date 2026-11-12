@@ -1,6 +1,6 @@
 # Audit des constantes métier — inventaire, doublons et familles
 
-**238 définitions** pour **222 constantes distinctes**.
+**239 définitions** pour **223 constantes distinctes**.
 
 ---
 
@@ -133,7 +133,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `TARGET_CASH` | `30.0` | src.report |
 | `TARGET_STOCKS` | `70.0` | src.report |
 
-### autre (128)
+### autre (129)
 
 | Constante | Valeur | Module |
 |---|---|---|
@@ -205,6 +205,7 @@ chemin distinct dans chaque module). Rien à corriger.
 | `NB_TIRAGES_ALEATOIRES` | `1000` | src.backtesting.challenge_validateur |
 | `NET_MAX` | `0.1` | src.strategie.noyau_check |
 | `NOMINAL` | `10000.0` | src.analyse.bonds |
+| `NOMS_ZONE` | `<expression: {code: libelle.split(' ', 1)[1] for code, libelle in ZONE_EM>` | src.strategie.spec_fiche |
 | `OFFICIAL_DPS` | `{'SNTS': 1977.0, 'BOAS': 511.0, 'PALC': 501.6, 'SOGC': 570.0, 'SLBC': 2127.0, 'SGBC': 2606.0}` | src.collecte.fundamentals |
 | `OFFICIAL_DPS_DATE` | `{'SNTS': '2026-04-23', 'BOAS': '2026-05-08', 'PALC': '2026-06-10', 'SOGC': '2026-07-22', 'SLBC': '2026-07-13', 'SGBC': '2026-08-06'}` | src.collecte.fundamentals |
 | `OPERATEURS` | `['et', 'ou']` | src.backtesting.challenge_schema |
