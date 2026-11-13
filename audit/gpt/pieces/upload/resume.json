@@ -1,0 +1,140 @@
+{
+ "CASSURE": {
+  "total": {
+   "n": 267,
+   "win": 0.659,
+   "median": 0.163,
+   "stop_touche": 0.378,
+   "p20_avant_stop": 0.618,
+   "p20_touche_sans_contrainte": 0.693,
+   "p35_avant_stop": 0.498,
+   "p35_touche_sans_contrainte": 0.558,
+   "p50_avant_stop": 0.378,
+   "p50_touche_sans_contrainte": 0.434
+  },
+  "zones": {
+   "0-20": {
+    "n": 35,
+    "win": 0.771,
+    "median": 0.323,
+    "p20_avant_stop": 0.743
+   },
+   "20-40": {
+    "n": 51,
+    "win": 0.627,
+    "median": 0.191,
+    "p20_avant_stop": 0.627
+   },
+   "40-60": {
+    "n": 41,
+    "win": 0.61,
+    "median": 0.129,
+    "p20_avant_stop": 0.488
+   },
+   "60-80": {
+    "n": 30,
+    "win": 0.733,
+    "median": 0.323,
+    "p20_avant_stop": 0.667
+   },
+   "80-100": {
+    "n": 110,
+    "win": 0.636,
+    "median": 0.145,
+    "p20_avant_stop": 0.609
+   }
+  }
+ },
+ "EVEIL": {
+  "total": {
+   "n": 934,
+   "win": 0.556,
+   "median": 0.059,
+   "stop_touche": 0.501,
+   "p20_avant_stop": 0.517,
+   "p20_touche_sans_contrainte": 0.606,
+   "p35_avant_stop": 0.383,
+   "p35_touche_sans_contrainte": 0.454,
+   "p50_avant_stop": 0.303,
+   "p50_touche_sans_contrainte": 0.358
+  },
+  "zones": {
+   "0-20": {
+    "n": 352,
+    "win": 0.56,
+    "median": 0.063,
+    "p20_avant_stop": 0.526
+   },
+   "20-40": {
+    "n": 181,
+    "win": 0.497,
+    "median": -0.006,
+    "p20_avant_stop": 0.492
+   },
+   "40-60": {
+    "n": 146,
+    "win": 0.507,
+    "median": 0.012,
+    "p20_avant_stop": 0.411
+   },
+   "60-80": {
+    "n": 99,
+    "win": 0.596,
+    "median": 0.086,
+    "p20_avant_stop": 0.576
+   },
+   "80-100": {
+    "n": 156,
+    "win": 0.635,
+    "median": 0.088,
+    "p20_avant_stop": 0.59
+   }
+  }
+ },
+ "PANIQUE": {
+  "total": {
+   "n": 414,
+   "win": 0.522,
+   "median": 0.032,
+   "stop_touche": 0.558,
+   "p20_avant_stop": 0.461,
+   "p20_touche_sans_contrainte": 0.589,
+   "p35_avant_stop": 0.309,
+   "p35_touche_sans_contrainte": 0.408,
+   "p50_avant_stop": 0.242,
+   "p50_touche_sans_contrainte": 0.321
+  },
+  "zones": {
+   "0-20": {
+    "n": 221,
+    "win": 0.511,
+    "median": 0.016,
+    "p20_avant_stop": 0.439
+   },
+   "20-40": {
+    "n": 81,
+    "win": 0.494,
+    "median": -0.028,
+    "p20_avant_stop": 0.444
+   },
+   "40-60": {
+    "n": 50,
+    "win": 0.52,
+    "median": 0.029,
+    "p20_avant_stop": 0.48
+   },
+   "60-80": {
+    "n": 43,
+    "win": 0.535,
+    "median": 0.048,
+    "p20_avant_stop": 0.442
+   },
+   "80-100": {
+    "n": 19,
+    "win": 0.737,
+    "median": 0.18,
+    "p20_avant_stop": 0.789
+   }
+  }
+ }
+}

@@ -1,0 +1,1532 @@
+SOURCES BRVM — 12 NOVEMBRE 2026
+158 références : 141 URL externes (dont 48 API) et 17 pièces locales.
+Les références ci-dessous distinguent publications et données externes, documents fournis et calculs propres. Les cours et les pages dynamiques peuvent changer après la date de consultation. Les calculs propres ne sont pas une validation indépendante.
+
+[SMB01] Fiche de cotation SMBC
+Émetteur : BRVM
+Catégorie : SMBC — Cours officiel
+URL : https://www.brvm.org/fr/smbc
+Période : Clôture du 12 novembre 2026
+Usage : Cours de clôture, nombre de titres, capitalisation, volume et valeur des échanges.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : Page dynamique ; référence retenue dans les analyses : 18 000 F CFA. Le bandeau de cotation peut afficher le cours de référence plutôt que la clôture.
+
+[SMB02] États financiers et projet d’affectation du résultat — exercice 2025
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Comptes annuels
+URL : https://www.brvm.org/sites/default/files/20260512_-_etats_financiers_et_projet_daffectation_du_resultat_-_exercice_2025_-_smb_ci.pdf
+Période : 2025, comparatif 2024
+Usage : Résultat SYSCOHADA, bilan, flux de trésorerie et affectation du résultat ; première analyse de la trésorerie.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Synthèse d’une page. L’analyse approfondie complète cette lecture par les obligations locatives IFRS du rapport annuel, sans mélanger les référentiels.
+
+[SMB03] Rapport annuel de l’exercice 2025 — AGO du 23 juin 2026
+Émetteur : SMB
+Catégorie : SMBC — Rapport annuel
+URL : https://smb.ci/wp-content/uploads/2026/07/Rapport-annuel-de-lExercice-2025.pdf
+Période : 2025, comparatif 2024
+Usage : Comptes SYSCOHADA et IFRS, obligations locatives, actionnariat, opinions des commissaires aux comptes et dividende.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : 26 pages. AGO du 23 juin 2026 ; répertoire web juillet 2026, date exacte de mise en ligne non vérifiée. Pages clés : 2, 19–25. Notes annexes complètes non jointes dans cette version publique.
+
+[SMB04] Rapport annuel 2024 — AGO du 19 juin 2025
+Émetteur : SMB
+Catégorie : SMBC — Rapport annuel
+URL : https://smb.ci/wp-content/uploads/2025/06/VERSION-ALLEGEE-RAPPORT-ANNUEL-2024.pdf
+Période : 2024, comparatif 2023
+Usage : Historique des résultats, cyclicité et opinions des commissaires aux comptes.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : 25 pages ; version allégée. Date de l’AGO connue : 19 juin 2025 ; date exacte de publication web non vérifiée.
+
+[SMB05] États financiers de synthèse — exercice 2023
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Comptes annuels
+URL : https://www.brvm.org/sites/default/files/20240513_-_etats_financiers_de_synthese_-_exercice_2023_-_smb_ci.pdf
+Période : 2023
+Usage : Résultat annuel 2023 et comparaison des résultats du quatrième trimestre.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+
+[SMB06] Rapport d’activités — premier semestre 2026
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Rapport semestriel
+URL : https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_1er_semestre_2026_-_smb_ci.pdf
+Période : Premier semestre 2026, comparatifs 2025
+Usage : Arrêt de maintenance de 50 jours, marges de raffinage, résultats semestriels et rapprochement résultat ordinaire/impôt/résultat net.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Rapport daté du 29 octobre 2026. Autre copie locale : smb_audit_s1.pdf. Écart de 1,599 milliard dans le rapprochement abrégé demeuré inexpliqué ; aucune cause attribuée sans preuve.
+
+[SMB07] Attestation des CAC sur le rapport d’activités — premier semestre 2026
+Émetteur : Commissaires aux comptes de SMB / BRVM
+Catégorie : SMBC — Commissaires aux comptes
+URL : https://www.brvm.org/sites/default/files/20261030_-_attestation_des_commissaires_aux_comptes_sur_le_rapport_dactivites_-_1er_semestre_2026_-_smb_ci.pdf
+Période : Premier semestre 2026
+Usage : Portée de la revue limitée et conclusion des commissaires aux comptes.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Attestation datée du 29 octobre 2026. Elle ne fournit pas le rapprochement manquant du tableau semestriel abrégé.
+
+[SMB08] Rapport d’activités — troisième trimestre 2026
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Rapport trimestriel
+URL : https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_smb_ci.pdf
+Période : Neuf mois au 30 septembre 2026, comparatif 2025
+Usage : Croissance des résultats et ventes, risques de Brent et de fret, résultat TTM et scénarios de résultat annuel.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : Rapport daté du 29 octobre 2026. Deux pages scannées ; autre copie locale : smb_audit_9m.pdf.
+
+[SMB09] Rapport d’activités au 30 juin 2025
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Rapport semestriel
+URL : https://www.brvm.org/sites/default/files/20251029_-_rapport_dactivites_-_1er_semestre_2025_-_smb_ci.pdf
+Période : Premier semestre 2025, comparatif 2024
+Usage : Comparatifs semestriels, ventes de bitume, marges et arrêt imprévu affectant les ventes Export Mer.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Rapport daté du 28 octobre 2025.
+
+[SMB10] Rapport d’activités — troisième trimestre 2025
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Rapport trimestriel
+URL : https://www.brvm.org/sites/default/files/20251029_-_rapport_dactivites_-_3eme_trimestre_2025_-_smb_ci.pdf
+Période : Neuf mois au 30 septembre 2025, comparatif 2024
+Usage : Déduction du résultat du quatrième trimestre 2025 et analyse de sa contribution au bénéfice annuel.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Rapport daté du 28 octobre 2025. Le résultat du T4 est calculé par différence entre l’annuel et les neuf mois ; ce n’est pas une publication trimestrielle séparée.
+
+[SMB11] Rapport d’activités — troisième trimestre 2024
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Rapport trimestriel
+URL : https://www.brvm.org/sites/default/files/20241030_-_rapport_dactivites_-_3eme_trimestre_2024_-_smb_ci.pdf
+Période : Neuf mois au 30 septembre 2024, comparatif 2023
+Usage : Saisonnalité, fin des chantiers liés à la CAN et déduction du résultat du quatrième trimestre 2024.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+
+[SMB12] Rapport d’activités — troisième trimestre 2023
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Rapport trimestriel
+URL : https://www.brvm.org/sites/default/files/20231030_-_rapport_dactivites_-_3eme_trimestre_2023_-_smb_ci.pdf
+Période : Neuf mois au 30 septembre 2023, comparatif 2022
+Usage : Effets de la pluviométrie, calendrier des travaux et déduction du résultat du quatrième trimestre 2023.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : Rapport daté du 25 octobre 2023.
+
+[SMB13] Rapports des commissaires aux comptes — exercice 2024
+Émetteur : Commissaires aux comptes de SMB / BRVM
+Catégorie : SMBC — Commissaires aux comptes
+URL : https://www.brvm.org/sites/default/files/20250903_-_rapport_des_commissaires_aux_comptes_-_exercice_2024_-_smb_ci_0.pdf
+Période : 2024
+Usage : Conventions réglementées avec SIR, facturations de produits et pénalités de retard réciproques.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Rapport spécial daté du 28 mai 2025 ; pages 21–22. Ne démontre pas que toutes les créances de fin 2025 sont dues à SIR.
+
+[SMB14] Avis n°261 BRVM/DG — paiement du dividende de l’exercice 2025
+Émetteur : BRVM
+Catégorie : SMBC — Dividende
+URL : https://www.brvm.org/sites/default/files/20260904_-_avis_ndeg261_brvmdg_-_paiement_de_dividendes_exercice_2025_-_smb_ci.pdf
+Période : Dividende 2025 payé en septembre 2026
+Usage : Montant brut de 800 F, montant après retenue pour personne physique et dates de détachement/paiement.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Ex-dividende le 17 septembre 2026 ; paiement le 18 septembre. Net de 704 F pour la retenue de 12 % utilisée dans l’analyse ; fiscalité selon le détenteur.
+
+[SMB15] Page BRVM : paiement de dividendes — exercice 2025
+Émetteur : BRVM
+Catégorie : SMBC — Dividende
+URL : https://www.brvm.org/fr/smb-ci-paiement-de-dividendes-exercice-2025
+Période : Dividende 2025 payé en 2026
+Usage : Repérage de l’avis et contrôle des dates.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Le champ HTML qualifie 800 F de « net », contrairement à la lecture détaillée de l’avis et des résolutions. La notice détaillée a été privilégiée.
+
+[SMB16] Notation financière de SMB — validité août 2025 à juillet 2026
+Émetteur : Bloomfield Investment / BRVM
+Catégorie : SMBC — Notation financière
+URL : https://www.brvm.org/sites/default/files/20251209_-_notation_financiere_-_smb_ci.pdf
+Période : Août 2025 à juillet 2026 ; données 2023–2024
+Usage : Qualité de crédit A+ stable, amélioration de trésorerie et risques d’exploitation.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Validité expirée au 12 novembre 2026. Aucune notation actualisée postérieure n’a été établie dans les recherches visibles.
+
+[SMB17] Fiche de notation SMB reproduite dans le BOC du 17 octobre 2024
+Émetteur : Bloomfield Investment / BRVM
+Catégorie : SMBC — Notation financière historique
+URL : https://bfin.brvm.org/boc/BOC_JOUR/BOC_20241017.pdf
+Période : Août 2024 à juillet 2025 ; données 2022–2023
+Usage : Mention historique de retards de règlement des créances par l’actionnaire de référence et risques de stockage.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Mention historique, non assimilée à un constat de novembre 2026. La fiche ultérieure 2025–2026 constate une amélioration de trésorerie.
+
+[SMB18] AGO SMB 2024
+Émetteur : SMB
+Catégorie : SMBC — Communication de l’émetteur
+URL : https://smb.ci/blog/ago-smb-2024/
+Période : Assemblée générale relative à 2024
+Usage : Contexte des résultats 2024 et volatilité des marges de raffinage.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[SMB19] Site officiel — présentation et activités
+Émetteur : SMB
+Catégorie : SMBC — Présentation de l’émetteur
+URL : https://smb.ci/
+Période : Présentation institutionnelle consultée en novembre 2026
+Usage : Activité, implantation industrielle, débouchés et accès aux publications.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Source de présentation et de navigation ; aucun indicateur de valorisation n’en a été déduit.
+
+[SMB20] Publications — rapports annuels
+Émetteur : SMB
+Catégorie : SMBC — Répertoire documentaire
+URL : https://smb.ci/publications/
+Période : Répertoire consulté en novembre 2026
+Usage : Localisation des rapports annuels officiels 2023, 2024 et 2025.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[SMB21] Rapports des sociétés cotées — SMB
+Émetteur : BRVM
+Catégorie : SMBC — Répertoire documentaire
+URL : https://www.brvm.org/fr/rapports-societe-cotes/smb
+Période : Répertoire consulté en novembre 2026
+Usage : Identification des rapports semestriels, trimestriels, annuels et des attestations.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Une variante de cette page a également été rencontrée : https://www.brvm.org/fr/node/515 .
+
+[SMB22] Avis de convocation à l’AGO du 23 juin 2026
+Émetteur : SMB
+Catégorie : SMBC — Assemblée générale
+URL : https://smb.ci/blog/avis-de-convocation/
+Période : AGO du 23 juin 2026, exercice 2025
+Usage : Date de l’assemblée et existence de comptes SYSCOHADA et IFRS approuvés.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[SMB23] Avis de convocation — Assemblée générale ordinaire
+Émetteur : SMB / BRVM
+Catégorie : SMBC — Assemblée générale
+URL : https://www.brvm.org/sites/default/files/20260605_-_avis_de_convocation_-_assemblee_generale_ordinaire_-_smb_ci.pdf
+Période : AGO du 23 juin 2026, exercice 2025
+Usage : Vérification de l’ordre du jour et de la mise à disposition des documents sociaux.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[SMB24] Page BRVM : états financiers — exercice 2025
+Émetteur : BRVM
+Catégorie : SMBC — Repérage des comptes
+URL : https://www.brvm.org/fr/smb-ci-etats-financiers-exercice-2025
+Période : 2025
+Usage : Repérage de la première publication des états 2025.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : La page mentionne un fichier daté du 30 avril 2026. L’analyse chiffrée a utilisé la synthèse du 12 mai et le rapport annuel.
+
+[SMB25] Rapport annuel — AGO 2023
+Émetteur : SMB
+Catégorie : SMBC — Rapport annuel repéré
+URL : https://smb.ci/wp-content/uploads/2024/06/RAPPORT-ANNUEL-AGO-2023.pdf
+Période : 2023
+Usage : Lien officiel repéré depuis la page Publications.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Tentative d’ouverture échouée dans l’outil web : document de 18 976 015 octets dépassant sa limite. Ne pas présenter ce document comme intégralement lu ; les états de synthèse 2023 ont servi aux calculs.
+
+[SMB26] Page RichBourse : notation financière du 9 décembre 2025
+Émetteur : RichBourse
+Catégorie : SMBC — Relais documentaire
+URL : https://www.richbourse.com/common/actualite/details/09-12-2025-smb-ci-notation-financiere
+Période : Notation 2025–2026
+Usage : Repérage et accès au document de notation.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[SMB27] Copie de la fiche de notation SMB 2025–2026
+Émetteur : Bloomfield Investment, copie hébergée par RichBourse
+Catégorie : SMBC — Copie documentaire
+URL : https://www.richbourse.com/common/actualite/afficher-fichier/09-12-2025-smb-ci-notation-financiere
+Période : Août 2025 à juillet 2026
+Usage : Lecture textuelle de la fiche de notation, ensuite retrouvée sur le site BRVM.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Même document que SMB16 ; doublon de contenu conservé pour retracer la consultation.
+
+[SMB28] SMB Côte d’Ivoire : cours, données et analyse
+Émetteur : Waramina
+Catégorie : SMBC — Source secondaire
+URL : https://waramina.com/societes/smb-smbc
+Période : Page consultée en novembre 2026
+Usage : Repérage des rapports et recoupements ; identification de pistes à vérifier dans les sources primaires.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Les estimations, scores et valeurs normalisées automatiques de ce site n’ont pas été adoptés comme prévisions propres.
+
+[SMB29] SMB : dividende de 800 F CFA mis en paiement le 18 septembre 2026
+Émetteur : Waramina
+Catégorie : SMBC — Source secondaire
+URL : https://waramina.com/smb-dividende-800-fcfa-paiement-18-septembre-2026
+Période : Dividende de l’exercice 2025
+Usage : Repérage du rapport annuel 2025 et du dividende, puis vérification auprès de l’émetteur et de la BRVM.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[SMB30] SMB CI — fiche société et données financières
+Émetteur : Sika Finance
+Catégorie : SMBC — Source secondaire
+URL : https://www.sikafinance.com/marches/societe/SMBC.CI
+Période : Historique 2021–2025 et fiche consultée en novembre 2026
+Usage : Recoupement exploratoire de l’historique des bénéfices et de l’actionnariat.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Résultat de recherche consulté ; les sources primaires ont été privilégiées pour les conclusions.
+
+[SMB31] Rapport SMB Côte d’Ivoire — aperçu commercial de septembre 2026
+Émetteur : Ridwan Abdou
+Catégorie : SMBC — Analyse tierce repérée
+URL : https://ridwanabdou.com/produit/smb-rapport-septembre-2026/
+Période : Septembre 2026
+Usage : Pistes sur les créances, le besoin en fonds de roulement et la dépendance à SIR.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Seul l’aperçu public a été consulté ; rapport payant non acquis. L’affirmation attribuant toutes les créances à l’actionnaire n’a pas été reprise comme fait démontré.
+
+[SMB32] Commentaire sur le maintien des notes A+ et A1 de SMB
+Émetteur : FGI Bourse
+Catégorie : SMBC — Relais de notation
+URL : https://www.fgi-bourse.com/societe-multinationale-de-bitumes-smb-bloomfield-reconduit-les-notes-a-et-a1-de-la-smb-soutenues-par-les-perspectives-grace-a-une-liquidite-robuste-en-lien-avec-la-reprise-du-marche-petrolier/
+Période : Notation août 2025–juillet 2026
+Usage : Repérage de la période de validité de la notation.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Résultat de recherche consulté ; fiche originale BRVM retenue en priorité.
+
+[SMB33] SMB CI : notation financière du 17 octobre 2024
+Émetteur : SMB, reprise par Publicnow / Zonebourse
+Catégorie : SMBC — Relais de publication
+URL : https://ch.zonebourse.com/cours/action/SOCIETE-MULTINATIONALE-DE-31311738/actualite/SMB-CI-Notation-financiere-48102074/
+Période : Notation août 2024–juillet 2025
+Usage : Recoupement du texte historique sur les créances envers l’actionnaire.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Publication historique ; ne décrit pas à elle seule la situation de novembre 2026.
+
+[MKT01] Cours des actions BRVM
+Émetteur : BRVM
+Catégorie : Marché — Cotations officielles
+URL : https://www.brvm.org/fr/cours-actions/0
+Période : Clôture du 12 novembre 2026
+Usage : Recoupement des clôtures et valeurs transigées pour le screening et les trois candidats.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Page dynamique. Les chiffres du tableau daté de clôture ont été privilégiés aux bandeaux de cours.
+
+[MKT02] Fiche de cotation TTLC
+Émetteur : BRVM
+Catégorie : Marché — Cotation officielle
+URL : https://www.brvm.org/fr/ttlc
+Période : Clôture du 12 novembre 2026
+Usage : Cours 3 095 F, capitalisation, nombre d’actions, volume et valeur transigée.
+Cours, actions en circulation, capitalisation, volume et valeur échangée.
+Statut : citée dans les réponses intégrales récupérées
+Alias : TTL16
+Citations dans les sections : 6, 7
+Notes : [TTL16] Page dynamique consultée le 12 novembre 2026. Cours de clôture explicitement daté privilégié aux bandeaux de référence. Référence [référence du fil].
+
+[MKT03] Fiche de cotation BOAN
+Émetteur : BRVM
+Catégorie : Marché — Cotation officielle
+URL : https://www.brvm.org/fr/boan
+Période : Clôture du 12 novembre 2026 ; Séance du 12 novembre 2026
+Usage : Cours 4 975 F, capitalisation, nombre d’actions, volume et valeur transigée.
+Clôture 4 975 F, 20,8 millions d’actions, volume et valeur échangée.
+Statut : citée dans les réponses intégrales récupérées
+Alias : BOA07
+Citations dans les sections : 6, 7
+Notes : [BOA07] Page dynamique ; la date de séance est essentielle. Ne pas confondre bandeau de référence et cours de clôture.
+
+[MKT04] Bulletin officiel de la cote du 11 novembre 2026
+Émetteur : BRVM
+Catégorie : Marché — Bulletin officiel
+URL : https://www.brvm.org/sites/default/files/boc_20261111_2_0.pdf
+Période : Séance du 11 novembre 2026
+Usage : Recoupement des cours et observation des ordres résiduels, volumes et valeurs échangées.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Les ordres résiduels concernent cette séance uniquement ; ils ne constituent pas un carnet en temps réel du 12 novembre.
+
+[MKT05] Bulletin officiel de la cote du 30 octobre 2026
+Émetteur : BRVM
+Catégorie : Marché — Bulletin officiel
+URL : https://www.brvm.org/sites/default/files/boc_20261030_2.pdf
+Période : Séance du 30 octobre 2026
+Usage : Cours de SMBC à 14 600 F avant la hausse des séances suivantes.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[MKT06] Bulletin officiel de la cote du 4 novembre 2026
+Émetteur : BRVM
+Catégorie : Marché — Bulletin officiel
+URL : https://www.brvm.org/sites/default/files/boc_20261104_2.pdf
+Période : Séance du 4 novembre 2026
+Usage : Cours de SMBC à 17 995 F ; mesure de la réaction après publication.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[MKT07] Bulletin officiel de la cote du 26 août 2026
+Émetteur : BRVM
+Catégorie : Marché — Bulletin officiel
+URL : https://www.brvm.org/sites/default/files/boc_20260826_2.pdf
+Période : Séance du 26 août 2026
+Usage : Sommet de TTLC avant détachement et contrôle des niveaux historiques.
+Vérification du cours de 3 595 F avant détachement du dividende.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Alias : TTL14
+Notes : [MKT07] Lien exact récupéré depuis la référence déjà utilisée [référence du fil] ; cours TTLC 3 595 F avant dividende.
+[TTL14] Références [référence du fil] et [référence du fil] ; cours brut non directement comparable à un cours après dividende.
+
+[MKT08] Bulletin officiel de la cote du 28 août 2026
+Émetteur : BRVM
+Catégorie : Marché — Bulletin officiel
+URL : https://www.brvm.org/sites/default/files/boc_20260828_2.pdf
+Période : Séance du 28 août 2026
+Usage : Cours TTLC après détachement ; distinction entre anciens sommets bruts et niveaux comparables.
+Cours après détachement ; contrôle des niveaux de résistance après dividende.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Alias : TTL15
+Notes : [TTL15] Références [référence du fil] et [référence du fil] ; plus haut intrajournalier 3 525 F et clôture 3 400 F utilisés dans l’analyse précédente.
+
+[MKT09] Instruction n°01/2009 — modification du pas de cotation des titres de capital
+Émetteur : BRVM
+Catégorie : Marché — Règles de cotation
+URL : https://www.brvm.org/sites/default/files/instruction_01-_2009_-_20090327_-_modification_du_pas_de_cotation_pour_les_titres_de_capital.pdf
+Période : Règles de pas de cotation consultées pour les scénarios ; Règle publiée sur le site de la BRVM
+Usage : Vérification des niveaux d’ordre et des arrondis aux pas de cotation.
+Pas de 1 F pour les titres au plus à 100 F ; pas de 5 F au-dessus ; contrôle des limites d’ordres proposées.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Alias : METH01
+Notes : [MKT09] Lien exact récupéré depuis la référence déjà utilisée [référence du fil]. Une capture locale de la règle existe : brvm_tick.png.
+[METH01] La copie locale disponible est une image du document, pas le PDF.
+
+[MKT10] Instruction I-A relative aux écarts maximaux
+Émetteur : BRVM
+Catégorie : Marché — Règles de cotation
+URL : https://www.brvm.org/sites/default/files/instruction_i-a_relatif_aux_ecarts_maximaux.pdf
+Période : Règles de variation des cours consultées ; Instruction de marché
+Usage : Limites journalières, réservations et limites d’une stratégie de stop.
+Limites de variation et mécanismes de report/réservation ; limites d’une sortie supposée automatique au stop.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Alias : METH02
+Notes : [MKT10] Lien exact récupéré depuis la référence déjà utilisée [référence du fil]. Ne garantit pas qu’une vente au seuil visé sera exécutée.
+[METH02] Date issue de la page catalogue BRVM ; ne garantit pas l’exécution d’un ordre ni ne décrit à elle seule tous les textes ultérieurs.
+
+[MKT11] Règlement général de la BRVM — version après approbation CREPMF de septembre 2021
+Émetteur : BRVM
+Catégorie : Marché — Règlement
+URL : https://www.brvm.org/sites/default/files/rg_brvm_-_apres_approbation_crepmf_sept_2021_version_finale.pdf
+Période : Version approuvée en septembre 2021
+Usage : Cadre de marché, négociation et exécution des ordres.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Lien exact récupéré depuis la référence déjà utilisée [référence du fil]. Les analyses ne prétendent pas offrir une revue juridique exhaustive de toutes les modifications ultérieures.
+
+[MKT12] Paiements de dividendes
+Émetteur : BRVM
+Catégorie : Marché — Répertoire documentaire
+URL : https://www.brvm.org/fr/esv/paiement-de-dividendes
+Période : Répertoire consulté en novembre 2026
+Usage : Repérage des avis de dividendes des sociétés examinées.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Les notices PDF détaillées prévalent sur les libellés parfois ambigus du tableau HTML.
+
+[MKT13] Historique OHLC et volumes — ABJC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ABJC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2000-03-31 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/ABJC.json
+
+[MKT14] Historique OHLC et volumes — BBGC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BBGC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2026-09-24 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BBGC.json
+
+[MKT15] Historique OHLC et volumes — BICB
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BICB&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2025-04-28 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BICB.json
+
+[MKT16] Historique OHLC et volumes — BICC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BICC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BICC.json
+
+[MKT17] Historique OHLC et volumes — BNBC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BNBC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BNBC.json
+
+[MKT18] Historique OHLC et volumes — BOAB
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAB&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2000-11-17 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BOAB.json
+
+[MKT19] Historique OHLC et volumes — BOABF
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOABF&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2011-01-03 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BOABF.json
+
+[MKT20] Historique OHLC et volumes — BOAC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2010-04-12 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BOAC.json
+
+[MKT21] Historique OHLC et volumes — BOAM
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAM&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2016-05-31 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BOAM.json
+
+[MKT22] Historique OHLC et volumes — BOAN
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAN&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2003-12-30 à 2026-11-12
+Usage : Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BOAN.json
+
+[MKT23] Historique OHLC et volumes — BOAS
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAS&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2014-12-10 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/BOAS.json
+
+[MKT24] Historique OHLC et volumes — CABC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CABC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/CABC.json
+
+[MKT25] Historique OHLC et volumes — CBIBF
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CBIBF&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2016-12-23 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/CBIBF.json
+
+[MKT26] Historique OHLC et volumes — CFAC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CFAC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/CFAC.json
+
+[MKT27] Historique OHLC et volumes — CIEC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CIEC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/CIEC.json
+
+[MKT28] Historique OHLC et volumes — ECOC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ECOC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2017-12-12 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/ECOC.json
+
+[MKT29] Historique OHLC et volumes — ETIT
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ETIT&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2006-09-11 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/ETIT.json
+
+[MKT30] Historique OHLC et volumes — FTSC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=FTSC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/FTSC.json
+
+[MKT31] Historique OHLC et volumes — LNBB
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=LNBB&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2024-12-13 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/LNBB.json
+
+[MKT32] Historique OHLC et volumes — NEIC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NEIC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2000-04-14 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/NEIC.json
+
+[MKT33] Historique OHLC et volumes — NSBC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NSBC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2017-10-24 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/NSBC.json
+
+[MKT34] Historique OHLC et volumes — NTLC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NTLC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/NTLC.json
+
+[MKT35] Historique OHLC et volumes — ONTBF
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ONTBF&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2009-04-30 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/ONTBF.json
+
+[MKT36] Historique OHLC et volumes — ORAC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ORAC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2022-12-30 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/ORAC.json
+
+[MKT37] Historique OHLC et volumes — ORGT
+Émetteur : RichBourse ; Richbourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ORGT&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2019-04-16 à 2026-11-12 ; Historique disponible au 12 novembre 2026
+Usage : Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.
+Contrôle du percentile, de la position min-max, des plus bas et de cas du backtest.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Alias : ORG05
+Notes : [MKT37] Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export. Réponse initialement collectée pour l’audit et réutilisée dans le screening.
+[ORG05] Fournisseur tiers, pas une API officielle BRVM. Séries brutes et dates d’observation à recouper avec les bulletins officiels.
+Pièce jointe au ZIP : pieces/external_screen_raw/ORGT.json, pieces/orgt_api_raw.json
+
+[MKT38] Historique OHLC et volumes — PALC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=PALC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1999-10-18 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/PALC.json
+
+[MKT39] Historique OHLC et volumes — PRSC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=PRSC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-23 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/PRSC.json
+
+[MKT40] Historique OHLC et volumes — SAFC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SAFC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-23 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SAFC.json
+
+[MKT41] Historique OHLC et volumes — SCRC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SCRC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2016-12-29 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SCRC.json
+
+[MKT42] Historique OHLC et volumes — SDCC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SDCC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SDCC.json
+
+[MKT43] Historique OHLC et volumes — SDSC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SDSC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2007-02-28 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SDSC.json
+
+[MKT44] Historique OHLC et volumes — SEMC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SEMC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-09-15
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SEMC.json
+
+[MKT45] Historique OHLC et volumes — SGBC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SGBC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SGBC.json
+
+[MKT46] Historique OHLC et volumes — SHEC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SHEC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SHEC.json
+
+[MKT47] Historique OHLC et volumes — SIBC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SIBC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2016-10-27 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SIBC.json
+
+[MKT48] Historique OHLC et volumes — SICC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SICC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-09-15
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SICC.json
+
+[MKT49] Historique OHLC et volumes — SIVC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SIVC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1999-04-19 à 2026-11-12
+Usage : Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export. Réponse initialement collectée pour l’audit et réutilisée dans le screening.
+Pièce jointe au ZIP : pieces/external_screen_raw/SIVC.json
+
+[MKT50] Historique OHLC et volumes — SLBC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SLBC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-23 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SLBC.json
+
+[MKT51] Historique OHLC et volumes — SMBC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SMBC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12
+Usage : Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SMBC.json
+
+[MKT52] Historique OHLC et volumes — SNTS
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SNTS&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-10-02 à 2026-11-12
+Usage : Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export. Réponse initialement collectée pour l’audit et réutilisée dans le screening.
+Pièce jointe au ZIP : pieces/external_screen_raw/SNTS.json
+
+[MKT53] Historique OHLC et volumes — SOGC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SOGC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SOGC.json
+
+[MKT54] Historique OHLC et volumes — SPHC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SPHC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/SPHC.json
+
+[MKT55] Historique OHLC et volumes — STAC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=STAC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-10-07 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/STAC.json
+
+[MKT56] Historique OHLC et volumes — STBC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=STBC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-21 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/STBC.json
+
+[MKT57] Historique OHLC et volumes — TTLC
+Émetteur : RichBourse ; Richbourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=TTLC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12 ; Série disponible au 12 novembre 2026
+Usage : Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.
+Cours historiques, moyennes mobiles, RSI, volumes et niveaux de prix.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Alias : TTL23
+Notes : [MKT57] Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+[TTL23] Point d’accès JSON public effectivement interrogé ; fournisseur tiers, pas une API officielle BRVM. Certaines dates sans transaction peuvent être absentes. Cours bruts, sauf traitement expressément indiqué. Les calculs propres ne sont pas une validation du backtest de l’utilisateur.
+Pièce jointe au ZIP : pieces/external_screen_raw/TTLC.json
+
+[MKT58] Historique OHLC et volumes — TTLS
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=TTLS&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2015-02-20 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/TTLS.json
+
+[MKT59] Historique OHLC et volumes — UNLC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=UNLC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 2001-06-20 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/UNLC.json
+
+[MKT60] Historique OHLC et volumes — UNXC
+Émetteur : RichBourse
+Catégorie : Marché — API RichBourse
+URL : https://www.richbourse.com/common/mouvements/technique-donnees?symbole=UNXC&complet=1
+Période : Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12
+Usage : Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.
+Pièce jointe au ZIP : pieces/external_screen_raw/UNXC.json
+
+[BOA01] Rapport d’activité trimestriel au 30 septembre 2026
+Émetteur : Bank of Africa Niger / BRVM
+Catégorie : BOAN — résultats
+URL : https://www.brvm.org/sites/default/files/20261026_-_rapport_dactivites_-_3e_trimestre_2026_-_boa_ng.pdf
+Période : Neuf mois clos le 30 septembre 2026
+Usage : PNB, RBE, coût du risque, résultats avant impôts et net ; comparaisons 2025 et calculs de valorisation.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Rapport daté du 20 octobre 2026. Tableau numérisé contrôlé visuellement ; les écarts calculés ne constituent pas une explication fiscale publiée.
+
+[BOA02] Attestation des commissaires aux comptes et rapport d’activité du premier semestre 2026
+Émetteur : Bank of Africa Niger ; Forvis Mazars Niger et ACSA / BRVM
+Catégorie : BOAN — résultats et examen limité
+URL : https://www.brvm.org/sites/default/files/20260925_-_attestation_des_commissaires_aux_comptes_et_rapport_dactivites_-_1er_semestre_2026_-_boa_niger.pdf
+Période : Semestre clos le 30 juin 2026
+Usage : Résultats semestriels, calcul du troisième trimestre isolé, portée de l’examen limité.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : 7 pages ; rapport d’activité daté du 5 août 2026, attestation du 14 septembre 2026. Conclusion sans réserve ; pas de bilan semestriel détaillé ni de résolution explicite des points prudentiels 2025.
+
+[BOA03] Rapport des commissaires aux comptes sur les états financiers annuels — exercice 2025
+Émetteur : Bank of Africa Niger ; Nouhou Tari et Sirage Sani Bako / BRVM
+Catégorie : BOAN — comptes annuels et audit
+URL : https://www.brvm.org/sites/default/files/20260401_-_rapport_des_commissaires_aux_comptes_sur_les_etats_financiers_annuels_-_exercice_2025_-_boa_ng.pdf
+Période : Exercice clos le 31 décembre 2025
+Usage : Comptes détaillés, fonds propres, créances et dépréciations ; demandes du superviseur et ratios prudentiels.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : 49 pages, rapport signé le 20 février 2026. Opinion d’audit sans réserve page 3 ; observations prudentielles page 7 ; créances clientèle annexe 4.5, page PDF 25. Les observations 2025 ne prouvent pas leur persistance en novembre 2026.
+
+[BOA04] Communiqué de presse : annonce des résultats financiers 2025
+Émetteur : Bank of Africa Niger
+Catégorie : BOAN — communication financière
+URL : https://www.boaniger.com/wp-content/uploads/2026/04/Comm-presse_NG_BRVM2025-1.pdf
+Période : Exercice 2025 et tendances du premier trimestre 2026
+Usage : Provisions exceptionnelles annoncées, absence de dividende 2025, fonds propres, bilan et perspectives de redressement.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Les présentations de certains ratios/RBE diffèrent de celles du rapport annuel et des derniers tableaux trimestriels ; ne pas fusionner sans rapprochement.
+
+[BOA05] Rapport annuel 2025 — document publié sur le site de BOA Niger
+Émetteur : Groupe Bank of Africa / Bank of Africa Niger
+Catégorie : BOAN — rapport annuel
+URL : https://www.boaniger.com/wp-content/uploads/2026/08/BOA-RA-25_NG.pdf
+Période : Exercice 2025
+Usage : Structure du bilan, titres publics, produits d’intérêts, ratios et comparaison des présentations.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : URL extraite du HTML officiel de la page financière ; téléchargement direct HTTP 200 et texte local vérifiés. Échec du lecteur web. Document comprenant une partie groupe et les pages Niger, dont pages imprimées 106 à 112. Répertoire d’hébergement août 2026, date exacte de mise en ligne non certifiée.
+
+[BOA06] Fiche de notation financière — Bank of Africa Niger
+Émetteur : Bloomfield Investment Corporation / BRVM
+Catégorie : BOAN — notation
+URL : https://www.brvm.org/sites/default/files/20261014_-_notation_financiere_-_boa_ng.pdf
+Période : Validité août 2026 à juillet 2027
+Usage : Note locale long terme A− stable, facteurs favorables et fragilités, chiffres financiers 2025.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Une notation de crédit ne mesure pas le potentiel de hausse de l’action.
+
+[BOA08] Bank of Africa Niger — profil de l’entreprise
+Émetteur : BRVM
+Catégorie : BOAN — profil émetteur
+URL : https://www.brvm.org/fr/node/331
+Période : Actionnariat et capital au 31 décembre 2025
+Usage : Capital, nombre d’actions et structure actionnariale.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Le tableau historique présente des coquilles ; les comptes et avis de dividende priment.
+
+[BOA09] Communication financière
+Émetteur : Bank of Africa Niger
+Catégorie : BOAN — portail financier
+URL : https://www.boaniger.com/institutionnels/communication-financiere/
+Période : Consultation le 12 novembre 2026
+Usage : Index des rapports et documents émetteur ; données de capitalisation, fonds propres par action et dividendes historiques.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Portail dynamique ; source du lien direct du rapport annuel 2025.
+
+[BOA10] Rapport du conseil d’administration à l’assemblée générale ordinaire — annule et remplace le précédent
+Émetteur : Bank of Africa Niger / BRVM
+Catégorie : BOAN — gouvernance et perspectives
+URL : https://www.brvm.org/sites/default/files/20260324_-_rapport_du_conseil_dadministration_a_lassemblee_generale_ordinaire_des_actionnaires_-_exercice_2025_-_boa_ng_annule_et_remplace_le_precedent.pdf
+Période : Exercice 2025 ; AGO du 3 avril 2026
+Usage : Résultats, correction d’erreur imputée aux capitaux propres, recouvrement, budget et orientations 2026.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Version corrigée privilégiée. La correction de 1,821 milliard F relative aux agios 2023/2024 est déjà comptabilisée dans les fonds propres publiés ; ne pas la retrancher une seconde fois.
+
+[BOA11] Rapport du conseil d’administration à l’AGO — version initiale
+Émetteur : Bank of Africa Niger / BRVM
+Catégorie : BOAN — gouvernance, version remplacée
+URL : https://www.brvm.org/sites/default/files/20260318_-_rapport_du_ca_a_lago_-_exercice_2025_-_boa_ng.pdf
+Période : Exercice 2025
+Usage : Repérage documentaire ; remplacé par la publication du 24 mars 2026.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Version remplacée, conservée uniquement pour la traçabilité ; ne pas l’utiliser comme version courante.
+
+[BOA12] Rapport des CAC sur les conventions réglementées et les crédits accordés aux dirigeants
+Émetteur : Bank of Africa Niger / BRVM
+Catégorie : BOAN — conventions réglementées
+URL : https://www.brvm.org/sites/default/files/20260401_-_rapport_des_cac_sur_les_conventions_reglementees_et_les_credits_accordes_aux_dirigeants_de_la_banque_-_exercice_2025_-_boa_ng.pdf
+Période : Exercice 2025
+Usage : Document complémentaire de gouvernance ouvert pendant l’approfondissement.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : 8 pages numérisées ; pas de conclusion détaillée tirée de ce document dans la note BOAN.
+
+[BOA13] Communiqué du conseil d’administration — alerte sur les résultats 2025
+Émetteur : Bank of Africa Niger / BRVM
+Catégorie : BOAN — alerte sur résultats
+URL : https://www.brvm.org/sites/default/files/20260313_-_communique_-_profit_warning_-_boa_niger.pdf
+Période : Exercice 2025
+Usage : Baisse du résultat et contexte sectoriel ; distinction risque de crédit de la banque / données sectorielles.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Communiqué relatif au conseil du 20 février 2026. Les taux de sinistralité sectoriels ne sont pas les taux propres à BOAN.
+
+[BOA14] Bulletin officiel de la cote du 1er avril 2026
+Émetteur : BRVM
+Catégorie : BOAN — bulletin officiel
+URL : https://bfin.brvm.org/boc/BOC_JOUR/BOC_20260401.pdf
+Période : Séance du 1er avril 2026 et publications émetteurs
+Usage : Repérage puis recoupement du rapport d’audit BOAN 2025.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : 87 pages ; doublon de plusieurs pièces publiées séparément. Les pages numérisées n’étaient pas toutes présentes dans l’extraction du lecteur web.
+
+[BOA15] Rapport annuel 2024 — Niger
+Émetteur : Groupe Bank of Africa / Bank of Africa Niger
+Catégorie : BOAN — historique
+URL : https://www.boaniger.com/wp-content/uploads/2025/09/BOA-RA-2024-Niger.pdf
+Période : Exercice 2024
+Usage : Repérage des séries historiques de bilan, résultats et ratios.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Répertoire septembre 2025 ; date exacte de publication non certifiée. Document repéré dans les recherches, non retenu pour certifier une situation 2026.
+
+[BOA16] Rapports de sociétés cotées — Bank of Africa Niger
+Émetteur : BRVM
+Catégorie : BOAN — portail des publications
+URL : https://www.brvm.org/fr/rapports-societe-cotes/bank-africa-ng?field_type_rapport_tid=All
+Période : Consultation le 12 novembre 2026
+Usage : Index officiel utilisé pour retrouver les liens de téléchargement.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[ORG01] Rapport des CAC et états financiers annuels consolidés IFRS 2025
+Émetteur : Oragroup ; Ficao Grant Thornton Togo et KPMG Togo
+Catégorie : ORGT — comptes annuels consolidés
+URL : https://www.orabank.net/sites/default/files/2026-07/ORAGROUP%202025%20-%20%20RG%20Conso%20IFRS.pdf
+Période : Exercice clos le 31 décembre 2025
+Usage : Résultat total et part du groupe, BPA, fonds propres et ratios prudentiels ; audit du PER et de la thèse de redressement.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : 87 pages ; répertoire juillet 2026. Les ratios prudentiels cités sont arrêtés fin 2025 et ne constituent pas un constat au 12 novembre 2026.
+
+[ORG02] Rapport d’activités du premier semestre 2026
+Émetteur : Oragroup / BRVM
+Catégorie : ORGT — résultats semestriels
+URL : https://www.brvm.org/sites/default/files/20261009_-_rapport_dactivites_-_1er_semestre_2026_-_oragroup_tg.pdf
+Période : Semestre clos le 30 juin 2026
+Usage : PNB, RBE, coût du risque, bénéfice et bilan semestriels consolidés.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Lien exact retrouvé lors de la préparation du registre, correspondant au document local déjà exploité.
+
+[ORG03] Avis n°115-2020/BRVM/DG — paiement de dividendes, exercice 2019
+Émetteur : BRVM / Oragroup
+Catégorie : ORGT — dividende historique
+URL : https://www.brvm.org/sites/default/files/20200703_-_avis_ndeg115_brvmdg_-_paiement_de_dividendes_exercice_2019_-_oragroup_tg.pdf
+Période : Dividende de l’exercice 2019 payé le 17 juillet 2020
+Usage : Vérification du dividende net historique de 59,52 F et de sa date ; contestation d’un revenu annuel courant supposé.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Détachement le 15 juillet 2020 ; ce paiement historique ne garantit pas une distribution annuelle actuelle.
+
+[ORG04] ORGT — fiche de cotation BRVM
+Émetteur : BRVM
+Catégorie : ORGT — cotation
+URL : https://www.brvm.org/fr/orgt
+Période : Séance du 12 novembre 2026
+Usage : Recoupement du cours et des données boursières de référence.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Page dynamique ; ne pas utiliser un bandeau de référence pour remplacer la clôture datée.
+
+[ORG06] Rapports de sociétés cotées — Oragroup
+Émetteur : BRVM
+Catégorie : ORGT — portail des publications
+URL : https://www.brvm.org/fr/rapports-societe-cotes/oragroup
+Période : Consultation le 12 novembre 2026
+Usage : Index officiel utilisé pour retrouver les rapports financiers.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+
+[METH03] Règles de négociation, d’admission et de radiation à la cote et règles spécifiques
+Émetteur : BRVM
+Catégorie : Marché — règles de négociation
+URL : https://www.brvm.org/sites/default/files/regles_negociation_admission_0.pdf
+Période : Recueil disponible sur la page officielle
+Usage : Ordres, exécutions partielles, appariement, événements sur valeurs et pouvoirs de suspension.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Date de mise en ligne de la page officielle ; recueil de 66 pages. Aucune garantie d’exécution d’un stop déduite de ce document.
+
+[METH04] NIST/SEMATECH e-Handbook — 7.2.4.1. Confidence intervals
+Émetteur : NIST
+Catégorie : Statistiques — incertitude des fréquences
+URL : https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm
+Période : Méthode des intervalles de confiance pour proportions
+Usage : Référence de la méthode de Wilson utilisée pour discuter l’incertitude des taux historiques.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Référence méthodologique retrouvée lors de la préparation du dossier. L’URL exacte citée dans les premières réponses n’a pas pu être certifiée. Les cas de backtest dépendants ne satisfont pas automatiquement un modèle binomial indépendant.
+
+[METH05] The Probability of Backtest Overfitting
+Émetteur : David H. Bailey, Jonathan M. Borwein, Marcos López de Prado et Qiji Jim Zhu
+Catégorie : Statistiques — surajustement des backtests
+URL : https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf
+Période : Version révisée de février 2015
+Usage : Référence méthodologique sur la sélection de stratégies et le risque de surajustement.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Référence méthodologique retrouvée lors de la préparation du dossier. L’URL exacte citée dans les premières réponses n’a pas pu être certifiée. Aucune mesure de probabilité de surajustement du backtest (PBO) n’a été calculée pour les données fournies.
+
+[TTL01] Assemblées générales d’actionnaires : accès aux rapports annuels
+Émetteur : TotalEnergies Marketing Côte d’Ivoire
+Catégorie : TTLC — publications officielles
+URL : https://totalenergies.ci/espace-actionnaires/assemblees-generales-dactionnaires
+Période : Rapports annuels 2022 à 2025
+Usage : Page officielle donnant accès au rapport annuel 2025 complet.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Lien Rapport Annuel 2025 vérifié ; référence de consultation [référence du fil]. Page dynamique, consultée le 12 novembre 2026.
+
+[TTL02] Rapport annuel 2025 — Assemblée générale du 21 mai 2026
+Émetteur : TotalEnergies Marketing Côte d’Ivoire
+Catégorie : TTLC — publications officielles
+URL : https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731ta7qoa9zau46nbza/original%2Cdefault?download=true&dxm_cors_orign=76ABE9E30D5586637AC358998F93E703&hash=gyhn6cbifh3dyctsryaunqtugr7dgce
+Période : Exercice 2025
+Usage : Analyse détaillée des investissements, marges réglementées, subventions, audit, bilan et trésorerie.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : 68 pages ; PDF de 175 731 186 octets téléchargé depuis le lien officiel. Inspection visuelle notamment des pages 16–20, 33–36 et 58–61. Le moteur de lecture web refusait la taille du fichier, mais la copie locale a été obtenue et examinée. Date de publication exacte non établie ; document destiné à l’AGO du 21 mai 2026.
+
+[TTL03] États financiers définitifs approuvés au 31 décembre 2025
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20260601_-_etats_financiers_approuves_-_exercice_2025_-_totalenergies_marketing_ci.pdf
+Période : Exercice 2025
+Usage : Bénéfice, calcul du PER, bilan, flux opérationnels, investissements, dividendes et dégradation de trésorerie.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : Comptes approuvés le 21 mai 2026. Fichier daté du 1er juin ; page de publication BRVM affichant le 2 juin 2026. Références [référence du fil] et [référence du fil].
+
+[TTL04] Publication des comptes SYSCOHADA à fin décembre 2025
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20260331_-_etats_financiers_syscohada_-_exercice_2025_-_totalenergies_marketing_ci.pdf
+Période : Exercice 2025
+Usage : Commentaires sur l’absence des ventes exceptionnelles de 2024, les dividendes reçus et la distribution proposée.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Communiqué du 26 mars 2026, comptes arrêtés le 18 mars. Trois pages ; [référence du fil].
+
+[TTL05] Rapport d’activités du premier semestre 2026
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20261027_-_rapport_dactivites_-_1er_semestre_2026_-_totalenergies_marketing_ci.pdf
+Période : Premier semestre 2026
+Usage : Croissance des tonnages et du résultat opérationnel ; résultat financier, impôts et résultat net ; calcul du troisième trimestre isolé.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Communiqué daté du 21 octobre 2026. Références [référence du fil] et [référence du fil].
+
+[TTL06] Attestation des commissaires aux comptes sur le rapport du premier semestre 2026
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — audit
+URL : https://www.brvm.org/sites/default/files/20261027_-_attestation_des_commissaires_aux_comptes_sur_le_rapport_dactivites_-_1er_semestre_2026_-_totalenergies_marketing_ci.pdf
+Période : Premier semestre 2026
+Usage : Vérification du référentiel SYSCOHADA et de la portée de l’examen limité.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Attestation du 8 octobre 2026 ; conclusion sans réserve ; examen limité, assurance modérée. Référence [référence du fil].
+
+[TTL07] Rapport d’activités du troisième trimestre 2026
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20261027_-_rapport_dactivites_-_3e_trimestre_2026_-_totalenergies_marketing_ci.pdf
+Période : Neuf mois au 30 septembre 2026
+Usage : Résultat net de 8,549 milliards F, comparaison annuelle, bénéfice glissant et scénarios de fin d’année.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6, 7
+Notes : Communiqué daté du 21 octobre 2026 ; données cumulées sur neuf mois. Références [référence du fil] et [référence du fil].
+
+[TTL08] Rapport d’activité du premier trimestre 2026
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20260422_-_rapport_dactivites_-_1er_trimestre_2026_-_totalenergies_marketing_ci.pdf
+Période : Premier trimestre 2026
+Usage : Contrôle du début de l’exercice et de l’accélération ultérieure.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Communiqué daté du 20 avril 2026 ; données provisoires non revues par les commissaires aux comptes. Référence [référence du fil].
+
+[TTL09] Rapport d’activités du premier semestre 2025
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20251016_-_rapport_dactivites_-_1er_semestre_2025_-_totalenergies_marketing_ci.pdf
+Période : Premier semestre 2025
+Usage : Base de comparaison 2026 ; anticipation prudente de l’impôt et absence de ventes exceptionnelles.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Communiqué daté du 13 octobre 2025. Référence [référence du fil].
+
+[TTL10] Rapport d’activités du troisième trimestre 2025
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20251016_-_rapport_dactivites_-_3eme_trimestre_2025_-_totalenergies_marketing_ci.pdf
+Période : Neuf mois au 30 septembre 2025
+Usage : Comparatifs de résultat et reconstitution du quatrième trimestre 2025.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : URL résolue à partir du lien officiel déjà consulté dans le répertoire BRVM. Référence [référence du fil].
+
+[TTL11] Publication des comptes à fin décembre 2024
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20250430_-_rapport_dactivites_-_1er_trimestre_2025_-_totalenergies_marketing_ci_0.pdf
+Période : Exercice 2024
+Usage : Comparabilité du résultat 2024 : dividendes reçus et impact des sorties d’immobilisations, dont les titres SIR.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Le nom du fichier mentionne le premier trimestre 2025, mais le document consulté porte sur les comptes 2024 et est daté du 25 avril 2025. Référence [référence du fil].
+
+[TTL12] États financiers définitifs au 31 décembre 2023
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — comptes et résultats
+URL : https://www.brvm.org/sites/default/files/20240910_-_etats_financiers_definitifs_2023_-_totalenergies_marketing_ci.pdf
+Période : Exercices 2023 et 2022
+Usage : Contrôle historique des bénéfices, capitaux propres, dividendes et trésorerie.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Comptes approuvés par l’assemblée générale mixte du 21 juin 2024. Référence [référence du fil].
+
+[TTL13] Avis n°245/BRVM/DG — Paiement du dividende de l’exercice 2025
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — dividendes
+URL : https://www.brvm.org/sites/default/files/20260814_-_avis_ndeg245_brvmdg_-_paiement_de_dividendes_exo_2025_-_totalenergies_marketing_ci.pdf
+Période : Dividende 2025 payé en 2026
+Usage : Montant brut et net, fiscalité indiquée dans l’avis, date de détachement et comparabilité des anciens sommets.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Détachement le 28 août 2026, paiement le 31 août. Montant brut 158,8270 F ; net personnes physiques 139,7677 F. Avis PDF préféré à l’étiquetage ambigu de certaines pages HTML. Références [référence du fil] et [référence du fil].
+
+[TTL17] Informations réglementées
+Émetteur : TotalEnergies Marketing Côte d’Ivoire
+Catégorie : TTLC — publications officielles
+URL : https://totalenergies.ci/espace-actionnaires/informations-reglementees
+Période : Répertoire de publications
+Usage : Accès et recoupement des publications financières de l’émetteur.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Page dynamique consultée le 12 novembre 2026. Référence [référence du fil].
+
+[TTL18] Répertoire BRVM des rapports de TotalEnergies Marketing CI
+Émetteur : BRVM
+Catégorie : TTLC — publications officielles
+URL : https://www.brvm.org/fr/rapports-societe-cotes/total
+Période : Répertoire de publications
+Usage : Identification des PDF officiels, rapports intermédiaires et attestations.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Référence [référence du fil] ; les cours figurant dans les bandeaux ne constituent pas des séries historiques.
+
+[TTL19] Assemblée générale tenue le 21 mai 2026
+Émetteur : TotalEnergies Marketing Côte d’Ivoire
+Catégorie : TTLC — gouvernance et distributions
+URL : https://totalenergies.ci/actualites-0/assemblee-generale-2025-0
+Période : Approbation des comptes 2025
+Usage : Confirmation de la tenue de l’assemblée et de l’approbation des comptes.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Titre de page « Assemblée Générale 2025 » mais événement du 21 mai 2026 ; date précise de publication non établie. Références [référence du fil] et [référence du fil].
+
+[TTL20] Assemblée générale tenue le 19 juin 2025
+Émetteur : TotalEnergies Marketing Côte d’Ivoire
+Catégorie : TTLC — gouvernance et distributions
+URL : https://totalenergies.ci/actualites-0/assemblee-generale-2025
+Période : Approbation des comptes 2024
+Usage : Recoupement de la distribution de 14 milliards F approuvée au titre de 2024 et payée en 2025.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Date de l’événement : 19 juin 2025 ; date précise de publication non établie. Références [référence du fil] et [référence du fil].
+
+[TTL21] Communiqué — Cession de la participation dans la SIR
+Émetteur : TotalEnergies Marketing Côte d’Ivoire / BRVM
+Catégorie : TTLC — opérations de portefeuille
+URL : https://www.brvm.org/sites/default/files/20250318_-_communique_-_totalenergies_marketing_ci.pdf
+Période : Cession intervenue le 30 juillet 2024
+Usage : Comparabilité historique des participations et produits financiers ; confirmation de la sortie de la SIR.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Cession de 793 750 actions, représentant 20,35 % du capital de la SIR. Références [référence du fil] et [référence du fil] ; ne pas assimiler à un catalyseur futur.
+
+[TTL22] Produits pétroliers — activité, distribution et régulation des prix
+Émetteur : Direction générale de l’économie / Ministère de l’Économie, des Finances et du Budget de Côte d’Ivoire
+Catégorie : TTLC — contexte sectoriel
+URL : https://www.economie-ivoirienne.ci/activites-sectorielles/produits-petroliers.html
+Période : Données sectorielles 2024 et mécanisme de fixation des prix
+Usage : Confirmation primaire de la régulation des prix et de la péréquation transport.
+Statut : citée dans les réponses intégrales récupérées
+Citations dans les sections : 6
+Notes : Page consultée le 12 novembre 2026 ; date de mise à jour affichée 23 septembre 2025, avec bandeaux macroéconomiques dynamiques. Référence [référence du fil]. Ne pas présenter toutes les statistiques de cette page comme des données de novembre 2026.
+
+[OTHER01] Rapport d’activités du troisième trimestre 2026 — SITAB CI
+Émetteur : SITAB Côte d’Ivoire / BRVM
+Catégorie : Autres titres examinés — STBC
+URL : https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_sitab_ci.pdf
+Période : Neuf mois au 30 septembre 2026
+Usage : Triage fondamental : résultat en recul malgré la progression des ventes.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Document primaire consulté lors de la sélection des deux autres candidats. Références [référence du fil] et [référence du fil] ; ne signifie pas qu’un audit complet du titre a été réalisé.
+
+[OTHER02] Rapport d’activités au 30 septembre 2026 — SOGB CI
+Émetteur : Société des caoutchoucs de Grand-Béréby / BRVM
+Catégorie : Autres titres examinés — SOGC
+URL : https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_sogb_ci.pdf
+Période : Neuf mois au 30 septembre 2026
+Usage : Triage fondamental : recul des volumes de caoutchouc et du résultat, évolution distincte du palmier.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Rapport signé le 28 octobre 2026, avec une coquille sur l’année dans la date imprimée. Références [référence du fil] et [référence du fil].
+
+[OTHER03] Rapport d’activité au troisième trimestre 2026 — Société Générale CI
+Émetteur : Société Générale Côte d’Ivoire / BRVM
+Catégorie : Autres titres examinés — SGBC
+URL : https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_societe_generale_ci.pdf
+Période : Neuf mois au 30 septembre 2026
+Usage : Triage fondamental bancaire : PNB et résultat légèrement en recul, crédits et dépôts en progression.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : Données présentées comme non auditées. Références [référence du fil] et [référence du fil] ; ne constitue pas un audit complet du titre.
+
+[OTHER04] SAPH CI : Rapport d’activités — 3e trimestre 2026
+Émetteur : SAPH Côte d’Ivoire / BRVM
+Catégorie : Autres titres examinés — SPHC
+URL : https://www.brvm.org/sites/default/files/20261013_-_rapport_dactivites_-_3e_trimestre_2026_-_saph_ci.pdf
+Période : Neuf mois au 30 septembre 2026
+Usage : Triage fondamental : recul du bénéfice sur neuf mois ; contrôle visuel ayant corrigé une première lecture du tableau.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : MISE À JOUR BIBLIOGRAPHIQUE : URL officielle résolue lors de la préparation de l’archive à partir de la page de publication BRVM. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.
+État du registre avant résolution du lien (conservé pour traçabilité) :
+Copie PDF locale et rendu saph_2026_q3_check.png disponibles. URL d’origine exacte non retrouvée dans le contexte conservé : aucune adresse n’a été reconstituée au hasard. Chiffre retenu après vérification : résultat net en baisse de 58 %, et non en hausse. Document exploité dans le triage interne ; pas d’audit complet du titre.
+URL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.
+
+[OTHER05] FILTISAC CI : Rapport d’activités — 3e trimestre 2026 — Annule et remplace le précédent
+Émetteur : FILTISAC Côte d’Ivoire / BRVM
+Catégorie : Autres titres examinés — FTSC
+URL : https://www.brvm.org/sites/default/files/20261105_-_rapport_dactivites_-_3e_trimestre_2026_-_filtisac_ci_annule_et_remplace_le_precedent.pdf
+Période : Neuf mois au 30 septembre 2026
+Usage : Triage fondamental : pertes persistantes malgré la progression du chiffre d’affaires et poids des frais financiers.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : MISE À JOUR BIBLIOGRAPHIQUE : URL officielle de la version rectificative du 5 novembre 2026 résolue lors de la préparation de l’archive, à partir du lien intitulé « Annule et remplace le précédent » dans le répertoire BRVM. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.
+État du registre avant résolution du lien (conservé pour traçabilité) :
+Le contexte conservé mentionne une version corrigée du 5 novembre 2026. URL exacte et copie locale non retrouvées ; date tirée du compte rendu de la consultation antérieure, non revérifiée pour cet export. Analyse interne de sélection, pas source annoncée dans la comparaison finale des trois candidats.
+URL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.
+
+[OTHER06] NEI-CEDA CI : Rapport d’activités — 3e trimestre 2026
+Émetteur : NEI-CEDA Côte d’Ivoire / BRVM
+Catégorie : Autres titres examinés — NEIC
+URL : https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_nei-ceda_ci.pdf
+Période : Neuf mois au 30 septembre 2026
+Usage : Triage fondamental : chute du bénéfice et effet de base lié à une reprise de provision en 2025.
+Statut : consultée ou utilisée lors des recherches ; citation historique exacte non certifiée
+Notes : MISE À JOUR BIBLIOGRAPHIQUE : URL officielle résolue lors de la préparation de l’archive à partir de la page de publication BRVM. Rapport signé le 23 octobre 2026, publié le 30 octobre. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.
+État du registre avant résolution du lien (conservé pour traçabilité) :
+Source mentionnée dans le compte rendu de la consultation antérieure. URL exacte et copie locale non retrouvées : aucune adresse n’a été inventée. Analyse interne de sélection, pas source annoncée dans la comparaison finale des trois candidats.
+URL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.
+
+[USER01] Notice de l’export des cas de la veille spéculative
+Émetteur : Utilisateur — fichiers joints
+Catégorie : Pièces fournies par l’utilisateur
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Définition déclarée des signaux, zones, horizon, frais, échantillonnage et limites.
+Statut : pièce locale
+Notes : Les scripts de production cités dans la notice ne figuraient pas parmi les cinq pièces fournies ; leur exécution intégrale ne peut pas être déduite de cette notice. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md.
+Pièce jointe au ZIP : pieces/upload/LISEZ-MOI.md
+
+[USER02] Agrégats de l’export par schéma et zone
+Émetteur : Utilisateur — fichiers joints
+Catégorie : Pièces fournies par l’utilisateur
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Contrôle de la concordance des agrégats avec les cas CSV.
+Statut : pièce locale
+Notes : Agrégats fournis par l’utilisateur ; ils ne sont pas une validation indépendante du backtest. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md.
+Pièce jointe au ZIP : pieces/upload/resume.json
+
+[USER03] Cas exportés du schéma PANIQUE
+Émetteur : Utilisateur — fichiers joints
+Catégorie : Pièces fournies par l’utilisateur
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Audit des cas PANIQUE, des zones, des paliers et de la contrainte de stop.
+Statut : pièce locale
+Notes : Données historiques exportées ; aucune garantie d’exécution boursière n’en résulte. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md. Fichier vérifié : 414 lignes de cas et 23 colonnes, hors en-tête.
+Pièce jointe au ZIP : pieces/upload/cas_PANIQUE.csv
+
+[USER04] Cas exportés du schéma EVEIL
+Émetteur : Utilisateur — fichiers joints
+Catégorie : Pièces fournies par l’utilisateur
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Audit des cas EVEIL, des zones, des paliers et de la contrainte de stop.
+Statut : pièce locale
+Notes : Données historiques exportées ; aucune garantie d’exécution boursière n’en résulte. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md. Fichier vérifié : 934 lignes de cas et 23 colonnes, hors en-tête.
+Pièce jointe au ZIP : pieces/upload/cas_EVEIL.csv
+
+[USER05] Cas exportés du schéma CASSURE
+Émetteur : Utilisateur — fichiers joints
+Catégorie : Pièces fournies par l’utilisateur
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Audit des cas CASSURE, des zones, des paliers et de la contrainte de stop.
+Statut : pièce locale
+Notes : Données historiques exportées ; aucune garantie d’exécution boursière n’en résulte. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md. Fichier vérifié : 267 lignes de cas et 23 colonnes, hors en-tête.
+Pièce jointe au ZIP : pieces/upload/cas_CASSURE.csv
+
+[CALC01] Script d’audit des agrégats et scénarios des CSV
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Recalcul des statistiques par schéma et par zone à partir des pièces utilisateur.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/aggregate_audit.py
+
+[CALC02] Résultats structurés de l’audit des agrégats
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Statistiques, rapprochements et scénarios calculés sur les cas exportés.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/aggregate_audit_results.json
+
+[CALC03] Sortie textuelle de l’audit des agrégats
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Trace lisible de l’audit des fichiers et des résultats agrégés.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/aggregate_audit_output.txt
+
+[CALC04] Script de contrôles externes ORGT
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Comparaison d’épisodes ORGT avec les séries de cours et volumes disponibles.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_audit_orgt.py
+
+[CALC05] Résultats des contrôles externes ORGT
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Trace des rapprochements d’épisodes ORGT et des écarts examinés.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_audit_orgt_results.json
+
+[CALC06] Résultats des contrôles externes SIVC
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Recoupements complémentaires des épisodes exportés pour SIVC.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_audit_SIVC_results.json
+
+[CALC07] Résultats des contrôles externes SNTS
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Recoupements complémentaires des épisodes exportés pour SNTS.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_audit_SNTS_results.json
+
+[CALC08] Contrôles des signaux et séries historiques
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Trace structurée des contrôles ciblés effectués sur les signaux.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_audit_signal_checks.json
+
+[CALC09] Script de screening des valeurs BRVM
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Collecte de l’historique RichBourse et calcul des indicateurs de prix et de volume.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_screen_brvm.py
+
+[CALC10] Indicateurs du screening BRVM
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Résultats calculés du screening de prix et volumes pour 48 valeurs.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_screen_metrics.json
+
+[CALC11] Comparaison technique des trois candidats
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Cours, méthodes, scénarios, dividendes et instantané du carnet officiel du 11 novembre 2026.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/external_screen_three_challenge.json
+
+[CALC12] Éléments de vérification des cas exportés
+Émetteur : Calculs effectués dans la conversation
+Catégorie : Calculs et vérifications propres
+URL : Pièce locale — pas d’URL publique
+Période : Travaux de la conversation du 12 novembre 2026
+Usage : Trace structurée des vérifications effectuées sur les cas PANIQUE, EVEIL et CASSURE.
+Statut : pièce locale
+Notes : Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.
+Pièce jointe au ZIP : pieces/root_audit_rows.json

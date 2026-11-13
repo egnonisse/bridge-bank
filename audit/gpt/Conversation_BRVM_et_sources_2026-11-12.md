@@ -1,0 +1,1741 @@
+---
+title: "Conversation BRVM et sources"
+subtitle: "Archive disponible du fil — 12 novembre 2026"
+author: "Julien Kambou • échanges avec ChatGPT"
+lang: fr-FR
+---
+
+## Ce que contient cette archive
+
+Cette édition rassemble la discussion BRVM disponible, puis les sources et les données utilisées, de l’alerte ORGT jusqu’au choix pour un budget de 800 000 F CFA.
+
+**Limite de restitution : ce document n’est pas un export intégral mot pour mot de toutes les premières réponses.** Les messages utilisateur accessibles et les deux dernières analyses détaillées sont repris dans leur formulation récupérée. Les premières réponses figurent sous l’étiquette « SYNTHÈSE RECONSTITUÉE — formulation originale indisponible » ; les extraits littéraux récupérés sont séparés. Aucun passage manquant n’est présenté comme un verbatim.
+
+La mise en page et les références sont harmonisées. Les identifiants entre crochets renvoient au registre final, dont les titres sont cliquables. Toutes les URL figurent aussi dans Sources_BRVM_2026-11-12.txt et les index CSV / JSON.
+
+**Date des analyses : 12 novembre 2026.** Les frais de 1,4 % par sens restent une hypothèse sans tarif SGI vérifié ; les objectifs de cours sont des scénarios conditionnels. Les changements de jugement sont conservés dans leur ordre, notamment la mise en attente de BOAN après l’approfondissement.
+
+## Parcours de lecture
+
+1. Alerte initiale ORGT — message utilisateur.
+2. Challenge initial d’ORGT — extrait et synthèse reconstituée.
+3. Audit des cinq fichiers historiques — synthèse reconstituée.
+4. Première sélection de TTLC — extrait et synthèse reconstituée.
+5. Première comparaison des trois titres — synthèse reconstituée.
+6. Approfondissement — réponse intégrale récupérée.
+7. Budget de 800 000 F CFA — réponse intégrale récupérée.
+8. Messages de progression récupérés et demande d’archive.
+9. Toutes les sources retrouvées et index des pièces.
+
+Le registre comprend **158 références : 141 liens publics (dont 48 séries de cours), 5 fichiers fournis et 12 fichiers de calculs**. Les doublons d’URL sont fusionnés, avec conservation de leurs identifiants.
+
+# 1. Alerte initiale ORGT
+
+**Utilisateur — message récupéré mot pour mot**
+
+🎲 VEILLE SPÉ :
+🩹 RACHAT DE PANIQUE — ORGT (ORGT)
+
+Cours de référence : 2 550 F (LIVE du moment)
+💵 Position du prix : 36e percentile sur 5 ans | −2 % sous le creux des 60 séances (nouveau plus bas)
+   ✅ Verdict prix : favorable — zone 20-40 POUR CE SCHÉMA : 62 % de réussite sur 39 cas, gain médian +13 %
+Ce qui se passe : ce cours a déclenché le schéma « rachat de panique » — un signal de veille — attention : 5 titre(s) cochent ce même signal aujourd'hui (la marée du marché), ce n'est pas un événement propre à ce titre, jamais automatique.
+
+📊 FRÉQUENCES HISTORIQUES (10 ans, hors frais déjà déduits) :
+   • La fréquence qui DÉCIDE est celle du schéma BRUT (avant
+     les filtres zone + volume ci-dessous) : 51 % de 421 cas OBSERVÉS finissent plus hauts 12 mois après (+2 % net médian)
+   • Ton palier +20 % : touché dans 58 % des cas observés
+   • Ton palier +50 % : touché dans 31 % des cas observés
+   • ✅ ZONE BASSE MAIS SAINE : 20-40 % de la fourchette : 62 % de réussite sur 39 cas observés, gain médian +13 % — la zone MODULE le schéma
+   ⚠️ 421 cas observés, titres radiés ABSENTS (biais de survie) : fréquence historique, PAS une probabilité — les perdants existent.
+   • 🏦 Fondamental connu : dividende 60 F/an (≈ 1.3 % net), PER 8.2
+
+📋 SI TU DÉCIDES DE JOUER (ta décision, jamais automatique) :
+   • Achat : entre 2 512 F et 2 678 F — jamais plus cher
+   • Stop −15 % de TON prix payé : entre 2 135 F (achat au bas de la fourchette) et 2 276 F (achat plus haut) → tu vends tout, sans discuter
+   • +20 % (3 014 F) → vends ⅓
+   • +35 % (3 391 F) → vends ⅓
+   • +50 % (3 768 F) → vends le reste
+   • Le signal vit tant que le prix reste au-dessus de 2 512 F
+
+🚫 Règle d'or : un pari perdant ne devient JAMAIS un loyer.
+
+Challenge moi cela avec sources n'hesite pas à consulter les aPI ouvert
+
+
+# 2. Challenge initial d’ORGT
+
+**Assistant — extrait littéral récupéré du début de la réponse**
+
+Julien, **je ne validerais pas le verdict « favorable » de cette fiche en l’état.** Elle pose quelques bonnes règles de discipline, mais elle contient des données périmées, une probable confusion entre deux indicateurs de prix et des objectifs de vente mal raccordés au prix d’achat. Surtout, **les statistiques présentées ne démontrent pas la rentabilité du plan de trading proposé**, et un risque fondamental important manque à l’analyse.
+
+J’ai croisé les publications de la **BRVM**, les **comptes et rapports d’Oragroup**, puis interrogé un **endpoint public RichBourse** pour recalculer les indicateurs. Mon contrôle est arrêté au **12 novembre 2026**. Les « 421 cas » et « 39 cas » restent non vérifiables sans leur liste et la définition exacte du signal.
+
+*Fin de l’extrait littéral disponible. La synthèse ci-dessous restitue les conclusions conservées de cette réponse.*
+
+**SYNTHÈSE RECONSTITUÉE — formulation originale indisponible**
+
+L’alerte ne justifiait pas un achat automatique ; définitions, dates et exécution demandaient vérification.
+
+**Cours et position historique.** Le cours de 2 550 F correspondait à la séance du 11 novembre ; la clôture du 12 novembre était de 2 560 F. Un cours de 2 505 F avait déjà été observé le 10 novembre : qualifier 2 550 F de nouveau plus bas demandait donc de dater exactement le calcul. Un mélange de dates était possible, sans origine technique démontrée.
+
+La position dans la fourchette de cinq ans, avec minimum 1 550 F et maximum 4 350 F, donnait environ **35,7 %** à 2 550 F. Le percentile de rang était proche de **46,2 %**. 36 % min-max n’était pas un « 36e percentile ».
+
+**Dividende et PER.** Les 59,52 F identifiés correspondaient au dividende de l’exercice 2019 payé le **17 juillet 2020**, pas à un revenu annuel courant établi. Ce montant rapporté à 2 550 F représentait environ **2,33 %**, et non 1,3 %. Le PER affiché autour de 8,18 devait être rapproché des comptes : les BPA 2025 de 264 F et 241 F dilué donnaient respectivement environ **9,66 et 10,58**. L’emploi d’un résultat total comprenant les minoritaires pouvait expliquer une différence, mais restait une hypothèse.
+
+**Fondamentaux.** Les comptes IFRS 2025 distinguaient 21,643 milliards F de résultat total et 18,355 milliards attribuables aux actionnaires du groupe. Ils indiquaient aussi des ratios prudentiels fin 2025 très faibles : CET1 0,78 %, Tier 1 0,93 %, total 2,20 %, à comparer aux exigences documentées et au coussin systémique applicable. Ces valeurs historiques ne prouvaient ni la situation exacte de novembre 2026 ni une faillite. Au S1 2026, le RN progressait seulement de 1,45 %, avec PNB −1,14 % et RBE −3,33 % : la baisse du coût du risque soutenait le résultat. Aucune recapitalisation achevée n’avait été vérifiée dans les éléments consultés ; cela ne prouvait pas son absence.
+
+**Plan de sortie.** Les objectifs 3 014 / 3 391 / 3 768 F étaient calculés depuis 2 512 F, pas depuis tout prix possible de la fourchette. Vendre trois tiers à +20 / +35 / +50 % produisait **+35 % brut sur l’ensemble**, avant frais. Un stop annoncé à −15 % ne garantissait pas ce prix de vente : contreparties, réservations et écarts de cours comptaient. Certains niveaux proposés ne respectaient pas le pas de cotation de 5 F applicable au-dessus de 100 F.
+
+Les fréquences historiques, l’absence des titres radiés et les signaux simultanés de marché ne constituaient pas une probabilité individuelle. Les données exactes étaient nécessaires pour valider les 421 cas et la sous-zone de 39 cas.
+
+**Sources : ORG01–ORG05 ; METH01–METH03.**
+
+# 3. Audit des fichiers historiques
+
+**SYNTHÈSE RECONSTITUÉE — formulation originale indisponible**
+
+Pièces examinées : `resume.json`, `LISEZ-MOI.md`, `cas_PANIQUE.csv`, `cas_EVEIL.csv` et `cas_CASSURE.csv`. Aucun message utilisateur accompagnant leur dépôt n’est reconstitué ici.
+
+**Réconciliation.** Les CSV contenaient **1 615 cas sur 43 titres** : 414 PANIQUE, 934 EVEIL et 267 CASSURE. Les agrégats du JSON concordaient avec les CSV. Cette cohérence interne ne validait pas leur correspondance avec les cours officiels ni l’ancien calibrage de l’alerte.
+
+Pour PANIQUE, l’export donnait **52,17 %** de rendements terminaux positifs et une médiane nette de **+3,155 %**. En zone min-max 20–40, il donnait **81 cas**, **40 positifs (49,38 %)** et une médiane de **−2,8 %**, contre les 39 cas, 62 % et +13 % de l’alerte initiale. La différence d’univers annoncée ne suffisait pas, sans rapprochement cas par cas, à expliquer cette divergence de sous-échantillon.
+
+**Définition des signaux.** Le README décrivait PANIQUE comme RSI 14 inférieur à 30, EVEIL comme rebond d’au moins 10 % depuis le minimum des 60 observations précédentes, CASSURE comme dépassement du maximum des 250 précédentes. Les scripts producteurs étaient nommés mais pas fournis. Le filtre de volume annoncé en production était absent de cet export. Le classement utilisait la position min-max.
+
+Un espacement de 60 observations entre signaux ne rendait pas indépendantes des fenêtres futures de 252 observations. Un mouvement pouvait affecter plusieurs cas et titres. Les 252 observations ne correspondaient pas toujours à douze mois calendaires.
+
+**Toucher un objectif après le stop ne valide pas le plan.** Pour PANIQUE, +20 % était touché dans **244/414 cas (58,94 %)**, mais avant le premier stop dans **191/414 (46,14 %)** seulement. Les 53 autres cas intervenaient après le stop.
+
+Un calcul théorique du plan a été réalisé à partir des indicateurs exportés : tiers vendus à +20/+35/+50 % si touchés avant le stop ; solde sorti à −15 % ou à l’horizon ; forfait de **2,8 points de rendement** retranché une fois.
+
+| Ensemble | Cas | Rendement moyen du plan | Médiane | Plans positifs |
+|---|---:|---:|---:|---:|
+| PANIQUE | 414 | +1,58 % | −6,13 % | 43,72 % |
+| PANIQUE, zone 20–40 | 81 | +0,12 % | −7,51 % | 41,98 % |
+| EVEIL | 934 | +4,87 % | −0,59 % | 49,79 % |
+| CASSURE | 267 | +10,63 % | +17,22 % | 63,67 % |
+
+Ces résultats n’étaient ni des rendements annuels de portefeuille, ni une simulation certifiée des exécutions, ni une validation hors échantillon. Le biais de survie, la dépendance, les dividendes, les opérations sur titres et les frais réels restaient à traiter.
+
+**Contrôles externes matériels.** Pour ORGT le 3 juillet 2023, le CSV indiquait 2 680 F et 25 titres, contre une clôture officielle de 2 700 F et 176 titres ; 2 680 F correspondait à l’ouverture. Le 10 mai 2024, le volume était 28 dans l’export contre 64 dans les données recoupées. Pour le signal du 13 septembre 2024, le rendement CSV +54,85 % et le franchissement +50 % ne correspondaient pas à J+252 de la série externe : celle-ci s’arrêtait le 26 septembre 2025 à 2 325 F, soit +33,96 % après le forfait, sans +50 %. L’événement semblait correspondre à J+254, le 30 septembre.
+
+Un cas ETIT à 15 F présentait aussi un franchissement +20 % tardif malgré un cours de 18 F antérieur ; une erreur de comparaison numérique était une piste, non un diagnostic démontré sans code. Le RSI recalculé d’ORGT le 10 mai 2024 différait selon Wilder ou moyenne simple : la définition exacte devait être fixée.
+
+ORGT ne comptait que **sept cas PANIQUE**, tous en zone 0–20, dont trois rendements terminaux positifs ; aucun ne soutenait une fréquence propre au titre en zone 20–40. Conclusion : CASSURE paraissait plus prometteur dans cet export, mais aucun taux ne pouvait être transféré directement à un candidat actuel.
+
+**Pièces de calcul : `aggregate_audit_results.json`, `external_audit_orgt_results.json`, `external_audit_signal_checks.json` ; source externe ORG05 et bulletins BRVM recoupés.**
+
+# 4. Première sélection de TTLC
+
+**Utilisateur — message récupéré mot pour mot**
+
+alors tu as trouvé un candidat spé interessant à la brvm ?
+
+**Assistant — extrait littéral récupéré du début de la réponse**
+
+**Oui : je retiens TotalEnergies Marketing Côte d’Ivoire — TTLC — comme premier candidat de veille spéculative. À son cours actuel, j’attendrais toutefois un meilleur point d’entrée.** Le titre a clôturé le **12 novembre 2026 à 3 095 F**, avec **2 656 actions échangées**, représentant **8,05 millions de F CFA**. C’est le cours officiel de clôture que j’utilise ici. [MKT02] J’ai repassé les **48 valeurs cotées** au filtre des cours et volumes, puis confronté les principales pistes aux publications financières. **TTLC ressort pour l’accélération de ses bénéfices et la possibilité de construire un scénario de reprise avec un risque identifiable.** Je ne lui attribue aucune des probabilités de ton ancien signal.
+
+*Fin de l’extrait littéral disponible. La synthèse ci-dessous restitue les conclusions conservées de cette réponse.*
+
+**SYNTHÈSE RECONSTITUÉE — formulation originale indisponible**
+
+TTLC, TotalEnergies Marketing Côte d’Ivoire, avait été retenue comme dossier de veille conditionnelle. L’examen prix-volume des 48 valeurs et de publications ciblées n’était pas un audit fondamental exhaustif.
+
+À **3 095 F au 12 novembre**, le titre présentait une accélération de ses résultats : sur neuf mois, chiffre d’affaires **501,201 milliards F (+14,4 %)** et RN **8,549 milliards (+31,2 %)**. En combinant 2025 et les neuf mois comparables, le résultat sur douze mois glissants ressortait à **11,119 milliards**, soit un PER recalculé proche de **17,5**.
+
+La réserve principale était la conversion en trésorerie et le financement : fin 2025, trésorerie nette **−21,926 milliards F**, flux d’exploitation **10,196 milliards**, investissements nets **10,124 milliards** et dividendes payés **14 milliards**. La croissance du bénéfice ne suffisait donc pas à qualifier le titre de bon marché.
+
+Le premier objectif de travail se situait vers **3 450–3 500 F**. Le sommet brut de 3 595 F précédait un détachement de dividende et ne devait pas être repris sans ajustement. Le dividende individuel net d’environ **139,77 F**, détaché le 28 août, était historique et non un gain supplémentaire déjà acquis par un nouvel acheteur.
+
+À 3 095 F, atteindre 3 500 F ne représentait que **+13,1 % brut**. La zone privilégiée était **2 900–2 950 F après stabilisation**, avec remise en cause de la construction en dessous d’environ 2 800 F. Ces conditions d’étude ne garantissaient aucune exécution. Le scénario +50 % n’était pas central. Les premiers calculs retranchaient forfaitairement 2,8 points, sans tarif SGI vérifié.
+
+**Sources : TTL03, TTL05, TTL07, TTL13–TTL16, TTL23.**
+
+# 5. Première comparaison des trois titres
+
+**Utilisateur — message récupéré mot pour mot**
+
+trouves moi en deux autres et challenge les trois
+
+**SYNTHÈSE RECONSTITUÉE — formulation originale indisponible**
+
+L’ajout de **SMBC** et **BOAN** donnait le classement de recherche : **SMBC, TTLC, BOAN**. Aucun achat immédiat n’était préconisé. Les découvertes ultérieures ne sont pas rétroactivement intégrées.
+
+| Clôture du 12 novembre 2026 | SMBC | TTLC | BOAN |
+|---|---:|---:|---:|
+| Cours | 18 000 F | 3 095 F | 4 975 F |
+| Croissance du RN sur neuf mois | +56,6 % | +31,2 % | +121,9 % |
+| PER recalculé sur douze mois glissants | 8,6 | 17,5 | 26,8 |
+
+**SMBC.** Le bénéfice et la trésorerie 2025 favorisaient le dossier, mais le cours avait déjà gagné environ **23,3 % en trois séances**. Le T4 2025 représentait environ **45 % du bénéfice glissant** ; répéter cette performance ne pouvait être supposé. Environ 48 % du flux d’exploitation 2025 provenait d’une amélioration du besoin en fonds de roulement. Le tableau S1 présentait un écart de **1,599 milliard F** entre résultat ordinaire, impôt et RN, sans explication identifiée dans ce document abrégé. L’examen limité était sans réserve : aucune erreur comptable ou fraude n’était déduite. Zone de veille alors retenue : **17 500–17 800 F**, sur consolidation stable.
+
+**TTLC.** La reprise commerciale était crédible, mais la trésorerie et le prix d’entrée limitaient le rapport gain/risque. La préférence restait **2 900–2 950 F stabilisés**.
+
+**BOAN.** Le PNB, le RBE et le coût du risque s’amélioraient. Toutefois, le T4 2025 avait perdu environ **2,426 milliards F**, après des provisions exceptionnelles annoncées, et le cours avait déjà gagné **90,6 % depuis fin 2025**. La note A− stable soutenait l’analyse du crédit, sans garantir la hausse de l’action. La zone de veille était alors **4 700–4 800 F stabilisés**, ou une réévaluation après confirmation du redressement.
+
+**Changement explicite de frais.** Pour cette comparaison, le calcul utilisait l’hypothèse de **1,4 % à l’achat et 1,4 % à la vente**, toujours sans tarif SGI vérifié : rendement = (prix de vente × 0,986)/(prix d’achat × 1,014) − 1. +20 % brut devenait +16,69 % après frais hypothétiques.
+
+| Hypothèse de sortie de toute la position | Objectif | Sortie défavorable | Gain après frais | Perte après frais | Rapport gain/perte |
+|---|---:|---:|---:|---:|---:|
+| TTLC achetée 3 095 F | 3 500 F | 2 795 F | +10,0 % | −12,2 % | 0,82 |
+| SMBC achetée 18 000 F | 21 600 F | 16 800 F | +16,7 % | −9,2 % | 1,81 |
+| BOAN achetée 4 975 F | 6 000 F | 4 400 F | +17,3 % | −14,0 % | 1,23 |
+
+Les objectifs n’avaient pas la même justification : zone historique pour TTLC ; revalorisation et nouveaux sommets nécessaires pour les deux autres. Le seuil SMBC de 16 800 F était tactique, pas un plancher structurel. Ces rapports n’étaient ni une espérance de rendement ni une probabilité.
+
+Les valeurs échangées le 12 novembre étaient respectivement **8,05 millions F pour TTLC, 18,40 millions pour SMBC et 37,97 millions pour BOAN** ; une séance ne garantissait pas la liquidité future. Aucun +50 % n’était retenu comme scénario central et aucune fréquence de l’ancien backtest n’était appliquée à ces trois titres.
+
+**Sources : SMB01–SMB08, SMB14 ; TTL03, TTL05, TTL07, TTL16 ; BOA01, BOA04, BOA06, BOA07 ; MKT01, MKT05, MKT06 et séries OHLC correspondantes.**
+
+# 6. Approfondissement des trois dossiers
+
+**Utilisateur — message récupéré mot pour mot**
+
+approfondi
+
+**Assistant — réponse intégrale récupérée ; mise en page et références harmonisées**
+
+**Après avoir approfondi les comptes, je conserve SMBC en tête, mais je réduis mon niveau de conviction. TTLC reste une deuxième piste, très dépendante du prix d’entrée. Et je retire BOAN de la liste des achats envisageables sur un simple repli : il faut d’abord clarifier certains éléments du risque de crédit.**
+
+La lecture des rapports complets apporte trois informations qui changent réellement l’analyse :
+
+- **SMBC :** les engagements locatifs rendent le bilan moins confortable que ne le suggérait la seule comparaison entre trésorerie et emprunts bancaires.
+- **TTLC :** en 2025, l’exploitation a financé presque exactement les investissements. Le dividende a donc fortement pesé sur le financement.
+- **BOAN :** les auditeurs décrivent des demandes de provisionnement et de reclassement du superviseur non comptabilisées à la date de leur rapport. Les publications intermédiaires consultées ne permettent pas d’en établir précisément la résolution.
+
+Je développe ci-dessous ce que ces constats impliquent pour les bénéfices, les objectifs de cours et la décision d’entrée.
+
+**Référence : clôture du 12 novembre 2026**, soit **18 000 F pour SMBC, 3 095 F pour TTLC et 4 975 F pour BOAN**. Les scénarios portent sur les prochains mois ; les bilans annuels cités restent ceux de fin 2025. [SMB01 ; MKT02 ; MKT03]
+
+| Titre | Nature du pari | Mon jugement approfondi |
+|---|---|---|
+| **SMBC** | Maintien d’une bonne rentabilité du raffinage et des débouchés | **Meilleure priorité de recherche**, avec une décote moins évidente après normalisation |
+| **TTLC** | Croissance des volumes et amélioration de l’exploitation | **Dossier plus lisible**, mais le financement et la valorisation limitent l’intérêt au cours actuel |
+| **BOAN** | Redressement bancaire après une année très dégradée | **Attente de précisions documentaires**, même si le cours revient à 4 700–4 800 F |
+
+## 1. SMBC : le meilleur candidat relatif, mais il faut accepter un pari sur le cycle
+
+### Le PER de 8,6 donne une lecture trop favorable s’il est pris isolément
+
+SMBC a publié **8,904 milliards F de résultat net à neuf mois 2026**, en hausse de **56,6 %**. En combinant le résultat annuel 2025 avec les neuf mois 2025 et 2026, on obtient un bénéfice sur douze mois glissants de **16,292 milliards F**, donc un PER d’environ **8,6** à 18 000 F. Le calcul est cohérent, mais il conserve dans son dénominateur un quatrième trimestre 2025 particulièrement rentable. [SMB08 ; SMB02]
+
+Pour savoir si ce bénéfice représente un niveau durable, j’ai reconstitué les derniers quatrièmes trimestres :
+
+| Exercice | Résultat net du T4, calculé par différence | Part du bénéfice annuel produite au T4 |
+|---|---:|---:|
+| 2023 | **5,09 milliards F** | 29,5 % |
+| 2024 | **3,32 milliards F** | 38,2 % |
+| 2025 | **7,39 milliards F** | 56,5 % |
+
+Calculs à partir des publications annuelles et à neuf mois. [SMB12 ; SMB05 ; SMB11 ; SMB04 ; SMB10 ; SMB02]
+
+**Il existe donc une saisonnalité favorable au quatrième trimestre.** Le rapport de septembre 2023 reliait notamment la reprise attendue des ventes à la baisse des pluies et à l’accélération des travaux d’infrastructure. Annualiser mécaniquement les neuf premiers mois peut, lui aussi, sous-estimer une bonne fin d’année. [SMB12]
+
+Mais reconduire automatiquement les **7,39 milliards du T4 2025** serait trop optimiste. Je n’ai pas trouvé de rapprochement public suffisamment détaillé expliquant ce niveau exceptionnel.
+
+Pour travailler avec une hypothèse plus modérée, je retiendrais une **fourchette exploratoire de résultat annuel 2026 de 12,2 à 14 milliards F**. Elle correspond à un quatrième trimestre proche de ceux de 2024 ou de 2023. Ce n’est pas une prévision de l’entreprise.
+
+À 18 000 F, le PER serait alors d’environ :
+
+- **11,5 fois** un résultat de 12,2 milliards ;
+- **10 fois** un résultat de 14 milliards.
+
+Cela laisse un dossier potentiellement intéressant, mais l’argument « seulement 8,6 fois les bénéfices » perd une partie de sa force.
+
+### Ce que vaut le titre change fortement avec deux hypothèses simples
+
+Voici une sensibilité, avec des cours arrondis. Les multiples de 10 et 12 sont des hypothèses de travail, pas des niveaux de valorisation garantis.
+
+| Bénéfice annuel retenu | Valorisé 10 fois | Valorisé 12 fois |
+|---|---:|---:|
+| **12,2 milliards F** | **15 650 F** | **18 780 F** |
+| **14 milliards F** | **17 960 F** | **21 550 F** |
+
+La lecture est importante :
+
+**Une entreprise qui gagne encore 12 milliards F peut voir son action reculer depuis 18 000 F.** Il suffit que le marché valorise ces profits moins généreusement que le bénéfice exceptionnel actuellement incorporé dans les ratios.
+
+À l’inverse, une année autour de **14 milliards**, valorisée **12 fois**, rend une zone proche de **21 600 F** cohérente. C’est le scénario favorable que je peux défendre économiquement.
+
+### Je corrige la lecture du coussin de trésorerie
+
+Le bilan IFRS du rapport annuel 2025 présente :
+
+| Poste au 31 décembre 2025 | Montant |
+|---|---:|
+| Trésorerie et équivalents | **23,988 milliards F** |
+| Emprunts et dettes financières | **9,204 milliards F** |
+| Obligations locatives | **19,291 milliards F** |
+| **Dette nette calculée, engagements locatifs inclus** | **4,507 milliards F** |
+
+La différence de **14,784 milliards** entre trésorerie et emprunts était exacte sur ce périmètre étroit. Mais elle omettait les loyers capitalisés reconnus en IFRS. Ces engagements ne sont pas tous exigibles immédiatement ; ils réduisent néanmoins l’argument d’une trésorerie nette abondante et librement mobilisable. Le même bilan porte environ **100 milliards F de créances clients**, ce qui donne aussi beaucoup d’importance aux encaissements. [SMB03]
+
+Il faut donc regarder les prochaines données de trésorerie autant que le résultat net.
+
+En 2025, **12,634 milliards** des **26,120 milliards de trésorerie opérationnelle** provenaient d’une évolution favorable du besoin en fonds de roulement. Environ la moitié du flux opérationnel venait ainsi de mouvements de stocks, créances et dettes, dont la répétition n’est pas acquise. [SMB02]
+
+### La relation avec la SIR mérite une surveillance particulière
+
+Le rapport spécial des auditeurs pour 2024 documente **107,826 milliards F de produits facturés par SMB à la SIR**, ainsi que des pénalités de retard réciproques et un dispositif de compensation des dettes et créances. Cela montre l’importance des conditions financières avec cette contrepartie liée. Ces données concernent 2024 ; elles ne permettent pas d’affirmer l’existence de nouveaux retards de paiement en novembre 2026. [SMB13]
+
+Pour apprécier la qualité du bénéfice, je voudrais donc voir comment les ventes se transforment en encaissements, et quelle part des créances dépend de ces relations.
+
+### Un rapprochement comptable reste à expliquer
+
+Dans le tableau semestriel 2026, la différence entre le résultat des activités ordinaires, l’impôt et le résultat net laisse **environ 1,599 milliard F à rapprocher**. Le document abrégé ne donne pas le détail nécessaire. La conclusion de l’examen limité est sans réserve, mais elle ne fournit pas ce pont chiffré. [SMB06 ; SMB07]
+
+Je ne transforme pas cette absence d’explication en charge exceptionnelle supposée. En revanche, elle empêche de prétendre avoir complètement normalisé les bénéfices.
+
+**Mon verdict sur SMBC :** le meilleur potentiel relatif reste là, à condition que les marges et les encaissements suivent. Je parlerais d’un **pari sur la persistance d’un bon cycle**, avec un prix d’entrée à négocier soigneusement. Je serais moins à l’aise avec l’expression « valeur manifestement décotée ».
+
+## 2. TTLC : la reprise se voit dans l’exploitation, mais elle doit aussi réparer le financement
+
+### La hausse du bénéfice repose sur une amélioration commerciale observable
+
+Au premier semestre 2026, TTLC a publié :
+
+- **+9,3 % de tonnage vendu** ;
+- **+33,2 % de résultat d’exploitation** ;
+- **+17,9 % de résultat net**.
+
+Il existe donc une progression des volumes, au-delà d’une éventuelle hausse des prix des produits vendus. Le résultat financier a toutefois reculé, ce que la société attribue au calendrier des dividendes à recevoir. [TTL05]
+
+En retranchant le premier semestre des neuf mois, le troisième trimestre isolé fait ressortir, selon mes calculs :
+
+- un chiffre d’affaires de **175,093 milliards F**, en hausse de **23,8 %** ;
+- un résultat net de **2,906 milliards F**, en hausse de **67,8 %**.
+
+C’est encourageant. Le communiqué à neuf mois ne donne cependant pas les volumes détaillés ni les flux de trésorerie permettant de compléter cette lecture. [TTL07 ; TTL05]
+
+### Le sujet décisif est la capacité à financer simultanément investissements et dividendes
+
+Le tableau de trésorerie 2025 permet de voir précisément le problème :
+
+| Flux de trésorerie 2025 | Montant |
+|---|---:|
+| Exploitation | **+10,196 milliards F** |
+| Investissements nets | **−10,124 milliards F** |
+| **Solde après investissements** | **+0,072 milliard F** |
+| Dividendes versés pendant l’année | **−14,000 milliards F** |
+| Autres financements nets | **+0,207 milliard F** |
+| **Variation de trésorerie nette** | **−13,722 milliards F** |
+
+La trésorerie nette est ainsi passée de **−8,204 milliards** à **−21,926 milliards F**. Le cash dégagé après investissements ne couvrait pratiquement pas les dividendes versés en 2025. [TTL03]
+
+Cela change ma façon de lire la reprise : **une hausse du résultat net doit aussi se traduire par une amélioration du financement**.
+
+La société peut soutenir des investissements élevés pour développer son activité. Mais, pour l’actionnaire, il faut vérifier si cette croissance finit par produire suffisamment de trésorerie après investissements. Sinon, une partie du bénéfice comptable s’accompagne d’un besoin persistant de financement.
+
+### Les investissements ne sont pas entièrement facultatifs
+
+Le rapport annuel 2025 détaille notamment :
+
+- environ **3,8 milliards F** consacrés à la modernisation du réseau ;
+- **1,7 milliard** à de nouvelles stations ;
+- **1,8 milliard** à de nouvelles bouteilles de GPL ;
+- **1,7 milliard** à la mise aux normes des bouteilles existantes.
+
+Une part significative relève donc de l’entretien et de la conformité. Le même rapport mentionne **7,791 milliards de subventions d’exploitation**, dont il faudrait mieux comprendre la nature et les délais d’encaissement. Enfin, la direction y indique que les marges réglementées des distributeurs et des stations sont restées inchangées depuis 2016. [TTL01]
+
+Ces éléments expliquent pourquoi je surveillerais les **volumes, la marge par activité et la trésorerie**, plutôt que le seul chiffre d’affaires. Le ministère confirme que les prix pétroliers domestiques sont encadrés par un mécanisme de régulation : une hausse du prix du pétrole ne se transforme donc pas mécaniquement en amélioration du profit du distributeur. [TTL22]
+
+### À 3 095 F, la valorisation demande déjà une bonne exécution
+
+Le bénéfice sur douze mois glissants ressort à environ **11,119 milliards F**, soit un PER de **17,5**. Le marché paie donc déjà une amélioration par rapport aux **9,087 milliards de bénéfice annuel 2025**. [TTL03 ; TTL07 ; MKT02]
+
+Pour mesurer la sensibilité, voici trois combinaisons possibles. Elles illustrent les effets du bénéfice et du multiple ; je ne leur attribue aucune probabilité.
+
+| Hypothèse de bénéfice annuel | PER retenu | Cours calculé, arrondi | Écart au cours de 3 095 F |
+|---|---:|---:|---:|
+| **10 milliards F** | 15 | **2 380 F** | Environ **−23 %** |
+| **11,1 milliards F** | 18 | **3 175 F** | Environ **+2,5 %** |
+| **12,5 milliards F** | 20 | **3 970 F** | Environ **+28 %** |
+
+Le scénario à 11,1 milliards suppose un quatrième trimestre à peu près comparable à celui de 2025. Le scénario à 12,5 milliards exige un T4 d’environ **3,95 milliards**, soit une progression proche de **54 %** sur un an.
+
+**TTLC peut donc réaliser une année correcte sans offrir une forte hausse depuis 3 095 F.** Pour un gain plus important, il faut une accélération supplémentaire des bénéfices, un multiple soutenu, ou les deux.
+
+La zone de **3 450–3 500 F** reste envisageable, mais elle n’est pas une valeur vers laquelle l’action devrait nécessairement revenir. À 3 500 F, un bénéfice annuel proche de 11 milliards serait valorisé environ **20 fois**.
+
+**Mon verdict sur TTLC :** je conserve le dossier, mais je veux soit un meilleur prix d’entrée, soit une preuve supplémentaire que la reprise commerciale améliore aussi la trésorerie. Le retour vers **2 900–2 950 F** rendrait le pari plus intéressant ; il faudrait encore vérifier que les nouvelles informations restent compatibles avec la thèse.
+
+## 3. BOAN : le redressement est réel, mais je demande désormais davantage de preuves
+
+C’est le dossier pour lequel mon jugement évolue le plus.
+
+### Le rebond opérationnel mérite d’être reconnu
+
+À neuf mois 2026, BOAN publie :
+
+- un produit net bancaire en hausse de **7,9 %** ;
+- un résultat brut d’exploitation en hausse de **32,7 %** ;
+- une diminution du coût du risque ;
+- un résultat net de **6,292 milliards F**, en hausse de **121,9 %**.
+
+La progression des revenus et l’amélioration de l’efficacité sont donc observables. Le doublement du résultat net ne repose pas uniquement sur une comparaison avec un exercice faible. [BOA01]
+
+Mais la question décisive devient : **quel niveau de bénéfice peut être maintenu après un provisionnement suffisamment documenté et une fiscalité représentative ?**
+
+### Les comptes détaillés ajoutent des questions sur l’assainissement du portefeuille
+
+Le rapport d’audit signé le **20 février 2026** décrit des demandes de la Commission bancaire non comptabilisées à cette date :
+
+- reclassement de **8,457 milliards F de créances** et dépréciation de **1,7 milliard** ; la banque considérait que les impayés concernés avaient été régularisés à fin 2025 ;
+- reclassement de **12,578 milliards F** supplémentaires en créances restructurées ou douteuses ; la banque invoquait leur caractère souverain.
+
+Il mentionne également, à fin 2025, un ratio de division des risques de **34,85 %**, supérieur à la limite de **25 %**. **L’opinion d’audit est néanmoins sans réserve** : ces constats figurent dans les vérifications réglementaires. Les montants de créances à reclasser ne doivent pas être additionnés pour annoncer une perte équivalente. [BOA03]
+
+La publication du premier semestre 2026 bénéficie elle aussi d’une conclusion d’examen limité sans réserve et évoque une amélioration du recouvrement. Mais elle ne fournit pas de rapprochement explicite avec ces demandes du superviseur, ni de bilan intermédiaire complet permettant de reconstruire la situation. [BOA02]
+
+**Je n’ai donc pas établi que ces points persistent en novembre 2026. Je n’ai pas non plus trouvé leur résolution documentée dans les publications intermédiaires consultées.**
+
+Pour un pari bancaire, cette distinction compte beaucoup. Une hausse du bénéfice publié ne suffit pas à mesurer le risque résiduel du portefeuille de crédits.
+
+### La fiscalité apparente mérite également une explication
+
+Le tableau à neuf mois présente :
+
+- **6,412 milliards F de résultat avant impôts** ;
+- **6,292 milliards F de résultat net**.
+
+L’écart représente environ **1,9 %** du résultat avant impôts, contre environ **16 %** sur la période comparable de 2025. Il s’agit d’un calcul sur un tableau abrégé, **pas d’un taux d’impôt effectivement payé**. Je n’ai pas trouvé une explication suffisamment précise pour considérer cet écart comme durable. [BOA01]
+
+Cela ne remet pas en cause la croissance du produit net bancaire. En revanche, cela justifie de ne pas extrapoler directement la hausse du résultat net sur plusieurs exercices.
+
+### Le marché paie déjà une reprise substantielle
+
+Les fonds propres publiés pour fin 2025 représentent environ **1 734 F par action**. Au cours de **4 975 F**, BOAN se négocie donc à environ **2,87 fois cette valeur comptable**. [BOA09 ; MKT03]
+
+On peut faire un calcul plus favorable : ajouter intégralement le bénéfice des neuf premiers mois 2026 aux fonds propres de fin 2025, sans dividende ni aucun autre mouvement. Le multiple ressortirait encore à environ **2,44 fois**. **C’est une reconstruction illustrative, pas un bilan de septembre publié.**
+
+Une banque durablement très rentable peut justifier un multiple supérieur à deux fois ses fonds propres. Mais, à ce prix, le marché exige déjà une rentabilité élevée et une bonne qualité des actifs.
+
+Autre test : avec un T4 2026 bénéficiaire de **2 milliards F**, le résultat annuel atteindrait environ **8,292 milliards**. Cela donnerait :
+
+- un PER de **12,5** au cours actuel ;
+- environ **15 fois** à un cours de 5 970 F, soit +20 % ;
+- environ **18,7 fois** à +50 %.
+
+Ces multiples reposeraient sur un bénéfice encore hypothétique et sur la confirmation de l’assainissement.
+
+Enfin, aucun dividende n’a été prévu au titre de l’exercice 2025. Le pari repose donc principalement sur la reprise des profits et leur valorisation, sans distribution récente permettant d’amortir l’attente. [BOA04]
+
+**Mon verdict sur BOAN :** je retire la zone de **4 700–4 800 F** comme condition suffisante pour envisager une entrée. Avant de revenir sur le dossier, je voudrais un suivi explicite du provisionnement, des ratios prudentiels et de la composition du résultat net.
+
+## 4. Ce que les objectifs de +20 % demandent réellement
+
+Pour rendre les objectifs vérifiables, j’ai inversé le calcul :
+
+$$
+\text{Bénéfice nécessaire} = \frac{\text{Cours envisagé}\times\text{Nombre d’actions}}{\text{PER retenu}}
+$$
+
+Les multiples ci-dessous sont **des hypothèses de sensibilité**, pas des estimations de juste valeur. Le test utilise le bénéfice annuel 2026 comme base.
+
+| Titre | Cours correspondant à environ +20 % | PER supposé | Bénéfice annuel nécessaire | Bénéfice nécessaire au T4 2026 |
+|---|---:|---:|---:|---:|
+| **SMBC** | **21 600 F** | 12 | **14,03 milliards F** | **5,13 milliards F** |
+| **TTLC** | **3 715 F** | 18 | **12,99 milliards F** | **4,45 milliards F** |
+| **BOAN** | **5 970 F** | 12 | **10,35 milliards F** | **4,06 milliards F** |
+
+Ces calculs utilisent les nombres d’actions publiés par la BRVM et les résultats à neuf mois cités plus haut. [SMB01 ; MKT02 ; MKT03]
+
+**SMBC présente le chemin le plus facile à relier à des résultats historiques :** un T4 proche de 5,1 milliards a déjà été observé. Mais le multiple de 12 doit également être accepté par le marché.
+
+**TTLC demande une fin d’année nettement plus forte**, ou une valorisation supérieure à 18 fois les bénéfices.
+
+**BOAN demande un T4 très profitable**, avec suffisamment d’éléments pour convaincre que cette rentabilité ne sera pas absorbée par de nouvelles charges.
+
+Une hausse peut aussi anticiper les bénéfices de 2027. Dans ce cas, il faut expliciter cette croissance future : elle constitue une hypothèse supplémentaire.
+
+### Et le +50 % ?
+
+Aux mêmes multiples, il faudrait environ :
+
+- **17,54 milliards F de bénéfice pour SMBC** ;
+- **16,25 milliards pour TTLC** ;
+- **12,94 milliards pour BOAN**.
+
+Pour SMBC, ce niveau se rapproche du bénéfice élevé de 2023 : le scénario est concevable. Pour les trois titres, cependant, **+50 % exige une forte performance bénéficiaire, une expansion du multiple, ou une combinaison des deux**. Je ne l’utiliserais pas comme hypothèse centrale pour décider d’une entrée.
+
+## 5. Comment je transformerais cette analyse en décision
+
+### Les zones de prix que je conserverais
+
+| Titre | Zone de réévaluation | Condition supplémentaire | Objectif de travail |
+|---|---|---|---|
+| **SMBC** | **17 500–17 800 F** | Stabilisation du cours et maintien d’une hypothèse de bénéfice solide | **21 600 F** dans le scénario favorable |
+| **TTLC** | **2 900–2 950 F** | Reprise commerciale intacte, puis confirmation par la trésorerie | **3 450–3 500 F** |
+| **BOAN** | Pas de zone suffisante à elle seule | Clarifications sur le risque de crédit et les comptes | À recalculer après ces informations |
+
+Ce sont des conditions de décision. Une baisse jusque dans une zone d’entrée peut aussi accompagner une dégradation du dossier ; il faut lire l’information qui provoque le mouvement.
+
+### Les frais réduisent sensiblement l’avantage
+
+Je conserve, pour comparer les scénarios, l’hypothèse de **1,4 % à l’achat et 1,4 % à la vente**. Ce n’est pas un tarif SGI vérifié.
+
+Le rendement après ces frais est :
+
+$$
+R = \frac{P_{\text{vente}}\times0{,}986}{P_{\text{achat}}\times1{,}014}-1
+$$
+
+Avec des sorties entièrement exécutées aux prix supposés :
+
+| Scénario | Gain après frais jusqu’à l’objectif | Perte après frais à la sortie défavorable | Rapport gain/perte |
+|---|---:|---:|---:|
+| **SMBC : achat 17 750, objectif 21 600, sortie 16 800** | **+18,3 %** | **−8,0 %** | **2,30** |
+| **TTLC : achat 2 950, objectif 3 500, sortie 2 795** | **+15,4 %** | **−7,9 %** | **1,95** |
+| **TTLC : achat au cours actuel de 3 095, mêmes sorties** | **+10,0 %** | **−12,2 %** | **0,82** |
+
+Le contraste entre les deux lignes TTLC montre pourquoi le prix d’entrée change beaucoup la décision, même lorsque l’analyse de l’entreprise reste identique.
+
+Ces rapports ne sont ni des probabilités ni des espérances de gain. Les objectifs peuvent ne pas être atteints, et les sorties défavorables peuvent se faire plus bas.
+
+### Le risque d’exécution peut absorber une grande partie de cette marge
+
+Prenons SMBC à **17 750 F** :
+
+- une sortie à **16 800 F** donnerait environ **−8 % après frais** ;
+- une sortie finalement exécutée à **15 540 F** donnerait environ **−14,9 %** ;
+- le rapport gain/perte vers 21 600 F passerait alors de **2,30 à environ 1,23**.
+
+Le second prix constitue un scénario de stress, pas une prévision.
+
+À la séance du 12 novembre, les montants échangés étaient d’environ **18,4 millions F sur SMBC**, **8,05 millions sur TTLC** et **37,97 millions sur BOAN**. Ce sont les transactions de l’ensemble du marché pendant la séance ; elles ne représentent pas une quantité d’acheteurs disponible instantanément au prix voulu. [SMB01 ; MKT02 ; MKT03]
+
+Je dimensionnerais donc une position à partir d’une **perte de stress**, en intégrant les frais et une sortie moins favorable que le seuil prévu. Par exemple, un budget de perte de 100 000 F avec un scénario de perte de 15 % correspond à une exposition d’environ **667 000 F**, frais d’entrée inclus. C’est une illustration de calcul, à adapter au portefeuille.
+
+## Ma décision après cet approfondissement
+
+**SMBC reste ma première veille spéculative.** Son intérêt tient à un scénario bénéficiaire défendable, mais je veux une entrée qui laisse de la marge et une confirmation des encaissements. Le prochain élément déterminant sera la qualité du bénéfice annuel : résultat du T4, explication des écarts intermédiaires et évolution du financement.
+
+**TTLC reste ma deuxième piste.** Je préfère attendre un prix plus favorable ou une publication montrant que la reprise des volumes se traduit en trésorerie après investissements. À 3 095 F, une partie significative du redressement est déjà payée.
+
+**BOAN passe en attente de clarifications.** Le redressement opérationnel est encourageant, mais le prix ne compense pas suffisamment, à mes yeux, l’incertitude sur certains éléments du risque de crédit. Une information précise sur leur résolution pourrait modifier ce jugement.
+
+**Si je ne devais approfondir qu’un seul dossier pour préparer une éventuelle entrée, ce serait donc SMBC. Mais l’objectif serait de valider un bénéfice soutenable autour de 12–14 milliards F et une bonne conversion en trésorerie, avant de s’appuyer sur le PER de 8,6 ou sur un objectif de +50 %.**
+
+
+# 7. Choix pour un budget de 800 000 F CFA
+
+**Utilisateur — message récupéré mot pour mot**
+
+avec lequel des titres je pourrai avoir la meilleur plus value et pourquoi pour un budget de 800k
+
+**Assistant — réponse intégrale récupérée ; mise en page et références harmonisées**
+
+**Julien, parmi les trois titres, je privilégierais SMBC pour une enveloppe spéculative de 800 000 F CFA sur 6 à 12 mois.** C’est celui dont je trouve le scénario de hausse le mieux étayé par les bénéfices. Je ne peux toutefois pas établir qu’il réalisera la plus forte hausse.
+
+**Mon scénario de travail : une entrée entre 17 500 et 17 800 F, après stabilisation, avec un objectif favorable à 21 600 F. À 17 800 F, ton budget permettrait d’acheter 44 actions et de dégager environ 143 000 F de plus-value après les frais supposés si cet objectif est atteint.**
+
+Voici pourquoi, et ce que cela représente concrètement.
+
+## 1. Pourquoi je choisirais SMBC
+
+### Son objectif de hausse peut s’appuyer sur un bénéfice identifiable
+
+SMBC a publié **8,904 milliards F de bénéfice à neuf mois 2026, en hausse de 56,6 %**. L’amélioration de la rentabilité est donc déjà visible. [SMB08]
+
+Pour justifier un cours de **21 600 F** avec un PER de **12**, il faudrait environ **14,03 milliards F de bénéfice annuel**, soit un quatrième trimestre autour de **5,13 milliards**. Un T4 proche de ce niveau a déjà été réalisé en 2023. C’est un scénario économiquement défendable, même si ni sa réalisation ni le multiple de 12 ne sont garantis. [SMB12 ; SMB05 ; SMB01]
+
+### Sa valorisation laisse davantage de place à une hausse que celle de TTLC
+
+Avec une hypothèse de bénéfice annuel de **12,2 à 14 milliards F**, SMBC serait valorisée autour de **10 à 11,5 fois les bénéfices** au cours de 18 000 F. Cette fourchette reste une estimation de travail, plus prudente que le PER de 8,6 calculé sur douze mois glissants.
+
+TTLC, à **3 095 F**, se paie environ **17,5 fois son bénéfice sur douze mois glissants**. Sa reprise est encourageante, mais sa valorisation et ses besoins de financement réduisent la marge disponible pour le pari. [TTL07 ; TTL03 ; MKT02]
+
+### Je préfère ce scénario aux incertitudes encore présentes chez BOAN
+
+BOAN peut très bien monter davantage. Mais les questions de provisionnement décrites dans le rapport d’audit 2025 ne sont pas suffisamment rapprochées des publications intermédiaires 2026 pour que j’en fasse mon premier choix. **L’audit 2025 est sans réserve** ; mon point porte sur la visibilité du risque résiduel, pas sur une irrégularité actuelle établie. [BOA03 ; BOA02]
+
+## 2. Ce que donneraient les trois titres avec 800 000 F
+
+Je reprends notre hypothèse de **1,4 % de frais à l’achat et 1,4 % à la vente**. Ce n’est pas le tarif vérifié de ta SGI. Les calculs excluent dividendes, éventuelle fiscalité et frais supplémentaires.
+
+Les cours de clôture du **12 novembre 2026** sont de **18 000 F pour SMBC, 3 095 F pour TTLC et 4 975 F pour BOAN**. [SMB01 ; MKT02 ; MKT03]
+
+| Titre | Actions achetables, frais compris | Cours de revente testé | Plus-value après les frais supposés | Capital final, espèces restantes incluses |
+|---|---:|---:|---:|---:|
+| **SMBC à 18 000 F** | **43** | **21 600 F** | **+130 961 F** | **930 961 F** |
+| **TTLC à 3 095 F** | **254** | **3 500 F** | **+79 418 F** | **879 418 F** |
+| **BOAN à 4 975 F** | **158** | **6 000 F** | **+137 673 F** | **937 673 F** |
+
+**À ces objectifs précis, BOAN ferait gagner environ 6 700 F de plus que SMBC.** Mais ces objectifs n’ont pas une probabilité connue ou identique. Le tableau compare des scénarios de vente ; il ne démontre pas une meilleure espérance de gain pour BOAN.
+
+Le nombre d’actions achetées ne détermine pas non plus la rentabilité : **44 actions à prix élevé peuvent rapporter davantage que 254 actions moins chères**, selon leur variation en pourcentage.
+
+## 3. Le scénario SMBC que je retiendrais pour ton budget
+
+### Achat hypothétique de 44 actions à 17 800 F
+
+| Élément | Montant |
+|---|---:|
+| 44 actions × 17 800 F | **783 200 F** |
+| Frais d’achat supposés de 1,4 % | **10 965 F** |
+| **Débours total** | **794 165 F** |
+| **Espèces conservées** | **5 835 F** |
+
+**À 18 000 F, 44 actions dépasseraient ton budget après frais : elles coûteraient 803 088 F.** Le maximum serait donc de 43 actions au cours de clôture actuel.
+
+### Ce que tes 800 000 F pourraient devenir
+
+Le tableau suppose que les **44 actions achetées à 17 800 F sont toutes revendues au prix indiqué**.
+
+| Scénario de sortie | Prix de vente | Gain ou perte après les frais supposés | Capital final |
+|---|---:|---:|---:|
+| Baisse avec exécution nettement sous le seuil prévu | **15 540 F** | **−119 977 F** | **680 023 F** |
+| Sortie au seuil d’invalidation de travail | **16 800 F** | **−65 314 F** | **734 686 F** |
+| Hausse modérée | **20 000 F** | **+73 515 F** | **873 515 F** |
+| **Objectif favorable retenu** | **21 600 F** | **+142 930 F** | **942 930 F** |
+| Scénario très optimiste | **27 000 F** | **+377 203 F** | **1 177 203 F** |
+
+**Je préparerais la décision autour du scénario à 21 600 F.** Les 27 000 F demanderaient une performance bénéficiaire particulièrement élevée ou une revalorisation plus importante par le marché ; je ne construirais pas le budget sur ce résultat.
+
+Le seuil de **16 800 F** est un seuil de sortie envisagé, **pas une garantie de perte limitée à 65 000 F**. Une exécution plus basse peut augmenter sensiblement la perte, comme le montre le scénario à 15 540 F.
+
+## 4. Comment j’engagerais l’argent
+
+Comme tu m’as donné un budget, mais pas la perte maximale que tu souhaites accepter, **je commencerais par une première tranche de 22 actions**, plutôt que d’engager immédiatement presque toute l’enveloppe :
+
+- **Prix limite envisagé : 17 800 F**, après stabilisation dans la zone.
+- **Coût de 22 actions avec les frais supposés : environ 397 082 F.**
+- **Solde conservé : environ 402 918 F.**
+- Complément éventuel jusqu’à 44 actions si le dossier reste favorable et si le prix d’entrée demeure acceptable.
+
+Avec seulement ces 22 actions, une revente à 21 600 F donnerait environ **71 465 F de gain après les frais supposés**. Le gain de **142 930 F** correspond bien au déploiement des **44 actions**.
+
+Je ne renforcerais pas automatiquement sur une baisse. SMBC reste sensible aux marges de raffinage, aux encaissements clients et à ses engagements financiers ; le bilan IFRS 2025 montre notamment des obligations locatives qui réduisent le coussin apparent de trésorerie. [SMB03]
+
+**Mon choix reste donc SMBC : une entrée préparée vers 17 500–17 800 F, avec un potentiel de gain calculé d’environ 143 000 à 160 000 F sur l’ensemble des 800 000 F si la revente se fait à 21 600 F. Pour décider d’engager toute l’enveloppe, il faut aussi être à l’aise avec un scénario de perte d’environ 120 000 F, voire davantage si la sortie se passe mal.**
+
+
+# 8. Messages de progression récupérés
+
+Cette annexe conserve les messages de suivi disponibles. Leur liste ne constitue pas une garantie d’exhaustivité pour les premières étapes du fil. Les analyses finales figurent dans les sections précédentes.
+
+## Pendant l’approfondissement
+
+**Assistant — 1**
+
+Je vais approfondir les trois dossiers autour de ce qui peut faire gagner ou perdre le pari : bénéfices soutenables, trésorerie ou risque de crédit, catalyseurs et prix d’entrée. Je vais surtout tester si l’avantage apparent de SMBC tient après normalisation de ses résultats.
+
+**Assistant — 2**
+
+Le point qui ressort déjà : les PER sur douze mois glissants déforment la comparaison. Celui de SMBC bénéficie d’un très gros quatrième trimestre 2025, tandis que celui de BOAN porte encore la perte de cette période. J’examine aussi les réserves des commissaires aux comptes : elles peuvent peser davantage dans le choix qu’une forte croissance du bénéfice affiché.
+
+**Assistant — 3**
+
+Deux éléments rendent le diagnostic plus exigeant. Chez SMBC, les comptes IFRS font apparaître des engagements locatifs qui réduisent le coussin financier que suggérait la seule dette bancaire. Chez BOAN, les auditeurs décrivent des ajustements demandés par le superviseur et contestés par la banque à fin 2025 ; je vérifie ce que les publications de 2026 permettent de conclure sur leur résolution.
+
+**Assistant — 4**
+
+L’approfondissement confirme SMBC en tête, mais je révise ma position sur BOAN : un retour à 4 700–4 800 F ne suffirait plus à me convaincre sans clarification du provisionnement. Pour TTLC, le point décisif est le financement : en 2025, la trésorerie dégagée par l’exploitation couvrait presque exactement les investissements, avant les dividendes. Je termine en chiffrant ce que chaque objectif de cours exige réellement comme bénéfice.
+
+**Assistant — 5**
+
+Les objectifs de hausse sont maintenant reliés à des hypothèses de résultat. Pour SMBC, 21 600 F serait cohérent avec environ 14 milliards F de bénéfice annuel valorisés 12 fois ; un bénéfice de 12 milliards valorisé 10 fois correspondrait à environ 15 400 F. Cela précise le pari : les marges et la fin d’année doivent rester solides, même si l’entreprise continue d’être rentable.
+
+## Pendant le calcul du budget de 800 000 F
+
+**Assistant — 1**
+
+Je vais comparer ce que 800 000 F permettent d’acheter sur les trois titres, puis chiffrer les gains et les pertes possibles après frais. Je retiens ton horizon spéculatif de quelques mois à un an.
+
+**Assistant — 2**
+
+Avec 800 000 F frais compris, le calcul permet 43 actions SMBC à 18 000 F, ou 44 si l’achat se fait à 17 800 F. BOAN donnerait un gain légèrement supérieur aux objectifs retenus, mais ces objectifs n’ont pas une probabilité connue : je garde une préférence pour SMBC, dont le scénario bénéficiaire est mieux étayé.
+
+## Demande d’archive
+
+**Utilisateur — message récupéré mot pour mot**
+
+Je veux notre conversation complet puis toutes les sources
+
+**Assistant — messages de progression récupérés lors de l’assemblage**
+
+Je vais rassembler la conversation et les sources dans des documents téléchargeables, avec un index des liens et des calculs. Je vérifierai aussi quelles parties du fil sont disponibles mot pour mot, afin de signaler clairement toute lacune.
+
+J’utilise les fonctions de récupération du contexte et de création de documents pour préparer une version Word et une version PDF. Certaines parties anciennes du fil ne sont plus disponibles mot pour mot dans mon contexte ; je cherche à les récupérer avant d’assembler le dossier.
+
+J’ai réuni les références des rapports financiers, des bulletins de cotation et des données utilisées dans les calculs. La récupération des premières réponses ne fournit que des extraits et des synthèses ; je les signalerai comme tels. Les réponses détaillées récentes seront reprises intégralement, avec leurs sources en annexe.
+
+Je termine l’archive avec un registre unique des sources et les fichiers de données utilisés pour les calculs. Les passages récupérés mot pour mot et les synthèses des échanges anciens seront clairement identifiés, pour que tu puisses distinguer les deux.
+
+Les deux réponses détaillées — l’approfondissement des trois titres et le calcul pour 800 000 F — sont intégrées. J’ai aussi retrouvé les trois liens manquants vers les publications SAPH, FILTISAC et NEI-CEDA. Je passe maintenant à la mise en page et à la vérification des fichiers.
+
+*La présente édition s’arrête à ce stade de l’assemblage. Les messages de remise des fichiers sont postérieurs à sa préparation.*
+
+
+# 9. Toutes les sources retrouvées
+
+Le registre ci-dessous couvre les sources retrouvées dans les recherches et les fichiers conservés. La présence d’une référence dans cet index ne signifie pas que chaque réponse l’a citée. Les citations des sections 6 et 7 ont été rapprochées de leur URL. Les titres de documents et les liens « Série JSON » sont cliquables. Les URL longues, les notes détaillées et les pièces associées sont disponibles dans les index TXT, CSV et JSON.
+
+Les pages de cotation et les API sont dynamiques. Les chiffres de la conversation correspondent aux données relevées le 12 novembre 2026 ; une ouverture ultérieure du même lien peut produire une autre situation. Les rapports financiers sont fournis par lien vers leur éditeur. Les calculs et les séries numériques conservées sont joints séparément dans le ZIP.
+
+Les adresses SAPH, FILTISAC et NEI-CEDA ont été retrouvées pendant la préparation de cette archive. Pour les références méthodologiques dont seule la provenance était conservée, les notes indiquent que l’URL exacte de la citation ancienne n’a pas pu être certifiée.
+
+## A. SMBC — cours, comptes, rapports et repérage
+
+
+
+**[SMB01] [Fiche de cotation SMBC](https://www.brvm.org/fr/smbc)**
+
+BRVM · Clôture du 12 novembre 2026.
+
+Utilisation : Cours de clôture, nombre de titres, capitalisation, volume et valeur des échanges.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[SMB02] [États financiers et projet d’affectation du résultat — exercice 2025](https://www.brvm.org/sites/default/files/20260512_-_etats_financiers_et_projet_daffectation_du_resultat_-_exercice_2025_-_smb_ci.pdf)**
+
+SMB / BRVM · 2025, comparatif 2024 · Publication : 2026-05-12.
+
+Utilisation : Résultat SYSCOHADA, bilan, flux de trésorerie et affectation du résultat ; première analyse de la trésorerie.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[SMB03] [Rapport annuel de l’exercice 2025 — AGO du 23 juin 2026](https://smb.ci/wp-content/uploads/2026/07/Rapport-annuel-de-lExercice-2025.pdf)**
+
+SMB · 2025, comparatif 2024.
+
+Utilisation : Comptes SYSCOHADA et IFRS, obligations locatives, actionnariat, opinions des commissaires aux comptes et dividende.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+Note de provenance : 26 pages. AGO du 23 juin 2026 ; répertoire web juillet 2026, date exacte de mise en ligne non vérifiée. Pages clés : 2, 19–25. Notes annexes complètes non jointes dans cette version publique.
+
+
+
+**[SMB04] [Rapport annuel 2024 — AGO du 19 juin 2025](https://smb.ci/wp-content/uploads/2025/06/VERSION-ALLEGEE-RAPPORT-ANNUEL-2024.pdf)**
+
+SMB · 2024, comparatif 2023.
+
+Utilisation : Historique des résultats, cyclicité et opinions des commissaires aux comptes.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+Note de provenance : 25 pages ; version allégée. Date de l’AGO connue : 19 juin 2025 ; date exacte de publication web non vérifiée.
+
+
+
+**[SMB05] [États financiers de synthèse — exercice 2023](https://www.brvm.org/sites/default/files/20240513_-_etats_financiers_de_synthese_-_exercice_2023_-_smb_ci.pdf)**
+
+SMB / BRVM · 2023 · Publication : 2024-05-13.
+
+Utilisation : Résultat annuel 2023 et comparaison des résultats du quatrième trimestre.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[SMB06] [Rapport d’activités — premier semestre 2026](https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_1er_semestre_2026_-_smb_ci.pdf)**
+
+SMB / BRVM · Premier semestre 2026, comparatifs 2025 · Publication : 2026-10-30.
+
+Utilisation : Arrêt de maintenance de 50 jours, marges de raffinage, résultats semestriels et rapprochement résultat ordinaire/impôt/résultat net.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[SMB07] [Attestation des CAC sur le rapport d’activités — premier semestre 2026](https://www.brvm.org/sites/default/files/20261030_-_attestation_des_commissaires_aux_comptes_sur_le_rapport_dactivites_-_1er_semestre_2026_-_smb_ci.pdf)**
+
+Commissaires aux comptes de SMB / BRVM · Premier semestre 2026 · Publication : 2026-10-30.
+
+Utilisation : Portée de la revue limitée et conclusion des commissaires aux comptes.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[SMB08] [Rapport d’activités — troisième trimestre 2026](https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_smb_ci.pdf)**
+
+SMB / BRVM · Neuf mois au 30 septembre 2026, comparatif 2025 · Publication : 2026-10-30.
+
+Utilisation : Croissance des résultats et ventes, risques de Brent et de fret, résultat TTM et scénarios de résultat annuel.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[SMB09] [Rapport d’activités au 30 juin 2025](https://www.brvm.org/sites/default/files/20251029_-_rapport_dactivites_-_1er_semestre_2025_-_smb_ci.pdf)**
+
+SMB / BRVM · Premier semestre 2025, comparatif 2024 · Publication : 2025-10-29.
+
+Utilisation : Comparatifs semestriels, ventes de bitume, marges et arrêt imprévu affectant les ventes Export Mer.
+
+
+
+**[SMB10] [Rapport d’activités — troisième trimestre 2025](https://www.brvm.org/sites/default/files/20251029_-_rapport_dactivites_-_3eme_trimestre_2025_-_smb_ci.pdf)**
+
+SMB / BRVM · Neuf mois au 30 septembre 2025, comparatif 2024 · Publication : 2025-10-29.
+
+Utilisation : Déduction du résultat du quatrième trimestre 2025 et analyse de sa contribution au bénéfice annuel.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[SMB11] [Rapport d’activités — troisième trimestre 2024](https://www.brvm.org/sites/default/files/20241030_-_rapport_dactivites_-_3eme_trimestre_2024_-_smb_ci.pdf)**
+
+SMB / BRVM · Neuf mois au 30 septembre 2024, comparatif 2023 · Publication : 2024-10-30.
+
+Utilisation : Saisonnalité, fin des chantiers liés à la CAN et déduction du résultat du quatrième trimestre 2024.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[SMB12] [Rapport d’activités — troisième trimestre 2023](https://www.brvm.org/sites/default/files/20231030_-_rapport_dactivites_-_3eme_trimestre_2023_-_smb_ci.pdf)**
+
+SMB / BRVM · Neuf mois au 30 septembre 2023, comparatif 2022 · Publication : 2023-10-30.
+
+Utilisation : Effets de la pluviométrie, calendrier des travaux et déduction du résultat du quatrième trimestre 2023.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[SMB13] [Rapports des commissaires aux comptes — exercice 2024](https://www.brvm.org/sites/default/files/20250903_-_rapport_des_commissaires_aux_comptes_-_exercice_2024_-_smb_ci_0.pdf)**
+
+Commissaires aux comptes de SMB / BRVM · 2024 · Publication : 2025-09-03.
+
+Utilisation : Conventions réglementées avec SIR, facturations de produits et pénalités de retard réciproques.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[SMB14] [Avis n°261 BRVM/DG — paiement du dividende de l’exercice 2025](https://www.brvm.org/sites/default/files/20260904_-_avis_ndeg261_brvmdg_-_paiement_de_dividendes_exercice_2025_-_smb_ci.pdf)**
+
+BRVM · Dividende 2025 payé en septembre 2026 · Publication : 2026-09-04.
+
+Utilisation : Montant brut de 800 F, montant après retenue pour personne physique et dates de détachement/paiement.
+
+
+
+**[SMB15] [Page BRVM : paiement de dividendes — exercice 2025](https://www.brvm.org/fr/smb-ci-paiement-de-dividendes-exercice-2025)**
+
+BRVM · Dividende 2025 payé en 2026.
+
+Utilisation : Repérage de l’avis et contrôle des dates.
+
+
+
+**[SMB16] [Notation financière de SMB — validité août 2025 à juillet 2026](https://www.brvm.org/sites/default/files/20251209_-_notation_financiere_-_smb_ci.pdf)**
+
+Bloomfield Investment / BRVM · Août 2025 à juillet 2026 ; données 2023–2024 · Publication : 2025-12-09.
+
+Utilisation : Qualité de crédit A+ stable, amélioration de trésorerie et risques d’exploitation.
+
+
+
+**[SMB17] [Fiche de notation SMB reproduite dans le BOC du 17 octobre 2024](https://bfin.brvm.org/boc/BOC_JOUR/BOC_20241017.pdf)**
+
+Bloomfield Investment / BRVM · Août 2024 à juillet 2025 ; données 2022–2023 · Publication : 2024-10-17.
+
+Utilisation : Mention historique de retards de règlement des créances par l’actionnaire de référence et risques de stockage.
+
+
+
+**[SMB18] [AGO SMB 2024](https://smb.ci/blog/ago-smb-2024/)**
+
+SMB · Assemblée générale relative à 2024 · Publication : 2025-11-18.
+
+Utilisation : Contexte des résultats 2024 et volatilité des marges de raffinage.
+
+
+
+**[SMB19] [Site officiel — présentation et activités](https://smb.ci/)**
+
+SMB · Présentation institutionnelle consultée en novembre 2026.
+
+Utilisation : Activité, implantation industrielle, débouchés et accès aux publications.
+
+
+
+**[SMB20] [Publications — rapports annuels](https://smb.ci/publications/)**
+
+SMB · Répertoire consulté en novembre 2026.
+
+Utilisation : Localisation des rapports annuels officiels 2023, 2024 et 2025.
+
+
+
+**[SMB21] [Rapports des sociétés cotées — SMB](https://www.brvm.org/fr/rapports-societe-cotes/smb)**
+
+BRVM · Répertoire consulté en novembre 2026.
+
+Utilisation : Identification des rapports semestriels, trimestriels, annuels et des attestations.
+
+
+
+**[SMB22] [Avis de convocation à l’AGO du 23 juin 2026](https://smb.ci/blog/avis-de-convocation/)**
+
+SMB · AGO du 23 juin 2026, exercice 2025 · Publication : 2026-06-22.
+
+Utilisation : Date de l’assemblée et existence de comptes SYSCOHADA et IFRS approuvés.
+
+
+
+**[SMB23] [Avis de convocation — Assemblée générale ordinaire](https://www.brvm.org/sites/default/files/20260605_-_avis_de_convocation_-_assemblee_generale_ordinaire_-_smb_ci.pdf)**
+
+SMB / BRVM · AGO du 23 juin 2026, exercice 2025 · Publication : 2026-06-05.
+
+Utilisation : Vérification de l’ordre du jour et de la mise à disposition des documents sociaux.
+
+
+
+**[SMB24] [Page BRVM : états financiers — exercice 2025](https://www.brvm.org/fr/smb-ci-etats-financiers-exercice-2025)**
+
+BRVM · 2025 · Publication : 2026-05-01.
+
+Utilisation : Repérage de la première publication des états 2025.
+
+
+
+**[SMB25] [Rapport annuel — AGO 2023](https://smb.ci/wp-content/uploads/2024/06/RAPPORT-ANNUEL-AGO-2023.pdf)**
+
+SMB · 2023.
+
+Utilisation : Lien officiel repéré depuis la page Publications.
+
+
+
+**[SMB26] [Page RichBourse : notation financière du 9 décembre 2025](https://www.richbourse.com/common/actualite/details/09-12-2025-smb-ci-notation-financiere)**
+
+RichBourse · Notation 2025–2026 · Publication : 2025-12-09.
+
+Utilisation : Repérage et accès au document de notation.
+
+
+
+**[SMB27] [Copie de la fiche de notation SMB 2025–2026](https://www.richbourse.com/common/actualite/afficher-fichier/09-12-2025-smb-ci-notation-financiere)**
+
+Bloomfield Investment, copie hébergée par RichBourse · Août 2025 à juillet 2026 · Publication : 2025-12-09.
+
+Utilisation : Lecture textuelle de la fiche de notation, ensuite retrouvée sur le site BRVM.
+
+
+
+**[SMB28] [SMB Côte d’Ivoire : cours, données et analyse](https://waramina.com/societes/smb-smbc)**
+
+Waramina · Page consultée en novembre 2026.
+
+Utilisation : Repérage des rapports et recoupements ; identification de pistes à vérifier dans les sources primaires.
+
+
+
+**[SMB29] [SMB : dividende de 800 F CFA mis en paiement le 18 septembre 2026](https://waramina.com/smb-dividende-800-fcfa-paiement-18-septembre-2026)**
+
+Waramina · Dividende de l’exercice 2025.
+
+Utilisation : Repérage du rapport annuel 2025 et du dividende, puis vérification auprès de l’émetteur et de la BRVM.
+
+
+
+**[SMB30] [SMB CI — fiche société et données financières](https://www.sikafinance.com/marches/societe/SMBC.CI)**
+
+Sika Finance · Historique 2021–2025 et fiche consultée en novembre 2026.
+
+Utilisation : Recoupement exploratoire de l’historique des bénéfices et de l’actionnariat.
+
+
+
+**[SMB31] [Rapport SMB Côte d’Ivoire — aperçu commercial de septembre 2026](https://ridwanabdou.com/produit/smb-rapport-septembre-2026/)**
+
+Ridwan Abdou · Septembre 2026.
+
+Utilisation : Pistes sur les créances, le besoin en fonds de roulement et la dépendance à SIR.
+
+Note de provenance : Seul l’aperçu public a été consulté ; rapport payant non acquis. L’affirmation attribuant toutes les créances à l’actionnaire n’a pas été reprise comme fait démontré.
+
+
+
+**[SMB32] [Commentaire sur le maintien des notes A+ et A1 de SMB](https://www.fgi-bourse.com/societe-multinationale-de-bitumes-smb-bloomfield-reconduit-les-notes-a-et-a1-de-la-smb-soutenues-par-les-perspectives-grace-a-une-liquidite-robuste-en-lien-avec-la-reprise-du-marche-petrolier/)**
+
+FGI Bourse · Notation août 2025–juillet 2026.
+
+Utilisation : Repérage de la période de validité de la notation.
+
+
+
+**[SMB33] [SMB CI : notation financière du 17 octobre 2024](https://ch.zonebourse.com/cours/action/SOCIETE-MULTINATIONALE-DE-31311738/actualite/SMB-CI-Notation-financiere-48102074/)**
+
+SMB, reprise par Publicnow / Zonebourse · Notation août 2024–juillet 2025 · Publication : 2024-10-17.
+
+Utilisation : Recoupement du texte historique sur les créances envers l’actionnaire.
+
+
+
+## B. TTLC — comptes, rapports et contexte pétrolier
+
+
+
+**[TTL01] [Assemblées générales d’actionnaires : accès aux rapports annuels](https://totalenergies.ci/espace-actionnaires/assemblees-generales-dactionnaires)**
+
+TotalEnergies Marketing Côte d’Ivoire · Rapports annuels 2022 à 2025.
+
+Utilisation : Page officielle donnant accès au rapport annuel 2025 complet.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[TTL02] [Rapport annuel 2025 — Assemblée générale du 21 mai 2026](https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731ta7qoa9zau46nbza/original%2Cdefault?download=true&dxm_cors_orign=76ABE9E30D5586637AC358998F93E703&hash=gyhn6cbifh3dyctsryaunqtugr7dgce)**
+
+TotalEnergies Marketing Côte d’Ivoire · Exercice 2025.
+
+Utilisation : Analyse détaillée des investissements, marges réglementées, subventions, audit, bilan et trésorerie.
+
+Note de provenance : 68 pages ; PDF de 175 731 186 octets téléchargé depuis le lien officiel. Inspection visuelle notamment des pages 16–20, 33–36 et 58–61. Le moteur de lecture web refusait la taille du fichier, mais la copie locale a été obtenue et examinée. Date de publication exacte non établie ; document destiné à l’AGO du 21 mai 2026.
+
+
+
+**[TTL03] [États financiers définitifs approuvés au 31 décembre 2025](https://www.brvm.org/sites/default/files/20260601_-_etats_financiers_approuves_-_exercice_2025_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Exercice 2025 · Publication : 2026-06-01.
+
+Utilisation : Bénéfice, calcul du PER, bilan, flux opérationnels, investissements, dividendes et dégradation de trésorerie.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[TTL04] [Publication des comptes SYSCOHADA à fin décembre 2025](https://www.brvm.org/sites/default/files/20260331_-_etats_financiers_syscohada_-_exercice_2025_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Exercice 2025 · Publication : 2026-03-31.
+
+Utilisation : Commentaires sur l’absence des ventes exceptionnelles de 2024, les dividendes reçus et la distribution proposée.
+
+
+
+**[TTL05] [Rapport d’activités du premier semestre 2026](https://www.brvm.org/sites/default/files/20261027_-_rapport_dactivites_-_1er_semestre_2026_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Premier semestre 2026 · Publication : 2026-10-27.
+
+Utilisation : Croissance des tonnages et du résultat opérationnel ; résultat financier, impôts et résultat net ; calcul du troisième trimestre isolé.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[TTL06] [Attestation des commissaires aux comptes sur le rapport du premier semestre 2026](https://www.brvm.org/sites/default/files/20261027_-_attestation_des_commissaires_aux_comptes_sur_le_rapport_dactivites_-_1er_semestre_2026_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Premier semestre 2026 · Publication : 2026-10-27.
+
+Utilisation : Vérification du référentiel SYSCOHADA et de la portée de l’examen limité.
+
+
+
+**[TTL07] [Rapport d’activités du troisième trimestre 2026](https://www.brvm.org/sites/default/files/20261027_-_rapport_dactivites_-_3e_trimestre_2026_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Neuf mois au 30 septembre 2026 · Publication : 2026-10-27.
+
+Utilisation : Résultat net de 8,549 milliards F, comparaison annuelle, bénéfice glissant et scénarios de fin d’année.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[TTL08] [Rapport d’activité du premier trimestre 2026](https://www.brvm.org/sites/default/files/20260422_-_rapport_dactivites_-_1er_trimestre_2026_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Premier trimestre 2026 · Publication : 2026-04-22.
+
+Utilisation : Contrôle du début de l’exercice et de l’accélération ultérieure.
+
+
+
+**[TTL09] [Rapport d’activités du premier semestre 2025](https://www.brvm.org/sites/default/files/20251016_-_rapport_dactivites_-_1er_semestre_2025_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Premier semestre 2025 · Publication : 2025-10-16.
+
+Utilisation : Base de comparaison 2026 ; anticipation prudente de l’impôt et absence de ventes exceptionnelles.
+
+
+
+**[TTL10] [Rapport d’activités du troisième trimestre 2025](https://www.brvm.org/sites/default/files/20251016_-_rapport_dactivites_-_3eme_trimestre_2025_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Neuf mois au 30 septembre 2025 · Publication : 2025-10-16.
+
+Utilisation : Comparatifs de résultat et reconstitution du quatrième trimestre 2025.
+
+
+
+**[TTL11] [Publication des comptes à fin décembre 2024](https://www.brvm.org/sites/default/files/20250430_-_rapport_dactivites_-_1er_trimestre_2025_-_totalenergies_marketing_ci_0.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Exercice 2024 · Publication : 2025-04-30.
+
+Utilisation : Comparabilité du résultat 2024 : dividendes reçus et impact des sorties d’immobilisations, dont les titres SIR.
+
+
+
+**[TTL12] [États financiers définitifs au 31 décembre 2023](https://www.brvm.org/sites/default/files/20240910_-_etats_financiers_definitifs_2023_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Exercices 2023 et 2022 · Publication : 2024-09-10.
+
+Utilisation : Contrôle historique des bénéfices, capitaux propres, dividendes et trésorerie.
+
+
+
+**[TTL13] [Avis n°245/BRVM/DG — Paiement du dividende de l’exercice 2025](https://www.brvm.org/sites/default/files/20260814_-_avis_ndeg245_brvmdg_-_paiement_de_dividendes_exo_2025_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Dividende 2025 payé en 2026 · Publication : 2026-08-14.
+
+Utilisation : Montant brut et net, fiscalité indiquée dans l’avis, date de détachement et comparabilité des anciens sommets.
+
+
+
+**[TTL17] [Informations réglementées](https://totalenergies.ci/espace-actionnaires/informations-reglementees)**
+
+TotalEnergies Marketing Côte d’Ivoire · Répertoire de publications.
+
+Utilisation : Accès et recoupement des publications financières de l’émetteur.
+
+
+
+**[TTL18] [Répertoire BRVM des rapports de TotalEnergies Marketing CI](https://www.brvm.org/fr/rapports-societe-cotes/total)**
+
+BRVM · Répertoire de publications.
+
+Utilisation : Identification des PDF officiels, rapports intermédiaires et attestations.
+
+
+
+**[TTL19] [Assemblée générale tenue le 21 mai 2026](https://totalenergies.ci/actualites-0/assemblee-generale-2025-0)**
+
+TotalEnergies Marketing Côte d’Ivoire · Approbation des comptes 2025.
+
+Utilisation : Confirmation de la tenue de l’assemblée et de l’approbation des comptes.
+
+
+
+**[TTL20] [Assemblée générale tenue le 19 juin 2025](https://totalenergies.ci/actualites-0/assemblee-generale-2025)**
+
+TotalEnergies Marketing Côte d’Ivoire · Approbation des comptes 2024.
+
+Utilisation : Recoupement de la distribution de 14 milliards F approuvée au titre de 2024 et payée en 2025.
+
+
+
+**[TTL21] [Communiqué — Cession de la participation dans la SIR](https://www.brvm.org/sites/default/files/20250318_-_communique_-_totalenergies_marketing_ci.pdf)**
+
+TotalEnergies Marketing Côte d’Ivoire / BRVM · Cession intervenue le 30 juillet 2024 · Publication : 2025-03-18.
+
+Utilisation : Comparabilité historique des participations et produits financiers ; confirmation de la sortie de la SIR.
+
+
+
+**[TTL22] [Produits pétroliers — activité, distribution et régulation des prix](https://www.economie-ivoirienne.ci/activites-sectorielles/produits-petroliers.html)**
+
+Direction générale de l’économie / Ministère de l’Économie, des Finances et du Budget de Côte d’Ivoire · Données sectorielles 2024 et mécanisme de fixation des prix.
+
+Utilisation : Confirmation primaire de la régulation des prix et de la péréquation transport.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+## C. BOAN — comptes, audit et communication
+
+
+
+**[BOA01] [Rapport d’activité trimestriel au 30 septembre 2026](https://www.brvm.org/sites/default/files/20261026_-_rapport_dactivites_-_3e_trimestre_2026_-_boa_ng.pdf)**
+
+Bank of Africa Niger / BRVM · Neuf mois clos le 30 septembre 2026 · Publication : 2026-10-26.
+
+Utilisation : PNB, RBE, coût du risque, résultats avant impôts et net ; comparaisons 2025 et calculs de valorisation.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[BOA02] [Attestation des commissaires aux comptes et rapport d’activité du premier semestre 2026](https://www.brvm.org/sites/default/files/20260925_-_attestation_des_commissaires_aux_comptes_et_rapport_dactivites_-_1er_semestre_2026_-_boa_niger.pdf)**
+
+Bank of Africa Niger ; Forvis Mazars Niger et ACSA / BRVM · Semestre clos le 30 juin 2026 · Publication : 2026-09-25.
+
+Utilisation : Résultats semestriels, calcul du troisième trimestre isolé, portée de l’examen limité.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[BOA03] [Rapport des commissaires aux comptes sur les états financiers annuels — exercice 2025](https://www.brvm.org/sites/default/files/20260401_-_rapport_des_commissaires_aux_comptes_sur_les_etats_financiers_annuels_-_exercice_2025_-_boa_ng.pdf)**
+
+Bank of Africa Niger ; Nouhou Tari et Sirage Sani Bako / BRVM · Exercice clos le 31 décembre 2025 · Publication : 2026-04-01.
+
+Utilisation : Comptes détaillés, fonds propres, créances et dépréciations ; demandes du superviseur et ratios prudentiels.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[BOA04] [Communiqué de presse : annonce des résultats financiers 2025](https://www.boaniger.com/wp-content/uploads/2026/04/Comm-presse_NG_BRVM2025-1.pdf)**
+
+Bank of Africa Niger · Exercice 2025 et tendances du premier trimestre 2026 · Publication : 2026-04-27.
+
+Utilisation : Provisions exceptionnelles annoncées, absence de dividende 2025, fonds propres, bilan et perspectives de redressement.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[BOA05] [Rapport annuel 2025 — document publié sur le site de BOA Niger](https://www.boaniger.com/wp-content/uploads/2026/08/BOA-RA-25_NG.pdf)**
+
+Groupe Bank of Africa / Bank of Africa Niger · Exercice 2025.
+
+Utilisation : Structure du bilan, titres publics, produits d’intérêts, ratios et comparaison des présentations.
+
+Note de provenance : URL extraite du HTML officiel de la page financière ; téléchargement direct HTTP 200 et texte local vérifiés. Échec du lecteur web. Document comprenant une partie groupe et les pages Niger, dont pages imprimées 106 à 112. Répertoire d’hébergement août 2026, date exacte de mise en ligne non certifiée.
+
+
+
+**[BOA06] [Fiche de notation financière — Bank of Africa Niger](https://www.brvm.org/sites/default/files/20261014_-_notation_financiere_-_boa_ng.pdf)**
+
+Bloomfield Investment Corporation / BRVM · Validité août 2026 à juillet 2027 · Publication : 2026-10-14.
+
+Utilisation : Note locale long terme A− stable, facteurs favorables et fragilités, chiffres financiers 2025.
+
+
+
+**[BOA08] [Bank of Africa Niger — profil de l’entreprise](https://www.brvm.org/fr/node/331)**
+
+BRVM · Actionnariat et capital au 31 décembre 2025.
+
+Utilisation : Capital, nombre d’actions et structure actionnariale.
+
+
+
+**[BOA09] [Communication financière](https://www.boaniger.com/institutionnels/communication-financiere/)**
+
+Bank of Africa Niger · Consultation le 12 novembre 2026.
+
+Utilisation : Index des rapports et documents émetteur ; données de capitalisation, fonds propres par action et dividendes historiques.
+
+Citée dans les réponses intégrales : section(s) 6.
+
+
+
+**[BOA10] [Rapport du conseil d’administration à l’assemblée générale ordinaire — annule et remplace le précédent](https://www.brvm.org/sites/default/files/20260324_-_rapport_du_conseil_dadministration_a_lassemblee_generale_ordinaire_des_actionnaires_-_exercice_2025_-_boa_ng_annule_et_remplace_le_precedent.pdf)**
+
+Bank of Africa Niger / BRVM · Exercice 2025 ; AGO du 3 avril 2026 · Publication : 2026-03-24.
+
+Utilisation : Résultats, correction d’erreur imputée aux capitaux propres, recouvrement, budget et orientations 2026.
+
+
+
+**[BOA11] [Rapport du conseil d’administration à l’AGO — version initiale](https://www.brvm.org/sites/default/files/20260318_-_rapport_du_ca_a_lago_-_exercice_2025_-_boa_ng.pdf)**
+
+Bank of Africa Niger / BRVM · Exercice 2025 · Publication : 2026-03-18.
+
+Utilisation : Repérage documentaire ; remplacé par la publication du 24 mars 2026.
+
+
+
+**[BOA12] [Rapport des CAC sur les conventions réglementées et les crédits accordés aux dirigeants](https://www.brvm.org/sites/default/files/20260401_-_rapport_des_cac_sur_les_conventions_reglementees_et_les_credits_accordes_aux_dirigeants_de_la_banque_-_exercice_2025_-_boa_ng.pdf)**
+
+Bank of Africa Niger / BRVM · Exercice 2025 · Publication : 2026-04-01.
+
+Utilisation : Document complémentaire de gouvernance ouvert pendant l’approfondissement.
+
+
+
+**[BOA13] [Communiqué du conseil d’administration — alerte sur les résultats 2025](https://www.brvm.org/sites/default/files/20260313_-_communique_-_profit_warning_-_boa_niger.pdf)**
+
+Bank of Africa Niger / BRVM · Exercice 2025 · Publication : 2026-03-13.
+
+Utilisation : Baisse du résultat et contexte sectoriel ; distinction risque de crédit de la banque / données sectorielles.
+
+
+
+**[BOA14] [Bulletin officiel de la cote du 1er avril 2026](https://bfin.brvm.org/boc/BOC_JOUR/BOC_20260401.pdf)**
+
+BRVM · Séance du 1er avril 2026 et publications émetteurs · Publication : 2026-04-01.
+
+Utilisation : Repérage puis recoupement du rapport d’audit BOAN 2025.
+
+
+
+**[BOA15] [Rapport annuel 2024 — Niger](https://www.boaniger.com/wp-content/uploads/2025/09/BOA-RA-2024-Niger.pdf)**
+
+Groupe Bank of Africa / Bank of Africa Niger · Exercice 2024.
+
+Utilisation : Repérage des séries historiques de bilan, résultats et ratios.
+
+Note de provenance : Répertoire septembre 2025 ; date exacte de publication non certifiée. Document repéré dans les recherches, non retenu pour certifier une situation 2026.
+
+
+
+**[BOA16] [Rapports de sociétés cotées — Bank of Africa Niger](https://www.brvm.org/fr/rapports-societe-cotes/bank-africa-ng?field_type_rapport_tid=All)**
+
+BRVM · Consultation le 12 novembre 2026.
+
+Utilisation : Index officiel utilisé pour retrouver les liens de téléchargement.
+
+
+
+## D. ORGT — contrôle de l’alerte et fondamentaux
+
+
+
+**[ORG01] [Rapport des CAC et états financiers annuels consolidés IFRS 2025](https://www.orabank.net/sites/default/files/2026-07/ORAGROUP%202025%20-%20%20RG%20Conso%20IFRS.pdf)**
+
+Oragroup ; Ficao Grant Thornton Togo et KPMG Togo · Exercice clos le 31 décembre 2025.
+
+Utilisation : Résultat total et part du groupe, BPA, fonds propres et ratios prudentiels ; audit du PER et de la thèse de redressement.
+
+
+
+**[ORG02] [Rapport d’activités du premier semestre 2026](https://www.brvm.org/sites/default/files/20261009_-_rapport_dactivites_-_1er_semestre_2026_-_oragroup_tg.pdf)**
+
+Oragroup / BRVM · Semestre clos le 30 juin 2026 · Publication : 2026-10-09.
+
+Utilisation : PNB, RBE, coût du risque, bénéfice et bilan semestriels consolidés.
+
+
+
+**[ORG03] [Avis n°115-2020/BRVM/DG — paiement de dividendes, exercice 2019](https://www.brvm.org/sites/default/files/20200703_-_avis_ndeg115_brvmdg_-_paiement_de_dividendes_exercice_2019_-_oragroup_tg.pdf)**
+
+BRVM / Oragroup · Dividende de l’exercice 2019 payé le 17 juillet 2020 · Publication : 2020-07-03.
+
+Utilisation : Vérification du dividende net historique de 59,52 F et de sa date ; contestation d’un revenu annuel courant supposé.
+
+
+
+**[ORG04] [ORGT — fiche de cotation BRVM](https://www.brvm.org/fr/orgt)**
+
+BRVM · Séance du 12 novembre 2026.
+
+Utilisation : Recoupement du cours et des données boursières de référence.
+
+
+
+**[ORG06] [Rapports de sociétés cotées — Oragroup](https://www.brvm.org/fr/rapports-societe-cotes/oragroup)**
+
+BRVM · Consultation le 12 novembre 2026.
+
+Utilisation : Index officiel utilisé pour retrouver les rapports financiers.
+
+
+
+## E. Autres titres examinés
+
+
+
+**[OTHER01] [Rapport d’activités du troisième trimestre 2026 — SITAB CI](https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_sitab_ci.pdf)**
+
+SITAB Côte d’Ivoire / BRVM · Neuf mois au 30 septembre 2026 · Publication : 2026-10-30.
+
+Utilisation : Triage fondamental : résultat en recul malgré la progression des ventes.
+
+
+
+**[OTHER02] [Rapport d’activités au 30 septembre 2026 — SOGB CI](https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_sogb_ci.pdf)**
+
+Société des caoutchoucs de Grand-Béréby / BRVM · Neuf mois au 30 septembre 2026 · Publication : 2026-10-30.
+
+Utilisation : Triage fondamental : recul des volumes de caoutchouc et du résultat, évolution distincte du palmier.
+
+
+
+**[OTHER03] [Rapport d’activité au troisième trimestre 2026 — Société Générale CI](https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_societe_generale_ci.pdf)**
+
+Société Générale Côte d’Ivoire / BRVM · Neuf mois au 30 septembre 2026 · Publication : 2026-10-30.
+
+Utilisation : Triage fondamental bancaire : PNB et résultat légèrement en recul, crédits et dépôts en progression.
+
+
+
+**[OTHER04] [SAPH CI : Rapport d’activités — 3e trimestre 2026](https://www.brvm.org/sites/default/files/20261013_-_rapport_dactivites_-_3e_trimestre_2026_-_saph_ci.pdf)**
+
+SAPH Côte d’Ivoire / BRVM · Neuf mois au 30 septembre 2026 · Publication : 2026-10-13.
+
+Utilisation : Triage fondamental : recul du bénéfice sur neuf mois ; contrôle visuel ayant corrigé une première lecture du tableau.
+
+Note de provenance : MISE À JOUR BIBLIOGRAPHIQUE : URL officielle résolue lors de la préparation de l’archive à partir de la page de publication BRVM. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.
+État du registre avant résolution du lien (conservé pour traçabilité) :
+Copie PDF locale et rendu saph_2026_q3_check.png disponibles. URL d’origine exacte non retrouvée dans le contexte conservé : aucune adresse n’a été reconstituée au hasard. Chiffre retenu après vérification : résultat net en baisse de 58 %, et non en hausse. Document exploité dans le triage interne ; pas d’audit complet du titre.
+URL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.
+
+
+
+**[OTHER05] [FILTISAC CI : Rapport d’activités — 3e trimestre 2026 — Annule et remplace le précédent](https://www.brvm.org/sites/default/files/20261105_-_rapport_dactivites_-_3e_trimestre_2026_-_filtisac_ci_annule_et_remplace_le_precedent.pdf)**
+
+FILTISAC Côte d’Ivoire / BRVM · Neuf mois au 30 septembre 2026 · Publication : 2026-11-05.
+
+Utilisation : Triage fondamental : pertes persistantes malgré la progression du chiffre d’affaires et poids des frais financiers.
+
+Note de provenance : MISE À JOUR BIBLIOGRAPHIQUE : URL officielle de la version rectificative du 5 novembre 2026 résolue lors de la préparation de l’archive, à partir du lien intitulé « Annule et remplace le précédent » dans le répertoire BRVM. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.
+État du registre avant résolution du lien (conservé pour traçabilité) :
+Le contexte conservé mentionne une version corrigée du 5 novembre 2026. URL exacte et copie locale non retrouvées ; date tirée du compte rendu de la consultation antérieure, non revérifiée pour cet export. Analyse interne de sélection, pas source annoncée dans la comparaison finale des trois candidats.
+URL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.
+
+
+
+**[OTHER06] [NEI-CEDA CI : Rapport d’activités — 3e trimestre 2026](https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_nei-ceda_ci.pdf)**
+
+NEI-CEDA Côte d’Ivoire / BRVM · Neuf mois au 30 septembre 2026 · Publication : 2026-10-30.
+
+Utilisation : Triage fondamental : chute du bénéfice et effet de base lié à une reprise de provision en 2025.
+
+Note de provenance : MISE À JOUR BIBLIOGRAPHIQUE : URL officielle résolue lors de la préparation de l’archive à partir de la page de publication BRVM. Rapport signé le 23 octobre 2026, publié le 30 octobre. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.
+État du registre avant résolution du lien (conservé pour traçabilité) :
+Source mentionnée dans le compte rendu de la consultation antérieure. URL exacte et copie locale non retrouvées : aucune adresse n’a été inventée. Analyse interne de sélection, pas source annoncée dans la comparaison finale des trois candidats.
+URL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.
+
+
+
+## F. Marché BRVM et méthodologie
+
+
+
+**[MKT01] [Cours des actions BRVM](https://www.brvm.org/fr/cours-actions/0)**
+
+BRVM · Clôture du 12 novembre 2026.
+
+Utilisation : Recoupement des clôtures et valeurs transigées pour le screening et les trois candidats.
+
+
+
+**[MKT02 — alias TTL16] [Fiche de cotation TTLC](https://www.brvm.org/fr/ttlc)**
+
+BRVM · Clôture du 12 novembre 2026.
+
+Utilisation : Cours 3 095 F, capitalisation, nombre d’actions, volume et valeur transigée.
+Cours, actions en circulation, capitalisation, volume et valeur échangée.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[MKT03 — alias BOA07] [Fiche de cotation BOAN](https://www.brvm.org/fr/boan)**
+
+BRVM · Clôture du 12 novembre 2026 ; Séance du 12 novembre 2026.
+
+Utilisation : Cours 4 975 F, capitalisation, nombre d’actions, volume et valeur transigée.
+Clôture 4 975 F, 20,8 millions d’actions, volume et valeur échangée.
+
+Citée dans les réponses intégrales : section(s) 6, 7.
+
+
+
+**[MKT04] [Bulletin officiel de la cote du 11 novembre 2026](https://www.brvm.org/sites/default/files/boc_20261111_2_0.pdf)**
+
+BRVM · Séance du 11 novembre 2026 · Publication : 2026-11-11.
+
+Utilisation : Recoupement des cours et observation des ordres résiduels, volumes et valeurs échangées.
+
+
+
+**[MKT05] [Bulletin officiel de la cote du 30 octobre 2026](https://www.brvm.org/sites/default/files/boc_20261030_2.pdf)**
+
+BRVM · Séance du 30 octobre 2026 · Publication : 2026-10-30.
+
+Utilisation : Cours de SMBC à 14 600 F avant la hausse des séances suivantes.
+
+
+
+**[MKT06] [Bulletin officiel de la cote du 4 novembre 2026](https://www.brvm.org/sites/default/files/boc_20261104_2.pdf)**
+
+BRVM · Séance du 4 novembre 2026 · Publication : 2026-11-04.
+
+Utilisation : Cours de SMBC à 17 995 F ; mesure de la réaction après publication.
+
+
+
+**[MKT07 — alias TTL14] [Bulletin officiel de la cote du 26 août 2026](https://www.brvm.org/sites/default/files/boc_20260826_2.pdf)**
+
+BRVM · Séance du 26 août 2026 · Publication : 2026-08-26.
+
+Utilisation : Sommet de TTLC avant détachement et contrôle des niveaux historiques.
+Vérification du cours de 3 595 F avant détachement du dividende.
+
+
+
+**[MKT08 — alias TTL15] [Bulletin officiel de la cote du 28 août 2026](https://www.brvm.org/sites/default/files/boc_20260828_2.pdf)**
+
+BRVM · Séance du 28 août 2026 · Publication : 2026-08-28.
+
+Utilisation : Cours TTLC après détachement ; distinction entre anciens sommets bruts et niveaux comparables.
+Cours après détachement ; contrôle des niveaux de résistance après dividende.
+
+
+
+**[MKT09 — alias METH01] [Instruction n°01/2009 — modification du pas de cotation des titres de capital](https://www.brvm.org/sites/default/files/instruction_01-_2009_-_20090327_-_modification_du_pas_de_cotation_pour_les_titres_de_capital.pdf)**
+
+BRVM · Règles de pas de cotation consultées pour les scénarios ; Règle publiée sur le site de la BRVM · Publication : 2009-03-27.
+
+Utilisation : Vérification des niveaux d’ordre et des arrondis aux pas de cotation.
+Pas de 1 F pour les titres au plus à 100 F ; pas de 5 F au-dessus ; contrôle des limites d’ordres proposées.
+
+
+
+**[MKT10 — alias METH02] [Instruction I-A relative aux écarts maximaux](https://www.brvm.org/sites/default/files/instruction_i-a_relatif_aux_ecarts_maximaux.pdf)**
+
+BRVM · Règles de variation des cours consultées ; Instruction de marché · Publication : 1999-09-01.
+
+Utilisation : Limites journalières, réservations et limites d’une stratégie de stop.
+Limites de variation et mécanismes de report/réservation ; limites d’une sortie supposée automatique au stop.
+
+
+
+**[MKT11] [Règlement général de la BRVM — version après approbation CREPMF de septembre 2021](https://www.brvm.org/sites/default/files/rg_brvm_-_apres_approbation_crepmf_sept_2021_version_finale.pdf)**
+
+BRVM · Version approuvée en septembre 2021 · Publication : 2021-09.
+
+Utilisation : Cadre de marché, négociation et exécution des ordres.
+
+
+
+**[MKT12] [Paiements de dividendes](https://www.brvm.org/fr/esv/paiement-de-dividendes)**
+
+BRVM · Répertoire consulté en novembre 2026.
+
+Utilisation : Repérage des avis de dividendes des sociétés examinées.
+
+
+
+**[METH03] [Règles de négociation, d’admission et de radiation à la cote et règles spécifiques](https://www.brvm.org/sites/default/files/regles_negociation_admission_0.pdf)**
+
+BRVM · Recueil disponible sur la page officielle · Publication : 2016-11-07.
+
+Utilisation : Ordres, exécutions partielles, appariement, événements sur valeurs et pouvoirs de suspension.
+
+
+
+**[METH04] [NIST/SEMATECH e-Handbook — 7.2.4.1. Confidence intervals](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm)**
+
+NIST · Méthode des intervalles de confiance pour proportions.
+
+Utilisation : Référence de la méthode de Wilson utilisée pour discuter l’incertitude des taux historiques.
+
+Note de provenance : Référence méthodologique retrouvée lors de la préparation du dossier. L’URL exacte citée dans les premières réponses n’a pas pu être certifiée. Les cas de backtest dépendants ne satisfont pas automatiquement un modèle binomial indépendant.
+
+
+
+**[METH05] [The Probability of Backtest Overfitting](https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf)**
+
+David H. Bailey, Jonathan M. Borwein, Marcos López de Prado et Qiji Jim Zhu · Version révisée de février 2015 · Publication : 2015-02-27.
+
+Utilisation : Référence méthodologique sur la sélection de stratégies et le risque de surajustement.
+
+Note de provenance : Référence méthodologique retrouvée lors de la préparation du dossier. L’URL exacte citée dans les premières réponses n’a pas pu être certifiée. Aucune mesure de probabilité de surajustement du backtest (PBO) n’a été calculée pour les données fournies.
+
+
+
+## G. Les 48 séries de cours RichBourse
+
+
+
+Données OHLC et volumes d’un fournisseur tiers, utilisées pour l’examen des 48 valeurs. Elles ne constituent pas des données certifiées BRVM. Des décalages historiques ont été relevés lors des contrôles ; les limites sont détaillées dans la conversation et dans le registre. Chaque URL inclut le symbole exact et le paramètre complet=1.
+
+
+
+| Référence | Symbole | Accès à la série |
+|---|---|---|
+| MKT13 | ABJC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ABJC&complet=1) |
+| MKT14 | BBGC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BBGC&complet=1) |
+| MKT15 | BICB | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BICB&complet=1) |
+| MKT16 | BICC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BICC&complet=1) |
+| MKT17 | BNBC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BNBC&complet=1) |
+| MKT18 | BOAB | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAB&complet=1) |
+| MKT19 | BOABF | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOABF&complet=1) |
+| MKT20 | BOAC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAC&complet=1) |
+| MKT21 | BOAM | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAM&complet=1) |
+| MKT22 | BOAN | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAN&complet=1) |
+| MKT23 | BOAS | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAS&complet=1) |
+| MKT24 | CABC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CABC&complet=1) |
+| MKT25 | CBIBF | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CBIBF&complet=1) |
+| MKT26 | CFAC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CFAC&complet=1) |
+| MKT27 | CIEC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CIEC&complet=1) |
+| MKT28 | ECOC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ECOC&complet=1) |
+| MKT29 | ETIT | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ETIT&complet=1) |
+| MKT30 | FTSC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=FTSC&complet=1) |
+| MKT31 | LNBB | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=LNBB&complet=1) |
+| MKT32 | NEIC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NEIC&complet=1) |
+| MKT33 | NSBC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NSBC&complet=1) |
+| MKT34 | NTLC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NTLC&complet=1) |
+| MKT35 | ONTBF | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ONTBF&complet=1) |
+| MKT36 | ORAC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ORAC&complet=1) |
+| MKT37 / ORG05 | ORGT | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ORGT&complet=1) |
+| MKT38 | PALC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=PALC&complet=1) |
+| MKT39 | PRSC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=PRSC&complet=1) |
+| MKT40 | SAFC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SAFC&complet=1) |
+| MKT41 | SCRC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SCRC&complet=1) |
+| MKT42 | SDCC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SDCC&complet=1) |
+| MKT43 | SDSC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SDSC&complet=1) |
+| MKT44 | SEMC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SEMC&complet=1) |
+| MKT45 | SGBC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SGBC&complet=1) |
+| MKT46 | SHEC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SHEC&complet=1) |
+| MKT47 | SIBC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SIBC&complet=1) |
+| MKT48 | SICC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SICC&complet=1) |
+| MKT49 | SIVC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SIVC&complet=1) |
+| MKT50 | SLBC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SLBC&complet=1) |
+| MKT51 | SMBC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SMBC&complet=1) |
+| MKT52 | SNTS | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SNTS&complet=1) |
+| MKT53 | SOGC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SOGC&complet=1) |
+| MKT54 | SPHC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SPHC&complet=1) |
+| MKT55 | STAC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=STAC&complet=1) |
+| MKT56 | STBC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=STBC&complet=1) |
+| MKT57 / TTL23 | TTLC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=TTLC&complet=1) |
+| MKT58 | TTLS | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=TTLS&complet=1) |
+| MKT59 | UNLC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=UNLC&complet=1) |
+| MKT60 | UNXC | [Série JSON](https://www.richbourse.com/common/mouvements/technique-donnees?symbole=UNXC&complet=1) |
+
+
+
+## H. Fichiers fournis et calculs propres
+
+
+
+**[USER01] Notice de l’export des cas de la veille spéculative**
+
+Utilisateur — fichiers joints · Travaux de la conversation du 12 novembre 2026 · Publication : 2026-11-12.
+
+Utilisation : Définition déclarée des signaux, zones, horizon, frais, échantillonnage et limites.
+
+Dans le ZIP : `pieces/upload/LISEZ-MOI.md`.
+
+
+
+**[USER02] Agrégats de l’export par schéma et zone**
+
+Utilisateur — fichiers joints · Travaux de la conversation du 12 novembre 2026 · Publication : 2026-11-12.
+
+Utilisation : Contrôle de la concordance des agrégats avec les cas CSV.
+
+Dans le ZIP : `pieces/upload/resume.json`.
+
+
+
+**[USER03] Cas exportés du schéma PANIQUE**
+
+Utilisateur — fichiers joints · Travaux de la conversation du 12 novembre 2026 · Publication : 2026-11-12.
+
+Utilisation : Audit des cas PANIQUE, des zones, des paliers et de la contrainte de stop.
+
+Dans le ZIP : `pieces/upload/cas_PANIQUE.csv`.
+
+
+
+**[USER04] Cas exportés du schéma EVEIL**
+
+Utilisateur — fichiers joints · Travaux de la conversation du 12 novembre 2026 · Publication : 2026-11-12.
+
+Utilisation : Audit des cas EVEIL, des zones, des paliers et de la contrainte de stop.
+
+Dans le ZIP : `pieces/upload/cas_EVEIL.csv`.
+
+
+
+**[USER05] Cas exportés du schéma CASSURE**
+
+Utilisateur — fichiers joints · Travaux de la conversation du 12 novembre 2026 · Publication : 2026-11-12.
+
+Utilisation : Audit des cas CASSURE, des zones, des paliers et de la contrainte de stop.
+
+Dans le ZIP : `pieces/upload/cas_CASSURE.csv`.
+
+
+
+**[CALC01] Script d’audit des agrégats et scénarios des CSV**
+
+Utilisation : Recalcul des statistiques par schéma et par zone à partir des pièces utilisateur.
+
+Dans le ZIP : `pieces/aggregate_audit.py`.
+
+
+
+**[CALC02] Résultats structurés de l’audit des agrégats**
+
+Utilisation : Statistiques, rapprochements et scénarios calculés sur les cas exportés.
+
+Dans le ZIP : `pieces/aggregate_audit_results.json`.
+
+
+
+**[CALC03] Sortie textuelle de l’audit des agrégats**
+
+Utilisation : Trace lisible de l’audit des fichiers et des résultats agrégés.
+
+Dans le ZIP : `pieces/aggregate_audit_output.txt`.
+
+
+
+**[CALC04] Script de contrôles externes ORGT**
+
+Utilisation : Comparaison d’épisodes ORGT avec les séries de cours et volumes disponibles.
+
+Dans le ZIP : `pieces/external_audit_orgt.py`.
+
+
+
+**[CALC05] Résultats des contrôles externes ORGT**
+
+Utilisation : Trace des rapprochements d’épisodes ORGT et des écarts examinés.
+
+Dans le ZIP : `pieces/external_audit_orgt_results.json`.
+
+
+
+**[CALC06] Résultats des contrôles externes SIVC**
+
+Utilisation : Recoupements complémentaires des épisodes exportés pour SIVC.
+
+Dans le ZIP : `pieces/external_audit_SIVC_results.json`.
+
+
+
+**[CALC07] Résultats des contrôles externes SNTS**
+
+Utilisation : Recoupements complémentaires des épisodes exportés pour SNTS.
+
+Dans le ZIP : `pieces/external_audit_SNTS_results.json`.
+
+
+
+**[CALC08] Contrôles des signaux et séries historiques**
+
+Utilisation : Trace structurée des contrôles ciblés effectués sur les signaux.
+
+Dans le ZIP : `pieces/external_audit_signal_checks.json`.
+
+
+
+**[CALC09] Script de screening des valeurs BRVM**
+
+Utilisation : Collecte de l’historique RichBourse et calcul des indicateurs de prix et de volume.
+
+Dans le ZIP : `pieces/external_screen_brvm.py`.
+
+
+
+**[CALC10] Indicateurs du screening BRVM**
+
+Utilisation : Résultats calculés du screening de prix et volumes pour 48 valeurs.
+
+Dans le ZIP : `pieces/external_screen_metrics.json`.
+
+
+
+**[CALC11] Comparaison technique des trois candidats**
+
+Utilisation : Cours, méthodes, scénarios, dividendes et instantané du carnet officiel du 11 novembre 2026.
+
+Dans le ZIP : `pieces/external_screen_three_challenge.json`.
+
+
+
+**[CALC12] Éléments de vérification des cas exportés**
+
+Utilisation : Trace structurée des vérifications effectuées sur les cas PANIQUE, EVEIL et CASSURE.
+
+Dans le ZIP : `pieces/root_audit_rows.json`.
+
+

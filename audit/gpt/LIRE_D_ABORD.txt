@@ -1,0 +1,38 @@
+DOSSIER BRVM — CONVERSATION ET SOURCES
+Édition du 12 novembre 2026
+
+COMMENCER LA LECTURE
+
+Le document Conversation_BRVM_et_sources_2026-11-12.pdf (40 pages) rassemble la conversation disponible, puis toutes les références retrouvées. La version Word permet l’annotation. Les versions TXT et Markdown permettent la recherche et la copie du texte.
+
+LIMITE DE RESTITUTION
+
+Ce dossier n’est pas un export natif intégral de la conversation. Les premières réponses de l’assistant n’ont pas pu être récupérées mot pour mot dans leur intégralité. Les sections 2 à 5 contiennent des synthèses explicitement étiquetées, avec deux extraits littéraux récupérés. Les sections 6 et 7 reprennent intégralement les deux réponses détaillées récupérées : approfondissement et budget de 800 000 F CFA. Les messages utilisateur disponibles et les messages de progression retrouvés sont conservés. La mise en page et les références ont été harmonisées. Le document s’arrête pendant la préparation de l’archive ; sa remise est postérieure.
+
+LES SOURCES
+
+Sources_BRVM_2026-11-12.txt : index humain, URL complètes, usage et limites.
+Sources_BRVM_2026-11-12.csv : même registre, UTF-8 avec BOM, séparateur point-virgule.
+Sources_BRVM_2026-11-12.json : registre structuré et chemins des pièces jointes.
+
+Le registre compte 158 références uniques : 141 URL publiques, dont 48 endpoints RichBourse, plus 5 fichiers fournis et 12 fichiers de calculs. Huit doublons d’URL sont fusionnés ; leurs anciens identifiants sont conservés comme alias. Les références citées dans les deux réponses intégrales sont identifiées. Pour les premières étapes, une source consultée n’est pas automatiquement présentée comme une citation historique exacte. Les liens de trois publications complémentaires ont été retrouvés pendant l’assemblage ; cette résolution est signalée.
+
+PIÈCES CONSERVÉES
+
+pieces/upload/ : les cinq fichiers fournis, copiés sans modification.
+pieces/external_screen_raw/ : les 48 séries numériques conservées pour le screening des cours et volumes.
+pieces/ : scripts d’audit, résultats JSON et TXT, comparaisons et instantanés numériques complémentaires utilisés pendant les vérifications.
+
+Les rapports financiers et les autres publications externes sont accessibles par les liens de leurs éditeurs dans le registre. Leurs PDF complets ne sont pas redistribués dans cette archive. Les séries de cours conservées sont des instantanés d’un fournisseur tiers et ne sont pas des cours certifiés BRVM.
+
+UTILISATION DES CALCULS
+
+Les scripts d’analyse sont conservés tels qu’utilisés ; certains contiennent un chemin de travail d’origine à adapter avant une exécution locale. Les résultats déjà produits sont joints. Une nouvelle exécution peut interroger une API dynamique et donc obtenir d’autres données. Aucun nouvel appel de cours n’a été nécessaire à l’assemblage du dossier.
+
+Les scripts producteurs originaux des signaux historiques mentionnés dans le fichier LISEZ-MOI fourni n’étaient pas joints ; l’archive ne les invente pas. Les calculs d’audit ne valident pas à eux seuls un signal de trading ni sa rentabilité réalisable.
+
+Les premières simulations utilisaient un forfait de 2,8 points de rendement. La comparaison des trois titres et le budget de 800 000 F utilisent l’hypothèse distincte de 1,4 % à l’achat et 1,4 % à la vente. Aucun tarif SGI n’a été vérifié. Les objectifs, seuils de sortie et montants de gains ou pertes restent conditionnels aux hypothèses et à l’exécution.
+
+INTÉGRITÉ
+
+MANIFESTE_SHA256.txt fournit l’empreinte SHA-256 de chaque fichier du dossier, hors manifeste lui-même. Ces empreintes permettent de vérifier qu’un fichier extrait est identique à celui inclus lors de l’assemblage ; elles ne certifient pas l’exactitude économique des données.

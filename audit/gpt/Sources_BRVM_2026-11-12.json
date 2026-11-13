@@ -1,0 +1,3247 @@
+[
+  {
+    "id": "SMB01",
+    "aliases": [],
+    "category": "SMBC — Cours officiel",
+    "title": "Fiche de cotation SMBC",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/smbc",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Clôture du 12 novembre 2026",
+    "used_for": "Cours de clôture, nombre de titres, capitalisation, volume et valeur des échanges.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Page dynamique ; référence retenue dans les analyses : 18 000 F CFA. Le bandeau de cotation peut afficher le cours de référence plutôt que la clôture.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB02",
+    "aliases": [],
+    "category": "SMBC — Comptes annuels",
+    "title": "États financiers et projet d’affectation du résultat — exercice 2025",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260512_-_etats_financiers_et_projet_daffectation_du_resultat_-_exercice_2025_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-05-12",
+    "period": "2025, comparatif 2024",
+    "used_for": "Résultat SYSCOHADA, bilan, flux de trésorerie et affectation du résultat ; première analyse de la trésorerie.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Synthèse d’une page. L’analyse approfondie complète cette lecture par les obligations locatives IFRS du rapport annuel, sans mélanger les référentiels.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB03",
+    "aliases": [],
+    "category": "SMBC — Rapport annuel",
+    "title": "Rapport annuel de l’exercice 2025 — AGO du 23 juin 2026",
+    "issuer": "SMB",
+    "url": "https://smb.ci/wp-content/uploads/2026/07/Rapport-annuel-de-lExercice-2025.pdf",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "2025, comparatif 2024",
+    "used_for": "Comptes SYSCOHADA et IFRS, obligations locatives, actionnariat, opinions des commissaires aux comptes et dividende.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "26 pages. AGO du 23 juin 2026 ; répertoire web juillet 2026, date exacte de mise en ligne non vérifiée. Pages clés : 2, 19–25. Notes annexes complètes non jointes dans cette version publique.",
+    "fichiers_locaux_originaux": [
+      "tmp/smb_deep/annual2025.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB04",
+    "aliases": [],
+    "category": "SMBC — Rapport annuel",
+    "title": "Rapport annuel 2024 — AGO du 19 juin 2025",
+    "issuer": "SMB",
+    "url": "https://smb.ci/wp-content/uploads/2025/06/VERSION-ALLEGEE-RAPPORT-ANNUEL-2024.pdf",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "2024, comparatif 2023",
+    "used_for": "Historique des résultats, cyclicité et opinions des commissaires aux comptes.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "25 pages ; version allégée. Date de l’AGO connue : 19 juin 2025 ; date exacte de publication web non vérifiée.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB05",
+    "aliases": [],
+    "category": "SMBC — Comptes annuels",
+    "title": "États financiers de synthèse — exercice 2023",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20240513_-_etats_financiers_de_synthese_-_exercice_2023_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2024-05-13",
+    "period": "2023",
+    "used_for": "Résultat annuel 2023 et comparaison des résultats du quatrième trimestre.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB06",
+    "aliases": [],
+    "category": "SMBC — Rapport semestriel",
+    "title": "Rapport d’activités — premier semestre 2026",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_1er_semestre_2026_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-30",
+    "period": "Premier semestre 2026, comparatifs 2025",
+    "used_for": "Arrêt de maintenance de 50 jours, marges de raffinage, résultats semestriels et rapprochement résultat ordinaire/impôt/résultat net.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Rapport daté du 29 octobre 2026. Autre copie locale : smb_audit_s1.pdf. Écart de 1,599 milliard dans le rapprochement abrégé demeuré inexpliqué ; aucune cause attribuée sans preuve.",
+    "fichiers_locaux_originaux": [
+      "tmp/pdfs/smb_s1_2026.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB07",
+    "aliases": [],
+    "category": "SMBC — Commissaires aux comptes",
+    "title": "Attestation des CAC sur le rapport d’activités — premier semestre 2026",
+    "issuer": "Commissaires aux comptes de SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261030_-_attestation_des_commissaires_aux_comptes_sur_le_rapport_dactivites_-_1er_semestre_2026_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-30",
+    "period": "Premier semestre 2026",
+    "used_for": "Portée de la revue limitée et conclusion des commissaires aux comptes.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Attestation datée du 29 octobre 2026. Elle ne fournit pas le rapprochement manquant du tableau semestriel abrégé.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB08",
+    "aliases": [],
+    "category": "SMBC — Rapport trimestriel",
+    "title": "Rapport d’activités — troisième trimestre 2026",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-30",
+    "period": "Neuf mois au 30 septembre 2026, comparatif 2025",
+    "used_for": "Croissance des résultats et ventes, risques de Brent et de fret, résultat TTM et scénarios de résultat annuel.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Rapport daté du 29 octobre 2026. Deux pages scannées ; autre copie locale : smb_audit_9m.pdf.",
+    "fichiers_locaux_originaux": [
+      "tmp/pdfs/smb_9m2026.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB09",
+    "aliases": [],
+    "category": "SMBC — Rapport semestriel",
+    "title": "Rapport d’activités au 30 juin 2025",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20251029_-_rapport_dactivites_-_1er_semestre_2025_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-10-29",
+    "period": "Premier semestre 2025, comparatif 2024",
+    "used_for": "Comparatifs semestriels, ventes de bitume, marges et arrêt imprévu affectant les ventes Export Mer.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Rapport daté du 28 octobre 2025.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB10",
+    "aliases": [],
+    "category": "SMBC — Rapport trimestriel",
+    "title": "Rapport d’activités — troisième trimestre 2025",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20251029_-_rapport_dactivites_-_3eme_trimestre_2025_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-10-29",
+    "period": "Neuf mois au 30 septembre 2025, comparatif 2024",
+    "used_for": "Déduction du résultat du quatrième trimestre 2025 et analyse de sa contribution au bénéfice annuel.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Rapport daté du 28 octobre 2025. Le résultat du T4 est calculé par différence entre l’annuel et les neuf mois ; ce n’est pas une publication trimestrielle séparée.",
+    "fichiers_locaux_originaux": [
+      "tmp/smb_deep/q3_2025.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB11",
+    "aliases": [],
+    "category": "SMBC — Rapport trimestriel",
+    "title": "Rapport d’activités — troisième trimestre 2024",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20241030_-_rapport_dactivites_-_3eme_trimestre_2024_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2024-10-30",
+    "period": "Neuf mois au 30 septembre 2024, comparatif 2023",
+    "used_for": "Saisonnalité, fin des chantiers liés à la CAN et déduction du résultat du quatrième trimestre 2024.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "",
+    "fichiers_locaux_originaux": [
+      "tmp/smb_deep/q3_2024.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB12",
+    "aliases": [],
+    "category": "SMBC — Rapport trimestriel",
+    "title": "Rapport d’activités — troisième trimestre 2023",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20231030_-_rapport_dactivites_-_3eme_trimestre_2023_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2023-10-30",
+    "period": "Neuf mois au 30 septembre 2023, comparatif 2022",
+    "used_for": "Effets de la pluviométrie, calendrier des travaux et déduction du résultat du quatrième trimestre 2023.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Rapport daté du 25 octobre 2023.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB13",
+    "aliases": [],
+    "category": "SMBC — Commissaires aux comptes",
+    "title": "Rapports des commissaires aux comptes — exercice 2024",
+    "issuer": "Commissaires aux comptes de SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20250903_-_rapport_des_commissaires_aux_comptes_-_exercice_2024_-_smb_ci_0.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-09-03",
+    "period": "2024",
+    "used_for": "Conventions réglementées avec SIR, facturations de produits et pénalités de retard réciproques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Rapport spécial daté du 28 mai 2025 ; pages 21–22. Ne démontre pas que toutes les créances de fin 2025 sont dues à SIR.",
+    "fichiers_locaux_originaux": [
+      "tmp/smb_deep/cac2024.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB14",
+    "aliases": [],
+    "category": "SMBC — Dividende",
+    "title": "Avis n°261 BRVM/DG — paiement du dividende de l’exercice 2025",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260904_-_avis_ndeg261_brvmdg_-_paiement_de_dividendes_exercice_2025_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-09-04",
+    "period": "Dividende 2025 payé en septembre 2026",
+    "used_for": "Montant brut de 800 F, montant après retenue pour personne physique et dates de détachement/paiement.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Ex-dividende le 17 septembre 2026 ; paiement le 18 septembre. Net de 704 F pour la retenue de 12 % utilisée dans l’analyse ; fiscalité selon le détenteur.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB15",
+    "aliases": [],
+    "category": "SMBC — Dividende",
+    "title": "Page BRVM : paiement de dividendes — exercice 2025",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/smb-ci-paiement-de-dividendes-exercice-2025",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Dividende 2025 payé en 2026",
+    "used_for": "Repérage de l’avis et contrôle des dates.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Le champ HTML qualifie 800 F de « net », contrairement à la lecture détaillée de l’avis et des résolutions. La notice détaillée a été privilégiée.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB16",
+    "aliases": [],
+    "category": "SMBC — Notation financière",
+    "title": "Notation financière de SMB — validité août 2025 à juillet 2026",
+    "issuer": "Bloomfield Investment / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20251209_-_notation_financiere_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-12-09",
+    "period": "Août 2025 à juillet 2026 ; données 2023–2024",
+    "used_for": "Qualité de crédit A+ stable, amélioration de trésorerie et risques d’exploitation.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Validité expirée au 12 novembre 2026. Aucune notation actualisée postérieure n’a été établie dans les recherches visibles.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB17",
+    "aliases": [],
+    "category": "SMBC — Notation financière historique",
+    "title": "Fiche de notation SMB reproduite dans le BOC du 17 octobre 2024",
+    "issuer": "Bloomfield Investment / BRVM",
+    "url": "https://bfin.brvm.org/boc/BOC_JOUR/BOC_20241017.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2024-10-17",
+    "period": "Août 2024 à juillet 2025 ; données 2022–2023",
+    "used_for": "Mention historique de retards de règlement des créances par l’actionnaire de référence et risques de stockage.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Mention historique, non assimilée à un constat de novembre 2026. La fiche ultérieure 2025–2026 constate une amélioration de trésorerie.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB18",
+    "aliases": [],
+    "category": "SMBC — Communication de l’émetteur",
+    "title": "AGO SMB 2024",
+    "issuer": "SMB",
+    "url": "https://smb.ci/blog/ago-smb-2024/",
+    "url_status": "url_disponible",
+    "publication_date": "2025-11-18",
+    "period": "Assemblée générale relative à 2024",
+    "used_for": "Contexte des résultats 2024 et volatilité des marges de raffinage.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB19",
+    "aliases": [],
+    "category": "SMBC — Présentation de l’émetteur",
+    "title": "Site officiel — présentation et activités",
+    "issuer": "SMB",
+    "url": "https://smb.ci/",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Présentation institutionnelle consultée en novembre 2026",
+    "used_for": "Activité, implantation industrielle, débouchés et accès aux publications.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Source de présentation et de navigation ; aucun indicateur de valorisation n’en a été déduit.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB20",
+    "aliases": [],
+    "category": "SMBC — Répertoire documentaire",
+    "title": "Publications — rapports annuels",
+    "issuer": "SMB",
+    "url": "https://smb.ci/publications/",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Répertoire consulté en novembre 2026",
+    "used_for": "Localisation des rapports annuels officiels 2023, 2024 et 2025.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB21",
+    "aliases": [],
+    "category": "SMBC — Répertoire documentaire",
+    "title": "Rapports des sociétés cotées — SMB",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/rapports-societe-cotes/smb",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Répertoire consulté en novembre 2026",
+    "used_for": "Identification des rapports semestriels, trimestriels, annuels et des attestations.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Une variante de cette page a également été rencontrée : https://www.brvm.org/fr/node/515 .",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB22",
+    "aliases": [],
+    "category": "SMBC — Assemblée générale",
+    "title": "Avis de convocation à l’AGO du 23 juin 2026",
+    "issuer": "SMB",
+    "url": "https://smb.ci/blog/avis-de-convocation/",
+    "url_status": "url_disponible",
+    "publication_date": "2026-06-22",
+    "period": "AGO du 23 juin 2026, exercice 2025",
+    "used_for": "Date de l’assemblée et existence de comptes SYSCOHADA et IFRS approuvés.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB23",
+    "aliases": [],
+    "category": "SMBC — Assemblée générale",
+    "title": "Avis de convocation — Assemblée générale ordinaire",
+    "issuer": "SMB / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260605_-_avis_de_convocation_-_assemblee_generale_ordinaire_-_smb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-06-05",
+    "period": "AGO du 23 juin 2026, exercice 2025",
+    "used_for": "Vérification de l’ordre du jour et de la mise à disposition des documents sociaux.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB24",
+    "aliases": [],
+    "category": "SMBC — Repérage des comptes",
+    "title": "Page BRVM : états financiers — exercice 2025",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/smb-ci-etats-financiers-exercice-2025",
+    "url_status": "url_disponible",
+    "publication_date": "2026-05-01",
+    "period": "2025",
+    "used_for": "Repérage de la première publication des états 2025.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "La page mentionne un fichier daté du 30 avril 2026. L’analyse chiffrée a utilisé la synthèse du 12 mai et le rapport annuel.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB25",
+    "aliases": [],
+    "category": "SMBC — Rapport annuel repéré",
+    "title": "Rapport annuel — AGO 2023",
+    "issuer": "SMB",
+    "url": "https://smb.ci/wp-content/uploads/2024/06/RAPPORT-ANNUEL-AGO-2023.pdf",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "2023",
+    "used_for": "Lien officiel repéré depuis la page Publications.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Tentative d’ouverture échouée dans l’outil web : document de 18 976 015 octets dépassant sa limite. Ne pas présenter ce document comme intégralement lu ; les états de synthèse 2023 ont servi aux calculs.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB26",
+    "aliases": [],
+    "category": "SMBC — Relais documentaire",
+    "title": "Page RichBourse : notation financière du 9 décembre 2025",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/actualite/details/09-12-2025-smb-ci-notation-financiere",
+    "url_status": "url_disponible",
+    "publication_date": "2025-12-09",
+    "period": "Notation 2025–2026",
+    "used_for": "Repérage et accès au document de notation.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB27",
+    "aliases": [],
+    "category": "SMBC — Copie documentaire",
+    "title": "Copie de la fiche de notation SMB 2025–2026",
+    "issuer": "Bloomfield Investment, copie hébergée par RichBourse",
+    "url": "https://www.richbourse.com/common/actualite/afficher-fichier/09-12-2025-smb-ci-notation-financiere",
+    "url_status": "url_disponible",
+    "publication_date": "2025-12-09",
+    "period": "Août 2025 à juillet 2026",
+    "used_for": "Lecture textuelle de la fiche de notation, ensuite retrouvée sur le site BRVM.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Même document que SMB16 ; doublon de contenu conservé pour retracer la consultation.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB28",
+    "aliases": [],
+    "category": "SMBC — Source secondaire",
+    "title": "SMB Côte d’Ivoire : cours, données et analyse",
+    "issuer": "Waramina",
+    "url": "https://waramina.com/societes/smb-smbc",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Page consultée en novembre 2026",
+    "used_for": "Repérage des rapports et recoupements ; identification de pistes à vérifier dans les sources primaires.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Les estimations, scores et valeurs normalisées automatiques de ce site n’ont pas été adoptés comme prévisions propres.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB29",
+    "aliases": [],
+    "category": "SMBC — Source secondaire",
+    "title": "SMB : dividende de 800 F CFA mis en paiement le 18 septembre 2026",
+    "issuer": "Waramina",
+    "url": "https://waramina.com/smb-dividende-800-fcfa-paiement-18-septembre-2026",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Dividende de l’exercice 2025",
+    "used_for": "Repérage du rapport annuel 2025 et du dividende, puis vérification auprès de l’émetteur et de la BRVM.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB30",
+    "aliases": [],
+    "category": "SMBC — Source secondaire",
+    "title": "SMB CI — fiche société et données financières",
+    "issuer": "Sika Finance",
+    "url": "https://www.sikafinance.com/marches/societe/SMBC.CI",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Historique 2021–2025 et fiche consultée en novembre 2026",
+    "used_for": "Recoupement exploratoire de l’historique des bénéfices et de l’actionnariat.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Résultat de recherche consulté ; les sources primaires ont été privilégiées pour les conclusions.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB31",
+    "aliases": [],
+    "category": "SMBC — Analyse tierce repérée",
+    "title": "Rapport SMB Côte d’Ivoire — aperçu commercial de septembre 2026",
+    "issuer": "Ridwan Abdou",
+    "url": "https://ridwanabdou.com/produit/smb-rapport-septembre-2026/",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Septembre 2026",
+    "used_for": "Pistes sur les créances, le besoin en fonds de roulement et la dépendance à SIR.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Seul l’aperçu public a été consulté ; rapport payant non acquis. L’affirmation attribuant toutes les créances à l’actionnaire n’a pas été reprise comme fait démontré.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB32",
+    "aliases": [],
+    "category": "SMBC — Relais de notation",
+    "title": "Commentaire sur le maintien des notes A+ et A1 de SMB",
+    "issuer": "FGI Bourse",
+    "url": "https://www.fgi-bourse.com/societe-multinationale-de-bitumes-smb-bloomfield-reconduit-les-notes-a-et-a1-de-la-smb-soutenues-par-les-perspectives-grace-a-une-liquidite-robuste-en-lien-avec-la-reprise-du-marche-petrolier/",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Notation août 2025–juillet 2026",
+    "used_for": "Repérage de la période de validité de la notation.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Résultat de recherche consulté ; fiche originale BRVM retenue en priorité.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "SMB33",
+    "aliases": [],
+    "category": "SMBC — Relais de publication",
+    "title": "SMB CI : notation financière du 17 octobre 2024",
+    "issuer": "SMB, reprise par Publicnow / Zonebourse",
+    "url": "https://ch.zonebourse.com/cours/action/SOCIETE-MULTINATIONALE-DE-31311738/actualite/SMB-CI-Notation-financiere-48102074/",
+    "url_status": "url_disponible",
+    "publication_date": "2024-10-17",
+    "period": "Notation août 2024–juillet 2025",
+    "used_for": "Recoupement du texte historique sur les créances envers l’actionnaire.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Publication historique ; ne décrit pas à elle seule la situation de novembre 2026.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT01",
+    "aliases": [],
+    "category": "Marché — Cotations officielles",
+    "title": "Cours des actions BRVM",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/cours-actions/0",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Clôture du 12 novembre 2026",
+    "used_for": "Recoupement des clôtures et valeurs transigées pour le screening et les trois candidats.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Page dynamique. Les chiffres du tableau daté de clôture ont été privilégiés aux bandeaux de cours.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT02",
+    "aliases": [
+      "TTL16"
+    ],
+    "category": "Marché — Cotation officielle",
+    "title": "Fiche de cotation TTLC",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/ttlc",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Clôture du 12 novembre 2026",
+    "used_for": "Cours 3 095 F, capitalisation, nombre d’actions, volume et valeur transigée.\nCours, actions en circulation, capitalisation, volume et valeur échangée.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "[TTL16] Page dynamique consultée le 12 novembre 2026. Cours de clôture explicitement daté privilégié aux bandeaux de référence. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT03",
+    "aliases": [
+      "BOA07"
+    ],
+    "category": "Marché — Cotation officielle",
+    "title": "Fiche de cotation BOAN",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/boan",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Clôture du 12 novembre 2026 ; Séance du 12 novembre 2026",
+    "used_for": "Cours 4 975 F, capitalisation, nombre d’actions, volume et valeur transigée.\nClôture 4 975 F, 20,8 millions d’actions, volume et valeur échangée.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "[BOA07] Page dynamique ; la date de séance est essentielle. Ne pas confondre bandeau de référence et cours de clôture.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT04",
+    "aliases": [],
+    "category": "Marché — Bulletin officiel",
+    "title": "Bulletin officiel de la cote du 11 novembre 2026",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/boc_20261111_2_0.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-11-11",
+    "period": "Séance du 11 novembre 2026",
+    "used_for": "Recoupement des cours et observation des ordres résiduels, volumes et valeurs échangées.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Les ordres résiduels concernent cette séance uniquement ; ils ne constituent pas un carnet en temps réel du 12 novembre.",
+    "fichiers_locaux_originaux": [
+      "external_boc_20261111.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT05",
+    "aliases": [],
+    "category": "Marché — Bulletin officiel",
+    "title": "Bulletin officiel de la cote du 30 octobre 2026",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/boc_20261030_2.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-30",
+    "period": "Séance du 30 octobre 2026",
+    "used_for": "Cours de SMBC à 14 600 F avant la hausse des séances suivantes.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT06",
+    "aliases": [],
+    "category": "Marché — Bulletin officiel",
+    "title": "Bulletin officiel de la cote du 4 novembre 2026",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/boc_20261104_2.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-11-04",
+    "period": "Séance du 4 novembre 2026",
+    "used_for": "Cours de SMBC à 17 995 F ; mesure de la réaction après publication.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT07",
+    "aliases": [
+      "TTL14"
+    ],
+    "category": "Marché — Bulletin officiel",
+    "title": "Bulletin officiel de la cote du 26 août 2026",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/boc_20260826_2.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-08-26",
+    "period": "Séance du 26 août 2026",
+    "used_for": "Sommet de TTLC avant détachement et contrôle des niveaux historiques.\nVérification du cours de 3 595 F avant détachement du dividende.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "[MKT07] Lien exact récupéré depuis la référence déjà utilisée [référence du fil] ; cours TTLC 3 595 F avant dividende.\n[TTL14] Références [référence du fil] et [référence du fil] ; cours brut non directement comparable à un cours après dividende.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT08",
+    "aliases": [
+      "TTL15"
+    ],
+    "category": "Marché — Bulletin officiel",
+    "title": "Bulletin officiel de la cote du 28 août 2026",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/boc_20260828_2.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-08-28",
+    "period": "Séance du 28 août 2026",
+    "used_for": "Cours TTLC après détachement ; distinction entre anciens sommets bruts et niveaux comparables.\nCours après détachement ; contrôle des niveaux de résistance après dividende.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "[TTL15] Références [référence du fil] et [référence du fil] ; plus haut intrajournalier 3 525 F et clôture 3 400 F utilisés dans l’analyse précédente.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT09",
+    "aliases": [
+      "METH01"
+    ],
+    "category": "Marché — Règles de cotation",
+    "title": "Instruction n°01/2009 — modification du pas de cotation des titres de capital",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/instruction_01-_2009_-_20090327_-_modification_du_pas_de_cotation_pour_les_titres_de_capital.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2009-03-27",
+    "period": "Règles de pas de cotation consultées pour les scénarios ; Règle publiée sur le site de la BRVM",
+    "used_for": "Vérification des niveaux d’ordre et des arrondis aux pas de cotation.\nPas de 1 F pour les titres au plus à 100 F ; pas de 5 F au-dessus ; contrôle des limites d’ordres proposées.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "[MKT09] Lien exact récupéré depuis la référence déjà utilisée [référence du fil]. Une capture locale de la règle existe : brvm_tick.png.\n[METH01] La copie locale disponible est une image du document, pas le PDF.",
+    "fichiers_locaux_originaux": [
+      "brvm_tick.png"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT10",
+    "aliases": [
+      "METH02"
+    ],
+    "category": "Marché — Règles de cotation",
+    "title": "Instruction I-A relative aux écarts maximaux",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/instruction_i-a_relatif_aux_ecarts_maximaux.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "1999-09-01",
+    "period": "Règles de variation des cours consultées ; Instruction de marché",
+    "used_for": "Limites journalières, réservations et limites d’une stratégie de stop.\nLimites de variation et mécanismes de report/réservation ; limites d’une sortie supposée automatique au stop.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "[MKT10] Lien exact récupéré depuis la référence déjà utilisée [référence du fil]. Ne garantit pas qu’une vente au seuil visé sera exécutée.\n[METH02] Date issue de la page catalogue BRVM ; ne garantit pas l’exécution d’un ordre ni ne décrit à elle seule tous les textes ultérieurs.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT11",
+    "aliases": [],
+    "category": "Marché — Règlement",
+    "title": "Règlement général de la BRVM — version après approbation CREPMF de septembre 2021",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/rg_brvm_-_apres_approbation_crepmf_sept_2021_version_finale.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2021-09",
+    "period": "Version approuvée en septembre 2021",
+    "used_for": "Cadre de marché, négociation et exécution des ordres.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Lien exact récupéré depuis la référence déjà utilisée [référence du fil]. Les analyses ne prétendent pas offrir une revue juridique exhaustive de toutes les modifications ultérieures.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT12",
+    "aliases": [],
+    "category": "Marché — Répertoire documentaire",
+    "title": "Paiements de dividendes",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/esv/paiement-de-dividendes",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Répertoire consulté en novembre 2026",
+    "used_for": "Repérage des avis de dividendes des sociétés examinées.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Les notices PDF détaillées prévalent sur les libellés parfois ambigus du tableau HTML.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "MKT13",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — ABJC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ABJC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2000-03-31 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/ABJC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/ABJC.json"
+    ]
+  },
+  {
+    "id": "MKT14",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BBGC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BBGC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2026-09-24 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BBGC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BBGC.json"
+    ]
+  },
+  {
+    "id": "MKT15",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BICB",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BICB&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2025-04-28 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BICB.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BICB.json"
+    ]
+  },
+  {
+    "id": "MKT16",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BICC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BICC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BICC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BICC.json"
+    ]
+  },
+  {
+    "id": "MKT17",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BNBC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BNBC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BNBC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BNBC.json"
+    ]
+  },
+  {
+    "id": "MKT18",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BOAB",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAB&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2000-11-17 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BOAB.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BOAB.json"
+    ]
+  },
+  {
+    "id": "MKT19",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BOABF",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOABF&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2011-01-03 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BOABF.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BOABF.json"
+    ]
+  },
+  {
+    "id": "MKT20",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BOAC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2010-04-12 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BOAC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BOAC.json"
+    ]
+  },
+  {
+    "id": "MKT21",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BOAM",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAM&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2016-05-31 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BOAM.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BOAM.json"
+    ]
+  },
+  {
+    "id": "MKT22",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BOAN",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAN&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2003-12-30 à 2026-11-12",
+    "used_for": "Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BOAN.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BOAN.json"
+    ]
+  },
+  {
+    "id": "MKT23",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — BOAS",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=BOAS&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2014-12-10 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/BOAS.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/BOAS.json"
+    ]
+  },
+  {
+    "id": "MKT24",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — CABC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CABC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/CABC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/CABC.json"
+    ]
+  },
+  {
+    "id": "MKT25",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — CBIBF",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CBIBF&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2016-12-23 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/CBIBF.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/CBIBF.json"
+    ]
+  },
+  {
+    "id": "MKT26",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — CFAC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CFAC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/CFAC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/CFAC.json"
+    ]
+  },
+  {
+    "id": "MKT27",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — CIEC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=CIEC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/CIEC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/CIEC.json"
+    ]
+  },
+  {
+    "id": "MKT28",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — ECOC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ECOC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2017-12-12 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/ECOC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/ECOC.json"
+    ]
+  },
+  {
+    "id": "MKT29",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — ETIT",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ETIT&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2006-09-11 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/ETIT.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/ETIT.json"
+    ]
+  },
+  {
+    "id": "MKT30",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — FTSC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=FTSC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/FTSC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/FTSC.json"
+    ]
+  },
+  {
+    "id": "MKT31",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — LNBB",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=LNBB&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2024-12-13 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/LNBB.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/LNBB.json"
+    ]
+  },
+  {
+    "id": "MKT32",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — NEIC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NEIC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2000-04-14 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/NEIC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/NEIC.json"
+    ]
+  },
+  {
+    "id": "MKT33",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — NSBC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NSBC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2017-10-24 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/NSBC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/NSBC.json"
+    ]
+  },
+  {
+    "id": "MKT34",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — NTLC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=NTLC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/NTLC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/NTLC.json"
+    ]
+  },
+  {
+    "id": "MKT35",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — ONTBF",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ONTBF&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2009-04-30 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/ONTBF.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/ONTBF.json"
+    ]
+  },
+  {
+    "id": "MKT36",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — ORAC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ORAC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2022-12-30 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/ORAC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/ORAC.json"
+    ]
+  },
+  {
+    "id": "MKT37",
+    "aliases": [
+      "ORG05"
+    ],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — ORGT",
+    "issuer": "RichBourse ; Richbourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=ORGT&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2019-04-16 à 2026-11-12 ; Historique disponible au 12 novembre 2026",
+    "used_for": "Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.\nContrôle du percentile, de la position min-max, des plus bas et de cas du backtest.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "[MKT37] Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export. Réponse initialement collectée pour l’audit et réutilisée dans le screening.\n[ORG05] Fournisseur tiers, pas une API officielle BRVM. Séries brutes et dates d’observation à recouper avec les bulletins officiels.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/ORGT.json",
+      "orgt_api_raw.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/ORGT.json",
+      "pieces/orgt_api_raw.json"
+    ]
+  },
+  {
+    "id": "MKT38",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — PALC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=PALC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1999-10-18 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/PALC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/PALC.json"
+    ]
+  },
+  {
+    "id": "MKT39",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — PRSC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=PRSC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-23 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/PRSC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/PRSC.json"
+    ]
+  },
+  {
+    "id": "MKT40",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SAFC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SAFC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-23 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SAFC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SAFC.json"
+    ]
+  },
+  {
+    "id": "MKT41",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SCRC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SCRC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2016-12-29 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SCRC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SCRC.json"
+    ]
+  },
+  {
+    "id": "MKT42",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SDCC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SDCC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SDCC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SDCC.json"
+    ]
+  },
+  {
+    "id": "MKT43",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SDSC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SDSC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2007-02-28 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SDSC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SDSC.json"
+    ]
+  },
+  {
+    "id": "MKT44",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SEMC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SEMC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-09-15",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SEMC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SEMC.json"
+    ]
+  },
+  {
+    "id": "MKT45",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SGBC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SGBC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SGBC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SGBC.json"
+    ]
+  },
+  {
+    "id": "MKT46",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SHEC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SHEC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SHEC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SHEC.json"
+    ]
+  },
+  {
+    "id": "MKT47",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SIBC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SIBC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2016-10-27 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SIBC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SIBC.json"
+    ]
+  },
+  {
+    "id": "MKT48",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SICC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SICC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-09-15",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SICC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SICC.json"
+    ]
+  },
+  {
+    "id": "MKT49",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SIVC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SIVC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1999-04-19 à 2026-11-12",
+    "used_for": "Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export. Réponse initialement collectée pour l’audit et réutilisée dans le screening.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SIVC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SIVC.json"
+    ]
+  },
+  {
+    "id": "MKT50",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SLBC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SLBC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-23 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SLBC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SLBC.json"
+    ]
+  },
+  {
+    "id": "MKT51",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SMBC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SMBC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12",
+    "used_for": "Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SMBC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SMBC.json"
+    ]
+  },
+  {
+    "id": "MKT52",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SNTS",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SNTS&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-10-02 à 2026-11-12",
+    "used_for": "Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export. Réponse initialement collectée pour l’audit et réutilisée dans le screening.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SNTS.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SNTS.json"
+    ]
+  },
+  {
+    "id": "MKT53",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SOGC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SOGC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SOGC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SOGC.json"
+    ]
+  },
+  {
+    "id": "MKT54",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — SPHC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=SPHC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/SPHC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/SPHC.json"
+    ]
+  },
+  {
+    "id": "MKT55",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — STAC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=STAC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-10-07 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/STAC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/STAC.json"
+    ]
+  },
+  {
+    "id": "MKT56",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — STBC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=STBC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-21 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/STBC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/STBC.json"
+    ]
+  },
+  {
+    "id": "MKT57",
+    "aliases": [
+      "TTL23"
+    ],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — TTLC",
+    "issuer": "RichBourse ; Richbourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=TTLC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-16 à 2026-11-12 ; Série disponible au 12 novembre 2026",
+    "used_for": "Audit ou analyse détaillée des niveaux, RSI, volumes, performances et points de comparaison historiques.\nCours historiques, moyennes mobiles, RSI, volumes et niveaux de prix.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "[MKT57] Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.\n[TTL23] Point d’accès JSON public effectivement interrogé ; fournisseur tiers, pas une API officielle BRVM. Certaines dates sans transaction peuvent être absentes. Cours bruts, sauf traitement expressément indiqué. Les calculs propres ne sont pas une validation du backtest de l’utilisateur.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/TTLC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/TTLC.json"
+    ]
+  },
+  {
+    "id": "MKT58",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — TTLS",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=TTLS&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2015-02-20 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/TTLS.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/TTLS.json"
+    ]
+  },
+  {
+    "id": "MKT59",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — UNLC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=UNLC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 2001-06-20 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/UNLC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/UNLC.json"
+    ]
+  },
+  {
+    "id": "MKT60",
+    "aliases": [],
+    "category": "Marché — API RichBourse",
+    "title": "Historique OHLC et volumes — UNXC",
+    "issuer": "RichBourse",
+    "url": "https://www.richbourse.com/common/mouvements/technique-donnees?symbole=UNXC&complet=1",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Réponse collectée le 12 novembre 2026 ; historique 1998-09-18 à 2026-11-12",
+    "used_for": "Screening des 48 valeurs ; calculs de niveaux, moyennes mobiles, RSI, volumes et retours historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données d’un fournisseur tiers, non API officielle de la BRVM. OHLC et volumes bruts ; observations de cotation pouvant omettre des séances sans échanges. Ajustements de dividendes et opérations sur titres à contrôler. URL reconstruite exactement depuis le script de collecte et le symbole du JSON archivé ; aucun nouvel appel de données lors de l’export.",
+    "fichiers_locaux_originaux": [
+      "external_screen_raw/UNXC.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_raw/UNXC.json"
+    ]
+  },
+  {
+    "id": "BOA01",
+    "aliases": [],
+    "category": "BOAN — résultats",
+    "title": "Rapport d’activité trimestriel au 30 septembre 2026",
+    "issuer": "Bank of Africa Niger / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261026_-_rapport_dactivites_-_3e_trimestre_2026_-_boa_ng.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-26",
+    "period": "Neuf mois clos le 30 septembre 2026",
+    "used_for": "PNB, RBE, coût du risque, résultats avant impôts et net ; comparaisons 2025 et calculs de valorisation.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Rapport daté du 20 octobre 2026. Tableau numérisé contrôlé visuellement ; les écarts calculés ne constituent pas une explication fiscale publiée.",
+    "fichiers_locaux_originaux": [
+      "tmp/pdfs/boa_ng_9m2026.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA02",
+    "aliases": [],
+    "category": "BOAN — résultats et examen limité",
+    "title": "Attestation des commissaires aux comptes et rapport d’activité du premier semestre 2026",
+    "issuer": "Bank of Africa Niger ; Forvis Mazars Niger et ACSA / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260925_-_attestation_des_commissaires_aux_comptes_et_rapport_dactivites_-_1er_semestre_2026_-_boa_niger.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-09-25",
+    "period": "Semestre clos le 30 juin 2026",
+    "used_for": "Résultats semestriels, calcul du troisième trimestre isolé, portée de l’examen limité.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "7 pages ; rapport d’activité daté du 5 août 2026, attestation du 14 septembre 2026. Conclusion sans réserve ; pas de bilan semestriel détaillé ni de résolution explicite des points prudentiels 2025.",
+    "fichiers_locaux_originaux": [
+      "tmp/pdfs/boan_s12026.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA03",
+    "aliases": [],
+    "category": "BOAN — comptes annuels et audit",
+    "title": "Rapport des commissaires aux comptes sur les états financiers annuels — exercice 2025",
+    "issuer": "Bank of Africa Niger ; Nouhou Tari et Sirage Sani Bako / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260401_-_rapport_des_commissaires_aux_comptes_sur_les_etats_financiers_annuels_-_exercice_2025_-_boa_ng.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-04-01",
+    "period": "Exercice clos le 31 décembre 2025",
+    "used_for": "Comptes détaillés, fonds propres, créances et dépréciations ; demandes du superviseur et ratios prudentiels.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "49 pages, rapport signé le 20 février 2026. Opinion d’audit sans réserve page 3 ; observations prudentielles page 7 ; créances clientèle annexe 4.5, page PDF 25. Les observations 2025 ne prouvent pas leur persistance en novembre 2026.",
+    "fichiers_locaux_originaux": [
+      "tmp/pdfs/boan_cac2025.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA04",
+    "aliases": [],
+    "category": "BOAN — communication financière",
+    "title": "Communiqué de presse : annonce des résultats financiers 2025",
+    "issuer": "Bank of Africa Niger",
+    "url": "https://www.boaniger.com/wp-content/uploads/2026/04/Comm-presse_NG_BRVM2025-1.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-04-27",
+    "period": "Exercice 2025 et tendances du premier trimestre 2026",
+    "used_for": "Provisions exceptionnelles annoncées, absence de dividende 2025, fonds propres, bilan et perspectives de redressement.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Les présentations de certains ratios/RBE diffèrent de celles du rapport annuel et des derniers tableaux trimestriels ; ne pas fusionner sans rapprochement.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA05",
+    "aliases": [],
+    "category": "BOAN — rapport annuel",
+    "title": "Rapport annuel 2025 — document publié sur le site de BOA Niger",
+    "issuer": "Groupe Bank of Africa / Bank of Africa Niger",
+    "url": "https://www.boaniger.com/wp-content/uploads/2026/08/BOA-RA-25_NG.pdf",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Exercice 2025",
+    "used_for": "Structure du bilan, titres publics, produits d’intérêts, ratios et comparaison des présentations.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "URL extraite du HTML officiel de la page financière ; téléchargement direct HTTP 200 et texte local vérifiés. Échec du lecteur web. Document comprenant une partie groupe et les pages Niger, dont pages imprimées 106 à 112. Répertoire d’hébergement août 2026, date exacte de mise en ligne non certifiée.",
+    "fichiers_locaux_originaux": [
+      "tmp/pdfs/boan_ra2025.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA06",
+    "aliases": [],
+    "category": "BOAN — notation",
+    "title": "Fiche de notation financière — Bank of Africa Niger",
+    "issuer": "Bloomfield Investment Corporation / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261014_-_notation_financiere_-_boa_ng.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-14",
+    "period": "Validité août 2026 à juillet 2027",
+    "used_for": "Note locale long terme A− stable, facteurs favorables et fragilités, chiffres financiers 2025.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Une notation de crédit ne mesure pas le potentiel de hausse de l’action.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA08",
+    "aliases": [],
+    "category": "BOAN — profil émetteur",
+    "title": "Bank of Africa Niger — profil de l’entreprise",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/node/331",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Actionnariat et capital au 31 décembre 2025",
+    "used_for": "Capital, nombre d’actions et structure actionnariale.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Le tableau historique présente des coquilles ; les comptes et avis de dividende priment.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA09",
+    "aliases": [],
+    "category": "BOAN — portail financier",
+    "title": "Communication financière",
+    "issuer": "Bank of Africa Niger",
+    "url": "https://www.boaniger.com/institutionnels/communication-financiere/",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Consultation le 12 novembre 2026",
+    "used_for": "Index des rapports et documents émetteur ; données de capitalisation, fonds propres par action et dividendes historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Portail dynamique ; source du lien direct du rapport annuel 2025.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA10",
+    "aliases": [],
+    "category": "BOAN — gouvernance et perspectives",
+    "title": "Rapport du conseil d’administration à l’assemblée générale ordinaire — annule et remplace le précédent",
+    "issuer": "Bank of Africa Niger / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260324_-_rapport_du_conseil_dadministration_a_lassemblee_generale_ordinaire_des_actionnaires_-_exercice_2025_-_boa_ng_annule_et_remplace_le_precedent.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-03-24",
+    "period": "Exercice 2025 ; AGO du 3 avril 2026",
+    "used_for": "Résultats, correction d’erreur imputée aux capitaux propres, recouvrement, budget et orientations 2026.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Version corrigée privilégiée. La correction de 1,821 milliard F relative aux agios 2023/2024 est déjà comptabilisée dans les fonds propres publiés ; ne pas la retrancher une seconde fois.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA11",
+    "aliases": [],
+    "category": "BOAN — gouvernance, version remplacée",
+    "title": "Rapport du conseil d’administration à l’AGO — version initiale",
+    "issuer": "Bank of Africa Niger / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260318_-_rapport_du_ca_a_lago_-_exercice_2025_-_boa_ng.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-03-18",
+    "period": "Exercice 2025",
+    "used_for": "Repérage documentaire ; remplacé par la publication du 24 mars 2026.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Version remplacée, conservée uniquement pour la traçabilité ; ne pas l’utiliser comme version courante.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA12",
+    "aliases": [],
+    "category": "BOAN — conventions réglementées",
+    "title": "Rapport des CAC sur les conventions réglementées et les crédits accordés aux dirigeants",
+    "issuer": "Bank of Africa Niger / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260401_-_rapport_des_cac_sur_les_conventions_reglementees_et_les_credits_accordes_aux_dirigeants_de_la_banque_-_exercice_2025_-_boa_ng.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-04-01",
+    "period": "Exercice 2025",
+    "used_for": "Document complémentaire de gouvernance ouvert pendant l’approfondissement.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "8 pages numérisées ; pas de conclusion détaillée tirée de ce document dans la note BOAN.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA13",
+    "aliases": [],
+    "category": "BOAN — alerte sur résultats",
+    "title": "Communiqué du conseil d’administration — alerte sur les résultats 2025",
+    "issuer": "Bank of Africa Niger / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260313_-_communique_-_profit_warning_-_boa_niger.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-03-13",
+    "period": "Exercice 2025",
+    "used_for": "Baisse du résultat et contexte sectoriel ; distinction risque de crédit de la banque / données sectorielles.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Communiqué relatif au conseil du 20 février 2026. Les taux de sinistralité sectoriels ne sont pas les taux propres à BOAN.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA14",
+    "aliases": [],
+    "category": "BOAN — bulletin officiel",
+    "title": "Bulletin officiel de la cote du 1er avril 2026",
+    "issuer": "BRVM",
+    "url": "https://bfin.brvm.org/boc/BOC_JOUR/BOC_20260401.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-04-01",
+    "period": "Séance du 1er avril 2026 et publications émetteurs",
+    "used_for": "Repérage puis recoupement du rapport d’audit BOAN 2025.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "87 pages ; doublon de plusieurs pièces publiées séparément. Les pages numérisées n’étaient pas toutes présentes dans l’extraction du lecteur web.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA15",
+    "aliases": [],
+    "category": "BOAN — historique",
+    "title": "Rapport annuel 2024 — Niger",
+    "issuer": "Groupe Bank of Africa / Bank of Africa Niger",
+    "url": "https://www.boaniger.com/wp-content/uploads/2025/09/BOA-RA-2024-Niger.pdf",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Exercice 2024",
+    "used_for": "Repérage des séries historiques de bilan, résultats et ratios.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Répertoire septembre 2025 ; date exacte de publication non certifiée. Document repéré dans les recherches, non retenu pour certifier une situation 2026.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "BOA16",
+    "aliases": [],
+    "category": "BOAN — portail des publications",
+    "title": "Rapports de sociétés cotées — Bank of Africa Niger",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/rapports-societe-cotes/bank-africa-ng?field_type_rapport_tid=All",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Consultation le 12 novembre 2026",
+    "used_for": "Index officiel utilisé pour retrouver les liens de téléchargement.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "ORG01",
+    "aliases": [],
+    "category": "ORGT — comptes annuels consolidés",
+    "title": "Rapport des CAC et états financiers annuels consolidés IFRS 2025",
+    "issuer": "Oragroup ; Ficao Grant Thornton Togo et KPMG Togo",
+    "url": "https://www.orabank.net/sites/default/files/2026-07/ORAGROUP%202025%20-%20%20RG%20Conso%20IFRS.pdf",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Exercice clos le 31 décembre 2025",
+    "used_for": "Résultat total et part du groupe, BPA, fonds propres et ratios prudentiels ; audit du PER et de la thèse de redressement.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "87 pages ; répertoire juillet 2026. Les ratios prudentiels cités sont arrêtés fin 2025 et ne constituent pas un constat au 12 novembre 2026.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "ORG02",
+    "aliases": [],
+    "category": "ORGT — résultats semestriels",
+    "title": "Rapport d’activités du premier semestre 2026",
+    "issuer": "Oragroup / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261009_-_rapport_dactivites_-_1er_semestre_2026_-_oragroup_tg.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-09",
+    "period": "Semestre clos le 30 juin 2026",
+    "used_for": "PNB, RBE, coût du risque, bénéfice et bilan semestriels consolidés.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Lien exact retrouvé lors de la préparation du registre, correspondant au document local déjà exploité.",
+    "fichiers_locaux_originaux": [
+      "oragroup_s1_2026.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "ORG03",
+    "aliases": [],
+    "category": "ORGT — dividende historique",
+    "title": "Avis n°115-2020/BRVM/DG — paiement de dividendes, exercice 2019",
+    "issuer": "BRVM / Oragroup",
+    "url": "https://www.brvm.org/sites/default/files/20200703_-_avis_ndeg115_brvmdg_-_paiement_de_dividendes_exercice_2019_-_oragroup_tg.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2020-07-03",
+    "period": "Dividende de l’exercice 2019 payé le 17 juillet 2020",
+    "used_for": "Vérification du dividende net historique de 59,52 F et de sa date ; contestation d’un revenu annuel courant supposé.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Détachement le 15 juillet 2020 ; ce paiement historique ne garantit pas une distribution annuelle actuelle.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "ORG04",
+    "aliases": [],
+    "category": "ORGT — cotation",
+    "title": "ORGT — fiche de cotation BRVM",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/orgt",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Séance du 12 novembre 2026",
+    "used_for": "Recoupement du cours et des données boursières de référence.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Page dynamique ; ne pas utiliser un bandeau de référence pour remplacer la clôture datée.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "ORG06",
+    "aliases": [],
+    "category": "ORGT — portail des publications",
+    "title": "Rapports de sociétés cotées — Oragroup",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/rapports-societe-cotes/oragroup",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Consultation le 12 novembre 2026",
+    "used_for": "Index officiel utilisé pour retrouver les rapports financiers.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "METH03",
+    "aliases": [],
+    "category": "Marché — règles de négociation",
+    "title": "Règles de négociation, d’admission et de radiation à la cote et règles spécifiques",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/sites/default/files/regles_negociation_admission_0.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2016-11-07",
+    "period": "Recueil disponible sur la page officielle",
+    "used_for": "Ordres, exécutions partielles, appariement, événements sur valeurs et pouvoirs de suspension.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Date de mise en ligne de la page officielle ; recueil de 66 pages. Aucune garantie d’exécution d’un stop déduite de ce document.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "METH04",
+    "aliases": [],
+    "category": "Statistiques — incertitude des fréquences",
+    "title": "NIST/SEMATECH e-Handbook — 7.2.4.1. Confidence intervals",
+    "issuer": "NIST",
+    "url": "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Méthode des intervalles de confiance pour proportions",
+    "used_for": "Référence de la méthode de Wilson utilisée pour discuter l’incertitude des taux historiques.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Référence méthodologique retrouvée lors de la préparation du dossier. L’URL exacte citée dans les premières réponses n’a pas pu être certifiée. Les cas de backtest dépendants ne satisfont pas automatiquement un modèle binomial indépendant.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "METH05",
+    "aliases": [],
+    "category": "Statistiques — surajustement des backtests",
+    "title": "The Probability of Backtest Overfitting",
+    "issuer": "David H. Bailey, Jonathan M. Borwein, Marcos López de Prado et Qiji Jim Zhu",
+    "url": "https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2015-02-27",
+    "period": "Version révisée de février 2015",
+    "used_for": "Référence méthodologique sur la sélection de stratégies et le risque de surajustement.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Référence méthodologique retrouvée lors de la préparation du dossier. L’URL exacte citée dans les premières réponses n’a pas pu être certifiée. Aucune mesure de probabilité de surajustement du backtest (PBO) n’a été calculée pour les données fournies.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL01",
+    "aliases": [],
+    "category": "TTLC — publications officielles",
+    "title": "Assemblées générales d’actionnaires : accès aux rapports annuels",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire",
+    "url": "https://totalenergies.ci/espace-actionnaires/assemblees-generales-dactionnaires",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Rapports annuels 2022 à 2025",
+    "used_for": "Page officielle donnant accès au rapport annuel 2025 complet.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Lien Rapport Annuel 2025 vérifié ; référence de consultation [référence du fil]. Page dynamique, consultée le 12 novembre 2026.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL02",
+    "aliases": [],
+    "category": "TTLC — publications officielles",
+    "title": "Rapport annuel 2025 — Assemblée générale du 21 mai 2026",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire",
+    "url": "https://dxm.content-center.totalenergies.com/api/wedia/dam/variation/xysh7dg731ta7qoa9zau46nbza/original%2Cdefault?download=true&dxm_cors_orign=76ABE9E30D5586637AC358998F93E703&hash=gyhn6cbifh3dyctsryaunqtugr7dgce",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Exercice 2025",
+    "used_for": "Analyse détaillée des investissements, marges réglementées, subventions, audit, bilan et trésorerie.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "68 pages ; PDF de 175 731 186 octets téléchargé depuis le lien officiel. Inspection visuelle notamment des pages 16–20, 33–36 et 58–61. Le moteur de lecture web refusait la taille du fichier, mais la copie locale a été obtenue et examinée. Date de publication exacte non établie ; document destiné à l’AGO du 21 mai 2026.",
+    "fichiers_locaux_originaux": [
+      "ttlc_deep_annual2025.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL03",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "États financiers définitifs approuvés au 31 décembre 2025",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260601_-_etats_financiers_approuves_-_exercice_2025_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-06-01",
+    "period": "Exercice 2025",
+    "used_for": "Bénéfice, calcul du PER, bilan, flux opérationnels, investissements, dividendes et dégradation de trésorerie.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Comptes approuvés le 21 mai 2026. Fichier daté du 1er juin ; page de publication BRVM affichant le 2 juin 2026. Références [référence du fil] et [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL04",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "Publication des comptes SYSCOHADA à fin décembre 2025",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260331_-_etats_financiers_syscohada_-_exercice_2025_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-03-31",
+    "period": "Exercice 2025",
+    "used_for": "Commentaires sur l’absence des ventes exceptionnelles de 2024, les dividendes reçus et la distribution proposée.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Communiqué du 26 mars 2026, comptes arrêtés le 18 mars. Trois pages ; [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL05",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "Rapport d’activités du premier semestre 2026",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261027_-_rapport_dactivites_-_1er_semestre_2026_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-27",
+    "period": "Premier semestre 2026",
+    "used_for": "Croissance des tonnages et du résultat opérationnel ; résultat financier, impôts et résultat net ; calcul du troisième trimestre isolé.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Communiqué daté du 21 octobre 2026. Références [référence du fil] et [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL06",
+    "aliases": [],
+    "category": "TTLC — audit",
+    "title": "Attestation des commissaires aux comptes sur le rapport du premier semestre 2026",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261027_-_attestation_des_commissaires_aux_comptes_sur_le_rapport_dactivites_-_1er_semestre_2026_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-27",
+    "period": "Premier semestre 2026",
+    "used_for": "Vérification du référentiel SYSCOHADA et de la portée de l’examen limité.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Attestation du 8 octobre 2026 ; conclusion sans réserve ; examen limité, assurance modérée. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL07",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "Rapport d’activités du troisième trimestre 2026",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261027_-_rapport_dactivites_-_3e_trimestre_2026_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-27",
+    "period": "Neuf mois au 30 septembre 2026",
+    "used_for": "Résultat net de 8,549 milliards F, comparaison annuelle, bénéfice glissant et scénarios de fin d’année.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6",
+      "7"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Communiqué daté du 21 octobre 2026 ; données cumulées sur neuf mois. Références [référence du fil] et [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL08",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "Rapport d’activité du premier trimestre 2026",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260422_-_rapport_dactivites_-_1er_trimestre_2026_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-04-22",
+    "period": "Premier trimestre 2026",
+    "used_for": "Contrôle du début de l’exercice et de l’accélération ultérieure.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Communiqué daté du 20 avril 2026 ; données provisoires non revues par les commissaires aux comptes. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL09",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "Rapport d’activités du premier semestre 2025",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20251016_-_rapport_dactivites_-_1er_semestre_2025_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-10-16",
+    "period": "Premier semestre 2025",
+    "used_for": "Base de comparaison 2026 ; anticipation prudente de l’impôt et absence de ventes exceptionnelles.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Communiqué daté du 13 octobre 2025. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL10",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "Rapport d’activités du troisième trimestre 2025",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20251016_-_rapport_dactivites_-_3eme_trimestre_2025_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-10-16",
+    "period": "Neuf mois au 30 septembre 2025",
+    "used_for": "Comparatifs de résultat et reconstitution du quatrième trimestre 2025.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "URL résolue à partir du lien officiel déjà consulté dans le répertoire BRVM. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL11",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "Publication des comptes à fin décembre 2024",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20250430_-_rapport_dactivites_-_1er_trimestre_2025_-_totalenergies_marketing_ci_0.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-04-30",
+    "period": "Exercice 2024",
+    "used_for": "Comparabilité du résultat 2024 : dividendes reçus et impact des sorties d’immobilisations, dont les titres SIR.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Le nom du fichier mentionne le premier trimestre 2025, mais le document consulté porte sur les comptes 2024 et est daté du 25 avril 2025. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL12",
+    "aliases": [],
+    "category": "TTLC — comptes et résultats",
+    "title": "États financiers définitifs au 31 décembre 2023",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20240910_-_etats_financiers_definitifs_2023_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2024-09-10",
+    "period": "Exercices 2023 et 2022",
+    "used_for": "Contrôle historique des bénéfices, capitaux propres, dividendes et trésorerie.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Comptes approuvés par l’assemblée générale mixte du 21 juin 2024. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL13",
+    "aliases": [],
+    "category": "TTLC — dividendes",
+    "title": "Avis n°245/BRVM/DG — Paiement du dividende de l’exercice 2025",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20260814_-_avis_ndeg245_brvmdg_-_paiement_de_dividendes_exo_2025_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-08-14",
+    "period": "Dividende 2025 payé en 2026",
+    "used_for": "Montant brut et net, fiscalité indiquée dans l’avis, date de détachement et comparabilité des anciens sommets.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Détachement le 28 août 2026, paiement le 31 août. Montant brut 158,8270 F ; net personnes physiques 139,7677 F. Avis PDF préféré à l’étiquetage ambigu de certaines pages HTML. Références [référence du fil] et [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL17",
+    "aliases": [],
+    "category": "TTLC — publications officielles",
+    "title": "Informations réglementées",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire",
+    "url": "https://totalenergies.ci/espace-actionnaires/informations-reglementees",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Répertoire de publications",
+    "used_for": "Accès et recoupement des publications financières de l’émetteur.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Page dynamique consultée le 12 novembre 2026. Référence [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL18",
+    "aliases": [],
+    "category": "TTLC — publications officielles",
+    "title": "Répertoire BRVM des rapports de TotalEnergies Marketing CI",
+    "issuer": "BRVM",
+    "url": "https://www.brvm.org/fr/rapports-societe-cotes/total",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Répertoire de publications",
+    "used_for": "Identification des PDF officiels, rapports intermédiaires et attestations.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Référence [référence du fil] ; les cours figurant dans les bandeaux ne constituent pas des séries historiques.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL19",
+    "aliases": [],
+    "category": "TTLC — gouvernance et distributions",
+    "title": "Assemblée générale tenue le 21 mai 2026",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire",
+    "url": "https://totalenergies.ci/actualites-0/assemblee-generale-2025-0",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Approbation des comptes 2025",
+    "used_for": "Confirmation de la tenue de l’assemblée et de l’approbation des comptes.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Titre de page « Assemblée Générale 2025 » mais événement du 21 mai 2026 ; date précise de publication non établie. Références [référence du fil] et [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL20",
+    "aliases": [],
+    "category": "TTLC — gouvernance et distributions",
+    "title": "Assemblée générale tenue le 19 juin 2025",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire",
+    "url": "https://totalenergies.ci/actualites-0/assemblee-generale-2025",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Approbation des comptes 2024",
+    "used_for": "Recoupement de la distribution de 14 milliards F approuvée au titre de 2024 et payée en 2025.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Date de l’événement : 19 juin 2025 ; date précise de publication non établie. Références [référence du fil] et [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL21",
+    "aliases": [],
+    "category": "TTLC — opérations de portefeuille",
+    "title": "Communiqué — Cession de la participation dans la SIR",
+    "issuer": "TotalEnergies Marketing Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20250318_-_communique_-_totalenergies_marketing_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2025-03-18",
+    "period": "Cession intervenue le 30 juillet 2024",
+    "used_for": "Comparabilité historique des participations et produits financiers ; confirmation de la sortie de la SIR.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Cession de 793 750 actions, représentant 20,35 % du capital de la SIR. Références [référence du fil] et [référence du fil] ; ne pas assimiler à un catalyseur futur.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "TTL22",
+    "aliases": [],
+    "category": "TTLC — contexte sectoriel",
+    "title": "Produits pétroliers — activité, distribution et régulation des prix",
+    "issuer": "Direction générale de l’économie / Ministère de l’Économie, des Finances et du Budget de Côte d’Ivoire",
+    "url": "https://www.economie-ivoirienne.ci/activites-sectorielles/produits-petroliers.html",
+    "url_status": "url_disponible",
+    "publication_date": null,
+    "period": "Données sectorielles 2024 et mécanisme de fixation des prix",
+    "used_for": "Confirmation primaire de la régulation des prix et de la péréquation transport.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [
+      "6"
+    ],
+    "statut": "citée dans les réponses intégrales récupérées",
+    "notes": "Page consultée le 12 novembre 2026 ; date de mise à jour affichée 23 septembre 2025, avec bandeaux macroéconomiques dynamiques. Référence [référence du fil]. Ne pas présenter toutes les statistiques de cette page comme des données de novembre 2026.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "OTHER01",
+    "aliases": [],
+    "category": "Autres titres examinés — STBC",
+    "title": "Rapport d’activités du troisième trimestre 2026 — SITAB CI",
+    "issuer": "SITAB Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_sitab_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-30",
+    "period": "Neuf mois au 30 septembre 2026",
+    "used_for": "Triage fondamental : résultat en recul malgré la progression des ventes.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Document primaire consulté lors de la sélection des deux autres candidats. Références [référence du fil] et [référence du fil] ; ne signifie pas qu’un audit complet du titre a été réalisé.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "OTHER02",
+    "aliases": [],
+    "category": "Autres titres examinés — SOGC",
+    "title": "Rapport d’activités au 30 septembre 2026 — SOGB CI",
+    "issuer": "Société des caoutchoucs de Grand-Béréby / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_sogb_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-30",
+    "period": "Neuf mois au 30 septembre 2026",
+    "used_for": "Triage fondamental : recul des volumes de caoutchouc et du résultat, évolution distincte du palmier.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Rapport signé le 28 octobre 2026, avec une coquille sur l’année dans la date imprimée. Références [référence du fil] et [référence du fil].",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "OTHER03",
+    "aliases": [],
+    "category": "Autres titres examinés — SGBC",
+    "title": "Rapport d’activité au troisième trimestre 2026 — Société Générale CI",
+    "issuer": "Société Générale Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_societe_generale_ci.pdf",
+    "url_status": "url_disponible",
+    "publication_date": "2026-10-30",
+    "period": "Neuf mois au 30 septembre 2026",
+    "used_for": "Triage fondamental bancaire : PNB et résultat légèrement en recul, crédits et dépôts en progression.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "Données présentées comme non auditées. Références [référence du fil] et [référence du fil] ; ne constitue pas un audit complet du titre.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "OTHER04",
+    "aliases": [],
+    "category": "Autres titres examinés — SPHC",
+    "title": "SAPH CI : Rapport d’activités — 3e trimestre 2026",
+    "issuer": "SAPH Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261013_-_rapport_dactivites_-_3e_trimestre_2026_-_saph_ci.pdf",
+    "url_status": "url_resolue_lors_preparation_archive",
+    "publication_date": "2026-10-13",
+    "period": "Neuf mois au 30 septembre 2026",
+    "used_for": "Triage fondamental : recul du bénéfice sur neuf mois ; contrôle visuel ayant corrigé une première lecture du tableau.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "MISE À JOUR BIBLIOGRAPHIQUE : URL officielle résolue lors de la préparation de l’archive à partir de la page de publication BRVM. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.\nÉtat du registre avant résolution du lien (conservé pour traçabilité) :\nCopie PDF locale et rendu saph_2026_q3_check.png disponibles. URL d’origine exacte non retrouvée dans le contexte conservé : aucune adresse n’a été reconstituée au hasard. Chiffre retenu après vérification : résultat net en baisse de 58 %, et non en hausse. Document exploité dans le triage interne ; pas d’audit complet du titre.\nURL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.",
+    "fichiers_locaux_originaux": [
+      "saph_2026_q3_check.pdf"
+    ],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "OTHER05",
+    "aliases": [],
+    "category": "Autres titres examinés — FTSC",
+    "title": "FILTISAC CI : Rapport d’activités — 3e trimestre 2026 — Annule et remplace le précédent",
+    "issuer": "FILTISAC Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261105_-_rapport_dactivites_-_3e_trimestre_2026_-_filtisac_ci_annule_et_remplace_le_precedent.pdf",
+    "url_status": "url_resolue_lors_preparation_archive",
+    "publication_date": "2026-11-05",
+    "period": "Neuf mois au 30 septembre 2026",
+    "used_for": "Triage fondamental : pertes persistantes malgré la progression du chiffre d’affaires et poids des frais financiers.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "MISE À JOUR BIBLIOGRAPHIQUE : URL officielle de la version rectificative du 5 novembre 2026 résolue lors de la préparation de l’archive, à partir du lien intitulé « Annule et remplace le précédent » dans le répertoire BRVM. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.\nÉtat du registre avant résolution du lien (conservé pour traçabilité) :\nLe contexte conservé mentionne une version corrigée du 5 novembre 2026. URL exacte et copie locale non retrouvées ; date tirée du compte rendu de la consultation antérieure, non revérifiée pour cet export. Analyse interne de sélection, pas source annoncée dans la comparaison finale des trois candidats.\nURL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "OTHER06",
+    "aliases": [],
+    "category": "Autres titres examinés — NEIC",
+    "title": "NEI-CEDA CI : Rapport d’activités — 3e trimestre 2026",
+    "issuer": "NEI-CEDA Côte d’Ivoire / BRVM",
+    "url": "https://www.brvm.org/sites/default/files/20261030_-_rapport_dactivites_-_3e_trimestre_2026_-_nei-ceda_ci.pdf",
+    "url_status": "url_resolue_lors_preparation_archive",
+    "publication_date": "2026-10-30",
+    "period": "Neuf mois au 30 septembre 2026",
+    "used_for": "Triage fondamental : chute du bénéfice et effet de base lié à une reprise de provision en 2025.",
+    "source_kind": "source_externe",
+    "references_dans_archive": [],
+    "statut": "consultée ou utilisée lors des recherches ; citation historique exacte non certifiée",
+    "notes": "MISE À JOUR BIBLIOGRAPHIQUE : URL officielle résolue lors de la préparation de l’archive à partir de la page de publication BRVM. Rapport signé le 23 octobre 2026, publié le 30 octobre. Ce complément bibliographique ne prétend pas reconstituer l’identifiant exact d’une citation historique.\nÉtat du registre avant résolution du lien (conservé pour traçabilité) :\nSource mentionnée dans le compte rendu de la consultation antérieure. URL exacte et copie locale non retrouvées : aucune adresse n’a été inventée. Analyse interne de sélection, pas source annoncée dans la comparaison finale des trois candidats.\nURL d’origine exacte non retrouvée dans les éléments conservés ; aucune URL n’a été inventée.",
+    "fichiers_locaux_originaux": [],
+    "fichiers_inclus": []
+  },
+  {
+    "id": "USER01",
+    "aliases": [],
+    "category": "Pièces fournies par l’utilisateur",
+    "title": "Notice de l’export des cas de la veille spéculative",
+    "issuer": "Utilisateur — fichiers joints",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": "2026-11-12",
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Définition déclarée des signaux, zones, horizon, frais, échantillonnage et limites.",
+    "source_kind": "piece_utilisateur",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Les scripts de production cités dans la notice ne figuraient pas parmi les cinq pièces fournies ; leur exécution intégrale ne peut pas être déduite de cette notice. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md.",
+    "fichiers_locaux_originaux": [
+      "upload/LISEZ-MOI.md"
+    ],
+    "fichiers_inclus": [
+      "pieces/upload/LISEZ-MOI.md"
+    ],
+    "sha256": "a4a38e7cb925e9ed0614c240b21b49124b8dca870e49104d6b4b9b6759ae20bd",
+    "file_size_bytes": 6958
+  },
+  {
+    "id": "USER02",
+    "aliases": [],
+    "category": "Pièces fournies par l’utilisateur",
+    "title": "Agrégats de l’export par schéma et zone",
+    "issuer": "Utilisateur — fichiers joints",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": "2026-11-12",
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Contrôle de la concordance des agrégats avec les cas CSV.",
+    "source_kind": "piece_utilisateur",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Agrégats fournis par l’utilisateur ; ils ne sont pas une validation indépendante du backtest. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md.",
+    "fichiers_locaux_originaux": [
+      "upload/resume.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/upload/resume.json"
+    ],
+    "sha256": "9e627c014c2ab0ed90a2b4121c5c807353ccbef6cb25a27bfef3c674fd414ca2",
+    "file_size_bytes": 2631
+  },
+  {
+    "id": "USER03",
+    "aliases": [],
+    "category": "Pièces fournies par l’utilisateur",
+    "title": "Cas exportés du schéma PANIQUE",
+    "issuer": "Utilisateur — fichiers joints",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": "2026-11-12",
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Audit des cas PANIQUE, des zones, des paliers et de la contrainte de stop.",
+    "source_kind": "piece_utilisateur",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Données historiques exportées ; aucune garantie d’exécution boursière n’en résulte. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md. Fichier vérifié : 414 lignes de cas et 23 colonnes, hors en-tête.",
+    "fichiers_locaux_originaux": [
+      "upload/cas_PANIQUE.csv"
+    ],
+    "fichiers_inclus": [
+      "pieces/upload/cas_PANIQUE.csv"
+    ],
+    "sha256": "4cf7c584684297f953cf5fc6366899bde24b550f1348cfdcb83de9ee84d723c2",
+    "file_size_bytes": 54907
+  },
+  {
+    "id": "USER04",
+    "aliases": [],
+    "category": "Pièces fournies par l’utilisateur",
+    "title": "Cas exportés du schéma EVEIL",
+    "issuer": "Utilisateur — fichiers joints",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": "2026-11-12",
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Audit des cas EVEIL, des zones, des paliers et de la contrainte de stop.",
+    "source_kind": "piece_utilisateur",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Données historiques exportées ; aucune garantie d’exécution boursière n’en résulte. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md. Fichier vérifié : 934 lignes de cas et 23 colonnes, hors en-tête.",
+    "fichiers_locaux_originaux": [
+      "upload/cas_EVEIL.csv"
+    ],
+    "fichiers_inclus": [
+      "pieces/upload/cas_EVEIL.csv"
+    ],
+    "sha256": "65bde92bf794597a35ec6cabf69e8a374aee557a7a2e8c9ab260752ba77c621b",
+    "file_size_bytes": 122841
+  },
+  {
+    "id": "USER05",
+    "aliases": [],
+    "category": "Pièces fournies par l’utilisateur",
+    "title": "Cas exportés du schéma CASSURE",
+    "issuer": "Utilisateur — fichiers joints",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": "2026-11-12",
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Audit des cas CASSURE, des zones, des paliers et de la contrainte de stop.",
+    "source_kind": "piece_utilisateur",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Données historiques exportées ; aucune garantie d’exécution boursière n’en résulte. Aucune URL publique : document local inclus ou à inclure dans l’archive. La date de production du 12 novembre 2026 est déclarée dans LISEZ-MOI.md. Fichier vérifié : 267 lignes de cas et 23 colonnes, hors en-tête.",
+    "fichiers_locaux_originaux": [
+      "upload/cas_CASSURE.csv"
+    ],
+    "fichiers_inclus": [
+      "pieces/upload/cas_CASSURE.csv"
+    ],
+    "sha256": "f9a5f97f48369d3768c5da576b8f1adc43351fe88ccd25962613fce0c84aa2ca",
+    "file_size_bytes": 35884
+  },
+  {
+    "id": "CALC01",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Script d’audit des agrégats et scénarios des CSV",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Recalcul des statistiques par schéma et par zone à partir des pièces utilisateur.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "aggregate_audit.py"
+    ],
+    "fichiers_inclus": [
+      "pieces/aggregate_audit.py"
+    ],
+    "sha256": "b15659598b2251990560416c59c77d8f328cad2e1924cd5bc775ef7c086f9611",
+    "file_size_bytes": 7486
+  },
+  {
+    "id": "CALC02",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Résultats structurés de l’audit des agrégats",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Statistiques, rapprochements et scénarios calculés sur les cas exportés.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "aggregate_audit_results.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/aggregate_audit_results.json"
+    ],
+    "sha256": "5ef53d218a758fb03ea792595cf7eb9e3867cb3b3bb58b19bdd5c0479852a20a",
+    "file_size_bytes": 258488
+  },
+  {
+    "id": "CALC03",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Sortie textuelle de l’audit des agrégats",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Trace lisible de l’audit des fichiers et des résultats agrégés.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "aggregate_audit_output.txt"
+    ],
+    "fichiers_inclus": [
+      "pieces/aggregate_audit_output.txt"
+    ],
+    "sha256": "843498d1b96777f48a796a64f2ec65540b2375685537b7845cab2b87dde78219",
+    "file_size_bytes": 68270
+  },
+  {
+    "id": "CALC04",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Script de contrôles externes ORGT",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Comparaison d’épisodes ORGT avec les séries de cours et volumes disponibles.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_audit_orgt.py"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_audit_orgt.py"
+    ],
+    "sha256": "f50bb470c850fc5792083bed05f16081137bd9858e61809fb656a54a18c8604a",
+    "file_size_bytes": 3837
+  },
+  {
+    "id": "CALC05",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Résultats des contrôles externes ORGT",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Trace des rapprochements d’épisodes ORGT et des écarts examinés.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_audit_orgt_results.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_audit_orgt_results.json"
+    ],
+    "sha256": "66fa20d7f1b028e7b28c531ae0cdfad67c753eb254fb4192b815f41bb039d4de",
+    "file_size_bytes": 28522
+  },
+  {
+    "id": "CALC06",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Résultats des contrôles externes SIVC",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Recoupements complémentaires des épisodes exportés pour SIVC.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_audit_SIVC_results.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_audit_SIVC_results.json"
+    ],
+    "sha256": "67837063a7d269a0af2069862063a24d58f179266f8309cb693656e8e4fc2715",
+    "file_size_bytes": 16427
+  },
+  {
+    "id": "CALC07",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Résultats des contrôles externes SNTS",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Recoupements complémentaires des épisodes exportés pour SNTS.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_audit_SNTS_results.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_audit_SNTS_results.json"
+    ],
+    "sha256": "4530b2c1a79944e8d292d06f1200b40dcf5c41d8f30aa1bf0e1f74765f5f5b3b",
+    "file_size_bytes": 15713
+  },
+  {
+    "id": "CALC08",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Contrôles des signaux et séries historiques",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Trace structurée des contrôles ciblés effectués sur les signaux.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_audit_signal_checks.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_audit_signal_checks.json"
+    ],
+    "sha256": "f095d44bbb8b088d763f6696817552e537745e2e96a83aa88614688d302c4cfa",
+    "file_size_bytes": 15858
+  },
+  {
+    "id": "CALC09",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Script de screening des valeurs BRVM",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Collecte de l’historique RichBourse et calcul des indicateurs de prix et de volume.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_screen_brvm.py"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_brvm.py"
+    ],
+    "sha256": "74dcc7da9dfacf3185580594eb9ac8f0d8e22b39530e5ef00fb172148b31966b",
+    "file_size_bytes": 4511
+  },
+  {
+    "id": "CALC10",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Indicateurs du screening BRVM",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Résultats calculés du screening de prix et volumes pour 48 valeurs.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_screen_metrics.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_metrics.json"
+    ],
+    "sha256": "8aff893e5f52c8a2a077662c6e5123a8ad1c8cb0d31d387df1a2a444165cbc04",
+    "file_size_bytes": 81534
+  },
+  {
+    "id": "CALC11",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Comparaison technique des trois candidats",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Cours, méthodes, scénarios, dividendes et instantané du carnet officiel du 11 novembre 2026.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "external_screen_three_challenge.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/external_screen_three_challenge.json"
+    ],
+    "sha256": "5cbdad468683eb501a6b6e6a9f59e84e031e3ac4e38d5e416322dc8f4887269f",
+    "file_size_bytes": 15245
+  },
+  {
+    "id": "CALC12",
+    "aliases": [],
+    "category": "Calculs et vérifications propres",
+    "title": "Éléments de vérification des cas exportés",
+    "issuer": "Calculs effectués dans la conversation",
+    "url": null,
+    "url_status": "document_local_sans_url_publique",
+    "publication_date": null,
+    "period": "Travaux de la conversation du 12 novembre 2026",
+    "used_for": "Trace structurée des vérifications effectuées sur les cas PANIQUE, EVEIL et CASSURE.",
+    "source_kind": "calcul_propre",
+    "references_dans_archive": [],
+    "statut": "pièce locale",
+    "notes": "Travail analytique propre, non source indépendante et non audit réglementaire. Résultats conditionnés par les données, conventions de frais et hypothèses indiquées ; ne constituent ni probabilité validée, ni performance réalisable garantie. Aucune URL publique : document local inclus ou à inclure dans l’archive.",
+    "fichiers_locaux_originaux": [
+      "root_audit_rows.json"
+    ],
+    "fichiers_inclus": [
+      "pieces/root_audit_rows.json"
+    ],
+    "sha256": "3481da4e155a7854202dbd90116baf8f1ff5c956e31d5ac18ddb4715a736b394",
+    "file_size_bytes": 862249
+  }
+]

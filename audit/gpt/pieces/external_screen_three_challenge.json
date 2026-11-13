@@ -1,0 +1,520 @@
+{
+  "as_of": "2026-11-12",
+  "method": "RichBourse stored raw OHLC and volume. Returns price-only over 20/60 preceding provider observations. RSI14 Wilder. Liquidity historical close*volume is a proxy. Net scenario returns subtract constant 2.8 percentage points, a convention rather than verified individual broker fee. Invalidations are scenarios, not guaranteed stop executions.",
+  "quotes": {
+    "TTLC": {
+      "code": "TTLC",
+      "n": 4288,
+      "date": "2026-11-12",
+      "price": 3095,
+      "rsi14": 54.71786235838578,
+      "vol": 2656,
+      "zone_minmax5": 0.6365546218487395,
+      "rank5_le": 0.9332260659694288,
+      "first5": "2021-11-12",
+      "max5": 3960,
+      "min5": 1580,
+      "prior20_n": 20,
+      "high20_close": 3100,
+      "low20_close": 2875,
+      "high20_intraday": 3150,
+      "low20_intraday": 2875,
+      "r20": 0.03166666666666673,
+      "volmed20": 2423.5,
+      "volmean20": 3158.75,
+      "amountmed20_approx": 7168507.5,
+      "amountmean20_approx": 9460425.75,
+      "prior60_n": 60,
+      "high60_close": 3595,
+      "low60_close": 2870,
+      "high60_intraday": 3595,
+      "low60_intraday": 2800,
+      "r60": -0.04179566563467496,
+      "volmed60": 3935.5,
+      "volmean60": 5510.1,
+      "amountmed60_approx": 12859472.5,
+      "amountmean60_approx": 17658572.583333332,
+      "prior250_n": 250,
+      "high250_close": 3595,
+      "low250_close": 2300,
+      "high250_intraday": 3595,
+      "low250_intraday": 2235,
+      "r250": 0.34565217391304337,
+      "ma20": 3000,
+      "ma50": 3079.2,
+      "ma200": 2907.025,
+      "volratio60": 0.6748824799898361,
+      "distance_high250": -0.13908205841446453,
+      "breakouts60": [
+        {
+          "date": "2026-08-21",
+          "age": 58,
+          "price": 3400,
+          "prior250high": 3300,
+          "vol": 6686,
+          "volratio60": 1.489086859688196
+        },
+        {
+          "date": "2026-08-26",
+          "age": 56,
+          "price": 3595,
+          "prior250high": 3400,
+          "vol": 11364,
+          "volratio60": 2.3677466402750285
+        }
+      ],
+      "badjumps60": []
+    },
+    "SMBC": {
+      "code": "SMBC",
+      "n": 3751,
+      "date": "2026-11-12",
+      "price": 18000,
+      "rsi14": 70.80272181425309,
+      "vol": 1025,
+      "zone_minmax5": 0.9603017070265979,
+      "rank5_le": 0.9959612277867528,
+      "first5": "2021-11-12",
+      "max5": 18500,
+      "min5": 5905,
+      "prior20_n": 20,
+      "high20_close": 17995,
+      "low20_close": 14395,
+      "high20_intraday": 18130,
+      "low20_intraday": 14250,
+      "r20": 0.16129032258064524,
+      "volmed20": 747.5,
+      "volmean20": 1172.35,
+      "amountmed20_approx": 10803162.5,
+      "amountmean20_approx": 19445732.25,
+      "prior60_n": 60,
+      "high60_close": 18500,
+      "low60_close": 14395,
+      "high60_intraday": 19000,
+      "low60_intraday": 14250,
+      "r60": 0.09090909090909083,
+      "volmed60": 1025.5,
+      "volmean60": 1528.5333333333333,
+      "amountmed60_approx": 17563382.5,
+      "amountmean60_approx": 25733141,
+      "prior250_n": 250,
+      "high250_close": 18500,
+      "low250_close": 9100,
+      "high250_intraday": 19000,
+      "low250_intraday": 9100,
+      "r250": 0.8367346938775511,
+      "ma20": 16024.75,
+      "ma50": 16413.1,
+      "ma200": 14639.2,
+      "volratio60": 0.999512432959532,
+      "distance_high250": -0.027027027027026973,
+      "breakouts60": [
+        {
+          "date": "2026-09-09",
+          "age": 46,
+          "price": 17995,
+          "prior250high": 17735,
+          "vol": 737,
+          "volratio60": 0.8495677233429395
+        },
+        {
+          "date": "2026-09-10",
+          "age": 45,
+          "price": 18500,
+          "prior250high": 17995,
+          "vol": 1096,
+          "volratio60": 1.263400576368876
+        }
+      ],
+      "badjumps60": []
+    },
+    "BOAN": {
+      "code": "BOAN",
+      "n": 4173,
+      "date": "2026-11-12",
+      "price": 4975,
+      "rsi14": 49.016657586369114,
+      "vol": 7746,
+      "zone_minmax5": 0.8082975679542204,
+      "rank5_le": 0.9477491961414791,
+      "first5": "2021-11-12",
+      "max5": 5645,
+      "min5": 2150,
+      "prior20_n": 20,
+      "high20_close": 5300,
+      "low20_close": 4500,
+      "high20_intraday": 5425,
+      "low20_intraday": 4440,
+      "r20": 0.06417112299465244,
+      "volmed20": 7111.5,
+      "volmean20": 7915.4,
+      "amountmed20_approx": 33339225.0,
+      "amountmean20_approx": 39219549.25,
+      "prior60_n": 60,
+      "high60_close": 5645,
+      "low60_close": 4475,
+      "high60_intraday": 5895,
+      "low60_intraday": 4410,
+      "r60": -0.03398058252427183,
+      "volmed60": 6037.5,
+      "volmean60": 7654.166666666667,
+      "amountmed60_approx": 31622557.5,
+      "amountmean60_approx": 38996286.25,
+      "prior250_n": 250,
+      "high250_close": 5645,
+      "low250_close": 2460,
+      "high250_intraday": 5895,
+      "low250_intraday": 2450,
+      "r250": 0.9548133595284873,
+      "ma20": 4967,
+      "ma50": 5058.4,
+      "ma200": 4064.1,
+      "volratio60": 1.2829813664596272,
+      "distance_high250": -0.11868910540301147,
+      "breakouts60": [
+        {
+          "date": "2026-08-27",
+          "age": 55,
+          "price": 5645,
+          "prior250high": 5400,
+          "vol": 8584,
+          "volratio60": 1.1505931237852691
+        }
+      ],
+      "badjumps60": []
+    }
+  },
+  "scenarios": [
+    {
+      "code": "TTLC",
+      "label": "current / tactical invalidation below October closes",
+      "entry": 3095,
+      "invalidation": 2850,
+      "loss_pct_fee_approx": 10.715993537964462,
+      "break_even_price_5": 3185,
+      "net20_price_5": 3805,
+      "targets": [
+        {
+          "price": 3450,
+          "gross_return_pct": 11.47011308562198,
+          "net_return_pct_fee_approx": 8.670113085621981,
+          "net_gain_loss_ratio": 0.8090815895796908
+        },
+        {
+          "price": 3500,
+          "gross_return_pct": 13.085621970920847,
+          "net_return_pct_fee_approx": 10.285621970920847,
+          "net_gain_loss_ratio": 0.9598383887113313
+        },
+        {
+          "price": 3595,
+          "gross_return_pct": 16.155088852988687,
+          "net_return_pct_fee_approx": 13.355088852988686,
+          "net_gain_loss_ratio": 1.2462763070614478
+        }
+      ]
+    },
+    {
+      "code": "TTLC",
+      "label": "current / October low",
+      "entry": 3095,
+      "invalidation": 2800,
+      "loss_pct_fee_approx": 12.331502423263327,
+      "break_even_price_5": 3185,
+      "net20_price_5": 3805,
+      "targets": [
+        {
+          "price": 3450,
+          "gross_return_pct": 11.47011308562198,
+          "net_return_pct_fee_approx": 8.670113085621981,
+          "net_gain_loss_ratio": 0.7030865167950541
+        },
+        {
+          "price": 3500,
+          "gross_return_pct": 13.085621970920847,
+          "net_return_pct_fee_approx": 10.285621970920847,
+          "net_gain_loss_ratio": 0.8340931719331348
+        }
+      ]
+    },
+    {
+      "code": "TTLC",
+      "label": "conditional October-support entry; requires stabilization",
+      "entry": 2900,
+      "invalidation": 2850,
+      "loss_pct_fee_approx": 4.5241379310344865,
+      "break_even_price_5": 2985,
+      "net20_price_5": 3565,
+      "targets": [
+        {
+          "price": 3450,
+          "gross_return_pct": 18.965517241379317,
+          "net_return_pct_fee_approx": 16.165517241379316,
+          "net_gain_loss_ratio": 3.5731707317073154
+        },
+        {
+          "price": 3500,
+          "gross_return_pct": 20.68965517241379,
+          "net_return_pct_fee_approx": 17.88965517241379,
+          "net_gain_loss_ratio": 3.9542682926829227
+        }
+      ]
+    },
+    {
+      "code": "TTLC",
+      "label": "conditional October-support entry; requires stabilization",
+      "entry": 2950,
+      "invalidation": 2850,
+      "loss_pct_fee_approx": 6.189830508474579,
+      "break_even_price_5": 3035,
+      "net20_price_5": 3625,
+      "targets": [
+        {
+          "price": 3450,
+          "gross_return_pct": 16.94915254237288,
+          "net_return_pct_fee_approx": 14.149152542372878,
+          "net_gain_loss_ratio": 2.2858707557502727
+        },
+        {
+          "price": 3500,
+          "gross_return_pct": 18.644067796610166,
+          "net_return_pct_fee_approx": 15.844067796610165,
+          "net_gain_loss_ratio": 2.5596933187294617
+        }
+      ]
+    },
+    {
+      "code": "TTLC",
+      "label": "conditional support entry / wider October low",
+      "entry": 2950,
+      "invalidation": 2800,
+      "loss_pct_fee_approx": 7.884745762711861,
+      "break_even_price_5": 3035,
+      "net20_price_5": 3625,
+      "targets": [
+        {
+          "price": 3450,
+          "gross_return_pct": 16.94915254237288,
+          "net_return_pct_fee_approx": 14.149152542372878,
+          "net_gain_loss_ratio": 1.7944969905417028
+        },
+        {
+          "price": 3500,
+          "gross_return_pct": 18.644067796610166,
+          "net_return_pct_fee_approx": 15.844067796610165,
+          "net_gain_loss_ratio": 2.009458297506449
+        }
+      ]
+    },
+    {
+      "code": "SMBC",
+      "label": "current / November 5 tactical low",
+      "entry": 18000,
+      "invalidation": 17500,
+      "loss_pct_fee_approx": 5.577777777777779,
+      "break_even_price_5": 18505,
+      "net20_price_5": 22105,
+      "targets": [
+        {
+          "price": 20000,
+          "gross_return_pct": 11.111111111111116,
+          "net_return_pct_fee_approx": 8.311111111111117,
+          "net_gain_loss_ratio": 1.4900398406374509
+        },
+        {
+          "price": 21600,
+          "gross_return_pct": 19.999999999999996,
+          "net_return_pct_fee_approx": 17.199999999999996,
+          "net_gain_loss_ratio": 3.083665338645417
+        }
+      ]
+    },
+    {
+      "code": "SMBC",
+      "label": "current / November 4 opening low",
+      "entry": 18000,
+      "invalidation": 17000,
+      "loss_pct_fee_approx": 8.355555555555558,
+      "break_even_price_5": 18505,
+      "net20_price_5": 22105,
+      "targets": [
+        {
+          "price": 20000,
+          "gross_return_pct": 11.111111111111116,
+          "net_return_pct_fee_approx": 8.311111111111117,
+          "net_gain_loss_ratio": 0.9946808510638302
+        },
+        {
+          "price": 21600,
+          "gross_return_pct": 19.999999999999996,
+          "net_return_pct_fee_approx": 17.199999999999996,
+          "net_gain_loss_ratio": 2.058510638297871
+        }
+      ]
+    },
+    {
+      "code": "SMBC",
+      "label": "hypothetical confirmed breakout",
+      "entry": 18150,
+      "invalidation": 17500,
+      "loss_pct_fee_approx": 6.381267217630857,
+      "break_even_price_5": 18660,
+      "net20_price_5": 22290,
+      "targets": [
+        {
+          "price": 20000,
+          "gross_return_pct": 10.192837465564741,
+          "net_return_pct_fee_approx": 7.3928374655647415,
+          "net_gain_loss_ratio": 1.1585218442410636
+        },
+        {
+          "price": 21600,
+          "gross_return_pct": 19.00826446280992,
+          "net_return_pct_fee_approx": 16.208264462809918,
+          "net_gain_loss_ratio": 2.5399758245553437
+        }
+      ]
+    },
+    {
+      "code": "BOAN",
+      "label": "current / November 5 tactical low",
+      "entry": 4975,
+      "invalidation": 4730,
+      "loss_pct_fee_approx": 7.724623115577886,
+      "break_even_price_5": 5115,
+      "net20_price_5": 6110,
+      "targets": [
+        {
+          "price": 5300,
+          "gross_return_pct": 6.5326633165829096,
+          "net_return_pct_fee_approx": 3.7326633165829097,
+          "net_gain_loss_ratio": 0.48321623731459756
+        },
+        {
+          "price": 5645,
+          "gross_return_pct": 13.467336683417086,
+          "net_return_pct_fee_approx": 10.667336683417087,
+          "net_gain_loss_ratio": 1.3809523809523818
+        },
+        {
+          "price": 6000,
+          "gross_return_pct": 20.603015075376874,
+          "net_return_pct_fee_approx": 17.803015075376873,
+          "net_gain_loss_ratio": 2.3047098620869106
+        }
+      ]
+    },
+    {
+      "code": "BOAN",
+      "label": "current / below October low4410",
+      "entry": 4975,
+      "invalidation": 4400,
+      "loss_pct_fee_approx": 14.357788944723612,
+      "break_even_price_5": 5115,
+      "net20_price_5": 6110,
+      "targets": [
+        {
+          "price": 5300,
+          "gross_return_pct": 6.5326633165829096,
+          "net_return_pct_fee_approx": 3.7326633165829097,
+          "net_gain_loss_ratio": 0.2599748005039897
+        },
+        {
+          "price": 5645,
+          "gross_return_pct": 13.467336683417086,
+          "net_return_pct_fee_approx": 10.667336683417087,
+          "net_gain_loss_ratio": 0.7429651406971864
+        },
+        {
+          "price": 6000,
+          "gross_return_pct": 20.603015075376874,
+          "net_return_pct_fee_approx": 17.803015075376873,
+          "net_gain_loss_ratio": 1.2399552008959818
+        }
+      ]
+    },
+    {
+      "code": "BOAN",
+      "label": "hypothetical reclaim5100",
+      "entry": 5100,
+      "invalidation": 4730,
+      "loss_pct_fee_approx": 10.05490196078431,
+      "break_even_price_5": 5245,
+      "net20_price_5": 6265,
+      "targets": [
+        {
+          "price": 5645,
+          "gross_return_pct": 10.686274509803928,
+          "net_return_pct_fee_approx": 7.886274509803928,
+          "net_gain_loss_ratio": 0.7843213728549151
+        },
+        {
+          "price": 6000,
+          "gross_return_pct": 17.647058823529417,
+          "net_return_pct_fee_approx": 14.847058823529416,
+          "net_gain_loss_ratio": 1.4765990639625595
+        }
+      ]
+    }
+  ],
+  "dividend_comparisons": {
+    "TTLC": {
+      "ex_date": "2026-08-28",
+      "paid": "2026-08-31",
+      "net_individual": 139.77,
+      "gross": 158.827,
+      "raw_high_close": 3595,
+      "raw_high_date": "2026-08-26",
+      "simple_net_subtracted_old_high": 3455.23,
+      "post_ex_max_close": 3400,
+      "post_ex_max_high": 3525,
+      "r60_with_cash_net_div_no_reinvestment": 0.001476780185758475
+    },
+    "SMBC": {
+      "ex_date": "2026-09-17",
+      "paid": "2026-09-18",
+      "net_individual": 704,
+      "gross": 800,
+      "raw_high_close": 18500,
+      "raw_high_date": "2026-09-10",
+      "simple_net_subtracted_old_high": 17796,
+      "post_ex_max_close": 18000,
+      "post_ex_max_high": 18130,
+      "r60_with_cash_net_div_no_reinvestment": 0.13357575757575768
+    },
+    "BOAN": {
+      "last_dividend_paid": "2025-06-03",
+      "last_dividend_net": 209.25,
+      "raw_high_close": 5645,
+      "raw_high_date": "2026-08-27",
+      "no_2026_dividend_seen": true
+    }
+  },
+  "official_book_snapshot_20261111": {
+    "source": "https://www.brvm.org/sites/default/files/boc_20261111_2_0.pdf",
+    "TTLC": {
+      "turnover": 4975090,
+      "volume": 1644,
+      "bid_qty": 20,
+      "bid_price": 3015,
+      "ask_qty": 184,
+      "ask_price": 3020
+    },
+    "SMBC": {
+      "turnover": 43617805,
+      "volume": 2425,
+      "bid_qty": 40,
+      "bid_price": 17900,
+      "ask_qty": 35,
+      "ask_price": 17940
+    },
+    "BOAN": {
+      "turnover": 2397080,
+      "volume": 487,
+      "bid_qty": 83,
+      "bid_price": 4890,
+      "ask_qty": 50,
+      "ask_price": 4920
+    }
+  }
+}

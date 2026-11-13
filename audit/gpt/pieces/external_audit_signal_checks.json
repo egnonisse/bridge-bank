@@ -1,0 +1,695 @@
+[
+  {
+    "code": "ORGT",
+    "schema": "PANIQUE",
+    "date": "2020-10-08",
+    "condition_value": 28.27033047939952,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "PANIQUE",
+    "date": "2022-05-20",
+    "condition_value": 28.988042183433123,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "PANIQUE",
+    "date": "2022-10-13",
+    "condition_value": 25.305309405463845,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "PANIQUE",
+    "date": "2023-04-27",
+    "condition_value": 21.3110293072576,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "PANIQUE",
+    "date": "2024-05-10",
+    "condition_value": 31.030202790903445,
+    "passes_external_condition": false
+  },
+  {
+    "code": "ORGT",
+    "schema": "PANIQUE",
+    "date": "2024-09-13",
+    "condition_value": 25.852484148930003,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "PANIQUE",
+    "date": "2025-01-30",
+    "condition_value": 27.70114343768998,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2020-12-30",
+    "condition_value": 0.10526315789473695,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2021-04-20",
+    "condition_value": 0.10000000000000009,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2021-09-22",
+    "condition_value": 0.17432432432432443,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2022-07-28",
+    "condition_value": 0.11143695014662747,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2022-12-09",
+    "condition_value": 0.1428571428571428,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2023-07-03",
+    "condition_value": 0.2356979405034325,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2023-10-04",
+    "condition_value": 0.18723404255319154,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2024-01-16",
+    "condition_value": 0.11111111111111116,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2024-05-31",
+    "condition_value": 0.15015974440894575,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2024-09-17",
+    "condition_value": 0.18927444794952675,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2024-12-31",
+    "condition_value": 0.14626865671641798,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2025-05-21",
+    "condition_value": 0.10967741935483866,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "EVEIL",
+    "date": "2025-08-20",
+    "condition_value": 0.14057507987220452,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "CASSURE",
+    "date": "2021-09-22",
+    "condition_value": 0.04698795180722892,
+    "passes_external_condition": true
+  },
+  {
+    "code": "ORGT",
+    "schema": "CASSURE",
+    "date": "2025-09-05",
+    "condition_value": 0.005208333333333259,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2018-05-09",
+    "condition_value": 25.54110400583832,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2018-12-04",
+    "condition_value": 29.34917825321392,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2019-07-18",
+    "condition_value": 22.575678686426286,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2019-12-03",
+    "condition_value": 26.90288647808414,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2020-05-11",
+    "condition_value": 28.689389384406155,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2020-11-09",
+    "condition_value": 28.14295571554024,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2022-08-30",
+    "condition_value": 23.252682809768984,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2022-12-20",
+    "condition_value": 27.948429426953012,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2023-03-29",
+    "condition_value": 23.89151880930045,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2023-07-11",
+    "condition_value": 27.618150363765693,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2024-03-21",
+    "condition_value": 23.41922813036095,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "PANIQUE",
+    "date": "2024-07-08",
+    "condition_value": 27.36429683468927,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2018-03-02",
+    "condition_value": 0.13749999999999996,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2018-07-04",
+    "condition_value": 0.10294117647058831,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2018-10-18",
+    "condition_value": 0.1625000000000001,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2019-02-07",
+    "condition_value": 0.25,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2019-05-28",
+    "condition_value": 0.10526315789473695,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2020-01-06",
+    "condition_value": 0.11111111111111116,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2020-04-21",
+    "condition_value": 0.42500000000000004,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2020-09-21",
+    "condition_value": 0.18181818181818188,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2021-02-01",
+    "condition_value": 0.22857142857142865,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2021-05-19",
+    "condition_value": 0.6000000000000001,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2021-08-17",
+    "condition_value": 0.40625,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2021-11-22",
+    "condition_value": 0.33333333333333326,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2022-02-16",
+    "condition_value": 0.6206896551724137,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2022-05-16",
+    "condition_value": 0.19424460431654667,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2022-09-16",
+    "condition_value": 0.13235294117647056,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2022-12-27",
+    "condition_value": 0.10000000000000009,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2023-06-05",
+    "condition_value": 0.10000000000000009,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2023-10-12",
+    "condition_value": 0.14141414141414144,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2024-01-17",
+    "condition_value": 0.5619047619047619,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2024-07-30",
+    "condition_value": 0.1208791208791209,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2024-10-24",
+    "condition_value": 0.11578947368421044,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2025-02-12",
+    "condition_value": 0.10000000000000009,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2025-05-14",
+    "condition_value": 0.16304347826086962,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "EVEIL",
+    "date": "2025-08-20",
+    "condition_value": 0.16831683168316824,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "CASSURE",
+    "date": "2021-05-18",
+    "condition_value": 0.05263157894736836,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "CASSURE",
+    "date": "2021-09-23",
+    "condition_value": 0.02083333333333326,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "CASSURE",
+    "date": "2021-12-27",
+    "condition_value": 0.07361963190184051,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SIVC",
+    "schema": "CASSURE",
+    "date": "2025-09-10",
+    "condition_value": 0.03875968992248069,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2018-02-23",
+    "condition_value": 29.87690933500545,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2018-07-20",
+    "condition_value": 26.923327078775117,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2018-10-19",
+    "condition_value": 16.939075825023934,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2019-05-06",
+    "condition_value": 29.366908884359304,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2019-09-02",
+    "condition_value": 20.62118428446145,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2019-12-03",
+    "condition_value": 29.355267324802895,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2020-03-19",
+    "condition_value": 25.989245108038162,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2020-07-08",
+    "condition_value": 29.17173147956335,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2020-10-13",
+    "condition_value": 21.950737073762696,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2021-01-29",
+    "condition_value": 27.294549117684,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2022-05-17",
+    "condition_value": 29.71937822589824,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2023-05-15",
+    "condition_value": 28.069050413656754,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "PANIQUE",
+    "date": "2025-04-18",
+    "condition_value": 25.871623319828373,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2018-05-11",
+    "condition_value": 0.10465116279069764,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2019-02-07",
+    "condition_value": 0.12838709677419358,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2019-05-06",
+    "condition_value": 0.10445103857566762,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2019-12-24",
+    "condition_value": 0.1428571428571428,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2020-04-24",
+    "condition_value": 0.11025443330763296,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2020-11-02",
+    "condition_value": 0.1428571428571428,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2021-02-26",
+    "condition_value": 0.16181818181818186,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2021-06-02",
+    "condition_value": 0.11311475409836058,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2022-02-23",
+    "condition_value": 0.11037037037037045,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2023-02-27",
+    "condition_value": 0.11538461538461542,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2023-07-25",
+    "condition_value": 0.10472972972972983,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2023-12-27",
+    "condition_value": 0.11049382716049383,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2024-04-09",
+    "condition_value": 0.11764705882352944,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2024-07-18",
+    "condition_value": 0.10081743869209814,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2024-10-14",
+    "condition_value": 0.15594059405940586,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "EVEIL",
+    "date": "2025-02-21",
+    "condition_value": 0.11754756871035932,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2021-05-07",
+    "condition_value": 0.01754385964912286,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2022-02-14",
+    "condition_value": -0.02473262032085566,
+    "passes_external_condition": false
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2023-05-12",
+    "condition_value": 0.004260499087035852,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2023-11-03",
+    "condition_value": 0.0005885815185402432,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2024-04-09",
+    "condition_value": 0.05555555555555558,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2024-07-15",
+    "condition_value": 0.005050505050504972,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2025-01-17",
+    "condition_value": 0.02083333333333326,
+    "passes_external_condition": true
+  },
+  {
+    "code": "SNTS",
+    "schema": "CASSURE",
+    "date": "2025-05-09",
+    "condition_value": 0.0037735849056603765,
+    "passes_external_condition": true
+  }
+]
