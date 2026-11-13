@@ -72,20 +72,28 @@ TAUX_CODE_DUR = {
 SEUIL_ECHANTILLON = 10  # en dessous : non mesurable
 
 
-def charger_series() -> tuple[dict, dict]:
-    """Charge le cache propre et retourne (closes par code, volumes par code)."""
+def charger_series() -> tuple[dict, dict, dict]:
+    """Charge le cache propre et retourne (closes, volumes, dates) par code.
+
+    Les dates servent a l'horizon CALENDAIRE (365 jours) : sans elles, mesurer sur un nombre
+    de seances revient a mesurer sur ~13 mois et gonfle les cas extremes.
+    """
     hist = charger_cache(HISTORY_CACHE)
     closes_by_code: dict = {}
     volumes_by_code: dict = {}
+    dates_by_code: dict = {}
     for code, barres in hist.items():
         closes_by_code[code] = [b.close for b in barres]
         volumes_by_code[code] = [getattr(b, "volume", 0) for b in barres]
-    return closes_by_code, volumes_by_code
+        dates_by_code[code] = [b.date if isinstance(b.date, datetime.date)
+                               else datetime.date.fromisoformat(str(b.date)[:10])
+                               for b in barres]
+    return closes_by_code, volumes_by_code, dates_by_code
 
 
 def mesurer() -> dict:
     """Rejoue la détection + zone sur l'historique, agrège rets et pics par (schéma, zone)."""
-    closes_by_code, _ = charger_series()
+    closes_by_code, _, dates_by_code = charger_series()
 
     # agg[schéma][zone] = {"rets": [...], "peaks": [...]}
     agg = {s: {z: {"rets": [], "peaks": []} for z in ZONES} for s in SCHEMAS}
@@ -96,10 +104,7 @@ def mesurer() -> dict:
         if len(closes) < 500 or closes[0] <= 0:
             continue
         series_prises += 1
-        # dates du titre, pour l'horizon calendaire
-        bars_t = hist[code]
-        dates_t = [b.date if isinstance(b.date, datetime.date)
-                   else datetime.date.fromisoformat(str(b.date)[:10]) for b in bars_t]
+        dates_t = dates_by_code[code]
         for i in range(260, len(closes) - 1):
             j_fin = index_fin_horizon(dates_t, i)
             if not fenetre_complete(dates_t, i, j_fin):
@@ -145,7 +150,7 @@ def rapport_texte(mesure: dict) -> str:
     a("MESURE DES TAUX PAR ZONE — poche spéculative BRVM")
     a("=" * 92)
     a(f"Séries retenues (≥ 500 barres) : {mesure['series_prises']} / {len(mesure['codes'])} titres du cache")
-    a(f"Frais aller-retour déduits : {FRAIS*100:.1f} %   Horizon : {HORIZON} séances")
+    a(f"Frais aller-retour déduits : {FRAIS*100:.1f} %   Horizon : {HORIZON_JOURS} jours calendaires")
     a(f"Seuil d'échantillon suffisant : {SEUIL_ECHANTILLON} cas")
     a("")
 
