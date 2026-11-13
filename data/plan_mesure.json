@@ -1,0 +1,37 @@
+{
+  "_source": "scripts/rejouer_plan_complet.py — plan complet (stop -15 %, ventes 1/3 a +20/+35/+50, reliquat en fin d'horizon), position 100 000 F, frais reels de src/taxation.py avec minimum 1 000 F par ordre.",
+  "_conditions": "Horizon 365 jours calendaires, filtre volume de production applique, espacement 60 seances par titre et par schema. Meme univers que data/spec_profiles.json (255 / 904 / 420 cas).",
+  "mesure_le": "2026-11-13",
+  "cas_total": 1579,
+  "par_schema": {
+    "CASSURE": {
+      "n": 255,
+      "median_affichee": 0.163,
+      "median_encaissee": 0.149,
+      "pct_perdants": 0.349,
+      "perte_moyenne": -0.205,
+      "gain_moyen": 0.222
+    },
+    "EVEIL": {
+      "n": 904,
+      "median_affichee": 0.048,
+      "median_encaissee": 0.003,
+      "pct_perdants": 0.498,
+      "perte_moyenne": -0.179,
+      "gain_moyen": 0.223
+    },
+    "PANIQUE": {
+      "n": 420,
+      "median_affichee": -0.005,
+      "median_encaissee": -0.094,
+      "pct_perdants": 0.562,
+      "perte_moyenne": -0.184,
+      "gain_moyen": 0.210
+    }
+  },
+  "_benchmark_hasard": {
+    "_note": "Mesure du hors-periode : part des cas ou le signal fait MIEUX qu'une date d'achat tiree au hasard sur le meme titre, sur la periode de validation 2023-2025.",
+    "part_battant_le_hasard": 0.49,
+    "_mesure_le": "2026-11-12"
+  }
+}

@@ -8,6 +8,10 @@ Style néophyte (règle LEO 03/09) : un chiffre = sa signification,
 fait / hypothèse / décision séparés, jamais d'ordre automatique.
 """
 from dataclasses import dataclass, field
+import json
+from pathlib import Path
+
+from ..infrastructure.paths import DATA_DIR as DATA
 
 from ..portefeuille.format_fr import fcfa  # montants à la française (invariant E1, correction B1-02 du 12/10)
 from ..taxation import net_yield  # C4 : plus de 0,88/0,8 en dur (correction 12/10)
@@ -413,4 +417,43 @@ def build_message(f: FicheSpec) -> str:
             f"   • +50 % ({fcfa(b['palier50'])}) → vends le reste\n"
             f"   • Le signal vit tant que le prix reste au-dessus de {fcfa(b['entry_lo'])}\n"
             f"\n🚫 Règle d'or : un pari perdant ne devient JAMAIS un loyer.")
-    return head + body
+    # CE QUE LE PLAN VEND RÉELLEMENT — audit du 13/11/2026.
+    # Les fréquences affichées plus haut mesurent « le cours finit plus haut 12 mois après ».
+    # Le plan proposé juste en dessous (stop −15 %, ventes ⅓ à +20/+35/+50) encaisse BEAUCOUP
+    # moins : la médiane réellement réalisée est lue dans data/plan_mesure.json, produit par
+    # scripts/rejouer_plan_complet.py sur le MÊME univers (mêmes cas, mêmes frais). Sans ce
+    # bloc, la fiche affichait une fréquence flatteuse à côté d'une consigne d'achat sans
+    # jamais dire l'écart — c'est le reproche central de l'audit externe.
+    plan_txt = ""
+    try:
+        _pm = json.loads((DATA / "plan_mesure.json").read_text(encoding="utf-8"))
+        _ps = (_pm.get("par_schema") or {}).get(main)
+        if _ps:
+            _ecart = (_ps["median_encaissee"] - _ps["median_affichee"]) * 100
+            _hasard = (_pm.get("_benchmark_hasard") or {}).get("part_battant_le_hasard")
+            _date_fr = str(_pm.get("mesure_le", ""))
+            if len(_date_fr) == 10 and _date_fr[4] == "-":
+                _date_fr = f"{_date_fr[8:10]}/{_date_fr[5:7]}/{_date_fr[0:4]}"
+
+            def _pct(v):
+                # virgule décimale + vrai signe moins (U+2212), comme le reste des alertes
+                return f"{v * 100:+.1f}".replace(".", ",").replace("-", "−")
+
+            plan_txt = (f"\n⚠️ CE QUE CE PLAN ENCAISSE VRAIMENT "
+                        f"(mesure du {_date_fr}, {_pm.get('cas_total')} cas) :\n"
+                        f"   • Appliqué tel quel (stop −15 % + ventes ⅓), la médiane réalisée "
+                        f"est de {_pct(_ps['median_encaissee'])} %\n"
+                        f"     — soit {abs(_ecart):.1f}".replace(".", ",") +
+                        f" points {'sous' if _ecart < 0 else 'au-dessus de'} la médiane "
+                        f"affichée ci-dessus.\n"
+                        f"   • {_ps['pct_perdants'] * 100:.0f} % des cas finissent en perte "
+                        f"(perte moyenne {_pct(_ps['perte_moyenne'])} %).\n")
+            if _hasard is not None:
+                plan_txt += (f"   • Contre une date d'achat tirée AU HASARD sur le même "
+                             f"titre, ce signal ne fait mieux\n"
+                             f"     que dans {_hasard * 100:.0f} % des cas (2023-2025) : "
+                             f"l'avantage n'est pas démontré.\n")
+    except (OSError, ValueError, KeyError, TypeError):
+        plan_txt = ""   # une mesure indisponible ne doit JAMAIS empêcher l'alerte de partir
+
+    return head + plan_txt + body
