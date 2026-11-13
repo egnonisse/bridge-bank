@@ -131,7 +131,12 @@ def detect_schemas(closes, volumes=None):
     # par un volume >= médiane des 60 séances (épreuve 25/09 : sans le
     # volume, un seul print illiquide peut créer un faux rebond)
     creux60 = min(closes[i - 60 : i])
-    if closes[i] / creux60 - 1 >= 0.10:
+    # GARDE-FOU (13/11/2026) : une clôture à 0 dans la fenêtre des 60 séances (donnée
+    # manquante, titre suspendu) rendait creux60 nul, et la division levait un
+    # ZeroDivisionError qui faisait tomber TOUT detect_schemas — donc la calibration et les
+    # alertes du matin. Reproduit : detect_schemas([100.0]*250 + [100.0]*58 + [0.0, 100.0, 105.0])
+    # Un creux nul ne peut pas servir de référence : on ne mesure pas un rebond depuis zéro.
+    if creux60 > 0 and closes[i] / creux60 - 1 >= 0.10:
         vol_ok = True
         if volumes and len(volumes) == len(closes):
             med = statistics.median(volumes[-61:-1])
