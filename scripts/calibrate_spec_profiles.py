@@ -70,6 +70,12 @@ agg_zones = {s: {t: {"rets": [], "peaks": []} for _, _, t in TRANCHE} for s in S
 
 for code, bars in hist.items():
     closes = [b.close for b in bars]
+    # Le filtre VOLUME de production doit entrer dans la mesure : jusqu'au 13/11/2026 la
+    # calibration appelait detect_schemas(closes) SANS volumes, alors que la production
+    # l'applique (spec_fiche). Les taux publies decrivaient donc une population plus large
+    # que les signaux reellement emis — 38 % des cas mesurables seraient filtres en production
+    # (EVEIL 41 %, CASSURE 27 %) d'apres l'agent de specification. PANIQUE ignore ce filtre.
+    vols = [float(getattr(b, "volume", 0) or 0) for b in bars]
     dates = [b.date if isinstance(b.date, datetime.date)
              else datetime.date.fromisoformat(str(b.date)[:10]) for b in bars]
     if len(closes) < 500 or closes[0] <= 0:
@@ -80,7 +86,7 @@ for code, bars in hist.items():
         j = index_fin_horizon(dates, i)
         if not fenetre_complete(dates, i, j):
             continue            # fenetre non terminee : rendement partiel, on ecarte le cas
-        schemas = detect_schemas(closes[: i + 1])
+        schemas = detect_schemas(closes[: i + 1], vols[: i + 1])
         if not schemas:
             continue
         ret = closes[j] / closes[i] - 1 - FRAIS

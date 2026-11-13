@@ -94,7 +94,7 @@ for code, bars in hist.items():
         j = index_fin_horizon(dates, i)
         if not fenetre_complete(dates, i, j):
             continue            # fenetre non terminee : rendement partiel, cas ecarte
-        schemas = detect_schemas(closes[: i + 1])
+        schemas = detect_schemas(closes[: i + 1], vols[: i + 1])
         if not schemas:
             continue
         zone = zone_of(closes[: i + 1])
