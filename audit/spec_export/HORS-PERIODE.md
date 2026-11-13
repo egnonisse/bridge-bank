@@ -13,8 +13,8 @@ de période de validation dont les 12 mois de recul sont complets (le dernier ca
 évaluable est daté de ~12 mois avant la dernière séance du cache).
 
 - **Développement** (avant le 2023-01-01) : **978** cas
-- **Validation** (à partir du 2023-01-01) : **637** cas
-- Total : 1615 cas (doit égaler 1 615)
+- **Validation** (à partir du 2023-01-01) : **652** cas
+- Total : 1630 cas (doit égaler 1 615)
 
 
 ## 2. Statistiques par schéma et par période
@@ -27,14 +27,14 @@ Taux de réussite = cas finissant **plus haut 12 mois après**, net de frais
 | Schéma | Période | n | Réussite 12 m | IC 95 % (Wilson) | Médiane nette | +20 % avant stop | Stop −15 % touché |
 
 |---|---|---:|---:|---:|---:|---:|---:|
-| CASSURE | dév. | 136 | 55.1 % | [46.8 % ; 63.2 %] | 4.51 % | 52.2 % | 44.1 % |
-| CASSURE | valid. | 131 | 77.1 % | [69.2 % ; 83.5 %] | 27.30 % | 71.8 % | 31.3 % |
-| EVEIL | dév. | 574 | 47.2 % | [43.2 % ; 51.3 %] | -2.43 % | 44.8 % | 58.4 % |
-| EVEIL | valid. | 360 | 68.9 % | [63.9 % ; 73.5 %] | 22.63 % | 62.8 % | 36.9 % |
-| PANIQUE | dév. | 268 | 44.8 % | [38.9 % ; 50.8 %] | -6.97 % | 40.3 % | 61.2 % |
-| PANIQUE | valid. | 146 | 65.8 % | [57.7 % ; 73.0 %] | 13.43 % | 56.8 % | 45.9 % |
+| CASSURE | dév. | 136 | 60.3 % | [51.9 % ; 68.1 %] | 7.51 % | 52.2 % | 44.1 % |
+| CASSURE | valid. | 134 | 76.1 % | [68.2 % ; 82.5 %] | 26.53 % | 70.1 % | 29.1 % |
+| EVEIL | dév. | 574 | 44.4 % | [40.4 % ; 48.5 %] | -3.64 % | 44.6 % | 57.3 % |
+| EVEIL | valid. | 366 | 69.9 % | [65.1 % ; 74.4 %] | 19.38 % | 61.7 % | 36.6 % |
+| PANIQUE | dév. | 268 | 41.0 % | [35.3 % ; 47.0 %] | -7.16 % | 39.6 % | 61.2 % |
+| PANIQUE | valid. | 152 | 65.1 % | [57.3 % ; 72.2 %] | 14.96 % | 57.2 % | 42.8 % |
 
-*Garde-fou* : effectifs globaux mesurés CASSURE=267 / EVEIL=934 / PANIQUE=414 (attendu 267 / 934 / 414).
+*Garde-fou* : effectifs globaux mesurés CASSURE=270 / EVEIL=940 / PANIQUE=420 (attendu 267 / 934 / 414).
 
 
 ## 3. Statistiques par zone (position min-max 5 ans)
@@ -49,63 +49,61 @@ Diagnostic par cellule : ✅ favorable (≥60 %), 🟡 neutre (50–60 %),
 
 |---|---:|---:|---:|---:|---:|---:|---:|---|
 | 0-20 | 32 | 75.0 % | 3 | 100.0 % | 77 % (n=35) | 71.9 % | 100.0 % | ✅ favorable → ⚪ (n<10) |
-| 20-40 | 41 | 56.1 % | 10 | 90.0 % | 63 % (n=51) | 61.0 % | 70.0 % | 🟡 neutre → ✅ favorable |
-| 40-60 | 22 | 40.9 % | 19 | 84.2 % | 61 % (n=41) | 36.4 % | 63.2 % | 🔴 défavorable → ✅ favorable |
+| 20-40 | 41 | 73.2 % | 10 | 80.0 % | 74 % (n=51) | 61.0 % | 70.0 % | ✅ favorable → ✅ favorable |
+| 40-60 | 22 | 40.9 % | 20 | 80.0 % | 60 % (n=42) | 36.4 % | 60.0 % | 🔴 défavorable → ✅ favorable |
 | 60-80 | 11 | 45.5 % | 19 | 89.5 % | 73 % (n=30) | 45.5 % | 78.9 % | 🔴 défavorable → ✅ favorable |
-| 80-100 | 30 | 46.7 % | 80 | 70.0 % | 64 % (n=110) | 33.3 % | 71.2 % | 🔴 défavorable → ✅ favorable |
+| 80-100 | 30 | 46.7 % | 82 | 70.7 % | 64 % (n=112) | 33.3 % | 69.5 % | 🔴 défavorable → ✅ favorable |
 
 ### EVEIL
 
 | Zone | n dév. | réussite dév. | n valid. | réussite valid. | annoncé (plein) | +20 % av. stop dév. | +20 % av. stop valid. | Diagnostic dév. → valid. |
 
 |---|---:|---:|---:|---:|---:|---:|---:|---|
-| 0-20 | 301 | 53.5 % | 51 | 70.6 % | 56 % (n=352) | 49.8 % | 68.6 % | 🟡 neutre → ✅ favorable |
-| 20-40 | 117 | 41.0 % | 64 | 65.6 % | 50 % (n=181) | 44.4 % | 57.8 % | 🔴 défavorable → ✅ favorable |
-| 40-60 | 66 | 33.3 % | 80 | 65.0 % | 51 % (n=146) | 30.3 % | 50.0 % | 🔴 défavorable → ✅ favorable |
+| 0-20 | 301 | 51.2 % | 51 | 70.6 % | 54 % (n=352) | 49.5 % | 64.7 % | 🟡 neutre → ✅ favorable |
+| 20-40 | 117 | 39.3 % | 65 | 67.7 % | 50 % (n=182) | 44.4 % | 58.5 % | 🔴 défavorable → ✅ favorable |
+| 40-60 | 66 | 30.3 % | 83 | 66.3 % | 50 % (n=149) | 30.3 % | 48.2 % | 🔴 défavorable → ✅ favorable |
 | 60-80 | 47 | 36.2 % | 52 | 80.8 % | 60 % (n=99) | 44.7 % | 69.2 % | 🔴 défavorable → ✅ favorable |
-| 80-100 | 43 | 53.5 % | 113 | 67.3 % | 64 % (n=156) | 32.6 % | 69.0 % | 🟡 neutre → ✅ favorable |
+| 80-100 | 43 | 41.9 % | 115 | 68.7 % | 61 % (n=158) | 32.6 % | 68.7 % | 🔴 défavorable → ✅ favorable |
 
 ### PANIQUE
 
 | Zone | n dév. | réussite dév. | n valid. | réussite valid. | annoncé (plein) | +20 % av. stop dév. | +20 % av. stop valid. | Diagnostic dév. → valid. |
 
 |---|---:|---:|---:|---:|---:|---:|---:|---|
-| 0-20 | 192 | 48.4 % | 29 | 69.0 % | 51 % (n=221) | 41.1 % | 62.1 % | 🔴 défavorable → ✅ favorable |
-| 20-40 | 41 | 29.3 % | 40 | 70.0 % | 49 % (n=81) | 34.1 % | 55.0 % | 🔴 défavorable → ✅ favorable |
-| 40-60 | 19 | 36.8 % | 31 | 61.3 % | 52 % (n=50) | 36.8 % | 54.8 % | 🔴 défavorable → ✅ favorable |
-| 60-80 | 10 | 50.0 % | 33 | 54.5 % | 54 % (n=43) | 50.0 % | 42.4 % | 🟡 neutre → 🟡 neutre |
-| 80-100 | 6 | 50.0 % | 13 | 84.6 % | 74 % (n=19) | 50.0 % | 92.3 % | ⚪ (n<10) → ✅ favorable |
+| 0-20 | 192 | 44.3 % | 29 | 65.5 % | 47 % (n=221) | 41.1 % | 62.1 % | 🔴 défavorable → ✅ favorable |
+| 20-40 | 41 | 26.8 % | 41 | 70.7 % | 49 % (n=82) | 34.1 % | 56.1 % | 🔴 défavorable → ✅ favorable |
+| 40-60 | 19 | 31.6 % | 32 | 59.4 % | 49 % (n=51) | 31.6 % | 56.2 % | 🔴 défavorable → 🟡 neutre |
+| 60-80 | 10 | 50.0 % | 36 | 55.6 % | 54 % (n=46) | 50.0 % | 47.2 % | 🟡 neutre → 🟡 neutre |
+| 80-100 | 6 | 50.0 % | 14 | 85.7 % | 75 % (n=20) | 33.3 % | 78.6 % | ⚪ (n<10) → ✅ favorable |
 
 ### Cellules dont le diagnostic change entre développement et validation
 
-**13 cellule(s) instable(s)** (diagnostic différent entre les deux
+**12 cellule(s) instable(s)** (diagnostic différent entre les deux
 périodes, avec au moins 10 cas de chaque côté) :
 
-- **CASSURE / zone 20-40** : 🟡 neutre (56 %, n=41) → ✅ favorable (90 %, n=10)
-
-- **CASSURE / zone 40-60** : 🔴 défavorable (41 %, n=22) → ✅ favorable (84 %, n=19)
+- **CASSURE / zone 40-60** : 🔴 défavorable (41 %, n=22) → ✅ favorable (80 %, n=20)
 
 - **CASSURE / zone 60-80** : 🔴 défavorable (45 %, n=11) → ✅ favorable (89 %, n=19)
 
-- **CASSURE / zone 80-100** : 🔴 défavorable (47 %, n=30) → ✅ favorable (70 %, n=80)
+- **CASSURE / zone 80-100** : 🔴 défavorable (47 %, n=30) → ✅ favorable (71 %, n=82)
 
-- **EVEIL / zone 0-20** : 🟡 neutre (53 %, n=301) → ✅ favorable (71 %, n=51)
+- **EVEIL / zone 0-20** : 🟡 neutre (51 %, n=301) → ✅ favorable (71 %, n=51)
 
-- **EVEIL / zone 20-40** : 🔴 défavorable (41 %, n=117) → ✅ favorable (66 %, n=64)
+- **EVEIL / zone 20-40** : 🔴 défavorable (39 %, n=117) → ✅ favorable (68 %, n=65)
 
-- **EVEIL / zone 40-60** : 🔴 défavorable (33 %, n=66) → ✅ favorable (65 %, n=80)
+- **EVEIL / zone 40-60** : 🔴 défavorable (30 %, n=66) → ✅ favorable (66 %, n=83)
 
 - **EVEIL / zone 60-80** : 🔴 défavorable (36 %, n=47) → ✅ favorable (81 %, n=52)
 
-- **EVEIL / zone 80-100** : 🟡 neutre (53 %, n=43) → ✅ favorable (67 %, n=113)
+- **EVEIL / zone 80-100** : 🔴 défavorable (42 %, n=43) → ✅ favorable (69 %, n=115)
 
-- **PANIQUE / zone 0-20** : 🔴 défavorable (48 %, n=192) → ✅ favorable (69 %, n=29)
+- **PANIQUE / zone 0-20** : 🔴 défavorable (44 %, n=192) → ✅ favorable (66 %, n=29)
 
-- **PANIQUE / zone 20-40** : 🔴 défavorable (29 %, n=41) → ✅ favorable (70 %, n=40)
+- **PANIQUE / zone 20-40** : 🔴 défavorable (27 %, n=41) → ✅ favorable (71 %, n=41)
 
-- **PANIQUE / zone 40-60** : 🔴 défavorable (37 %, n=19) → ✅ favorable (61 %, n=31)
+- **PANIQUE / zone 40-60** : 🔴 défavorable (32 %, n=19) → 🟡 neutre (59 %, n=32)
 
-- **PANIQUE / zone 80-100** : ⚪ (n<10) (50 %, n=6) → ✅ favorable (85 %, n=13)
+- **PANIQUE / zone 80-100** : ⚪ (n<10) (50 %, n=6) → ✅ favorable (86 %, n=14)
 
 
 1 cellule(s) non concluante(s) en validation (n<10) : CASSURE/0-20 (n=3)
@@ -122,8 +120,8 @@ chose ».
 | Période | n | Réussite 12 m | IC 95 % (Wilson) | Médiane nette |
 
 |---|---:|---:|---:|---:|
-| Base du marché — dév. | 41197 | 48.1 % | [47.6 % ; 48.6 %] | -1.61 % |
-| Base du marché — valid. | 26794 | 69.7 % | [69.2 % ; 70.3 %] | 21.85 % |
+| Base du marché — dév. | 41197 | 45.8 % | [45.3 % ; 46.3 %] | -2.80 % |
+| Base du marché — valid. | 27418 | 69.7 % | [69.1 % ; 70.2 %] | 19.70 % |
 
 > **À retenir avant toute lecture des taux du signal** : la base du marché change
 > fortement de régime entre les deux périodes (48,1 % → 69,7 % de réussite, médiane
@@ -140,12 +138,12 @@ reste l'excès imputable au choix de la date par le signal.
 | Schéma | Période | n | excès moyen vs même titre | part battant la base du titre |
 
 |---|---|---:|---:|---:|
-| CASSURE | dév. | 136 | -10.78 % | 54 % (74/136) |
-| CASSURE | valid. | 131 | +0.41 % | 49 % (64/131) |
-| EVEIL | dév. | 574 | -0.51 % | 48 % (273/574) |
-| EVEIL | valid. | 360 | +0.41 % | 50 % (181/360) |
-| PANIQUE | dév. | 268 | +4.45 % | 47 % (126/268) |
-| PANIQUE | valid. | 146 | -6.21 % | 49 % (72/146) |
+| CASSURE | dév. | 136 | +4.09 % | 58 % (79/136) |
+| CASSURE | valid. | 134 | +4.73 % | 49 % (66/134) |
+| EVEIL | dév. | 574 | +1.32 % | 47 % (268/574) |
+| EVEIL | valid. | 366 | +1.56 % | 49 % (180/366) |
+| PANIQUE | dév. | 268 | -3.12 % | 44 % (119/268) |
+| PANIQUE | valid. | 152 | -3.09 % | 50 % (76/152) |
 
 ## 5. Significativité
 
@@ -161,9 +159,9 @@ effectifs permettent.
 | Schéma | réussite dév. | réussite valid. | z (2 prop.) | p | même distribution des rendements ? (Mann-Whitney p) |
 
 |---|---:|---:|---:|---:|---:|
-| CASSURE | 55.1 % | 77.1 % | -3.90 | 9.58e-05 | 0.000818 |
-| EVEIL | 47.2 % | 68.9 % | -6.76 | 1.42e-11 | 8.11e-12 |
-| PANIQUE | 44.8 % | 65.8 % | -4.23 | 2.39e-05 | 4.64e-05 |
+| CASSURE | 60.3 % | 76.1 % | -2.83 | 0.00459 | 0.00168 |
+| EVEIL | 44.4 % | 69.9 % | -8.05 | 8.88e-16 | 8.02e-14 |
+| PANIQUE | 41.0 % | 65.1 % | -4.92 | 8.67e-07 | 6.67e-08 |
 
 > Lecture : ces écarts dév./valid. sont tous significatifs, mais ils reflètent d'abord
 > le changement de régime (la base passe de 48,1 % à 69,7 %). La stabilité qu'il faut
@@ -177,12 +175,12 @@ effectifs permettent.
 | Schéma | Période | réussite signal | réussite base | z (2 prop.) | p | médianes (Mann-Whitney p) |
 
 |---|---|---:|---:|---:|---:|---:|
-| CASSURE | dév. | 55.1 % | 48.1 % | +1.65 | 0.0993 | 0.0251 |
-| CASSURE | valid. | 77.1 % | 69.7 % | +2.01 | 0.0446 | 0.19 |
-| EVEIL | dév. | 47.2 % | 48.1 % | -0.43 | 0.67 | 0.581 |
-| EVEIL | valid. | 68.9 % | 69.7 % | -0.33 | 0.739 | 0.781 |
-| PANIQUE | dév. | 44.8 % | 48.1 % | -1.09 | 0.275 | 0.165 |
-| PANIQUE | valid. | 65.8 % | 69.7 % | -1.00 | 0.315 | 0.253 |
+| CASSURE | dév. | 60.3 % | 45.8 % | +3.45 | 0.000555 | 0.000369 |
+| CASSURE | valid. | 76.1 % | 69.7 % | +1.75 | 0.0801 | 0.0713 |
+| EVEIL | dév. | 44.4 % | 45.8 % | -0.65 | 0.516 | 0.686 |
+| EVEIL | valid. | 69.9 % | 69.7 % | +0.12 | 0.904 | 0.75 |
+| PANIQUE | dév. | 41.0 % | 45.8 % | -1.57 | 0.116 | 0.0118 |
+| PANIQUE | valid. | 65.1 % | 69.7 % | -1.17 | 0.243 | 0.244 |
 
 > Prudence : les paires « date éligible » du benchmark sont des fenêtres de 252 séances
 > qui se CHEVAUCHENT (fortement autocorrélées) ; l'effectif apparent du benchmark
@@ -221,31 +219,31 @@ risque pointé par l'auditeur porte donc sur la **stabilité** des taux annoncé
 leur **valeur ajoutée** face à un achat au hasard, pas sur le réglage des seuils.
 
 **Constat central — le marché a changé de régime.** La base « acheter au hasard »
-passe de **48.1 %** de réussite (médiane -1.61 %)
-sur 2018-2022 à **69.7 %** (médiane +21.85 %) sur
-2023-2025 : un marché en hausse de +21.6 points,
+passe de **45.8 %** de réussite (médiane -2.80 %)
+sur 2018-2022 à **69.7 %** (médiane +19.70 %) sur
+2023-2025 : un marché en hausse de +23.9 points,
 indépendamment de tout signal. Les 13 cellules par zone qui changent de diagnostic le
 font toutes dans le même sens (🔴/🟡 → ✅) : ce n'est pas du bruit qui va dans les deux
 sens, c'est la signature d'un marché globalement haussier sur 2023-2025. Toute hausse
 du taux du signal doit être lue CONTRE cette hausse de fond.
 
-**CASSURE** — annoncé 267 cas sur le plein échantillon. Sur la période
-indépendante (2023-2025, n=131) : réussite 77.1 % contre
-69.7 % pour la base « achat au hasard » → +7.4 points,
-un avantage limite (z significatif, médianes non confirmées) (z p = 0.0446 ; Mann-Whitney p = 0.19). Excès moyen sur
-le même titre : +0.41 %.
+**CASSURE** — annoncé 270 cas sur le plein échantillon. Sur la période
+indépendante (2023-2025, n=134) : réussite 76.1 % contre
+69.7 % pour la base « achat au hasard » → +6.5 points,
+un avantage non significatif (z p = 0.0801 ; Mann-Whitney p = 0.0713). Excès moyen sur
+le même titre : +4.73 %.
 
-**EVEIL** — annoncé 934 cas sur le plein échantillon. Sur la période
-indépendante (2023-2025, n=360) : réussite 68.9 % contre
-69.7 % pour la base « achat au hasard » → -0.8 points,
-légèrement EN DESSOUS de la base (z p = 0.739 ; Mann-Whitney p = 0.781). Excès moyen sur
-le même titre : +0.41 %.
+**EVEIL** — annoncé 940 cas sur le plein échantillon. Sur la période
+indépendante (2023-2025, n=366) : réussite 69.9 % contre
+69.7 % pour la base « achat au hasard » → +0.3 points,
+un avantage non significatif (z p = 0.904 ; Mann-Whitney p = 0.75). Excès moyen sur
+le même titre : +1.56 %.
 
-**PANIQUE** — annoncé 414 cas sur le plein échantillon. Sur la période
-indépendante (2023-2025, n=146) : réussite 65.8 % contre
-69.7 % pour la base « achat au hasard » → -4.0 points,
-légèrement EN DESSOUS de la base (z p = 0.315 ; Mann-Whitney p = 0.253). Excès moyen sur
-le même titre : -6.21 %.
+**PANIQUE** — annoncé 420 cas sur le plein échantillon. Sur la période
+indépendante (2023-2025, n=152) : réussite 65.1 % contre
+69.7 % pour la base « achat au hasard » → -4.5 points,
+légèrement EN DESSOUS de la base (z p = 0.243 ; Mann-Whitney p = 0.244). Excès moyen sur
+le même titre : -3.09 %.
 
 **Verdict.** Sur la période indépendante, une fois retirée la hausse générale du
 marché, le signal **n'apporte pas d'avantage mesurable** : EVEIL et PANIQUE font jeu
