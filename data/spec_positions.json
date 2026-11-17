@@ -23,7 +23,7 @@
   "quantity": 297,
   "opened_at": "2026-11-16T00:00:00",
   "stop_loss": 2331.0,
-  "highest": 2705.0,
+  "highest": 2900,
   "sold_1": false,
   "sold_2": false,
   "review_alerted": false,
