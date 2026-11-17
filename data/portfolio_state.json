@@ -1,121 +1,130 @@
 {
-  "cash": 742738.0,
-  "obligations": [],
-  "history": [
-    {
-      "date": "2026-08-18",
-      "total": 675261.29,
-      "stocks": 557000.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 118261.29
-    },
-    {
-      "date": "2026-08-19",
-      "total": 696861.289,
-      "stocks": 578600.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 118261.29
-    },
-    {
-      "date": "2026-08-20",
-      "total": 697761.29,
-      "stocks": 579500.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 118261.29
-    },
-    {
-      "date": "2026-08-21",
-      "total": 716686.29,
-      "stocks": 598425.0,
-      "spec": 0.0,
-      "bonds": 0.0,
-      "cash": 118261.29
-    },
-    {
-      "date": "2026-09-01",
-      "total": 713661.29,
-      "stocks": 595400.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 118261.29
-    },
-    {
-      "date": "2026-09-03",
-      "total": 613047.0,
-      "stocks": 489115.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 123932.0
-    },
-    {
-      "date": "2026-09-06",
-      "total": 730564.0,
-      "stocks": 532750.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 197814.0
-    },
-    {
-      "date": "2026-09-10",
-      "total": 729836.0,
-      "stocks": 647980.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 81856.0
-    },
-    {
-      "date": "2026-09-11",
-      "total": 832713.0,
-      "stocks": 727515.0,
-      "spec": 0.0,
-      "bonds": 0,
-      "cash": 105198.0
-    },
-    {
-      "date": "2026-09-29",
-      "total": 841207.0,
-      "stocks": 830285.0,
-      "spec": 34000.0,
-      "bonds": 0,
-      "cash": 10922.0
-    },
-    {
-      "date": "2026-09-30",
-      "total": 1544892.0,
-      "stocks": 837315.0,
-      "spec": 33000.0,
-      "bonds": 0,
-      "cash": 707577.0
-    },
-    {
-      "date": "2026-10-01",
-      "total": 1528508.0,
-      "stocks": 828790.0,
-      "spec": 32000.0,
-      "bonds": 0,
-      "cash": 699718.0
-    },
-    {
-      "date": "2026-11-12",
-      "total": 1589219.0,
-      "stocks": 725685.0,
-      "spec": 36000.0,
-      "bonds": 0,
-      "cash": 742738.0,
-      "instance_reglement": 84796.0,
-      "apport": 544500.0
-    }
-  ],
-  "_definition_cash": "cash = liquidite DEPLOYABLE du compte titres. 12/11/2026 : 742 738 disponibles + 84 796 en instance (vente SLBC, J+3). Apport de 544 500 F enregistre dans apports[] — jamais compte comme performance.",
-  "retrait_en_cours": 0,
-  "apports": [
-    {
-      "date": "2026-11-12",
-      "montant": 544500.0,
-      "motif": "nouvel apport LEO (declare le 12/11/2026)"
-    }
-  ]
+ "cash": 12902,
+ "obligations": [],
+ "history": [
+  {
+   "date": "2026-08-18",
+   "total": 675261.29,
+   "stocks": 557000.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 118261.29
+  },
+  {
+   "date": "2026-08-19",
+   "total": 696861.289,
+   "stocks": 578600.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 118261.29
+  },
+  {
+   "date": "2026-08-20",
+   "total": 697761.29,
+   "stocks": 579500.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 118261.29
+  },
+  {
+   "date": "2026-08-21",
+   "total": 716686.29,
+   "stocks": 598425.0,
+   "spec": 0.0,
+   "bonds": 0.0,
+   "cash": 118261.29
+  },
+  {
+   "date": "2026-09-01",
+   "total": 713661.29,
+   "stocks": 595400.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 118261.29
+  },
+  {
+   "date": "2026-09-03",
+   "total": 613047.0,
+   "stocks": 489115.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 123932.0
+  },
+  {
+   "date": "2026-09-06",
+   "total": 730564.0,
+   "stocks": 532750.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 197814.0
+  },
+  {
+   "date": "2026-09-10",
+   "total": 729836.0,
+   "stocks": 647980.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 81856.0
+  },
+  {
+   "date": "2026-09-11",
+   "total": 832713.0,
+   "stocks": 727515.0,
+   "spec": 0.0,
+   "bonds": 0,
+   "cash": 105198.0
+  },
+  {
+   "date": "2026-09-29",
+   "total": 841207.0,
+   "stocks": 830285.0,
+   "spec": 34000.0,
+   "bonds": 0,
+   "cash": 10922.0
+  },
+  {
+   "date": "2026-09-30",
+   "total": 1544892.0,
+   "stocks": 837315.0,
+   "spec": 33000.0,
+   "bonds": 0,
+   "cash": 707577.0
+  },
+  {
+   "date": "2026-10-01",
+   "total": 1528508.0,
+   "stocks": 828790.0,
+   "spec": 32000.0,
+   "bonds": 0,
+   "cash": 699718.0
+  },
+  {
+   "date": "2026-11-12",
+   "total": 1589219.0,
+   "stocks": 725685.0,
+   "spec": 36000.0,
+   "bonds": 0,
+   "cash": 742738.0,
+   "instance_reglement": 84796.0,
+   "apport": 544500.0
+  },
+  {
+   "date": "2026-11-16",
+   "type": "achat_spec",
+   "code": "ONTBF",
+   "quantite": 297,
+   "prix_execute": 2705.0,
+   "montant": 814632,
+   "note": "ordre 987223 execute a 2705 F (limite 2740). Hors strategie : aucun schema actif."
+  }
+ ],
+ "_definition_cash": "cash = liquidite DEPLOYABLE du compte titres. 12/11/2026 : 742 738 disponibles + 84 796 en instance (vente SLBC, J+3). Apport de 544 500 F enregistre dans apports[] — jamais compte comme performance.",
+ "retrait_en_cours": 0,
+ "apports": [
+  {
+   "date": "2026-11-12",
+   "montant": 544500.0,
+   "motif": "nouvel apport LEO (declare le 12/11/2026)"
+  }
+ ]
 }

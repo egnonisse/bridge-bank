@@ -1,19 +1,38 @@
 [
-  {
-    "code": "SMBC",
-    "name": "SMB CI",
-    "entry_price": 17238.0,
-    "quantity": 2,
-    "opened_at": "2026-09-29T09:00:00",
-    "stop_loss": 14450.0,
-    "highest": 17900.0,
-    "sold_1": false,
-    "sold_2": false,
-    "review_alerted": false,
-    "closed": false,
-    "close_reason": "",
-    "close_price": 0.0,
-    "close_price_detecte": 0.0,
-    "closed_at": ""
-  }
+ {
+  "code": "SMBC",
+  "name": "SMB CI",
+  "entry_price": 17238.0,
+  "quantity": 2,
+  "opened_at": "2026-09-29T09:00:00",
+  "stop_loss": 14450.0,
+  "highest": 17900.0,
+  "sold_1": false,
+  "sold_2": false,
+  "review_alerted": false,
+  "closed": false,
+  "close_reason": "",
+  "close_price": 0.0,
+  "close_price_detecte": 0.0,
+  "closed_at": ""
+ },
+ {
+  "code": "ONTBF",
+  "name": "ONATEL BURKINA FASO",
+  "entry_price": 2742.87,
+  "quantity": 297,
+  "opened_at": "2026-11-16T00:00:00",
+  "stop_loss": 2331.0,
+  "highest": 2705.0,
+  "sold_1": false,
+  "sold_2": false,
+  "review_alerted": false,
+  "closed": false,
+  "close_reason": "",
+  "close_price": 0.0,
+  "close_price_detecte": 0.0,
+  "closed_at": "",
+  "hors_strategie": true,
+  "hors_strategie_motif": "Aucun schema actif a l'achat (cours 2705 F, declencheur CASSURE a 3115 F). Decision de LEO du 16/11/2026, ordre 987223. A NE PAS compter dans les statistiques de reussite du dispositif."
+ }
 ]

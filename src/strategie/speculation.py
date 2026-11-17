@@ -157,6 +157,11 @@ class SpecPosition:
     close_price: float = 0.0
     close_price_detecte: float = 0.0
     closed_at: str = ""  # horodatage de la clôture (B0-01 : le cooldown en a besoin)
+    # Position ouverte SANS schéma actif, sur décision manuelle de LEO. Ces positions ne
+    # doivent PAS entrer dans les statistiques de réussite du dispositif : le schéma n'était
+    # pas actif à l'achat, donc les compter fausserait la mesure des taux de réussite.
+    hors_strategie: bool = False
+    hors_strategie_motif: str = ""
 
     def __post_init__(self) -> None:
         if not self.opened_at:
