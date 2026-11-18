@@ -15,7 +15,7 @@
   "close_price_detecte": 0.0,
   "dividends_earned": 6896.25,
   "cash_residual": 0.0,
-  "last_price": 39000
+  "last_price": 38900
  },
  {
   "code": "SLBC",
@@ -33,7 +33,7 @@
   "close_price_detecte": 0.0,
   "dividends_earned": 0.0,
   "cash_residual": 0.0,
-  "last_price": 39155
+  "last_price": 41685
  },
  {
   "code": "SNTS",
@@ -51,7 +51,7 @@
   "close_price_detecte": 0.0,
   "dividends_earned": 0.0,
   "cash_residual": 0.0,
-  "last_price": 4105
+  "last_price": 4140
  },
  {
   "code": "PALC",
@@ -69,6 +69,6 @@
   "close_price_detecte": 0.0,
   "dividends_earned": 0.0,
   "cash_residual": 0.0,
-  "last_price": 7400
+  "last_price": 7550
  }
 ]

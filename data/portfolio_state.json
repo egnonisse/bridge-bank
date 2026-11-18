@@ -1,5 +1,5 @@
 {
- "cash": 12902,
+ "cash": 5449,
  "obligations": [],
  "history": [
   {
@@ -126,5 +126,6 @@
    "montant": 544500.0,
    "motif": "nouvel apport LEO (declare le 12/11/2026)"
   }
- ]
+ ],
+ "liquidite_reservee": 7453
 }
